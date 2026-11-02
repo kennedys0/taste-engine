@@ -3,7 +3,7 @@ name: taste-engine
 description: Automatically routes visual UI work to a user-chosen aesthetic and applies SEO readiness to public-facing websites. Use whenever a user asks to build, create, design, or redesign a website, portfolio, landing page, dashboard, web app, mobile app, UI/UX screen, frontend, or component, or add/refine micro-interactions or full-screen hero sections (including Indonesian prompts such as "build a portfolio website"). Before writing UI code, ask ONE style question and stop if no visual style or approved project design system is specified. If the prompt already names an aesthetic such as skeuomorphism/skeumorphsm, claymorphism, glassmorphism, brutalism, neo-brutalism, minimalism, bento, or editorial, load its bundled style pack immediately and proceed WITHOUT asking again. Preserve established styles for minor fixes; for SEO-only tasks, load the SEO module without a visual style question; skip unrelated non-visual work.
 license: MIT
 metadata:
-  version: "0.10.2"
+  version: "0.10.3"
 ---
 
 # Taste Engine — style router
@@ -88,7 +88,7 @@ Read `styles/registry.json` when matching IDs, **aliases, common misspellings**,
 
 | ID | Direction | File to load once selected |
 | --- | --- | --- |
-| `claymorphism` | Soft tactile | [style pack](styles/claymorphism.md) |
+| `claymorphism` | Sculpted tactile | [style pack](styles/claymorphism.md) |
 | `glassmorphism` | Translucent layered | [style pack](styles/glassmorphism.md) |
 | `brutalism` | Raw structured | [style pack](styles/brutalism.md) |
 | `neo-brutalism` | Playful bold | [style pack](styles/neo-brutalism.md) |

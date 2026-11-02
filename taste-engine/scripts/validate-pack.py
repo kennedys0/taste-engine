@@ -15,7 +15,7 @@ project_root = root.parent
 # The distributed ZIP includes optional standalones; a normal installation only
 # contains taste-engine/. Validate cross-copy parity when siblings are present.
 standalone_bundle_present = (project_root / 'optional-standalone-skills').is_dir()
-required_references = ['references/anti-slop.md','references/anti-slop-copywriting.md','references/anti-slop-audit.md','tests/anti-slop.md', 'references/decision-system.md', 'references/quality-tiers.md', 'references/redesign-preservation.md', 'references/browser-validation.md', 'references/writing-calibration.md', 'references/research-notes.md', 'tests/research-acceptance.md', 'references/seo.md', 'references/seo-implementation.md', 'tests/seo-routing.md', 'references/motion-engine.md', 'tests/motion-routing.md', 'references/hero-layout.md', 'tests/hero-layout.md', 'tests/test_hero_policy.py', 'styles/motion-profiles.json', 'examples/react/anime-v4-press.jsx', 'references/engineering-router.md', 'references/web-interface-quality.md', 'references/react-performance.md', 'references/react-composition.md', 'references/native-mobile.md', 'references/view-transitions.md', 'references/docs-writing.md', 'references/vercel-research.md', 'tests/engineering-routing.md', 'tests/glassmorphism-visual.md', 'examples/glassmorphism/frosted-surfaces.css']
+required_references = ['references/anti-slop.md','references/anti-slop-copywriting.md','references/anti-slop-audit.md','tests/anti-slop.md', 'references/decision-system.md', 'references/quality-tiers.md', 'references/redesign-preservation.md', 'references/browser-validation.md', 'references/writing-calibration.md', 'references/research-notes.md', 'tests/research-acceptance.md', 'references/seo.md', 'references/seo-implementation.md', 'tests/seo-routing.md', 'references/motion-engine.md', 'tests/motion-routing.md', 'references/hero-layout.md', 'tests/hero-layout.md', 'tests/test_hero_policy.py', 'styles/motion-profiles.json', 'examples/react/anime-v4-press.jsx', 'references/engineering-router.md', 'references/web-interface-quality.md', 'references/react-performance.md', 'references/react-composition.md', 'references/native-mobile.md', 'references/view-transitions.md', 'references/docs-writing.md', 'references/vercel-research.md', 'tests/engineering-routing.md', 'tests/glassmorphism-visual.md', 'examples/glassmorphism/frosted-surfaces.css', 'tests/claymorphism-visual.md', 'examples/claymorphism/sculpted-surfaces.css', 'examples/neo-brutalism/pop-surfaces.css', 'examples/skeuomorphism/tactile-controls.css', 'examples/retro-terminal/crt-console.css', 'examples/bento/modular-grid.css', 'examples/swiss-editorial/grid-typography.css', 'examples/brutalism/raw-surfaces.css', 'examples/minimalism/clean-surfaces.css', 'examples/enterprise/data-cockpit.css']
 for filename in required_references:
     if not (root / filename).is_file(): errors.append(f'missing anti-slop resource: {filename}')
 
@@ -44,6 +44,15 @@ css_source=(root/'examples/glassmorphism/frosted-surfaces.css').read_text(encodi
 for phrase in ['backdrop-filter', 'background:', 'prefers-reduced-transparency', '@supports not']:
     if phrase not in css_source:
         errors.append(f'glass recipe missing {phrase}')
+
+clay_style = (root / 'styles/claymorphism.md').read_text(encoding='utf8')
+for phrase in ['Clay material fidelity gate', 'dual inner shadow', 'first viewport', 'Explicit clay depth exception', 'inset', 'tactile']:
+    if phrase.lower() not in clay_style.lower():
+        errors.append(f'claymorphism missing visible sculpted material requirement: {phrase}')
+clay_css_source = (root / 'examples/claymorphism/sculpted-surfaces.css').read_text(encoding='utf8')
+for phrase in ['--taste-clay-inner-primary', '--taste-clay-inner-light', '--taste-clay-inner-well', 'inset', 'prefers-reduced-motion', ':focus-visible']:
+    if phrase not in clay_css_source:
+        errors.append(f'clay recipe missing {phrase}')
 ids=set()
 for style in registry.get('styles', []):
     id=style.get('id', '')

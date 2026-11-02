@@ -1,38 +1,85 @@
 # Style pack: Claymorphism
 
 **ID:** `claymorphism`  
-**Signature:** Soft, tactile, sculpted surfaces with friendly depth.
+**Signature:** Molded, tactile, sculpted surfaces with dual inner-shadow volumetric depth, soft ambient drop shadows, and friendly physical presence.
 
-> This is a **style pack, not a mandatory default**. Load it only after explicit selection or confirmed applicable project style. Project instructions can override individual choices. Preserve accessibility, utility, and brand constraints. Fonts are suggestions, not required dependencies.
+> This is a **style pack, not a mandatory default**. Load it only after explicit selection or confirmed applicable project style. Project instructions can override individual choices. Preserve accessibility, utility, and brand constraints. Fonts are suggestions, not required dependencies. A flat card with rounded corners and a 1px border **does not qualify as Claymorphism**.
 
 ## Good fit / trade-offs
 
-- **Works well for:** Playful consumer experiences, creative tools, personal dashboards.
-- **Be careful with:** Extremely dense operational tables or low-power devices if decoration obstructs scanning.
+- **Works well for:** Playful consumer experiences, creative tools, personal dashboards, interactive widgets, tactile web apps, and modern educational or design platforms.
+- **Be careful with:** Extremely dense tabular data, long-form legal reading, or low-power devices if excessive shadow calculations obstruct performance.
+- **Reference directions:**
+  - *Primary Saturated Clay:* Rich, vibrant violet/purple (`#813FFC`) molded surfaces with bright white inner highlights on the upper-left, deep tinted form shadows on the bottom-right, and crisp typography.
+  - *Light Porcelain Clay:* Soft off-white (`#ECEBF5`) molded surfaces with pure white top-left inner highlights, soft gray-lavender bottom-right form shadows, and dark slate-purple typography.
+  - *Sunken Inset Wells:* Recessed form inputs with a crisp white relief rim (`3px solid rgba(255, 255, 255, 0.85)`), inverted inset shadows, and accessible placeholder labels.
+
+## Clay material fidelity gate — mandatory
+
+**Before calling a claymorphism page complete, the opening viewport must visibly read as a sculpted clay composition.** If a user chose this style, a flat card with rounded corners and a 1px border is a **FAIL**, even if CSS variables are named `clay`.
+
+A successful claymorphism implementation demonstrates **all** of the following:
+
+1. **Volumetric Dual Inner Shadows (Highlight + Shadow):** A clay surface MUST feature opposing dual inner shadows: an upper-left inner highlight simulating incident light (`inset 3px 4px 6px rgba(255,255,255,...)`) and a lower-right inner form shadow simulating volumetric thickness (`inset -4px -6px 8px rgba(dark-tint,...)`). A single flat highlight line or generic bevel fails.
+2. **Soft Tinted Ambient Drop Shadows:** Surfaces cast soft, directional, tinted drop shadows (`8px 16px 24px rgba(..., 0.20–0.35)`), creating the sensation of pliable material floating or resting above a tinted canvas, rather than harsh black drop shadows.
+3. **Plush Squircle and Pill Geometry:** Generous curvature (`24px–32px` cards, `20px–26px` buttons, `9999px` pills or circles, `14px` squircle checkboxes). Sharp 90-degree corners fail.
+4. **Sunken vs Raised Polarity:** Actionable components (buttons, badges, toggle thumbs, cards) are raised outward; containment wells (input fields, inactive switch channels) are recessed inward with reversed inset shadows and an optional white relief rim.
+5. **Tactile Compression on Interaction:** On hover, focus, and click, controls respond physically with subtle scale down (`scale(0.97–0.98)` or `translateY(1–2px)`) and tightened shadows, feeling like real, pliable clay pressed by a finger.
+
+**First-viewport test:** In a desktop screenshot, identify the raised sculpted buttons, the dual inner highlights/shadows, and the recessed input wells **without reading the page title**. If they appear flat or merely rounded, revise the shadow tokens before adding more content.
+
+**Not a card-count rule:** A focused component showcase (e.g. primary "Submit" pill, secondary "Go Back" pill, circular action button, tactile toggle switch, checkbox, and sunken input field) is sufficient to establish authentic material fidelity without blanketing the entire screen in nested balloon cards.
+
+## Explicit clay depth exception — clay is allowed to have volumetric depth
+
+**Claymorphism-specific override:** The universal anti-slop caution against *excessive shadows, glossy effects, or neumorphic blur* MUST NOT be interpreted as a ban on dual inner shadows, soft ambient drop shadows, or white relief outlines here. These are **material-enabling properties**, essential for tactile physical presence.
+
+- **Allowed material treatments:** Dual inner shadows (opposing light/dark), soft multi-stop tinted ambient shadows, white relief borders (`3px solid rgba(255,255,255,0.85)`), and tactile press transforms (`scale(0.97)`). These create essential tactile depth and physical presence. Static CSS delivers complete material fidelity with zero animation library overhead.
+- **Color contrast discipline:** Saturated primary clay buttons require pure white text (`#FFFFFF`) with at least 4.5:1 contrast. Light porcelain clay surfaces require deep dark text (`#28233D` or `#1D1735`). Sunken wells require clear, accessible placeholder text (`#7C739E` or darker).
+- **Anti-slop interpretation:** Evaluate clay depth by **material purpose, physical coherence, and readability**, not by counting CSS shadow declarations. Removing dual inner shadows to satisfy a generic minimal heuristic is a **design regression**.
+
+See `examples/claymorphism/sculpted-surfaces.css` for starter implementation and `tests/claymorphism-visual.md` for visual acceptance criteria.
 
 ## Typography and typewriting
 
-Friendly humanist/geometric sans: Nunito Sans, Manrope, or system sans. Weights 400/600/700. Scale 13/14/16/20/26/34 px; calm line height 1.45–1.6. Prefer sentence case and short, human labels. Avoid bubbly decorative display faces by default.
+Friendly humanist or geometric sans: Manrope, Nunito Sans, or system sans. Weights 500/600/700 for labels, 700/800 for headings. Scale 14/16/20/26/34 px; line height 1.45–1.6. Prefer sentence case and concise, human labels. Avoid thin display fonts that look fragile over volumetric surfaces.
 
 ## Color direction
 
-1 softly tinted canvas + 1 primary pastel hue + 1 secondary accent + neutrals. Low saturation; contrast must be measured for real foreground text.
+Choose a cohesive pastel-and-saturated palette:
+
+- **Canvas Base:** Soft pastel lilac / lavender (`#D7D1F1` or `--taste-clay-bg: #d7d1f1`).
+- **Primary Saturated Clay:** Vibrant violet/purple (`#813FFC`) with white text (`#FFFFFF`), bright top-left white highlight, and deep purple bottom-right form shadow.
+- **Secondary Light Clay:** Soft off-white porcelain (`#ECEBF5` / `#F0EFF7`) with dark ink (`#28233D`), bright top-left highlight, and soft lavender bottom-right form shadow.
+- **Sunken Input Wells:** Canvas-tinted well (`#D7D1F1`) framed by a crisp white relief rim (`3px solid rgba(255, 255, 255, 0.85)`), recessed inset shadow, and legible placeholder (`#8F87B0`).
 
 ## Layout and geometry
 
-Radius 16–24 px cards, 10–14 px controls; layered but consistent geometry. 8 px rhythm, moderate gutters, no random circles.
+Radius 24–32 px cards, 20–26 px buttons, 9999px full pills or circles, 14–16 px squircle badges and checkboxes. Maintain consistent 8 px rhythm and comfortable gutters. Avoid random circles that have no semantic interaction.
 
 ## Surfaces, depth, texture
 
-Soft long directional shadow + small ambient shadow + subtle upper-inner highlight; surfaces should feel molded, not flat cards with blur. Inputs can be shallow inset, with visible focus.
+Surfaces must feel molded from physical matte clay:
+- **Primary Clay (Raised):**
+  `box-shadow: inset 3px 4px 6px rgba(255, 255, 255, 0.45), inset -4px -6px 8px rgba(40, 10, 110, 0.40), 8px 16px 24px rgba(100, 45, 210, 0.35), 2px 4px 8px rgba(70, 20, 150, 0.20);`
+- **Light Porcelain Clay (Raised):**
+  `box-shadow: inset 3px 4px 6px rgba(255, 255, 255, 0.95), inset -4px -6px 8px rgba(145, 135, 180, 0.35), 8px 16px 24px rgba(110, 95, 160, 0.20), 2px 4px 8px rgba(110, 95, 160, 0.12);`
+- **Sunken Wells (Recessed):**
+  `box-shadow: inset 3px 4px 8px rgba(110, 95, 165, 0.25), inset -2px -2px 6px rgba(255, 255, 255, 0.70);`
+  Framed with `border: 3px solid rgba(255, 255, 255, 0.85);`
 
 ## Component anatomy and interaction
 
-Tactile buttons with subtle pressed state; consistently sized cards; soft segmented tabs; labeled form fields; mobile bottom nav if appropriate; do not nest endless rounded cards.
+- **Primary Button ("Submit >"):** Saturated purple pill, white bold text, directional chevron, tactile compression on click.
+- **Secondary Button ("Go Back ↶"):** Light porcelain pill, dark ink text, return arrow icon, tactile compression on click.
+- **Circular Action Button:** 50% border-radius round button (e.g. pause `❚❚`), saturated clay, centered icon.
+- **Toggle Switch:** Pill-shaped track with smooth clay thumb sphere; toggles between light track/purple thumb and purple track/white thumb.
+- **Checkbox:** Squircle container with dual inner shadow and vibrant purple checkmark (`✓`).
+- **Input Field:** Sunken well with left icon, legible placeholder, and white relief rim border.
 
 ## Motion
 
-140–240 ms smooth ease-out; tiny translation or opacity transition; never bounce, overshoot, or perpetual floating.
+140–200 ms smooth ease-out. Tactile compression (`scale(0.97)` or `translateY(2px)`) with shadow tightening on press. Never bounce, overshoot, or run continuous floating loops.
 
 ## Optional Anime.js v4 recipe
 
@@ -43,20 +90,29 @@ Tactile buttons with subtle pressed state; consistently sized cards; soft segmen
 
 ## UI writing and microcopy
 
-Warm and concrete. Examples: “Create report”, “Saved to drafts”. Avoid sugary slogans.
+Warm and concrete. Examples: “Submit”, “Go Back”, “Enter your Username”, “Saved to drafts”. Avoid sugary AI slogans or fake marketing hype.
 
 ## Starter tokens (suggestions, not a complete theme)
 
 | Token | Starting value |
 | --- | --- |
-| `--taste-radius-sm` | `12px` |
-| `--taste-radius-lg` | `20px` |
-| `--taste-border` | `1px solid rgba(70,65,80,.10)` |
-| `--taste-shadow` | `8px 12px 22px rgba(48,36,65,.12), inset 1px 1px 1px rgba(255,255,255,.65)` |
+| `--taste-clay-bg` | `#d7d1f1` |
+| `--taste-clay-primary` | `#813ffc` |
+| `--taste-clay-light` | `#ecebf5` |
+| `--taste-clay-shadow-primary` | `8px 16px 24px rgba(100, 45, 210, 0.35), 2px 4px 8px rgba(70, 20, 150, 0.20)` |
+| `--taste-clay-inner-primary` | `inset 3px 4px 6px rgba(255, 255, 255, 0.45), inset -4px -6px 8px rgba(40, 10, 110, 0.40)` |
+| `--taste-clay-shadow-light` | `8px 16px 24px rgba(110, 95, 160, 0.20), 2px 4px 8px rgba(110, 95, 160, 0.12)` |
+| `--taste-clay-inner-light` | `inset 3px 4px 6px rgba(255, 255, 255, 0.95), inset -4px -6px 8px rgba(145, 135, 180, 0.35)` |
+| `--taste-clay-inner-well` | `inset 3px 4px 8px rgba(110, 95, 165, 0.25), inset -2px -2px 6px rgba(255, 255, 255, 0.70)` |
+| `--taste-clay-well-rim` | `3px solid rgba(255, 255, 255, 0.85)` |
+| `--taste-clay-radius-pill` | `9999px` |
+| `--taste-clay-radius-btn` | `24px` |
+| `--taste-clay-radius-card` | `28px` |
+| `--taste-clay-radius-squircle` | `14px` |
 | `--taste-font-body` | `Manrope, system-ui, sans-serif` |
 | `--taste-motion-duration` | `180ms` |
 
-Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values. Fall back to installed fonts/system stack; do not silently download font assets.
+Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-clay-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values.
 
 ## Hero composition (full first viewport)
 
@@ -65,9 +121,9 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 ## Style-specific quality gate
 
-- **Do:** Make the tactile material readable in both light and dark modes; maintain consistent light direction; use real disabled, hover, and focus states.
-- **Don't:** Do not treat rounded corners alone as clay; avoid balloon shadows, excessive glow, unreadable light-on-light labels, and ornamental badges.
-- Confirm desktop and mobile consistency; visible keyboard focus; light/dark adaptation only if requested; loading, empty, disabled, error and success states; reduced-motion behavior.
+- **Do:** Ensure tactile dual inner shadows are visible; maintain consistent light direction (top-left to bottom-right); provide tactile active/press states; verify WCAG AA contrast on both primary and light clay.
+- **Don't:** Do not treat simple rounded corners as clay; avoid balloon shadows, excessive glossy halos, unreadable light-on-light labels, and ornamental badges.
+- Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 ## Anti-slop: style-specific
 

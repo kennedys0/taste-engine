@@ -3,82 +3,118 @@ name: taste-style-swiss-editorial
 description: Apply Swiss / Editorial design style to user-selected frontend and UI work. Use only when the user explicitly chooses this style. Provides typography, color, layout, components, interactions, motion, copy and quality gates. Do not impose on unrelated work.
 license: MIT
 metadata:
-  version: "0.10.0"
+  version: "0.10.3"
 ---
 
-Use this skill only after a user explicitly chooses `swiss-editorial` or a confirmed project configuration specifies it. For unexplained new UI requests, use a style selector such as `taste-engine` instead of deciding the user's taste here. Existing brand, accessibility and user overrides outrank all examples below. The following style guide is not permission to start UI coding before style selection.
+Use this skill only after a user explicitly chooses  or a confirmed project configuration specifies it. For unexplained new UI requests, use a style selector such as  instead of deciding the user's taste here. Existing brand, accessibility and user overrides outrank all examples below. The following style guide is not permission to start UI coding before style selection.
 
 # Style pack: Swiss / Editorial
 
 **ID:** `swiss-editorial`  
-**Signature:** Grid-driven typographic hierarchy and intentional rhythm.
+**Signature:** Rigorous grid-driven typographic hierarchy, stark scale contrast, structural hairline rules, numbered indexes, and intentional negative space.
 
-> This is a **style pack, not a mandatory default**. Load it only after explicit selection or confirmed applicable project style. Project instructions can override individual choices. Preserve accessibility, utility, and brand constraints. Fonts are suggestions, not required dependencies.
+> This is a **style pack, not a mandatory default**. Load it only after explicit selection or confirmed applicable project style. Project instructions can override individual choices. Preserve accessibility, utility, and brand constraints. Fonts are suggestions, not required dependencies. A plain page with black sans-serif text **does not qualify as Swiss Editorial**.
 
 ## Good fit / trade-offs
 
-- **Works well for:** Magazines, agencies, portfolios, reports and information-rich marketing sites.
-- **Be careful with:** Task-heavy administrative UIs if editorial hierarchy makes frequent operations slower.
+- **Works well for:** High-end design agencies, architectural publications, editorial portfolios, cultural magazines, annual reports, and luxury product narratives.
+- **Be careful with:** Fast-paced transactional operational tools where massive display typography slows down repetitive data entry.
+- **Reference directions:**
+  - *Classic Zurich International Style:* Crisp paper white background (`#FFFFFF` or `#F7F7F7`), stark jet black typography (`#111111`), 1px structural dividing rules, numbered indexes (`01`, `02`), and a single strike of Swiss Red (`#E3000F`).
+  - *Modern Editorial Klein Blue:* Ultra-clean monochrome canvas with International Klein Blue (`#002FA7`) as a high-precision focal accent on navigation and primary actions.
+
+## Swiss editorial fidelity gate — mandatory
+
+**Before calling a swiss-editorial page complete, the opening viewport must visibly read as a rigorous, grid-aligned typographic editorial work.** If a user chose this style, a generic minimal page lacking dramatic scale contrast and structural rules is a **FAIL**.
+
+A successful swiss-editorial implementation demonstrates **all** of the following:
+
+1. **Extreme Typographic Scale Contrast:** A decisive, uncompromised contrast between massive grotesk display headlines (48px–72px desktop / 32px–44px mobile, tight tracking) and disciplined body copy (16px, line-height 1.55), with tracked uppercase section labels (`letter-spacing: 0.08em`).
+2. **Structural Horizontal Hairline Rules:** Content sections, column boundaries, and metadata headers are demarcated by clean 1px solid rules (`border-top: 1px solid #111111`), establishing clear visual shelves.
+3. **Numbered Section Hierarchy:** Distinct editorial index numbering (`01`, `02`, `03`) placed above or beside primary article blocks, creating scannable visual anchors.
+4. **Rigorous Multi-Column Grid Alignment:** Layout conforms strictly to a 12-column desktop grid with generous asymmetrical gutters and margins. Content never floats loosely without grid anchoring.
+5. **Monochrome Base + 1 High-Impact Signal Accent:** The layout remains strictly monochrome (black, off-white, paper gray) with exactly one deliberate signal accent (Swiss Red `#E3000F` or Klein Blue `#002FA7`) applied sparingly to active links, index tags, or primary CTAs.
+
+**First-viewport test:** In a desktop screenshot, identify the massive headline scale, the 1px structural dividing rules, the numbered section markers, and the deliberate asymmetric grid **without reading the page title**. If it looks like a standard blog template, elevate the typography scale and grid rules.
+
+## Explicit swiss editorial typographic exception — dramatic scale is required
+
+**Swiss-editorial-specific override:** The universal anti-slop caution against *excessive font sizes or empty space* MUST NOT be interpreted as a ban on large display headlines (48px–72px) or generous whitespace here. In Swiss Typography (Josef Müller-Brockmann, Max Bill), active negative space and bold scale contrast are the primary structural materials, replacing decorative graphics or shadows.
+
+- **Allowed typographic treatments:** Massive display scale (up to 72px), numbered index typography, hairline structural borders, uppercase tracked metadata, and high-impact single-accent links.
+- **Anti-slop boundary:** Do not paste random floating pull-quotes without editorial context, fake publication issue numbers, or oversized headlines that crowd out actual readable content.
+- **Anti-slop interpretation:** Evaluate swiss layouts by **grid discipline, typographic rhythm, and information clarity**, not by trying to fill every square inch with cards. White space that directs focus is authentic design.
 
 ## Typography and typewriting
 
-Grotesk sans: Helvetica Neue/system sans, IBM Plex Sans, or Neue Haas-like available family. Headlines 36–72px desktop / 28–42px mobile; body 16–18px; tight heading tracking and comfortable body line-height. Optional contrasting serif for quotes, not as a default.
+Objective grotesk sans: Helvetica Neue, Neue Haas Grotesk, Arial, Inter, or system sans. Headlines: 48–72 px desktop (weight 700–800, `letter-spacing: -0.03em`); subheadings: 24–32 px; body: 16–18 px (line-height 1.55–1.65); index numerals and captions: 12–14 px uppercase (`letter-spacing: 0.08em`).
 
 ## Color direction
 
-Mostly monochrome with one sparse accent; photographic color can supply the variety.
+- **Canvas Base:** Paper white (`#FFFFFF` or warm gallery white `#FBFBFA`).
+- **Ink / Typography:** Deep obsidian black (`#111111`).
+- **Dividing Rules:** Solid hairline stroke (`#111111` or `#D1D5DB`).
+- **Singular Signal Accent:** Swiss Red (`#E3000F`) or International Klein Blue (`#002FA7`).
+- **Secondary Gray:** Editorial neutral (`#6B7280`).
 
 ## Layout and geometry
 
-Strong 12-column editorial grid desktop, 4-column mobile, consistent baseline and generous edges. Radius 0–4px and hairline rules.
+Corners are razor-sharp (`0px` border-radius by default, up to `2px` max); generous outer margins; strict 12-column grid alignment. Structural 1px horizontal rules frame content blocks.
 
 ## Surfaces, depth, texture
 
-Flat, border-led; strong use of type and whitespace; photography and captions aligned to grid.
+Surfaces are completely flat, unornamented, and ink-sharp. Zero drop shadows, zero background gradients, zero blur. Depth is communicated purely through typographic scale, weight, and spatial juxtaposition.
 
 ## Component anatomy and interaction
 
-Index numbers, editorial navigation, section rules, media captions, unobtrusive article controls; adapt forms for clear usability.
+- **Editorial Primary CTA:** Crisp solid black block with white typography, or clean underlined text link with 2px stroke offset.
+- **Numbered Index Tag:** Small uppercase tag: `[ 01 / ARCHITECTURE ]`.
+- **Dividing Rule:** `border-top: 1px solid #111111; padding-top: 1.5rem; margin-top: 2rem;`.
+- **Tabular Metadata:** Two-column key-value pairs separated by hairline dividers.
 
 ## Motion
 
-Subtle reveal on scroll only if meaningful and respects reduced motion; otherwise 120–200ms transitions.
+Minimal, instantaneous, or 120–160 ms clean linear transitions. No spring bounce, no floating parallax. Focus on crisp state changes.
 
 ## Optional Anime.js v4 recipe
 
-- **Motion decision:** Precise, restrained underlines or sectional changes that preserve reading flow.
-- **Starting duration:** 160ms (0 = immediate); adjust to task and user preference.
-- **Avoid:** word-by-word autoplay and gratuitous kinetic text.
+- **Motion decision:** Clean text opacity fade or horizontal rule expansion on scroll.
+- **Starting duration:** 140ms (0 = immediate); adjust to task and user preference.
+- **Avoid:** elastic motion, 3D rotations, playful wobbles.
 - **Dependency:** CSS/native by default. Use Anime.js v4 only if the requested interaction justifies it. Follow Taste Engine `references/motion-engine.md` when available; standalone skill follows the reduced-motion and no-decorative-loop principles above.
 
 ## UI writing and microcopy
 
-Editorial, informative, specific. Use accurate captions and real metadata; no fabricated publication dates.
+Cultured, concise, and articulate. Examples: “Selected Works 2026”, “Index”, “Read Documentation”, “01 / Overview”. Avoid colloquial slang or enthusiastic sales hype.
 
 ## Starter tokens (suggestions, not a complete theme)
 
 | Token | Starting value |
 | --- | --- |
-| `--taste-radius-sm` | `0px` |
-| `--taste-radius-lg` | `2px` |
-| `--taste-border` | `1px solid rgba(0,0,0,.20)` |
-| `--taste-shadow` | `none` |
-| `--taste-font-body` | `IBM Plex Sans, Helvetica, Arial, sans-serif` |
-| `--taste-motion-duration` | `160ms` |
+| `--taste-swiss-bg` | `#ffffff` |
+| `--taste-swiss-ink` | `#111111` |
+| `--taste-swiss-accent` | `#e3000f` |
+| `--taste-swiss-muted` | `#6b7280` |
+| `--taste-swiss-rule` | `1px solid #111111` |
+| `--taste-swiss-radius` | `0px` |
+| `--taste-swiss-font-heading` | `'Helvetica Neue', Inter, system-ui, sans-serif` |
+| `--taste-swiss-font-body` | `'Helvetica Neue', Inter, system-ui, sans-serif` |
+| `--taste-swiss-motion-duration` | `120ms` |
 
-Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values. Fall back to installed fonts/system stack; do not silently download font assets.
+Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-swiss-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values.
 
 ## Hero composition (full first viewport)
 
-**When a public-facing portfolio/landing/homepage has a hero:** use a one-visible-screen header+hero composition. Base height on `min-height: 100svh` with `100vh` fallback, subtracting the **real** header only when it is in normal flow; let the hero expand for accessibility and short mobile screens. Do not apply this to private dashboards or other task screens; direct user overrides win. **Style-specific direction:** Fill the opening viewport with purposeful editorial scale, consistent columns, baseline alignment and an asymmetrical-but-structured layout. Let typography and real work samples carry impact, not decorative lines or fabricated issue numbers. See the router `references/hero-layout.md` when present. Standalone use follows the same responsive and anti-slop principles.
+**When a public-facing portfolio/landing/homepage has a hero:** use a one-visible-screen header+hero composition. Base height on `min-height: 100svh` with `100vh` fallback, subtracting the **real** header only when it is in normal flow; let the hero expand for accessibility and short mobile screens. Do not apply this to private dashboards or other task screens; direct user overrides win. **Style-specific direction:** Anchor the opening screen with an authoritative, massive display title, clear section numbering, and an asymmetrical grid split between hero narrative and key navigation. Whitespace must feel deliberate and composed, not empty. See the router `references/hero-layout.md` when present. Standalone use follows the same responsive and anti-slop principles.
 
 
 ## Style-specific quality gate
 
-- **Do:** Make a coherent typographic scale with precise alignment; prioritize reading flow and caption clarity.
-- **Don't:** Do not treat editorial as merely using large fonts and empty space; avoid broken alignment and low-contrast light gray body text.
-- Confirm desktop and mobile consistency; visible keyboard focus; light/dark adaptation only if requested; loading, empty, disabled, error and success states; reduced-motion behavior.
+- **Do:** Verify strict 12-column grid alignment; maintain dramatic headline-to-body scale ratio; ensure 1px hairline rules cleanly separate sections; keep accent color strictly singular.
+- **Don't:** Do not add drop shadows, rounded bubbles, or decorative gradients; do not clutter whitespace with meaningless badge chips; avoid low-contrast gray text on small labels.
+- Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
+
 ## Universal anti-slop gate (self-contained)
 
 Every element must earn its place. **Content before decoration. Do not decorate uncertainty.** Do not invent balances, metrics, testimonials, users, logos, approval, verified/live/online status, fake activity, or success confirmations; use honest empty/loading/error states instead. Demo data is acceptable only if requested and visibly labeled.
@@ -95,11 +131,11 @@ Do not add decorative **card-inside-card** layers: a nested surface must represe
 
 ## Anti-slop: style-specific
 
-**Editorial order, not typography theater.**
+**Typographic authority, not generic minimalism.**
 
-- **Reject:** Reject decorative tiny type, arbitrarily broken grids, multiple fonts without roles, full-width all-caps paragraphs, and editorial headlines that say nothing.
-- **Instead:** Use repeatable grid, clear type hierarchy, disciplined measure and purposeful editorial asymmetry.
-- **Copy check:** Headlines can be expressive but must communicate a real idea, not "The future starts here" filler.
+- **Reject:** Faux editorial layouts that are just centered text on white space, arbitrary italic quotes with no source, fake publication dates, and unanchored floating text blocks.
+- **Instead:** Build an unyielding mathematical grid with clear structural dividing rules, numbered section hierarchy, and decisive contrast between display and reading typography.
+- **Copy check:** Write articulate, informative copy that respects user intelligence; avoid marketing buzzwords.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `swiss-editorial`.
 
 ## Quality tiers (standalone)

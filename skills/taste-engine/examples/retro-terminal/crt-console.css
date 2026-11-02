@@ -1,0 +1,109 @@
+/* Taste Engine Retro-Terminal — Reference CSS. Adapt to the project.
+   Authentic CRT aesthetics feature obsidian backgrounds, phosphor glow,
+   subtle raster scanlines, bracketed ASCII frames, and monospace alignment. */
+
+:root {
+  --taste-term-bg: #0c0d0e;
+  --taste-term-surface: #14171a;
+  --taste-term-amber: #ffb000;
+  --taste-term-glow: 0 0 6px rgba(255, 176, 0, 0.45);
+  --taste-term-border: 1px solid rgba(255, 176, 0, 0.25);
+  --taste-term-scanline: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.18) 0px, transparent 2px);
+}
+
+.taste-term-scene {
+  background-color: var(--taste-term-bg);
+  background-image: var(--taste-term-scanline);
+  color: var(--taste-term-amber);
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Terminal Window Frame */
+.taste-term-window {
+  background-color: var(--taste-term-surface);
+  border: var(--taste-term-border);
+  border-radius: 4px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.85);
+  overflow: hidden;
+}
+
+.taste-term-header {
+  background-color: rgba(255, 176, 0, 0.10);
+  border-bottom: var(--taste-term-border);
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.taste-term-body {
+  padding: 1.5rem;
+  line-height: 1.6;
+}
+
+/* Prompt Line */
+.taste-term-prompt {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.taste-term-prompt-label {
+  color: #10b981;
+  font-weight: 700;
+}
+
+.taste-term-prompt-input {
+  background: transparent;
+  border: none;
+  color: var(--taste-term-amber);
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  text-shadow: var(--taste-term-glow);
+  width: 100%;
+}
+
+/* Terminal Bracket Button */
+.taste-term-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--taste-term-amber);
+  border: var(--taste-term-border);
+  border-radius: 2px;
+  padding: 8px 16px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  text-shadow: var(--taste-term-glow);
+  transition: background-color 80ms linear, color 80ms linear;
+  user-select: none;
+}
+
+.taste-term-btn:hover {
+  background-color: var(--taste-term-amber);
+  color: #000000;
+  text-shadow: none;
+}
+
+.taste-term-btn:focus-visible {
+  outline: 2px solid var(--taste-term-amber);
+  outline-offset: 2px;
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .taste-term-scene {
+    background-image: none !important;
+  }
+}
+

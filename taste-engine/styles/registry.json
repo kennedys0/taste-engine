@@ -4,9 +4,9 @@
     {
       "id": "claymorphism",
       "label": "Claymorphism",
-      "description": "Soft, tactile, sculpted surfaces with friendly depth.",
+      "description": "Molded, tactile, sculpted surfaces with dual inner-shadow volumetric depth and friendly physical presence.",
       "path": "styles/claymorphism.md",
-      "recommended_for": "Playful consumer experiences, creative tools, personal dashboards.",
+      "recommended_for": "Playful consumer experiences, creative tools, personal dashboards, and tactile web apps.",
       "aliases": [
         "clay",
         "claymorph",
@@ -14,7 +14,9 @@
         "claymorfisme",
         "claymorphisme",
         "clay ui",
-        "soft clay"
+        "soft clay",
+        "sculpted clay",
+        "tactile clay"
       ]
     },
     {
@@ -40,7 +42,7 @@
     {
       "id": "brutalism",
       "label": "Brutalism",
-      "description": "Raw structure, unapologetic hierarchy, minimal decoration.",
+      "description": "Raw structural honesty, exposed layout scaffolding, unapologetic monochrome contrast, and zero cosmetic camouflage.",
       "path": "styles/brutalism.md",
       "recommended_for": "Experimental portfolios, art/culture, activist/editorial sites, distinctive landing pages.",
       "aliases": [
@@ -54,7 +56,7 @@
     {
       "id": "neo-brutalism",
       "label": "Neo-brutalism",
-      "description": "Playful bold colors, hard borders and offset shadows.",
+      "description": "Playful bold colors, high-contrast black borders, hard unblurred offset shadows, and tactile mechanical press feedback.",
       "path": "styles/neo-brutalism.md",
       "recommended_for": "Creator tools, playful SaaS, event or indie product websites.",
       "aliases": [
@@ -71,7 +73,7 @@
     {
       "id": "minimalism",
       "label": "Minimalism",
-      "description": "Purposeful restraint with high information clarity.",
+      "description": "Purposeful restraint, active intentional negative space, mathematical typographic calibration, and effortless information clarity.",
       "path": "styles/minimalism.md",
       "recommended_for": "Productivity tools, storefronts, portfolios, form-centric products.",
       "aliases": [
@@ -85,7 +87,7 @@
     {
       "id": "swiss-editorial",
       "label": "Swiss / Editorial",
-      "description": "Grid-driven typographic hierarchy and intentional rhythm.",
+      "description": "Rigorous grid-driven typographic hierarchy, stark scale contrast, structural hairline rules, and intentional negative space.",
       "path": "styles/swiss-editorial.md",
       "recommended_for": "Magazines, agencies, portfolios, reports and information-rich marketing sites.",
       "aliases": [
@@ -100,7 +102,7 @@
     {
       "id": "bento",
       "label": "Bento Grid",
-      "description": "Modular card composition with varied, purposeful panel sizes.",
+      "description": "Asymmetric modular card composition with strict visual weight hierarchy, diverse internal tile anatomy, and unified spatial rhythm.",
       "path": "styles/bento.md",
       "recommended_for": "Product overviews, portfolios, landing pages and feature discovery.",
       "aliases": [
@@ -112,7 +114,7 @@
     {
       "id": "skeuomorphism",
       "label": "Skeuomorphism",
-      "description": "Digital controls borrow useful affordances from physical objects.",
+      "description": "Digital controls borrow tangible affordances from physical objects, industrial machinery, and analog hardware.",
       "path": "styles/skeuomorphism.md",
       "recommended_for": "Music tools, specialized controls, educational simulations and playful product interfaces.",
       "aliases": [
@@ -131,7 +133,7 @@
     {
       "id": "retro-terminal",
       "label": "Retro Terminal",
-      "description": "Developer-console visual language with modern usability.",
+      "description": "Authentic CRT developer-console visual language, phosphor glow, monospace tabular structure, and modern keyboard-driven utility.",
       "path": "styles/retro-terminal.md",
       "recommended_for": "Developer portfolios, CLI dashboards, cyberculture experiences and coding tools.",
       "aliases": [
@@ -146,7 +148,7 @@
     {
       "id": "enterprise",
       "label": "Enterprise / Data-first",
-      "description": "Efficient professional interfaces designed for repeated workflows.",
+      "description": "Information-dense operational cockpits, tabular data alignment, semantic status tokens, keyboard productivity, and reliable workflow architecture.",
       "path": "styles/enterprise.md",
       "recommended_for": "Admin consoles, B2B SaaS, trading and logistics operations, dashboards.",
       "aliases": [

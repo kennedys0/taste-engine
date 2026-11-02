@@ -15,7 +15,19 @@ The foundation was generalized from the user's Human Clay UI v1.1 anti-AI-slop d
 3. Approved brand system and selected style pack.
 4. These anti-slop heuristics and the existing codebase conventions.
 
-A heuristic must **never** erase a defining feature of the chosen style. In Glassmorphism, purposeful radial/mesh gradients and ambient color fields can be essential material backdrops that reveal frosting and translucency; they are explicitly exempt from generic anti-gradient reflexes when legible and restrained. A glass pane may be appropriate in glassmorphism; an offset hard shadow may be correct in neo-brutalism; a strong expressive heading may belong in brutalism. Audit whether each is *intentional and usable*, not whether it matches a generic minimal UI.
+A heuristic must **never** erase a defining feature of the chosen style:
+- **Glassmorphism:** Purposeful radial/mesh gradients and ambient color fields are explicitly exempt from generic anti-gradient reflexes when legible and restrained, as they reveal frosted translucency.
+- **Claymorphism:** Authentic dual inner shadows (highlight + form shadow), soft directional outer drop shadows, tactile compression on press, and recessed inset wells with white relief rims are explicitly exempt from generic anti-shadow reflexes.
+- **Neo-brutalism:** Hard 0-blur offset shadows (`4px 4px 0 #121212`), solid 2px–3px black borders, and mechanical press displacement are explicitly exempt from generic shadow cautions.
+- **Skeuomorphism:** Multi-stop metallic reflection gradients, 1px specular bevel highlights, recessed display wells, and physical travel are explicitly exempt from anti-gradient/texture cautions when tied to real controls.
+- **Retro-Terminal:** Subtle raster scanlines, phosphor glow (`0 0 6px`), bracketed ASCII frames, and active command prompt lines are explicitly exempt from texture cautions.
+- **Bento Grid:** Asymmetric multi-span tiles (`span 2`) and diverse internal tile compositions are explicitly encouraged over repetitive card templates.
+- **Swiss / Editorial:** Dramatic display scale contrast (48px–72px headlines), numbered section markers (`01`), structural hairline rules, and active negative space are explicitly permitted.
+- **Brutalism:** Exposed 2px–3px structural scaffolding borders, raw monochrome contrast, and immediate state flips are celebrated as honest architecture.
+- **Minimalism:** Active intentional negative space, mathematical type calibration, and hairline dividers are prioritized over decorative fillers.
+- **Enterprise:** High-density data tables, tabular figures (`tabular-nums`), filter toolbars, keyboard shortcuts, and semantic status pills are essential operational tools.
+
+Audit whether each style expression is *intentional, truthful, and usable*, not whether it matches a generic minimal UI.
 
 See [quality-tiers.md](quality-tiers.md) for what actually blocks a release versus what merely suggests a redesign. Use [decision-system.md](decision-system.md) to preserve user taste and separate material from page anatomy.
 
@@ -39,7 +51,7 @@ See [quality-tiers.md](quality-tiers.md) for what actually blocks a release vers
 | Pills, badges and chips everywhere | Noise and false importance | Plain labels, sections, simple metadata | Status/category/filter has real data and useful interaction |
 | Icons for each heading or action | Visual repetition and ambiguous meaning | Semantic icons only where recognition improves | Brand-specific iconography has clear purpose |
 | Decorative charts, mini-sparklines, timelines | Makes meaningless data look authoritative | Real charts only, or explanatory text/empty state | Data exists and visual encoding aids a decision |
-| Glossy effects, blobs, gradients, glow by default | Covers weak hierarchy with trend styling | Design purposeful material, spacing and type first | **Glassmorphism explicitly permits ambient/mesh/radial gradients to reveal frosted material**; other styles may use them when integral and readable |
+| Glossy effects, blobs, gradients, glow by default | Covers weak hierarchy with trend styling | Design purposeful material, spacing and type first | **Glassmorphism explicitly permits ambient/mesh/radial gradients to reveal frosted material; Claymorphism explicitly permits dual inner-shadow volumetric depth and recessed wells; other styles may use them when integral and readable (Neo-brutalism hard offset shadows, Skeuomorphism metallic reflections/bevels, Retro-Terminal scanlines/glow, Bento asymmetric tiles, Swiss scale contrast, Brutalism scaffolding, Enterprise tabular density)** |
 | Fake terminals, fake code, status LEDs | Implies features/state that do not exist | Genuine console behavior or honest static illustration | Clearly labeled decorative art that cannot be mistaken for live UI |
 | Sticky UI chrome, modal/drawer abuse, tab spam | More navigation than task | Minimal interaction model for the task | Complexity genuinely warrants distinct view or overlay |
 

@@ -3,82 +3,118 @@ name: taste-style-bento
 description: Apply Bento Grid design style to user-selected frontend and UI work. Use only when the user explicitly chooses this style. Provides typography, color, layout, components, interactions, motion, copy and quality gates. Do not impose on unrelated work.
 license: MIT
 metadata:
-  version: "0.10.0"
+  version: "0.10.3"
 ---
 
-Use this skill only after a user explicitly chooses `bento` or a confirmed project configuration specifies it. For unexplained new UI requests, use a style selector such as `taste-engine` instead of deciding the user's taste here. Existing brand, accessibility and user overrides outrank all examples below. The following style guide is not permission to start UI coding before style selection.
+Use this skill only after a user explicitly chooses  or a confirmed project configuration specifies it. For unexplained new UI requests, use a style selector such as  instead of deciding the user's taste here. Existing brand, accessibility and user overrides outrank all examples below. The following style guide is not permission to start UI coding before style selection.
 
 # Style pack: Bento Grid
 
 **ID:** `bento`  
-**Signature:** Modular card composition with varied, purposeful panel sizes.
+**Signature:** Asymmetric modular card composition with strict visual weight hierarchy, diverse internal tile anatomy, and unified spatial rhythm.
 
-> This is a **style pack, not a mandatory default**. Load it only after explicit selection or confirmed applicable project style. Project instructions can override individual choices. Preserve accessibility, utility, and brand constraints. Fonts are suggestions, not required dependencies.
+> This is a **style pack, not a mandatory default**. Load it only after explicit selection or confirmed applicable project style. Project instructions can override individual choices. Preserve accessibility, utility, and brand constraints. Fonts are suggestions, not required dependencies. A uniform 3x2 grid of identical feature cards **does not qualify as Bento Grid**.
 
 ## Good fit / trade-offs
 
-- **Works well for:** Product overviews, portfolios, landing pages and feature discovery.
-- **Be careful with:** Large transactional tables or workflows requiring one obvious linear task flow.
+- **Works well for:** Product overviews, portfolio landing pages, developer feature discovery, dashboard summaries, and hardware/software ecosystem showcases.
+- **Be careful with:** High-volume linear tabular data or step-by-step transaction flows where grid asymmetry distracts from sequential progression.
+- **Reference directions:**
+  - *Modern Matte Dark Bento:* Obsidian/slate background (`#0B0D10`) with subtly elevated graphite cards (`#15191E`), 1px translucent borders (`rgba(255, 255, 255, 0.08)`), and one vibrant accent color.
+  - *Clean Architectural Light Bento:* Crisp off-white canvas (`#F8F9FA`) with pure white porcelain tiles, hairline dividers (`rgba(0, 0, 0, 0.06)`), and deep charcoal typography.
+
+## Bento grid fidelity gate — mandatory
+
+**Before calling a bento grid page complete, the opening viewport must visibly read as a curated, asymmetric modular composition.** If a user chose this style, a uniform grid of identical cards (icon + title + paragraph) is a direct **FAIL**, as it represents generic template slop.
+
+A successful bento grid implementation demonstrates **all** of the following:
+
+1. **Clear Asymmetric Visual Weight:** The grid features a distinct focal hierarchy: exactly 1 dominant hero tile (spanning 2x2 or 2x1 columns) that communicates the primary message, 1–2 medium secondary tiles, and 2–3 compact tertiary tiles.
+2. **Diverse Internal Tile Anatomy:** Every tile possesses a unique internal layout tailored to its specific content. Tile 1 might feature an interactive code block; Tile 2 an active toggle widget; Tile 3 a visual preview or diagram; Tile 4 a live metric readout. Identical repeating layouts across tiles fail.
+3. **Unified Spatial Rhythm & Gutter Alignment:** Tile borders align strictly along a consistent CSS Grid (e.g. 3 or 4 columns) with uniform gutters (16px–24px) and matching corner curvature (20px–28px).
+4. **Deliberate Mobile Restructuring:** On mobile viewports, the multi-column bento collapses into a logical, content-prioritized single column without clipping contents or causing awkward horizontal overflows.
+5. **Legible Internal Hierarchy:** Each tile has a clear, succinct heading (18px–24px) and high-contrast content, avoiding walls of tiny text compressed into small boxes.
+
+**First-viewport test:** In a desktop screenshot, identify the dominant hero tile, the varied internal tile presentations, and the unified grid alignment **without reading the page title**. If all tiles look identical, redesign the grid hierarchy.
+
+## Explicit bento layout exception — asymmetric tiles are encouraged
+
+**Bento-specific override:** The universal anti-slop caution against *excessive cards or dashboard clutter* MUST NOT be interpreted as a ban on multi-tile layouts here. An authentic bento grid is fundamentally **modular and compartmentalized**, functioning like a Japanese bento box where each compartment serves a distinct dish.
+
+- **Allowed layout treatments:** Asymmetric grid column/row spans (`grid-column: span 2; grid-row: span 2;`), subtle card hover elevations, embedded interactive mini-controls (toggles, code tabs), and ambient edge glows on active tiles.
+- **Anti-slop boundary:** No card-inside-card nesting within a bento tile. A tile is already an information container; use typographic hierarchy, dividers, and spacing for internal structure rather than nesting another card inside it.
+- **Anti-slop interpretation:** Evaluate bento layouts by **content variety, information density, and reading hierarchy**, not by counting cards. Uniform feature grids are slop; curated asymmetric bento compositions are authentic design.
 
 ## Typography and typewriting
 
-Contemporary readable sans: DM Sans, Manrope, or system sans. Headings 20–40px; card titles 17–22px; body 14–16px. Each tile has clear heading and limited text.
+Contemporary, refined sans: DM Sans, Manrope, Inter, or system sans. Primary hero headings: 28–44 px (weight 700); tile titles: 18–22 px (weight 600); body: 14–15 px; captions/tags: 12–13 px. Keep body text brief and scannable.
 
 ## Color direction
 
-Muted background, 1–2 carefully chosen accents, tile backgrounds with sufficient foreground contrast.
+- **Canvas Base:** Deep slate (`#0B0D10`) or clean architectural light (`#F8F9FA`).
+- **Tile Background:** Elevated slate (`#15191E` dark) or pure white (`#FFFFFF` light).
+- **Hairline Border:** Translucent stroke (`rgba(255, 255, 255, 0.08)` or `rgba(0, 0, 0, 0.08)`).
+- **Brand Accent:** High-contrast signature color (e.g. Electric Violet `#8B5CF6`, Cyan `#06B6D4`, or Emerald `#10B981`).
 
 ## Layout and geometry
 
-4/8px grid, consistently aligned card edges, 12–20px card radius, varied grid spans with logical reading order. On mobile collapse in content-priority order.
+CSS Grid: `grid-template-columns: repeat(3, 1fr)` or `repeat(4, 1fr)`; gaps: 16px–24px. Card radii: 20px–28px. All tile borders must align flush along horizontal and vertical grid tracks.
 
 ## Surfaces, depth, texture
 
-Simple panels with subtle borders or mild shadow; variation comes from composition and content rather than gradients.
+- **Bento Tile:** Solid background with subtle hairline stroke (`1px solid var(--taste-bento-border)`) and soft ambient drop shadow (`0 8px 24px rgba(0, 0, 0, 0.12)`).
+- **Hover Interaction:** Subtle elevation (`transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18)`).
 
 ## Component anatomy and interaction
 
-Tiles for true distinct features, charts, images, and CTAs; clear clickability. Do not make each tile a mini dashboard with nested cards.
+- **Hero Tile (2x2 or 2x1):** Primary value proposition, rich visual or live code preview, prominent CTA.
+- **Interactive Action Tile:** Integrated toggle, quick filter, or copyable command block.
+- **Metric / Status Tile:** Clean tabular number with concrete label and real data.
+- **Showcase Tile:** High-fidelity screenshot, asset preview, or architectural diagram.
 
 ## Motion
 
-130–200ms slight hover elevation or image transitions; no attention competition across all tiles.
+140–220 ms smooth ease-out. Restrained tile lift on hover. No distracting competing animations across multiple tiles simultaneously.
 
 ## Optional Anime.js v4 recipe
 
-- **Motion decision:** Animate a tile only when its contents or layout genuinely change; ensure stable reading order.
+- **Motion decision:** Staggered subtle tile entrance or smooth hover elevation.
 - **Starting duration:** 180ms (0 = immediate); adjust to task and user preference.
-- **Avoid:** every tile animating on initial page load.
+- **Avoid:** tile flipping, erratic scaling, floating loop distractions.
 - **Dependency:** CSS/native by default. Use Anime.js v4 only if the requested interaction justifies it. Follow Taste Engine `references/motion-engine.md` when available; standalone skill follows the reduced-motion and no-decorative-loop principles above.
 
 ## UI writing and microcopy
 
-Strong tile headlines, factual descriptions, clear action labels.
+Direct, punchy, and informative. Examples: “Instant deployment”, “Zero configuration”, “48ms latency”. Avoid vague buzzwords like “Next-gen synergy”.
 
 ## Starter tokens (suggestions, not a complete theme)
 
 | Token | Starting value |
 | --- | --- |
-| `--taste-radius-sm` | `10px` |
-| `--taste-radius-lg` | `18px` |
-| `--taste-border` | `1px solid rgba(0,0,0,.08)` |
-| `--taste-shadow` | `0 5px 16px rgba(0,0,0,.06)` |
-| `--taste-font-body` | `DM Sans, system-ui, sans-serif` |
-| `--taste-motion-duration` | `180ms` |
+| `--taste-bento-bg` | `#0b0d10` |
+| `--taste-bento-surface` | `#15191e` |
+| `--taste-bento-border` | `1px solid rgba(255, 255, 255, 0.08)` |
+| `--taste-bento-radius` | `24px` |
+| `--taste-bento-gap` | `20px` |
+| `--taste-bento-shadow` | `0 8px 24px rgba(0, 0, 0, 0.25)` |
+| `--taste-bento-accent` | `#8b5cf6` |
+| `--taste-bento-font-body` | `DM Sans, Manrope, system-ui, sans-serif` |
+| `--taste-bento-motion-duration` | `180ms` |
 
-Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values. Fall back to installed fonts/system stack; do not silently download font assets.
+Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-bento-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values.
 
 ## Hero composition (full first viewport)
 
-**When a public-facing portfolio/landing/homepage has a hero:** use a one-visible-screen header+hero composition. Base height on `min-height: 100svh` with `100vh` fallback, subtracting the **real** header only when it is in normal flow; let the hero expand for accessibility and short mobile screens. Do not apply this to private dashboards or other task screens; direct user overrides win. **Style-specific direction:** Use a full-height opening composition where one dominant introduction and a small number of genuinely useful supporting tiles share a grid. The 100svh requirement never licenses extra decorative mini-cards; on mobile, prioritize heading and CTA before lower-priority tiles. See the router `references/hero-layout.md` when present. Standalone use follows the same responsive and anti-slop principles.
+**When a public-facing portfolio/landing/homepage has a hero:** use a one-visible-screen header+hero composition. Base height on `min-height: 100svh` with `100vh` fallback, subtracting the **real** header only when it is in normal flow; let the hero expand for accessibility and short mobile screens. Do not apply this to private dashboards or other task screens; direct user overrides win. **Style-specific direction:** Arrange the top section as a hero bento grid where the main product story occupies the primary 2x2 tile and supporting proof points surround it. Do not force 8 tiny cards into the first viewport merely to fill height. See the router `references/hero-layout.md` when present. Standalone use follows the same responsive and anti-slop principles.
 
 
 ## Style-specific quality gate
 
-- **Do:** Make each span intentional; test missing content, long titles, and mobile reflow.
-- **Don't:** Do not use masonry solely for visual novelty; avoid uneven card heights that imply hierarchy accidentally.
-- Confirm desktop and mobile consistency; visible keyboard focus; light/dark adaptation only if requested; loading, empty, disabled, error and success states; reduced-motion behavior.
+- **Do:** Verify clear visual dominance of the hero tile; ensure every tile has a distinct internal layout; check grid collapse on mobile; maintain consistent gap spacing.
+- **Don't:** Do not generate identical repeating 3-card or 4-card templates; avoid nested cards inside tiles; avoid unreadable miniature charts or fake metric labels.
+- Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
+
 ## Universal anti-slop gate (self-contained)
 
 Every element must earn its place. **Content before decoration. Do not decorate uncertainty.** Do not invent balances, metrics, testimonials, users, logos, approval, verified/live/online status, fake activity, or success confirmations; use honest empty/loading/error states instead. Demo data is acceptable only if requested and visibly labeled.
@@ -95,11 +131,11 @@ Do not add decorative **card-inside-card** layers: a nested surface must represe
 
 ## Anti-slop: style-specific
 
-**Modular content, not tile stuffing.**
+**Curated composition, not auto-generated card grids.**
 
-- **Reject:** Reject unnecessary nested cards, empty filler tiles, random cell spans, mismatched peer prominence, and 3-card feature spam disguised as a bento grid.
-- **Instead:** Assign each tile a real job; justify span by content priority; use internal separators and preserve reading order on mobile.
-- **Copy check:** Write tile headings as distinct jobs or facts, not repeated product adjectives.
+- **Reject:** Uniform grids of identical cards, nested cards within cards, fake metrics with no units, placeholder icons without clear meaning, and empty tiles added solely to balance a CSS grid.
+- **Instead:** Design each tile around actual distinct features or user actions with asymmetric weights and scannable headings.
+- **Copy check:** Every tile heading must communicate real functional utility; avoid generic slogan templates.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `bento`.
 
 ## Quality tiers (standalone)

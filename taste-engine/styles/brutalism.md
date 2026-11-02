@@ -1,79 +1,114 @@
 # Style pack: Brutalism
 
 **ID:** `brutalism`  
-**Signature:** Raw structure, unapologetic hierarchy, minimal decoration.
+**Signature:** Raw structural honesty, exposed layout scaffolding, uncompromising monochrome contrast, and zero decorative camouflage.
 
-> This is a **style pack, not a mandatory default**. Load it only after explicit selection or confirmed applicable project style. Project instructions can override individual choices. Preserve accessibility, utility, and brand constraints. Fonts are suggestions, not required dependencies.
+> This is a **style pack, not a mandatory default**. Load it only after explicit selection or confirmed applicable project style. Project instructions can override individual choices. Preserve accessibility, utility, and brand constraints. Fonts are suggestions, not required dependencies. A chaotic, broken layout with arbitrary font sizes **does not qualify as architectural Brutalism**.
 
 ## Good fit / trade-offs
 
-- **Works well for:** Experimental portfolios, art/culture, activist/editorial sites, distinctive landing pages.
-- **Be careful with:** Where enterprise familiarity or very low cognitive load is the primary goal unless softened.
+- **Works well for:** Avant-garde portfolios, activist platforms, architectural archives, independent publishing, art/culture institutions, and developer tools seeking uncompromised structural authenticity.
+- **Be careful with:** Conventional mass-market consumer applications where decorative familiarity and gentle aesthetics reduce initial user hesitation.
+- **Reference directions:**
+  - *Architectural Béton Brut:* Raw concrete gray (`#E8E8E8` to `#DCDCDC`), pure stark black lines (`#000000`), exposed structural grid divisions, and monospaced architectural metadata.
+  - *Stark Monochrome Scaffolding:* Pure white background (`#FFFFFF`) with heavy black borders (`2.5px solid #000000`), stark black block actions, and zero cosmetic ornamentation.
+
+## Brutalist material fidelity gate — mandatory
+
+**Before calling a brutalist page complete, the opening viewport must visibly read as a raw, honest structural composition.** If a user chose this style, a generic site that merely applies unstyled defaults or chaotic overlapping text is a **FAIL**.
+
+A successful brutalist implementation demonstrates **all** of the following:
+
+1. **Exposed Structural Scaffolding:** Grid lines, section dividers, and content containers are formed by visible solid black borders (`2px–3px solid #000000`), celebrating the structural skeleton of the webpage.
+2. **Zero Cosmetic Camouflage:** Absolutely no soft blurred drop shadows, no glossy reflections, no rounded bubble corners, and no translucent glass blurs. Surfaces are flat, opaque, and unapologetically direct.
+3. **Hyper-Disciplined Alignment:** Despite its raw material honesty, alignment is razor-sharp. Columns, borders, and rows lock together seamlessly with zero erratic wandering.
+4. **Stark High-Contrast Palette:** Uncompromising black-on-white or black-on-concrete monochrome contrast meeting WCAG AAA (7:1+). Color is used only as an operational alert signal (pure red `#FF0000` or raw warning yellow `#FFD700`).
+5. **Immediate Interactive State Transitions:** Buttons and interactive elements flip instantly on `:hover` and `:active` (e.g. immediate color inversion from black-on-white to white-on-black) without delayed easing or artificial spring physics.
+
+**First-viewport test:** In a desktop screenshot, identify the exposed structural border grid, the flat unornamented planes, and the stark monochrome authority **without reading the page title**. If it contains rounded cards or soft shadows, strip away the decorative camouflage immediately.
+
+## Explicit brutalist structural exception — exposed grid borders are required
+
+**Brutalism-specific override:** The universal anti-slop caution against *excessive borders or harsh contrast* MUST NOT be interpreted as a ban on thick black dividing lines (2px–3px solid) or exposed structural scaffolding here. In architectural brutalism, structural joints and honest materials are celebrated, not hidden behind cosmetic paint.
+
+- **Allowed structural treatments:** Visible 2px–3px structural borders, raw rectangular containers, high-contrast monospace metadata, and immediate color inversion states.
+- **Anti-slop boundary:** Do not deliberately break accessibility by overlapping body paragraphs, using unreadable neon clash colors, or making buttons impossible to locate. Authentic brutalism is hyper-functional, not randomly broken.
+- **Anti-slop interpretation:** Evaluate brutalist layouts by **structural integrity, functional utility, and legibility**, not by trying to soften hard edges. Removing structural borders to satisfy a generic soft heuristic is a **design regression**.
 
 ## Typography and typewriting
 
-Bold grotesk/system sans or purposeful monospace: Arial/Helvetica, IBM Plex Sans, IBM Plex Mono. Large decisive headings 44–72px desktop, 30–44px mobile; body 16–18px; weight 400/700/800. Strong contrast in scale, strict alignment. Uppercase only for short labels, not paragraphs.
+Unyielding, heavyweight grotesk sans or technical monospace: Arial, Helvetica, IBM Plex Sans, IBM Plex Mono, or system sans. Headlines: 44–72 px desktop / 30–44 px mobile (weight 800–900, tight line-height 1.05–1.15). Body text: 16–18 px (weight 400, line-height 1.5). Monospace for metadata, timestamps, and section indexes.
 
 ## Color direction
 
-Near-white or near-black base, hard black/white contrast and at most one sharp signal color. Color carries meaning rather than decoration.
+- **Canvas Base:** Stark paper white (`#FFFFFF`) or architectural concrete (`#E5E5E5`).
+- **Structural Ink / Borders:** Pure black (`#000000`).
+- **Operational Signal Accent (Single Color Only):** Signal Red (`#FF0000`) or Warning Amber (`#FFCC00`).
+- **Surface Blocks:** High-contrast solid fills (`#000000` or `#FFFFFF`).
 
 ## Layout and geometry
 
-Rectangular blocks, 0–2px radius, strong 2–3px borders, exposed grid, visible section dividers; deliberate asymmetric composition.
+Corners are strictly square (`border-radius: 0px`). Structural borders: `2px–3px solid #000000`. Content blocks lock flush against each other or maintain firm 16px/24px modular gaps.
 
 ## Surfaces, depth, texture
 
-Flat surfaces. No decorative gradient, glass blur or elevated soft shadows. Layout and type do the visual work.
+Surfaces are 100% flat, opaque, and structural. Zero shadows. Zero gradients. Depth is established purely by layering black blocks over white frames and immediate inversion of foreground and background colors.
 
 ## Component anatomy and interaction
 
-Blocky high-contrast buttons, outlined controls, visible label text, oversized menu numbering, strong separators; provide clearly distinct interactive and static regions.
+- **Brutalist Button:** Heavy black border (`2px solid #000000`), white background, bold uppercase text; on hover/active, immediately inverts to solid black background and white text.
+- **Structural Panel:** Rectangular container with heavy top/bottom borders; dividers between internal sections.
+- **Metadata Tag:** Monospace tag enclosed in square brackets: `[DOC_REF: 4092]`.
+- **Form Controls:** Unadorned input fields with thick black border and high-contrast solid black focus ring (`outline: 3px solid #000000; outline-offset: 2px;`).
 
 ## Motion
 
-Prefer immediate state changes or 100–160ms linear transitions. Avoid elastic effects, parallax and embellished entry animation.
+Immediate state flips by default (0 ms) or very brief linear transitions (60–100 ms). No bounce, no easing curves, no parallax, no decorative transitions.
 
 ## Optional Anime.js v4 recipe
 
-- **Motion decision:** Use immediate state flips by default; Anime.js generally unnecessary.
-- **Starting duration:** 0ms (0 = immediate); adjust to task and user preference.
+- **Motion decision:** Immediate state flips by default; Anime.js generally unnecessary for authentic brutalism.
+- **Starting duration:** 0ms (immediate); adjust only if a specific functional mechanical sliding shutter is requested.
 - **Avoid:** springs, sliding reveals, theatrical scroll animations.
-- **Dependency:** CSS/native by default. Use Anime.js v4 only if the requested interaction justifies it. Follow Taste Engine `references/motion-engine.md` when available; standalone skill follows the reduced-motion and no-decorative-loop principles above.
+- **Dependency:** CSS/native by default. Follow Taste Engine `references/motion-engine.md` when available; standalone skill follows the reduced-motion and no-decorative-loop principles above.
 
 ## UI writing and microcopy
 
-Short, blunt, specific. Strong verbs and informative labels; no aggressive or inaccessible all-caps walls of text.
+Direct, unapologetic, and factual. Examples: “INDEX”, “DOWNLOAD SPECIFICATION”, “TERMINAL ERROR: CONNECTION LOST”, “CONFIRM”. Avoid chatty conversational copy or persuasive marketing fluff.
 
 ## Starter tokens (suggestions, not a complete theme)
 
 | Token | Starting value |
 | --- | --- |
-| `--taste-radius-sm` | `0px` |
-| `--taste-radius-lg` | `0px` |
-| `--taste-border` | `2px solid currentColor` |
-| `--taste-shadow` | `none` |
-| `--taste-font-body` | `Arial, Helvetica, sans-serif` |
-| `--taste-motion-duration` | `120ms` |
+| `--taste-brutal-bg` | `#ffffff` |
+| `--taste-brutal-ink` | `#000000` |
+| `--taste-brutal-surface` | `#ffffff` |
+| `--taste-brutal-border` | `2.5px solid #000000` |
+| `--taste-brutal-radius` | `0px` |
+| `--taste-brutal-signal` | `#ff0000` |
+| `--taste-brutal-font-heading` | `'Arial Black', Arial, Helvetica, sans-serif` |
+| `--taste-brutal-font-body` | `Arial, Helvetica, sans-serif` |
+| `--taste-brutal-font-mono` | `'IBM Plex Mono', monospace` |
+| `--taste-brutal-motion-duration` | `0ms` |
 
-Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values. Fall back to installed fonts/system stack; do not silently download font assets.
+Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-brutal-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values.
 
 ## Hero composition (full first viewport)
 
-**When a public-facing portfolio/landing/homepage has a hero:** use a one-visible-screen header+hero composition. Base height on `min-height: 100svh` with `100vh` fallback, subtracting the **real** header only when it is in normal flow; let the hero expand for accessibility and short mobile screens. Do not apply this to private dashboards or other task screens; direct user overrides win. **Style-specific direction:** Use the screen as a deliberate typographic poster: massive but readable display type, ruled grid, one actionable next step. Treat negative space as structure, not an excuse for fake oversized numbers; no comic offset shadows or random collage noise. See the router `references/hero-layout.md` when present. Standalone use follows the same responsive and anti-slop principles.
+**When a public-facing portfolio/landing/homepage has a hero:** use a one-visible-screen header+hero composition. Base height on `min-height: 100svh` with `100vh` fallback, subtracting the **real** header only when it is in normal flow; let the hero expand for accessibility and short mobile screens. Do not apply this to private dashboards or other task screens; direct user overrides win. **Style-specific direction:** Construct the first viewport as an unapologetic architectural monolith: massive display title locked inside structural scaffolding, stark black call-to-action blocks, and zero cosmetic filler. See the router `references/hero-layout.md` when present. Standalone use follows the same responsive and anti-slop principles.
 
 
 ## Style-specific quality gate
 
-- **Do:** Expose a clear grid, maintain meaningful hierarchy, and make focus / active states as assertive as static borders.
-- **Don't:** Do not confuse brutalism with playful neo-brutalism; avoid candy palettes, thick offset comic shadows, random rotated stickers, or deliberately broken usability.
-- Confirm desktop and mobile consistency; visible keyboard focus; light/dark adaptation only if requested; loading, empty, disabled, error and success states; reduced-motion behavior.
+- **Do:** Verify stark high-contrast WCAG AAA compliance; maintain razor-sharp alignment along structural borders; ensure immediate state inversion on interactive elements; test keyboard focus.
+- **Don't:** Do not treat chaotic unreadable layouts as brutalism; do not add drop shadows, rounded corners, or decorative background gradients; avoid overlapping text paragraphs that impede reading.
+- Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 ## Anti-slop: style-specific
 
-**Raw hierarchy, not random aggression.**
+**Structural honesty, not artificial chaos.**
 
-- **Reject:** Reject arbitrary broken grids, unreadable oversized headings, fake provocative slogans, random rotation, comic offset shadows, and uppercase walls of text.
-- **Instead:** Use repeatable alignment and deliberate contrast; make actions self-evident and retain readable body copy.
-- **Copy check:** Write direct, specific labels; short uppercase may be expressive, but not an excuse for shouty filler.
+- **Reject:** Chaotic overlapping text blocks that cannot be read, fake broken HTML errors, neon rainbow clash palettes, unreadable meme typography, and ornamental anti-design gestures that ruin accessibility.
+- **Instead:** Celebrate raw architectural structure, exposed grid seams, unyielding monochrome contrast, and hyper-legible typographic hierarchy.
+- **Copy check:** Plain, unapologetic facts; avoid marketing cheerleading.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `brutalism`.

@@ -3,10 +3,10 @@ name: taste-style-glassmorphism
 description: Apply Glassmorphism design style to user-selected frontend and UI work. Use only when the user explicitly chooses this style. Provides typography, color, layout, components, interactions, motion, copy and quality gates. Do not impose on unrelated work.
 license: MIT
 metadata:
-  version: "0.10.2"
+  version: "0.10.3"
 ---
 
-Use this skill only after a user explicitly chooses `glassmorphism` or a confirmed project configuration specifies it. For unexplained new UI requests, use a style selector such as `taste-engine` instead of deciding the user's taste here. Existing brand, accessibility and user overrides outrank all examples below. The following style guide is not permission to start UI coding before style selection.
+Use this skill only after a user explicitly chooses  or a confirmed project configuration specifies it. For unexplained new UI requests, use a style selector such as  instead of deciding the user's taste here. Existing brand, accessibility and user overrides outrank all examples below. The following style guide is not permission to start UI coding before style selection.
 
 # Style pack: Glassmorphism
 

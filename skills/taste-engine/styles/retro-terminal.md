@@ -1,79 +1,119 @@
 # Style pack: Retro Terminal
 
 **ID:** `retro-terminal`  
-**Signature:** Developer-console visual language with modern usability.
+**Signature:** Authentic CRT developer-console visual language, phosphor glow, monospace tabular structure, and modern keyboard-driven utility.
 
-> This is a **style pack, not a mandatory default**. Load it only after explicit selection or confirmed applicable project style. Project instructions can override individual choices. Preserve accessibility, utility, and brand constraints. Fonts are suggestions, not required dependencies.
+> This is a **style pack, not a mandatory default**. Load it only after explicit selection or confirmed applicable project style. Project instructions can override individual choices. Preserve accessibility, utility, and brand constraints. Fonts are suggestions, not required dependencies. A plain black page with unstyled green text **does not qualify as Retro Terminal**.
 
 ## Good fit / trade-offs
 
-- **Works well for:** Developer portfolios, CLI dashboards, cyberculture experiences and coding tools.
-- **Be careful with:** Mainstream audiences if console familiarity cannot be assumed.
+- **Works well for:** Developer portfolios, CLI cloud dashboards, cybersecurity and devops tools, system monitoring consoles, and creative coding experiences.
+- **Be careful with:** Non-technical consumer audiences who may find strict monospace data layouts or terminal metaphors unfamiliar.
+- **Reference directions:**
+  - *Classic Amber CRT:* Obsidian black background (`#0C0D0E`) with warm phosphor amber (`#FFB000`), subtle raster scanlines, and high-contrast cream labels.
+  - *Phosphor Matrix Green:* Deep graphite canvas (`#0A0F0D`) with electric phosphor green (`#33FF33`), bracketed window titles, and crisp log streams.
+  - *Cyberdeck Cyan:* High-tech terminal with luminous cyan (`#00F0FF`), crisp box-drawing borders (`┌─┐`), and keyboard shortcut tags (`[ESC]`).
+
+## Retro terminal fidelity gate — mandatory
+
+**Before calling a retro-terminal page complete, the opening viewport must visibly read as a real, working terminal console or command deck.** If a user chose this style, an ordinary dark website with monospace font is a **FAIL**, even if CSS classes contain `terminal`.
+
+A successful retro-terminal implementation demonstrates **all** of the following:
+
+1. **Phosphor Glow & High-Contrast Luminance:** Text and active indicators exhibit subtle phosphor radiation (`text-shadow: 0 0 6px currentColor`), with primary output passing WCAG AA contrast against obsidian grounds.
+2. **Subtle CRT Raster Scanline Overlay:** Surfaces feature a controlled, static horizontal scanline pattern (`repeating-linear-gradient(0deg, rgba(0,0,0,0.15) 0px, transparent 2px)`) that adds genuine display depth without impairing character legibility.
+3. **Structured ASCII / Bracketed Layout Framing:** Window headers, panel frames, and status bars use crisp 1px rules, ASCII box characters (`┌─┐`), or bracketed badges (`[SYS_OK]`, `[MODE: CLI]`).
+4. **Authentic Command Prompt & Caret:** Interfaces feature an active shell prompt line (`visitor@terminal:~$`) with a solid block caret (`█`) and distinct command history styling.
+5. **Monospace Tabular Alignment:** Content aligns strictly along monospace character columns for timestamps, status codes, process IDs, and data readouts.
+
+**First-viewport test:** In a desktop screenshot, identify the terminal prompt, phosphor glow, scanline raster, and bracketed console frames **without reading the page title**. If it looks like a generic dark blog, add the scanline overlay and terminal prompt structure.
+
+## Explicit retro-terminal scanline exception — phosphor glow is allowed
+
+**Retro-terminal-specific override:** The universal anti-slop caution against *decorative overlays or screen textures* MUST NOT be interpreted as a ban on subtle scanlines, phosphor glow, or shell prompt lines here. These are **material-enabling properties**, essential to the CRT console aesthetic.
+
+- **Allowed material treatments:** Monospace box-drawing borders, phosphor text glow (`0 0 6px`), static scanline raster overlays, bracketed status pills, and blinking/solid block carets.
+- **Anti-slop boundary:** Every command line or action must be usable. Do not flood screens with unreadable falling matrix characters, fake terminal boot errors, or static decorative code snippets masquerading as a functional UI.
+- **Anti-slop interpretation:** Evaluate terminal elements by **command clarity, legibility, and developer productivity**, not by banning monospace frames. Removing scanlines and prompt lines to satisfy a generic flat heuristic is a **design regression**.
 
 ## Typography and typewriting
 
-Readable monospace: IBM Plex Mono, JetBrains Mono, or ui-monospace. Text 14–16px; headings 22–36px; use true text hierarchy rather than all monospace at one size. No excessively thin pixel fonts for important copy.
+High-legibility monospace: JetBrains Mono, IBM Plex Mono, Fira Code, or system monospace (`ui-monospace, monospace`). Primary body: 14–15 px; headings: 20–32 px with bold weight (700) and uppercase bracketed styling (`### [SYSTEM_OVERVIEW]`). Maintain strict character grid alignment.
 
 ## Color direction
 
-Dark charcoal / near-black canvas, calm high-contrast foreground, one restrained console accent (green, amber, or cyan); semantic error colors stay distinct.
+- **Canvas Base:** Obsidian black (`#0C0D0E` or `#080A08`).
+- **Surface Panels:** Deep slate-charcoal (`#14171A` or `#111613`).
+- **Phosphor Accent (Choose One):**
+  - Classic Amber: `#FFB000` (glow: `rgba(255, 176, 0, 0.45)`)
+  - Phosphor Green: `#33FF33` (glow: `rgba(51, 255, 51, 0.45)`)
+  - Cyber Cyan: `#00F0FF` (glow: `rgba(0, 240, 255, 0.45)`)
+- **Semantic Statuses:** Error Red (`#FF5555`), Warning Yellow (`#FFCC00`), Success Mint (`#50FA7B`).
 
 ## Layout and geometry
 
-Tight aligned grid, 0–6px radius, 1px terminal-panel borders; windows/chrome only where it conveys structure.
+Corners are sharp or minimal (`0px–4px`); 1px solid terminal panel borders; tight vertical rhythm (4px/8px monospace line grid). Panels model modular terminal multiplexers (tmux/screen style).
 
 ## Surfaces, depth, texture
 
-Flat dark panels, very subtle scanline texture only if optional and not behind body text. Cursor blink optional, not required.
+- **Terminal Screen:** Deep black background with static scanline raster overlay.
+- **Console Panel:** 1px solid border (`1px solid rgba(255, 176, 0, 0.3)` or `#2A2F35`) with subtle inset shadow.
+- **Active Cursor:** Block caret with 1s pulse or solid active state.
 
 ## Component anatomy and interaction
 
-Command-palette interactions, log lists, code blocks, keyboard shortcuts with clear pointer/mobile fallbacks. Do not turn every action into a faux command.
+- **Command Line Prompt:** `user@system:~$ command --flag` with functional input and clear return results.
+- **Terminal Button / Action:** Outlined bracket button (`[ EXECUTE ]` or `[ CANCEL ]`) with hover color inversion (`background: currentColor; color: #000;`).
+- **Data Log Stream:** Tabular rows with timestamp, log level tag, and message.
+- **Keyboard Shortcuts:** Bracketed key indicators (`[⌘+K]`, `[ENTER]`) with clear pointer click fallbacks.
 
 ## Motion
 
-Prefer immediate updates; optional typing animation only for intro demonstrations, skippable and disabled with reduced motion.
+Immediate state changes by default (0–80 ms). Optional skippable character typing effect for hero intros only. Respect `prefers-reduced-motion` immediately.
 
 ## Optional Anime.js v4 recipe
 
-- **Motion decision:** Immediate state changes; optional skippable typing demo only when user asks.
-- **Starting duration:** 0ms (0 = immediate); adjust to task and user preference.
-- **Avoid:** typing essential instructions and never-ending blinking gimmicks.
+- **Motion decision:** Monospace character typing reveal or terminal scan bar sweep; keep frame rate stable.
+- **Starting duration:** 100ms per token block (0 = immediate); adjust to task and user preference.
+- **Avoid:** screen jitter, artificial distortion waves, perpetual flickering loops.
 - **Dependency:** CSS/native by default. Use Anime.js v4 only if the requested interaction justifies it. Follow Taste Engine `references/motion-engine.md` when available; standalone skill follows the reduced-motion and no-decorative-loop principles above.
 
 ## UI writing and microcopy
 
-Developer-fluent but clear; explain jargon in public-facing projects.
+Precise, technical, and command-driven. Examples: `deploy --prod`, `status: healthy`, `4 processes running`. Avoid patronizing marketing chatter.
 
 ## Starter tokens (suggestions, not a complete theme)
 
 | Token | Starting value |
 | --- | --- |
-| `--taste-radius-sm` | `2px` |
-| `--taste-radius-lg` | `4px` |
-| `--taste-border` | `1px solid rgba(180,225,190,.20)` |
-| `--taste-shadow` | `none` |
-| `--taste-font-body` | `IBM Plex Mono, ui-monospace, monospace` |
-| `--taste-motion-duration` | `120ms` |
+| `--taste-term-bg` | `#0c0d0e` |
+| `--taste-term-surface` | `#14171a` |
+| `--taste-term-amber` | `#ffb000` |
+| `--taste-term-glow` | `0 0 6px rgba(255, 176, 0, 0.45)` |
+| `--taste-term-border` | `1px solid rgba(255, 176, 0, 0.25)` |
+| `--taste-term-scanline` | `repeating-linear-gradient(0deg, rgba(0,0,0,0.18) 0px, transparent 2px)` |
+| `--taste-term-radius` | `2px` |
+| `--taste-term-font-mono` | `JetBrains Mono, IBM Plex Mono, monospace` |
+| `--taste-term-motion-duration` | `80ms` |
 
-Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values. Fall back to installed fonts/system stack; do not silently download font assets.
+Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-term-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values.
 
 ## Hero composition (full first viewport)
 
-**When a public-facing portfolio/landing/homepage has a hero:** use a one-visible-screen header+hero composition. Base height on `min-height: 100svh` with `100vh` fallback, subtracting the **real** header only when it is in normal flow; let the hero expand for accessibility and short mobile screens. Do not apply this to private dashboards or other task screens; direct user overrides win. **Style-specific direction:** Treat the opening viewport as a legible console workbench with real navigation and project introduction. A cursor/typing motif is optional and skippable, never blocks the primary action or invents system activity to fill the screen. See the router `references/hero-layout.md` when present. Standalone use follows the same responsive and anti-slop principles.
+**When a public-facing portfolio/landing/homepage has a hero:** use a one-visible-screen header+hero composition. Base height on `min-height: 100svh` with `100vh` fallback, subtracting the **real** header only when it is in normal flow; let the hero expand for accessibility and short mobile screens. Do not apply this to private dashboards or other task screens; direct user overrides win. **Style-specific direction:** Construct the first viewport as an authentic interactive console session with welcome ASCII banner, system status summary, and a working prompt line. Do not simulate fake matrix rain or unreadable glitch loops. See the router `references/hero-layout.md` when present. Standalone use follows the same responsive and anti-slop principles.
 
 
 ## Style-specific quality gate
 
-- **Do:** Use semantic status symbols plus text, make all functionality keyboard and touch accessible, preserve selectable/copyable text.
-- **Don't:** Avoid flashing cursors, green-only status signals, illegible low-contrast text and fake commands that cannot be executed.
-- Confirm desktop and mobile consistency; visible keyboard focus; light/dark adaptation only if requested; loading, empty, disabled, error and success states; reduced-motion behavior.
+- **Do:** Verify high text contrast against obsidian grounds (WCAG AA); ensure monospace alignment is preserved; provide click fallbacks for all keyboard shortcuts; test scanline readability.
+- **Don't:** Do not treat a plain dark theme as retro-terminal; avoid illegible glitch animations; do not present fake non-interactive console prompts that confuse users.
+- Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 ## Anti-slop: style-specific
 
-**Operational feel, not fake hacking theater.**
+**Developer utility, not Hollywood hacker theater.**
 
-- **Reject:** Reject fake green-on-black code rain, dead prompt lines, fabricated uptime, fake log feeds, blinking cursors everywhere and horizontal overflow on phones.
-- **Instead:** Use honest console conventions where the interface really behaves like a tool; support keyboard, touch, text selection and wrapping.
-- **Copy check:** Console-style copy should reflect actual operations and errors; no counterfeit security or "ACCESS GRANTED" theatrics.
+- **Reject:** Fake matrix rain, flashing strobe lights, illegible CRT distortion, unprompted audio beeps, and dummy code blocks with no relation to user tasks.
+- **Instead:** Build an authentic, highly functional CLI-inspired interface with clean monospace hierarchy, keyboard shortcuts, and structured command feedback.
+- **Copy check:** Use real system terminology and direct commands; avoid movie hacker slang.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `retro-terminal`.

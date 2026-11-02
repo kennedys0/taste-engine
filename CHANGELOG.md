@@ -2,6 +2,24 @@
 
 All notable changes to Taste Engine are documented here. Release tags use semantic versioning.
 
+## [0.10.3] - 2026-11-03
+
+### Improved
+
+- **Full Suite Material & Aesthetic Fidelity Upgrade:** All 10 style packs now enforce mandatory first-viewport fidelity gates, anti-slop material exemptions, complete token architectures, and production-ready CSS recipes:
+  - **Claymorphism:** Dual opposing inner shadows, soft tinted ambient drop shadows, tactile active compression, and sunken relief wells with companion recipe (`examples/claymorphism/sculpted-surfaces.css`).
+  - **Neo-brutalism:** High-contrast solid black borders (`2.5px solid #121212`), unblurred hard offset shadows (`4px–8px`), mechanical press displacement, and companion recipe (`examples/neo-brutalism/pop-surfaces.css`).
+  - **Skeuomorphism:** Top-down specular bevel highlights, multi-stop metallic reflection gradients, recessed display wells, and mechanical physical travel with companion recipe (`examples/skeuomorphism/tactile-controls.css`).
+  - **Retro-Terminal:** Authentic CRT phosphor glow, static scanline raster overlays, bracketed ASCII frames, and active command prompt lines with companion recipe (`examples/retro-terminal/crt-console.css`).
+  - **Bento Grid:** Strict asymmetric visual weight hierarchy (2x2 hero tile), diverse internal tile anatomy, uniform grid alignment, and responsive collapse with companion recipe (`examples/bento/modular-grid.css`).
+  - **Swiss / Editorial:** Dramatic typographic scale contrast (48px–72px display headlines), structural hairline dividing rules (`1px solid #111`), section index numbers (`01`), and singular signal accents with companion recipe (`examples/swiss-editorial/grid-typography.css`).
+  - **Brutalism:** Raw architectural structural scaffolding (`2.5px solid #000`), square corners (`0px`), stark monochrome contrast (WCAG AAA), and immediate state flips with companion recipe (`examples/brutalism/raw-surfaces.css`).
+  - **Minimalism:** Active intentional negative space, mathematically calibrated type scale, hairline dividers, high contrast, and unambiguous affordances with companion recipe (`examples/minimalism/clean-surfaces.css`).
+  - **Enterprise / Data-first:** High-density operational cockpits, 36px table rows, tabular figures (`tabular-nums`), semantic status tokens, and keyboard hints (`⌘K`) with companion recipe (`examples/enterprise/data-cockpit.css`).
+- **Anti-Slop Constitution Alignment:** Clarified explicit material exemptions across all styles in `references/anti-slop.md`, ensuring that legitimate style features (hard shadows, metallic bevels, scanlines, asymmetric spans, and tabular density) are never rejected as slop.
+- **Synchronized Standalone Skills & Discovery:** Updated all 10 standalone skills in `optional-standalone-skills/` and synced the canonical `taste-engine/` to `skills/taste-engine/`.
+- **Validation & Test Suites:** Added automated fidelity unit tests (`test_clay_fidelity.py`, `test_glass_fidelity.py`) and visual acceptance guidelines (`claymorphism-visual.md`, `glassmorphism-visual.md`). All 31 test suites pass cleanly.
+
 ## [0.10.2] - 2026-11-03
 
 ### Refined

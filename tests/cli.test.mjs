@@ -9,7 +9,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const cli=path.join(root,'bin','taste-engine.mjs');
 function run(args, env={}) { return spawnSync(process.execPath,[cli,...args],{encoding:'utf8',env:{...process.env,...env}}); }
 test('prints version and rejects unknown agents',()=>{
- assert.equal(run(['version']).stdout.trim(),'0.10.0');
+ assert.equal(run(['version']).stdout.trim(),'0.10.3');
  assert.notEqual(run(['install','--agent','unknown']).status,0);
 });
 test('installs project skill for Antigravity and Codex',()=>{

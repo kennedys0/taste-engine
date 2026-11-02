@@ -1,0 +1,106 @@
+/* Taste Engine Skeuomorphism — Reference CSS. Adapt to the project.
+   Tactile hardware controls feature consistent top-down light models,
+   specular bevel highlights (1px white top inset), multi-stop reflective gradients,
+   recessed dark wells, and mechanical physical depression. */
+
+:root {
+  --taste-skeuo-chassis: linear-gradient(180deg, #2f343e 0%, #22262d 100%);
+  --taste-skeuo-border: 1px solid #14171c;
+  --taste-skeuo-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 0 rgba(0, 0, 0, 0.60);
+  --taste-skeuo-shadow: 0 4px 10px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.40);
+  --taste-skeuo-well: inset 0 3px 6px rgba(0, 0, 0, 0.75), 0 1px 0 rgba(255, 255, 255, 0.12);
+  --taste-skeuo-led-green: #10b981;
+  --taste-skeuo-led-glow: 0 0 10px rgba(16, 185, 129, 0.70);
+}
+
+.taste-skeuo-scene {
+  background-color: #1a1c22;
+  color: #e2e8f0;
+  font-family: 'IBM Plex Sans', system-ui, sans-serif;
+  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Hardware Chassis Panel */
+.taste-skeuo-panel {
+  background: var(--taste-skeuo-chassis);
+  border: var(--taste-skeuo-border);
+  border-radius: 12px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.20), 0 8px 24px rgba(0, 0, 0, 0.65);
+  padding: 2rem;
+  box-sizing: border-box;
+}
+
+/* Tactile Push Button */
+.taste-skeuo-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: linear-gradient(180deg, #414754 0%, #2b3039 100%);
+  color: #ffffff;
+  border: 1px solid #17191e;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--taste-skeuo-bevel), var(--taste-skeuo-shadow);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  transition: transform 120ms ease-out, box-shadow 120ms ease-out;
+  user-select: none;
+}
+
+.taste-skeuo-btn:hover {
+  background: linear-gradient(180deg, #4a5160 0%, #323742 100%);
+}
+
+.taste-skeuo-btn:active {
+  transform: translateY(2px);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.85), 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.taste-skeuo-btn:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 3px;
+}
+
+/* Recessed Display Well */
+.taste-skeuo-display-well {
+  background: #111317;
+  border: 1px solid #08090b;
+  border-radius: 6px;
+  box-shadow: var(--taste-skeuo-well);
+  padding: 1rem 1.5rem;
+  font-family: 'IBM Plex Mono', monospace;
+  color: #38bdf8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Jewel LED Status Light */
+.taste-skeuo-led {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #374151;
+  border: 1px solid #1f2937;
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.6);
+  display: inline-block;
+}
+
+.taste-skeuo-led.is-active {
+  background: var(--taste-skeuo-led-green);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.6), var(--taste-skeuo-led-glow);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .taste-skeuo-btn {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+

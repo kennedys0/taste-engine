@@ -1,6 +1,6 @@
 {
   "name": "@kennedys0/taste-engine",
-  "version": "0.10.0",
+  "version": "0.10.3",
   "private": true,
   "description": "Style-agnostic frontend agent skill with adaptive style routing, anti-slop review, SEO and motion guidance",
   "type": "module",
@@ -12,5 +12,5 @@
   "engines": {"node": ">=20"},
   "license": "MIT",
   "repository": {"type": "git", "url": "git+https://github.com/kennedys0/taste-engine.git"},
-  "files": ["bin/", "taste-engine/", "LICENSE", "README.md"]
+  "files": ["bin/", "taste-engine/", "assets/", "LICENSE", "README.md"]
 }

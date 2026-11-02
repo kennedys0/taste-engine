@@ -1,0 +1,99 @@
+/* Taste Engine Minimalism — Reference CSS. Adapt to the project.
+   Authentic minimalism features active intentional whitespace, calibrated typography,
+   hairline dividers (1px solid rgba(0,0,0,0.08)), high contrast, and unambiguous affordances. */
+
+:root {
+  --taste-mini-bg: #fafaf9;
+  --taste-mini-ink: #18181b;
+  --taste-mini-muted: #52525b;
+  --taste-mini-border: 1px solid rgba(0, 0, 0, 0.08);
+  --taste-mini-radius: 8px;
+  --taste-mini-accent: #2563eb;
+}
+
+.taste-mini-scene {
+  background-color: var(--taste-mini-bg);
+  color: var(--taste-mini-ink);
+  font-family: Inter, -apple-system, system-ui, sans-serif;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  box-sizing: border-box;
+}
+
+/* Primary Action CTA */
+.taste-mini-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--taste-mini-ink);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--taste-mini-radius);
+  padding: 12px 24px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 140ms ease-out, background-color 140ms ease-out;
+  text-decoration: none;
+  user-select: none;
+}
+
+.taste-mini-btn-primary:hover {
+  opacity: 0.9;
+}
+
+.taste-mini-btn-primary:focus-visible {
+  outline: 2px solid var(--taste-mini-accent);
+  outline-offset: 3px;
+}
+
+/* Secondary Action / Link */
+.taste-mini-link {
+  color: var(--taste-mini-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 140ms ease-out;
+}
+
+.taste-mini-link:hover {
+  color: var(--taste-mini-ink);
+}
+
+/* Hairline Section Divider */
+.taste-mini-divider {
+  border: none;
+  border-top: var(--taste-mini-border);
+  margin: 2rem 0;
+  width: 100%;
+}
+
+/* Minimalist Form Input */
+.taste-mini-input {
+  width: 100%;
+  border: var(--taste-mini-border);
+  border-radius: var(--taste-mini-radius);
+  padding: 10px 14px;
+  font-family: inherit;
+  font-size: 0.95rem;
+  color: var(--taste-mini-ink);
+  background-color: #ffffff;
+  outline: none;
+  transition: border-color 140ms ease-out, box-shadow 140ms ease-out;
+  box-sizing: border-box;
+}
+
+.taste-mini-input:focus {
+  border-color: var(--taste-mini-ink);
+  box-shadow: 0 0 0 2px rgba(24, 24, 27, 0.15);
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .taste-mini-btn-primary,
+  .taste-mini-link,
+  .taste-mini-input {
+    transition: none !important;
+  }
+}
+
