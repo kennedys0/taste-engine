@@ -15,7 +15,7 @@ project_root = root.parent
 # The distributed ZIP includes optional standalones; a normal installation only
 # contains taste-engine/. Validate cross-copy parity when siblings are present.
 standalone_bundle_present = (project_root / 'optional-standalone-skills').is_dir()
-required_references = ['references/anti-slop.md','references/anti-slop-copywriting.md','references/anti-slop-audit.md','tests/anti-slop.md', 'references/decision-system.md', 'references/quality-tiers.md', 'references/redesign-preservation.md', 'references/browser-validation.md', 'references/writing-calibration.md', 'references/research-notes.md', 'tests/research-acceptance.md', 'references/seo.md', 'references/seo-implementation.md', 'tests/seo-routing.md', 'references/motion-engine.md', 'tests/motion-routing.md', 'references/hero-layout.md', 'tests/hero-layout.md', 'tests/test_hero_policy.py', 'styles/motion-profiles.json', 'examples/react/anime-v4-press.jsx', 'references/engineering-router.md', 'references/web-interface-quality.md', 'references/react-performance.md', 'references/react-composition.md', 'references/native-mobile.md', 'references/view-transitions.md', 'references/docs-writing.md', 'references/vercel-research.md', 'tests/engineering-routing.md']
+required_references = ['references/anti-slop.md','references/anti-slop-copywriting.md','references/anti-slop-audit.md','tests/anti-slop.md', 'references/decision-system.md', 'references/quality-tiers.md', 'references/redesign-preservation.md', 'references/browser-validation.md', 'references/writing-calibration.md', 'references/research-notes.md', 'tests/research-acceptance.md', 'references/seo.md', 'references/seo-implementation.md', 'tests/seo-routing.md', 'references/motion-engine.md', 'tests/motion-routing.md', 'references/hero-layout.md', 'tests/hero-layout.md', 'tests/test_hero_policy.py', 'styles/motion-profiles.json', 'examples/react/anime-v4-press.jsx', 'references/engineering-router.md', 'references/web-interface-quality.md', 'references/react-performance.md', 'references/react-composition.md', 'references/native-mobile.md', 'references/view-transitions.md', 'references/docs-writing.md', 'references/vercel-research.md', 'tests/engineering-routing.md', 'tests/glassmorphism-visual.md', 'examples/glassmorphism/frosted-surfaces.css']
 for filename in required_references:
     if not (root / filename).is_file(): errors.append(f'missing anti-slop resource: {filename}')
 
@@ -36,6 +36,14 @@ for style in registry['styles']:
             errors.append(f'alias collision {raw!r}: {previous} vs {style["id"]}')
         seen_aliases[norm]=style['id']
 
+glass_style = (root / 'styles/glassmorphism.md').read_text(encoding='utf8')
+for phrase in ['Glass material fidelity gate', 'backdrop-filter', 'Frosted light', 'Smoked dark', 'first viewport', 'Explicit background gradient exception', 'radial-gradient']:
+    if phrase.lower() not in glass_style.lower():
+        errors.append(f'glassmorphism missing visible material requirement: {phrase}')
+css_source=(root/'examples/glassmorphism/frosted-surfaces.css').read_text(encoding='utf8')
+for phrase in ['backdrop-filter', 'background:', 'prefers-reduced-transparency', '@supports not']:
+    if phrase not in css_source:
+        errors.append(f'glass recipe missing {phrase}')
 ids=set()
 for style in registry.get('styles', []):
     id=style.get('id', '')
