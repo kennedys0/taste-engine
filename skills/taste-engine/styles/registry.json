@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0",
+  "styles": [
+    {
+      "id": "claymorphism",
+      "label": "Claymorphism",
+      "description": "Soft, tactile, sculpted surfaces with friendly depth.",
+      "path": "styles/claymorphism.md",
+      "recommended_for": "Playful consumer experiences, creative tools, personal dashboards.",
+      "aliases": [
+        "clay",
+        "claymorph",
+        "clay morphism",
+        "claymorfisme",
+        "claymorphisme",
+        "clay ui",
+        "soft clay"
+      ]
+    },
+    {
+      "id": "glassmorphism",
+      "label": "Glassmorphism",
+      "description": "Translucent layered planes with crisp content.",
+      "path": "styles/glassmorphism.md",
+      "recommended_for": "Marketing microsites, media interfaces, hero sections and light dashboards.",
+      "aliases": [
+        "glass",
+        "glass morphism",
+        "glassmorph",
+        "glassmorfisme",
+        "frosted glass",
+        "frosted ui",
+        "glass ui",
+        "kaca buram"
+      ]
+    },
+    {
+      "id": "brutalism",
+      "label": "Brutalism",
+      "description": "Raw structure, unapologetic hierarchy, minimal decoration.",
+      "path": "styles/brutalism.md",
+      "recommended_for": "Experimental portfolios, art/culture, activist/editorial sites, distinctive landing pages.",
+      "aliases": [
+        "brutalist",
+        "brutalisme",
+        "brutalis",
+        "raw brutalism",
+        "web brutalism"
+      ]
+    },
+    {
+      "id": "neo-brutalism",
+      "label": "Neo-brutalism",
+      "description": "Playful bold colors, hard borders and offset shadows.",
+      "path": "styles/neo-brutalism.md",
+      "recommended_for": "Creator tools, playful SaaS, event or indie product websites.",
+      "aliases": [
+        "neobrutalism",
+        "neo brutalism",
+        "neubrutalism",
+        "neobrutalisme",
+        "neo brutalist",
+        "neobrutalist",
+        "neo brutal",
+        "neubrutalisme"
+      ]
+    },
+    {
+      "id": "minimalism",
+      "label": "Minimalism",
+      "description": "Purposeful restraint with high information clarity.",
+      "path": "styles/minimalism.md",
+      "recommended_for": "Productivity tools, storefronts, portfolios, form-centric products.",
+      "aliases": [
+        "minimalist",
+        "minimalis",
+        "minimalisme",
+        "minimal ui",
+        "minimalistic"
+      ]
+    },
+    {
+      "id": "swiss-editorial",
+      "label": "Swiss / Editorial",
+      "description": "Grid-driven typographic hierarchy and intentional rhythm.",
+      "path": "styles/swiss-editorial.md",
+      "recommended_for": "Magazines, agencies, portfolios, reports and information-rich marketing sites.",
+      "aliases": [
+        "swiss",
+        "editorial",
+        "swiss design",
+        "international typographic style",
+        "swiss editorial",
+        "editorial swiss"
+      ]
+    },
+    {
+      "id": "bento",
+      "label": "Bento Grid",
+      "description": "Modular card composition with varied, purposeful panel sizes.",
+      "path": "styles/bento.md",
+      "recommended_for": "Product overviews, portfolios, landing pages and feature discovery.",
+      "aliases": [
+        "bento grid",
+        "bento layout",
+        "bento ui"
+      ]
+    },
+    {
+      "id": "skeuomorphism",
+      "label": "Skeuomorphism",
+      "description": "Digital controls borrow useful affordances from physical objects.",
+      "path": "styles/skeuomorphism.md",
+      "recommended_for": "Music tools, specialized controls, educational simulations and playful product interfaces.",
+      "aliases": [
+        "skeuomorphic",
+        "skeuomorph",
+        "skeuomorfisme",
+        "skeumorphism",
+        "skeumorphsm",
+        "skeumorfisme",
+        "skeuomorpism",
+        "skeuomorphic ui",
+        "physical ui",
+        "realistic physical controls"
+      ]
+    },
+    {
+      "id": "retro-terminal",
+      "label": "Retro Terminal",
+      "description": "Developer-console visual language with modern usability.",
+      "path": "styles/retro-terminal.md",
+      "recommended_for": "Developer portfolios, CLI dashboards, cyberculture experiences and coding tools.",
+      "aliases": [
+        "terminal ui",
+        "terminal aesthetic",
+        "retro terminal",
+        "cli style",
+        "console aesthetic",
+        "terminal style"
+      ]
+    },
+    {
+      "id": "enterprise",
+      "label": "Enterprise / Data-first",
+      "description": "Efficient professional interfaces designed for repeated workflows.",
+      "path": "styles/enterprise.md",
+      "recommended_for": "Admin consoles, B2B SaaS, trading and logistics operations, dashboards.",
+      "aliases": [
+        "data first",
+        "data-first ui",
+        "enterprise ui",
+        "enterprise design",
+        "professional data ui"
+      ]
+    }
+  ]
+}

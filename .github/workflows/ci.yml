@@ -1,0 +1,31 @@
+name: Validate Taste Engine
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate discovery mirror
+        run: python3 scripts/sync-agent-skills.py --check
+      - name: Validate skill packs
+        run: python3 taste-engine/scripts/validate-pack.py
+      - name: Run Python tests
+        run: python3 -m unittest discover -s taste-engine/tests -p 'test_*.py'
+      - name: Run CLI tests
+        run: node --test tests/cli.test.mjs
+      - name: Build release ZIP
+        run: python3 scripts/build-release.py
+      - name: Verify archive integrity
+        run: unzip -t dist/taste-engine-v*.zip | tail -1

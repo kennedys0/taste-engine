@@ -1,0 +1,31 @@
+name: Publish release
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verify tag, build release archive
+        run: python3 scripts/build-release.py --verify-tag "$GITHUB_REF_NAME"
+      - name: Validate discovery mirror
+        run: python3 scripts/sync-agent-skills.py --check
+      - name: Validate skill packs
+        run: python3 taste-engine/scripts/validate-pack.py
+      - name: Run Python tests
+        run: python3 -m unittest discover -s taste-engine/tests -p 'test_*.py'
+      - name: Run CLI tests
+        run: node --test tests/cli.test.mjs
+      - name: Publish updater-compatible archive
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create "$GITHUB_REF_NAME" "dist/taste-engine-${GITHUB_REF_NAME}.zip" --verify-tag --generate-notes --title "Taste Engine ${GITHUB_REF_NAME}"

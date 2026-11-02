@@ -1,0 +1,93 @@
+{
+  "version": "0.7.0",
+  "description": "Style-aligned optional motion guidance; not a requirement to install Anime.js. Durations are design starting points, not guaranteed runtime values.",
+  "styles": {
+    "claymorphism": {
+      "interaction": "Pressed button with 1–2% compression and a brief return; keep existing sculpted shading.",
+      "duration_ms": 180,
+      "allowed": [
+        "scale",
+        "opacity"
+      ],
+      "avoid": "bounce, overshoot, floating loops"
+    },
+    "glassmorphism": {
+      "interaction": "Short surface opacity/translate transitions for revealing real layers; keep content contrast stable.",
+      "duration_ms": 180,
+      "allowed": [
+        "opacity",
+        "translate"
+      ],
+      "avoid": "animating blur radius or continuous glow"
+    },
+    "brutalism": {
+      "interaction": "Use immediate state flips by default; Anime.js generally unnecessary.",
+      "duration_ms": 0,
+      "allowed": [
+        "opacity"
+      ],
+      "avoid": "springs, sliding reveals, theatrical scroll animations"
+    },
+    "neo-brutalism": {
+      "interaction": "Short direct 1–2px button shift with a matching hard-shadow response; never animate giant shadows.",
+      "duration_ms": 130,
+      "allowed": [
+        "translate"
+      ],
+      "avoid": "bounce and endlessly moving stickers"
+    },
+    "minimalism": {
+      "interaction": "Short opacity or translation feedback only on a meaningful state change.",
+      "duration_ms": 140,
+      "allowed": [
+        "opacity",
+        "translate"
+      ],
+      "avoid": "reveal-everything choreography"
+    },
+    "swiss-editorial": {
+      "interaction": "Precise, restrained underlines or sectional changes that preserve reading flow.",
+      "duration_ms": 160,
+      "allowed": [
+        "opacity",
+        "translate"
+      ],
+      "avoid": "word-by-word autoplay and gratuitous kinetic text"
+    },
+    "bento": {
+      "interaction": "Animate a tile only when its contents or layout genuinely change; ensure stable reading order.",
+      "duration_ms": 180,
+      "allowed": [
+        "opacity",
+        "translate",
+        "scale"
+      ],
+      "avoid": "every tile animating on initial page load"
+    },
+    "skeuomorphism": {
+      "interaction": "Believable short travel of a physical control with strong immediate feedback.",
+      "duration_ms": 190,
+      "allowed": [
+        "translate",
+        "scale"
+      ],
+      "avoid": "slow springs, idle knob movement, decorative sounds"
+    },
+    "retro-terminal": {
+      "interaction": "Immediate state changes; optional skippable typing demo only when user asks.",
+      "duration_ms": 0,
+      "allowed": [
+        "opacity"
+      ],
+      "avoid": "typing essential instructions and never-ending blinking gimmicks"
+    },
+    "enterprise": {
+      "interaction": "Minimal immediate feedback, no distracting animation during repeated data work.",
+      "duration_ms": 110,
+      "allowed": [
+        "opacity"
+      ],
+      "avoid": "staggering tables, moving metrics, and loading delays"
+    }
+  }
+}

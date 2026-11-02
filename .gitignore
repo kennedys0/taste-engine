@@ -1,0 +1,20 @@
+# Python / tests
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+venv/
+# Release outputs
+dist/
+build/
+# Agent and IDE local data
+.idea/
+.vscode/
+.env
+.env.*
+!.env.example
+# OS and backups
+.DS_Store
+Thumbs.db
+.taste-engine-backups/
+.taste-engine-update.*/

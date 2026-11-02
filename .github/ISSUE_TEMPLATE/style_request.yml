@@ -1,0 +1,23 @@
+name: New style request
+description: Suggest a visual design style to add
+title: "style: "
+labels: [enhancement]
+body:
+  - type: input
+    id: style
+    attributes:
+      label: Style name
+    validations:
+      required: true
+  - type: textarea
+    id: identity
+    attributes:
+      label: What distinguishes this style?
+      description: Explain materials, typography, geometry, surfaces, layout, motion, writing voice, and accessibility concerns.
+    validations:
+      required: true
+  - type: textarea
+    id: examples
+    attributes:
+      label: Optional references
+      description: Link to examples you have rights to share; explain why they are representative.

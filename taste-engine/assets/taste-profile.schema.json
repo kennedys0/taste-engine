@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/taste-engine/taste-profile.schema.json",
+  "title": "Taste Engine profile",
+  "type": "object",
+  "required": ["schema_version", "scope", "preferences"],
+  "properties": {
+    "schema_version": { "const": "1.0" },
+    "scope": { "type": "string", "enum": ["global", "project", "example-only"] },
+    "name": { "type": "string", "maxLength": 120 },
+    "preferences": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": ["value", "source", "confidence"],
+        "properties": {
+          "value": { "type": "string" },
+          "source": { "type": "string", "enum": ["explicit", "reference-inference", "user-confirmed", "unconfirmed"] },
+          "confidence": { "type": "string", "enum": ["high", "medium", "low"] }
+        },
+        "additionalProperties": false
+      }
+    },
+    "likes": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "dislikes": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+    "references": { "type": "array", "items": { "type": "string" } },
+    "notes": { "type": "string" }
+  },
+  "additionalProperties": false
+}

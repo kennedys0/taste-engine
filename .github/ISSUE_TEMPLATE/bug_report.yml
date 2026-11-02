@@ -1,0 +1,24 @@
+name: Bug report
+description: Report incorrect routing, broken validation, or problems in a style pack
+title: "bug: "
+labels: [bug]
+body:
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: Include your user prompt and expected skill routing.
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+      description: Include agent/tool and version. Redact all personal data and secrets.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction and evidence
+      description: Screenshots are optional; include steps and output when possible.
