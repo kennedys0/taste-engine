@@ -1,5 +1,11 @@
 <div align="center">
 
+# Taste Engine
+
+**The design skill that starts with your taste, not the model's defaults.**
+
+A portable, open-source Agent Skill for building distinctive, accessible frontends with user-selected visual styles, anti-slop quality gates, SEO guidance, and purposeful motion.
+
 <p align="center">
   <img
     src="./assets/banner.png"
@@ -7,12 +13,6 @@
     width="100%"
   />
 </p>
-
-# Taste Engine
-
-**The design skill that starts with your taste, not the model's defaults.**
-
-A portable, open-source Agent Skill for building distinctive, accessible frontends with user-selected visual styles, anti-slop quality gates, SEO guidance, and purposeful motion.
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-111111.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.10.0-4F46E5.svg)](CHANGELOG.md)
