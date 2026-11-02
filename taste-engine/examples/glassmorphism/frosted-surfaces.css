@@ -1,0 +1,79 @@
+/* Taste Engine Glassmorphism — reference CSS only. Adapt to the project.
+   A glass pane MUST filter differentiated content/light behind it.
+   Purposeful gradient light fields are ALLOWED by the glassmorphism-specific
+   exception to universal anti-slop. They explain material depth.
+   The fields are static compositional lighting, not fake information. */
+
+.taste-glass-scene {
+  --glass-surface: rgba(255, 255, 255, .38);
+  --glass-edge: rgba(255, 255, 255, .68);
+  --glass-ink: #15233d;
+  --glass-fallback: #f2f6fc;
+  --glass-shadow: 0 18px 55px rgba(28, 76, 156, .16);
+  position: relative;
+  isolation: isolate;
+  overflow: clip;
+  color: var(--glass-ink);
+  background:
+    radial-gradient(ellipse 42% 50% at 24% 68%, rgba(74, 139, 255, .82) 0%, transparent 100%),
+    radial-gradient(ellipse 38% 43% at 79% 25%, rgba(171, 197, 255, .92) 0%, transparent 100%),
+    linear-gradient(120deg, #f8fbff 0%, #e9f0fb 55%, #f2f4ff 100%);
+}
+
+/* Alternative valid preset; do not force dark onto every product. */
+.taste-glass-scene[data-glass-theme="dark"] {
+  --glass-surface: rgba(43, 53, 80, .42);
+  --glass-edge: rgba(232, 238, 255, .32);
+  --glass-ink: #f7f8ff;
+  --glass-fallback: #273147;
+  --glass-shadow: 0 20px 65px rgba(4, 7, 20, .36);
+  background:
+    radial-gradient(ellipse 40% 56% at 14% 22%, rgba(49, 147, 187, .48) 0%, transparent 100%),
+    radial-gradient(ellipse 46% 50% at 87% 73%, rgba(128, 62, 180, .55) 0%, transparent 100%),
+    linear-gradient(135deg, #0f1727 0%, #1a203a 60%, #121725 100%);
+}
+
+/* Glass should overlap a real light/color transition, not empty flat space.
+   Avoid moving gradient loops; edit positions to suit the page anatomy. */
+.taste-glass-pane {
+  position: relative;
+  color: var(--glass-ink);
+  background: var(--glass-surface);
+  border: 1px solid var(--glass-edge);
+  border-radius: 24px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .30), var(--glass-shadow);
+  -webkit-backdrop-filter: blur(18px) saturate(145%);
+  backdrop-filter: blur(18px) saturate(145%);
+}
+
+/* The short top reflection should not intercept clicks/focus. */
+.taste-glass-pane::before {
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  inset: 0 0 auto;
+  height: 1px;
+  border-radius: inherit;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.65), transparent);
+}
+
+.taste-glass-pane :is(button, a, input, select, textarea):focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}
+
+@supports not ((backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px))) {
+  .taste-glass-pane { background: var(--glass-fallback); }
+}
+
+@media (prefers-reduced-transparency: reduce), (forced-colors: active) {
+  .taste-glass-pane {
+    background: var(--glass-fallback);
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .taste-glass-pane, .taste-glass-pane * { animation: none !important; transition-duration: 0ms !important; }
+}

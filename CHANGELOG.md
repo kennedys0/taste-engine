@@ -2,6 +2,23 @@
 
 All notable changes to Taste Engine are documented here. Release tags use semantic versioning.
 
+## [0.10.2] - 2026-11-03
+
+### Refined
+
+- Explicit Glassmorphism exemption from anti-slop's default gradient caution: purposeful radial, linear, mesh, or ambient color backgrounds are a legitimate part of glass material fidelity.
+- Clarified the layered-backdrop composition test: glass panes must visibly filter a local color transition, while the uncovered backdrop stays differentiated.
+- Strengthened light/dark static CSS gradient examples and manual visual quality checks without requiring new libraries, continuous motion, or non-glass style changes.
+- Updated portable router, standalone Glassmorphism skill, validator and release package.
+
+## [0.10.1] - 2026-11-03
+
+### Improved
+
+- Strengthened Glassmorphism as a **visible frosted material**, not a dark theme or a blur class: mandatory first-viewport material fidelity gate, composited contrast and responsive checks.
+- Supported both milky/light and smoked/dark glass, with dedicated CSS recipe and manual screenshot acceptance criteria.
+- Updated standalone glass style skill, registry aliases, validator, and router; preserved style-neutral routing and the existing SEO/motion/anti-slop system.
+
 ## [0.10.0] - 2026-11-02
 
 ### Added

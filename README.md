@@ -6,21 +6,17 @@
 
 A portable, open-source Agent Skill for building distinctive, accessible frontends with user-selected visual styles, anti-slop quality gates, SEO guidance, and purposeful motion.
 
-<p align="center">
-  <img
-    src="./assets/banner.png"
-    alt="Taste Engine — Design systems for AI agents, routed by taste"
-    width="100%"
-  />
-</p>
-
 [![License: MIT](https://img.shields.io/badge/license-MIT-111111.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.10.0-4F46E5.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.10.2-4F46E5.svg)](CHANGELOG.md)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-111111.svg)](https://agentskills.io/)
 
 [Installation](#install) · [How it works](#how-it-works) · [Styles](#style-library) · [Quality principles](#quality-without-a-house-style) · [Contributing](#contributing)
 
 </div>
+
+## Aesthetic fidelity, not aesthetic labels
+
+The chosen style must be recognizable in the finished UI. For example, the Glassmorphism pack now includes a screenshot-level material gate and light/dark frosted-surface recipe: a flat dark page with a blue button **does not pass** simply because it is called glassmorphism. **Material-supporting radial, mesh, and ambient gradients are explicitly allowed** to reveal glass depth; the anti-slop rule rejects only purposeless, inaccessible effects. [Read the Glassmorphism pack](taste-engine/styles/glassmorphism.md) and [visual QA](taste-engine/tests/glassmorphism-visual.md).
 
 ## Why Taste Engine?
 

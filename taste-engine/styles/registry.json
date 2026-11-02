@@ -20,7 +20,7 @@
     {
       "id": "glassmorphism",
       "label": "Glassmorphism",
-      "description": "Translucent layered planes with crisp content.",
+      "description": "Recognizable frosted, translucent panes filtering layered ambient light, in light or dark glass themes.",
       "path": "styles/glassmorphism.md",
       "recommended_for": "Marketing microsites, media interfaces, hero sections and light dashboards.",
       "aliases": [
@@ -31,7 +31,10 @@
         "frosted glass",
         "frosted ui",
         "glass ui",
-        "kaca buram"
+        "kaca buram",
+        "glassmorphsm",
+        "glass morph",
+        "frosted glass ui"
       ]
     },
     {

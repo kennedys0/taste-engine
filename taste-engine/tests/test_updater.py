@@ -4,10 +4,12 @@ from pathlib import Path
 from zipfile import ZipFile, ZIP_DEFLATED
 import shutil
 import subprocess
+import re
 import tempfile
 
 SKILL = Path(__file__).resolve().parents[1]
 UPDATER = SKILL / "scripts/update.sh"
+CURRENT_VERSION = re.search(r'version: "([0-9]+\.[0-9]+\.[0-9]+)"', (SKILL / "SKILL.md").read_text()).group(1)
 
 
 def make_zip(path: Path, source: Path, tamper=None):
@@ -37,7 +39,7 @@ with tempfile.TemporaryDirectory(prefix="taste-engine-update-test-") as tmp:
     target.parent.mkdir()
     shutil.copytree(SKILL, target)
     skill_file = target / "SKILL.md"
-    skill_file.write_text(skill_file.read_text().replace('version: "0.10.0"', 'version: "0.9.9"'))
+    skill_file.write_text(skill_file.read_text().replace(f'version: "{CURRENT_VERSION}"', 'version: "0.9.9"'))
     (target / "original-state.txt").write_text("preserve on failure")
 
     package = base / "update.zip"
@@ -71,7 +73,7 @@ with tempfile.TemporaryDirectory(prefix="taste-engine-update-test-") as tmp:
 
     # Successful update, backup retained out of skill discovery path.
     run("--zip", package, "--target", target)
-    assert "0.10.0" in skill_file.read_text()
+    assert CURRENT_VERSION in skill_file.read_text()
     backups = list((base / ".taste-engine-backups").glob("taste-engine-*/original-state.txt"))
     assert len(backups) == 1 and backups[0].read_text() == "preserve on failure"
 
