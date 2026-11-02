@@ -1,3 +1,11 @@
+<p align="center">
+  <img
+    src="./assets/banner.png"
+    alt="Taste Engine — Design systems for AI agents, routed by taste"
+    width="100%"
+  />
+</p>
+
 <div align="center">
 
 # Taste Engine
