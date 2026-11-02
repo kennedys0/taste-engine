@@ -28,4 +28,10 @@ jobs:
       - name: Publish updater-compatible archive
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release create "$GITHUB_REF_NAME" "dist/taste-engine-${GITHUB_REF_NAME}.zip" --verify-tag --generate-notes --title "Taste Engine ${GITHUB_REF_NAME}"
+        run: |
+          if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
+            echo "Release $GITHUB_REF_NAME already exists. Uploading asset..."
+            gh release upload "$GITHUB_REF_NAME" "dist/taste-engine-${GITHUB_REF_NAME}.zip" --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" "dist/taste-engine-${GITHUB_REF_NAME}.zip" --verify-tag --generate-notes --title "Taste Engine ${GITHUB_REF_NAME}"
+          fi
