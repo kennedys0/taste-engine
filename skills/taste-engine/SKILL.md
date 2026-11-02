@@ -3,12 +3,20 @@ name: taste-engine
 description: Automatically routes visual UI work to a user-chosen aesthetic and applies SEO readiness to public-facing websites. Use whenever a user asks to build, create, design, or redesign a website, portfolio, landing page, dashboard, web app, mobile app, UI/UX screen, frontend, or component, or add/refine micro-interactions or full-screen hero sections (including Indonesian prompts such as "build a portfolio website"). Before writing UI code, ask ONE style question and stop if no visual style or approved project design system is specified. If the prompt already names an aesthetic such as skeuomorphism/skeumorphsm, claymorphism, glassmorphism, brutalism, neo-brutalism, minimalism, bento, or editorial, load its bundled style pack immediately and proceed WITHOUT asking again. Preserve established styles for minor fixes; for SEO-only tasks, load the SEO module without a visual style question; skip unrelated non-visual work.
 license: MIT
 metadata:
-  version: "0.10.0"
+  version: "0.10.2"
 ---
 
 # Taste Engine — style router
 
 **One universal process, many independent tastes — with anti-slop, conditional public SEO and optional style-aligned motion.** Taste Engine controls **when to ask, which selected style pack to load, and how to enforce it**. The engine itself has no house aesthetic. Style packs in `styles/*.md` contain the actual design instructions.
+
+## Material fidelity (selected styles) — screenshot-level contract
+
+Selected visual aesthetics must be **recognizable from the rendered interface**, not just stated in headings or CSS variable names. When `glassmorphism` is selected, load `styles/glassmorphism.md` and apply its mandatory **Glass material fidelity gate**: real visibly frosted/tinted panes filtering differentiated background light, readable reflections/edges, and accessible fallback. A flat navy hero plus a blue CTA is not Glassmorphism. Use `tests/glassmorphism-visual.md` for acceptance checks and `examples/glassmorphism/frosted-surfaces.css` as a starting recipe. Do not apply this glass-specific check to other styles; every aesthetic retains its own requirements.
+
+## Glassmorphism-specific gradient exception
+
+When Glassmorphism is selected, **purposeful CSS gradient backdrops, ambient light fields and controlled soft color shapes are explicitly permitted** because they make translucent frosting and depth visible. Do not remove these to satisfy general anti-slop gradient warnings. Read `styles/glassmorphism.md` ("Explicit background gradient exception") and validate that the first viewport shows a real pane filtering its differentiated backdrop. This exemption applies only to the selected material and never overrides usability, truthfulness, accessibility or user constraints.
 
 ## Automatic invocation: the zero-command contract
 
