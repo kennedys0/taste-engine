@@ -2,6 +2,21 @@
 
 All notable changes to Taste Engine are documented here. Release tags use semantic versioning.
 
+## [0.10.5] - 2026-11-03
+
+### Added
+
+- **Interactive Live Style Gallery & Showcase:** Added comprehensive interactive documentation in `docs/index.html` showcasing all 10 curated frontend aesthetic archetypes with live Light/Dark mode toggling, 1-click token clipboard copying, and responsive preview viewports.
+- **CLI Gallery Command:** Added `taste-engine gallery` command in `bin/taste-engine.mjs` to launch and explore the interactive style showcase locally in the browser.
+- **Brand Identity & WebP Assets:** Added production-ready WebP branding assets (`assets/logo.webp`, `assets/banner.webp`, and `docs/assets/`) with high-resolution visual headers.
+- **Interactive Architecture & Installation Guides:** Integrated multi-agent tabbed installation instructions (Antigravity IDE, CLI, Claude Code, Codex), interactive FAQ accordions, pipeline architecture flows, and token quick-reference cheatsheets into the showcase.
+
+### Improved
+
+- **Tactile Neumorphic Dark Mode Alignment:** Aligned dark mode theme tokens with tactile soft clay and neumorphic specifications: matte charcoal surfaces (`#15171c`), sunken relief wells (`#121317`), specular bevels, and radiant neon violet/cyan gradients.
+- **Global Documentation Localization:** Localized all style packs, architecture documentation, guidelines, and showcase copy to standard English.
+- **Release Workflow Idempotency:** Hardened GitHub Actions release workflow (`.github/workflows/release.yml`) to automatically inspect existing releases and perform seamless asset re-uploading without tag conflicts.
+
 ## [0.10.3] - 2026-11-03
 
 ### Improved
