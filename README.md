@@ -8,7 +8,7 @@ A portable, open-source Agent Skill for building distinctive, accessible fronten
 
 <p align="center">
   <img
-    src="./assets/banner.png"
+    src="./assets/banner.webp"
     alt="Taste Engine — Design systems for AI agents, routed by taste"
     width="100%"
   />
