@@ -7,6 +7,7 @@ All styles must run the same **integrity floor**. Above the floor, style-specifi
 - Invented or misleading factual content, states, people, statistics, reviews, logos, authorizations, payment/success confirmations or live indicators.
 - A primary action that appears functional but does nothing; essential controls with no label, keyboard route or visible focus; misrepresented destructive actions.
 - Important text or primary actions hidden, clipped, obstructed or unreadable on supported viewports; insufficient contrast and inaccessible motion with no usable reduction.
+- **Theme and mode contrast collisions:** when switching or requesting dark mode or light mode, background and foreground/text MUST adapt together as coupled tokens. Background and text colliding with the same or unreadable polarity (e.g. black text on black background, white text on white background, unreadable low-contrast placeholders or borders) is a blocking defect. Both modes must meet WCAG AA contrast (minimum 4.5:1 for body/normal text, 3:1 for large headlines and interactive boundaries).
 - Data chart distortion that materially misleads viewers (e.g. truncated bar baselines without explicit justified encoding); inaccessible data with no text/accessible alternative.
 - Security/privacy or user-consent regressions during a visual redesign.
 

@@ -8,6 +8,21 @@
   --taste-brutal-border: 2.5px solid #000000;
   --taste-brutal-signal: #ff0000;
   --taste-brutal-radius: 0px;
+  --taste-brutal-btn-bg: #ffffff;
+  --taste-brutal-btn-ink: #000000;
+  --taste-brutal-btn-hover-bg: #000000;
+  --taste-brutal-btn-hover-ink: #ffffff;
+}
+
+[data-theme="dark"], .taste-brutal-scene[data-theme="dark"] {
+  --taste-brutal-bg: #000000;
+  --taste-brutal-ink: #ffffff;
+  --taste-brutal-border: 2.5px solid #ffffff;
+  --taste-brutal-signal: #ff3333;
+  --taste-brutal-btn-bg: #000000;
+  --taste-brutal-btn-ink: #ffffff;
+  --taste-brutal-btn-hover-bg: #ffffff;
+  --taste-brutal-btn-hover-ink: #000000;
 }
 
 .taste-brutal-scene {
@@ -43,8 +58,8 @@
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  background-color: #ffffff;
-  color: #000000;
+  background-color: var(--taste-brutal-btn-bg);
+  color: var(--taste-brutal-btn-ink);
   border: var(--taste-brutal-border);
   border-radius: var(--taste-brutal-radius);
   padding: 14px 32px;
@@ -61,8 +76,8 @@
 
 .taste-brutal-btn:hover,
 .taste-brutal-btn:active {
-  background-color: #000000;
-  color: #ffffff;
+  background-color: var(--taste-brutal-btn-hover-bg);
+  color: var(--taste-brutal-btn-hover-ink);
 }
 
 .taste-brutal-btn:focus-visible {

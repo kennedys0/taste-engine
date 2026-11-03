@@ -51,11 +51,19 @@ Utilitarian technical sans or display mono: IBM Plex Sans, DIN Next, Roboto Mono
 
 ## Color direction
 
-- **Chassis Base:** Machined slate / anodized gunmetal (`#22252A` to `#2C3038`).
-- **Surface Highlights:** Specular white hairline (`rgba(255, 255, 255, 0.40)`).
-- **Recessed Inset Wells:** Deep cavity black (`#141619` to `#181A1E`).
+- **Dark Mode (Anodized Gunmetal Dark Chassis):**
+  - **Chassis Base:** Machined slate / anodized gunmetal gradient (`linear-gradient(180deg, #323741 0%, #262A32 100%)`).
+  - **Surface Highlights:** Specular white hairline (`rgba(255, 255, 255, 0.40)`).
+  - **Recessed Inset Wells:** Deep cavity black (`#141619` to `#181A1E`).
+  - **Control Labels:** Crisp engraved white/silver typography (`#F3F4F6`).
+- **Light Mode (Brushed Aluminum / Silver Chassis):**
+  - **Chassis Base:** Machined aluminum / silver gradient (`linear-gradient(180deg, #F5F7FA 0%, #E4E7EB 100%)`).
+  - **Surface Highlights:** Specular white hairline (`rgba(255, 255, 255, 0.85)`).
+  - **Recessed Inset Wells:** Soft recessed slate cavity (`#D1D5DB` with inset shadow).
+  - **Control Labels:** Deep engraved charcoal ink (`#1F2937` or `#111827`).
 - **Physical Accents:** Signal amber (`#FFAE00`), aviation green (`#10B981`), or studio cobalt (`#2563EB`).
 - **LED Indicators:** Crisp jewel colors with distinct active glow vs dark inactive state.
+- **Theme Coupling & Anti-Collision Rule:** In light skeuomorphic chassis mode, engraved labels and control text MUST flip to deep charcoal (`#1F2937`). Leaving white labels on a brushed silver/aluminum chassis produces invisible text and is strictly prohibited.
 
 ## Layout and geometry
 
@@ -92,20 +100,21 @@ Technical, precise, and concise. Examples: “Master Output”, “Bypass”, �
 
 ## Starter tokens (suggestions, not a complete theme)
 
-| Token | Starting value |
-| --- | --- |
-| `--taste-skeuo-chassis-bg` | `linear-gradient(180deg, #323741 0%, #262a32 100%)` |
-| `--taste-skeuo-chassis-border` | `1px solid rgba(0, 0, 0, 0.8)` |
-| `--taste-skeuo-chassis-highlight` | `inset 0 1px 0 rgba(255, 255, 255, 0.25)` |
-| `--taste-skeuo-btn-bg` | `linear-gradient(180deg, #3c424f 0%, #2a2e37 100%)` |
-| `--taste-skeuo-btn-bevel` | `inset 0 1px 0 rgba(255, 255, 255, 0.40), inset 0 -1px 0 rgba(0, 0, 0, 0.50)` |
-| `--taste-skeuo-btn-shadow` | `0 4px 8px rgba(0, 0, 0, 0.50), 0 1px 2px rgba(0, 0, 0, 0.40)` |
-| `--taste-skeuo-well-inset` | `inset 0 3px 6px rgba(0, 0, 0, 0.70), 0 1px 0 rgba(255, 255, 255, 0.12)` |
-| `--taste-skeuo-led-active` | `#10b981` |
-| `--taste-skeuo-led-glow` | `0 0 10px rgba(16, 185, 129, 0.75)` |
-| `--taste-skeuo-radius-panel` | `12px` |
-| `--taste-skeuo-font-mono` | `IBM Plex Mono, ui-monospace, monospace` |
-| `--taste-skeuo-motion-duration` | `160ms` |
+| Token | Dark chassis default | Light chassis default |
+| --- | --- | --- |
+| `--taste-skeuo-chassis-bg` | `linear-gradient(180deg, #323741 0%, #262a32 100%)` | `linear-gradient(180deg, #f5f7fa 0%, #e4e7eb 100%)` |
+| `--taste-skeuo-chassis-border` | `1px solid rgba(0, 0, 0, 0.8)` | `1px solid rgba(0, 0, 0, 0.15)` |
+| `--taste-skeuo-chassis-highlight` | `inset 0 1px 0 rgba(255, 255, 255, 0.25)` | `inset 0 1px 0 rgba(255, 255, 255, 0.90)` |
+| `--taste-skeuo-text` | `#f3f4f6` | `#1f2937` |
+| `--taste-skeuo-btn-bg` | `linear-gradient(180deg, #3c424f 0%, #2a2e37 100%)` | `linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%)` |
+| `--taste-skeuo-btn-bevel` | `inset 0 1px 0 rgba(255, 255, 255, 0.40), inset 0 -1px 0 rgba(0, 0, 0, 0.50)` | `inset 0 1px 0 rgba(255, 255, 255, 0.80), inset 0 -1px 0 rgba(0, 0, 0, 0.20)` |
+| `--taste-skeuo-btn-shadow` | `0 4px 8px rgba(0, 0, 0, 0.50), 0 1px 2px rgba(0, 0, 0, 0.40)` | `0 4px 8px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08)` |
+| `--taste-skeuo-well-inset` | `inset 0 3px 6px rgba(0, 0, 0, 0.70), 0 1px 0 rgba(255, 255, 255, 0.12)` | `inset 0 3px 6px rgba(0, 0, 0, 0.18), 0 1px 0 rgba(255, 255, 255, 0.80)` |
+| `--taste-skeuo-led-active` | `#10b981` | `#059669` |
+| `--taste-skeuo-led-glow` | `0 0 10px rgba(16, 185, 129, 0.75)` | `0 0 8px rgba(5, 150, 105, 0.45)` |
+| `--taste-skeuo-radius-panel` | `12px` | `12px` |
+| `--taste-skeuo-font-mono` | `IBM Plex Mono, ui-monospace, monospace` | `IBM Plex Mono, ui-monospace, monospace` |
+| `--taste-skeuo-motion-duration` | `160ms` | `160ms` |
 
 Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-skeuo-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values.
 
@@ -116,8 +125,8 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 ## Style-specific quality gate
 
-- **Do:** Verify consistent top-down specular highlight across all controls; ensure mechanical press states depress smoothly; provide numerical readouts alongside dials/sliders; test keyboard focus.
-- **Don't:** Do not treat a plain dark theme as skeuomorphic; do not add non-functional decorative screws or fake analog needles that don't connect to real data; avoid unreadable low-contrast text on dark faceplates.
+- **Do:** Verify consistent top-down specular highlight across all controls; ensure mechanical press states depress smoothly; provide numerical readouts alongside dials/sliders; test keyboard focus; verify dark/light mode switching so chassis, bevel highlights, wells, and label typography adapt in coupled pairs.
+- **Don't:** Do not treat a plain dark theme as skeuomorphic; do not add non-functional decorative screws or fake analog needles that don't connect to real data; avoid unreadable low-contrast text on dark faceplates or white labels on silver light faceplates.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -129,19 +138,21 @@ Do not add decorative **card-inside-card** layers: a nested surface must represe
 
 **Anti-slop copywriting:** no generic "Unlock your potential", "Experience the future", "Supercharge your workflow", "seamless" claims, or translated equivalents. Headings must communicate actual content, CTAs must name the action, and empty/error/success text must describe real states and next steps. Avoid fake urgency, made-up counts, vague AI hype, gratuitous emoji, and inaccessible all-caps walls. Adapt the wording to this style and the user's language without changing the truth.
 
+**Theme and mode contrast integrity:** When a user requests dark mode or light mode (or builds a theme switcher), background and foreground colors MUST flip in synchronized pairs across all surfaces, text, borders, inputs, and semantic badges. Never leave black text on dark background, white text on white background, or unreadable low-contrast status pills. All states must meet WCAG AA contrast (minimum 4.5:1 for body/normal text, 3:1 for large headlines and interactive boundaries).
+
 **Responsive and motion:** compose mobile deliberately, check long labels, focus states and accessible contrast; no text clipping to fit a trendy layout. Static by default; use motion for meaningful interactions, respect reduced-motion preferences, avoid bounce/floating/pulsing decoration without a real state.
 
-**Critical/High findings block completion:** fabricated status/data, broken actions, inaccessible/clipped controls, misleading copy or significant mobile failure must be fixed. Report what was actually verified; do not claim tests that did not run.
+**Critical/High findings block completion:** fabricated status/data, broken actions, inaccessible/clipped controls, misleading copy, theme contrast collisions or significant mobile failure must be fixed. Report what was actually verified; do not claim tests that did not run.
 
 **Not an aesthetics veto:** expressive colors, shadows, gradients, card layouts or decorative treatments are legitimate when they are intentional parts of the selected aesthetic and pass usability checks. Do not silently force minimalism.
 
 ## Anti-slop: style-specific
 
-**Physical utility, not nostalgic clutter.**
+**Physical precision, not decorative skeuo-noise.**
 
-- **Reject:** Non-functional decorative dials, fake audio cables, ornamental screws without chassis purpose, static needle meters displaying fake readings, and heavy textures that render body text unreadable.
-- **Instead:** Use physical tactile affordance where it improves user understanding and direct control; pair with accessible keyboard inputs and clean digital fallbacks.
-- **Copy check:** Use exact engineering and instrument terms; avoid fake nostalgic hype slogans.
+- **Reject:** Disconnected dials that control nothing, decorative screw heads with no enclosure context, unreadable white text on brushed aluminum, and fake needles stuck at arbitrary angles.
+- **Instead:** Apply tactile depth to interactive controls that map directly to state, volume, balance, or user parameters.
+- **Copy check:** Labels should mimic industrial equipment (engraved, brief, functional).
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `skeuomorphism`.
 
 ## Quality tiers (standalone)

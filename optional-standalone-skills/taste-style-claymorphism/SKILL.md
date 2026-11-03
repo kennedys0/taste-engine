@@ -58,10 +58,17 @@ Friendly humanist or geometric sans: Manrope, Nunito Sans, or system sans. Weigh
 
 Choose a cohesive pastel-and-saturated palette:
 
-- **Canvas Base:** Soft pastel lilac / lavender (`#D7D1F1` or `--taste-clay-bg: #d7d1f1`).
-- **Primary Saturated Clay:** Vibrant violet/purple (`#813FFC`) with white text (`#FFFFFF`), bright top-left white highlight, and deep purple bottom-right form shadow.
-- **Secondary Light Clay:** Soft off-white porcelain (`#ECEBF5` / `#F0EFF7`) with dark ink (`#28233D`), bright top-left highlight, and soft lavender bottom-right form shadow.
-- **Sunken Input Wells:** Canvas-tinted well (`#D7D1F1`) framed by a crisp white relief rim (`3px solid rgba(255, 255, 255, 0.85)`), recessed inset shadow, and legible placeholder (`#8F87B0`).
+- **Light Mode (Light Porcelain Clay):**
+  - **Canvas Base:** Soft pastel lilac / lavender (`#D7D1F1` or `--taste-clay-bg: #d7d1f1`).
+  - **Primary Saturated Clay:** Vibrant violet/purple (`#813FFC`) with white text (`#FFFFFF`), bright top-left white highlight, and deep purple bottom-right form shadow.
+  - **Secondary Light Clay:** Soft off-white porcelain (`#ECEBF5` / `#F0EFF7`) with dark ink (`#28233D`), bright top-left highlight, and soft lavender bottom-right form shadow.
+  - **Sunken Input Wells:** Canvas-tinted well (`#D7D1F1`) framed by a crisp white relief rim (`3px solid rgba(255, 255, 255, 0.85)`), recessed inset shadow, and legible placeholder (`#8F87B0`).
+- **Dark Mode (Deep Night Sculpted Clay):**
+  - **Canvas Base:** Moody obsidian-indigo (`#161326`).
+  - **Primary Saturated Clay:** Vibrant violet/purple (`#813FFC`) with pure white text (`#FFFFFF`), top-left highlight, and dark violet form shadow.
+  - **Secondary Clay Surface:** Rich sculpted plum/slate (`#26203D`) with crisp pale porcelain text (`#F3F0FA`), soft translucent top-left highlight (`rgba(255, 255, 255, 0.15)`), and deep black bottom-right form shadow (`rgba(10, 5, 25, 0.60)`).
+  - **Sunken Input Wells:** Deep recessed well (`#1E1A33`) framed by a subtle relief rim (`3px solid rgba(255, 255, 255, 0.20)`), recessed inset shadow, and legible placeholder (`#A49BBF`).
+- **Theme Contrast Coupling:** When switching to dark mode, text on secondary clay surfaces MUST flip from dark ink (`#28233D`) to pale porcelain (`#F3F0FA`). Leaving dark ink text on dark clay creates an immediate contrast failure. Saturated primary buttons retain pure white text (`#FFFFFF`) with 4.5:1+ contrast in both modes.
 
 ## Layout and geometry
 
@@ -104,23 +111,25 @@ Warm and concrete. Examples: “Submit”, “Go Back”, “Enter your Username
 
 ## Starter tokens (suggestions, not a complete theme)
 
-| Token | Starting value |
-| --- | --- |
-| `--taste-clay-bg` | `#d7d1f1` |
-| `--taste-clay-primary` | `#813ffc` |
-| `--taste-clay-light` | `#ecebf5` |
-| `--taste-clay-shadow-primary` | `8px 16px 24px rgba(100, 45, 210, 0.35), 2px 4px 8px rgba(70, 20, 150, 0.20)` |
-| `--taste-clay-inner-primary` | `inset 3px 4px 6px rgba(255, 255, 255, 0.45), inset -4px -6px 8px rgba(40, 10, 110, 0.40)` |
-| `--taste-clay-shadow-light` | `8px 16px 24px rgba(110, 95, 160, 0.20), 2px 4px 8px rgba(110, 95, 160, 0.12)` |
-| `--taste-clay-inner-light` | `inset 3px 4px 6px rgba(255, 255, 255, 0.95), inset -4px -6px 8px rgba(145, 135, 180, 0.35)` |
-| `--taste-clay-inner-well` | `inset 3px 4px 8px rgba(110, 95, 165, 0.25), inset -2px -2px 6px rgba(255, 255, 255, 0.70)` |
-| `--taste-clay-well-rim` | `3px solid rgba(255, 255, 255, 0.85)` |
-| `--taste-clay-radius-pill` | `9999px` |
-| `--taste-clay-radius-btn` | `24px` |
-| `--taste-clay-radius-card` | `28px` |
-| `--taste-clay-radius-squircle` | `14px` |
-| `--taste-font-body` | `Manrope, system-ui, sans-serif` |
-| `--taste-motion-duration` | `180ms` |
+| Token | Light mode default | Dark mode default |
+| --- | --- | --- |
+| `--taste-clay-bg` | `#d7d1f1` | `#161326` |
+| `--taste-clay-primary` | `#813ffc` | `#813ffc` |
+| `--taste-clay-light` | `#ecebf5` | `#26203d` |
+| `--taste-clay-text` | `#28233d` | `#f3f0fa` |
+| `--taste-clay-muted` | `#7c739e` | `#a49bbf` |
+| `--taste-clay-shadow-primary` | `8px 16px 24px rgba(100, 45, 210, 0.35), 2px 4px 8px rgba(70, 20, 150, 0.20)` | `8px 16px 24px rgba(10, 5, 25, 0.50), 2px 4px 8px rgba(10, 5, 25, 0.30)` |
+| `--taste-clay-inner-primary` | `inset 3px 4px 6px rgba(255, 255, 255, 0.45), inset -4px -6px 8px rgba(40, 10, 110, 0.40)` | `inset 3px 4px 6px rgba(255, 255, 255, 0.45), inset -4px -6px 8px rgba(40, 10, 110, 0.50)` |
+| `--taste-clay-shadow-light` | `8px 16px 24px rgba(110, 95, 160, 0.20), 2px 4px 8px rgba(110, 95, 160, 0.12)` | `8px 16px 24px rgba(0, 0, 0, 0.45), 2px 4px 8px rgba(0, 0, 0, 0.25)` |
+| `--taste-clay-inner-light` | `inset 3px 4px 6px rgba(255, 255, 255, 0.95), inset -4px -6px 8px rgba(145, 135, 180, 0.35)` | `inset 3px 4px 6px rgba(255, 255, 255, 0.15), inset -4px -6px 8px rgba(10, 5, 25, 0.60)` |
+| `--taste-clay-inner-well` | `inset 3px 4px 8px rgba(110, 95, 165, 0.25), inset -2px -2px 6px rgba(255, 255, 255, 0.70)` | `inset 3px 4px 8px rgba(0, 0, 0, 0.50), inset -2px -2px 6px rgba(255, 255, 255, 0.15)` |
+| `--taste-clay-well-rim` | `3px solid rgba(255, 255, 255, 0.85)` | `3px solid rgba(255, 255, 255, 0.20)` |
+| `--taste-clay-radius-pill` | `9999px` | `9999px` |
+| `--taste-clay-radius-btn` | `24px` | `24px` |
+| `--taste-clay-radius-card` | `28px` | `28px` |
+| `--taste-clay-radius-squircle` | `14px` | `14px` |
+| `--taste-font-body` | `Manrope, system-ui, sans-serif` | `Manrope, system-ui, sans-serif` |
+| `--taste-motion-duration` | `180ms` | `180ms` |
 
 Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-clay-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values.
 
@@ -131,8 +140,8 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 ## Style-specific quality gate
 
-- **Do:** Ensure tactile dual inner shadows are visible; maintain consistent light direction (top-left to bottom-right); provide tactile active/press states; verify WCAG AA contrast on both primary and light clay.
-- **Don't:** Do not treat simple rounded corners as clay; avoid balloon shadows, excessive glossy halos, unreadable light-on-light labels, and ornamental badges.
+- **Do:** Ensure tactile dual inner shadows are visible; maintain consistent light direction (top-left to bottom-right); provide tactile active/press states; verify WCAG AA contrast on both primary and light clay; verify dark/light mode switching so text and surface colors adapt in coupled pairs (e.g. pale porcelain text on dark clay, dark ink text on light clay).
+- **Don't:** Do not treat simple rounded corners as clay; avoid balloon shadows, excessive glossy halos, unreadable light-on-light labels, ornamental badges, and dark/light mode collisions where dark text remains on dark clay.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -144,9 +153,11 @@ Do not add decorative **card-inside-card** layers: a nested surface must represe
 
 **Anti-slop copywriting:** no generic "Unlock your potential", "Experience the future", "Supercharge your workflow", "seamless" claims, or translated equivalents. Headings must communicate actual content, CTAs must name the action, and empty/error/success text must describe real states and next steps. Avoid fake urgency, made-up counts, vague AI hype, gratuitous emoji, and inaccessible all-caps walls. Adapt the wording to this style and the user's language without changing the truth.
 
+**Theme and mode contrast integrity:** When a user requests dark mode or light mode (or builds a theme switcher), background and foreground colors MUST flip in synchronized pairs across all surfaces, text, borders, inputs, and semantic badges. Never leave black text on dark background, white text on white background, or unreadable low-contrast status pills. All states must meet WCAG AA contrast (minimum 4.5:1 for body/normal text, 3:1 for large headlines and interactive boundaries).
+
 **Responsive and motion:** compose mobile deliberately, check long labels, focus states and accessible contrast; no text clipping to fit a trendy layout. Static by default; use motion for meaningful interactions, respect reduced-motion preferences, avoid bounce/floating/pulsing decoration without a real state.
 
-**Critical/High findings block completion:** fabricated status/data, broken actions, inaccessible/clipped controls, misleading copy or significant mobile failure must be fixed. Report what was actually verified; do not claim tests that did not run.
+**Critical/High findings block completion:** fabricated status/data, broken actions, inaccessible/clipped controls, misleading copy, theme contrast collisions or significant mobile failure must be fixed. Report what was actually verified; do not claim tests that did not run.
 
 **Not an aesthetics veto:** expressive colors, shadows, gradients, card layouts or decorative treatments are legitimate when they are intentional parts of the selected aesthetic and pass usability checks. Do not silently force minimalism.
 
@@ -154,7 +165,7 @@ Do not add decorative **card-inside-card** layers: a nested surface must represe
 
 **Soft material, not toy inflation.**
 
-- **Reject:** Reject puffy balloon cards, donut shadow halos, glow borders, nested elevated shells, and repeating decorative status pills; make flat/raised/inset states distinct and consistent with one light direction.
+- **Reject:** Reject puffy balloon cards, donut shadow halos, glow borders, nested elevated shells, repeating decorative status pills, and dark/light theme collisions (such as leaving dark purple text on dark plum clay surfaces); make flat/raised/inset states distinct and consistent with one light direction.
 - **Instead:** Use one owning sculpted panel with spacing/dividers for internal content; reserve inset wells for real controls or containment.
 - **Copy check:** Keep copy calm and concrete rather than cutesy AI encouragement.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `claymorphism`.

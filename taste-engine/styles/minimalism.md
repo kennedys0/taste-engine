@@ -41,11 +41,18 @@ Pure, neutral UI sans: Inter, Source Sans 3, SF Pro, or system sans. Headlines: 
 
 ## Color direction
 
-- **Canvas Base:** Soft paper white (`#FAFAF9` or `#FFFFFF`).
-- **Typography / Ink:** Deep slate black (`#18181B`).
-- **Secondary Text:** Balanced neutral slate (`#52525B` — passes 4.5:1 WCAG AA).
-- **Hairline Divider:** Translucent gray (`rgba(0, 0, 0, 0.08)` or `#E4E4E7`).
-- **Brand Accent:** Singular functional accent (e.g. Cobalt `#2563EB` or Deep Forest `#059669`).
+- **Light Mode (Clean Studio Light):**
+  - **Canvas Base:** Soft paper white (`#FAFAF9` or `#FFFFFF`).
+  - **Typography / Ink:** Deep slate black (`#18181B`).
+  - **Secondary Text:** Balanced neutral slate (`#52525B` — passes 4.5:1 WCAG AA).
+  - **Hairline Divider:** Translucent gray (`rgba(0, 0, 0, 0.08)` or `#E4E4E7`).
+- **Dark Mode (Disciplined Studio Dark):**
+  - **Canvas Base:** Muted obsidian canvas (`#121214`).
+  - **Typography / Ink:** Crisp porcelain (`#F4F4F5`).
+  - **Secondary Text:** Balanced slate (`#A1A1AA` — passes 4.5:1 WCAG AA).
+  - **Hairline Divider:** Translucent white (`rgba(255, 255, 255, 0.10)` or `#27272A`).
+- **Brand Accent:** Singular functional accent (e.g. Cobalt `#2563EB` light / `#3B82F6` dark, or Deep Forest `#059669`).
+- **Theme Coupling Rule:** Canvas, typography, secondary text, and dividers MUST flip synchronously. When user requests dark mode, text must turn light (`#F4F4F5`); when light mode, text must turn dark (`#18181B`). Never leave dark text on dark canvas.
 
 ## Layout and geometry
 
@@ -79,16 +86,16 @@ Calm, concise, and helpful. Examples: “Save changes”, “Account settings”
 
 ## Starter tokens (suggestions, not a complete theme)
 
-| Token | Starting value |
-| --- | --- |
-| `--taste-mini-bg` | `#fafaf9` |
-| `--taste-mini-ink` | `#18181b` |
-| `--taste-mini-muted` | `#52525b` |
-| `--taste-mini-border` | `1px solid rgba(0, 0, 0, 0.08)` |
-| `--taste-mini-radius` | `8px` |
-| `--taste-mini-accent` | `#2563eb` |
-| `--taste-mini-font-body` | `Inter, -apple-system, system-ui, sans-serif` |
-| `--taste-mini-motion-duration` | `140ms` |
+| Token | Light mode default | Dark mode default |
+| --- | --- | --- |
+| `--taste-mini-bg` | `#fafaf9` | `#121214` |
+| `--taste-mini-ink` | `#18181b` | `#f4f4f5` |
+| `--taste-mini-muted` | `#52525b` | `#a1a1aa` |
+| `--taste-mini-border` | `1px solid rgba(0, 0, 0, 0.08)` | `1px solid rgba(255, 255, 255, 0.10)` |
+| `--taste-mini-radius` | `8px` | `8px` |
+| `--taste-mini-accent` | `#2563eb` | `#3b82f6` |
+| `--taste-mini-font-body` | `Inter, -apple-system, system-ui, sans-serif` | `Inter, -apple-system, system-ui, sans-serif` |
+| `--taste-mini-motion-duration` | `140ms` | `140ms` |
 
 Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-mini-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values.
 
@@ -99,15 +106,16 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 ## Style-specific quality gate
 
-- **Do:** Verify high text contrast (WCAG AA 4.5:1); ensure interactive controls have clear hit targets and visible focus indicators; group content through spacing and hairline dividers.
-- **Don't:** Do not treat washed-out gray text or missing labels as minimalism; avoid hiding core actions behind obscure icons; do not create vast empty voids that confuse navigation.
+- **Do:** Verify high text contrast (WCAG AA 4.5:1) in both light and dark modes; ensure interactive controls have clear hit targets and visible focus indicators; group content through spacing and hairline dividers; verify that mode switching flips canvas, ink, muted text, and borders in paired synchronization.
+- **Don't:** Do not treat washed-out gray text or missing labels as minimalism; avoid hiding core actions behind obscure icons; do not create vast empty voids that confuse navigation; avoid dark/light theme collisions where text remains dark on dark canvas.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
+
 ## Anti-slop: style-specific
 
 **Clarity through restraint, not lazy emptiness.**
 
-- **Reject:** Faint low-contrast gray text, unlabelled icon-only controls, ghost buttons that look disabled, and empty viewports that communicate zero product information.
-- **Instead:** Use active whitespace, mathematically calibrated type hierarchy, high contrast, and scannable content organization to deliver maximum information with minimum noise.
-- **Copy check:** Clean, direct, and functional copy that respects user time.
+- **Reject:** Faint low-contrast gray text, unlabelled icon-only controls, ghost buttons that look disabled, empty viewports that communicate zero product information, and theme collisions where text is unreadable against the canvas.
+- **Instead:** Combine ample breathing room with high-contrast type hierarchy, clear semantic actions, and robust dark/light theme support.
+- **Copy check:** Every word must serve a clear purpose; remove filler and hype copy.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `minimalism`.

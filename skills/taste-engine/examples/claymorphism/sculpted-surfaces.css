@@ -35,6 +35,20 @@
   --taste-clay-radius-squircle: 14px;
 }
 
+[data-theme="dark"], .taste-clay-scene[data-theme="dark"] {
+  --taste-clay-bg: #161326;
+  --taste-clay-light: #26203d;
+  --taste-clay-light-hover: #2f284b;
+  --taste-clay-light-text: #f3f0fa;
+  --taste-clay-well-bg: #1e1a33;
+  --taste-clay-well-rim: rgba(255, 255, 255, 0.20);
+  --taste-clay-well-text: #f3f0fa;
+  --taste-clay-well-placeholder: #a49bbf;
+  --taste-clay-shadow-light: 8px 16px 24px rgba(0, 0, 0, 0.45), 2px 4px 8px rgba(0, 0, 0, 0.25);
+  --taste-clay-inner-light: inset 3px 4px 6px rgba(255, 255, 255, 0.15), inset -4px -6px 8px rgba(10, 5, 25, 0.60);
+  --taste-clay-inner-well: inset 3px 4px 8px rgba(0, 0, 0, 0.50), inset -2px -2px 6px rgba(255, 255, 255, 0.15);
+}
+
 .taste-clay-scene {
   background-color: var(--taste-clay-bg);
   color: var(--taste-clay-light-text);

@@ -51,11 +51,19 @@ Expressive, confident grotesk sans: Space Grotesk, Archivo, Syne, or system sans
 
 ## Color direction
 
-- **Canvas Base:** Off-white / light cream (`#FFFDF7` or `#F7F5F0`).
-- **Ink / Stroke:** Jet black (`#121212`).
+- **Light Mode (Punchy Pop Light):**
+  - **Canvas Base:** Off-white / light cream (`#FFFDF7` or `#F7F5F0`).
+  - **Card Background:** Pure white (`#FFFFFF`) or light tinted block.
+  - **Ink / Stroke:** Jet black (`#121212`).
+  - **Offset Shadows:** Solid black (`4px 4px 0 #121212`).
+- **Dark Mode (Dark Pop Contrast):**
+  - **Canvas Base:** Deep ink canvas (`#18181B`).
+  - **Card Background:** Elevated dark charcoal (`#222227`) or deep slate (`#27272A`).
+  - **Ink / Stroke:** Stark white / cream (`#FAFAFA`).
+  - **Offset Shadows:** Stark white or vivid accent (`4px 4px 0 #FAFAFA` or `4px 4px 0 var(--taste-neo-accent-primary)`).
 - **Primary Accent:** Vivid pop color (e.g. Electric Yellow `#FFE600`, Hot Coral `#FF5757`, or Royal Cobalt `#3B5BFF`).
 - **Secondary Accent:** Complementary contrast (e.g. Crisp Mint `#00F0A8` or Lilac Pop `#D8B4FE`).
-- **Card Background:** Pure white (`#FFFFFF`) or light tinted block.
+- **Theme Coupling & Anti-Collision Rule:** In dark mode, borders and offset shadows MUST flip to light/white or bright accents. Leaving black borders and black shadows on a dark canvas causes complete loss of depth and contrast (black on black). All text on vibrant accent backgrounds (yellow, cyan, lime, coral) must be tested against black ink (`#121212`) to exceed WCAG AA (4.5:1). Pure white text is strictly reserved for dark ink fills.
 
 ## Layout and geometry
 
@@ -94,20 +102,20 @@ Energetic, plainspoken, and direct. Examples: “Start building”, “Get code�
 
 ## Starter tokens (suggestions, not a complete theme)
 
-| Token | Starting value |
-| --- | --- |
-| `--taste-neo-bg` | `#fffdf7` |
-| `--taste-neo-ink` | `#121212` |
-| `--taste-neo-accent-primary` | `#ffe600` |
-| `--taste-neo-accent-secondary` | `#ff5757` |
-| `--taste-neo-card-bg` | `#ffffff` |
-| `--taste-neo-border` | `2.5px solid #121212` |
-| `--taste-neo-shadow-sm` | `3px 3px 0 #121212` |
-| `--taste-neo-shadow-md` | `5px 5px 0 #121212` |
-| `--taste-neo-shadow-lg` | `8px 8px 0 #121212` |
-| `--taste-neo-radius` | `6px` |
-| `--taste-neo-font-body` | `Space Grotesk, Archivo, system-ui, sans-serif` |
-| `--taste-neo-motion-duration` | `130ms` |
+| Token | Light mode default | Dark mode default |
+| --- | --- | --- |
+| `--taste-neo-bg` | `#fffdf7` | `#18181b` |
+| `--taste-neo-card-bg` | `#ffffff` | `#222227` |
+| `--taste-neo-ink` | `#121212` | `#fafafa` |
+| `--taste-neo-border` | `2.5px solid #121212` | `2.5px solid #fafafa` |
+| `--taste-neo-shadow-sm` | `3px 3px 0 #121212` | `3px 3px 0 #fafafa` |
+| `--taste-neo-shadow-md` | `5px 5px 0 #121212` | `5px 5px 0 #fafafa` |
+| `--taste-neo-shadow-lg` | `8px 8px 0 #121212` | `8px 8px 0 #fafafa` |
+| `--taste-neo-accent-primary` | `#ffe600` | `#ffe600` |
+| `--taste-neo-accent-secondary` | `#ff5757` | `#ff5757` |
+| `--taste-neo-radius` | `6px` | `6px` |
+| `--taste-neo-font-body` | `Space Grotesk, Archivo, system-ui, sans-serif` | `Space Grotesk, Archivo, system-ui, sans-serif` |
+| `--taste-neo-motion-duration` | `130ms` | `130ms` |
 
 Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-neo-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values.
 
@@ -118,8 +126,8 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 ## Style-specific quality gate
 
-- **Do:** Differentiate static card borders from button affordances; maintain hierarchy within colorful layouts; test button click depression; ensure WCAG AA contrast on accent surfaces.
-- **Don't:** Do not treat standard rounded corners with gray shadows as neo-brutalism; avoid rainbow-everywhere color noise without functional grouping; avoid decorative tilt angles that impair text legibility.
+- **Do:** Verify hard unblurred offset shadows; maintain 2–3px solid borders; test tactile press displacement; verify text contrast against saturated accents (black ink on yellow/cyan/mint); verify dark/light mode switching so borders, offset shadows, and ink invert properly and never disappear into dark grounds.
+- **Don't:** Do not add blur or spread to neo-brutalist shadows; avoid muted low-contrast pastels; do not place pure white text on yellow or mint buttons; do not leave black borders/shadows on dark canvas.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -131,19 +139,21 @@ Do not add decorative **card-inside-card** layers: a nested surface must represe
 
 **Anti-slop copywriting:** no generic "Unlock your potential", "Experience the future", "Supercharge your workflow", "seamless" claims, or translated equivalents. Headings must communicate actual content, CTAs must name the action, and empty/error/success text must describe real states and next steps. Avoid fake urgency, made-up counts, vague AI hype, gratuitous emoji, and inaccessible all-caps walls. Adapt the wording to this style and the user's language without changing the truth.
 
+**Theme and mode contrast integrity:** When a user requests dark mode or light mode (or builds a theme switcher), background and foreground colors MUST flip in synchronized pairs across all surfaces, text, borders, inputs, and semantic badges. Never leave black text on dark background, white text on white background, or unreadable low-contrast status pills. All states must meet WCAG AA contrast (minimum 4.5:1 for body/normal text, 3:1 for large headlines and interactive boundaries).
+
 **Responsive and motion:** compose mobile deliberately, check long labels, focus states and accessible contrast; no text clipping to fit a trendy layout. Static by default; use motion for meaningful interactions, respect reduced-motion preferences, avoid bounce/floating/pulsing decoration without a real state.
 
-**Critical/High findings block completion:** fabricated status/data, broken actions, inaccessible/clipped controls, misleading copy or significant mobile failure must be fixed. Report what was actually verified; do not claim tests that did not run.
+**Critical/High findings block completion:** fabricated status/data, broken actions, inaccessible/clipped controls, misleading copy, theme contrast collisions or significant mobile failure must be fixed. Report what was actually verified; do not claim tests that did not run.
 
 **Not an aesthetics veto:** expressive colors, shadows, gradients, card layouts or decorative treatments are legitimate when they are intentional parts of the selected aesthetic and pass usability checks. Do not silently force minimalism.
 
 ## Anti-slop: style-specific
 
-**Expressive, not chaotic.**
+**Confident graphic pop, not messy chaos.**
 
-- **Reject:** Reject rainbow-everywhere palettes, offset shadows on every nested tile, rotated stickers without task value, novelty-only badges, and hard shadows that obscure touch boundaries.
-- **Instead:** Apply thick border/hard shadow to chosen hierarchy levels; use a controlled expressive palette and stable spacing.
-- **Copy check:** Playfulness must clarify the task; avoid fabricated hype, excessive exclamation marks and meme text unrelated to brand.
+- **Reject:** Blurry shadows, gradient borders, cartoon sticker spam, illegible white text on bright yellow pills, and dark mode theme collisions where black borders disappear against dark canvas.
+- **Instead:** Pair crisp solid borders with grounded unblurred offset shadows, clear typographic hierarchy, and intentional theme adaptation.
+- **Copy check:** Punchy, human microcopy without hollow corporate slogans.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `neo-brutalism`.
 
 ## Quality tiers (standalone)

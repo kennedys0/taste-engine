@@ -13,6 +13,7 @@ Taste can vary; product quality should not.
 ## 2. Accessibility
 
 - Target WCAG 2.2 AA where appropriate for web, including legible text, keyboard access, meaningful semantics, sufficient contrast, and focus visibility.
+- Support dark/light mode switching cleanly: verify that background and text colors change in coupled pairs and never collide (e.g. no black text on black background, white text on white background, or low-contrast gray-on-dark). All inputs, placeholders, borders, hover states, and semantic status badges must remain legible and pass contrast in both modes.
 - Support reduced motion; do not use motion as the only way to convey meaning.
 - Consider touch target size, zoom/text scaling, screen readers, and color-independent status messaging.
 - Visual references are not an excuse to copy inaccessible behavior.

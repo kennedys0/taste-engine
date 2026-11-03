@@ -9,6 +9,7 @@ A framework-neutral acceptance checklist informed by the publicly available Verc
 - Focus indication is visible with keyboard interaction; fixed/sticky UI cannot hide the focused control. Modal keyboard management preserves/returns focus.
 - Icon-only controls have accessible names; decorative art is hidden from assistive technology; meaningful images have alternative text; status/error updates are announced appropriately.
 - Minimum contrast and tap targets follow accessibility guidance; don't disable browser zoom. Test mobile portrait, landscape, keyboard appearance, 200% zoom where applicable.
+- Dark/light mode theme integrity: when dark mode or light mode is activated, all color tokens (canvas, elevated surfaces, headings, body, muted captions, borders, input wells, hover/active states, and semantic status pills) must flip in synchronized pairs. Ensure WCAG AA contrast (minimum 4.5:1 normal text, 3:1 large text and interactive boundaries). Never leave black text on dark backgrounds or white text on light backgrounds.
 - Motion respects reduced-motion preferences. Decorative animations must never prevent reading/operating content; when needed, provide a pause/stop path.
 - Never misrepresent loading, online, verified, successful, or financial states; component interactivity must be backed by actual functionality.
 

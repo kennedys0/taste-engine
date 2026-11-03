@@ -52,13 +52,26 @@ High-legibility monospace: JetBrains Mono, IBM Plex Mono, Fira Code, or system m
 
 ## Color direction
 
-- **Canvas Base:** Obsidian black (`#0C0D0E` or `#080A08`).
-- **Surface Panels:** Deep slate-charcoal (`#14171A` or `#111613`).
-- **Phosphor Accent (Choose One):**
-  - Classic Amber: `#FFB000` (glow: `rgba(255, 176, 0, 0.45)`)
-  - Phosphor Green: `#33FF33` (glow: `rgba(51, 255, 51, 0.45)`)
-  - Cyber Cyan: `#00F0FF` (glow: `rgba(0, 240, 255, 0.45)`)
-- **Semantic Statuses:** Error Red (`#FF5555`), Warning Yellow (`#FFCC00`), Success Mint (`#50FA7B`).
+- **Dark Mode (Obsidian CRT Phosphor):**
+  - **Canvas Base:** Obsidian black (`#0C0D0E` or `#080A08`).
+  - **Surface Panels:** Deep slate-charcoal (`#14171A` or `#111613`).
+  - **Phosphor Accent (Choose One):**
+    - Classic Amber: `#FFB000` (glow: `rgba(255, 176, 0, 0.45)`)
+    - Phosphor Green: `#33FF33` (glow: `rgba(51, 255, 51, 0.45)`)
+    - Cyber Cyan: `#00F0FF` (glow: `rgba(0, 240, 255, 0.45)`)
+  - **Borders:** `1px solid rgba(255, 176, 0, 0.25)` or `#2A2F35`.
+  - **Scanlines:** Translucent dark raster lines (`repeating-linear-gradient(0deg, rgba(0,0,0,0.18) 0px, transparent 2px)`).
+- **Light Mode (Vintage Parchment Teletype):**
+  - **Canvas Base:** Warm paper ivory (`#F4F1EA`).
+  - **Surface Panels:** Warm oatmeal (`#E8E4DA`).
+  - **Phosphor Inversion (Choose One):**
+    - Dark Burnt Amber: `#5C3A00`
+    - Deep Terminal Green: `#0F4D19`
+    - Carbon Ink: `#111613`
+  - **Borders:** `1px solid #D5D0C3`.
+  - **Scanlines:** Subdued or turned off (`none` or subtle paper texture).
+- **Semantic Statuses:** Error Red (`#FF5555` dark / `#B91C1C` light), Warning Yellow (`#FFCC00` dark / `#B45309` light), Success Mint (`#50FA7B` dark / `#047857` light).
+- **Theme Coupling & Anti-Collision Rule:** In light mode, bright phosphor accents MUST invert to high-contrast carbon/dark amber ink (`#111613` or `#5C3A00`). Putting bright amber `#FFB000` or neon green `#33FF33` on light paper canvas is an immediate contrast collision and strictly prohibited.
 
 ## Layout and geometry
 
@@ -94,17 +107,18 @@ Precise, technical, and command-driven. Examples: `deploy --prod`, `status: heal
 
 ## Starter tokens (suggestions, not a complete theme)
 
-| Token | Starting value |
-| --- | --- |
-| `--taste-term-bg` | `#0c0d0e` |
-| `--taste-term-surface` | `#14171a` |
-| `--taste-term-amber` | `#ffb000` |
-| `--taste-term-glow` | `0 0 6px rgba(255, 176, 0, 0.45)` |
-| `--taste-term-border` | `1px solid rgba(255, 176, 0, 0.25)` |
-| `--taste-term-scanline` | `repeating-linear-gradient(0deg, rgba(0,0,0,0.18) 0px, transparent 2px)` |
-| `--taste-term-radius` | `2px` |
-| `--taste-term-font-mono` | `JetBrains Mono, IBM Plex Mono, monospace` |
-| `--taste-term-motion-duration` | `80ms` |
+| Token | Dark mode default | Light mode default |
+| --- | --- | --- |
+| `--taste-term-bg` | `#0c0d0e` | `#f4f1ea` |
+| `--taste-term-surface` | `#14171a` | `#e8e4da` |
+| `--taste-term-text` | `#ffb000` | `#5c3a00` |
+| `--taste-term-amber` | `#ffb000` | `#5c3a00` |
+| `--taste-term-glow` | `0 0 6px rgba(255, 176, 0, 0.45)` | `none` |
+| `--taste-term-border` | `1px solid rgba(255, 176, 0, 0.25)` | `1px solid #d5d0c3` |
+| `--taste-term-scanline` | `repeating-linear-gradient(0deg, rgba(0,0,0,0.18) 0px, transparent 2px)` | `none` |
+| `--taste-term-radius` | `2px` | `2px` |
+| `--taste-term-font-mono` | `JetBrains Mono, IBM Plex Mono, monospace` | `JetBrains Mono, IBM Plex Mono, monospace` |
+| `--taste-term-motion-duration` | `80ms` | `80ms` |
 
 Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-term-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values.
 
@@ -115,8 +129,8 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 ## Style-specific quality gate
 
-- **Do:** Verify high text contrast against obsidian grounds (WCAG AA); ensure monospace alignment is preserved; provide click fallbacks for all keyboard shortcuts; test scanline readability.
-- **Don't:** Do not treat a plain dark theme as retro-terminal; avoid illegible glitch animations; do not present fake non-interactive console prompts that confuse users.
+- **Do:** Verify high text contrast against canvas (WCAG AA); ensure monospace alignment is preserved; provide click fallbacks for all keyboard shortcuts; test scanline readability; verify dark/light mode switching so phosphor colors invert to high-contrast dark ink on light grounds.
+- **Don't:** Do not treat a plain dark theme as retro-terminal; avoid illegible glitch animations; do not present fake non-interactive console prompts that confuse users; avoid light-mode theme collisions such as neon green or light amber text on parchment.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -128,19 +142,21 @@ Do not add decorative **card-inside-card** layers: a nested surface must represe
 
 **Anti-slop copywriting:** no generic "Unlock your potential", "Experience the future", "Supercharge your workflow", "seamless" claims, or translated equivalents. Headings must communicate actual content, CTAs must name the action, and empty/error/success text must describe real states and next steps. Avoid fake urgency, made-up counts, vague AI hype, gratuitous emoji, and inaccessible all-caps walls. Adapt the wording to this style and the user's language without changing the truth.
 
+**Theme and mode contrast integrity:** When a user requests dark mode or light mode (or builds a theme switcher), background and foreground colors MUST flip in synchronized pairs across all surfaces, text, borders, inputs, and semantic badges. Never leave black text on dark background, white text on white background, or unreadable low-contrast status pills. All states must meet WCAG AA contrast (minimum 4.5:1 for body/normal text, 3:1 for large headlines and interactive boundaries).
+
 **Responsive and motion:** compose mobile deliberately, check long labels, focus states and accessible contrast; no text clipping to fit a trendy layout. Static by default; use motion for meaningful interactions, respect reduced-motion preferences, avoid bounce/floating/pulsing decoration without a real state.
 
-**Critical/High findings block completion:** fabricated status/data, broken actions, inaccessible/clipped controls, misleading copy or significant mobile failure must be fixed. Report what was actually verified; do not claim tests that did not run.
+**Critical/High findings block completion:** fabricated status/data, broken actions, inaccessible/clipped controls, misleading copy, theme contrast collisions or significant mobile failure must be fixed. Report what was actually verified; do not claim tests that did not run.
 
 **Not an aesthetics veto:** expressive colors, shadows, gradients, card layouts or decorative treatments are legitimate when they are intentional parts of the selected aesthetic and pass usability checks. Do not silently force minimalism.
 
 ## Anti-slop: style-specific
 
-**Developer utility, not Hollywood hacker theater.**
+**Authentic CLI environment, not hacker wallpaper.**
 
-- **Reject:** Fake matrix rain, flashing strobe lights, illegible CRT distortion, unprompted audio beeps, and dummy code blocks with no relation to user tasks.
-- **Instead:** Build an authentic, highly functional CLI-inspired interface with clean monospace hierarchy, keyboard shortcuts, and structured command feedback.
-- **Copy check:** Use real system terminology and direct commands; avoid movie hacker slang.
+- **Reject:** Generic dark cards disguised as terminal, decorative non-functional console prompts, blinding scanline overlays, neon text on light paper backgrounds, and illegible matrix rain loops.
+- **Instead:** Provide real monospace hierarchy, working command lines or tabs, structured tabular log readouts, and calibrated dark/light contrast.
+- **Copy check:** Use precise technical commands and status descriptors.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `retro-terminal`.
 
 ## Quality tiers (standalone)

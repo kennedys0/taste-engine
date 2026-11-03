@@ -59,8 +59,9 @@ Use a clean sans suited to the brand (system sans, DM Sans, Inter, etc.). Typica
 
 Choose one coherent direction from the context, or use the user's reference:
 
-- **Frosted light / milky glass:** pale ice-white or light gray field, cool blue or other brand-tinted diffuse light *behind* semi-opaque white panes. Use restrained saturated accent. A soft glass highlight is visible along the upper edge.
-- **Smoked dark / night glass:** deep navy/ink *base* with violet/blue/teal ambient light fields behind blue-gray translucent panels. Foreground text stays clear; dark panels are **not** nearly opaque rectangles.
+- **Frosted light / milky glass:** pale ice-white or light gray field (`#F0F4F8`), cool blue or other brand-tinted diffuse light *behind* semi-opaque white panes (`rgba(255, 255, 255, 0.45)`). Typography is deep slate (`#0F172A`) with muted slate (`#475569`). A soft glass highlight is visible along the upper edge (`rgba(255, 255, 255, 0.75)`).
+- **Smoked dark / night glass:** deep navy/ink *base* (`#090D16`) with violet/blue/teal ambient light fields behind blue-gray translucent panels (`rgba(22, 28, 45, 0.55)`). Foreground text is crisp porcelain (`#F8FAFC`) with muted slate (`#94A3B8`); dark panels are **not** nearly opaque rectangles.
+- **Theme Coupling & Anti-Collision Rule:** When switching between light and dark glass modes, foreground text, borders, and ambient light sources MUST switch in tandem. Foreground text must maintain at least 4.5:1 contrast against both the frosted glass surface and the illuminated backdrop behind it. Never leave dark text on smoked dark glass or white text on frosted light glass.
 
 Color alone is not Glassmorphism. Never default to neon purple/cyan for every brand. Preserve brand and high-contrast requirements. Check actual composited foreground contrast (WCAG AA 4.5:1 normal text, 3:1 large text; relevant non-text controls at least 3:1).
 
@@ -105,15 +106,19 @@ Direct, product-specific and concise. Glass is a material, not an excuse for vag
 
 ## Starter tokens (suggestions, not a complete theme)
 
-| Token | Starting value |
-| --- | --- |
-| `--taste-radius-sm` | `14px` |
-| `--taste-radius-lg` | `24px` |
-| `--taste-glass-blur` | `18px` |
-| `--taste-glass-light` | `rgba(255, 255, 255, 0.38)` |
-| `--taste-glass-dark` | `rgba(36, 45, 72, 0.38)` |
-| `--taste-glass-edge-light` | `rgba(255, 255, 255, 0.65)` |
-| `--taste-motion-duration` | `180ms` |
+| Token | Light glass default | Dark glass default |
+| --- | --- | --- |
+| `--taste-radius-sm` | `14px` | `14px` |
+| `--taste-radius-lg` | `24px` | `24px` |
+| `--taste-glass-blur` | `18px` | `18px` |
+| `--taste-glass-bg` | `#f0f4f8` | `#090d16` |
+| `--taste-glass-surface` | `rgba(255, 255, 255, 0.45)` | `rgba(22, 28, 45, 0.55)` |
+| `--taste-glass-text` | `#0f172a` | `#f8fafc` |
+| `--taste-glass-text-muted` | `#475569` | `#94a3b8` |
+| `--taste-glass-light` | `rgba(255, 255, 255, 0.38)` | `rgba(255, 255, 255, 0.38)` |
+| `--taste-glass-dark` | `rgba(36, 45, 72, 0.38)` | `rgba(36, 45, 72, 0.38)` |
+| `--taste-glass-edge-light` | `rgba(255, 255, 255, 0.65)` | `rgba(255, 255, 255, 0.18)` |
+| `--taste-motion-duration` | `180ms` | `180ms` |
 
 These are starting values only. The result must be checked against real content and backdrop. Do not secretly load fonts, illustrations or motion libraries.
 
@@ -123,13 +128,10 @@ For public portfolio/landing/homepages with a hero, use a **header + hero** firs
 
 ## Style-specific quality gate
 
-**Required visible material check:** Can a reviewer distinguish frosted/translucent material from solid cards **without reading the description**? Can they see background-filtering through at least one primary pane on the actual screenshot? If not, fail and revise.
-
-- **Do:** Check frosted appearance, layered separation, real composite contrast, border highlights, mobile wrapping, keyboard focus, interactive states, and opaque fallback.
-- **Don't:** Mark a flat navy hero with a bright blue CTA as “glass”; count CSS blur on an invisible element as visual fidelity; use fully opaque cards with a decorative outer glow as a substitute.
-- **Light and dark both valid:** No global requirement that a glass demo be dark. Choose a reference-aligned look and make the actual material visible.
-- **Browser QA:** At ~320, 390, 768 and 1440 CSS pixels, inspect the first viewport and controls. Check blur support/fallback, `prefers-reduced-motion`, and high-contrast/reduced-transparency modes where supported. If no browser was used, report this as a manual check **not yet verified**.
-- The full visual acceptance checklist is in the `tests/glassmorphism-visual.md` checks in the full router (and the checklist in this section for standalone use). Preserve existing functions, routes and content when restyling a working site.
+- **Do:** Verify translucent frosted surfaces filtering backdrop light; ensure 1px translucent borders define panel edges; test accessibility fallback without `backdrop-filter`; verify dark/light mode switching so foreground text and glass panels flip cleanly without color collisions (WCAG AA 4.5:1).
+- **Don't:** Do not treat plain dark/light cards as glassmorphism; avoid whole-screen blur; avoid low-contrast text floating over noisy translucent areas; do not leave dark text when switching to smoked dark glass.
+- Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
+- Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
 ## Universal anti-slop gate (self-contained)
 
@@ -139,20 +141,22 @@ Do not add decorative **card-inside-card** layers: a nested surface must represe
 
 **Anti-slop copywriting:** no generic "Unlock your potential", "Experience the future", "Supercharge your workflow", "seamless" claims, or translated equivalents. Headings must communicate actual content, CTAs must name the action, and empty/error/success text must describe real states and next steps. Avoid fake urgency, made-up counts, vague AI hype, gratuitous emoji, and inaccessible all-caps walls. Adapt the wording to this style and the user's language without changing the truth.
 
+**Theme and mode contrast integrity:** When a user requests dark mode or light mode (or builds a theme switcher), background and foreground colors MUST flip in synchronized pairs across all surfaces, text, borders, inputs, and semantic badges. Never leave black text on dark background, white text on white background, or unreadable low-contrast status pills. All states must meet WCAG AA contrast (minimum 4.5:1 for body/normal text, 3:1 for large headlines and interactive boundaries).
+
 **Responsive and motion:** compose mobile deliberately, check long labels, focus states and accessible contrast; no text clipping to fit a trendy layout. Static by default; use motion for meaningful interactions, respect reduced-motion preferences, avoid bounce/floating/pulsing decoration without a real state.
 
-**Critical/High findings block completion:** fabricated status/data, broken actions, inaccessible/clipped controls, misleading copy or significant mobile failure must be fixed. Report what was actually verified; do not claim tests that did not run.
+**Critical/High findings block completion:** fabricated status/data, broken actions, inaccessible/clipped controls, misleading copy, theme contrast collisions or significant mobile failure must be fixed. Report what was actually verified; do not claim tests that did not run.
 
 **Not an aesthetics veto:** expressive colors, shadows, gradients, card layouts or decorative treatments are legitimate when they are intentional parts of the selected aesthetic and pass usability checks. Do not silently force minimalism.
 
 ## Anti-slop: style-specific
 
-**Glass as a material, not a label. Purposeful gradients are an explicit exception.**
+**Translucent depth, not blurry chaos.**
 
-- **Reject:** Flat dark layouts described as glass; fake frosted panes that are really opaque blocks; **arbitrary** gradient/blob spam without depth or hierarchy; border/glow spam; heavy blur across the whole screen; endless parallax; glass-on-glass nesting with no functional separation. **Do not reject functional ambient gradients simply because they are decorative.**
-- **Instead:** Give a few important planes believable translucency and visible filtering over purposefully placed gradients or ambient light, subtle lit edges, restrained depth and accessible high-contrast content. Keep other surfaces solid when needed.
-- **Copy check:** Avoid “immersive future” or “next-gen experience” filler. Make labels and CTAs describe real features/actions.
-- **Audit:** Run universal anti-slop, truthfulness, responsive, keyboard, focus, motion, and semantic checks in addition to the **material fidelity gate**. Do not reject deliberate expressive glass styling merely because it is decorative; it must have a coherent compositional purpose.
+- **Reject:** Completely opaque flat cards described as glass, arbitrary blob spam with no depth, text placed over high-contrast translucent clutter with no solid underlay, and theme contrast collisions (such as black text on dark smoked glass).
+- **Instead:** Filter structured, purposeful ambient light through legible frosted panes with clear hierarchy and solid readable content containers.
+- **Copy check:** Avoid clichés like "crystal clear" or "transparent future."
+- **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `glassmorphism`.
 
 ## Quality tiers (standalone)
 

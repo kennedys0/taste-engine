@@ -41,15 +41,27 @@ Neutral, highly legible UI sans: Inter, Source Sans 3, SF Pro, or system sans. M
 
 ## Color direction
 
-- **Canvas Base:** Soft neutral (`#F9FAFB` light or `#0F1117` dark).
-- **Surface / Table:** Pure white (`#FFFFFF` light) or elevated charcoal (`#161922` dark).
-- **Hairline Borders:** `#E5E7EB` (light) or `#232733` (dark).
-- **Primary Brand:** Deep enterprise blue (`#2563EB`) or slate (`#0F172A`).
-- **Semantic Tokens (WCAG AA Calibrated):**
-  - Success: `#065F46` on `#ECFDF5` (border `#A7F3D0`)
-  - Warning: `#92400E` on `#FEF3C7` (border `#FDE68A`)
-  - Error: `#991B1B` on `#FEE2E2` (border `#FECACA`)
-  - Neutral / Inactive: `#374151` on `#F3F4F6` (border `#E5E7EB`)
+- **Light Mode (Modern Cloud Console):**
+  - **Canvas Base:** Soft neutral slate (`#F9FAFB`).
+  - **Surface / Table:** Pure white (`#FFFFFF`).
+  - **Primary Ink / Typography:** Deep slate (`#111827`).
+  - **Secondary / Muted Text:** Balanced slate (`#6B7280`).
+  - **Hairline Borders:** `#E5E7EB`.
+  - **Hover Row Highlight:** `#F8FAFC`.
+- **Dark Mode (Cloud Cockpit):**
+  - **Canvas Base:** Deep slate (`#0F1117`).
+  - **Surface / Table:** Elevated charcoal (`#161922`).
+  - **Primary Ink / Typography:** Crisp slate (`#F9FAFB`).
+  - **Secondary / Muted Text:** Balanced gray (`#9CA3AF`).
+  - **Hairline Borders:** `#232733`.
+  - **Hover Row Highlight:** `#1F2430`.
+- **Primary Brand:** Deep enterprise blue (`#2563EB` light / `#3B82F6` dark).
+- **Semantic Status Tokens (WCAG AA Calibrated for Both Modes):**
+  - **Success (Healthy):** Light: `#065F46` on `#ECFDF5` (border `#A7F3D0`); Dark: `#34D399` on `rgba(16, 185, 129, 0.15)` (border `rgba(16, 185, 129, 0.35)`).
+  - **Warning (Degraded):** Light: `#92400E` on `#FEF3C7` (border `#FDE68A`); Dark: `#FBBF24` on `rgba(245, 158, 11, 0.15)` (border `rgba(245, 158, 11, 0.35)`).
+  - **Error (Failed):** Light: `#991B1B` on `#FEE2E2` (border `#FECACA`); Dark: `#F87171` on `rgba(239, 68, 68, 0.15)` (border `rgba(239, 68, 68, 0.35)`).
+  - **Neutral (Pending / Inactive):** Light: `#374151` on `#F3F4F6` (border `#E5E7EB`); Dark: `#9CA3AF` on `rgba(156, 163, 175, 0.12)` (border `rgba(156, 163, 175, 0.25)`).
+- **Theme Coupling Rule:** Canvas, tables, text ink, and semantic badges MUST adapt together. Never display dark-mode text on light tables or light-mode dark green text on dark console backgrounds.
 
 ## Layout and geometry
 
@@ -83,18 +95,18 @@ Objective, precise, and audit-friendly. Examples: “1,420 records found”, “
 
 ## Starter tokens (suggestions, not a complete theme)
 
-| Token | Starting value |
-| --- | --- |
-| `--taste-ent-bg` | `#f9fafb` |
-| `--taste-ent-surface` | `#ffffff` |
-| `--taste-ent-ink` | `#111827` |
-| `--taste-ent-muted` | `#6b7280` |
-| `--taste-ent-border` | `1px solid #e5e7eb` |
-| `--taste-ent-radius` | `6px` |
-| `--taste-ent-row-height` | `36px` |
-| `--taste-ent-accent` | `#2563eb` |
-| `--taste-ent-font-body` | `Inter, -apple-system, system-ui, sans-serif` |
-| `--taste-ent-motion-duration` | `100ms` |
+| Token | Light mode default | Dark mode default |
+| --- | --- | --- |
+| `--taste-ent-bg` | `#f9fafb` | `#0f1117` |
+| `--taste-ent-surface` | `#ffffff` | `#161922` |
+| `--taste-ent-ink` | `#111827` | `#f9fafb` |
+| `--taste-ent-muted` | `#6b7280` | `#9ca3af` |
+| `--taste-ent-border` | `1px solid #e5e7eb` | `1px solid #232733` |
+| `--taste-ent-radius` | `6px` | `6px` |
+| `--taste-ent-row-height` | `36px` | `36px` |
+| `--taste-ent-accent` | `#2563eb` | `#3b82f6` |
+| `--taste-ent-font-body` | `Inter, -apple-system, system-ui, sans-serif` | `Inter, -apple-system, system-ui, sans-serif` |
+| `--taste-ent-motion-duration` | `100ms` | `100ms` |
 
 Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-ent-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values.
 
@@ -105,15 +117,16 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 ## Style-specific quality gate
 
-- **Do:** Verify tabular numerals (`tabular-nums`) and right-alignment on numerical data; ensure semantic badges meet WCAG AA contrast; provide complete pagination and search filter bars; test sticky table headers.
-- **Don't:** Do not replace data tables with consumer card grids; avoid unscaled decorative sparklines; do not invent fake metric numbers that have no backend counterpart.
+- **Do:** Verify tabular numerals (`tabular-nums`) and right-alignment on numerical data; ensure semantic badges meet WCAG AA contrast in both light and dark modes; provide complete pagination and search filter bars; test sticky table headers; verify dark/light mode switching so all rows, borders, and text flip in synchronized pairs.
+- **Don't:** Do not replace data tables with consumer card grids; avoid unscaled decorative sparklines; do not invent fake metric numbers that have no backend counterpart; avoid theme contrast collisions such as dark green text on dark backgrounds or dark text on dark table rows.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
+
 ## Anti-slop: style-specific
 
-**Operational density, not dashboard spectacle.**
+**Information density, not consumer card spam.**
 
-- **Reject:** Giant consumer KPI cards with 3 fake numbers, decorative mini-charts with no units or axis labels, ornamental progress rings, and non-functional search bars.
-- **Instead:** Build high-density scannable data tables, clear sortable headers, accessible semantic status pills, keyboard shortcuts, and robust pagination.
-- **Copy check:** Use exact business and system metrics; avoid cheerleading marketing copy.
+- **Reject:** Giant marketing cards replacing tables, decorative sparklines without scales, fake metric deltas (+24% with no time horizon), and half-baked dark mode where tables or badges keep blinding white backgrounds or unreadable dark text.
+- **Instead:** Build compact, structured tables with clean column alignment, explicit pagination, real filter controls, and calibrated dark/light theme support.
+- **Copy check:** Table headers and status tags must use precise operational terminology.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `enterprise`.

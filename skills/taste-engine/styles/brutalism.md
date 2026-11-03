@@ -41,10 +41,16 @@ Unyielding, heavyweight grotesk sans or technical monospace: Arial, Helvetica, I
 
 ## Color direction
 
-- **Canvas Base:** Stark paper white (`#FFFFFF`) or architectural concrete (`#E5E5E5`).
-- **Structural Ink / Borders:** Pure black (`#000000`).
-- **Operational Signal Accent (Single Color Only):** Signal Red (`#FF0000`) or Warning Amber (`#FFCC00`).
-- **Surface Blocks:** High-contrast solid fills (`#000000` or `#FFFFFF`).
+- **Light Mode (Stark Paper):**
+  - **Canvas Base:** Stark paper white (`#FFFFFF`) or architectural concrete (`#E5E5E5`).
+  - **Structural Ink / Borders:** Pure black (`#000000`).
+  - **Surface Blocks:** High-contrast solid fills (`#000000` or `#FFFFFF`).
+- **Dark Mode (Pitch Inverted):**
+  - **Canvas Base:** Stark pitch black (`#000000`).
+  - **Structural Ink / Borders:** Pure stark white (`#FFFFFF`).
+  - **Surface Blocks:** High-contrast solid dark fills (`#000000` or `#121212`).
+- **Operational Signal Accent (Single Color Only):** Signal Red (`#FF0000` / `#FF3333`) or Warning Amber (`#FFCC00`).
+- **Theme Inversion Rule:** In brutalism, dark/light mode is an authoritative polarity flip. In dark mode, canvas is `#000000` and text/borders are `#FFFFFF`. Buttons invert cleanly on hover (light: white button flips to black fill + white text; dark: black button flips to white fill + black text). Black text on black background or white text on white background is strictly forbidden.
 
 ## Layout and geometry
 
@@ -78,18 +84,18 @@ Direct, unapologetic, and factual. Examples: “INDEX”, “DOWNLOAD SPECIFICAT
 
 ## Starter tokens (suggestions, not a complete theme)
 
-| Token | Starting value |
-| --- | --- |
-| `--taste-brutal-bg` | `#ffffff` |
-| `--taste-brutal-ink` | `#000000` |
-| `--taste-brutal-surface` | `#ffffff` |
-| `--taste-brutal-border` | `2.5px solid #000000` |
-| `--taste-brutal-radius` | `0px` |
-| `--taste-brutal-signal` | `#ff0000` |
-| `--taste-brutal-font-heading` | `'Arial Black', Arial, Helvetica, sans-serif` |
-| `--taste-brutal-font-body` | `Arial, Helvetica, sans-serif` |
-| `--taste-brutal-font-mono` | `'IBM Plex Mono', monospace` |
-| `--taste-brutal-motion-duration` | `0ms` |
+| Token | Light mode default | Dark mode default |
+| --- | --- | --- |
+| `--taste-brutal-bg` | `#ffffff` | `#000000` |
+| `--taste-brutal-ink` | `#000000` | `#ffffff` |
+| `--taste-brutal-surface` | `#ffffff` | `#121212` |
+| `--taste-brutal-border` | `2.5px solid #000000` | `2.5px solid #ffffff` |
+| `--taste-brutal-radius` | `0px` | `0px` |
+| `--taste-brutal-signal` | `#ff0000` | `#ff3333` |
+| `--taste-brutal-font-heading` | `'Arial Black', Arial, Helvetica, sans-serif` | `'Arial Black', Arial, Helvetica, sans-serif` |
+| `--taste-brutal-font-body` | `Arial, Helvetica, sans-serif` | `Arial, Helvetica, sans-serif` |
+| `--taste-brutal-font-mono` | `'IBM Plex Mono', monospace` | `'IBM Plex Mono', monospace` |
+| `--taste-brutal-motion-duration` | `0ms` | `0ms` |
 
 Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-brutal-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values.
 
@@ -100,15 +106,16 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 ## Style-specific quality gate
 
-- **Do:** Verify stark high-contrast WCAG AAA compliance; maintain razor-sharp alignment along structural borders; ensure immediate state inversion on interactive elements; test keyboard focus.
-- **Don't:** Do not treat chaotic unreadable layouts as brutalism; do not add drop shadows, rounded corners, or decorative background gradients; avoid overlapping text paragraphs that impede reading.
+- **Do:** Verify stark monochrome contrast; ensure 2–3px structural borders are solid; verify sharp 0px square corners; verify dark/light mode polarity inversion so text and background never clash (no black-on-black or white-on-white text); ensure signal accent remains strictly singular.
+- **Don't:** Do not add rounded corners, soft drop shadows, or smooth color gradients; avoid decorative filler badges or chatty marketing copy; do not leave black ink or borders when switching to dark canvas.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
+
 ## Anti-slop: style-specific
 
-**Structural honesty, not artificial chaos.**
+**Structural honesty, not aesthetic playfulness.**
 
-- **Reject:** Chaotic overlapping text blocks that cannot be read, fake broken HTML errors, neon rainbow clash palettes, unreadable meme typography, and ornamental anti-design gestures that ruin accessibility.
-- **Instead:** Celebrate raw architectural structure, exposed grid seams, unyielding monochrome contrast, and hyper-legible typographic hierarchy.
-- **Copy check:** Plain, unapologetic facts; avoid marketing cheerleading.
+- **Reject:** Rounded pill shapes, pastel accents, decorative shadow blurs, playful illustrations, generic template cards, and theme collisions (such as black text remaining on a dark brutalist canvas).
+- **Instead:** Expose layout grids with heavy structural borders, stark type hierarchy, immediate state flips, and unambiguous contrast.
+- **Copy check:** UI writing must be brief, direct, and functional without marketing jargon.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `brutalism`.

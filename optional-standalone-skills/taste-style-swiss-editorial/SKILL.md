@@ -51,11 +51,18 @@ Objective grotesk sans: Helvetica Neue, Neue Haas Grotesk, Arial, Inter, or syst
 
 ## Color direction
 
-- **Canvas Base:** Paper white (`#FFFFFF` or warm gallery white `#FBFBFA`).
-- **Ink / Typography:** Deep obsidian black (`#111111`).
-- **Dividing Rules:** Solid hairline stroke (`#111111` or `#D1D5DB`).
-- **Singular Signal Accent:** Swiss Red (`#E3000F`) or International Klein Blue (`#002FA7`).
-- **Secondary Gray:** Editorial neutral (`#6B7280`).
+- **Light Mode (Crisp Gallery White Paper):**
+  - **Canvas Base:** Paper white (`#FFFFFF` or warm gallery white `#FBFBFA`).
+  - **Ink / Typography:** Deep obsidian black (`#111111`).
+  - **Dividing Rules:** Solid hairline stroke (`#111111` or `#D1D5DB`).
+  - **Secondary Gray:** Editorial neutral (`#6B7280`).
+- **Dark Mode (Dramatic Dark Monolith):**
+  - **Canvas Base:** Pitch obsidian canvas (`#0D0D0D`).
+  - **Ink / Typography:** Bone-white display typography (`#F5F5F5`).
+  - **Dividing Rules:** Translucent white hairline rule (`rgba(255, 255, 255, 0.20)` or `#2A2A2A`).
+  - **Secondary Gray:** Stone gray (`#9CA3AF`).
+- **Singular Signal Accent:** Swiss Red (`#E3000F` light / `#EF4444` dark) or International Klein Blue (`#002FA7` light / `#3B82F6` dark).
+- **Theme Inversion Rule:** In swiss editorial, dark/light mode is an authoritative typographic polarity flip. In dark mode, canvas is `#0D0D0D` and typography is `#F5F5F5`. Primary buttons invert cleanly (light mode: solid black block with white text; dark mode: solid white block with black text). Black text on dark canvas or white text on white canvas is strictly prohibited.
 
 ## Layout and geometry
 
@@ -89,17 +96,17 @@ Cultured, concise, and articulate. Examples: “Selected Works 2026”, “Index
 
 ## Starter tokens (suggestions, not a complete theme)
 
-| Token | Starting value |
-| --- | --- |
-| `--taste-swiss-bg` | `#ffffff` |
-| `--taste-swiss-ink` | `#111111` |
-| `--taste-swiss-accent` | `#e3000f` |
-| `--taste-swiss-muted` | `#6b7280` |
-| `--taste-swiss-rule` | `1px solid #111111` |
-| `--taste-swiss-radius` | `0px` |
-| `--taste-swiss-font-heading` | `'Helvetica Neue', Inter, system-ui, sans-serif` |
-| `--taste-swiss-font-body` | `'Helvetica Neue', Inter, system-ui, sans-serif` |
-| `--taste-swiss-motion-duration` | `120ms` |
+| Token | Light mode default | Dark mode default |
+| --- | --- | --- |
+| `--taste-swiss-bg` | `#ffffff` | `#0d0d0d` |
+| `--taste-swiss-ink` | `#111111` | `#f5f5f5` |
+| `--taste-swiss-accent` | `#e3000f` | `#ef4444` |
+| `--taste-swiss-muted` | `#6b7280` | `#9ca3af` |
+| `--taste-swiss-rule` | `1px solid #111111` | `1px solid rgba(255, 255, 255, 0.20)` |
+| `--taste-swiss-radius` | `0px` | `0px` |
+| `--taste-swiss-font-heading` | `'Helvetica Neue', Inter, system-ui, sans-serif` | `'Helvetica Neue', Inter, system-ui, sans-serif` |
+| `--taste-swiss-font-body` | `'Helvetica Neue', Inter, system-ui, sans-serif` | `'Helvetica Neue', Inter, system-ui, sans-serif` |
+| `--taste-swiss-motion-duration` | `120ms` | `120ms` |
 
 Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-swiss-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values.
 
@@ -110,8 +117,8 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 ## Style-specific quality gate
 
-- **Do:** Verify strict 12-column grid alignment; maintain dramatic headline-to-body scale ratio; ensure 1px hairline rules cleanly separate sections; keep accent color strictly singular.
-- **Don't:** Do not add drop shadows, rounded bubbles, or decorative gradients; do not clutter whitespace with meaningless badge chips; avoid low-contrast gray text on small labels.
+- **Do:** Verify strict 12-column grid alignment; maintain dramatic headline-to-body scale ratio; ensure 1px hairline rules cleanly separate sections; keep accent color strictly singular; verify dark/light mode switching so typography, canvas, hairline rules, and primary actions flip cleanly without color collisions (minimum 4.5:1 contrast).
+- **Don't:** Do not add drop shadows, rounded bubbles, or decorative gradients; do not clutter whitespace with meaningless badge chips; avoid low-contrast gray text on small labels; do not leave black typography on dark obsidian canvas.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -123,9 +130,11 @@ Do not add decorative **card-inside-card** layers: a nested surface must represe
 
 **Anti-slop copywriting:** no generic "Unlock your potential", "Experience the future", "Supercharge your workflow", "seamless" claims, or translated equivalents. Headings must communicate actual content, CTAs must name the action, and empty/error/success text must describe real states and next steps. Avoid fake urgency, made-up counts, vague AI hype, gratuitous emoji, and inaccessible all-caps walls. Adapt the wording to this style and the user's language without changing the truth.
 
+**Theme and mode contrast integrity:** When a user requests dark mode or light mode (or builds a theme switcher), background and foreground colors MUST flip in synchronized pairs across all surfaces, text, borders, inputs, and semantic badges. Never leave black text on dark background, white text on white background, or unreadable low-contrast status pills. All states must meet WCAG AA contrast (minimum 4.5:1 for body/normal text, 3:1 for large headlines and interactive boundaries).
+
 **Responsive and motion:** compose mobile deliberately, check long labels, focus states and accessible contrast; no text clipping to fit a trendy layout. Static by default; use motion for meaningful interactions, respect reduced-motion preferences, avoid bounce/floating/pulsing decoration without a real state.
 
-**Critical/High findings block completion:** fabricated status/data, broken actions, inaccessible/clipped controls, misleading copy or significant mobile failure must be fixed. Report what was actually verified; do not claim tests that did not run.
+**Critical/High findings block completion:** fabricated status/data, broken actions, inaccessible/clipped controls, misleading copy, theme contrast collisions or significant mobile failure must be fixed. Report what was actually verified; do not claim tests that did not run.
 
 **Not an aesthetics veto:** expressive colors, shadows, gradients, card layouts or decorative treatments are legitimate when they are intentional parts of the selected aesthetic and pass usability checks. Do not silently force minimalism.
 
@@ -133,9 +142,9 @@ Do not add decorative **card-inside-card** layers: a nested surface must represe
 
 **Typographic authority, not generic minimalism.**
 
-- **Reject:** Faux editorial layouts that are just centered text on white space, arbitrary italic quotes with no source, fake publication dates, and unanchored floating text blocks.
-- **Instead:** Build an unyielding mathematical grid with clear structural dividing rules, numbered section hierarchy, and decisive contrast between display and reading typography.
-- **Copy check:** Write articulate, informative copy that respects user intelligence; avoid marketing buzzwords.
+- **Reject:** Weak headlines, decorative card wrappers around text, multiple competing accent colors, low-contrast small captions, and theme collisions (such as black typography remaining on a dark editorial canvas).
+- **Instead:** Rely on scale contrast, precise column alignment, singular accent signal, and synchronized dark/light polarity inversion.
+- **Copy check:** Text must read like an editorial publication—articulate, structured, and intentional.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `swiss-editorial`.
 
 ## Quality tiers (standalone)

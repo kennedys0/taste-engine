@@ -10,6 +10,18 @@
   --taste-swiss-muted: #6b7280;
   --taste-swiss-rule: 1px solid #111111;
   --taste-swiss-radius: 0px;
+  --taste-swiss-btn-bg: #111111;
+  --taste-swiss-btn-text: #ffffff;
+}
+
+[data-theme="dark"], .taste-swiss-scene[data-theme="dark"] {
+  --taste-swiss-bg: #0d0d0d;
+  --taste-swiss-ink: #f5f5f5;
+  --taste-swiss-muted: #9ca3af;
+  --taste-swiss-rule: 1px solid rgba(255, 255, 255, 0.20);
+  --taste-swiss-accent: #ef4444;
+  --taste-swiss-btn-bg: #f5f5f5;
+  --taste-swiss-btn-text: #111111;
 }
 
 .taste-swiss-scene {

@@ -16,6 +16,16 @@
   --taste-neo-radius: 6px;
 }
 
+[data-theme="dark"], .taste-neo-scene[data-theme="dark"] {
+  --taste-neo-bg: #18181b;
+  --taste-neo-card-bg: #222227;
+  --taste-neo-ink: #fafafa;
+  --taste-neo-border: 2.5px solid #fafafa;
+  --taste-neo-shadow-sm: 3px 3px 0 #fafafa;
+  --taste-neo-shadow-md: 5px 5px 0 #fafafa;
+  --taste-neo-shadow-lg: 8px 8px 0 #fafafa;
+}
+
 .taste-neo-scene {
   background-color: var(--taste-neo-bg);
   color: var(--taste-neo-ink);

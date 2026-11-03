@@ -9,6 +9,18 @@
   --taste-mini-border: 1px solid rgba(0, 0, 0, 0.08);
   --taste-mini-radius: 8px;
   --taste-mini-accent: #2563eb;
+  --taste-mini-btn-bg: #18181b;
+  --taste-mini-btn-text: #ffffff;
+}
+
+[data-theme="dark"], .taste-mini-scene[data-theme="dark"] {
+  --taste-mini-bg: #121214;
+  --taste-mini-ink: #f4f4f5;
+  --taste-mini-muted: #a1a1aa;
+  --taste-mini-border: 1px solid rgba(255, 255, 255, 0.10);
+  --taste-mini-accent: #3b82f6;
+  --taste-mini-btn-bg: #f4f4f5;
+  --taste-mini-btn-text: #121214;
 }
 
 .taste-mini-scene {

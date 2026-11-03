@@ -11,6 +11,15 @@
   --taste-term-scanline: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.18) 0px, transparent 2px);
 }
 
+[data-theme="light"], .taste-term-scene[data-theme="light"] {
+  --taste-term-bg: #f4f1ea;
+  --taste-term-surface: #e8e4da;
+  --taste-term-amber: #5c3a00;
+  --taste-term-glow: none;
+  --taste-term-border: 1px solid #d5d0c3;
+  --taste-term-scanline: none;
+}
+
 .taste-term-scene {
   background-color: var(--taste-term-bg);
   background-image: var(--taste-term-scanline);

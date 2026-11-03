@@ -11,11 +11,21 @@
   --taste-skeuo-well: inset 0 3px 6px rgba(0, 0, 0, 0.75), 0 1px 0 rgba(255, 255, 255, 0.12);
   --taste-skeuo-led-green: #10b981;
   --taste-skeuo-led-glow: 0 0 10px rgba(16, 185, 129, 0.70);
+  --taste-skeuo-text: #e2e8f0;
+}
+
+[data-theme="light"], .taste-skeuo-scene[data-theme="light"] {
+  --taste-skeuo-chassis: linear-gradient(180deg, #f5f7fa 0%, #e4e7eb 100%);
+  --taste-skeuo-border: 1px solid rgba(0, 0, 0, 0.15);
+  --taste-skeuo-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.90), inset 0 -1px 0 rgba(0, 0, 0, 0.15);
+  --taste-skeuo-shadow: 0 4px 10px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
+  --taste-skeuo-well: inset 0 3px 6px rgba(0, 0, 0, 0.18), 0 1px 0 rgba(255, 255, 255, 0.80);
+  --taste-skeuo-text: #1f2937;
 }
 
 .taste-skeuo-scene {
   background-color: #1a1c22;
-  color: #e2e8f0;
+  color: var(--taste-skeuo-text);
   font-family: 'IBM Plex Sans', system-ui, sans-serif;
   min-height: 100vh;
   padding: 2rem;
