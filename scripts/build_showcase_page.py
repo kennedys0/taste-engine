@@ -1,0 +1,1975 @@
+#!/usr/bin/env python3
+"""Build and upgrade docs/index.html with interactive installation guide, FAQ, pipeline flow, and token cheatsheet."""
+import re
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+INDEX_FILE = ROOT / "docs" / "index.html"
+
+# Read existing index.html to extract the 10 showcase style cards and their CSS exactly
+content = INDEX_FILE.read_text(encoding="utf-8")
+
+# Extract the existing CSS rules for styles 1 to 10
+style_rules_match = re.search(r'(/\* =========================================================\s*STYLE 1: BENTO GRID.*?\*/.*?)(?=/\* Toast Notification \*/)', content, re.DOTALL)
+if not style_rules_match:
+    raise SystemExit("ERROR: could not locate style 1-10 CSS block in docs/index.html")
+style_css_block = style_rules_match.group(1)
+
+# Extract the 10 showcase card articles
+cards_match = re.search(r'(<article class="showcase-card" data-style="bento">.*?</article>\s*<!-- 10\. SWISS / EDITORIAL -->\s*<article class="showcase-card" data-style="swiss-editorial">.*?</article>)', content, re.DOTALL)
+if not cards_match:
+    raise SystemExit("ERROR: could not locate 10 showcase cards in docs/index.html")
+showcase_cards_html = cards_match.group(1)
+
+new_html = f'''<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taste Engine — Frontend Design Intelligence for AI Agents</title>
+  <meta name="description" content="10 curated frontend aesthetic archetypes with paired Dark/Light mode contrast safety (WCAG AA), mathematical tokens, and anti-slop quality gates for AI agents.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* =========================================================
+       GLOBAL RESET & THEME TOKENS
+       ========================================================= */
+    *, *::before, *::after {{ box-sizing: border-box; margin: 0; padding: 0; }}
+    
+    html {{
+      scroll-behavior: smooth;
+    }}
+
+    :root {{
+      --shell-bg: #0a0c10;
+      --shell-surface: #121620;
+      --shell-surface-elevated: #1a202c;
+      --shell-border: rgba(255, 255, 255, 0.10);
+      --shell-border-subtle: rgba(255, 255, 255, 0.05);
+      --shell-text: #f3f4f6;
+      --shell-text-muted: #94a3b8;
+      --shell-accent: #6366f1;
+      --shell-accent-hover: #4f46e5;
+      --shell-accent-subtle: rgba(99, 102, 241, 0.15);
+      --shell-font: 'Inter', system-ui, -apple-system, sans-serif;
+      --shell-font-mono: 'JetBrains Mono', monospace;
+      --shell-radius: 12px;
+      transition: background-color 200ms ease, color 200ms ease;
+    }}
+
+    [data-theme="light"] {{
+      --shell-bg: #f8fafc;
+      --shell-surface: #ffffff;
+      --shell-surface-elevated: #f1f5f9;
+      --shell-border: rgba(0, 0, 0, 0.10);
+      --shell-border-subtle: rgba(0, 0, 0, 0.04);
+      --shell-text: #0f172a;
+      --shell-text-muted: #64748b;
+      --shell-accent: #4f46e5;
+      --shell-accent-hover: #4338ca;
+      --shell-accent-subtle: rgba(79, 70, 229, 0.10);
+    }}
+
+    body {{
+      background-color: var(--shell-bg);
+      color: var(--shell-text);
+      font-family: var(--shell-font);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }}
+
+    /* =========================================================
+       NAVIGATION BAR
+       ========================================================= */
+    .top-nav {{
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(18, 22, 32, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--shell-border);
+      padding: 0.875rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }}
+
+    [data-theme="light"] .top-nav {{
+      background: rgba(255, 255, 255, 0.90);
+    }}
+
+    .brand-group {{
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }}
+
+    .brand-title {{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      color: var(--shell-text);
+      text-decoration: none;
+    }}
+
+    .brand-logo-icon {{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+      color: #ffffff;
+      font-size: 0.85rem;
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.4);
+    }}
+
+    .brand-badge {{
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      background: var(--shell-accent-subtle);
+      color: var(--shell-accent);
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      letter-spacing: 0.04em;
+    }}
+
+    .nav-links {{
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      list-style: none;
+    }}
+
+    .nav-links a {{
+      color: var(--shell-text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: color 150ms ease;
+    }}
+
+    .nav-links a:hover {{
+      color: var(--shell-accent);
+    }}
+
+    .nav-actions {{
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }}
+
+    .theme-toggle-btn {{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--shell-surface);
+      color: var(--shell-text);
+      border: 1px solid var(--shell-border);
+      border-radius: 9999px;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.825rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 150ms ease, transform 100ms ease;
+    }}
+
+    .theme-toggle-btn:hover {{
+      background: var(--shell-accent-subtle);
+      border-color: var(--shell-accent);
+      transform: translateY(-1px);
+    }}
+
+    .gh-btn {{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: transparent;
+      color: var(--shell-text);
+      border: 1px solid var(--shell-border);
+      border-radius: 9999px;
+      padding: 0.45rem 0.9rem;
+      font-size: 0.825rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 150ms ease;
+    }}
+
+    .gh-btn:hover {{
+      background: var(--shell-surface);
+      border-color: var(--shell-accent);
+      transform: translateY(-1px);
+    }}
+
+    /* =========================================================
+       HERO BANNER
+       ========================================================= */
+    .hero-banner {{
+      max-width: 1200px;
+      margin: 3.5rem auto 2.5rem auto;
+      padding: 0 1.5rem;
+      text-align: center;
+    }}
+
+    .hero-badge-pill {{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--shell-surface);
+      border: 1px solid var(--shell-border);
+      padding: 0.35rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--shell-text-muted);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }}
+
+    .hero-badge-pill .pill-spark {{
+      color: #eab308;
+    }}
+
+    .hero-title {{
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+    }}
+
+    .hero-title-accent {{
+      background: linear-gradient(135deg, #818cf8 0%, #c084fc 50%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }}
+
+    [data-theme="light"] .hero-title-accent {{
+      background: linear-gradient(135deg, #4f46e5 0%, #9333ea 50%, #0284c7 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }}
+
+    .hero-subtitle {{
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--shell-text-muted);
+      max-width: 760px;
+      margin: 0 auto 2rem auto;
+      line-height: 1.6;
+    }}
+
+    .hero-quick-install {{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--shell-surface);
+      border: 1px solid var(--shell-border);
+      border-radius: 9999px;
+      padding: 0.4rem 0.5rem 0.4rem 1.25rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.12);
+      max-width: 100%;
+    }}
+
+    .quick-install-label {{
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--shell-accent);
+    }}
+
+    .quick-install-code {{
+      font-family: var(--shell-font-mono);
+      font-size: 0.85rem;
+      color: var(--shell-text);
+      user-select: all;
+    }}
+
+    .quick-copy-btn {{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--shell-accent);
+      color: #ffffff;
+      border: none;
+      border-radius: 9999px;
+      padding: 0.4rem 0.9rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 150ms ease, transform 100ms ease;
+    }}
+
+    .quick-copy-btn:hover {{
+      background: var(--shell-accent-hover);
+      transform: translateY(-1px);
+    }}
+
+    .hero-cta-group {{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 3.5rem;
+      flex-wrap: wrap;
+    }}
+
+    .cta-primary-btn {{
+      background: var(--shell-accent);
+      color: #ffffff;
+      text-decoration: none;
+      padding: 0.75rem 1.75rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.4);
+      transition: all 150ms ease;
+    }}
+
+    .cta-primary-btn:hover {{
+      background: var(--shell-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+    }}
+
+    .cta-secondary-btn {{
+      background: var(--shell-surface);
+      color: var(--shell-text);
+      border: 1px solid var(--shell-border);
+      text-decoration: none;
+      padding: 0.75rem 1.75rem;
+      border-radius: 9999px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      transition: all 150ms ease;
+    }}
+
+    .cta-secondary-btn:hover {{
+      border-color: var(--shell-accent);
+      background: var(--shell-accent-subtle);
+      transform: translateY(-2px);
+    }}
+
+    /* Hero Stats Strip */
+    .hero-stats-strip {{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      max-width: 1040px;
+      margin: 0 auto;
+    }}
+
+    .stat-card {{
+      background: var(--shell-surface);
+      border: 1px solid var(--shell-border);
+      border-radius: 16px;
+      padding: 1.25rem 1rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      transition: transform 150ms ease;
+    }}
+
+    .stat-card:hover {{
+      transform: translateY(-2px);
+    }}
+
+    .stat-num {{
+      display: block;
+      font-size: 1.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--shell-accent);
+      margin-bottom: 0.25rem;
+    }}
+
+    .stat-desc {{
+      font-size: 0.8rem;
+      color: var(--shell-text-muted);
+      font-weight: 600;
+    }}
+
+    /* =========================================================
+       SECTION CONTAINERS & HEADERS
+       ========================================================= */
+    .content-section {{
+      max-width: 1300px;
+      margin: 4.5rem auto;
+      padding: 0 1.5rem;
+    }}
+
+    .section-header {{
+      text-align: center;
+      margin-bottom: 2.75rem;
+    }}
+
+    .section-eyebrow {{
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--shell-accent);
+      margin-bottom: 0.5rem;
+    }}
+
+    .section-title {{
+      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.75rem;
+    }}
+
+    .section-desc {{
+      font-size: 1rem;
+      color: var(--shell-text-muted);
+      max-width: 680px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }}
+
+    /* =========================================================
+       SHOWCASE GALLERY STYLING & FILTERS
+       ========================================================= */
+    .filter-bar {{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      max-width: 1200px;
+      margin: 0 auto 2.5rem auto;
+      padding: 0 1rem;
+    }}
+
+    .filter-chip {{
+      background: var(--shell-surface);
+      color: var(--shell-text-muted);
+      border: 1px solid var(--shell-border);
+      border-radius: 9999px;
+      padding: 0.4rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 150ms ease;
+    }}
+
+    .filter-chip:hover {{
+      color: var(--shell-text);
+      border-color: rgba(99, 102, 241, 0.4);
+    }}
+
+    .filter-chip.active {{
+      background: var(--shell-accent);
+      color: #ffffff;
+      border-color: var(--shell-accent);
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
+    }}
+
+    .gallery-grid {{
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(580px, 1fr));
+      gap: 2rem;
+    }}
+
+    .showcase-card {{
+      background: var(--shell-surface);
+      border: 1px solid var(--shell-border);
+      border-radius: var(--shell-radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }}
+
+    .showcase-card:hover {{
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    }}
+
+    .showcase-header {{
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--shell-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: rgba(0, 0, 0, 0.04);
+    }}
+
+    .showcase-title-group h2 {{
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }}
+
+    .showcase-signature {{
+      font-size: 0.8rem;
+      color: var(--shell-text-muted);
+    }}
+
+    .copy-token-btn {{
+      background: var(--shell-surface);
+      color: var(--shell-text);
+      border: 1px solid var(--shell-border);
+      border-radius: 6px;
+      padding: 0.4rem 0.8rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 120ms ease;
+      white-space: nowrap;
+    }}
+
+    .copy-token-btn:hover {{
+      background: var(--shell-accent);
+      color: #ffffff;
+      border-color: var(--shell-accent);
+    }}
+
+    .showcase-body {{
+      padding: 1.5rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }}
+
+    /* =========================================================
+       PIPELINE / ARCHITECTURE (HOW IT WORKS)
+       ========================================================= */
+    .pipeline-grid {{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }}
+
+    .pipeline-card {{
+      background: var(--shell-surface);
+      border: 1px solid var(--shell-border);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      transition: transform 180ms ease, border-color 180ms ease;
+    }}
+
+    .pipeline-card:hover {{
+      transform: translateY(-3px);
+      border-color: rgba(99, 102, 241, 0.4);
+    }}
+
+    .pipeline-step-badge {{
+      display: inline-block;
+      align-self: flex-start;
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      background: var(--shell-accent-subtle);
+      color: var(--shell-accent);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      margin-bottom: 1.25rem;
+    }}
+
+    .pipeline-icon {{
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }}
+
+    .pipeline-card h3 {{
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.75rem;
+    }}
+
+    .pipeline-card p {{
+      font-size: 0.875rem;
+      color: var(--shell-text-muted);
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+      flex: 1;
+    }}
+
+    .pipeline-features {{
+      list-style: none;
+      border-top: 1px solid var(--shell-border);
+      padding-top: 1rem;
+    }}
+
+    .pipeline-features li {{
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.785rem;
+      color: var(--shell-text-muted);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }}
+
+    .pipeline-features li::before {{
+      content: "✓";
+      color: #10b981;
+      font-weight: 800;
+      font-size: 0.85rem;
+    }}
+
+    /* =========================================================
+       INSTALLATION GUIDE (MULTI-AGENT TABS)
+       ========================================================= */
+    .install-container {{
+      max-width: 960px;
+      margin: 0 auto;
+    }}
+
+    .install-tabs {{
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.75rem;
+      margin-bottom: 1rem;
+      scrollbar-width: thin;
+    }}
+
+    .install-tab-btn {{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--shell-surface);
+      color: var(--shell-text-muted);
+      border: 1px solid var(--shell-border);
+      border-radius: 10px;
+      padding: 0.65rem 1.15rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 150ms ease;
+    }}
+
+    .install-tab-btn:hover {{
+      color: var(--shell-text);
+      border-color: rgba(99, 102, 241, 0.4);
+    }}
+
+    .install-tab-btn.active {{
+      background: var(--shell-accent);
+      color: #ffffff;
+      border-color: var(--shell-accent);
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.35);
+    }}
+
+    .install-panel {{
+      display: none;
+      background: var(--shell-surface);
+      border: 1px solid var(--shell-border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }}
+
+    .install-panel.active {{
+      display: block;
+      animation: fadeIn 200ms ease-out;
+    }}
+
+    @keyframes fadeIn {{
+      from {{ opacity: 0; transform: translateY(4px); }}
+      to {{ opacity: 1; transform: translateY(0); }}
+    }}
+
+    .panel-header {{
+      background: rgba(0, 0, 0, 0.25);
+      border-bottom: 1px solid var(--shell-border);
+      padding: 0.875rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }}
+
+    [data-theme="light"] .panel-header {{
+      background: rgba(0, 0, 0, 0.04);
+    }}
+
+    .window-dots {{
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }}
+
+    .dot {{
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }}
+
+    .dot-red {{ background: #ef4444; }}
+    .dot-yellow {{ background: #f59e0b; }}
+    .dot-green {{ background: #10b981; }}
+
+    .window-title {{
+      font-family: var(--shell-font-mono);
+      font-size: 0.8rem;
+      color: var(--shell-text-muted);
+      font-weight: 500;
+    }}
+
+    .copy-cmd-btn {{
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--shell-surface);
+      color: var(--shell-text);
+      border: 1px solid var(--shell-border);
+      border-radius: 6px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 120ms ease;
+    }}
+
+    .copy-cmd-btn:hover {{
+      background: var(--shell-accent);
+      color: #ffffff;
+      border-color: var(--shell-accent);
+    }}
+
+    .terminal-body {{
+      padding: 1.5rem;
+      font-family: var(--shell-font-mono);
+      font-size: 0.875rem;
+      line-height: 1.65;
+      color: var(--shell-text);
+      overflow-x: auto;
+      background: transparent;
+      margin: 0;
+    }}
+
+    .terminal-body code {{
+      font-family: inherit;
+    }}
+
+    .panel-footer-note {{
+      border-top: 1px solid var(--shell-border);
+      padding: 1rem 1.5rem;
+      background: var(--shell-border-subtle);
+      font-size: 0.85rem;
+      color: var(--shell-text-muted);
+      line-height: 1.5;
+    }}
+
+    .panel-footer-note code {{
+      font-family: var(--shell-font-mono);
+      font-size: 0.8rem;
+      background: var(--shell-surface);
+      padding: 2px 6px;
+      border-radius: 4px;
+      border: 1px solid var(--shell-border);
+      color: var(--shell-text);
+    }}
+
+    .cli-verify-card {{
+      margin-top: 2rem;
+      background: var(--shell-surface);
+      border: 1px solid var(--shell-border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }}
+
+    .verify-icon {{
+      font-size: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--shell-accent-subtle);
+      border: 1px solid rgba(99, 102, 241, 0.3);
+      flex-shrink: 0;
+    }}
+
+    .verify-text h4 {{
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }}
+
+    .verify-text p {{
+      font-size: 0.85rem;
+      color: var(--shell-text-muted);
+      margin-bottom: 0.6rem;
+    }}
+
+    .inline-code {{
+      display: inline-block;
+      font-family: var(--shell-font-mono);
+      font-size: 0.825rem;
+      background: rgba(0, 0, 0, 0.2);
+      border: 1px solid var(--shell-border);
+      padding: 4px 10px;
+      border-radius: 6px;
+      color: var(--shell-accent);
+      font-weight: 600;
+    }}
+
+    [data-theme="light"] .inline-code {{
+      background: rgba(0, 0, 0, 0.05);
+    }}
+
+    /* =========================================================
+       FAQ ACCORDION
+       ========================================================= */
+    .faq-container {{
+      max-width: 880px;
+      margin: 0 auto;
+    }}
+
+    .faq-accordion {{
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }}
+
+    .faq-item {{
+      background: var(--shell-surface);
+      border: 1px solid var(--shell-border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 150ms ease, box-shadow 150ms ease;
+    }}
+
+    .faq-item:hover {{
+      border-color: rgba(99, 102, 241, 0.35);
+    }}
+
+    .faq-item.open {{
+      border-color: var(--shell-accent);
+      box-shadow: 0 4px 16px rgba(99, 102, 241, 0.12);
+    }}
+
+    .faq-question {{
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1.25rem 1.5rem;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--shell-text);
+      cursor: pointer;
+      font-family: inherit;
+    }}
+
+    .faq-chevron {{
+      color: var(--shell-text-muted);
+      flex-shrink: 0;
+      transition: transform 200ms ease, color 150ms ease;
+    }}
+
+    .faq-item.open .faq-chevron {{
+      transform: rotate(180deg);
+      color: var(--shell-accent);
+    }}
+
+    .faq-answer {{
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 250ms ease-out;
+    }}
+
+    .faq-answer-inner {{
+      padding: 0 1.5rem 1.25rem 1.5rem;
+      color: var(--shell-text-muted);
+      font-size: 0.925rem;
+      line-height: 1.65;
+    }}
+
+    .faq-answer-inner p:not(:last-child) {{
+      margin-bottom: 0.75rem;
+    }}
+
+    .faq-answer-inner code {{
+      font-family: var(--shell-font-mono);
+      font-size: 0.8rem;
+      background: var(--shell-border-subtle);
+      border: 1px solid var(--shell-border);
+      padding: 2px 6px;
+      border-radius: 4px;
+      color: var(--shell-text);
+    }}
+
+    /* =========================================================
+       DESIGN TOKEN CHEATSHEET
+       ========================================================= */
+    .token-ref-card {{
+      background: var(--shell-surface);
+      border: 1px solid var(--shell-border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.10);
+    }}
+
+    .token-table-wrap {{
+      overflow-x: auto;
+    }}
+
+    .token-table {{
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.875rem;
+    }}
+
+    .token-table th {{
+      background: rgba(0, 0, 0, 0.2);
+      border-bottom: 1px solid var(--shell-border);
+      padding: 1rem 1.5rem;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--shell-text-muted);
+    }}
+
+    [data-theme="light"] .token-table th {{
+      background: rgba(0, 0, 0, 0.03);
+    }}
+
+    .token-table td {{
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--shell-border);
+      vertical-align: middle;
+    }}
+
+    .token-table tr:last-child td {{
+      border-bottom: none;
+    }}
+
+    .token-table code {{
+      font-family: var(--shell-font-mono);
+      font-size: 0.825rem;
+      color: var(--shell-accent);
+      background: var(--shell-accent-subtle);
+      padding: 3px 8px;
+      border-radius: 6px;
+      border: 1px solid rgba(99, 102, 241, 0.25);
+    }}
+
+    .boilerplate-box {{
+      border-top: 1px solid var(--shell-border);
+      background: rgba(0, 0, 0, 0.15);
+    }}
+
+    [data-theme="light"] .boilerplate-box {{
+      background: rgba(0, 0, 0, 0.02);
+    }}
+
+    .boilerplate-header {{
+      padding: 0.875rem 1.5rem;
+      border-bottom: 1px solid var(--shell-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }}
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+    .site-footer {{
+      margin-top: 6rem;
+      background: var(--shell-surface);
+      border-top: 1px solid var(--shell-border);
+      padding: 4.5rem 2rem 2rem 2rem;
+    }}
+
+    .footer-inner {{
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
+    }}
+
+    .footer-tagline {{
+      font-size: 0.9rem;
+      color: var(--shell-text-muted);
+      margin: 1rem 0;
+      line-height: 1.6;
+      max-width: 380px;
+    }}
+
+    .footer-credit {{
+      font-size: 0.825rem;
+      color: var(--shell-text-muted);
+    }}
+
+    .footer-credit a {{
+      color: var(--shell-accent);
+      text-decoration: none;
+      font-weight: 600;
+    }}
+
+    .footer-col h4 {{
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1.25rem;
+      color: var(--shell-text);
+    }}
+
+    .footer-col ul {{
+      list-style: none;
+    }}
+
+    .footer-col ul li {{
+      margin-bottom: 0.65rem;
+    }}
+
+    .footer-col ul a {{
+      color: var(--shell-text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 150ms ease;
+    }}
+
+    .footer-col ul a:hover {{
+      color: var(--shell-accent);
+    }}
+
+    .footer-bottom {{
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 2rem;
+      border-top: 1px solid var(--shell-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.825rem;
+      color: var(--shell-text-muted);
+    }}
+
+    .back-to-top-btn {{
+      color: var(--shell-text-muted);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 150ms ease;
+    }}
+
+    .back-to-top-btn:hover {{
+      color: var(--shell-accent);
+    }}
+
+    /* =========================================================
+       RESPONSIVE BREAKPOINTS
+       ========================================================= */
+    @media (max-width: 1024px) {{
+      .pipeline-grid {{ grid-template-columns: repeat(2, 1fr); }}
+      .hero-stats-strip {{ grid-template-columns: repeat(2, 1fr); }}
+      .footer-inner {{ grid-template-columns: 1fr 1fr; }}
+    }}
+
+    @media (max-width: 768px) {{
+      .top-nav {{ padding: 0.75rem 1rem; }}
+      .nav-links {{ display: none; }}
+      .gallery-grid {{ grid-template-columns: 1fr; }}
+      .pipeline-grid {{ grid-template-columns: 1fr; }}
+      .hero-stats-strip {{ grid-template-columns: 1fr 1fr; }}
+      .footer-inner {{ grid-template-columns: 1fr; gap: 2rem; }}
+      .hero-quick-install {{ border-radius: 12px; flex-direction: column; align-items: flex-start; padding: 0.75rem; }}
+      .quick-copy-btn {{ align-self: flex-end; }}
+    }}
+
+    @media (max-width: 480px) {{
+      .hero-stats-strip {{ grid-template-columns: 1fr; }}
+      .footer-bottom {{ flex-direction: column; text-align: center; }}
+    }}
+
+    /* Toast Notification */
+    .toast {{
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1e1b4b;
+      color: #e0e7ff;
+      border: 1px solid #6366f1;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      padding: 12px 20px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 200ms ease, transform 200ms ease;
+      pointer-events: none;
+      z-index: 1000;
+    }}
+    .toast.show {{
+      opacity: 1;
+      transform: translateY(0);
+    }}
+
+    /* =========================================================
+       10 SHOWCASE STYLES CSS RECIPES
+       ========================================================= */
+{style_css_block}
+  </style>
+</head>
+<body>
+
+  <!-- Top Sticky Navigation -->
+  <header class="top-nav">
+    <div class="brand-group">
+      <a href="#" class="brand-title">
+        <span class="brand-logo-icon">✨</span>
+        <span>Taste Engine</span>
+        <span class="brand-badge">v1.0.0</span>
+      </a>
+    </div>
+    
+    <nav class="nav-links" aria-label="Main Navigation">
+      <a href="#showcase">Showcase</a>
+      <a href="#how-it-works">How It Works</a>
+      <a href="#installation">Panduan Instalasi</a>
+      <a href="#faq">FAQ</a>
+      <a href="#tokens">Tokens</a>
+    </nav>
+
+    <div class="nav-actions">
+      <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Dark and Light Mode">
+        <span id="themeIcon">☀️</span>
+        <span id="themeLabel">Light Mode</span>
+      </button>
+      <a href="https://github.com/kennedys0/taste-engine" target="_blank" rel="noopener" class="gh-btn" aria-label="GitHub Repository">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        <span>GitHub</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div class="hero-badge-pill">
+      <span class="pill-spark">⚡</span>
+      <span>10 Frontend Aesthetics · Zero AI-Slop · 100% Contrast Safe (WCAG AA)</span>
+    </div>
+    
+    <h1 class="hero-title">
+      Frontend Design Intelligence<br>
+      <span class="hero-title-accent">Built for Autonomous AI Agents</span>
+    </h1>
+    
+    <p class="hero-subtitle">
+      Taste Engine equips Antigravity, Claude Code, and OpenAI Codex with 10 production-grade design archetypes, paired dark/light mode token coupling, and strict anti-slop quality gates.
+    </p>
+
+    <!-- Quick 1-click Install Pill -->
+    <div class="hero-quick-install">
+      <span class="quick-install-label">Quick Install:</span>
+      <code class="quick-install-code" id="heroInstallCmd">npx skills add kennedys0/taste-engine</code>
+      <button class="quick-copy-btn" id="heroCopyBtn" title="Copy install command" aria-label="Copy install command">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+        <span>Copy</span>
+      </button>
+    </div>
+
+    <!-- CTA Group -->
+    <div class="hero-cta-group">
+      <a href="#showcase" class="cta-primary-btn">Explore 10 Styles ↓</a>
+      <a href="#installation" class="cta-secondary-btn">Panduan Instalasi →</a>
+    </div>
+
+    <!-- Key Stats Strip -->
+    <div class="hero-stats-strip">
+      <div class="stat-card">
+        <span class="stat-num">10</span>
+        <span class="stat-desc">Aesthetic Archetypes</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">100%</span>
+        <span class="stat-desc">WCAG AA Contrast-Safe</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">0</span>
+        <span class="stat-desc">AI-Slop Clichés</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">Universal</span>
+        <span class="stat-desc">Antigravity · Claude · Codex</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 1: SHOWCASE GALLERY
+       ========================================================= -->
+  <section id="showcase" class="content-section">
+    <div class="section-header">
+      <span class="section-eyebrow">Interactive Style Gallery</span>
+      <h2 class="section-title">Live Material Fidelity Preview</h2>
+      <p class="section-desc">Test all 10 styles across dark and light modes. Every component adheres to paired token coupling with zero black-on-black or white-on-white collisions.</p>
+    </div>
+
+    <!-- Filter Buttons -->
+    <nav class="filter-bar" aria-label="Style pack filters">
+      <button class="filter-chip active" data-filter="all">All Styles (10)</button>
+      <button class="filter-chip" data-filter="bento">Bento Grid</button>
+      <button class="filter-chip" data-filter="brutalism">Brutalism</button>
+      <button class="filter-chip" data-filter="claymorphism">Claymorphism</button>
+      <button class="filter-chip" data-filter="cockpit">Data Cockpit</button>
+      <button class="filter-chip" data-filter="cyberpunk">Cyberpunk</button>
+      <button class="filter-chip" data-filter="glassmorphism">Glassmorphism</button>
+      <button class="filter-chip" data-filter="minimalist">Minimalist</button>
+      <button class="filter-chip" data-filter="retro">Retro Terminal</button>
+      <button class="filter-chip" data-filter="skeuomorphism">Skeuomorphism</button>
+      <button class="filter-chip" data-filter="swiss-editorial">Swiss Editorial</button>
+    </nav>
+
+    <!-- 10 Showcase Cards -->
+    <main class="gallery-grid">
+{showcase_cards_html}
+    </main>
+  </section>
+
+  <!-- =========================================================
+       SECTION 2: HOW IT WORKS / PIPELINE ARCHITECTURE
+       ========================================================= -->
+  <section id="how-it-works" class="content-section">
+    <div class="section-header">
+      <span class="section-eyebrow">Arsitektur & Pipeline</span>
+      <h2 class="section-title">How Taste Engine Works</h2>
+      <p class="section-desc">Dari instruksi prompt mentah hingga kode antarmuka berstandar desainer profesional dunia — inilah 4 fase pipeline transformasi yang dijalankan oleh AI Agent Anda.</p>
+    </div>
+
+    <div class="pipeline-grid">
+      <!-- Step 1 -->
+      <div class="pipeline-card">
+        <span class="pipeline-step-badge">Phase 01</span>
+        <div class="pipeline-icon">🎯</div>
+        <h3>Archetype Discovery</h3>
+        <p>Agent menganalisis domain aplikasi, audiens pengguna, dan target brand. Persyaratan dipetakan secara cerdas ke estetika optimal (misal: Fintech & Analytics → Data Cockpit, Dev Tools → Retro Terminal atau Swiss Editorial).</p>
+        <ul class="pipeline-features">
+          <li>Pemetaan konteks domain otomatis</li>
+          <li>Kalibrasi tone & persona pengguna</li>
+          <li>Mencegah default template biru generik</li>
+        </ul>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="pipeline-card">
+        <span class="pipeline-step-badge">Phase 02</span>
+        <div class="pipeline-icon">📐</div>
+        <h3>Mathematical Design Tokens</h3>
+        <p>Bukan sekadar styling acak, Taste Engine menginjeksi token desain matematis: rasio tipografi terstruktur, grid spasial 4px/8px, kurva border-radius spesifik, dan peran semantik warna yang konsisten.</p>
+        <ul class="pipeline-features">
+          <li>Pasangan font & scale hierarki ketat</li>
+          <li>Elevasi bayangan berlapis (multi-layer)</li>
+          <li>Variabel CSS custom properties modular</li>
+        </ul>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="pipeline-card">
+        <span class="pipeline-step-badge">Phase 03</span>
+        <div class="pipeline-icon">🌗</div>
+        <h3>Paired Dark/Light Coupling</h3>
+        <p>Token background, surface, ink (text), dan border bertransisi secara berpasangan matematis. Mencegah tabrakan warna fatal seperti teks hitam di background gelap atau teks putih di card terang.</p>
+        <ul class="pipeline-features">
+          <li>Garansi rasio kontras WCAG AA (≥ 4.5:1)</li>
+          <li>Inversi otomatis via atribut <code>[data-theme]</code></li>
+          <li>Zero manual color patching</li>
+        </ul>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="pipeline-card">
+        <span class="pipeline-step-badge">Phase 04</span>
+        <div class="pipeline-icon">🛡️</div>
+        <h3>Anti-Slop Quality Gate</h3>
+        <p>Sebelum menyerahkan kode, agent memverifikasi UI terhadap 7 Universal Quality Gates: tanpa card melayang tanpa ground, tanpa glow ungu murahan, tanpa glassmorphism tanpa makna, dan kelengkapan state tombol.</p>
+        <ul class="pipeline-features">
+          <li>Menghapus klise estetika AI murahan</li>
+          <li>Memastikan hover, active, disabled state</li>
+          <li>Siap produksi untuk Next.js, Vue, Tailwind, dll.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 3: PANDUAN INSTALASI (MULTI-AGENT TABS)
+       ========================================================= -->
+  <section id="installation" class="content-section">
+    <div class="section-header">
+      <span class="section-eyebrow">Panduan Instalasi</span>
+      <h2 class="section-title">Pasang Taste Engine dalam Hitungan Detik</h2>
+      <p class="section-desc">Pilih AI Agent favorit Anda di bawah ini dan jalankan perintah instalasi satu baris.</p>
+    </div>
+
+    <div class="install-container">
+      <!-- Agent Navigation Tabs -->
+      <div class="install-tabs" role="tablist" aria-label="Installation agent targets">
+        <button class="install-tab-btn active" data-tab="antigravity" role="tab" aria-selected="true">
+          <span>🚀 Antigravity IDE</span>
+        </button>
+        <button class="install-tab-btn" data-tab="agy" role="tab" aria-selected="false">
+          <span>⚡ Antigravity CLI (agy)</span>
+        </button>
+        <button class="install-tab-btn" data-tab="claude" role="tab" aria-selected="false">
+          <span>🤖 Claude Code</span>
+        </button>
+        <button class="install-tab-btn" data-tab="codex" role="tab" aria-selected="false">
+          <span>💻 Codex / Copilot</span>
+        </button>
+        <button class="install-tab-btn" data-tab="skills-cli" role="tab" aria-selected="false">
+          <span>📦 Universal Skills CLI</span>
+        </button>
+        <button class="install-tab-btn" data-tab="standalone" role="tab" aria-selected="false">
+          <span>🎨 Single Style Skill</span>
+        </button>
+      </div>
+
+      <!-- Tab Panels -->
+      <div class="install-tab-content">
+        <!-- 1. Antigravity IDE -->
+        <div class="install-panel active" id="panel-antigravity">
+          <div class="panel-header">
+            <div class="window-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="window-title">Antigravity IDE — Global or Local Setup</span>
+            <button class="copy-cmd-btn" data-target="cmd-antigravity" aria-label="Copy command">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <pre class="terminal-body"><code id="cmd-antigravity"># Instalasi Global untuk semua workspace Antigravity Anda:
+node bin/taste-engine.mjs install --agent antigravity --global
+
+# ATAU instalasi lokal ke workspace proyek aktif saat ini:
+node bin/taste-engine.mjs install --agent antigravity</code></pre>
+          <div class="panel-footer-note">
+            💡 <strong>Tip Antigravity:</strong> Setelah terpasang, skill akan langsung aktif otomatis di <code>~/.gemini/config/skills/taste-engine</code>. Anda bisa langsung meminta di chat: <em>"Terapkan gaya Neo-Brutalism dengan Dark Mode untuk dashboard ini."</em>
+          </div>
+        </div>
+
+        <!-- 2. Antigravity CLI (agy) -->
+        <div class="install-panel" id="panel-agy">
+          <div class="panel-header">
+            <div class="window-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="window-title">Antigravity CLI (agy) Terminal</span>
+            <button class="copy-cmd-btn" data-target="cmd-agy" aria-label="Copy command">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <pre class="terminal-body"><code id="cmd-agy"># Tambahkan via Universal Skills CLI:
+npx skills add kennedys0/taste-engine
+
+# Verifikasi status instalasi skill di agy:
+agy skills list</code></pre>
+          <div class="panel-footer-note">
+            💡 <strong>Info CLI:</strong> Antigravity CLI secara otomatis memuat seluruh skill yang terdaftar di sistem konfigurasi pengguna.
+          </div>
+        </div>
+
+        <!-- 3. Claude Code -->
+        <div class="install-panel" id="panel-claude">
+          <div class="panel-header">
+            <div class="window-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="window-title">Anthropic Claude Code</span>
+            <button class="copy-cmd-btn" data-target="cmd-claude" aria-label="Copy command">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <pre class="terminal-body"><code id="cmd-claude"># Instalasi via Taste Engine Installer:
+node bin/taste-engine.mjs install --agent claude --global
+
+# ATAU via Skills CLI:
+npx skills add kennedys0/taste-engine</code></pre>
+          <div class="panel-footer-note">
+            💡 <strong>Claude Code integration:</strong> Skill terpasang pada <code>~/.claude/skills/taste-engine</code> dan siap digunakan oleh Claude Code CLI.
+          </div>
+        </div>
+
+        <!-- 4. OpenAI Codex / Copilot -->
+        <div class="install-panel" id="panel-codex">
+          <div class="panel-header">
+            <div class="window-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="window-title">OpenAI Codex & GitHub Copilot Workspace</span>
+            <button class="copy-cmd-btn" data-target="cmd-codex" aria-label="Copy command">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <pre class="terminal-body"><code id="cmd-codex"># Instalasi untuk Codex / Copilot context:
+node bin/taste-engine.mjs install --agent codex --global
+
+# Atau pasang langsung di workspace proyek lokal Anda:
+node bin/taste-engine.mjs install --agent codex</code></pre>
+          <div class="panel-footer-note">
+            💡 <strong>Codex / Copilot:</strong> File panduan skill tersimpan di <code>~/.codex/skills/taste-engine</code> atau <code>.agents/taste-engine</code> di repo Anda.
+          </div>
+        </div>
+
+        <!-- 5. Universal Skills CLI -->
+        <div class="install-panel" id="panel-skills-cli">
+          <div class="panel-header">
+            <div class="window-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="window-title">Universal Skills CLI (npx skills)</span>
+            <button class="copy-cmd-btn" data-target="cmd-skills-cli" aria-label="Copy command">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <pre class="terminal-body"><code id="cmd-skills-cli"># Pasang seluruh pack Taste Engine dalam 1 baris perintah:
+npx skills add kennedys0/taste-engine
+
+# Periksa daftar skill yang aktif di sistem Anda:
+npx skills list</code></pre>
+          <div class="panel-footer-note">
+            💡 <strong>Ecosystem Standard:</strong> Mendukung semua environment dan AI agent yang mengadopsi standar Skills Registry resmi.
+          </div>
+        </div>
+
+        <!-- 6. Standalone Single Style -->
+        <div class="install-panel" id="panel-standalone">
+          <div class="panel-header">
+            <div class="window-dots">
+              <span class="dot dot-red"></span>
+              <span class="dot dot-yellow"></span>
+              <span class="dot dot-green"></span>
+            </div>
+            <span class="window-title">Instalasi Single Standalone Style</span>
+            <button class="copy-cmd-btn" data-target="cmd-standalone" aria-label="Copy command">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <span>Copy</span>
+            </button>
+          </div>
+          <pre class="terminal-body"><code id="cmd-standalone"># Hanya ingin gaya Cyberpunk HUD:
+npx skills add kennedys0/taste-style-cyberpunk-hud
+
+# Hanya ingin gaya Neo-Brutalism:
+npx skills add kennedys0/taste-style-neo-brutalism
+
+# Hanya ingin gaya Human Sculpted Clay:
+npx skills add kennedys0/taste-style-claymorphism
+
+# Hanya ingin gaya Swiss / Editorial:
+npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
+          <div class="panel-footer-note">
+            💡 <strong>Hemat Context Token:</strong> Jika Anda hanya membutuhkan 1 estetika spesifik untuk proyek tertentu, gunakan standalone package di atas untuk menghemat context window AI agent.
+          </div>
+        </div>
+      </div>
+
+      <!-- CLI Offline Gallery Tip -->
+      <div class="cli-verify-card">
+        <div class="verify-icon">✨</div>
+        <div class="verify-text">
+          <h4>Buka Gallery Showcase di Browser Anda Secara Offline</h4>
+          <p>Jalankan perintah ini di terminal repository kapan saja untuk membuka showcase interaktif ini secara langsung:</p>
+          <code class="inline-code">node bin/taste-engine.mjs gallery</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 4: FAQ ACCORDION
+       ========================================================= -->
+  <section id="faq" class="content-section">
+    <div class="section-header">
+      <span class="section-eyebrow">Tanya Jawab</span>
+      <h2 class="section-title">Pertanyaan yang Sering Diajukan (FAQ)</h2>
+      <p class="section-desc">Jawaban lengkap seputar cara kerja, kompatibilitas framework, aturan kontras warna, dan cara kustomisasi Taste Engine.</p>
+    </div>
+
+    <div class="faq-container">
+      <div class="faq-accordion" id="faqAccordion">
+
+        <!-- Question 1 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Apa itu Taste Engine dan mengapa saya membutuhkannya?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>AI coding agents secara bawaan cenderung menghasilkan desain frontend yang seragam dan membosankan (<em>AI-slop</em>): bayangan ungu mengambang, kontras rendah, font tanpa hierarki jelas, dan layout generik yang terlihat murahan.</p>
+              <p><strong>Taste Engine</strong> adalah intelligence skill pack yang membekali AI agent dengan 10 estetika terkurasi (Bento, Brutalism, Claymorphism, Cockpit, Cyberpunk, Glassmorphism, Minimalist, Retro Terminal, Skeuomorphism, Swiss Editorial) serta quality gates ketat agar hasil kodenya berstandar desainer profesional dunia.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 2 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Apakah Taste Engine mengikat saya ke framework tertentu (React, Vue, Tailwind, dll)?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p><strong>Sama sekali tidak (100% Framework-Agnostic).</strong> Taste Engine mengajarkan agent prinsip desain murni, tokens matematis, dan formula CSS yang netral.</p>
+              <p>Anda bisa menggunakannya di React, Next.js, Vue, Svelte, Nuxt, Astro, HTML murni, Tailwind CSS, shadcn/ui, MUI, Vanilla CSS, atau UI framework apa pun yang Anda gunakan saat ini.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 3 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Bagaimana Taste Engine menjamin tidak ada tabrakan warna (contrast collision) di Dark & Light mode?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Setiap gaya dalam Taste Engine menerapkan aturan <strong>Strict Paired Coupling</strong>. Token warna diatur berpasangan matematis antara background, surface, ink (text), dan border.</p>
+              <p>Ketika berpindah antara <code>[data-theme="dark"]</code> dan <code>[data-theme="light"]</code>, seluruh pasangan warna berganti secara simetris dan dijamin memenuhi standar kontras minimum <strong>WCAG AA (≥ 4.5:1)</strong>. Aturan anti-slop secara eksplisit melarang teks hitam di background gelap atau teks putih di background terang.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 4 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Apakah Taste Engine akan merusak atau menimpa CSS dan komponen yang sudah ada?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p><strong>Tidak.</strong> Taste Engine bersifat non-destructive dan aditif. Semua token warna dan class CSS menggunakan namespace unik seperti <code>--taste-[style]-*</code> sehingga terisolasi dan tidak akan menimpa CSS global Anda.</p>
+              <p>Quality gates Taste Engine juga mewajibkan agent untuk menghormati arsitektur komponen dan naming convention yang sudah berjalan di codebase proyek Anda.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 5 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Bisakah saya menginstal hanya satu gaya tertentu saja tanpa seluruh bundle?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p><strong>Bisa!</strong> Taste Engine menyediakan 10 standalone skill independen di direktori <code>optional-standalone-skills/</code>. Anda bisa memasang masing-masing style secara terpisah menggunakan perintah:</p>
+              <code>npx skills add kennedys0/taste-style-[nama-style]</code>
+              <p style="margin-top:0.6rem;">Misalnya: <code>npx skills add kennedys0/taste-style-cyberpunk-hud</code>. Cara ini sangat hemat token jika proyek Anda hanya berfokus pada 1 gaya spesifik.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 6 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Bagaimana cara memverifikasi bahwa Taste Engine sudah aktif di AI Agent saya?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Di Antigravity, Anda bisa memeriksa daftar skill yang terpasang melalui menu pengaturan atau menjalankan <code>agy skills list</code> di CLI.</p>
+              <p>Untuk mengujinya secara langsung di chat, cukup tanyakan: <em>"Gunakan Taste Engine untuk mereview dan mendesain ulang komponen kartu ini dengan estetika Bento Grid."</em> Agent Anda akan langsung mengenali dan mengaplikasikan aturan Taste Engine.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Question 7 -->
+        <div class="faq-item">
+          <button class="faq-question" aria-expanded="false">
+            <span>Apakah saya bisa menambahkan gaya baru atau mengkustomisasi token warna?</span>
+            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+          </button>
+          <div class="faq-answer">
+            <div class="faq-answer-inner">
+              <p>Tentu saja. Anda cukup mendefinisikan ulang variabel CSS di stylesheet Anda (misal menimpa <code>--taste-cyber-accent: #00ffcc;</code>).</p>
+              <p>Jika Anda ingin berkontribusi membuat style baru ke dalam pack, Anda bisa menambahkan file markdown baru di <code>taste-engine/styles/</code> dan menjalankan skrip validasi resmi kami: <code>python taste-engine/scripts/validate-pack.py</code>.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 5: DESIGN TOKEN CHEATSHEET
+       ========================================================= -->
+  <section id="tokens" class="content-section">
+    <div class="section-header">
+      <span class="section-eyebrow">Token Reference</span>
+      <h2 class="section-title">Standard Token Architecture</h2>
+      <p class="section-desc">Setiap style menggunakan konvensi token CSS yang seragam dan mudah dipetakan ke Tailwind CSS theme config atau standard CSS custom properties.</p>
+    </div>
+
+    <div class="token-ref-card">
+      <div class="token-table-wrap">
+        <table class="token-table">
+          <thead>
+            <tr>
+              <th>CSS Variable Pattern</th>
+              <th>Semantic Role</th>
+              <th>Dark Mode Behavior</th>
+              <th>Light Mode Behavior</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><code>--taste-[style]-bg</code></td>
+              <td>Canvas background layer</td>
+              <td>Deep dark / OLED black tint</td>
+              <td>Crisp white / soft pale tint</td>
+            </tr>
+            <tr>
+              <td><code>--taste-[style]-surface</code></td>
+              <td>Card, panel, and modal containers</td>
+              <td>Elevated dark with subtle border</td>
+              <td>Clean elevated card with soft rim</td>
+            </tr>
+            <tr>
+              <td><code>--taste-[style]-text</code></td>
+              <td>Primary readable typography</td>
+              <td>High-contrast white (min 4.5:1)</td>
+              <td>High-contrast slate/black (min 4.5:1)</td>
+            </tr>
+            <tr>
+              <td><code>--taste-[style]-muted</code></td>
+              <td>Secondary labels & subtitles</td>
+              <td>Medium grey (accessible contrast)</td>
+              <td>Cool grey (accessible contrast)</td>
+            </tr>
+            <tr>
+              <td><code>--taste-[style]-border</code></td>
+              <td>Card outlines & structural lines</td>
+              <td>Subtle translucent white rim</td>
+              <td>Subtle translucent dark rim</td>
+            </tr>
+            <tr>
+              <td><code>--taste-[style]-accent</code></td>
+              <td>Primary action buttons & indicators</td>
+              <td>Vibrant, high-chroma highlight</td>
+              <td>Deep, contrast-anchored highlight</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="boilerplate-box">
+        <div class="boilerplate-header">
+          <span>Quick Starter CSS Boilerplate</span>
+          <button class="copy-cmd-btn" data-target="cmd-boilerplate" aria-label="Copy boilerplate">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>Copy CSS</span>
+          </button>
+        </div>
+        <pre class="terminal-body"><code id="cmd-boilerplate">/* Root Dark Theme Default */
+:root {{
+  --app-bg: var(--taste-bento-bg, #0b0c10);
+  --app-surface: var(--taste-bento-surface, #14171f);
+  --app-text: var(--taste-bento-text, #f9fafb);
+  --app-border: var(--taste-bento-border, rgba(255, 255, 255, 0.08));
+  --app-accent: var(--taste-bento-accent, #6366f1);
+}}
+
+/* Light Theme Transition */
+[data-theme="light"] {{
+  --app-bg: #f8fafc;
+  --app-surface: #ffffff;
+  --app-text: #0f172a;
+  --app-border: rgba(0, 0, 0, 0.08);
+  --app-accent: #4f46e5;
+}}</code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SITE FOOTER
+       ========================================================= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-col-brand">
+        <div class="brand-group">
+          <span class="brand-logo-icon">✨</span>
+          <strong style="font-size: 1.15rem; font-weight: 800;">Taste Engine</strong>
+          <span class="brand-badge">v1.0.0</span>
+        </div>
+        <p class="footer-tagline">Open-source frontend design intelligence pack for AI coding agents. Elevate design fidelity, eliminate AI-slop, and enforce contrast safety.</p>
+        <p class="footer-credit">Created by <a href="https://github.com/kennedys0" target="_blank" rel="noopener">Mochamad Vikry (@kennedys0)</a></p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Aesthetic Archetypes</h4>
+        <ul>
+          <li><a href="#showcase">Bento Grid</a></li>
+          <li><a href="#showcase">Neo-Brutalism</a></li>
+          <li><a href="#showcase">Claymorphism</a></li>
+          <li><a href="#showcase">Data Cockpit</a></li>
+          <li><a href="#showcase">Cyberpunk HUD</a></li>
+          <li><a href="#showcase">Swiss Editorial</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Navigation & Docs</h4>
+        <ul>
+          <li><a href="#how-it-works">Architecture Flow</a></li>
+          <li><a href="#installation">Panduan Instalasi</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#tokens">Design Tokens</a></li>
+          <li><a href="https://github.com/kennedys0/taste-engine" target="_blank" rel="noopener">GitHub Repository</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Supported Agents</h4>
+        <ul>
+          <li><a href="#installation">Google Antigravity IDE</a></li>
+          <li><a href="#installation">Antigravity CLI (agy)</a></li>
+          <li><a href="#installation">Anthropic Claude Code</a></li>
+          <li><a href="#installation">OpenAI Codex / Copilot</a></li>
+          <li><a href="#installation">Universal Skills CLI</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2026 Mochamad Vikry. Released under the MIT License.</p>
+      <a href="#" class="back-to-top-btn">Kembali ke atas ↑</a>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+    <span id="toastMsg">Command copied to clipboard!</span>
+  </div>
+
+  <script>
+    // =========================================================
+    // 1. THEME TOGGLE LOGIC
+    // =========================================================
+    const html = document.documentElement;
+    const themeBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeLabel = document.getElementById('themeLabel');
+
+    function updateThemeUI(theme) {{
+      if (theme === 'light') {{
+        html.setAttribute('data-theme', 'light');
+        themeIcon.textContent = '🌙';
+        themeLabel.textContent = 'Dark Mode';
+      }} else {{
+        html.setAttribute('data-theme', 'dark');
+        themeIcon.textContent = '☀️';
+        themeLabel.textContent = 'Light Mode';
+      }}
+    }}
+
+    themeBtn.addEventListener('click', () => {{
+      const current = html.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      updateThemeUI(next);
+    }});
+
+    // =========================================================
+    // 2. SHOWCASE STYLE FILTER
+    // =========================================================
+    const filterChips = document.querySelectorAll('.filter-chip');
+    const cards = document.querySelectorAll('.showcase-card');
+
+    filterChips.forEach(chip => {{
+      chip.addEventListener('click', () => {{
+        filterChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        const filter = chip.getAttribute('data-filter');
+
+        cards.forEach(card => {{
+          if (filter === 'all' || card.getAttribute('data-style') === filter) {{
+            card.style.display = 'flex';
+          }} else {{
+            card.style.display = 'none';
+          }}
+        }});
+      }});
+    }});
+
+    // =========================================================
+    // 3. TOAST NOTIFICATION UTILITY
+    // =========================================================
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toastMsg');
+    let toastTimeout;
+
+    function showToast(text) {{
+      toastMsg.textContent = text;
+      toast.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {{
+        toast.classList.remove('show');
+      }}, 2400);
+    }}
+
+    // =========================================================
+    // 4. COPY TOKENS BUTTONS
+    // =========================================================
+    document.querySelectorAll('.copy-token-btn').forEach(btn => {{
+      btn.addEventListener('click', async (e) => {{
+        e.stopPropagation();
+        const tokens = btn.getAttribute('data-tokens');
+        try {{
+          await navigator.clipboard.writeText(tokens);
+          showToast('Copied CSS tokens to clipboard!');
+        }} catch {{
+          showToast('Tokens: ' + tokens);
+        }}
+      }});
+    }});
+
+    // =========================================================
+    // 5. HERO QUICK INSTALL COPY
+    // =========================================================
+    const heroCopyBtn = document.getElementById('heroCopyBtn');
+    const heroInstallCmd = document.getElementById('heroInstallCmd');
+    if (heroCopyBtn && heroInstallCmd) {{
+      heroCopyBtn.addEventListener('click', async () => {{
+        try {{
+          await navigator.clipboard.writeText(heroInstallCmd.textContent.trim());
+          showToast('Copied install command!');
+        }} catch {{
+          showToast('Command copied!');
+        }}
+      }});
+    }}
+
+    // =========================================================
+    // 6. INSTALLATION GUIDE TABS
+    // =========================================================
+    const tabBtns = document.querySelectorAll('.install-tab-btn');
+    const panels = document.querySelectorAll('.install-panel');
+
+    tabBtns.forEach(btn => {{
+      btn.addEventListener('click', () => {{
+        const targetTab = btn.getAttribute('data-tab');
+        
+        tabBtns.forEach(b => {{
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        }});
+        panels.forEach(p => p.classList.remove('active'));
+
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+        const targetPanel = document.getElementById('panel-' + targetTab);
+        if (targetPanel) {{
+          targetPanel.classList.add('active');
+        }}
+      }});
+    }});
+
+    // Generic Copy Command Buttons in Panels & Boilerplate
+    document.querySelectorAll('.copy-cmd-btn').forEach(btn => {{
+      btn.addEventListener('click', async () => {{
+        const targetId = btn.getAttribute('data-target');
+        const codeEl = document.getElementById(targetId);
+        if (codeEl) {{
+          try {{
+            await navigator.clipboard.writeText(codeEl.textContent.trim());
+            showToast('Copied to clipboard!');
+          }} catch {{
+            showToast('Copied!');
+          }}
+        }}
+      }});
+    }});
+
+    // =========================================================
+    // 7. INTERACTIVE FAQ ACCORDION
+    // =========================================================
+    const faqItems = document.querySelectorAll('.faq-item');
+
+    faqItems.forEach(item => {{
+      const questionBtn = item.querySelector('.faq-question');
+      const answer = item.querySelector('.faq-answer');
+
+      questionBtn.addEventListener('click', () => {{
+        const isOpen = item.classList.contains('open');
+
+        // Close all other items for clean accordion behavior
+        faqItems.forEach(otherItem => {{
+          if (otherItem !== item) {{
+            otherItem.classList.remove('open');
+            otherItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+            otherItem.querySelector('.faq-answer').style.maxHeight = null;
+          }}
+        }});
+
+        if (isOpen) {{
+          item.classList.remove('open');
+          questionBtn.setAttribute('aria-expanded', 'false');
+          answer.style.maxHeight = null;
+        }} else {{
+          item.classList.add('open');
+          questionBtn.setAttribute('aria-expanded', 'true');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }}
+      }});
+    }});
+  </script>
+</body>
+</html>
+'''
+
+INDEX_FILE.write_text(new_html, encoding="utf-8")
+print(f"PASS: successfully updated {INDEX_FILE} ({len(new_html)} bytes)")
