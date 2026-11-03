@@ -1,0 +1,1273 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taste Engine — Interactive Style Showcase</title>
+  <meta name="description" content="Live material preview of all 10 frontend aesthetics in Taste Engine with paired Dark & Light mode contrast.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* Global Shell Reset & Base */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    :root {
+      --shell-bg: #0b0d12;
+      --shell-surface: #131722;
+      --shell-border: rgba(255, 255, 255, 0.10);
+      --shell-text: #f3f4f6;
+      --shell-text-muted: #9ca3af;
+      --shell-accent: #6366f1;
+      --shell-font: 'Inter', system-ui, -apple-system, sans-serif;
+      --shell-radius: 12px;
+      transition: background-color 200ms ease, color 200ms ease;
+    }
+
+    [data-theme="light"] {
+      --shell-bg: #f8fafc;
+      --shell-surface: #ffffff;
+      --shell-border: rgba(0, 0, 0, 0.10);
+      --shell-text: #0f172a;
+      --shell-text-muted: #64748b;
+      --shell-accent: #4f46e5;
+    }
+
+    body {
+      background-color: var(--shell-bg);
+      color: var(--shell-text);
+      font-family: var(--shell-font);
+      line-height: 1.5;
+      padding-bottom: 6rem;
+      min-height: 100vh;
+    }
+
+    /* Top Navigation Banner */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(19, 23, 34, 0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--shell-border);
+      padding: 0.875rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    [data-theme="light"] .top-nav {
+      background: rgba(255, 255, 255, 0.88);
+    }
+
+    .brand-title {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .brand-badge {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      background: rgba(99, 102, 241, 0.18);
+      color: #818cf8;
+      border: 1px solid rgba(99, 102, 241, 0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    [data-theme="light"] .brand-badge {
+      background: rgba(79, 70, 229, 0.12);
+      color: #4338ca;
+      border-color: rgba(79, 70, 229, 0.25);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .theme-toggle-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--shell-surface);
+      color: var(--shell-text);
+      border: 1px solid var(--shell-border);
+      border-radius: 9999px;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 150ms ease, transform 100ms ease;
+    }
+
+    .theme-toggle-btn:hover {
+      background: rgba(99, 102, 241, 0.15);
+      border-color: var(--shell-accent);
+      transform: translateY(-1px);
+    }
+
+    .gh-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: transparent;
+      color: var(--shell-text);
+      border: 1px solid var(--shell-border);
+      border-radius: 9999px;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 150ms ease;
+    }
+
+    .gh-btn:hover {
+      background: var(--shell-surface);
+      border-color: var(--shell-accent);
+    }
+
+    /* Hero Section */
+    .hero-banner {
+      max-width: 1300px;
+      margin: 2.5rem auto 1.5rem auto;
+      padding: 0 1.5rem;
+      text-align: center;
+    }
+
+    .hero-banner h1 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-banner p {
+      font-size: 1.1rem;
+      color: var(--shell-text-muted);
+      max-width: 680px;
+      margin: 0 auto 1.5rem auto;
+    }
+
+    /* Filter Bar */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.5rem;
+      max-width: 1200px;
+      margin: 0 auto 2.5rem auto;
+      padding: 0 1rem;
+    }
+
+    .filter-chip {
+      background: var(--shell-surface);
+      color: var(--shell-text-muted);
+      border: 1px solid var(--shell-border);
+      border-radius: 9999px;
+      padding: 0.4rem 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 150ms ease;
+    }
+
+    .filter-chip:hover {
+      color: var(--shell-text);
+      border-color: rgba(99, 102, 241, 0.4);
+    }
+
+    .filter-chip.active {
+      background: var(--shell-accent);
+      color: #ffffff;
+      border-color: var(--shell-accent);
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
+    }
+
+    /* Gallery Grid */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(580px, 1fr));
+      gap: 2rem;
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    @media (max-width: 680px) {
+      .gallery-grid { grid-template-columns: 1fr; }
+      .top-nav { padding: 0.75rem 1rem; }
+    }
+
+    /* Style Showcase Container */
+    .showcase-card {
+      background: var(--shell-surface);
+      border: 1px solid var(--shell-border);
+      border-radius: var(--shell-radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .showcase-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    }
+
+    .showcase-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid var(--shell-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    .showcase-title-group h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    .showcase-signature {
+      font-size: 0.8rem;
+      color: var(--shell-text-muted);
+    }
+
+    .copy-token-btn {
+      background: transparent;
+      color: var(--shell-text-muted);
+      border: 1px solid var(--shell-border);
+      border-radius: 6px;
+      padding: 0.35rem 0.75rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 120ms ease;
+    }
+
+    .copy-token-btn:hover {
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--shell-text);
+      border-color: var(--shell-accent);
+    }
+
+    .showcase-body {
+      padding: 1.75rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    /* =========================================================
+       STYLE 1: BENTO GRID
+       ========================================================= */
+    .bento-wrapper {
+      --taste-bento-bg: #0b0d10;
+      --taste-bento-surface: #15191e;
+      --taste-bento-surface-hover: #1c2229;
+      --taste-bento-border: 1px solid rgba(255, 255, 255, 0.08);
+      --taste-bento-text: #f4f4f6;
+      --taste-bento-text-muted: #9ca3af;
+      --taste-bento-accent: #8b5cf6;
+      --taste-bento-tile-hero-bg: linear-gradient(135deg, #181d24 0%, #12151a 100%);
+      font-family: 'DM Sans', var(--shell-font);
+      background-color: var(--taste-bento-bg);
+      color: var(--taste-bento-text);
+      padding: 1.5rem;
+      border-radius: 18px;
+    }
+    [data-theme="light"] .bento-wrapper {
+      --taste-bento-bg: #f8f9fa;
+      --taste-bento-surface: #ffffff;
+      --taste-bento-surface-hover: #f1f3f5;
+      --taste-bento-border: 1px solid rgba(0, 0, 0, 0.08);
+      --taste-bento-text: #111827;
+      --taste-bento-text-muted: #6b7280;
+      --taste-bento-accent: #7c3aed;
+      --taste-bento-tile-hero-bg: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+    }
+    .bento-grid-demo {
+      display: grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap: 14px;
+    }
+    .bento-tile {
+      background: var(--taste-bento-surface);
+      border: var(--taste-bento-border);
+      border-radius: 18px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 160ms ease, border-color 160ms ease;
+    }
+    .bento-tile:hover {
+      transform: translateY(-2px);
+      border-color: rgba(139, 92, 246, 0.35);
+    }
+    .bento-tile.hero {
+      background: var(--taste-bento-tile-hero-bg);
+      border-color: rgba(139, 92, 246, 0.25);
+    }
+    .bento-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--taste-bento-accent);
+      margin-bottom: 0.5rem;
+    }
+    .bento-btn {
+      background: var(--taste-bento-accent);
+      color: #ffffff;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 10px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      width: fit-content;
+      margin-top: 1rem;
+      transition: opacity 120ms ease;
+    }
+    .bento-btn:hover { opacity: 0.9; }
+
+    /* =========================================================
+       STYLE 2: BRUTALISM
+       ========================================================= */
+    .brutal-wrapper {
+      --taste-brutal-bg: #000000;
+      --taste-brutal-ink: #ffffff;
+      --taste-brutal-surface: #121212;
+      --taste-brutal-border: 2.5px solid #ffffff;
+      --taste-brutal-signal: #ff3333;
+      --taste-brutal-btn-bg: #000000;
+      --taste-brutal-btn-ink: #ffffff;
+      --taste-brutal-btn-hover-bg: #ffffff;
+      --taste-brutal-btn-hover-ink: #000000;
+      font-family: Arial, Helvetica, sans-serif;
+      background-color: var(--taste-brutal-bg);
+      color: var(--taste-brutal-ink);
+      padding: 1.5rem;
+      border-radius: 0px;
+      border: var(--taste-brutal-border);
+    }
+    [data-theme="light"] .brutal-wrapper {
+      --taste-brutal-bg: #ffffff;
+      --taste-brutal-ink: #000000;
+      --taste-brutal-surface: #ffffff;
+      --taste-brutal-border: 2.5px solid #000000;
+      --taste-brutal-signal: #ff0000;
+      --taste-brutal-btn-bg: #ffffff;
+      --taste-brutal-btn-ink: #000000;
+      --taste-brutal-btn-hover-bg: #000000;
+      --taste-brutal-btn-hover-ink: #ffffff;
+    }
+    .brutal-header {
+      border-bottom: var(--taste-brutal-border);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
+    }
+    .brutal-btn {
+      background-color: var(--taste-brutal-btn-bg);
+      color: var(--taste-brutal-btn-ink);
+      border: var(--taste-brutal-border);
+      border-radius: 0px;
+      padding: 10px 24px;
+      font-weight: 900;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: none; /* Immediate flip */
+    }
+    .brutal-btn:hover {
+      background-color: var(--taste-brutal-btn-hover-bg);
+      color: var(--taste-brutal-btn-hover-ink);
+    }
+    .brutal-tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      border: 1.5px solid currentColor;
+      padding: 2px 6px;
+    }
+
+    /* =========================================================
+       STYLE 3: CLAYMORPHISM
+       ========================================================= */
+    .clay-wrapper {
+      --taste-clay-bg: #161326;
+      --taste-clay-primary: #813ffc;
+      --taste-clay-light: #26203d;
+      --taste-clay-light-text: #f3f0fa;
+      --taste-clay-muted: #a49bbf;
+      --taste-clay-well-bg: #1e1a33;
+      --taste-clay-well-rim: rgba(255, 255, 255, 0.20);
+      --taste-clay-shadow-primary: 8px 16px 24px rgba(10, 5, 25, 0.50), 2px 4px 8px rgba(10, 5, 25, 0.30);
+      --taste-clay-inner-primary: inset 3px 4px 6px rgba(255, 255, 255, 0.45), inset -4px -6px 8px rgba(40, 10, 110, 0.50);
+      --taste-clay-shadow-light: 8px 16px 24px rgba(0, 0, 0, 0.45), 2px 4px 8px rgba(0, 0, 0, 0.25);
+      --taste-clay-inner-light: inset 3px 4px 6px rgba(255, 255, 255, 0.15), inset -4px -6px 8px rgba(10, 5, 25, 0.60);
+      --taste-clay-inner-well: inset 3px 4px 8px rgba(0, 0, 0, 0.50), inset -2px -2px 6px rgba(255, 255, 255, 0.15);
+      font-family: 'Manrope', var(--shell-font);
+      background-color: var(--taste-clay-bg);
+      color: var(--taste-clay-light-text);
+      padding: 1.75rem;
+      border-radius: 28px;
+    }
+    [data-theme="light"] .clay-wrapper {
+      --taste-clay-bg: #d7d1f1;
+      --taste-clay-primary: #813ffc;
+      --taste-clay-light: #ecebf5;
+      --taste-clay-light-text: #28233d;
+      --taste-clay-muted: #7c739e;
+      --taste-clay-well-bg: #d7d1f1;
+      --taste-clay-well-rim: rgba(255, 255, 255, 0.85);
+      --taste-clay-shadow-primary: 8px 16px 24px rgba(100, 45, 210, 0.35), 2px 4px 8px rgba(70, 20, 150, 0.20);
+      --taste-clay-inner-primary: inset 3px 4px 6px rgba(255, 255, 255, 0.45), inset -4px -6px 8px rgba(40, 10, 110, 0.40);
+      --taste-clay-shadow-light: 8px 16px 24px rgba(110, 95, 160, 0.20), 2px 4px 8px rgba(110, 95, 160, 0.12);
+      --taste-clay-inner-light: inset 3px 4px 6px rgba(255, 255, 255, 0.95), inset -4px -6px 8px rgba(145, 135, 180, 0.35);
+      --taste-clay-inner-well: inset 3px 4px 8px rgba(110, 95, 165, 0.25), inset -2px -2px 6px rgba(255, 255, 255, 0.70);
+    }
+    .clay-card {
+      background: var(--taste-clay-light);
+      color: var(--taste-clay-light-text);
+      border-radius: 24px;
+      box-shadow: var(--taste-clay-inner-light), var(--taste-clay-shadow-light);
+      padding: 1.5rem;
+    }
+    .clay-btn-primary {
+      background: var(--taste-clay-primary);
+      color: #ffffff;
+      border: none;
+      border-radius: 9999px;
+      padding: 12px 24px;
+      font-weight: 700;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: var(--taste-clay-inner-primary), var(--taste-clay-shadow-primary);
+      transition: transform 140ms ease, box-shadow 140ms ease;
+    }
+    .clay-btn-primary:active {
+      transform: scale(0.97);
+    }
+    .clay-input-well {
+      background: var(--taste-clay-well-bg);
+      border: 3px solid var(--taste-clay-well-rim);
+      box-shadow: var(--taste-clay-inner-well);
+      border-radius: 9999px;
+      padding: 10px 18px;
+      font-size: 0.85rem;
+      color: var(--taste-clay-light-text);
+      outline: none;
+      width: 100%;
+      margin-top: 0.75rem;
+    }
+
+    /* =========================================================
+       STYLE 4: ENTERPRISE DATA COCKPIT
+       ========================================================= */
+    .ent-wrapper {
+      --taste-ent-bg: #0f1117;
+      --taste-ent-surface: #161922;
+      --taste-ent-ink: #f9fafb;
+      --taste-ent-muted: #9ca3af;
+      --taste-ent-border: 1px solid #232733;
+      --taste-ent-th-bg: #13151c;
+      --taste-ent-badge-healthy-bg: rgba(16, 185, 129, 0.15);
+      --taste-ent-badge-healthy-text: #34d399;
+      --taste-ent-badge-healthy-border: rgba(16, 185, 129, 0.35);
+      font-family: 'Inter', var(--shell-font);
+      background-color: var(--taste-ent-bg);
+      color: var(--taste-ent-ink);
+      padding: 1.5rem;
+      border-radius: 10px;
+      border: var(--taste-ent-border);
+    }
+    [data-theme="light"] .ent-wrapper {
+      --taste-ent-bg: #f9fafb;
+      --taste-ent-surface: #ffffff;
+      --taste-ent-ink: #111827;
+      --taste-ent-muted: #6b7280;
+      --taste-ent-border: 1px solid #e5e7eb;
+      --taste-ent-th-bg: #f3f4f6;
+      --taste-ent-badge-healthy-bg: #ecfdf5;
+      --taste-ent-badge-healthy-text: #065f46;
+      --taste-ent-badge-healthy-border: #a7f3d0;
+    }
+    .ent-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.825rem;
+      background: var(--taste-ent-surface);
+      border-radius: 6px;
+      overflow: hidden;
+      border: var(--taste-ent-border);
+    }
+    .ent-table th {
+      background: var(--taste-ent-th-bg);
+      border-bottom: var(--taste-ent-border);
+      padding: 8px 12px;
+      text-align: left;
+      font-weight: 600;
+      color: var(--taste-ent-muted);
+      text-transform: uppercase;
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+    }
+    .ent-table td {
+      padding: 9px 12px;
+      border-bottom: var(--taste-ent-border);
+    }
+    .ent-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      padding: 2px 8px;
+      border-radius: 9999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      background: var(--taste-ent-badge-healthy-bg);
+      color: var(--taste-ent-badge-healthy-text);
+      border: 1px solid var(--taste-ent-badge-healthy-border);
+    }
+    .tabular-num { font-variant-numeric: tabular-nums; text-align: right; }
+
+    /* =========================================================
+       STYLE 5: GLASSMORPHISM
+       ========================================================= */
+    .glass-scene {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+      padding: 2rem;
+      min-height: 200px;
+      background:
+        radial-gradient(ellipse 50% 60% at 20% 30%, rgba(59, 130, 246, 0.45) 0%, transparent 100%),
+        radial-gradient(ellipse 60% 60% at 85% 75%, rgba(168, 85, 247, 0.45) 0%, transparent 100%),
+        linear-gradient(135deg, #090d16 0%, #151a2a 100%);
+      color: #f8fafc;
+    }
+    [data-theme="light"] .glass-scene {
+      background:
+        radial-gradient(ellipse 50% 60% at 20% 30%, rgba(96, 165, 250, 0.55) 0%, transparent 100%),
+        radial-gradient(ellipse 60% 60% at 85% 75%, rgba(192, 132, 252, 0.45) 0%, transparent 100%),
+        linear-gradient(135deg, #f0f4f8 0%, #e2e8f0 100%);
+      color: #0f172a;
+    }
+    .glass-pane {
+      background: rgba(22, 28, 45, 0.60);
+      backdrop-filter: blur(18px) saturate(140%);
+      -webkit-backdrop-filter: blur(18px) saturate(140%);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 16px;
+      padding: 1.5rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.35);
+    }
+    [data-theme="light"] .glass-pane {
+      background: rgba(255, 255, 255, 0.45);
+      border-color: rgba(255, 255, 255, 0.70);
+      box-shadow: 0 16px 40px rgba(30, 58, 138, 0.12);
+    }
+    .glass-btn {
+      background: rgba(255, 255, 255, 0.20);
+      color: inherit;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      backdrop-filter: blur(8px);
+      padding: 8px 20px;
+      border-radius: 9999px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: background 150ms ease;
+    }
+    .glass-btn:hover { background: rgba(255, 255, 255, 0.30); }
+
+    /* =========================================================
+       STYLE 6: MINIMALISM
+       ========================================================= */
+    .mini-wrapper {
+      --taste-mini-bg: #121214;
+      --taste-mini-ink: #f4f4f5;
+      --taste-mini-muted: #a1a1aa;
+      --taste-mini-border: 1px solid rgba(255, 255, 255, 0.10);
+      --taste-mini-btn-bg: #f4f4f5;
+      --taste-mini-btn-text: #121214;
+      font-family: 'Inter', var(--shell-font);
+      background-color: var(--taste-mini-bg);
+      color: var(--taste-mini-ink);
+      padding: 2rem;
+      border-radius: 12px;
+    }
+    [data-theme="light"] .mini-wrapper {
+      --taste-mini-bg: #fafaf9;
+      --taste-mini-ink: #18181b;
+      --taste-mini-muted: #52525b;
+      --taste-mini-border: 1px solid rgba(0, 0, 0, 0.08);
+      --taste-mini-btn-bg: #18181b;
+      --taste-mini-btn-text: #ffffff;
+    }
+    .mini-btn {
+      background: var(--taste-mini-btn-bg);
+      color: var(--taste-mini-btn-text);
+      border: none;
+      padding: 9px 22px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: opacity 120ms ease;
+    }
+    .mini-btn:hover { opacity: 0.85; }
+    .mini-divider {
+      border: none;
+      border-top: var(--taste-mini-border);
+      margin: 1.25rem 0;
+    }
+
+    /* =========================================================
+       STYLE 7: NEO-BRUTALISM
+       ========================================================= */
+    .neo-wrapper {
+      --taste-neo-bg: #18181b;
+      --taste-neo-card-bg: #222227;
+      --taste-neo-ink: #fafafa;
+      --taste-neo-border: 2.5px solid #fafafa;
+      --taste-neo-shadow: 4px 4px 0 #fafafa;
+      --taste-neo-accent: #ffe600;
+      font-family: 'Space Grotesk', var(--shell-font);
+      background-color: var(--taste-neo-bg);
+      color: var(--taste-neo-ink);
+      padding: 1.75rem;
+      border-radius: 8px;
+    }
+    [data-theme="light"] .neo-wrapper {
+      --taste-neo-bg: #fffdf7;
+      --taste-neo-card-bg: #ffffff;
+      --taste-neo-ink: #121212;
+      --taste-neo-border: 2.5px solid #121212;
+      --taste-neo-shadow: 4px 4px 0 #121212;
+      --taste-neo-accent: #ffe600;
+    }
+    .neo-card {
+      background: var(--taste-neo-card-bg);
+      border: var(--taste-neo-border);
+      box-shadow: var(--taste-neo-shadow);
+      border-radius: 6px;
+      padding: 1.25rem;
+    }
+    .neo-btn {
+      background: var(--taste-neo-accent);
+      color: #121212;
+      border: var(--taste-neo-border);
+      box-shadow: var(--taste-neo-shadow);
+      border-radius: 6px;
+      padding: 9px 20px;
+      font-weight: 700;
+      font-size: 0.875rem;
+      cursor: pointer;
+      transition: transform 80ms ease, box-shadow 80ms ease;
+    }
+    .neo-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 var(--taste-neo-ink);
+    }
+
+    /* =========================================================
+       STYLE 8: RETRO TERMINAL
+       ========================================================= */
+    .term-wrapper {
+      --taste-term-bg: #0c0d0e;
+      --taste-term-surface: #14171a;
+      --taste-term-text: #ffb000;
+      --taste-term-glow: 0 0 6px rgba(255, 176, 0, 0.45);
+      --taste-term-border: 1px solid rgba(255, 176, 0, 0.25);
+      --taste-term-scanline: repeating-linear-gradient(0deg, rgba(0,0,0,0.18) 0px, transparent 2px);
+      font-family: 'JetBrains Mono', monospace;
+      background-color: var(--taste-term-bg);
+      background-image: var(--taste-term-scanline);
+      color: var(--taste-term-text);
+      text-shadow: var(--taste-term-glow);
+      padding: 1.5rem;
+      border-radius: 4px;
+      border: var(--taste-term-border);
+    }
+    [data-theme="light"] .term-wrapper {
+      --taste-term-bg: #f4f1ea;
+      --taste-term-surface: #e8e4da;
+      --taste-term-text: #5c3a00;
+      --taste-term-glow: none;
+      --taste-term-border: 1px solid #d5d0c3;
+      --taste-term-scanline: none;
+    }
+    .term-prompt {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+    }
+    .term-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 14px;
+      background: currentColor;
+      animation: termBlink 1s infinite;
+    }
+    @keyframes termBlink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+    .term-btn {
+      background: transparent;
+      color: currentColor;
+      border: 1px solid currentColor;
+      padding: 6px 14px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-transform: uppercase;
+      margin-top: 0.75rem;
+    }
+    .term-btn:hover {
+      background: currentColor;
+      color: var(--taste-term-bg);
+    }
+
+    /* =========================================================
+       STYLE 9: SKEUOMORPHISM
+       ========================================================= */
+    .skeuo-wrapper {
+      --taste-skeuo-chassis: linear-gradient(180deg, #323741 0%, #262a32 100%);
+      --taste-skeuo-border: 1px solid rgba(0, 0, 0, 0.8);
+      --taste-skeuo-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      --taste-skeuo-text: #f3f4f6;
+      --taste-skeuo-btn-bg: linear-gradient(180deg, #3c424f 0%, #2a2e37 100%);
+      --taste-skeuo-btn-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.40), inset 0 -1px 0 rgba(0, 0, 0, 0.50);
+      --taste-skeuo-btn-shadow: 0 4px 8px rgba(0, 0, 0, 0.50), 0 1px 2px rgba(0, 0, 0, 0.40);
+      --taste-skeuo-well: inset 0 3px 6px rgba(0, 0, 0, 0.70), 0 1px 0 rgba(255, 255, 255, 0.12);
+      font-family: 'Inter', var(--shell-font);
+      background: var(--taste-skeuo-chassis);
+      border: var(--taste-skeuo-border);
+      box-shadow: var(--taste-skeuo-highlight);
+      color: var(--taste-skeuo-text);
+      padding: 1.75rem;
+      border-radius: 14px;
+    }
+    [data-theme="light"] .skeuo-wrapper {
+      --taste-skeuo-chassis: linear-gradient(180deg, #f5f7fa 0%, #e4e7eb 100%);
+      --taste-skeuo-border: 1px solid rgba(0, 0, 0, 0.15);
+      --taste-skeuo-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.90);
+      --taste-skeuo-text: #1f2937;
+      --taste-skeuo-btn-bg: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%);
+      --taste-skeuo-btn-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.80), inset 0 -1px 0 rgba(0, 0, 0, 0.20);
+      --taste-skeuo-btn-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
+      --taste-skeuo-well: inset 0 3px 6px rgba(0, 0, 0, 0.18), 0 1px 0 rgba(255, 255, 255, 0.80);
+    }
+    .skeuo-btn {
+      background: var(--taste-skeuo-btn-bg);
+      color: var(--taste-skeuo-text);
+      border: 1px solid rgba(0, 0, 0, 0.35);
+      border-radius: 8px;
+      box-shadow: var(--taste-skeuo-btn-bevel), var(--taste-skeuo-btn-shadow);
+      padding: 10px 22px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .skeuo-btn:active {
+      transform: translateY(1px);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+    }
+    .skeuo-led {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 10px #10b981;
+      margin-right: 0.5rem;
+    }
+
+    /* =========================================================
+       STYLE 10: SWISS / EDITORIAL
+       ========================================================= */
+    .swiss-wrapper {
+      --taste-swiss-bg: #0d0d0d;
+      --taste-swiss-ink: #f5f5f5;
+      --taste-swiss-muted: #9ca3af;
+      --taste-swiss-rule: 1px solid rgba(255, 255, 255, 0.20);
+      --taste-swiss-btn-bg: #f5f5f5;
+      --taste-swiss-btn-text: #111111;
+      --taste-swiss-accent: #ef4444;
+      font-family: 'Helvetica Neue', 'Inter', sans-serif;
+      background-color: var(--taste-swiss-bg);
+      color: var(--taste-swiss-ink);
+      padding: 1.75rem;
+      border-radius: 0px;
+    }
+    [data-theme="light"] .swiss-wrapper {
+      --taste-swiss-bg: #ffffff;
+      --taste-swiss-ink: #111111;
+      --taste-swiss-muted: #6b7280;
+      --taste-swiss-rule: 1px solid #111111;
+      --taste-swiss-btn-bg: #111111;
+      --taste-swiss-btn-text: #ffffff;
+      --taste-swiss-accent: #e3000f;
+    }
+    .swiss-index {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--taste-swiss-accent);
+    }
+    .swiss-headline {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.1;
+      margin: 0.5rem 0 1rem 0;
+    }
+    .swiss-rule {
+      border: none;
+      border-top: var(--taste-swiss-rule);
+      margin: 1rem 0;
+    }
+    .swiss-btn {
+      background: var(--taste-swiss-btn-bg);
+      color: var(--taste-swiss-btn-text);
+      border: none;
+      border-radius: 0px;
+      padding: 10px 24px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #1e1b4b;
+      color: #e0e7ff;
+      border: 1px solid #6366f1;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      padding: 12px 20px;
+      border-radius: 9999px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 200ms ease, transform 200ms ease;
+      pointer-events: none;
+      z-index: 1000;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Sticky Navigation -->
+  <header class="top-nav">
+    <div class="brand-title">
+      <span>Taste Engine</span>
+      <span class="brand-badge">Live Showcase</span>
+    </div>
+    <div class="nav-actions">
+      <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Dark and Light Mode">
+        <span id="themeIcon">☀️</span>
+        <span id="themeLabel">Light Mode</span>
+      </button>
+      <a href="https://github.com/kennedys0/taste-engine" target="_blank" rel="noopener" class="gh-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <h1>Material Fidelity Across 10 Aesthetics</h1>
+    <p>Taste starts with your preference, not AI defaults. Toggle between Dark & Light mode to inspect synchronized token coupling and zero color collisions.</p>
+  </section>
+
+  <!-- Filter Buttons -->
+  <nav class="filter-bar" aria-label="Style pack filters">
+    <button class="filter-chip active" data-filter="all">All Styles (10)</button>
+    <button class="filter-chip" data-filter="bento">Bento Grid</button>
+    <button class="filter-chip" data-filter="brutalism">Brutalism</button>
+    <button class="filter-chip" data-filter="claymorphism">Claymorphism</button>
+    <button class="filter-chip" data-filter="enterprise">Enterprise</button>
+    <button class="filter-chip" data-filter="glassmorphism">Glassmorphism</button>
+    <button class="filter-chip" data-filter="minimalism">Minimalism</button>
+    <button class="filter-chip" data-filter="neo-brutalism">Neo-brutalism</button>
+    <button class="filter-chip" data-filter="retro-terminal">Retro-Terminal</button>
+    <button class="filter-chip" data-filter="skeuomorphism">Skeuomorphism</button>
+    <button class="filter-chip" data-filter="swiss-editorial">Swiss / Editorial</button>
+  </nav>
+
+  <!-- Main Showcase Grid -->
+  <main class="gallery-grid">
+
+    <!-- 1. BENTO GRID -->
+    <article class="showcase-card" data-style="bento">
+      <div class="showcase-header">
+        <div class="showcase-title-group">
+          <h2>Bento Grid</h2>
+          <span class="showcase-signature">Asymmetric modular cards & strict visual hierarchy</span>
+        </div>
+        <button class="copy-token-btn" data-tokens="--taste-bento-bg: #0b0d10; --taste-bento-surface: #15191e; --taste-bento-text: #f4f4f6; --taste-bento-border: 1px solid rgba(255,255,255,0.08); --taste-bento-accent: #8b5cf6;">Copy Tokens</button>
+      </div>
+      <div class="showcase-body">
+        <div class="bento-wrapper">
+          <div class="bento-grid-demo">
+            <div class="bento-tile hero">
+              <div>
+                <span class="bento-tag">Hero Tile 2×2</span>
+                <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.25rem;">Deploy instantly</h3>
+                <p style="font-size: 0.8rem; color: var(--taste-bento-text-muted);">Unified deployment engine with zero configuration overhead.</p>
+              </div>
+              <button class="bento-btn">Get Started →</button>
+            </div>
+            <div style="display: flex; flex-direction: column; gap: 14px;">
+              <div class="bento-tile">
+                <span class="bento-tag">Metrics</span>
+                <span style="font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em;">48ms</span>
+                <span style="font-size: 0.75rem; color: var(--taste-bento-text-muted);">Global edge latency</span>
+              </div>
+              <div class="bento-tile">
+                <span class="bento-tag">Status</span>
+                <span style="font-size: 0.85rem; font-weight: 600;">99.99%</span>
+                <span style="font-size: 0.75rem; color: var(--taste-bento-text-muted);">Uptime SLA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 2. BRUTALISM -->
+    <article class="showcase-card" data-style="brutalism">
+      <div class="showcase-header">
+        <div class="showcase-title-group">
+          <h2>Brutalism</h2>
+          <span class="showcase-signature">Raw structural scaffolding, 0px corners, immediate flip</span>
+        </div>
+        <button class="copy-token-btn" data-tokens="--taste-brutal-bg: #ffffff; --taste-brutal-ink: #000000; --taste-brutal-border: 2.5px solid #000000; --taste-brutal-signal: #ff0000; --taste-brutal-radius: 0px;">Copy Tokens</button>
+      </div>
+      <div class="showcase-body">
+        <div class="brutal-wrapper">
+          <div class="brutal-header">
+            <span>INDEX // SPEC_01</span>
+            <span class="brutal-tag">[ONLINE]</span>
+          </div>
+          <h3 style="font-size: 1.35rem; font-weight: 900; line-height: 1.1; margin-bottom: 0.75rem; text-transform: uppercase;">STRUCTURAL HONESTY</h3>
+          <p style="font-size: 0.85rem; line-height: 1.4; margin-bottom: 1.25rem;">Zero decorative blurs. Zero pastel shadows. Foreground and background invert cleanly on user interaction.</p>
+          <button class="brutal-btn">INITIALIZE RUN</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3. CLAYMORPHISM -->
+    <article class="showcase-card" data-style="claymorphism">
+      <div class="showcase-header">
+        <div class="showcase-title-group">
+          <h2>Claymorphism</h2>
+          <span class="showcase-signature">Volumetric dual inner shadows, molded porcelain surfaces</span>
+        </div>
+        <button class="copy-token-btn" data-tokens="--taste-clay-bg: #d7d1f1; --taste-clay-primary: #813ffc; --taste-clay-light: #ecebf5; --taste-clay-inner-primary: inset 3px 4px 6px rgba(255,255,255,0.45), inset -4px -6px 8px rgba(40,10,110,0.40);">Copy Tokens</button>
+      </div>
+      <div class="showcase-body">
+        <div class="clay-wrapper">
+          <div class="clay-card">
+            <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.25rem;">Tactile Clay Card</h3>
+            <p style="font-size: 0.85rem; color: var(--taste-clay-muted); margin-bottom: 1rem;">Soft incident highlight (top-left) opposes volumetric form shadow (bottom-right).</p>
+            <div style="display: flex; gap: 0.75rem; align-items: center; flex-wrap: wrap;">
+              <button class="clay-btn-primary">Submit Clay &gt;</button>
+              <input type="text" class="clay-input-well" placeholder="Recessed sunken input..." aria-label="Clay input well">
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4. ENTERPRISE COCKPIT -->
+    <article class="showcase-card" data-style="enterprise">
+      <div class="showcase-header">
+        <div class="showcase-title-group">
+          <h2>Enterprise / Data-first</h2>
+          <span class="showcase-signature">Dense cockpits, tabular-nums & calibrated status pills</span>
+        </div>
+        <button class="copy-token-btn" data-tokens="--taste-ent-bg: #0f1117; --taste-ent-surface: #161922; --taste-ent-ink: #f9fafb; --taste-ent-border: 1px solid #232733; --taste-ent-accent: #3b82f6;">Copy Tokens</button>
+      </div>
+      <div class="showcase-body">
+        <div class="ent-wrapper">
+          <table class="ent-table">
+            <thead>
+              <tr>
+                <th>Service Name</th>
+                <th>Status</th>
+                <th class="tabular-num">Latency</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="font-weight: 600;">auth-gateway-prod</td>
+                <td><span class="ent-badge">● Healthy</span></td>
+                <td class="tabular-num">18 ms</td>
+              </tr>
+              <tr>
+                <td style="font-weight: 600;">payment-processor</td>
+                <td><span class="ent-badge">● Healthy</span></td>
+                <td class="tabular-num">42 ms</td>
+              </tr>
+            </tbody>
+          </table>
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 0.75rem; font-size: 0.75rem; color: var(--taste-ent-muted);">
+            <span>Showing 2 of 1,420 nodes</span>
+            <span>Shortcut: <code>⌘K</code></span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5. GLASSMORPHISM -->
+    <article class="showcase-card" data-style="glassmorphism">
+      <div class="showcase-header">
+        <div class="showcase-title-group">
+          <h2>Glassmorphism</h2>
+          <span class="showcase-signature">Translucent frosted planes filtering ambient lighting</span>
+        </div>
+        <button class="copy-token-btn" data-tokens="--taste-glass-blur: 18px; --taste-glass-surface: rgba(22, 28, 45, 0.55); --taste-glass-text: #f8fafc; --taste-glass-edge: rgba(255, 255, 255, 0.15);">Copy Tokens</button>
+      </div>
+      <div class="showcase-body">
+        <div class="glass-scene">
+          <div class="glass-pane">
+            <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.25rem;">Frosted Glass Surface</h3>
+            <p style="font-size: 0.85rem; opacity: 0.85; margin-bottom: 1rem;">Visibly filtering the differentiated ambient light field behind this panel.</p>
+            <button class="glass-btn">Explore Ambient →</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 6. MINIMALISM -->
+    <article class="showcase-card" data-style="minimalism">
+      <div class="showcase-header">
+        <div class="showcase-title-group">
+          <h2>Minimalism</h2>
+          <span class="showcase-signature">Intentional whitespace, quiet precision, no filler cards</span>
+        </div>
+        <button class="copy-token-btn" data-tokens="--taste-mini-bg: #121214; --taste-mini-ink: #f4f4f5; --taste-mini-muted: #a1a1aa; --taste-mini-border: 1px solid rgba(255,255,255,0.10); --taste-mini-accent: #3b82f6;">Copy Tokens</button>
+      </div>
+      <div class="showcase-body">
+        <div class="mini-wrapper">
+          <h3 style="font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; margin-bottom: 0.35rem;">Restrained by design.</h3>
+          <p style="font-size: 0.85rem; color: var(--taste-mini-muted);">Every element earns its place. Clear typography and purposeful negative space.</p>
+          <hr class="mini-divider">
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span style="font-size: 0.85rem; color: var(--taste-mini-muted);">Version 2.4.0</span>
+            <button class="mini-btn">Confirm</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 7. NEO-BRUTALISM -->
+    <article class="showcase-card" data-style="neo-brutalism">
+      <div class="showcase-header">
+        <div class="showcase-title-group">
+          <h2>Neo-brutalism</h2>
+          <span class="showcase-signature">2.5px solid stroke, 4px hard offset shadow, pop color</span>
+        </div>
+        <button class="copy-token-btn" data-tokens="--taste-neo-bg: #fffdf7; --taste-neo-ink: #121212; --taste-neo-border: 2.5px solid #121212; --taste-neo-shadow: 4px 4px 0 #121212; --taste-neo-accent: #ffe600;">Copy Tokens</button>
+      </div>
+      <div class="showcase-body">
+        <div class="neo-wrapper">
+          <div class="neo-card">
+            <h3 style="font-size: 1.25rem; font-weight: 800; margin-bottom: 0.25rem;">CONFIDENT POP!</h3>
+            <p style="font-size: 0.85rem; font-weight: 500; margin-bottom: 1rem;">Solid borders with unblurred offset shadows and tactile 2px mechanical displacement.</p>
+            <button class="neo-btn">PUSH BUTTON</button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 8. RETRO-TERMINAL -->
+    <article class="showcase-card" data-style="retro-terminal">
+      <div class="showcase-header">
+        <div class="showcase-title-group">
+          <h2>Retro-Terminal</h2>
+          <span class="showcase-signature">CRT phosphor glow, static scanlines & monospace CLI prompt</span>
+        </div>
+        <button class="copy-token-btn" data-tokens="--taste-term-bg: #0c0d0e; --taste-term-amber: #ffb000; --taste-term-glow: 0 0 6px rgba(255,176,0,0.45); --taste-term-border: 1px solid rgba(255,176,0,0.25);">Copy Tokens</button>
+      </div>
+      <div class="showcase-body">
+        <div class="term-wrapper">
+          <div style="font-size: 0.75rem; margin-bottom: 0.5rem;">[TASTE_OS v0.10.3 / SYS_READY]</div>
+          <p style="font-size: 0.85rem;">&gt; Core diagnostic: ALL SYSTEMS NOMINAL.<br>&gt; Memory heap: 640K OK.</p>
+          <div class="term-prompt">
+            <span>user@system:~$</span>
+            <span style="font-weight: 700;">deploy --prod</span>
+            <span class="term-cursor"></span>
+          </div>
+          <button class="term-btn">[ EXECUTE ]</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- 9. SKEUOMORPHISM -->
+    <article class="showcase-card" data-style="skeuomorphism">
+      <div class="showcase-header">
+        <div class="showcase-title-group">
+          <h2>Skeuomorphism</h2>
+          <span class="showcase-signature">Top-down specular bevel, metallic gradient, jewel LED</span>
+        </div>
+        <button class="copy-token-btn" data-tokens="--taste-skeuo-chassis: linear-gradient(180deg, #323741 0%, #262a32 100%); --taste-skeuo-btn-bevel: inset 0 1px 0 rgba(255,255,255,0.40); --taste-skeuo-text: #f3f4f6;">Copy Tokens</button>
+      </div>
+      <div class="showcase-body">
+        <div class="skeuo-wrapper">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+            <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;">Analog Rack Console</span>
+            <span style="display: flex; align-items: center; font-size: 0.75rem; font-weight: 600;"><span class="skeuo-led"></span>PWR ACTIVE</span>
+          </div>
+          <p style="font-size: 0.825rem; opacity: 0.85; margin-bottom: 1.25rem;">Tactile hardware faceplate with mechanical press travel and recessed wells.</p>
+          <button class="skeuo-btn">Engage Relay</button>
+        </div>
+      </div>
+    </article>
+
+    <!-- 10. SWISS / EDITORIAL -->
+    <article class="showcase-card" data-style="swiss-editorial">
+      <div class="showcase-header">
+        <div class="showcase-title-group">
+          <h2>Swiss / Editorial</h2>
+          <span class="showcase-signature">Grid typography, massive scale contrast & hairline rules</span>
+        </div>
+        <button class="copy-token-btn" data-tokens="--taste-swiss-bg: #0d0d0d; --taste-swiss-ink: #f5f5f5; --taste-swiss-rule: 1px solid rgba(255,255,255,0.20); --taste-swiss-accent: #ef4444;">Copy Tokens</button>
+      </div>
+      <div class="showcase-body">
+        <div class="swiss-wrapper">
+          <span class="swiss-index">[ 01 / ARCHITECTURE ]</span>
+          <h3 class="swiss-headline">TYPOGRAPHIC SCALE.</h3>
+          <hr class="swiss-rule">
+          <p style="font-size: 0.85rem; line-height: 1.5; color: var(--taste-swiss-muted); margin-bottom: 1.25rem;">Strict 12-column rhythm with authoritative grotesque typography and singular Swiss red signal accent.</p>
+          <button class="swiss-btn">Read Overview</button>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast" role="status" aria-live="polite">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+    <span id="toastMsg">Tokens copied to clipboard!</span>
+  </div>
+
+  <script>
+    // Theme Toggle Logic
+    const html = document.documentElement;
+    const themeBtn = document.getElementById('themeToggle');
+    const themeIcon = document.getElementById('themeIcon');
+    const themeLabel = document.getElementById('themeLabel');
+
+    function updateThemeUI(theme) {
+      if (theme === 'light') {
+        html.setAttribute('data-theme', 'light');
+        themeIcon.textContent = '🌙';
+        themeLabel.textContent = 'Dark Mode';
+      } else {
+        html.setAttribute('data-theme', 'dark');
+        themeIcon.textContent = '☀️';
+        themeLabel.textContent = 'Light Mode';
+      }
+    }
+
+    themeBtn.addEventListener('click', () => {
+      const current = html.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      updateThemeUI(next);
+    });
+
+    // Style Filter Logic
+    const filterChips = document.querySelectorAll('.filter-chip');
+    const cards = document.querySelectorAll('.showcase-card');
+
+    filterChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        filterChips.forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+        const filter = chip.getAttribute('data-filter');
+
+        cards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-style') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Copy Token to Clipboard with Toast
+    const toast = document.getElementById('toast');
+    const toastMsg = document.getElementById('toastMsg');
+    let toastTimeout;
+
+    function showToast(text) {
+      toastMsg.textContent = text;
+      toast.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2400);
+    }
+
+    document.querySelectorAll('.copy-token-btn').forEach(btn => {
+      btn.addEventListener('click', async (e) => {
+        e.stopPropagation();
+        const tokens = btn.getAttribute('data-tokens');
+        try {
+          await navigator.clipboard.writeText(tokens);
+          showToast('Copied CSS tokens to clipboard!');
+        } catch {
+          showToast('Tokens: ' + tokens);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

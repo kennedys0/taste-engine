@@ -19,7 +19,7 @@ const alias = {
   claude: 'claude-code', 'claude_code': 'claude-code'
 };
 function help() {
-  console.log(`Taste Engine ${VERSION}\n\nUsage:\n  taste-engine install --agent <antigravity|antigravity-cli|claude-code|codex|all> [--global|--project] [--cwd DIR]\n  taste-engine doctor [--agent <name|all>] [--global|--project] [--cwd DIR]\n  taste-engine version\n  taste-engine help\n\nDefaults: project install; --agent all.\nFor GitHub-managed updates, use the installed scripts/update.sh (Antigravity)\nor npx skills update for installs managed by the skills CLI.\n`);
+  console.log(`Taste Engine ${VERSION}\n\nUsage:\n  taste-engine gallery                                                              Preview all 10 styles interactively in your browser\n  taste-engine install --agent <antigravity|antigravity-cli|claude-code|codex|all> [--global|--project] [--cwd DIR]\n  taste-engine doctor [--agent <name|all>] [--global|--project] [--cwd DIR]\n  taste-engine version\n  taste-engine help\n\nDefaults: project install; --agent all.\nFor GitHub-managed updates, use the installed scripts/update.sh (Antigravity)\nor npx skills update for installs managed by the skills CLI.\n`);
 }
 function parse(argv) {
   const options = { agent: 'all', scope: 'project', cwd: process.cwd() };
@@ -80,6 +80,18 @@ try {
   const [command='help', ...args]=process.argv.slice(2);
   if(command==='help' || command==='--help' || command==='-h') help();
   else if(command==='version' || command==='--version' || command==='-v') console.log(VERSION);
+  else if(command==='gallery' || command==='preview') {
+    const galleryPath = path.join(repoRoot, 'docs', 'index.html');
+    if(!fs.existsSync(galleryPath)) throw new Error('Gallery not found at docs/index.html');
+    console.log(`Taste Engine: opening interactive style gallery (${galleryPath})`);
+    const openCmd = process.platform === 'win32' ? `start "" "${galleryPath}"` :
+                    process.platform === 'darwin' ? `open "${galleryPath}"` : `xdg-open "${galleryPath}"`;
+    import('node:child_process').then(cp => {
+      cp.exec(openCmd, (err) => {
+        if(err) console.log(`You can open the gallery manually in your browser:\n  file://${galleryPath}`);
+      });
+    });
+  }
   else if(command==='install' || command==='doctor') {
     const o=parse(args);
     if(o.help) { help(); process.exit(0); }

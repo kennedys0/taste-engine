@@ -18,7 +18,7 @@ A portable, open-source Agent Skill for building distinctive, accessible fronten
 [![Version](https://img.shields.io/badge/version-0.10.3-4F46E5.svg)](CHANGELOG.md)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-111111.svg)](https://agentskills.io/)
 
-[Installation](#install) · [How it works](#how-it-works) · [Styles](#style-library) · [Quality principles](#quality-without-a-house-style) · [Contributing](#contributing)
+[Live Showcase](docs/index.html) · [Installation](#install) · [How it works](#how-it-works) · [Styles](#style-library) · [Quality principles](#quality-without-a-house-style) · [Contributing](#contributing)
 
 </div>
 
@@ -74,6 +74,9 @@ Clone the repository and run the bundled Node.js CLI (Node 20+):
 ```bash
 git clone https://github.com/kennedys0/taste-engine.git
 cd taste-engine
+
+# Preview all 10 styles interactively in your browser with live Dark/Light mode toggle
+node bin/taste-engine.mjs gallery
 
 # Exact Antigravity IDE global location
 node bin/taste-engine.mjs install --agent antigravity --global
