@@ -34,3 +34,15 @@ test('global Antigravity IDE uses official location and backups previous install
   assert.equal(fs.readdirSync(path.dirname(folder)).some(x=>x.startsWith('taste-engine.backup-')),true);
  } finally {fs.rmSync(home,{recursive:true,force:true});}
 });
+test('prints presets list and inits presets into target folder',()=>{
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'taste-preset-'));
+ try {
+  let r=run(['preset']);
+  assert.equal(r.status,0,r.stderr);
+  assert.equal(r.stdout.includes('tailwind.preset.js'),true);
+  let initRes=run(['init',dir]);
+  assert.equal(initRes.status,0,initRes.stderr);
+  assert.equal(fs.existsSync(path.join(dir,'taste-presets','tailwind','tailwind.preset.js')),true);
+  assert.equal(fs.existsSync(path.join(dir,'taste-presets','shadcn','shadcn-themes.css')),true);
+ } finally {fs.rmSync(dir,{recursive:true,force:true});}
+});

@@ -6,6 +6,8 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 ### Added
 
+- **Tailwind CSS & shadcn/ui Presets:** Added official theme presets for Tailwind CSS (v3 & v4) and theme variable overrides for shadcn/ui in `presets/` with companion `taste-components.css` and integration guide (`references/tailwind-shadcn.md`).
+- **CLI Preset & Init Commands:** Added `taste-engine preset` and `taste-engine init` commands to inspect and scaffold Tailwind and shadcn themes directly into any web project.
 - **Interactive Live Style Gallery & Showcase:** Added comprehensive interactive documentation in `docs/index.html` showcasing all 10 curated frontend aesthetic archetypes with live Light/Dark mode toggling, 1-click token clipboard copying, and responsive preview viewports.
 - **CLI Gallery Command:** Added `taste-engine gallery` command in `bin/taste-engine.mjs` to launch and explore the interactive style showcase locally in the browser.
 - **Brand Identity & WebP Assets:** Added production-ready WebP branding assets (`assets/logo.webp`, `assets/banner.webp`, and `docs/assets/`) with high-resolution visual headers.

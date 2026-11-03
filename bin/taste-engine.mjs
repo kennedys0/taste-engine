@@ -19,7 +19,7 @@ const alias = {
   claude: 'claude-code', 'claude_code': 'claude-code'
 };
 function help() {
-  console.log(`Taste Engine ${VERSION}\n\nUsage:\n  taste-engine gallery                                                              Preview all 10 styles interactively in your browser\n  taste-engine install --agent <antigravity|antigravity-cli|claude-code|codex|all> [--global|--project] [--cwd DIR]\n  taste-engine doctor [--agent <name|all>] [--global|--project] [--cwd DIR]\n  taste-engine version\n  taste-engine help\n\nDefaults: project install; --agent all.\nFor GitHub-managed updates, use the installed scripts/update.sh (Antigravity)\nor npx skills update for installs managed by the skills CLI.\n`);
+  console.log(`Taste Engine ${VERSION}\n\nUsage:\n  taste-engine gallery                                                              Preview all 10 styles interactively in your browser\n  taste-engine preset                                                               List available Tailwind CSS & shadcn/ui presets\n  taste-engine init [dir]                                                           Scaffold Tailwind & shadcn presets into your project\n  taste-engine install --agent <antigravity|antigravity-cli|claude-code|codex|all> [--global|--project] [--cwd DIR]\n  taste-engine doctor [--agent <name|all>] [--global|--project] [--cwd DIR]\n  taste-engine version\n  taste-engine help\n\nDefaults: project install; --agent all.\nFor GitHub-managed updates, use the installed scripts/update.sh (Antigravity)\nor npx skills update for installs managed by the skills CLI.\n`);
 }
 function parse(argv) {
   const options = { agent: 'all', scope: 'project', cwd: process.cwd() };
@@ -91,6 +91,17 @@ try {
         if(err) console.log(`You can open the gallery manually in your browser:\n  file://${galleryPath}`);
       });
     });
+  }
+  else if(command==='preset' || command==='presets') {
+    const presetDir = path.join(source, 'presets');
+    console.log(`Taste Engine Presets (v${VERSION})\n\nAvailable presets in ${presetDir}:\n  - presets/tailwind/tailwind.preset.js (Tailwind CSS theme extension)\n  - presets/tailwind/taste-components.css (Component layers: .taste-clay-btn, etc.)\n  - presets/shadcn/shadcn-themes.css (shadcn/ui theme variable overrides)\n\nRun 'taste-engine init [dir]' to scaffold presets into your project.`);
+  }
+  else if(command==='init') {
+    const targetDir = args[0] ? path.resolve(args[0]) : process.cwd();
+    const dest = path.join(targetDir, 'taste-presets');
+    fs.mkdirSync(dest, { recursive: true });
+    fs.cpSync(path.join(source, 'presets'), dest, { recursive: true });
+    console.log(`Copied Taste Engine presets to ${dest}\nSee ${path.join(source, 'references', 'tailwind-shadcn.md')} for setup guide.`);
   }
   else if(command==='install' || command==='doctor') {
     const o=parse(args);

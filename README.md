@@ -92,6 +92,28 @@ The installer supports `antigravity`, `antigravity-cli` (alias `agy`), `claude-c
 
 > **Publication status:** installation commands work after the source files in this repository are published. The presence of a GitHub repository alone does not imply a working skill package or a release asset.
 
+### Tailwind CSS & shadcn/ui Presets
+
+Taste Engine includes official **Tailwind CSS presets** and **shadcn/ui theme variable overrides** across all 10 archetypes:
+
+```bash
+# Preview available presets
+taste-engine preset
+
+# Scaffold Tailwind preset & shadcn themes directly into your project
+taste-engine init
+```
+
+In your `tailwind.config.js`:
+```javascript
+module.exports = {
+  presets: [require('./taste-presets/tailwind/tailwind.preset.js')],
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
+};
+```
+
+Read the [Tailwind CSS & shadcn/ui Integration Guide](taste-engine/references/tailwind-shadcn.md) for full component recipes (`.taste-clay-card`, `.taste-neo-btn`, etc.).
+
 ## How it works
 
 | Your request | Taste Engine behavior |
