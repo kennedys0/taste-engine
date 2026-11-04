@@ -5,7 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-const VERSION = '0.10.7';
+const VERSION = '0.10.8';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const source = path.join(repoRoot, 'taste-engine');
 const agents = {

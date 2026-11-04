@@ -1,49 +1,131 @@
-# Anti-Slop Audit — evidence-driven UI review
+# Anti-Slop Audit — evidence-driven UI and code review
 
-Run after style selection + implementation and before claiming a UI is finished. Applies alongside selected style pack and universal quality gates. For custom styles, use that project's agreed style constraints.
+Run after style selection + implementation and before claiming a UI or code deliverable is finished. Applies alongside the selected style pack and universal quality gates. For custom styles, use that project's agreed style constraints.
 
-See [quality tiers](quality-tiers.md): `FLOOR` is an integrity defect, `REFLEX` is a rebuttable AI-default heuristic, and `FINISH` is non-blocking polish. The severity scale below describes **impact** within those tiers; style differences alone never count as blocking defects. Preserve existing product features using [redesign preservation](redesign-preservation.md) and record actual [browser checks](browser-validation.md).
+See [quality-tiers.md](quality-tiers.md): `FLOOR` is an integrity defect, `REFLEX` is a rebuttable AI-default heuristic, and `FINISH` is non-blocking polish. The severity scale describes **impact** within those tiers; style differences alone never count as blocking defects. Preserve existing product features using [redesign preservation](redesign-preservation.md) and record actual [browser checks](browser-validation.md).
 
-## Review ordering and severity
+---
 
-1. **Critical — must fix:** deceptive fabricated metrics/status, unsafe misleading action, broken primary flow, accessibility blocker.
-2. **High — must fix:** clipped or obstructed controls, confusing interaction, unusable mobile layout, heavy gratuitous nested surfaces, unverified success claims.
-3. **Medium — fix when feasible:** redundant cards/labels/chips, inconsistent hierarchy, confusing copy, mismatched peer components, purposeless animation.
-4. **Polish — stylistic suggestion:** spacing finesse, subtle surface refinement, optional copy tone adjustment without a usability issue.
+## Core Audit Axioms
 
-Do **not** mark an expressive style feature as defective just because the auditor personally prefers minimalism. Explain impact and a concrete fix. No arbitrary numeric slop score is necessary.
+1. **Reports defects, never reports authorship:** Never guess whether an AI or a human generated the output. Audit whether there is a verifiable defect in substance, usability, code integrity, or truthfulness.
+2. **A marker is never itself a finding:** Seeing a suspicious word ("pivotal"), an em-dash, or an abstraction wrapper merely selects the span for testing. If the structural test confirms the item is load-bearing and carries genuine substance, **drop the marker hit**. Do not downgrade it to keep a finding alive.
+3. **Every finding must produce an artifact:** A test you did not actually run produces no artifact and therefore no finding. No "reads as generic" or "probably unnecessary" without evidence.
 
-## Acceptance checklist
+---
 
-- [ ] **Style fidelity:** the UI matches the *selected* style and approved project choices, not generic trends or an unrelated preference.
-- [ ] **Composition:** groups reflect data/task relationships; nested surfaces have distinct semantic ownership; equal peers feel balanced; intentional asymmetry is clear.
-- [ ] **Purpose & zero emojis:** each badge, icon, chart, gradient, hero, motion, and control serves content, interaction, or chosen style; zero emojis used as UI icons, button prefixes, or badges (only Lucide or clean vector SVGs with currentColor).
-- [ ] **Full-screen hero (if applicable):** header + hero respect one visible viewport; height uses a mobile-safe min-height strategy; no clipped title, CTA, safe area or keyboard focus; no fake decoration to fill space. See `hero-layout.md`.
-- [ ] **Content & truth:** no invented numbers, testimonials, logo strips, realtime statuses, urgency, placeholders masquerading as real users, or false successes.
-- [ ] **Copywriting:** headings say something; CTA predicts result; microcopy explains state/recovery; no generic motivational filler; locale is natural.
-- [ ] **Typography & controls:** coherent tokens, readable type hierarchy, working focus, labels, button shapes, and consistent component geometry.
-- [ ] **Responsive down to 320px & Mobile Header:** verified down to 320px viewport with zero horizontal scroll blowout; mobile typography scales down proportionally to prevent bloated UI; navigation header collapses comfortably into an accessible hamburger menu on narrow screens (< 768px).
-- [ ] **Strict circle geometry (anti-oval):** circular elements (avatars, status dots, icon badges, action buttons with `border-radius: 50%`) enforce `aspect-ratio: 1 / 1` and `flex-shrink: 0` so they never squish into ovals/ellipses under mobile flexbox compression.
-- [ ] **Motion:** purposeful and respects reduced motion; no idle bounce / glow loops unless explicitly justified as meaningful UI state.
-- [ ] **Functional integrity:** key actions work or are explicitly labeled unfinished; state transitions reflect real responses; empty/loading/error handling.
-- [ ] **Evidence:** only claim viewport checks, accessibility tests or end-to-end behavior actually performed. Note untested checks.
+## Severity vs. Confidence (Two Separate Axes)
 
-## Review format (use when reporting audit results)
+Never collapse impact and certainty into a single arbitrary score:
 
-For each observed issue:
+### Axis 1: Severity (Impact)
+- **Critical (Must fix):** Deceptive fabricated metrics/status, unsafe misleading actions, broken primary flows, accessibility blockers, package hallucination (non-existent dependency).
+- **High (Must fix):** Clipped or obstructed controls, confusing interaction, unusable mobile layout (< 320px), heavy gratuitous nested surfaces, unverified success claims, assertion-free tests (coverage padding).
+- **Medium (Fix when feasible):** Redundant cards/labels/chips, vacuous copy (failed Inversion Test), padding (failed Deletion Test), passthrough wrappers, defensive error swallowing, purposeless animations.
+- **Polish (Stylistic suggestion):** Spacing finesse, subtle surface refinement, optional copy cadence adjustments without usability harm.
 
-`[Critical | High | Medium | Polish] • [location/component] • [observed problem] • [user impact] • [specific correction] • [evidence/status]`
+### Axis 2: Confidence (Certainty)
+- **High:** Verified with a mechanical experiment (deletion broke a test, negation is nonsense, package 404s in npm/PyPI registry, contrast math fails WCAG AA).
+- **Medium:** Strong contextual evidence, but runtime or screenshot verification was partially constrained.
+- **Low:** Manual heuristic assessment where tests/build could not be executed. Disclose as Low confidence rather than asserting harder.
 
-Example:
+---
 
-`[High] • Overview / ReportsPanel • an empty-state card is placed inside an empty dashboard card • doubled borders make the primary action hard to scan • render text + CTA directly inside ReportsPanel • verified in 375px screenshot`
+## The Three-Layer Review Procedure
 
-If a design variant intentionally departs from a heuristic, state: `Exception: [specific style/product purpose]; verified [usability criterion]`. Never justify an exception merely as "modern".
+1. **Layer 0 (Decidable Scanners):** Check binary facts.
+   - Do all imported packages exist in npm/PyPI?
+   - Do called methods match pinned library versions?
+   - Does text contrast meet WCAG AA (4.5:1 for normal, 3:1 for large)?
+   - Does the build and test suite pass?
+2. **Layer 1 (Structural Procedures):** Run the 5 structural tests on suspicious spans and produce artifacts:
+   - **Deletion Test (Prose/UI):** Cut the span. What was lost? (Artifact: cut span + named loss).
+   - **Inversion Test (Copy):** Negate the claim. Would anyone assert it? (Artifact: written negation).
+   - **Stranger Test (Grounding):** Could an outsider write this from a generic prompt? (Artifact: insider ground truth).
+   - **Attribution Test (Evidence):** Does the citation/claim resolve? (Artifact: verified source or noted absence).
+   - **Load-Bearing Test (Code):** Delete the wrapper/comment/handler/test. Did anything break? (Artifact: test failure log or caller audit).
+3. **Layer 2 (Heuristic Markers):** Vocabulary lists, em-dash counts, burstiness, card nesting. Route each marker hit to Layer 1.
 
-## Exit gate
+---
 
-- **Fail** until all Critical/High findings are resolved or clearly disclosed as unresolved blockers.
-- **Review** when only Medium/Polish findings remain; fix them where feasible without overriding the user's taste.
-- **Pass** when all applicable checks have evidence and no blocking defects remain.
+## Acceptance Checklist
 
-If screenshots or a runnable environment are unavailable, give an **instruction-level review**, not a claim of a visual/functional test. This document is a human/agent checklist, not a guaranteed enforcement mechanism.
+### UI & Layout Surface
+- [ ] **Style fidelity:** UI matches the *selected* style (Glass, Clay, Neo-Brutalism, etc.); style-defining features are not penalized by generic anti-gradient or anti-shadow reflexes.
+- [ ] **Composition & nesting:** Groups reflect task relationships; nested surfaces have distinct semantic ownership; equal peer cards have equal visual weight.
+- [ ] **Strict 320px responsive baseline:** Fully functional down to 320px viewport with zero horizontal scroll blowout.
+- [ ] **Strict 1:1 circle geometry (anti-oval):** All circular elements (avatars, status dots, icon badges, action buttons with `border-radius: 50%`) enforce `aspect-ratio: 1 / 1;` and `flex-shrink: 0;`.
+- [ ] **Mobile header navigation:** On narrow viewports (< 768px), navigation links collapse behind an accessible Hamburger Menu (Lucide `Menu` SVG) with 44px+ tap targets.
+- [ ] **Single-line command pills:** Quick install bars keep `$`, snippet, and copy button strictly inline in one horizontal row.
+- [ ] **Zero emojis in UI:** Vector SVGs only (Lucide, Radix, Feather).
+- [ ] **Theme contrast integrity:** Coordinated light/dark mode color flips; no dark text on dark canvas; dark mode uses slate-grey canvas (`#212328`) over pitch-black.
+- [ ] **Hero layout:** 1-viewport hero composition respects mobile toolbars without manufactured empty fillers.
+
+### Copy & Content Surface
+- [ ] **Truthfulness:** No fabricated metrics, testimonials, customer logos, fake counts, or unearned live statuses.
+- [ ] **Structural tests passed:** No padding (Deletion Test passed); no vacuous claims (Inversion Test passed); grounded in product facts (Stranger Test passed).
+- [ ] **Cadence & syntax:** No parataxis (ideas connected with real syntax); rule-of-three broken; sentence length rhythm varied (burstiness).
+- [ ] **Punctuation discipline:** Max 1 em-dash per 500 words; max 1 exclamation mark per 1,000 words.
+- [ ] **Banned patterns eliminated:** No formulaic openers (*"In today's fast-paced world"*, *"It's worth noting that"*); no negative parallelism (*"Not just X, but Y"*); no AI cheerleading.
+
+### Code Surface
+- [ ] **Comment hygiene:** Zero decorative ASCII separators (`// ============`); zero comments that merely restate the code line beneath; zero step narration comments.
+- [ ] **Load-bearing code:** No passthrough wrappers without logic; no ghost abstractions (interfaces/factories with only 1 implementation).
+- [ ] **Error handling:** No defensive bare `except:` or `catch (e) {}` blocks that swallow bugs.
+- [ ] **Test suite integrity:** No assertion-free tests; mutations in tested behavior cause test failures.
+- [ ] **Decidable dependencies:** All npm/PyPI packages exist; API signatures match pinned versions.
+
+---
+
+## Review Reporting Format
+
+For each observed issue, format the finding as:
+
+```
+[Severity] • [Confidence] • [Surface: UI | Copy | Code] • [Location] • [Test Used]
+  Artifact: <Verbatim cut span, written negation, resolved source, or failing command>
+  Problem:  <Observed defect and why it degrades substance/usability>
+  Fix:      <Concrete, actionable correction>
+```
+
+### Worked Case Examples
+
+**Case 1: Copy Padding (Prose Surface)**
+```
+[Medium] • [High] • [Copy] • LandingPage / HeroDescription • [Deletion Test]
+  Artifact: Cut span: "marking a pivotal step in the evolution of modern workflows" | Lost: Nothing.
+  Problem:  The phrase adds generic praise without naming any mechanism, metric, or workflow task.
+  Fix:      Replace with: "Export CSV reports directly from completed work orders."
+```
+
+**Case 2: Vacuous Marketing Claim (Copy Surface)**
+```
+[Medium] • [High] • [Copy] • FeatureList / Item 3 • [Inversion Test]
+  Artifact: Written negation: "Our platform is engineered to be fragile and unreliable."
+  Problem:  Nobody would assert the negation; the claim "Engineered for maximum reliability" states no checkable fact.
+  Fix:      State the concrete guarantee: "99.95% uptime SLA with automated multi-region failover."
+```
+
+**Case 3: Ghost Wrapper (Code Surface)**
+```
+[Medium] • [High] • [Code] • src/services/user_service.py:42 • [Load-Bearing Test]
+  Artifact: Deleted `retry_fetch_user`. Rewired single caller `handlers.py:88` directly to `fetch_user`. Ran test suite: all 42 tests passed.
+  Problem:  The wrapper passed arguments through unchanged with zero retry or backoff logic.
+  Fix:      Remove wrapper and call `fetch_user` directly.
+```
+
+**Case 4: Assertion-Free Test (Code Surface)**
+```
+[High] • [High] • [Code] • tests/test_auth.py:15 • [Load-Bearing Test]
+  Artifact: Mutated `login_user()` to `return None`. Test `test_login()` still passed because it only asserted `login_user is not None`.
+  Problem:  The test creates false confidence while testing zero authentication behavior.
+  Fix:      Assert session token generation, cookie headers, and database session record.
+```
+
+---
+
+## Exit Gate
+
+- **Fail:** If any Critical or High findings remain unresolved.
+- **Review:** When only Medium/Polish findings remain; resolve where feasible without overriding user taste.
+- **Pass:** When all applicable checks have verifiable evidence and no blocking defects remain.

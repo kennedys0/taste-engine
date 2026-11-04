@@ -1,25 +1,74 @@
 # Anti-Slop Writing — UI copy, microcopy, and product language
 
-**Writing must be human, specific, verifiable, and appropriate to the chosen style.** This is not a prohibition on creativity, humor, personality, marketing, or warm tone. It is a prohibition on vague substitute content and fake persuasion.
+**Writing must be human, specific, verifiable, and appropriate to the chosen style.** This is not a prohibition on creativity, humor, personality, marketing, or warm tone. It is a prohibition on vague substitute content, fake persuasion, and statistically detectable AI writing tropes.
 
 For cadence, punctuation and user-voice calibration, read [writing-calibration.md](writing-calibration.md). Treat suspicious words as review prompts rather than proof a passage is AI-generated. Do not rewrite user-approved contractual/legal copy for visual taste.
 
-## The copy test (apply to every interface string)
+---
 
-1. **What does it say?** Does it describe a real feature, task, condition, outcome, or concrete benefit?
-2. **Who is speaking?** Match the user's audience, brand voice, language, and domain. Avoid a uniform generic AI narrator.
-3. **Can it be believed?** Do not invent performance, scale, trust, compliance, endorsements, counts, or certainty.
-4. **Does it help an action?** CTA names the result; status names the state; error explains next step; empty state explains what to do.
-5. **Is it concise without losing meaning?** Remove filler, tautology, repeated subtitles, and unnecessary jargon.
-6. **Is it understandable?** Use accessible language, appropriate technical vocabulary, and clear localization. Avoid unexplained acronyms and awkward English calques in Indonesian UI.
+## The Four Structural Tests for Copy
 
-## Reject default AI marketing patterns
+Before shipping any headline, description, or microcopy, apply these mechanical tests:
 
-Avoid generic fillers such as "Unlock your potential", "Experience the future", "Take your workflow to the next level", "Seamless intelligence", "Supercharge productivity", "Revolutionize your journey", "All-in-one solution", "Powerful features for everyone", "Elevate your experience", and their localized translations. These may appear only as deliberately quoted/referenced text or when the user explicitly approves that exact brand voice.
+1. **The Deletion Test:** Cut the adjective, clause, or entire sentence. Does anything of substance disappear? If the answer is "nothing" (no factual ordering, constraint, or state was lost), it was padding. Delete it.
+2. **The Inversion Test:** Invert the claim into a full sentence someone might assert. (e.g. *"Our platform is designed to be unreliable"* or *"The feature plays no role in your work"*). If nobody would ever assert the inversion, the original states an empty truism and carries zero information. Rewrite with concrete mechanics or delete.
+3. **The Stranger Test:** Could someone who has never touched or seen the product write this sentence given only a 3-word prompt? If yes, it is generic AI filler. Ground it in the actual tool, user task, or specific data.
+4. **The Attribution Test:** Does the text claim *"trusted by thousands"*, *"industry reports show"*, or *"proven to increase revenue"*? If there is no real verifiable source or internal datum backing it, remove the claim. Fabricated specificity destroys trust.
 
-Avoid repetitive abstract words: *innovative, seamless, effortlessly, powerful, robust, cutting-edge, world-class, transformative*. Replace with evidence-based detail about what the user can actually do. Avoid AI-esque sentence formulas: "Not just X, but Y", "Meet the future of X", "X, reimagined", "Designed to empower", "Everything you need to ...", "Whether you're X or Y ..." when used as default filler.
+---
 
-## Before → after examples (adapt to the actual product)
+## Cadence, Syntax, and Punctuation Discipline
+
+Statistical AI writing patterns are visible even when vocabulary is sanitized. Enforce these mechanical writing rules:
+
+### 1. No Parataxis (Connect Ideas with Real Syntax)
+Parataxis is the robotic AI default: *Short sentence. Then another. Then another.* It reads like a list of disconnected declarations and immediately signals machine generation.
+- **Fix:** Connect related thoughts using subordinate clauses, conjunctions, semicolons, or commas. Write with syntax that shows how ideas relate—causation, contrast, qualification—not just a series of blunt bullet-like statements.
+- **Before:** "Our pipeline parses logs. It flags syntax errors. It notifies your team in Slack."
+- **After:** "When the pipeline detects syntax errors in incoming logs, it sends an alert directly to your team's Slack channel."
+
+### 2. Break the Rule of Three (Tricolon Default)
+AI has an overwhelming reflex to list exactly three items: *"fast, secure, and scalable"*, *"build, test, and deploy"*, *"design, refine, and deliver"*.
+- **Fix:** Break the default triad. Use two, four, one, or five items. Only use three when the underlying reality genuinely has three parts.
+
+### 3. Sentence Length Rhythm (Burstiness)
+Uniform sentence length is the single most measurable AI detection signal. AI writes strings of sentences that all hover around 12–16 words.
+- **Fix:** Mix 4-word punchy sentences with 25–30 word detailed explanations. Never write three consecutive sentences of approximately the same length.
+
+### 4. Punctuation Limits
+- **Em dashes (`—`):** Maximum **ONE per 500 words**. The em-dash is the most overused AI crutch in prose. Use commas, semicolons, colons, parentheses, or separate sentences instead.
+- **Exclamation marks (`!`):** Maximum **ONE per 1,000 words**. Excitement comes from clear facts and value, not typographical cheerleading.
+- **Semicolons (`;`):** Use them naturally; AI underuses them, whereas precise human writers use them to link closely related independent clauses.
+- **Colons (`:`):** Use them to deliver a concrete payoff promised in the preceding clause.
+
+### 5. Formatting Restraint
+- **Zero emojis in UI:** Never use emojis as icons, button prefixes, or badges. Use clean vector SVGs (Lucide, Radix, Feather).
+- **No bold random words:** Do not bold every third phrase for fake emphasis. Let clear sentence structure carry importance.
+- **No asterisks in plain text:** Do not leak markdown formatting (`**important**`) into email, SMS, or plain text outputs.
+
+---
+
+## Reject Default AI Marketing Patterns & Banned Vocabulary
+
+Avoid empty corporate cheerleading and formulaic templates.
+
+### Banned Formulaic Openers
+- *"In today's [fast-paced / ever-evolving / digital] world..."*
+- *"It's worth noting that..."* / *"It's important to note that..."*
+- *"Let's dive in..."* / *"Let's delve into..."*
+- *"As a [developer / designer / manager], I..."*
+- *"Whether you're X or Y, [Product] has you covered..."*
+
+### Banned Negative Parallelism
+- Avoid the formula: *"Not just X, but Y"* or *"It's not about X; it's about Y"*. Say directly what it is without setting up a synthetic contrast.
+
+### Corpus-Validated Banned Buzzwords
+Replace these empty words with specific actions, real numbers, or plain verbs:
+- *delve, tapestry, landscape (abstract), testament to, vibrant, pivotal, crucial, intricate, meticulous, bolster, garner, underscore, interplay, multifaceted, nuanced (as filler), foster, leverage (as verb → use 'use'), utilize (say 'use'), commence (say 'start'), facilitate, encompass, paramount, groundbreaking, cutting-edge, game-changing, transformative, revolutionize, seamless, robust (outside engineering), comprehensive (describing own output), aforementioned, harnessing, spearheading, navigating (figurative), showcasing, highlighting, emphasizing, enhancing, unprecedented.*
+
+---
+
+## Before → After Examples (Adapt to the Actual Product)
 
 | Slop | Better (only if feature is real) | Why |
 |---|---|---|
@@ -27,45 +76,48 @@ Avoid repetitive abstract words: *innovative, seamless, effortlessly, powerful, 
 | "Supercharge your workflow" | "Create a report from completed work" | Concrete outcome, no hype |
 | "Seamless collaboration for everyone" | "Share the report link with the team" | Explains action and recipient |
 | "Experience next-gen analytics" | "Lihat transaksi per kategori" | Specific information hierarchy |
-| "Get Started Now! [rocket icon]" | "Buat proyek" | Button predicts next screen/action |
+| "Get Started Now! 🚀" | "Buat proyek" | Button predicts next screen/action; no emoji |
 | "Something went wrong" | "The report was not saved. Try again." | Tells user what failed and what to do |
-| "Success! Amazing work!" | "Report saved successfully" | Confirms actual state without cheering |
+| "Success! Amazing work! 🎉" | "Report saved successfully" | Confirms actual state without cheering |
 | "Nothing here yet!" | "No reports yet. Create your first report." | Honest empty state and useful next step |
-| "1000+ users trust us" | Omit, unless backed by verifiable data and approved | Avoids invented social proof |
+| "10,000+ teams trust us" | Omit, unless backed by verifiable data | Avoids invented social proof |
 | "Your dashboard is ready" | "No data is available yet" | Honest initial condition |
-| "AI-powered magic" | Explain the actual operation, input and limitation | No unearned mystique |
+| "AI-powered magic" | Explain the actual input, model, and output | No unearned mystique |
+| "It's not just a tool; it's a revolution" | "Runs deterministic checks in under 50ms" | Concrete metric over negative parallelism |
 
-Do not make the *better* examples into fixed product copy: they are only correct when the stated functionality exists.
+---
 
-## Component-level writing rules
+## Component-Level Writing Rules
 
-- **Navigation:** short, predictable nouns matching actual destinations; don't rename simple tasks with poetic metaphors unless the product requires it.
-- **Buttons:** action verb + object/result, e.g. `Simpan perubahan`, `Unduh CSV`, `Kirim undangan`. Avoid multiple identical `Learn more`/`Submit` buttons when context is ambiguous. Preserve standard familiar labels where clearest.
-- **Labels & forms:** explicit labels; placeholders are examples, not substitutes for labels. Helper text provides constraints or explanation, never gratuitous reassurance.
-- **Empty state:** describe what is absent, why if known, and one relevant next action. Do not suggest creating items that aren't allowed.
-- **Loading:** say what's happening when useful; never imply finished or live without a real source.
-- **Errors:** identify failed action, meaningful cause if known, impact and next step. No fake root-cause certainty. Retain user input where possible.
-- **Success & status:** reflect confirmed application state only. Don't mark saved, paid, connected, secure, verified, online or complete before evidence exists.
-- **Marketing:** product-aware claim + demonstrable mechanism or result; if facts are missing, draft neutral language or mark copy for review. Never manufacture logos, testimonials or comparative metrics.
-- **Onboarding:** minimize introductory story; tell users what they'll do now, what data is needed, and why.
-- **Accessible copy & iconography:** Emojis are strictly banned across all UI components, buttons, and badges. Always use clean vector SVGs from Lucide, Radix, Feather, or Heroicons with semantic labels. No unexplained icon-only actions, ambiguous link text, all-caps paragraphs, or unnecessary punctuation.
+- **Navigation:** Short, predictable nouns matching actual destinations; don't rename simple tasks with poetic metaphors.
+- **Buttons:** Action verb + object/result, e.g. `Simpan perubahan`, `Unduh CSV`, `Kirim undangan`. Avoid multiple identical `Learn more` buttons.
+- **Labels & Forms:** Explicit labels; placeholders are examples, not substitutes for labels. Helper text provides real constraints.
+- **Empty States:** Describe what is absent, why if known, and one relevant next action.
+- **Loading:** Explain what is in progress; never imply completed or verified before the response arrives.
+- **Errors:** Identify the failed action, meaningful cause if known, impact, and recovery step. Retain user input.
+- **Success & Status:** Reflect confirmed application state only. Never mark saved, paid, connected, or complete before verification.
+- **Marketing:** Product-aware claim + demonstrable mechanism or result. Never manufacture customer logos or statistics.
 
-## Voice adapts to styles (examples, not mandatory labels)
+---
 
-- **Brutalism:** blunt, concise, specific: `CREATE REPORT` / `No reports.`; reserve uppercase for short labels.
-- **Neo-brutalism:** lively but helpful: `Proyek baru` / `Mulai dari template kosong` instead of fabricated celebratory hype.
-- **Claymorphism:** warm and calm: `Your report has been saved.` instead of saccharine encouragement.
-- **Glassmorphism:** crisp and legible: `Lihat aktivitas` rather than abstract luminous marketing.
-- **Enterprise:** precise and actionable: `3 permintaan menunggu persetujuan` only when the count is backed by data.
-- **Terminal:** console-flavored *when usable*: `No matching files` only if search actually returned zero.
-- **Minimalism / Swiss / Bento / Skeuomorphism:** match layout/voice; do not conflate visual aesthetic with a requirement for vagueness or unusual punctuation.
+## Voice Adapts to Styles (Tone, Not Truth)
 
-## Agent editing sequence
+- **Brutalism:** Blunt, concise, specific: `CREATE REPORT` / `No reports.`; reserve uppercase for short labels.
+- **Neo-brutalism:** Lively, punchy, direct: `Proyek baru` / `Mulai dari template kosong` without celebratory cheerleading.
+- **Claymorphism:** Warm and calm: `Your report has been saved.` instead of saccharine encouragement.
+- **Glassmorphism:** Crisp and legible: `Lihat aktivitas` rather than abstract luminous marketing.
+- **Enterprise:** Precise and actionable: `3 permintaan menunggu persetujuan` only when the count is backed by data.
+- **Terminal:** Console-flavored: `0 matching records found` only if search actually returned zero.
+- **Swiss / Editorial:** Disciplined, typographic clarity, clear section index numbering (`01`, `02`).
+- **Minimalism / Bento / Skeuomorphism:** Match visual density; visual style never justifies vague or bloated prose.
 
-1. Identify real task and product language (do not invent audience, feature, or metrics).
-2. Draft labels and headings as a content outline before ornamental UI composition.
-3. Audit for formulaic hype, duplicate meaning, unverified claims, inaccessible jargon, and action ambiguity.
-4. Adapt voice to the chosen style without changing facts.
-5. Validate all empty, loading, error, disabled, confirmation, and long/translated text variants.
+---
 
-Use copy review notes only for decisions that require user input; do not bury a useful UI under warnings or filler explanations.
+## Agent Editing Sequence
+
+1. **Identify real task and domain facts:** Never invent features, metrics, or credentials.
+2. **Draft plain labels and content outline first:** Establish content before visual ornament.
+3. **Run the 4 Structural Tests:** Check Deletion, Inversion, Stranger, and Attribution.
+4. **Audit Cadence & Punctuation:** Check burstiness, eliminate parataxis, break rule-of-three, check em-dash count.
+5. **Calibrate Voice to Selected Style:** Adjust tone without adding fluff.
+6. **Validate Edge States:** Empty, loading, error, disabled, confirmation, and narrow mobile viewports.

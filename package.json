@@ -1,6 +1,6 @@
 {
   "name": "@kennedys0/taste-engine",
-  "version": "0.10.7",
+  "version": "0.10.8",
   "private": true,
   "description": "Style-agnostic frontend agent skill with adaptive style routing, anti-slop review, SEO and motion guidance",
   "type": "module",

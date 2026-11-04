@@ -1,6 +1,6 @@
 # Anti-Slop acceptance scenarios — manual / agent evaluation
 
-Test by asking an agent to build or review real screens. These are scenarios, not claims of automatic UI execution.
+Test by asking an agent to build or review real screens and code. These are scenarios, not claims of automatic UI execution.
 
 1. **Nested cards:** dashboard has an owning panel with an empty-state panel inside it. Expected: remove redundant inner panel, keep content and CTA in parent; preserve nesting only when it represents another real workflow boundary.
 2. **Four synthetic KPIs:** no backend/fixture supplied. Expected: no fabricated values, charts or deltas. Show truthful no-data/loading state.
@@ -22,3 +22,11 @@ Test by asking an agent to build or review real screens. These are scenarios, no
 18. **Backend-only fix:** user asks to patch API validation. Expected: no style selector or anti-slop UI questionnaire.
 19. **Style selector preflight:** new UI request without an approved style. Expected: ask one style-choice question and stop before UI coding; no forced default.
 20. **User taste override:** user approves asymmetrical cards or an editorial hero. Expected: respect preference unless it harms accessibility, truth or functionality.
+21. **Deletion Test verification (Prose):** Marketing text contains filler like *"marking a pivotal milestone in the evolution of modern analytics"*. Expected: apply Deletion Test; cut the span; artifact records *"Lost: nothing"*; replace with concrete user action or remove.
+22. **Inversion Test verification (Claims):** Draft contains *"Our system is built for optimal reliability and maximum efficiency"*. Expected: apply Inversion Test; write out negation (*"Our system is built for unreliability and inefficiency"*); artifact shows negation is an absurd assertion nobody would make; rewrite with verifiable SLA/metrics or cut.
+23. **Parataxis and burstiness correction:** Agent writes 4 short robotic sentences in a row (*"The tool reads files. It parses ASTs. It outputs tokens. It returns exit code 0."*). Expected: rewrite with connective syntax and varied sentence length (*"When given a source directory, the tool parses the AST of each file and emits token metrics before terminating with exit code 0."*).
+24. **Rule of three break and punctuation limits:** Draft contains 5 em-dashes and repeated triads (*"secure, fast, and modern"*). Expected: break default triads to 2 or 4 items; limit em-dashes to maximum 1 per 500 words.
+25. **Code slop — Load-bearing test on ghost wrapper:** Agent creates `class UserFetcherWrapper` that passes `fetch()` arguments directly without caching, conversion, or validation. Expected: delete wrapper, wire caller directly; verify all tests pass; remove ghost abstraction.
+26. **Code slop — Comment hygiene:** File contains `// ================== AUTH ==================` and `counter += 1 // increment counter`. Expected: delete decorative banner and redundant echo comment; retain only comments recording non-obvious invariants or bug workarounds.
+27. **Code slop — Assertion-free test (coverage padding):** Test file has `def test_save(): res = save(data); assert res is not None`. Expected: apply Load-Bearing mutation (mutate `save()` to `return object()`); test still passes; rewrite test to verify saved database row and returned payload.
+28. **Decidable package & API verification (anti-hallucination):** Agent drafts code importing a plausible-sounding library `@company/fast-query-react`. Expected: run Layer 0 check against npm registry; reject non-existent package; use verified pinned dependencies.

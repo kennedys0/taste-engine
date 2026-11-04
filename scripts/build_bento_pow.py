@@ -1136,7 +1136,7 @@ HTML_CONTENT = """<!DOCTYPE html>
               <h4>Production Proven</h4>
               <p>+1,456 developer installations across Google Antigravity, Claude Code, and Codex runtimes.</p>
               <div style="margin-top: 0.5rem;">
-                <span class="mini-capsule-tag" style="background: rgba(139, 92, 246, 0.15); color: var(--pow-accent-brand); border-color: rgba(139, 92, 246, 0.3);">v0.10.7 Synchronized</span>
+                <span class="mini-capsule-tag" style="background: rgba(139, 92, 246, 0.15); color: var(--pow-accent-brand); border-color: rgba(139, 92, 246, 0.3);">v0.10.8 Synchronized</span>
               </div>
             </div>
           </div>

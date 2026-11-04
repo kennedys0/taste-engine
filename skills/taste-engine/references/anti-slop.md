@@ -1,14 +1,20 @@
-# Anti-Slop Constitution — universal design integrity
+# Anti-Slop Constitution — universal design and engineering integrity
 
-**Applies to every Taste Engine style, custom style, blend, router run, and standalone pack.** Load this document for visual generation, redesign, and UI audit after the style has been resolved. These are quality rules, **not a secret aesthetic**. No style is privileged.
+**Applies to every Taste Engine style, custom style, blend, router run, and standalone pack.** Load this document for visual generation, copywriting, code generation, redesign, and audits after the style has been resolved. These are quality rules, **not a secret aesthetic**. No style is privileged.
 
-## Source and principle
+## Core Philosophy: Filter, Not a Style Guide
 
-The foundation was generalized from the user's Human Clay UI v1.1 anti-AI-slop discipline: every element must earn its place; do not decorate uncertainty; content before decoration; responsive is redesign rather than shrink; useful density; honest data; coherent systems; restrained, meaningful motion. This version extends that discipline across aesthetics and adds explicit writing, evidence, exceptions, and verification.
+Anti-slop is an **integrity filter, not a style guide**. It eliminates generic AI defaults—vacuous claims, purple gradient soup, decorative card spam, ghost abstractions, dead controls, and robotic sentence formulas—without prescribing or flattening aesthetics.
 
-**Ask of every visible element:** What information, affordance, brand character, or spatial structure would be lost if this element were removed? If the answer is none, simplify. A recognizably styled UI is welcome; arbitrary fashion without a reason is not.
+Three non-negotiable axioms govern this system:
 
-## Rule precedence
+1. **Reports defects, never reports authorship:** The objective is to identify and repair verifiable defects in substance, usability, code integrity, accessibility, and truthfulness. We never guess or litigate whether an AI or human wrote something.
+2. **A marker is never itself a finding:** A heuristic signal (an em-dash, a triad, a keyword, a wrapper function) is merely a trigger to run a mechanical structural test. If the structural test reveals genuine substance or load-bearing utility, the marker hit is immediately dropped.
+3. **Every element and line of code must earn its place:** Do not decorate uncertainty. Content before decoration. Responsive is redesign rather than shrink. Real data before visual density. Restrained, meaningful motion.
+
+**Ask of every visible element, sentence, and code abstraction:** What information, affordance, invariant, or spatial structure would be lost if this were removed? If the answer is none, simplify. A recognizably styled UI is welcome; arbitrary fashion and code bloat without a reason are not.
+
+## Rule Precedence
 
 1. Functional correctness, accessibility, safety, truthful representations.
 2. Explicit user instruction and confirmed project requirements (within those constraints).
@@ -29,9 +35,54 @@ A heuristic must **never** erase a defining feature of the chosen style:
 
 Audit whether each style expression is *intentional, truthful, and usable*, not whether it matches a generic minimal UI.
 
-See [quality-tiers.md](quality-tiers.md) for what actually blocks a release versus what merely suggests a redesign. Use [decision-system.md](decision-system.md) to preserve user taste and separate material from page anatomy.
+---
 
-## A. Non-negotiable: truthful, usable, and implementable
+## The Three-Layer Verification Architecture
+
+```
+Layer 0: Decidable Scanners   → Package hallucination, API mismatch, WCAG AA contrast math, syntax
+Layer 1: Structural Tests     → Deletion, Inversion, Stranger, Attribution, Load-Bearing (Must emit artifacts)
+Layer 2: Heuristic Markers    → Banned vocab, em-dashes, tricolons, card nesting (Never convicts alone)
+```
+
+1. **Layer 0 (Decidable):** Can fail a build directly. Claims here are binary facts: does the npm/PyPI package exist in the registry? Does the called method exist in the pinned library version? Does the text meet WCAG AA 4.5:1 contrast? Does the test suite compile and pass?
+2. **Layer 1 (Structural Procedures):** Can convict and fail a build when an artifact proves a defect. The 5 mechanical procedures below produce tangible evidence.
+3. **Layer 2 (Heuristic Markers):** Corpus-validated signals of AI repetition. **They never convict alone.** They route directly to Layer 1 procedures.
+
+---
+
+## The Five Structural Tests (Universal Procedures)
+
+Every structural check is mechanical and produces a named artifact you can inspect.
+
+### 1. The Deletion Test (Prose & UI)
+- **Procedure:** Cut the span, element, or visual wrapper. Read/view what remains. Name what was lost.
+- **Artifact:** The cut span + the named loss. If the loss is "nothing", the element/span was padding/slop.
+- **Finding:** MEDIUM (Padding). If what was lost is an essential context, invariant, or affordance, drop the finding.
+
+### 2. The Inversion Test (Claims & Marketing)
+- **Procedure:** Negate the claim. Write the negation out in full as a sentence someone might publish. Ask whether anyone would assert it.
+- **Artifact:** The negation, written out.
+- **Finding:** If nobody would ever assert the negation (e.g., *"We build unreliable software"* or *"The feature plays no role"*), the original states nothing, excludes no state of the world, and is a vacuous claim / empty puffery (MEDIUM).
+
+### 3. The Stranger Test (Context & Grounding)
+- **Procedure:** Ask whether someone who never saw the product, codebase, or data could have written this exact UI/text given only a generic prompt.
+- **Artifact:** The specific fact, metric, architecture detail, or user task that only an authentic insider knows.
+- **Finding:** If the copy/UI lacks any grounded fact and consists solely of generic platitudes (*"Unlock your productivity with our seamless platform"*), rewrite with actual product operations or remove.
+
+### 4. The Attribution Test (Evidence & Sources)
+- **Procedure:** Resolve the citation, metric, or endorsement to its concrete source.
+- **Artifact:** The resolved reference, or the explicit finding that the claim does not resolve.
+- **Finding:** HIGH if a fabricated source/metric/user count is presented as real; MEDIUM if decorative. Fabricated reality is a direct integrity breach.
+
+### 5. The Load-Bearing Test (Code & Architecture)
+- **Procedure:** Delete the comment, passthrough wrapper, handler, abstraction, or assertion-free test. Run the test suite / build.
+- **Artifact:** What broke, named specifically (with compiler errors or test failure logs), or the evidence that *nothing broke*.
+- **Finding:** HIGH for assertion-free tests (false claims of test coverage); MEDIUM for ghost abstractions, passthrough wrappers, and error-swallowing handlers; LOW for redundant comments.
+
+---
+
+## A. Non-negotiable: Truthful, Usable, and Implementable
 
 - **No fabricated reality:** no invented metrics, transactions, users, totals, testimonials, customer logos, audit events, approvals, ratings, waitlists, social proof, or fake live/online/verified status. When real data is absent, use truthful empty/loading/error states or explicit, clearly labeled fixture/demo data only when authorized.
 - **No false affordances:** no dead primary buttons, fake search, ornamental filters, nonfunctional dropdowns, or a success notification before the corresponding operation truly succeeds. Distinguish prototype-only elements clearly if a working implementation is out of scope.
@@ -40,7 +91,9 @@ See [quality-tiers.md](quality-tiers.md) for what actually blocks a release vers
 - **No invented product claims or irrelevant decoration:** content must reflect the product, audience, tasks, and data actually known. Do not fill screens with fabricated details to look finished.
 - **No unrequested architecture churn:** inspect the existing stack, design tokens and components before adding libraries, fonts, animation dependencies or another styling system.
 
-## B. Layout and composition: common slop and better alternatives
+---
+
+## B. Layout and Composition: Common Slop and Better Alternatives
 
 | Signal to investigate | Why it fails | Prefer | Allowed when |
 |---|---|---|---|
@@ -66,30 +119,69 @@ See [quality-tiers.md](quality-tiers.md) for what actually blocks a release vers
 
 **No blanket ban on cards or decorative expression.** A Bento design can rightly use many tiles; a Skeuomorphic design can use layered surfaces. Count *semantic ownership* and interaction boundaries, not raw component tags.
 
-### Hero-height anti-slop
-
+### Hero-height Anti-Slop
 For new portfolio/marketing pages *with* an opening hero, build one intentional viewport-height first-screen composition (navigation included) using [hero-layout.md](hero-layout.md). Never make the hero shallow by accident, but do **not** manufacture oversized empty gaps, fake trust badges, nested cards, decorative UI or animations to force a 100svh canvas to look busy. No forced hero on internal workflows. Content must be allowed to exceed the viewport when needed for accessibility.
 
-## C. Typography and visual rhythm
+---
 
-- Define purpose-driven font roles, sizes, weight, line height, wrapping, tracking, and hierarchy from the selected pack. Do not mix unrelated typefaces to achieve accidental novelty.
-- Headings should explain the section or express a real brand message, not just be huge for impact. Body and control text must survive narrow screens, zoom, localization, and long labels.
-- Keep consistent spacing, baseline, paddings, button height, input states, border logic, and icon alignment; do not mix visual systems in the same screen without reason.
-- For styles that embrace deliberate irregularity, preserve *repeatable rules* for asymmetry or varied sizing. Accidental inconsistency is not a style.
+## C. Code Surface Integrity: Anti-Slop Code Standards
 
-## D. Motion and effects
+AI agents frequently generate code bloat that looks productive but degrades maintainability. Apply the **Load-Bearing Test** to code.
+
+### 1. Code Comment Hygiene
+- **No decorative separators:** Remove ASCII banners (`// ====================`, `/* ---- ROUTES ---- */`, `// -------- WORKFLOW --------`). A single clean empty line or clear function name is superior.
+- **No restating the obvious (echo comments):** Delete comments that merely translate the line of code into English:
+  ```python
+  # BAD:
+  # Increment the counter
+  counter += 1
+
+  # GOOD (preserves the non-obvious invariant or WHY):
+  # API returns 200 with an empty body when rate-limited; check JSON explicitly.
+  if resp.status_code == 200 and resp.json():
+  ```
+- **No step-narration comments:** Delete `// Step 1: Initialize variables`, `// Step 2: Make request`, `// Step 3: Return result`. Write expressive, self-explanatory code structure instead.
+
+### 2. Architecture & Abstraction Hygiene
+- **No passthrough wrappers:** Do not create wrapper functions that take arguments and immediately pass them unchanged to another function without adding caching, transformation, validation, or policy.
+- **No ghost over-abstractions:** Do not create abstract classes, interfaces, and factory providers for a service that has exactly one implementation and no planned second caller. Implement directly.
+- **No defensive error-swallowing:** Never write bare exception handlers that conceal bugs:
+  ```typescript
+  // BAD:
+  try {
+    processPayment(order);
+  } catch (e) {
+    console.log(e); // swallows real error, order appears hung
+  }
+
+  // GOOD: Handle specific expected failures, or let unexpected errors propagate to boundary
+  ```
+
+### 3. Test Suite Integrity
+- **No assertion-free tests (coverage padding):** Every test must verify an actual invariant. If replacing the function body with `return True` or `return object()` still passes the test suite, the test is vacuous slop.
+- **Decidable Registry Scanners (Package & API Hallucination):**
+  - Verify every imported library exists in the official registry (`npm`, `PyPI`).
+  - Verify that methods and options called exist in the pinned library version. Do not invent options that "sound logical" for an API.
+
+---
+
+## D. Motion and Effects
 
 - Static by default; use motion to signal a state transition, continuity, reveal, or affordance.
 - No idle bouncing/floating/pulsing hero decoration or perpetual animation merely for attention. Avoid giant hover scaling and scroll hijacking.
-- A chosen style may define its own transition speed/easing; still support reduced motion. Motion should never delay the core action.
+- A chosen style may define its own transition speed/easing; still support reduced motion (`prefers-reduced-motion`). Motion should never delay the core action.
 
-## E. Content and language
+---
 
-- Run [anti-slop-copywriting.md](anti-slop-copywriting.md) on headings, descriptions, buttons, onboarding, empty/error/success states, toasts, navigation, and marketing copy.
-- Do not create attractive-but-empty claims, vague headings, formulaic hype, repetitive exclamation points, irrelevant emojis, or fake urgency.
-- Choose vocabulary suited to the user's language, brand voice, domain, and selected style. A playful style permits playful *specific* copy; a brutalist style permits blunt, useful copy.
+## E. Content and Language
 
-## F. Responsive and real-world checks
+- Run [anti-slop-copywriting.md](anti-slop-copywriting.md) on all interface copy, READMEs, documentation, and agent outputs.
+- Enforce **parataxis elimination**, **rule-of-three break**, **sentence length rhythm (burstiness)**, and **punctuation discipline** (max 1 em-dash per 500 words, max 1 exclamation mark per 1,000 words).
+- Eliminate corporate cheerleading, ungrounded metrics, and formulaic AI openers.
+
+---
+
+## F. Responsive and Real-World Baseline
 
 - **Strict 320px responsive baseline:** Every interface must be tested and fully functional down to 320px minimum viewport width (narrow mobile screens like iPhone SE). Zero horizontal layout blowouts, zero clipped content, and zero inaccessible controls.
 - **Strict 1:1 circle preservation (no squishing into ovals / 'tidak menjadi oval'):** Any circular or square UI element—including avatars, status indicator dots, icon containers, circular action buttons (`border-radius: 50%`), logo boxes, and notification badges—must enforce `aspect-ratio: 1 / 1;` (or equal explicit `width` and `height`) AND must include `flex-shrink: 0;` whenever placed inside flex containers or grid rows. Circular images and avatars must use `object-fit: cover;` to prevent aspect distortion. Under responsive compression down to 320px viewport, circular elements must NEVER deform into ellipses or ovals.
@@ -98,9 +190,10 @@ For new portfolio/marketing pages *with* an opening hero, build one intentional 
 - **Single-line inline command pills ("sejajarin"):** Keep quick install pills, command snippets, and copy bars strictly inline in a single horizontal row (`display: inline-flex; flex-direction: row; align-items: center; justify-content: center;`) with `line-height: 1; flex-shrink: 0;`. Never break prompt `$`, code, and copy button into vertical stacked rows.
 - **Balanced 2-column mobile footer:** Organize mobile footer navigation links into a balanced 2-column grid (`repeat(2, 1fr)`) with full-width brand header and tactile thumb-friendly tap targets (pill buttons like 'Back to top').
 - Test form labels, button wrapping, headers, navigation, table overflow, keyboard focus, empty/loading/error states, and touch use. On native apps, account for safe areas and system text scaling.
-- Do not add a mobile bottom nav automatically to every project; choose navigation based on information architecture and user workflows.
 
-## Decision test for suspicious patterns
+---
+
+## Decision Test for Suspicious Patterns
 
 1. **Purpose:** Can we articulate why it exists? If not, remove.
 2. **Evidence:** Is content/data/state authentic? If not, replace with an honest state.
@@ -111,6 +204,8 @@ For new portfolio/marketing pages *with* an opening hero, build one intentional 
 
 A single exception must explain *what it serves*, not just claim that the result is "modern" or "premium".
 
-## Required audit
+---
 
-Before presenting completed UI, apply [anti-slop-audit.md](anti-slop-audit.md), the selected style's **Anti-slop: style-specific** section, and [universal quality gates](quality-gates.md). Fix Critical/High issues before treating the deliverable as complete. Note unverified claims or tests accurately. For pure backend tasks, do not force a visual audit.
+## Required Audit
+
+Before presenting completed UI or code, apply [anti-slop-audit.md](anti-slop-audit.md), the selected style's **Anti-slop: style-specific** section, and [universal quality gates](quality-gates.md). Fix Critical/High issues before treating the deliverable as complete. Note unverified claims or tests accurately. For pure backend tasks, do not force a visual audit.
