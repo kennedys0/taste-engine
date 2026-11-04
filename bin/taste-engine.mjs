@@ -14,13 +14,22 @@ const agents = {
   'antigravity-cli': { global: '.gemini/antigravity-cli/skills', project: '.agents/skills' },
   'claude-code': { global: '.claude/skills', project: '.claude/skills' },
   codex: { global: '.agents/skills', project: '.agents/skills' },
+  cursor: { global: '.cursor/skills', project: '.cursor/skills' },
+  cline: { global: '.cline/skills', project: '.cline/skills' },
+  'roo-code': { global: '.roo/skills', project: '.roo/skills' },
+  windsurf: { global: '.windsurf/skills', project: '.windsurf/skills' },
+  copilot: { global: '.github/skills', project: '.github/skills' },
 };
 const alias = {
   agy: 'antigravity-cli', 'antigravity-ide': 'antigravity',
-  claude: 'claude-code', 'claude_code': 'claude-code'
+  claude: 'claude-code', 'claude_code': 'claude-code',
+  'cursor-ai': 'cursor', cursoride: 'cursor',
+  roo: 'roo-code', roocode: 'roo-code', 'roo-cline': 'roo-code',
+  codeium: 'windsurf', 'codeium-windsurf': 'windsurf',
+  'github-copilot': 'copilot', 'github_copilot': 'copilot',
 };
 function help() {
-  console.log(`Taste Engine ${VERSION}\n\nUsage:\n  taste-engine -v | --version | version                             Check installed version\n  taste-engine update | -update                                     Update skill to the latest release\n  taste-engine gallery                                              Preview all 10 styles interactively in your browser\n  taste-engine preset                                               List available Tailwind CSS & shadcn/ui presets\n  taste-engine init [dir]                                           Scaffold Tailwind & shadcn presets into your project\n  taste-engine install --agent <antigravity|antigravity-cli|claude-code|codex|all> [--global|--project] [--cwd DIR]\n  taste-engine doctor [--agent <name|all>] [--global|--project] [--cwd DIR]\n  taste-engine help\n\nDefaults: project install; --agent all.\nFor GitHub-managed updates, use the installed scripts/update.sh (Antigravity)\nor npx skills update for installs managed by the skills CLI.\n`);
+  console.log(`Taste Engine ${VERSION}\n\nUsage:\n  taste-engine -v | --version | version                             Check installed version\n  taste-engine update | -update                                     Update skill to the latest release\n  taste-engine gallery                                              Preview all 10 styles interactively in your browser\n  taste-engine preset                                               List available Tailwind CSS & shadcn/ui presets\n  taste-engine init [dir]                                           Scaffold Tailwind & shadcn presets into your project\n  taste-engine install --agent <name|all> [--global|--project] [--cwd DIR]\n  taste-engine doctor [--agent <name|all>] [--global|--project] [--cwd DIR]\n  taste-engine help\n\nSupported agents:\n  antigravity, antigravity-cli (agy), claude-code (claude), codex,\n  cursor, cline, roo-code (roo), windsurf, copilot, all\n\nDefaults: project install; --agent all.\nFor GitHub-managed updates, use the installed scripts/update.sh (Antigravity)\nor npx skills update for installs managed by the skills CLI.\n`);
 }
 function parse(argv) {
   const options = { agent: 'all', scope: 'project', cwd: process.cwd() };

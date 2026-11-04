@@ -47,7 +47,12 @@ Supported agent selectors:
 | `antigravity-cli` or `agy` | `~/.gemini/antigravity-cli/skills/taste-engine` | `.agents/skills/taste-engine` |
 | `claude-code` or `claude` | `~/.claude/skills/taste-engine` | `.claude/skills/taste-engine` |
 | `codex` | `~/.agents/skills/taste-engine` | `.agents/skills/taste-engine` |
-| `all` | All four global locations (shared paths deduplicated) | All applicable project locations |
+| `cursor` or `cursor-ai` | `~/.cursor/skills/taste-engine` | `.cursor/skills/taste-engine` |
+| `cline` | `~/.cline/skills/taste-engine` | `.cline/skills/taste-engine` |
+| `roo-code` or `roo` | `~/.roo/skills/taste-engine` | `.roo/skills/taste-engine` |
+| `windsurf` | `~/.windsurf/skills/taste-engine` | `.windsurf/skills/taste-engine` |
+| `copilot` | `~/.github/skills/taste-engine` | `.github/skills/taste-engine` |
+| `all` | All global locations (shared paths deduplicated) | All applicable project locations |
 
 The installer defaults to `--project` in your current directory. Specify `--global` for use across all projects or `--cwd /path/to/project` to target another project. Existing Taste Engine installations are backed up before replacement. Other installed skills are never overwritten.
 

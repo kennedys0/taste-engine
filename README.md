@@ -108,7 +108,7 @@ node bin/taste-engine.mjs doctor --agent antigravity --global
 
 ```
 
-The installer supports `antigravity`, `antigravity-cli` (alias `agy`), `claude-code` (alias `claude`), `codex`, or `all`. It backs up an existing Taste Engine directory before replacing it and refuses to overwrite an unrelated skill. See [INSTALL.md](INSTALL.md) for paths and update options.
+The installer supports `antigravity`, `antigravity-cli` (alias `agy`), `claude-code` (alias `claude`), `codex`, `cursor`, `cline`, `roo-code` (alias `roo`), `windsurf`, `copilot`, or `all`. It backs up an existing Taste Engine directory before replacing it and refuses to overwrite an unrelated skill. See [INSTALL.md](INSTALL.md) for paths and update options.
 
 ### Enable global `taste-engine` CLI command
 

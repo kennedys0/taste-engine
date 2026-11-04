@@ -14,12 +14,20 @@ test('prints version and rejects unknown agents',()=>{
  assert.equal(run(['--version']).stdout.trim(),'0.10.8');
  assert.notEqual(run(['install','--agent','unknown']).status,0);
 });
-test('installs project skill for Antigravity and Codex',()=>{
+test('installs project skill for Antigravity, Claude, Cursor, Cline, Roo, Windsurf, Copilot and Codex',()=>{
  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'taste-cli-'));
  try {
   let r=run(['install','--agent','all','--cwd',dir]);
   assert.equal(r.status,0,r.stderr);
-  for(const location of ['.agents/skills/taste-engine/SKILL.md','.claude/skills/taste-engine/SKILL.md'])
+  for(const location of [
+    '.agents/skills/taste-engine/SKILL.md',
+    '.claude/skills/taste-engine/SKILL.md',
+    '.cursor/skills/taste-engine/SKILL.md',
+    '.cline/skills/taste-engine/SKILL.md',
+    '.roo/skills/taste-engine/SKILL.md',
+    '.windsurf/skills/taste-engine/SKILL.md',
+    '.github/skills/taste-engine/SKILL.md'
+  ])
    assert.equal(fs.existsSync(path.join(dir,location)),true);
   r=run(['doctor','--agent','all','--cwd',dir]);assert.equal(r.status,0,r.stderr);
  } finally {fs.rmSync(dir,{recursive:true,force:true});}
