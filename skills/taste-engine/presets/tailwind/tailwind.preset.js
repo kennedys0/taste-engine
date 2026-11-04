@@ -2,15 +2,19 @@
  * Taste Engine — Tailwind CSS Preset (v0.10.8)
  * Comprehensive theme extension for 10 curated frontend aesthetic archetypes.
  *
- * Usage in tailwind.config.js:
+ * Usage in tailwind.config.js / tailwind.config.mjs:
+ *   // ESM (Next.js / Vite / Nuxt):
+ *   import tastePreset from '@kennedys0/taste-engine/presets/tailwind/tailwind.preset.js';
+ *   export default { presets: [tastePreset], content: ['./src/**/*.{js,ts,jsx,tsx}'] };
+ *
+ *   // CommonJS:
  *   module.exports = {
- *     presets: [require('./node_modules/@kennedys0/taste-engine/presets/tailwind/tailwind.preset.js')],
- *     // or local path: require('./taste-engine/presets/tailwind/tailwind.preset.js')
+ *     presets: [require('@kennedys0/taste-engine/presets/tailwind/tailwind.preset.js')],
  *     content: ['./src/**/*.{js,ts,jsx,tsx}'],
- *   }
+ *   };
  */
 
-module.exports = {
+const tastePreset = {
   theme: {
     extend: {
       colors: {
@@ -126,3 +130,9 @@ module.exports = {
     },
   },
 };
+
+export default tastePreset;
+
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = tastePreset;
+}
