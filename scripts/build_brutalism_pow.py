@@ -228,7 +228,7 @@ HTML_CONTENT = """<!DOCTYPE html>
     /* Left Major Column: Monumental Headline */
     .hero-col-left {
       border-right: var(--pow-border);
-      padding: 3rem 3.5rem;
+      padding: 2.5rem 3rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -236,19 +236,45 @@ HTML_CONTENT = """<!DOCTYPE html>
     }
 
     .hero-headline-block {
-      margin-top: 1rem;
+      margin-top: 0.5rem;
+    }
+
+    .hero-brand-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: #0a0a0a;
+      color: var(--pow-signal-yellow);
+      border: var(--pow-border);
+      padding: 0.35rem 0.85rem;
+      font-family: var(--pow-font-mono);
+      font-size: 0.725rem;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      width: fit-content;
+    }
+
+    [data-theme="dark"] .hero-brand-badge {
+      background: var(--pow-surface-elevated);
+      color: var(--pow-signal-yellow);
+    }
+
+    .badge-separator {
+      color: var(--pow-signal-red);
     }
 
     .hero-monumental-title {
       font-family: var(--pow-font-display);
-      font-size: clamp(3.75rem, 8.5vw, 7.5rem);
+      font-size: clamp(3.4rem, 7.5vw, 6.4rem);
       line-height: 0.88;
       letter-spacing: -0.035em;
       text-transform: uppercase;
       font-weight: 900;
       display: flex;
       flex-direction: column;
-      margin-bottom: 2rem;
+      margin-bottom: 1.25rem;
       color: var(--pow-text);
     }
 
@@ -267,7 +293,7 @@ HTML_CONTENT = """<!DOCTYPE html>
       letter-spacing: 0.05em;
       text-transform: uppercase;
       color: var(--pow-text);
-      margin-bottom: 2.5rem;
+      margin-bottom: 1.75rem;
     }
 
     .bullet-yellow {
@@ -276,6 +302,106 @@ HTML_CONTENT = """<!DOCTYPE html>
       background: var(--pow-signal-yellow);
       border: 1.5px solid var(--pow-text);
       display: inline-block;
+    }
+
+    /* Architectural Spec Grid (Fills Hero Space with Rigorous Data) */
+    .hero-spec-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: var(--pow-border);
+      background: var(--pow-surface);
+      margin-bottom: 1.5rem;
+    }
+
+    .spec-cell {
+      padding: 1.15rem 1.15rem;
+      border-right: var(--pow-border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .spec-cell:last-child {
+      border-right: none;
+    }
+
+    .spec-cell-highlight {
+      background: var(--pow-surface-elevated);
+    }
+
+    .spec-num {
+      font-family: var(--pow-font-display);
+      font-size: 1.85rem;
+      font-weight: 900;
+      line-height: 1;
+      color: var(--pow-signal-red);
+      margin-bottom: 0.35rem;
+    }
+
+    .spec-title {
+      font-family: var(--pow-font-mono);
+      font-size: 0.725rem;
+      font-weight: 900;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--pow-text);
+      margin-bottom: 0.35rem;
+    }
+
+    .spec-desc {
+      font-size: 0.75rem;
+      line-height: 1.4;
+      color: var(--pow-text-muted);
+      font-weight: 600;
+    }
+
+    /* Manifesto & Circular Verified Stamp */
+    .hero-manifesto-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      border-top: 1px dashed var(--pow-border-color);
+      border-bottom: 1px dashed var(--pow-border-color);
+      padding: 1rem 0;
+      margin-bottom: 1.5rem;
+    }
+
+    .manifesto-lead {
+      font-size: 0.875rem;
+      line-height: 1.5;
+      font-weight: 700;
+      color: var(--pow-text);
+      max-width: 520px;
+    }
+
+    .stamp-badge-circle {
+      width: 76px;
+      height: 76px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--pow-text);
+    }
+
+    .stamp-svg {
+      width: 100%;
+      height: 100%;
+      animation: rotateStamp 24s linear infinite;
+    }
+
+    @keyframes rotateStamp {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .stamp-center {
+      position: absolute;
+      font-size: 1.25rem;
+      color: var(--pow-signal-yellow);
+      line-height: 1;
     }
 
     .hero-action-group {
@@ -1413,21 +1539,62 @@ HTML_CONTENT = """<!DOCTYPE html>
       <!-- Left Major Column: Monumental Headline & Core Action -->
       <div class="hero-col-left">
         <div class="hero-headline-block">
+          <div class="hero-brand-badge">
+            <span>TASTE ENGINE // ARCHETYPE #02</span>
+            <span class="badge-separator">/</span>
+            <span>BRUTALISM</span>
+          </div>
+
           <h1 class="hero-monumental-title">
             <span class="title-row">WE DESIGN</span>
             <span class="title-row">WITHOUT</span>
-            <span class="title-row" style="color: var(--pow-signal-red);">RULES.</span>
+            <span class="title-row" style="color: var(--pow-signal-red);">AI SLOP.</span>
           </h1>
 
           <div class="hero-sub-statement">
             <span class="bullet-yellow"></span>
-            <span>Branding. Websites. Digital Experiences.</span>
+            <span>Frontend Intelligence. Agent Runtimes. Zero Slop.</span>
+          </div>
+        </div>
+
+        <!-- Architectural Spec Grid (Fills Hero Space with Rigorous Data) -->
+        <div class="hero-spec-grid">
+          <div class="spec-cell">
+            <div class="spec-num">01</div>
+            <div class="spec-title">Anti-Slop Gate</div>
+            <div class="spec-desc">Strictly eliminates generic AI card fluff, blurry dropshadows, and pastel roundings.</div>
+          </div>
+          <div class="spec-cell">
+            <div class="spec-num">02</div>
+            <div class="spec-title">2px Steel Skeleton</div>
+            <div class="spec-desc">Every element is enclosed in continuous blueprint gridlines with mandatory 0px square radii.</div>
+          </div>
+          <div class="spec-cell spec-cell-highlight">
+            <div class="spec-num">03</div>
+            <div class="spec-title">Contrast Coupled</div>
+            <div class="spec-desc">Guaranteed 7:1+ WCAG AAA contrast ratio with instant 0ms polarity inversion on hover.</div>
+          </div>
+        </div>
+
+        <!-- Manifesto & Circular Verified Stamp Seal -->
+        <div class="hero-manifesto-row">
+          <div class="manifesto-lead">
+            Taste Engine equips autonomous coding agents with deterministic frontend design intelligence. No decorative camouflage. Pure structural authority.
+          </div>
+          <div class="stamp-badge-circle" title="Verified Archetype Seal">
+            <svg viewBox="0 0 100 100" class="stamp-svg">
+              <path id="stampPath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+              <text font-size="8.8" font-family="'JetBrains Mono', monospace" font-weight="900" fill="currentColor" letter-spacing="1.4">
+                <textPath href="#stampPath">TASTE ENGINE • VERIFIED ARCHETYPE •</textPath>
+              </text>
+            </svg>
+            <span class="stamp-center">★</span>
           </div>
         </div>
 
         <div class="hero-action-group">
           <a href="#work" class="brut-btn-action" onclick="handleAction('Navigating to Selected Work')">
-            <span>View Our Work</span>
+            <span>View Archetypes</span>
             <span>↗</span>
           </a>
           
@@ -1445,7 +1612,7 @@ HTML_CONTENT = """<!DOCTYPE html>
         <!-- Top Compartment: Studio Descriptor & Signal Globe -->
         <div class="hero-right-top">
           <div class="hero-desc-cell">
-            A creative engineering studio building bold brands and structural digital runtimes that stand out.
+            Taste Engine provides deterministic frontend design intelligence and uncompromised aesthetic archetypes for autonomous AI agents.
           </div>
           <div class="hero-plus-cell" onclick="handleAction('Toggled Architectural Detail Grid')" title="Expand Details">
             +
@@ -1463,7 +1630,7 @@ HTML_CONTENT = """<!DOCTYPE html>
         <div class="hero-right-bottom">
           <div class="brut-blueprint-meta">
             <span>[LAT: 52.5200° N, LON: 13.4050° E]</span>
-            <span>STRUCTURAL HONESTY // C50</span>
+            <span>TASTE ENGINE // ARCHETYPE #02</span>
           </div>
 
           <div class="brut-isometric-canvas">
@@ -1483,7 +1650,7 @@ HTML_CONTENT = """<!DOCTYPE html>
               <line x1="220" y1="160" x2="350" y2="160" stroke="var(--pow-text)" stroke-width="3" stroke-dasharray="6,4" />
               <line x1="220" y1="180" x2="350" y2="180" stroke="var(--pow-text)" stroke-width="3" stroke-dasharray="6,4" />
               <line x1="220" y1="200" x2="350" y2="200" stroke="var(--pow-text)" stroke-width="3" stroke-dasharray="6,4" />
-              <text x="225" y="225" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="var(--pow-text)">AXIS: B-4 // NO BLURS</text>
+              <text x="215" y="225" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="var(--pow-text)">TASTE ENGINE // ZERO SLOP</text>
             </svg>
           </div>
 
