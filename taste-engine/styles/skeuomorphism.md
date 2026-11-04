@@ -99,13 +99,14 @@ Technical, precise, and concise. Examples: “Master Output”, “Bypass”, �
 | `--taste-skeuo-chassis-bg` | `linear-gradient(180deg, #323741 0%, #262a32 100%)` | `linear-gradient(180deg, #f5f7fa 0%, #e4e7eb 100%)` |
 | `--taste-skeuo-chassis-border` | `1px solid rgba(0, 0, 0, 0.8)` | `1px solid rgba(0, 0, 0, 0.15)` |
 | `--taste-skeuo-chassis-highlight` | `inset 0 1px 0 rgba(255, 255, 255, 0.25)` | `inset 0 1px 0 rgba(255, 255, 255, 0.90)` |
+| `--taste-skeuo-chassis-shadow` | `0 2px 4px rgba(0, 0, 0, 0.7), 0 8px 24px rgba(0, 0, 0, 0.65), 0 24px 56px -8px rgba(0, 0, 0, 0.8)` | `0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.10), 0 16px 36px -6px rgba(0, 0, 0, 0.16)` |
 | `--taste-skeuo-well-bg` | `#141619` | `#d1d5db` |
 | `--taste-skeuo-text` | `#f3f4f6` | `#1f2937` |
 | `--taste-skeuo-text-muted` | `#9ca3af` | `#4b5563` |
 | `--taste-skeuo-btn-bg` | `linear-gradient(180deg, #3c424f 0%, #2a2e37 100%)` | `linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%)` |
-| `--taste-skeuo-btn-bevel` | `inset 0 1px 0 rgba(255, 255, 255, 0.40), inset 0 -1px 0 rgba(0, 0, 0, 0.50)` | `inset 0 1px 0 rgba(255, 255, 255, 0.80), inset 0 -1px 0 rgba(0, 0, 0, 0.20)` |
-| `--taste-skeuo-btn-shadow` | `0 4px 8px rgba(0, 0, 0, 0.50), 0 1px 2px rgba(0, 0, 0, 0.40)` | `0 4px 8px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08)` |
-| `--taste-skeuo-well-inset` | `inset 0 3px 6px rgba(0, 0, 0, 0.70), 0 1px 0 rgba(255, 255, 255, 0.12)` | `inset 0 3px 6px rgba(0, 0, 0, 0.18), 0 1px 0 rgba(255, 255, 255, 0.80)` |
+| `--taste-skeuo-btn-bevel` | `inset 0 1.5px 0 rgba(255, 255, 255, 0.42), inset 0 -1.5px 0 rgba(0, 0, 0, 0.75)` | `inset 0 1.5px 0 rgba(255, 255, 255, 1), inset 0 -1.5px 0 rgba(0, 0, 0, 0.28)` |
+| `--taste-skeuo-btn-shadow` | `0 1px 2px rgba(0, 0, 0, 0.8), 0 4px 9px rgba(0, 0, 0, 0.6), 0 10px 22px rgba(0, 0, 0, 0.45)` | `0 1px 2px rgba(0, 0, 0, 0.16), 0 3px 7px rgba(0, 0, 0, 0.12), 0 8px 18px rgba(0, 0, 0, 0.08)` |
+| `--taste-skeuo-well-inset` | `inset 0 5px 14px rgba(0, 0, 0, 0.92), inset 0 2px 4px rgba(0, 0, 0, 0.98), 0 1px 0 rgba(255, 255, 255, 0.16)` | `inset 0 4px 10px rgba(0, 0, 0, 0.24), inset 0 1.5px 3px rgba(0, 0, 0, 0.35), 0 1.5px 0 rgba(255, 255, 255, 0.95)` |
 | `--taste-skeuo-led-active` | `#10b981` | `#059669` |
 | `--taste-skeuo-led-glow` | `0 0 10px rgba(16, 185, 129, 0.75)` | `0 0 8px rgba(5, 150, 105, 0.45)` |
 | `--taste-skeuo-radius-panel` | `12px` | `12px` |
