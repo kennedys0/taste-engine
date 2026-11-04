@@ -43,6 +43,14 @@ A successful prominent glass component demonstrates **all** of the following:
 
 A strong screenshot should make the frosted material obvious even if all headings and labels are hidden. See `examples/glassmorphism/frosted-surfaces.css` for a starter implementation and `tests/glassmorphism-visual.md` for visual acceptance criteria.
 
+## Explicit nested glass exception — card inside card is permitted
+
+**Glassmorphism-specific override:** The universal anti-slop caution against *card-inside-card nested surfaces* MUST NOT be interpreted as a prohibition on nested translucent glass elements here. In authentic glass design systems (macOS, VisionOS, iOS), layering a child glass card inside a parent frosted window is a primary architectural pattern that establishes physical optical depth.
+
+- **Allowed nested glass treatments:** Placing elevated glass widgets, control pods, media players, filter strips, or telemetry cards inside a primary frosted container.
+- **Depth hierarchy rule:** Child glass surfaces must have a distinct optical density from the parent surface (e.g. parent glass at 0.20–0.30 alpha with 24px blur; child cards at 0.40–0.60 alpha with 14px blur and tighter 1px specular borders).
+- **Anti-slop boundary:** Do not nest meaningless empty frames merely to add decorative borders. Every nested glass surface must represent an authentic functional boundary (e.g., an audio player, a setting segment, or an interactive tool).
+
 ## Typography and typewriting
 
 Use a clean sans suited to the brand (system sans, DM Sans, Inter, etc.). Typical reading size 15–17 px; display type may be larger. Maintain strong type hierarchy and avoid ultra-thin text over variable glass backgrounds. A light frosted panel often benefits from deep foreground text; a dark smoked panel from high-contrast off-white. Never substitute colored glow for typographic hierarchy.
@@ -59,7 +67,7 @@ Color alone is not Glassmorphism. Never default to neon purple/cyan for every br
 
 ## Layout and geometry
 
-- Use a purposeful foreground/background composition: ambient backdrop → glass surfaces → crisp content and interactive controls. Distinguish 2–3 depth planes without nested-card clutter.
+- Use a purposeful foreground/background composition: ambient backdrop → primary glass surfaces → elevated child glass controls and crisp content. Layered glass cards (card inside card) are explicitly encouraged when establishing functional interaction boundaries.
 - Use consistent corners (commonly 16–28 px for larger panes) and spacing. Avoid an entirely empty oversized first viewport just to reach 100svh.
 - On responsive screens, panes should stack cleanly, preserve readable padding, and avoid clipped blur or overflow. Header, hero content, and controls must fit or expand naturally.
 
@@ -132,6 +140,6 @@ For public portfolio/landing/homepages with a hero, use a **header + hero** firs
 **Translucent depth, not blurry chaos.**
 
 - **Reject:** Completely opaque flat cards described as glass, clashing rainbow gradient blobs with no depth or texture, text placed over high-contrast translucent clutter with no solid underlay, and theme contrast collisions (such as black text on dark smoked glass).
-- **Instead:** Filter structured, purposeful, non-clashing ambient light through legible frosted panes with clear hierarchy and solid readable content containers.
+- **Instead:** Filter structured, purposeful, non-clashing ambient light through legible frosted panes with clear hierarchy, distinct nested glass depth planes, and solid readable content containers.
 - **Copy check:** Avoid clichés like "crystal clear" or "transparent future."
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `glassmorphism`.

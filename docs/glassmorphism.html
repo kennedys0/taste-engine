@@ -1,81 +1,62 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Glassmorphism Proof of Work & Installation Guide - Taste Engine</title>
-  <meta name="description" content="Dedicated Proof of Work and installation guide for Taste Engine's Glassmorphism aesthetic archetype. Experience crystalline frosted depth, non-clashing textured gradients, and WCAG AA contrast safety.">
+  <meta name="description" content="Dedicated Proof of Work and installation guide for Taste Engine's Glassmorphism aesthetic archetype. Experience crystalline frosted depth, vibrant non-clashing textured gradients, nested optical glass planes, and contrast safety.">
   <link rel="icon" type="image/webp" href="assets/logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     /* =========================================================
-       GLASSMORPHISM DESIGN SYSTEM TOKENS
+       CRYSTALLINE GLASSMORPHISM DESIGN SYSTEM TOKENS
        ========================================================= */
     :root {
-      --pow-bg: #F4F8FC;
-      --pow-surface: rgba(255, 255, 255, 0.58);
-      --pow-surface-hover: rgba(255, 255, 255, 0.75);
-      --pow-surface-active: rgba(255, 255, 255, 0.88);
-      --pow-well-bg: rgba(226, 237, 248, 0.5);
+      --pow-bg: #EDF3FA;
+      --pow-surface-base: rgba(255, 255, 255, 0.45);
+      --pow-surface-hover: rgba(255, 255, 255, 0.65);
+      --pow-surface-child: rgba(255, 255, 255, 0.62);
+      --pow-well-bg: rgba(230, 240, 252, 0.55);
+      
       --pow-text: #0F172A;
-      --pow-text-muted: #475569;
-      --pow-border: 1px solid rgba(255, 255, 255, 0.75);
-      --pow-border-subtle: 1px solid rgba(255, 255, 255, 0.45);
+      --pow-text-muted: #334155;
+      --pow-text-subtle: #64748B;
+      
+      --pow-border: 1px solid rgba(255, 255, 255, 0.85);
+      --pow-border-child: 1px solid rgba(255, 255, 255, 0.95);
+      --pow-border-subtle: 1px solid rgba(255, 255, 255, 0.50);
+      
       --pow-specular: rgba(255, 255, 255, 0.95);
+      --pow-specular-rim: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.95), transparent);
+      
       --pow-shadow: 0 20px 45px -15px rgba(15, 23, 42, 0.12), 0 8px 16px -8px rgba(15, 23, 42, 0.06);
-      --pow-shadow-lg: 0 25px 60px -15px rgba(15, 23, 42, 0.18), 0 12px 24px -10px rgba(15, 23, 42, 0.08);
+      --pow-shadow-lg: 0 30px 70px -15px rgba(15, 23, 42, 0.18), 0 12px 28px -8px rgba(15, 23, 42, 0.08);
+      --pow-shadow-child: 0 10px 25px -5px rgba(15, 23, 42, 0.08);
 
       --pow-accent: #0284C7;
       --pow-accent-hover: #0369A1;
-      --pow-accent-glow: rgba(2, 132, 199, 0.25);
+      --pow-accent-glow: rgba(2, 132, 199, 0.35);
       --pow-accent-subtle: rgba(2, 132, 199, 0.12);
 
-      --pow-glass-blur: 18px;
-      --pow-glass-sat: 155%;
+      --pow-glass-blur: 26px;
+      --pow-glass-sat: 180%;
+      --pow-radius-lg: 24px;
       --pow-radius: 20px;
-      --pow-radius-sm: 12px;
+      --pow-radius-sm: 14px;
       --pow-radius-btn: 9999px;
 
       --pow-font-display: 'Space Grotesk', -apple-system, sans-serif;
       --pow-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --pow-font-mono: 'JetBrains Mono', monospace;
 
-      /* Non-clashing atmospheric light fields (Light Mode) */
-      --glow-c1: rgba(56, 189, 248, 0.28);
-      --glow-c2: rgba(129, 140, 248, 0.22);
-      --glow-c3: rgba(192, 132, 252, 0.18);
-      --pattern-dot: rgba(148, 163, 184, 0.18);
-    }
-
-    [data-theme="dark"] {
-      --pow-bg: #070A12;
-      --pow-surface: rgba(15, 23, 42, 0.55);
-      --pow-surface-hover: rgba(30, 41, 68, 0.65);
-      --pow-surface-active: rgba(30, 41, 68, 0.85);
-      --pow-well-bg: rgba(11, 17, 32, 0.65);
-      --pow-text: #F8FAFC;
-      --pow-text-muted: #94A3B8;
-      --pow-border: 1px solid rgba(255, 255, 255, 0.16);
-      --pow-border-subtle: 1px solid rgba(255, 255, 255, 0.09);
-      --pow-specular: rgba(255, 255, 255, 0.32);
-      --pow-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.55), 0 10px 24px -10px rgba(0, 0, 0, 0.4);
-      --pow-shadow-lg: 0 35px 80px -20px rgba(0, 0, 0, 0.7), 0 16px 32px -12px rgba(0, 0, 0, 0.5);
-
-      --pow-accent: #38BDF8;
-      --pow-accent-hover: #7DD3FC;
-      --pow-accent-glow: rgba(56, 189, 248, 0.35);
-      --pow-accent-subtle: rgba(56, 189, 248, 0.15);
-
-      --pow-glass-blur: 20px;
-      --pow-glass-sat: 165%;
-
-      /* Non-clashing atmospheric light fields (Dark Mode) */
-      --glow-c1: rgba(14, 165, 233, 0.26);
-      --glow-c2: rgba(139, 92, 246, 0.28);
-      --glow-c3: rgba(16, 185, 129, 0.18);
-      --pattern-dot: rgba(255, 255, 255, 0.08);
+      /* Vibrant Non-Clashing Ambient Glow Orbs */
+      --orb-cyan: rgba(14, 165, 233, 0.38);
+      --orb-violet: rgba(139, 92, 246, 0.34);
+      --orb-coral: rgba(244, 63, 94, 0.28);
+      --orb-emerald: rgba(16, 185, 129, 0.30);
+      --pattern-dot: rgba(100, 116, 139, 0.16);
     }
 
     *, *::before, *::after {
@@ -93,10 +74,11 @@
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
       position: relative;
-      transition: background-color 200ms ease, color 200ms ease;
     }
 
-    /* Structured Ambient Textured Gradient Background */
+    /* =========================================================
+       STRUCTURED AMBIENT TEXTURED GRADIENT CANVAS
+       ========================================================= */
     .pow-canvas-backdrop {
       position: fixed;
       inset: 0;
@@ -104,27 +86,28 @@
       z-index: 0;
       background:
         /* Fine micro-dot matrix texture */
-        radial-gradient(circle, var(--pattern-dot) 1px, transparent 1px) 0 0 / 28px 28px,
-        /* Controlled atmospheric light pools with natural falloff */
-        radial-gradient(ellipse 55% 50% at 18% 22%, var(--glow-c1) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 55% at 82% 28%, var(--glow-c2) 0%, transparent 75%),
-        radial-gradient(ellipse 65% 60% at 50% 85%, var(--glow-c3) 0%, transparent 80%),
-        var(--pow-bg);
-      opacity: 0.95;
-      transition: background 300ms ease;
+        radial-gradient(circle, var(--pattern-dot) 1.2px, transparent 1.2px) 0 0 / 24px 24px,
+        /* Controlled vibrant atmospheric light pools */
+        radial-gradient(circle 480px at 15% 20%, var(--orb-cyan) 0%, transparent 70%),
+        radial-gradient(circle 520px at 85% 25%, var(--orb-violet) 0%, transparent 70%),
+        radial-gradient(circle 440px at 50% 65%, var(--orb-coral) 0%, transparent 70%),
+        radial-gradient(circle 460px at 20% 85%, var(--orb-emerald) 0%, transparent 70%),
+        linear-gradient(135deg, #F0F6FD 0%, #E2EDF9 50%, #E8F0FB 100%);
     }
 
-    /* Top Sticky Navigation */
+    /* =========================================================
+       TOP STICKY NAVIGATION WITH DEDICATED INSTALL CTA
+       ========================================================= */
     .pow-nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--pow-surface);
-      -webkit-backdrop-filter: blur(var(--pow-glass-blur)) saturate(var(--pow-glass-sat));
-      backdrop-filter: blur(var(--pow-glass-blur)) saturate(var(--pow-glass-sat));
+      background: rgba(255, 255, 255, 0.55);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      backdrop-filter: blur(24px) saturate(180%);
       border-bottom: var(--pow-border);
-      box-shadow: inset 0 -1px 0 var(--pow-specular), 0 4px 20px -2px rgba(0, 0, 0, 0.05);
-      padding: 0.75rem 1.75rem;
+      box-shadow: inset 0 -1px 0 var(--pow-specular), 0 4px 25px -2px rgba(15, 23, 42, 0.08);
+      padding: 0.85rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -140,17 +123,17 @@
     }
 
     .nav-logo-img {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
+      width: 34px;
+      height: 34px;
+      border-radius: 9px;
       object-fit: contain;
-      box-shadow: 0 2px 8px var(--pow-accent-glow);
+      box-shadow: 0 4px 12px var(--pow-accent-glow);
     }
 
     .nav-title {
       font-family: var(--pow-font-display);
-      font-weight: 700;
-      font-size: 1.1rem;
+      font-weight: 800;
+      font-size: 1.15rem;
       letter-spacing: -0.02em;
     }
 
@@ -159,9 +142,9 @@
       border: 1px solid var(--pow-accent);
       color: var(--pow-accent);
       font-family: var(--pow-font-mono);
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-weight: 700;
-      padding: 0.2rem 0.55rem;
+      padding: 0.2rem 0.6rem;
       border-radius: 6px;
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -170,20 +153,26 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 1.25rem;
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 860px) {
+      .nav-links {
+        display: none;
+      }
     }
 
     .nav-link {
       color: var(--pow-text-muted);
       text-decoration: none;
       font-family: var(--pow-font-display);
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.875rem;
+      font-weight: 700;
       transition: color 120ms ease;
     }
 
     .nav-link:hover {
-      color: var(--pow-text);
+      color: var(--pow-accent);
     }
 
     .nav-actions {
@@ -196,26 +185,40 @@
       display: inline-flex;
       align-items: center;
       gap: 0.45rem;
-      padding: 0.45rem 0.95rem;
-      background: var(--pow-surface);
-      -webkit-backdrop-filter: blur(12px);
-      backdrop-filter: blur(12px);
+      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.65);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
       color: var(--pow-text);
       border: var(--pow-border);
-      box-shadow: inset 0 1px 0 var(--pow-specular);
+      box-shadow: inset 0 1px 0 var(--pow-specular), 0 2px 8px rgba(0, 0, 0, 0.04);
       border-radius: var(--pow-radius-btn);
       font-family: var(--pow-font-display);
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.825rem;
+      font-weight: 700;
       text-decoration: none;
       cursor: pointer;
       transition: background 140ms ease, transform 100ms ease, border-color 140ms ease;
     }
 
     .pow-btn-sm:hover {
-      background: var(--pow-surface-hover);
+      background: rgba(255, 255, 255, 0.85);
       border-color: var(--pow-accent);
       transform: translateY(-1px);
+    }
+
+    .pow-btn-install-header {
+      background: var(--pow-accent);
+      color: #FFFFFF;
+      border-color: var(--pow-accent);
+      box-shadow: 0 4px 14px var(--pow-accent-glow);
+    }
+
+    .pow-btn-install-header:hover {
+      background: var(--pow-accent-hover);
+      color: #FFFFFF;
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px var(--pow-accent-glow);
     }
 
     /* Main Container */
@@ -224,9 +227,11 @@
       z-index: 1;
     }
 
-    /* Hero Section (One Full Viewport) */
+    /* =========================================================
+       HERO SECTION WITH NESTED GLASS CARDS
+       ========================================================= */
     .pow-hero {
-      min-height: calc(100svh - 60px);
+      min-height: calc(100svh - 65px);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -237,31 +242,31 @@
       margin: 0 auto;
     }
 
-    /* Floating Frosted Glass Hero Pod */
+    /* Master Floating Frosted Glass Hero Pod */
     .hero-glass-pod {
       position: relative;
-      background: var(--pow-surface);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.52) 0%, rgba(255, 255, 255, 0.28) 100%);
       -webkit-backdrop-filter: blur(var(--pow-glass-blur)) saturate(var(--pow-glass-sat));
       backdrop-filter: blur(var(--pow-glass-blur)) saturate(var(--pow-glass-sat));
       border: var(--pow-border);
-      border-radius: var(--pow-radius);
-      box-shadow: inset 0 1px 1px 0 var(--pow-specular), var(--pow-shadow-lg);
-      padding: 3.25rem 2.5rem;
+      border-radius: var(--pow-radius-lg);
+      box-shadow: inset 0 1.5px 1.5px 0 var(--pow-specular), inset 0 -1px 1px 0 rgba(255, 255, 255, 0.3), var(--pow-shadow-lg);
+      padding: 3.5rem 2.5rem;
       width: 100%;
       box-sizing: border-box;
       margin-bottom: 2rem;
       overflow: hidden;
     }
 
-    /* Specular Beveled Top Rim */
+    /* Top Specular Rim Highlight */
     .hero-glass-pod::before {
       content: "";
       position: absolute;
       top: 0;
       left: 10%;
       right: 10%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--pow-specular), transparent);
+      height: 1.5px;
+      background: var(--pow-specular-rim);
       pointer-events: none;
     }
 
@@ -269,11 +274,14 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: var(--pow-well-bg);
+      background: rgba(255, 255, 255, 0.65);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
       color: var(--pow-accent);
       border: var(--pow-border);
+      box-shadow: inset 0 1px 0 var(--pow-specular);
       border-radius: 999px;
-      padding: 0.35rem 0.95rem;
+      padding: 0.35rem 1rem;
       font-family: var(--pow-font-mono);
       font-size: 0.775rem;
       font-weight: 700;
@@ -284,22 +292,24 @@
 
     .hero-title {
       font-family: var(--pow-font-display);
-      font-size: clamp(2rem, 5vw, 3.4rem);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
       font-weight: 800;
       line-height: 1.15;
       letter-spacing: -0.03em;
       margin-bottom: 1.25rem;
-      max-width: 900px;
+      max-width: 920px;
       margin-left: auto;
       margin-right: auto;
+      color: var(--pow-text);
     }
 
     .hero-desc {
-      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+      font-size: clamp(1rem, 2vw, 1.2rem);
       color: var(--pow-text-muted);
-      max-width: 740px;
-      margin: 0 auto 2rem auto;
+      max-width: 780px;
+      margin: 0 auto 2.25rem auto;
       line-height: 1.6;
+      font-weight: 500;
     }
 
     /* Single-Line Command Pill ("Sejajarin") */
@@ -309,14 +319,16 @@
       align-items: center;
       justify-content: center;
       gap: 0.65rem;
-      background: var(--pow-well-bg);
+      background: rgba(255, 255, 255, 0.65);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
       border: var(--pow-border);
       border-radius: var(--pow-radius-btn);
-      padding: 0.4rem 0.5rem 0.4rem 1.15rem;
+      padding: 0.45rem 0.55rem 0.45rem 1.25rem;
       max-width: 100%;
       box-sizing: border-box;
-      margin-bottom: 2.25rem;
-      box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.05);
+      margin-bottom: 2.5rem;
+      box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.9), 0 4px 15px rgba(15, 23, 42, 0.05);
     }
 
     .pow-prompt {
@@ -325,13 +337,13 @@
       color: var(--pow-accent);
       flex-shrink: 0;
       line-height: 1;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       user-select: none;
     }
 
     .pow-code {
       font-family: var(--pow-font-mono);
-      font-size: clamp(0.72rem, 3vw, 0.875rem);
+      font-size: clamp(0.75rem, 3vw, 0.9rem);
       font-weight: 600;
       color: var(--pow-text);
       white-space: nowrap;
@@ -349,24 +361,24 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      background: var(--pow-surface-hover);
-      color: var(--pow-text);
-      border: var(--pow-border);
+      background: var(--pow-accent);
+      color: #FFFFFF;
+      border: none;
       border-radius: var(--pow-radius-btn);
-      padding: 0.45rem 0.9rem;
+      padding: 0.45rem 1rem;
       font-family: var(--pow-font-display);
-      font-size: 0.775rem;
+      font-size: 0.8rem;
       font-weight: 700;
       cursor: pointer;
       flex-shrink: 0;
       line-height: 1;
-      box-shadow: inset 0 1px 0 var(--pow-specular);
+      box-shadow: 0 2px 8px var(--pow-accent-glow);
       transition: background 120ms ease, transform 90ms ease;
     }
 
     .pow-copy-btn:hover {
-      background: var(--pow-surface-active);
-      transform: scale(1.02);
+      background: var(--pow-accent-hover);
+      transform: scale(1.03);
     }
 
     /* Hero Buttons */
@@ -374,8 +386,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2.5rem;
+      gap: 1.15rem;
+      margin-bottom: 3rem;
       flex-wrap: wrap;
     }
 
@@ -384,10 +396,10 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      padding: 0.75rem 1.6rem;
+      padding: 0.85rem 1.8rem;
       font-family: var(--pow-font-display);
       font-weight: 700;
-      font-size: 0.925rem;
+      font-size: 0.95rem;
       border: var(--pow-border);
       border-radius: var(--pow-radius-btn);
       cursor: pointer;
@@ -399,56 +411,57 @@
       background: var(--pow-accent);
       color: #FFFFFF;
       border-color: var(--pow-accent);
-      box-shadow: 0 4px 16px var(--pow-accent-glow);
+      box-shadow: 0 4px 18px var(--pow-accent-glow);
     }
 
     .pow-btn-primary:hover {
       background: var(--pow-accent-hover);
       transform: translateY(-2px);
-      box-shadow: 0 6px 20px var(--pow-accent-glow);
+      box-shadow: 0 8px 24px var(--pow-accent-glow);
     }
 
     .pow-btn-secondary {
-      background: var(--pow-surface);
+      background: rgba(255, 255, 255, 0.65);
       -webkit-backdrop-filter: blur(14px);
       backdrop-filter: blur(14px);
       color: var(--pow-text);
-      box-shadow: inset 0 1px 0 var(--pow-specular);
+      box-shadow: inset 0 1px 0 var(--pow-specular), 0 4px 12px rgba(15, 23, 42, 0.05);
     }
 
     .pow-btn-secondary:hover {
-      background: var(--pow-surface-hover);
+      background: rgba(255, 255, 255, 0.85);
       transform: translateY(-2px);
     }
 
-    /* 4-Stat Glass Summary Meter Strip */
+    /* NESTED GLASS CARDS (Card-inside-Card Demonstration in Hero) */
     .pow-stat-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+      gap: 1.15rem;
       width: 100%;
     }
 
-    .stat-box {
-      background: var(--pow-surface);
-      -webkit-backdrop-filter: blur(var(--pow-glass-blur));
-      backdrop-filter: blur(var(--pow-glass-blur));
-      border: var(--pow-border);
+    .stat-box-glass {
+      background: var(--pow-surface-child);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      border: var(--pow-border-child);
       border-radius: var(--pow-radius-sm);
-      padding: 1.1rem 0.85rem;
+      padding: 1.25rem 1rem;
       text-align: center;
-      box-shadow: inset 0 1px 0 var(--pow-specular), var(--pow-shadow);
+      box-shadow: inset 0 1.5px 1px 0 var(--pow-specular), var(--pow-shadow-child);
       transition: transform 140ms ease, background 140ms ease;
+      position: relative;
     }
 
-    .stat-box:hover {
-      transform: translateY(-2px);
-      background: var(--pow-surface-hover);
+    .stat-box-glass:hover {
+      transform: translateY(-3px);
+      background: rgba(255, 255, 255, 0.80);
     }
 
     .stat-val {
       font-family: var(--pow-font-display);
-      font-size: 1.55rem;
+      font-size: 1.65rem;
       font-weight: 800;
       line-height: 1.1;
       margin-bottom: 0.35rem;
@@ -457,8 +470,8 @@
     }
 
     .stat-label {
-      font-size: 0.75rem;
-      font-weight: 600;
+      font-size: 0.775rem;
+      font-weight: 700;
       color: var(--pow-text-muted);
       text-transform: uppercase;
       letter-spacing: 0.05em;
@@ -467,12 +480,12 @@
     /* Content Sections */
     .pow-section {
       max-width: 1120px;
-      margin: 4.5rem auto;
+      margin: 5rem auto;
       padding: 0 1.25rem;
     }
 
     .section-header {
-      margin-bottom: 2.25rem;
+      margin-bottom: 2.5rem;
     }
 
     .section-badge {
@@ -481,65 +494,78 @@
       font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
-      padding: 0.25rem 0.65rem;
+      padding: 0.3rem 0.75rem;
       background: var(--pow-accent-subtle);
       color: var(--pow-accent);
       border: 1px solid var(--pow-accent);
       border-radius: 6px;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.85rem;
       letter-spacing: 0.05em;
     }
 
     .section-title {
       font-family: var(--pow-font-display);
-      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
       font-weight: 800;
       letter-spacing: -0.02em;
       line-height: 1.2;
+      color: var(--pow-text);
     }
 
     .section-desc {
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: var(--pow-text-muted);
-      max-width: 720px;
+      max-width: 760px;
       margin-top: 0.5rem;
       line-height: 1.6;
-    }
-
-    /* Glass Container Card */
-    .pow-card {
-      background: var(--pow-surface);
-      -webkit-backdrop-filter: blur(var(--pow-glass-blur)) saturate(var(--pow-glass-sat));
-      backdrop-filter: blur(var(--pow-glass-blur)) saturate(var(--pow-glass-sat));
-      border: var(--pow-border);
-      box-shadow: inset 0 1px 0 var(--pow-specular), var(--pow-shadow);
-      border-radius: var(--pow-radius);
-      overflow: hidden;
-      position: relative;
+      font-weight: 500;
     }
 
     /* =========================================================
-       INTERACTIVE GLASS STUDIO LAB SECTION
+       INTERACTIVE LAB: MASTER GLASS WINDOW WITH NESTED CHILD CARDS
        ========================================================= */
-    .lab-container {
+    .master-glass-window {
+      position: relative;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.48) 0%, rgba(255, 255, 255, 0.22) 100%);
+      -webkit-backdrop-filter: blur(28px) saturate(185%);
+      backdrop-filter: blur(28px) saturate(185%);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius-lg);
+      box-shadow: inset 0 1.5px 1.5px 0 var(--pow-specular), var(--pow-shadow-lg);
+      padding: 2.5rem;
+      overflow: hidden;
+    }
+
+    .master-glass-window::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 8%;
+      right: 8%;
+      height: 1.5px;
+      background: var(--pow-specular-rim);
+      pointer-events: none;
+    }
+
+    .lab-layout-grid {
       display: grid;
-      grid-template-columns: 1fr 340px;
-      gap: 1.75rem;
+      grid-template-columns: 1fr 360px;
+      gap: 2rem;
     }
 
     @media (max-width: 960px) {
-      .lab-container {
+      .lab-layout-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    /* The Interactive Glass Stage */
-    .lab-stage {
+    /* Live Atmospheric Refraction Stage */
+    .lab-stage-viewport {
       position: relative;
       border-radius: var(--pow-radius);
-      border: var(--pow-border);
-      padding: 2.25rem 2rem;
-      min-height: 480px;
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      padding: 2rem;
+      min-height: 520px;
       overflow: hidden;
       display: flex;
       flex-direction: column;
@@ -547,149 +573,166 @@
       transition: background 300ms ease;
     }
 
-    /* Atmospheric Stage Presets */
-    .stage-theme-aurora {
+    /* 4 Distinct Harmonious Atmospheric Backgrounds */
+    .stage-nordic-aurora {
       background:
         radial-gradient(circle, var(--pattern-dot) 1.2px, transparent 1.2px) 0 0 / 24px 24px,
-        radial-gradient(circle at 15% 25%, rgba(14, 165, 233, 0.45) 0%, transparent 60%),
-        radial-gradient(circle at 85% 75%, rgba(16, 185, 129, 0.40) 0%, transparent 60%),
-        var(--pow-well-bg);
+        radial-gradient(circle 350px at 15% 25%, rgba(6, 182, 212, 0.45) 0%, transparent 70%),
+        radial-gradient(circle 380px at 85% 75%, rgba(16, 185, 129, 0.42) 0%, transparent 70%),
+        rgba(230, 245, 252, 0.7);
     }
 
-    .stage-theme-violet {
+    .stage-prism-violet {
       background:
         radial-gradient(circle, var(--pattern-dot) 1.2px, transparent 1.2px) 0 0 / 24px 24px,
-        radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.45) 0%, transparent 60%),
-        radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.40) 0%, transparent 60%),
-        var(--pow-well-bg);
+        radial-gradient(circle 350px at 20% 30%, rgba(129, 140, 248, 0.45) 0%, transparent 70%),
+        radial-gradient(circle 380px at 80% 70%, rgba(192, 132, 252, 0.42) 0%, transparent 70%),
+        rgba(240, 238, 253, 0.7);
     }
 
-    .stage-theme-solaris {
+    .stage-solaris-dawn {
       background:
         radial-gradient(circle, var(--pattern-dot) 1.2px, transparent 1.2px) 0 0 / 24px 24px,
-        radial-gradient(circle at 18% 22%, rgba(249, 115, 22, 0.40) 0%, transparent 60%),
-        radial-gradient(circle at 82% 78%, rgba(244, 63, 94, 0.35) 0%, transparent 60%),
-        var(--pow-well-bg);
+        radial-gradient(circle 350px at 18% 22%, rgba(251, 146, 60, 0.42) 0%, transparent 70%),
+        radial-gradient(circle 380px at 82% 78%, rgba(244, 63, 94, 0.38) 0%, transparent 70%),
+        rgba(254, 242, 242, 0.7);
     }
 
-    .stage-theme-obsidian {
+    .stage-emerald-mesh {
       background:
         radial-gradient(circle, var(--pattern-dot) 1.2px, transparent 1.2px) 0 0 / 24px 24px,
-        radial-gradient(circle at 25% 25%, rgba(30, 58, 138, 0.55) 0%, transparent 60%),
-        radial-gradient(circle at 75% 75%, rgba(15, 118, 110, 0.45) 0%, transparent 60%),
-        var(--pow-well-bg);
+        radial-gradient(circle 350px at 25% 25%, rgba(16, 185, 129, 0.45) 0%, transparent 70%),
+        radial-gradient(circle 380px at 75% 75%, rgba(2, 132, 199, 0.40) 0%, transparent 70%),
+        rgba(236, 253, 245, 0.7);
     }
 
-    /* Ambient Audio Pod on Glass */
-    .glass-audio-pod {
+    /* NESTED GLASS CARD 1: Audio Engine & DSP Studio Pod */
+    .child-glass-pod {
       position: relative;
-      background: var(--lab-surface, var(--pow-surface));
-      -webkit-backdrop-filter: blur(var(--lab-blur, 18px)) saturate(var(--lab-sat, 155%));
-      backdrop-filter: blur(var(--lab-blur, 18px)) saturate(var(--lab-sat, 155%));
-      border: var(--pow-border);
+      background: var(--lab-surface, rgba(255, 255, 255, 0.65));
+      -webkit-backdrop-filter: blur(var(--lab-blur, 24px)) saturate(var(--lab-sat, 180%));
+      backdrop-filter: blur(var(--lab-blur, 24px)) saturate(var(--lab-sat, 180%));
+      border: 1px solid rgba(255, 255, 255, 0.95);
       border-radius: var(--pow-radius);
-      box-shadow: inset 0 1px 1px 0 var(--pow-specular), 0 20px 45px -10px rgba(0, 0, 0, 0.25);
+      box-shadow: inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.98), 0 20px 45px -10px rgba(15, 23, 42, 0.14);
       padding: 1.75rem;
-      max-width: 540px;
-      margin: 0 auto;
       width: 100%;
+      box-sizing: border-box;
       z-index: 2;
+      margin-bottom: 1.25rem;
     }
 
-    .pod-top {
+    .child-glass-pod::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 12%;
+      right: 12%;
+      height: 1.5px;
+      background: var(--pow-specular-rim);
+      pointer-events: none;
+    }
+
+    .pod-header-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
       margin-bottom: 1.25rem;
     }
 
-    .pod-meta-group {
+    .pod-track-meta {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.9rem;
     }
 
-    .pod-cover {
+    .pod-cover-icon {
       width: 48px;
       height: 48px;
-      border-radius: 10px;
-      background: linear-gradient(135deg, var(--pow-accent), #8B5CF6);
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0284C7, #8B5CF6);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
-      box-shadow: 0 4px 12px var(--pow-accent-glow);
+      font-size: 1.5rem;
+      box-shadow: 0 4px 14px var(--pow-accent-glow);
     }
 
-    .pod-track-name {
+    .pod-title {
       font-family: var(--pow-font-display);
-      font-size: 1.05rem;
-      font-weight: 700;
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--pow-text);
       line-height: 1.2;
     }
 
-    .pod-artist {
-      font-size: 0.8rem;
+    .pod-sub {
+      font-size: 0.85rem;
       color: var(--pow-text-muted);
+      font-weight: 600;
     }
 
-    .pod-badge-live {
+    .pod-status-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      padding: 0.2rem 0.6rem;
+      gap: 0.4rem;
+      padding: 0.25rem 0.75rem;
       background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      color: #10B981;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #047857;
       border-radius: 999px;
       font-family: var(--pow-font-mono);
-      font-size: 0.7rem;
+      font-size: 0.725rem;
       font-weight: 700;
     }
 
-    .live-dot {
-      width: 6px;
-      height: 6px;
+    .live-dot-green {
+      width: 7px;
+      height: 7px;
       border-radius: 50%;
       background: #10B981;
-      animation: livePulse 1.8s infinite;
+      animation: pulseDot 1.8s infinite;
     }
 
-    @keyframes livePulse {
+    @keyframes pulseDot {
       0%, 100% { opacity: 1; transform: scale(1); }
       50% { opacity: 0.4; transform: scale(0.85); }
     }
 
     /* Equalizer Wave Bars */
-    .eq-wave-strip {
+    .eq-wave-container {
       display: flex;
       align-items: flex-end;
-      gap: 3px;
-      height: 32px;
+      gap: 4px;
+      height: 38px;
       margin-bottom: 1.25rem;
       padding: 0 0.5rem;
+      background: rgba(255, 255, 255, 0.4);
+      border-radius: 8px;
+      padding: 4px 8px;
     }
 
     .eq-bar {
       flex: 1;
       background: var(--pow-accent);
-      border-radius: 2px;
-      opacity: 0.85;
+      border-radius: 3px;
+      opacity: 0.9;
       transition: height 120ms ease;
     }
 
-    /* Scrub Bar */
+    /* Scrub Timeline */
     .scrub-container {
       display: flex;
       align-items: center;
       gap: 0.75rem;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.5rem;
     }
 
     .scrub-track {
       flex: 1;
-      height: 6px;
-      background: var(--pow-well-bg);
+      height: 7px;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.9);
       border-radius: 999px;
       position: relative;
       cursor: pointer;
@@ -701,15 +744,16 @@
       left: 0;
       top: 0;
       bottom: 0;
-      width: 48%;
+      width: 52%;
       background: var(--pow-accent);
       border-radius: 999px;
     }
 
     .time-stamp {
       font-family: var(--pow-font-mono);
-      font-size: 0.75rem;
+      font-size: 0.775rem;
       color: var(--pow-text-muted);
+      font-weight: 700;
       font-variant-numeric: tabular-nums;
     }
 
@@ -720,34 +764,34 @@
       justify-content: space-between;
     }
 
-    .ctrl-btn {
-      background: var(--pow-surface-hover);
-      border: var(--pow-border);
+    .ctrl-circle-btn {
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.95);
       color: var(--pow-text);
-      width: 38px;
-      height: 38px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       cursor: pointer;
-      font-size: 0.9rem;
-      box-shadow: inset 0 1px 0 var(--pow-specular);
+      font-size: 1rem;
+      box-shadow: inset 0 1px 0 var(--pow-specular), 0 4px 10px rgba(0, 0, 0, 0.04);
       transition: transform 100ms ease, background 120ms ease;
     }
 
-    .ctrl-btn:hover {
+    .ctrl-circle-btn:hover {
       transform: scale(1.08);
-      background: var(--pow-surface-active);
+      background: #FFFFFF;
     }
 
     .ctrl-btn-play {
-      width: 46px;
-      height: 46px;
+      width: 50px;
+      height: 50px;
       background: var(--pow-accent);
       color: #FFFFFF;
       border-color: var(--pow-accent);
-      box-shadow: 0 4px 14px var(--pow-accent-glow);
+      box-shadow: 0 4px 16px var(--pow-accent-glow);
     }
 
     .ctrl-btn-play:hover {
@@ -755,55 +799,130 @@
       background: var(--pow-accent-hover);
     }
 
-    /* Lab Side Control Panel */
-    .lab-controls-panel {
-      background: var(--pow-surface);
-      -webkit-backdrop-filter: blur(var(--pow-glass-blur));
-      backdrop-filter: blur(var(--pow-glass-blur));
-      border: var(--pow-border);
-      border-radius: var(--pow-radius);
-      box-shadow: inset 0 1px 0 var(--pow-specular), var(--pow-shadow);
-      padding: 1.5rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.35rem;
+    /* NESTED GLASS CARD 2 & 3: Multi-Band Equalizer & DSP Metrics */
+    .nested-cards-subgrid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      z-index: 2;
     }
 
-    .control-block-title {
+    @media (max-width: 640px) {
+      .nested-cards-subgrid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .child-sub-card {
+      background: var(--pow-surface-child);
+      -webkit-backdrop-filter: blur(16px);
+      backdrop-filter: blur(16px);
+      border: var(--pow-border-child);
+      border-radius: var(--pow-radius-sm);
+      padding: 1.15rem;
+      box-shadow: inset 0 1px 0 var(--pow-specular), var(--pow-shadow-child);
+    }
+
+    .sub-card-title {
       font-family: var(--pow-font-display);
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       font-weight: 700;
+      color: var(--pow-text);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
       margin-bottom: 0.75rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
+    .eq-slider-strip {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .eq-mini-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--pow-text-muted);
+    }
+
+    .metric-value-large {
+      font-family: var(--pow-font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--pow-text);
+      margin-bottom: 0.2rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .metric-sub-detail {
+      font-size: 0.775rem;
+      color: var(--pow-text-muted);
+      font-weight: 600;
+    }
+
+    /* Lab Controls Panel (Right Sidebar) */
+    .lab-controls-panel {
+      background: rgba(255, 255, 255, 0.65);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius);
+      box-shadow: inset 0 1px 0 var(--pow-specular), var(--pow-shadow);
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .control-block-title {
+      font-family: var(--pow-font-display);
+      font-size: 0.95rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--pow-text);
+    }
+
     .control-badge-val {
       font-family: var(--pow-font-mono);
-      font-size: 0.75rem;
+      font-size: 0.775rem;
       color: var(--pow-accent);
+      font-weight: 700;
     }
 
     /* Preset Buttons Grid */
     .preset-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 0.5rem;
+      gap: 0.6rem;
     }
 
     .preset-btn {
-      padding: 0.6rem 0.5rem;
-      background: var(--pow-well-bg);
-      border: var(--pow-border);
+      padding: 0.65rem 0.6rem;
+      background: rgba(255, 255, 255, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.9);
       color: var(--pow-text);
       border-radius: 8px;
       font-family: var(--pow-font-display);
-      font-size: 0.775rem;
-      font-weight: 600;
+      font-size: 0.8rem;
+      font-weight: 700;
       cursor: pointer;
       text-align: center;
-      transition: border-color 140ms ease, background 140ms ease;
+      box-shadow: inset 0 1px 0 var(--pow-specular);
+      transition: border-color 140ms ease, background 140ms ease, transform 90ms ease;
+    }
+
+    .preset-btn:hover {
+      transform: translateY(-1px);
+      background: #FFFFFF;
     }
 
     .preset-btn.active {
@@ -816,25 +935,25 @@
     .slider-group {
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.45rem;
     }
 
     .slider-label-row {
       display: flex;
       justify-content: space-between;
-      font-size: 0.8rem;
-      font-weight: 600;
+      font-size: 0.825rem;
+      font-weight: 700;
       color: var(--pow-text-muted);
     }
 
     .glass-range-input {
       -webkit-appearance: none;
       width: 100%;
-      height: 6px;
+      height: 7px;
       border-radius: 999px;
-      background: var(--pow-well-bg);
+      background: rgba(203, 213, 225, 0.6);
       outline: none;
-      border: var(--pow-border-subtle);
+      border: 1px solid rgba(255, 255, 255, 0.8);
     }
 
     .glass-range-input::-webkit-slider-thumb {
@@ -855,23 +974,35 @@
 
     /* Live Token Inspector Box */
     .css-snippet-box {
-      background: #0D1117;
-      color: #E6EDF3;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 8px;
-      padding: 0.85rem;
+      background: #0F172A;
+      color: #E2E8F0;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 10px;
+      padding: 0.95rem;
       font-family: var(--pow-font-mono);
-      font-size: 0.72rem;
-      line-height: 1.45;
+      font-size: 0.74rem;
+      line-height: 1.5;
       overflow-x: auto;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.15);
     }
 
     /* =========================================================
        TABBED INSTALLATION GUIDE SECTION
        ========================================================= */
+    .pow-card-glass {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.35) 100%);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      backdrop-filter: blur(24px) saturate(180%);
+      border: var(--pow-border);
+      box-shadow: inset 0 1.5px 1px 0 var(--pow-specular), var(--pow-shadow);
+      border-radius: var(--pow-radius);
+      overflow: hidden;
+      position: relative;
+    }
+
     .tab-header-strip {
       display: flex;
-      background: var(--pow-well-bg);
+      background: rgba(255, 255, 255, 0.45);
       border-bottom: var(--pow-border);
       overflow-x: auto;
       scrollbar-width: none;
@@ -882,12 +1013,12 @@
     }
 
     .tab-switch-btn {
-      padding: 0.85rem 1.4rem;
+      padding: 0.95rem 1.6rem;
       background: transparent;
       border: none;
       border-right: var(--pow-border);
       font-family: var(--pow-font-display);
-      font-size: 0.85rem;
+      font-size: 0.875rem;
       font-weight: 700;
       color: var(--pow-text-muted);
       cursor: pointer;
@@ -896,18 +1027,18 @@
     }
 
     .tab-switch-btn:hover {
-      background: var(--pow-surface-hover);
+      background: rgba(255, 255, 255, 0.6);
       color: var(--pow-text);
     }
 
     .tab-switch-btn.active {
-      background: var(--pow-surface);
+      background: rgba(255, 255, 255, 0.85);
       color: var(--pow-accent);
       border-bottom: 2px solid var(--pow-accent);
     }
 
     .tab-body {
-      padding: 2rem;
+      padding: 2.25rem;
       display: none;
     }
 
@@ -917,33 +1048,35 @@
 
     .install-step-title {
       font-family: var(--pow-font-display);
-      font-size: 1.15rem;
-      font-weight: 700;
+      font-size: 1.2rem;
+      font-weight: 800;
       margin-bottom: 0.65rem;
+      color: var(--pow-text);
     }
 
     .install-step-desc {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--pow-text-muted);
-      margin-bottom: 1.25rem;
-      line-height: 1.55;
+      margin-bottom: 1.35rem;
+      line-height: 1.6;
+      font-weight: 500;
     }
 
     /* Terminal Console Window */
     .pow-terminal {
-      background: #0D1117;
-      color: #F0F6FC;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 10px;
+      background: #0F172A;
+      color: #F8FAFC;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 12px;
       overflow: hidden;
       margin-bottom: 1.5rem;
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+      box-shadow: 0 12px 30px -5px rgba(15, 23, 42, 0.25);
     }
 
     .terminal-topbar {
-      background: #161B22;
-      padding: 0.65rem 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: #1E293B;
+      padding: 0.75rem 1.15rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -952,7 +1085,7 @@
     .terminal-dots {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
     }
 
     .dot {
@@ -967,16 +1100,16 @@
 
     .terminal-label {
       font-family: var(--pow-font-mono);
-      font-size: 0.75rem;
-      color: #8B949E;
+      font-size: 0.775rem;
+      color: #94A3B8;
       font-weight: 600;
     }
 
     .terminal-content {
-      padding: 1.1rem;
+      padding: 1.25rem;
       font-family: var(--pow-font-mono);
-      font-size: 0.825rem;
-      line-height: 1.6;
+      font-size: 0.85rem;
+      line-height: 1.65;
       overflow-x: auto;
     }
 
@@ -984,22 +1117,22 @@
       display: flex;
       align-items: flex-start;
       gap: 0.5rem;
-      margin-bottom: 0.35rem;
+      margin-bottom: 0.4rem;
     }
 
     .line-p {
-      color: var(--pow-accent);
+      color: #38BDF8;
       user-select: none;
       font-weight: 700;
     }
 
     .line-comment {
-      color: #8B949E;
+      color: #94A3B8;
       font-style: italic;
     }
 
     .line-cmd {
-      color: #E6EDF3;
+      color: #F8FAFC;
       user-select: all;
     }
 
@@ -1010,76 +1143,79 @@
       overflow-x: auto;
       border-radius: var(--pow-radius);
       border: var(--pow-border);
-      box-shadow: inset 0 1px 0 var(--pow-specular), var(--pow-shadow);
-      background: var(--pow-surface);
-      -webkit-backdrop-filter: blur(var(--pow-glass-blur));
-      backdrop-filter: blur(var(--pow-glass-blur));
+      box-shadow: inset 0 1.5px 1px 0 var(--pow-specular), var(--pow-shadow);
+      background: rgba(255, 255, 255, 0.55);
+      -webkit-backdrop-filter: blur(24px);
+      backdrop-filter: blur(24px);
     }
 
     .pow-table {
       width: 100%;
       border-collapse: collapse;
       text-align: left;
-      font-size: 0.875rem;
+      font-size: 0.9rem;
     }
 
     .pow-table th {
-      background: var(--pow-well-bg);
-      padding: 0.85rem 1.25rem;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 0.95rem 1.35rem;
       font-family: var(--pow-font-display);
-      font-weight: 700;
-      font-size: 0.8rem;
+      font-weight: 800;
+      font-size: 0.825rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       border-bottom: var(--pow-border);
-      color: var(--pow-text-muted);
+      color: var(--pow-text);
     }
 
     .pow-table td {
-      padding: 0.85rem 1.25rem;
-      border-bottom: var(--pow-border-subtle);
+      padding: 0.95rem 1.35rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.6);
+      color: var(--pow-text);
+      font-weight: 500;
     }
 
     .token-code {
       font-family: var(--pow-font-mono);
-      font-weight: 600;
+      font-weight: 700;
       color: var(--pow-accent);
       user-select: all;
-      font-size: 0.8rem;
+      font-size: 0.825rem;
     }
 
     /* =========================================================
        FAQ ACCORDION
        ========================================================= */
     .pow-faq-item {
-      background: var(--pow-surface);
-      -webkit-backdrop-filter: blur(var(--pow-glass-blur));
-      backdrop-filter: blur(var(--pow-glass-blur));
+      background: rgba(255, 255, 255, 0.55);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
       border: var(--pow-border);
       box-shadow: inset 0 1px 0 var(--pow-specular);
       border-radius: var(--pow-radius-sm);
-      margin-bottom: 0.85rem;
+      margin-bottom: 1rem;
       overflow: hidden;
       transition: background 140ms ease, border-color 140ms ease;
     }
 
     .pow-faq-item:hover {
-      background: var(--pow-surface-hover);
+      background: rgba(255, 255, 255, 0.75);
     }
 
     .pow-faq-header {
-      padding: 1.15rem 1.4rem;
+      padding: 1.25rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       cursor: pointer;
       font-family: var(--pow-font-display);
-      font-weight: 700;
-      font-size: 1rem;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--pow-text);
     }
 
     .faq-arrow {
-      font-size: 0.75rem;
+      font-size: 0.8rem;
       color: var(--pow-accent);
       transition: transform 180ms ease;
     }
@@ -1089,24 +1225,25 @@
     }
 
     .pow-faq-body {
-      padding: 0 1.4rem 1.25rem 1.4rem;
-      font-size: 0.9rem;
+      padding: 0 1.5rem 1.4rem 1.5rem;
+      font-size: 0.95rem;
       color: var(--pow-text-muted);
-      line-height: 1.6;
+      line-height: 1.65;
       display: none;
+      font-weight: 500;
     }
 
     .pow-faq-item.open .pow-faq-body {
       display: block;
     }
 
-    /* Modal Sheet */
+    /* Specimen Modal Sheet */
     .glass-modal-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.45);
-      -webkit-backdrop-filter: blur(8px);
-      backdrop-filter: blur(8px);
+      background: rgba(15, 23, 42, 0.40);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
       z-index: 200;
       display: none;
       align-items: center;
@@ -1119,24 +1256,29 @@
     }
 
     .glass-modal-card {
-      background: var(--pow-surface);
-      -webkit-backdrop-filter: blur(24px) saturate(180%);
-      backdrop-filter: blur(24px) saturate(180%);
-      border: var(--pow-border);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.65) 100%);
+      -webkit-backdrop-filter: blur(32px) saturate(190%);
+      backdrop-filter: blur(32px) saturate(190%);
+      border: 1px solid rgba(255, 255, 255, 0.95);
       border-radius: var(--pow-radius);
-      box-shadow: inset 0 1px 1px 0 var(--pow-specular), 0 35px 80px -15px rgba(0, 0, 0, 0.5);
-      max-width: 480px;
+      box-shadow: inset 0 1.5px 1px 0 rgba(255, 255, 255, 0.98), 0 35px 80px -15px rgba(15, 23, 42, 0.35);
+      max-width: 500px;
       width: 100%;
-      padding: 2rem;
+      padding: 2.25rem;
       position: relative;
     }
 
-    /* Footer */
+    /* =========================================================
+       HIGH-CONTRAST READABLE FOOTER
+       ========================================================= */
     .pow-footer {
-      border-top: var(--pow-border);
-      background: var(--pow-well-bg);
-      padding: 3.5rem 1.5rem 2rem 1.5rem;
-      margin-top: 5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.95);
+      background: rgba(255, 255, 255, 0.80);
+      -webkit-backdrop-filter: blur(28px);
+      backdrop-filter: blur(28px);
+      padding: 4rem 1.75rem 2.5rem 1.75rem;
+      margin-top: 6rem;
+      box-shadow: inset 0 1px 0 var(--pow-specular);
     }
 
     .footer-inner {
@@ -1144,14 +1286,14 @@
       margin: 0 auto;
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
-      gap: 2.5rem;
-      margin-bottom: 2.5rem;
+      gap: 3rem;
+      margin-bottom: 3rem;
     }
 
     @media (max-width: 768px) {
       .footer-inner {
         grid-template-columns: 1fr;
-        gap: 2rem;
+        gap: 2.25rem;
       }
       .pow-stat-strip {
         grid-template-columns: repeat(2, 1fr);
@@ -1160,56 +1302,61 @@
 
     .footer-brand h4 {
       font-family: var(--pow-font-display);
-      font-size: 1.15rem;
+      font-size: 1.25rem;
       font-weight: 800;
-      margin-bottom: 0.65rem;
+      margin-bottom: 0.75rem;
+      color: #0F172A;
     }
 
     .footer-brand p {
-      font-size: 0.85rem;
-      color: var(--pow-text-muted);
-      line-height: 1.55;
-      max-width: 420px;
+      font-size: 0.9rem;
+      color: #334155;
+      line-height: 1.6;
+      max-width: 440px;
+      font-weight: 500;
     }
 
     .footer-col h5 {
       font-family: var(--pow-font-display);
       font-size: 0.85rem;
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: 0.85rem;
-      color: var(--pow-text);
+      margin-bottom: 1rem;
+      color: #0F172A;
     }
 
     .footer-col ul {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.65rem;
     }
 
     .footer-col a {
-      font-size: 0.85rem;
-      color: var(--pow-text-muted);
+      font-size: 0.875rem;
+      color: #1E293B;
+      font-weight: 600;
       text-decoration: none;
       transition: color 120ms ease;
     }
 
     .footer-col a:hover {
       color: var(--pow-accent);
+      text-decoration: underline;
     }
 
     .footer-bottom {
       max-width: 1120px;
       margin: 0 auto;
-      border-top: var(--pow-border-subtle);
-      padding-top: 1.5rem;
+      border-top: 1px solid rgba(203, 213, 225, 0.6);
+      padding-top: 1.75rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.8rem;
-      color: var(--pow-text-muted);
+      font-size: 0.85rem;
+      color: #475569;
+      font-weight: 600;
       flex-wrap: wrap;
       gap: 1rem;
     }
@@ -1219,14 +1366,14 @@
       position: fixed;
       bottom: 24px;
       right: 24px;
-      background: var(--pow-text);
-      color: var(--pow-bg);
+      background: #0F172A;
+      color: #FFFFFF;
       font-family: var(--pow-font-mono);
-      font-size: 0.8rem;
+      font-size: 0.825rem;
       font-weight: 700;
-      padding: 0.65rem 1.25rem;
+      padding: 0.75rem 1.4rem;
       border-radius: var(--pow-radius-btn);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
       z-index: 999;
       display: none;
       align-items: center;
@@ -1243,7 +1390,7 @@
   <!-- Ambient Structured Textured Gradient Backdrop -->
   <div class="pow-canvas-backdrop" id="canvasBackdrop"></div>
 
-  <!-- Top Sticky Navigation -->
+  <!-- Top Sticky Navigation with Header Install Button -->
   <nav class="pow-nav">
     <a href="index.html" class="nav-brand-group">
       <img src="assets/logo.webp" alt="Taste Engine Logo" class="nav-logo-img">
@@ -1253,6 +1400,7 @@
 
     <div class="nav-links">
       <a href="#playground" class="nav-link">Studio Lab</a>
+      <a href="#nested" class="nav-link">Nested Planes</a>
       <a href="#install" class="nav-link">Installation</a>
       <a href="#tokens" class="nav-link">Tokens</a>
       <a href="#faq" class="nav-link">FAQ</a>
@@ -1262,9 +1410,9 @@
       <a href="index.html" class="pow-btn-sm">
         <span>← All Styles</span>
       </a>
-      <button class="pow-btn-sm" id="themeToggleBtn" aria-label="Toggle theme">
-        <span id="themeLabel">☀️ LIGHT</span>
-      </button>
+      <a href="#install" class="pow-btn-sm pow-btn-install-header">
+        <span>⚡ Install Skill</span>
+      </a>
     </div>
   </nav>
 
@@ -1281,7 +1429,7 @@
         </h1>
 
         <p class="hero-desc">
-          Translucent, blur-diffused surfaces floating over structured, textured ambient gradients with WCAG AA verified typography and dual-rim specular edge refraction.
+          Translucent, blur-diffused surfaces floating over structured, textured ambient gradients with multi-layer nested optical planes and dual-rim specular edge refraction.
         </p>
 
         <!-- Single-Line Command Pill ("Sejajarin") -->
@@ -1303,152 +1451,189 @@
           </a>
         </div>
 
-        <!-- 4-Stat Glass Summary Meter Strip -->
+        <!-- NESTED GLASS CARDS (Card-inside-Card Demonstration in Hero) -->
         <div class="pow-stat-strip">
-          <div class="stat-box">
-            <div class="stat-val">18px</div>
+          <div class="stat-box-glass">
+            <div class="stat-val">26px</div>
             <div class="stat-label">Frosted Diffusion</div>
           </div>
-          <div class="stat-box">
-            <div class="stat-val">155%</div>
+          <div class="stat-box-glass">
+            <div class="stat-val">180%</div>
             <div class="stat-label">Refraction Saturation</div>
           </div>
-          <div class="stat-box">
-            <div class="stat-val">1px Dual-Rim</div>
-            <div class="stat-label">Specular Edge</div>
+          <div class="stat-box-glass">
+            <div class="stat-val">Dual-Rim</div>
+            <div class="stat-label">Specular Highlight</div>
           </div>
-          <div class="stat-box">
-            <div class="stat-val">WCAG AA</div>
-            <div class="stat-label">Contrast Safe</div>
+          <div class="stat-box-glass">
+            <div class="stat-val">Nested</div>
+            <div class="stat-label">Card Planes Permitted</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Interactive Component Playground (PoW) -->
+    <!-- Interactive Component Playground (PoW): Master Glass Window with Nested Child Cards -->
     <section class="pow-section" id="playground">
       <div class="section-header">
         <span class="section-badge">Live Interactive PoW</span>
         <h2 class="section-title">Atmospheric Glass Studio & Specimen Lab</h2>
         <p class="section-desc">
-          Test interactive frosted components over structured background gradients. Switch harmonious color palettes, adjust diffusion math in real time, and inspect computed CSS tokens.
+          Test interactive frosted components over structured background gradients. Experience card-inside-card nested glass surfaces, switch non-clashing atmospheric light presets, and adjust diffusion math in real time.
         </p>
       </div>
 
-      <div class="lab-container">
-        <!-- Interactive Stage Viewport -->
-        <div class="lab-stage stage-theme-aurora" id="labStage">
-          <!-- Ambient Audio Pod Component -->
-          <div class="glass-audio-pod" id="audioPod">
-            <div class="pod-top">
-              <div class="pod-meta-group">
-                <div class="pod-cover">🎧</div>
-                <div>
-                  <div class="pod-track-name">Crystalline Horizon</div>
-                  <div class="pod-artist">Ambient Echoes · 24-bit FLAC</div>
+      <div class="master-glass-window">
+        <div class="lab-layout-grid">
+          
+          <!-- Live Atmospheric Stage Viewport -->
+          <div class="lab-stage-viewport stage-nordic-aurora" id="labStage">
+            
+            <!-- NESTED CHILD GLASS CARD 1: Audio Engine & DSP Studio Pod -->
+            <div class="child-glass-pod" id="audioPod">
+              <div class="pod-header-row">
+                <div class="pod-track-meta">
+                  <div class="pod-cover-icon">🎧</div>
+                  <div>
+                    <div class="pod-title">Crystalline Horizon</div>
+                    <div class="pod-sub">Ambient Reflections · 24-bit 96kHz FLAC</div>
+                  </div>
+                </div>
+                <div class="pod-status-badge">
+                  <span class="live-dot-green"></span>
+                  <span>DSP ACTIVE</span>
                 </div>
               </div>
-              <div class="pod-badge-live">
-                <span class="live-dot"></span>
-                <span>DSP ACTIVE</span>
+
+              <!-- Equalizer Waveform Bars -->
+              <div class="eq-wave-container" id="eqWaveStrip">
+                <div class="eq-bar" style="height: 40%;"></div>
+                <div class="eq-bar" style="height: 75%;"></div>
+                <div class="eq-bar" style="height: 95%;"></div>
+                <div class="eq-bar" style="height: 55%;"></div>
+                <div class="eq-bar" style="height: 85%;"></div>
+                <div class="eq-bar" style="height: 65%;"></div>
+                <div class="eq-bar" style="height: 100%;"></div>
+                <div class="eq-bar" style="height: 80%;"></div>
+                <div class="eq-bar" style="height: 50%;"></div>
+                <div class="eq-bar" style="height: 90%;"></div>
+                <div class="eq-bar" style="height: 70%;"></div>
+                <div class="eq-bar" style="height: 35%;"></div>
+              </div>
+
+              <!-- Scrub Timeline -->
+              <div class="scrub-container">
+                <span class="time-stamp" id="currentTime">02:14</span>
+                <div class="scrub-track" onclick="scrubTimeline(event)">
+                  <div class="scrub-progress" id="scrubProgress"></div>
+                </div>
+                <span class="time-stamp">04:38</span>
+              </div>
+
+              <!-- Controls -->
+              <div class="playback-controls">
+                <button class="ctrl-circle-btn" onclick="prevTrack()" aria-label="Previous Track">⏮</button>
+                <button class="ctrl-circle-btn ctrl-btn-play" id="playBtn" onclick="togglePlay()" aria-label="Play or Pause">⏸</button>
+                <button class="ctrl-circle-btn" onclick="nextTrack()" aria-label="Next Track">⏭</button>
+                <button class="pow-btn-sm" onclick="openSpecimenModal()">Inspect Specimen</button>
               </div>
             </div>
 
-            <!-- Equalizer Waveform -->
-            <div class="eq-wave-strip" id="eqWaveStrip">
-              <div class="eq-bar" style="height: 40%;"></div>
-              <div class="eq-bar" style="height: 70%;"></div>
-              <div class="eq-bar" style="height: 90%;"></div>
-              <div class="eq-bar" style="height: 50%;"></div>
-              <div class="eq-bar" style="height: 80%;"></div>
-              <div class="eq-bar" style="height: 60%;"></div>
-              <div class="eq-bar" style="height: 100%;"></div>
-              <div class="eq-bar" style="height: 75%;"></div>
-              <div class="eq-bar" style="height: 45%;"></div>
-              <div class="eq-bar" style="height: 85%;"></div>
-              <div class="eq-bar" style="height: 65%;"></div>
-              <div class="eq-bar" style="height: 35%;"></div>
-            </div>
-
-            <!-- Scrub Bar -->
-            <div class="scrub-container">
-              <span class="time-stamp" id="currentTime">02:14</span>
-              <div class="scrub-track" onclick="scrubTimeline(event)">
-                <div class="scrub-progress" id="scrubProgress"></div>
+            <!-- NESTED CHILD GLASS CARDS 2 & 3: Multi-Band Equalizer & DSP Metrics -->
+            <div class="nested-cards-subgrid" id="nested">
+              <div class="child-sub-card">
+                <div class="sub-card-title">
+                  <span>Equalizer Bands</span>
+                  <span style="font-family: var(--pow-font-mono); font-size: 0.72rem; color: var(--pow-accent);">+2.5 dB</span>
+                </div>
+                <div class="eq-slider-strip">
+                  <div class="eq-mini-row">
+                    <span>Bass (80Hz)</span>
+                    <span>+3.0 dB</span>
+                  </div>
+                  <div class="eq-mini-row">
+                    <span>Mids (1.2kHz)</span>
+                    <span>-0.5 dB</span>
+                  </div>
+                  <div class="eq-mini-row">
+                    <span>Treble (8kHz)</span>
+                    <span>+2.0 dB</span>
+                  </div>
+                </div>
               </div>
-              <span class="time-stamp">04:38</span>
+
+              <div class="child-sub-card">
+                <div class="sub-card-title">
+                  <span>DSP Buffer</span>
+                  <span style="color: #047857;">99.8%</span>
+                </div>
+                <div class="metric-value-large">0.42 ms</div>
+                <div class="metric-sub-detail">Zero jitter optical transport · Bit-perfect</div>
+              </div>
             </div>
 
-            <!-- Controls -->
-            <div class="playback-controls">
-              <button class="ctrl-btn" onclick="prevTrack()" aria-label="Previous Track">⏮</button>
-              <button class="ctrl-btn ctrl-btn-play" id="playBtn" onclick="togglePlay()" aria-label="Play or Pause">⏸</button>
-              <button class="ctrl-btn" onclick="nextTrack()" aria-label="Next Track">⏭</button>
-              <button class="pow-btn-sm" onclick="openSpecimenModal()">Inspect Specimen</button>
+            <!-- Stage Bottom Indicator -->
+            <div style="display: flex; justify-content: space-between; align-items: center; z-index: 2; margin-top: 1rem;">
+              <div style="font-family: var(--pow-font-mono); font-size: 0.75rem; color: var(--pow-text-muted); background: rgba(255, 255, 255, 0.7); padding: 0.35rem 0.85rem; border-radius: 999px; border: var(--pow-border-subtle); font-weight: 700;">
+                Atmosphere: <span id="activePaletteLabel" style="color: var(--pow-accent);">Nordic Aurora (Cyan + Emerald)</span>
+              </div>
+              <div style="font-family: var(--pow-font-mono); font-size: 0.75rem; color: var(--pow-text-muted); font-weight: 700;">
+                Tactile Grain: Dot-Matrix 24px
+              </div>
             </div>
           </div>
 
-          <!-- Bottom Telemetry Pill inside Stage -->
-          <div style="display: flex; justify-content: space-between; align-items: center; z-index: 2;">
-            <div style="font-family: var(--pow-font-mono); font-size: 0.75rem; color: var(--pow-text-muted); background: var(--pow-well-bg); padding: 0.35rem 0.75rem; border-radius: 999px; border: var(--pow-border-subtle);">
-              Refracting: <span id="activePaletteLabel" style="color: var(--pow-accent); font-weight: 700;">Nordic Aurora (Cyan + Emerald)</span>
+          <!-- Controls Side Panel -->
+          <div class="lab-controls-panel">
+            <div>
+              <div class="control-block-title">
+                <span>Backdrop Atmosphere</span>
+              </div>
+              <div class="preset-grid">
+                <button class="preset-btn active" onclick="setAtmosphere('nordic-aurora', 'Nordic Aurora (Cyan + Emerald)', this)">Aurora</button>
+                <button class="preset-btn" onclick="setAtmosphere('prism-violet', 'Prism Violet (Indigo + Amethyst)', this)">Violet</button>
+                <button class="preset-btn" onclick="setAtmosphere('solaris-dawn', 'Solaris Dawn (Coral + Amber)', this)">Solaris</button>
+                <button class="preset-btn" onclick="setAtmosphere('emerald-mesh', 'Emerald Mesh (Emerald + Cobalt)', this)">Emerald</button>
+              </div>
             </div>
-            <div style="font-family: var(--pow-font-mono); font-size: 0.75rem; color: var(--pow-text-muted);">
-              Texture: Dot-Matrix (24px)
-            </div>
-          </div>
-        </div>
 
-        <!-- Controls Side Panel -->
-        <div class="lab-controls-panel">
-          <div>
-            <div class="control-block-title">
-              <span>Backdrop Atmosphere</span>
+            <div class="slider-group">
+              <div class="slider-label-row">
+                <span>Frosted Blur</span>
+                <span class="control-badge-val" id="blurVal">26px</span>
+              </div>
+              <input type="range" min="8" max="42" value="26" class="glass-range-input" id="blurInput" oninput="updateGlassMath()">
             </div>
-            <div class="preset-grid">
-              <button class="preset-btn active" onclick="setAtmosphere('aurora', 'Nordic Aurora (Cyan + Emerald)', this)">Aurora</button>
-              <button class="preset-btn" onclick="setAtmosphere('violet', 'Prism Violet (Indigo + Amethyst)', this)">Violet</button>
-              <button class="preset-btn" onclick="setAtmosphere('solaris', 'Solaris Dawn (Coral + Amber)', this)">Solaris</button>
-              <button class="preset-btn" onclick="setAtmosphere('obsidian', 'Deep Obsidian (Cobalt + Teal)', this)">Obsidian</button>
-            </div>
-          </div>
 
-          <div class="slider-group">
-            <div class="slider-label-row">
-              <span>Frosted Blur</span>
-              <span class="control-badge-val" id="blurVal">18px</span>
+            <div class="slider-group">
+              <div class="slider-label-row">
+                <span>Refraction Saturation</span>
+                <span class="control-badge-val" id="satVal">180%</span>
+              </div>
+              <input type="range" min="100" max="220" value="180" class="glass-range-input" id="satInput" oninput="updateGlassMath()">
             </div>
-            <input type="range" min="4" max="36" value="18" class="glass-range-input" id="blurInput" oninput="updateGlassMath()">
-          </div>
 
-          <div class="slider-group">
-            <div class="slider-label-row">
-              <span>Refraction Saturation</span>
-              <span class="control-badge-val" id="satVal">155%</span>
+            <div class="slider-group">
+              <div class="slider-label-row">
+                <span>Surface Alpha</span>
+                <span class="control-badge-val" id="alphaVal">0.65</span>
+              </div>
+              <input type="range" min="20" max="85" value="65" class="glass-range-input" id="alphaInput" oninput="updateGlassMath()">
             </div>
-            <input type="range" min="100" max="200" value="155" class="glass-range-input" id="satInput" oninput="updateGlassMath()">
-          </div>
 
-          <div class="slider-group">
-            <div class="slider-label-row">
-              <span>Surface Alpha</span>
-              <span class="control-badge-val" id="alphaVal">0.55</span>
-            </div>
-            <input type="range" min="15" max="85" value="55" class="glass-range-input" id="alphaInput" oninput="updateGlassMath()">
-          </div>
-
-          <div>
-            <div class="control-block-title">
-              <span>Computed CSS Rule</span>
-              <button class="pow-btn-sm" onclick="copySnippet('cssSnippet')" style="padding: 0.2rem 0.5rem; font-size: 0.7rem;">Copy</button>
-            </div>
-            <div class="css-snippet-box" id="cssSnippet">
-              .frosted-glass-pane {<br>
-              &nbsp;&nbsp;background: rgba(15, 23, 42, 0.55);<br>
-              &nbsp;&nbsp;backdrop-filter: blur(18px) saturate(155%);<br>
-              &nbsp;&nbsp;border: 1px solid rgba(255, 255, 255, 0.16);<br>
-              &nbsp;&nbsp;box-shadow: inset 0 1px 1px rgba(255,255,255,0.32);<br>
-              }
+            <div>
+              <div class="control-block-title">
+                <span>Computed CSS Rule</span>
+                <button class="pow-btn-sm" onclick="copySnippet('cssSnippet')" style="padding: 0.25rem 0.6rem; font-size: 0.725rem;">Copy</button>
+              </div>
+              <div class="css-snippet-box" id="cssSnippet">
+                .nested-glass-pane {<br>
+                &nbsp;&nbsp;background: rgba(255, 255, 255, 0.65);<br>
+                &nbsp;&nbsp;backdrop-filter: blur(26px) saturate(180%);<br>
+                &nbsp;&nbsp;border: 1px solid rgba(255, 255, 255, 0.95);<br>
+                &nbsp;&nbsp;box-shadow: inset 0 1.5px 1px #fff;<br>
+                }
+              </div>
             </div>
           </div>
         </div>
@@ -1465,7 +1650,7 @@
         </p>
       </div>
 
-      <div class="pow-card">
+      <div class="pow-card-glass">
         <!-- Tab Headers -->
         <div class="tab-header-strip">
           <button class="tab-switch-btn active" data-tab="tab-standalone">1. Standalone Style Skill</button>
@@ -1613,7 +1798,7 @@
         <span class="section-badge">Tokens & Math</span>
         <h2 class="section-title">Glassmorphism Design Tokens</h2>
         <p class="section-desc">
-          Standardized CSS custom properties with calibrated light & dark contrast pairs for instant copy-pasting.
+          Standardized CSS custom properties with calibrated contrast pairs for instant copy-pasting.
         </p>
       </div>
 
@@ -1622,53 +1807,50 @@
           <thead>
             <tr>
               <th>Token Name</th>
-              <th>Light Mode</th>
-              <th>Dark Mode</th>
+              <th>Crystalline Value</th>
               <th>Description</th>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td class="token-code">--taste-glass-bg</td>
-              <td>#F4F8FC</td>
-              <td>#070A12</td>
+              <td>#EDF3FA</td>
               <td>Canvas backdrop base tone</td>
             </tr>
             <tr>
               <td class="token-code">--taste-glass-surface</td>
-              <td>rgba(255, 255, 255, 0.58)</td>
-              <td>rgba(15, 23, 42, 0.55)</td>
-              <td>Frosted glass surface tint</td>
+              <td>rgba(255, 255, 255, 0.48)</td>
+              <td>Master frosted glass container surface</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-glass-surface-child</td>
+              <td>rgba(255, 255, 255, 0.65)</td>
+              <td>Elevated child glass card surface (nested)</td>
             </tr>
             <tr>
               <td class="token-code">--taste-glass-border</td>
-              <td>1px solid rgba(255, 255, 255, 0.75)</td>
-              <td>1px solid rgba(255, 255, 255, 0.16)</td>
+              <td>1px solid rgba(255, 255, 255, 0.85)</td>
               <td>Specular perimeter stroke</td>
             </tr>
             <tr>
               <td class="token-code">--taste-glass-specular</td>
               <td>rgba(255, 255, 255, 0.95)</td>
-              <td>rgba(255, 255, 255, 0.32)</td>
-              <td>Top/left beveled specular rim</td>
+              <td>Top/left beveled specular rim reflection</td>
             </tr>
             <tr>
               <td class="token-code">--taste-glass-text</td>
               <td>#0F172A</td>
-              <td>#F8FAFC</td>
-              <td>Primary ink (WCAG AA compliant)</td>
+              <td>Deep slate ink (WCAG AAA compliant)</td>
             </tr>
             <tr>
               <td class="token-code">--taste-glass-blur</td>
-              <td>18px</td>
-              <td>20px</td>
+              <td>26px</td>
               <td>Backdrop filter diffusion radius</td>
             </tr>
             <tr>
               <td class="token-code">--taste-glass-sat</td>
-              <td>155%</td>
-              <td>165%</td>
-              <td>Backdrop refraction saturation</td>
+              <td>180%</td>
+              <td>Backdrop refraction saturation boost</td>
             </tr>
           </tbody>
         </table>
@@ -1684,7 +1866,17 @@
 
       <div class="pow-faq-item open">
         <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>Are background gradients permitted in Glassmorphism under Taste Engine anti-slop rules?</span>
+          <span>Are nested cards (card inside card) permitted in Glassmorphism?</span>
+          <span class="faq-arrow">▶</span>
+        </div>
+        <div class="pow-faq-body">
+          <strong>Yes! Glassmorphism explicitly permits and encourages nested glass cards.</strong> While generic anti-slop rules discourage meaningless card-in-card clutter, authentic glass systems (like macOS, iOS, and VisionOS) rely on layering child glass cards inside a master frosted window to physically simulate optical lens depth and clear functional boundaries.
+        </div>
+      </div>
+
+      <div class="pow-faq-item">
+        <div class="pow-faq-header" onclick="toggleFaq(this)">
+          <span>Are background gradients permitted under Taste Engine anti-slop rules?</span>
           <span class="faq-arrow">▶</span>
         </div>
         <div class="pow-faq-body">
@@ -1704,16 +1896,6 @@
 
       <div class="pow-faq-item">
         <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>What makes a glassmorphism implementation fail the fidelity gate?</span>
-          <span class="faq-arrow">▶</span>
-        </div>
-        <div class="pow-faq-body">
-          A flat solid card with a blur class where nothing is visible behind it fails. Over-blurring an entire page, low-contrast text that disappears into background light pools, or leaving dark text when switching to smoked dark glass are direct fidelity fails.
-        </div>
-      </div>
-
-      <div class="pow-faq-item">
-        <div class="pow-faq-header" onclick="toggleFaq(this)">
           <span>Can I install just the Glassmorphism pack without the other 9 styles?</span>
           <span class="faq-arrow">▶</span>
         </div>
@@ -1724,32 +1906,34 @@
     </section>
   </main>
 
-  <!-- Modal Specimen Dialog -->
+  <!-- Specimen Modal Sheet -->
   <div class="glass-modal-backdrop" id="specimenModal" onclick="closeSpecimenModal(event)">
     <div class="glass-modal-card">
       <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
-        <h3 style="font-family: var(--pow-font-display); font-size: 1.25rem; font-weight: 700;">Glass Specimen Inspector</h3>
+        <h3 style="font-family: var(--pow-font-display); font-size: 1.3rem; font-weight: 800; color: #0F172A;">Glass Specimen Inspector</h3>
         <button class="pow-btn-sm" onclick="closeModalDirect()">✕</button>
       </div>
-      <p style="font-size: 0.9rem; color: var(--pow-text-muted); margin-bottom: 1.5rem; line-height: 1.55;">
-        This modal floats with dual-layer backdrop blur and an elevated specular rim. Notice how the underlying stage elements remain softly visible while maintaining strict text legibility.
+      <p style="font-size: 0.95rem; color: #334155; margin-bottom: 1.5rem; line-height: 1.6; font-weight: 500;">
+        This specimen dialog demonstrates dual-layer optical glass nesting. Notice how the underlying stage elements remain softly visible through the frosted blur while maintaining razor-sharp typography.
       </p>
-      <div style="background: var(--pow-well-bg); padding: 1rem; border-radius: 8px; border: var(--pow-border-subtle); margin-bottom: 1.5rem; font-family: var(--pow-font-mono); font-size: 0.8rem;">
-        Status: WCAG AA Certified<br>
-        Contrast Ratio: 8.4:1 (Passes AAA)<br>
-        Diffusion: 24px Dual-Layer Blur
+      <div style="background: rgba(255, 255, 255, 0.7); padding: 1.15rem; border-radius: 10px; border: 1px solid rgba(255, 255, 255, 0.9); margin-bottom: 1.5rem; font-family: var(--pow-font-mono); font-size: 0.825rem; color: #0F172A; line-height: 1.6;">
+        <strong>Contrast Ratio:</strong> 11.2:1 (Passes WCAG AAA)<br>
+        <strong>Diffusion:</strong> 32px Dual-Layer Blur<br>
+        <strong>Refraction Saturation:</strong> 190%
       </div>
       <button class="pow-btn pow-btn-primary" style="width: 100%;" onclick="closeModalDirect()">Close Inspector</button>
     </div>
   </div>
 
-  <!-- Site Footer -->
+  <!-- High-Contrast Readable Footer -->
   <footer class="pow-footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <h4>Taste Engine</h4>
         <p>Open-source frontend design intelligence pack for AI coding agents. Elevate design fidelity, eliminate AI-slop, and enforce contrast safety.</p>
-        <p style="margin-top: 0.5rem; font-size: 0.775rem;">Created by <a href="https://github.com/kennedys0" target="_blank" rel="noopener" style="color: var(--pow-accent); font-weight: 700;">Mochamad Vikry (@kennedys0)</a></p>
+        <p style="margin-top: 0.65rem; font-size: 0.85rem; font-weight: 600; color: #334155;">
+          Created by <a href="https://github.com/kennedys0" target="_blank" rel="noopener" style="color: var(--pow-accent); font-weight: 800; text-decoration: none;">Mochamad Vikry (@kennedys0)</a>
+        </p>
       </div>
 
       <div class="footer-col">
@@ -1777,7 +1961,7 @@
 
     <div class="footer-bottom">
       <p>&copy; 2026 Mochamad Vikry. Released under the MIT License.</p>
-      <a href="#" class="pow-btn-sm" style="text-decoration:none;">
+      <a href="#" class="pow-btn-sm" style="text-decoration:none; color: #0F172A;">
         <span>↑ Back to Top</span>
       </a>
     </div>
@@ -1789,32 +1973,6 @@
   </div>
 
   <script>
-    // Theme Toggling with LocalStorage Persistence
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    const themeLabel = document.getElementById('themeLabel');
-    const htmlEl = document.documentElement;
-
-    function applyTheme(theme) {
-      htmlEl.setAttribute('data-theme', theme);
-      localStorage.setItem('taste-theme-pow-glassmorphism', theme);
-      if (theme === 'dark') {
-        themeLabel.textContent = '☀️ LIGHT';
-      } else {
-        themeLabel.textContent = '🌙 DARK';
-      }
-      updateGlassMath();
-    }
-
-    const savedTheme = localStorage.getItem('taste-theme-pow-glassmorphism') || 'dark';
-    applyTheme(savedTheme);
-
-    themeToggleBtn.addEventListener('click', () => {
-      const current = htmlEl.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      applyTheme(next);
-      showToast(`Switched to ${next.toUpperCase()} mode`);
-    });
-
     // Toast Notification Utility
     let toastTimeout;
     function showToast(msg) {
@@ -1892,9 +2050,9 @@
     const cssSnippet = document.getElementById('cssSnippet');
 
     function setAtmosphere(theme, name, btn) {
-      labStage.className = `lab-stage stage-theme-${theme}`;
+      labStage.className = `lab-stage-viewport stage-${theme}`;
       activePaletteLabel.textContent = name;
-      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.preset-grid .preset-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       showToast(`Atmosphere: ${name}`);
     }
@@ -1908,27 +2066,22 @@
       satVal.textContent = `${s}%`;
       alphaVal.textContent = a;
 
-      const isDark = htmlEl.getAttribute('data-theme') === 'dark';
-      const baseColor = isDark ? `rgba(15, 23, 42, ${a})` : `rgba(255, 255, 255, ${a})`;
-      const borderColor = isDark ? `rgba(255, 255, 255, 0.16)` : `rgba(255, 255, 255, 0.75)`;
-      const specularColor = isDark ? `rgba(255, 255, 255, 0.32)` : `rgba(255, 255, 255, 0.95)`;
-
+      const baseColor = `rgba(255, 255, 255, ${a})`;
       audioPod.style.setProperty('--lab-surface', baseColor);
       audioPod.style.setProperty('--lab-blur', `${b}px`);
       audioPod.style.setProperty('--lab-sat', `${s}%`);
 
-      cssSnippet.innerHTML = `.frosted-glass-pane {<br>
+      cssSnippet.innerHTML = `.nested-glass-pane {<br>
 &nbsp;&nbsp;background: ${baseColor};<br>
 &nbsp;&nbsp;backdrop-filter: blur(${b}px) saturate(${s}%);<br>
 &nbsp;&nbsp;-webkit-backdrop-filter: blur(${b}px) saturate(${s}%);<br>
-&nbsp;&nbsp;border: 1px solid ${borderColor};<br>
-&nbsp;&nbsp;box-shadow: inset 0 1px 1px ${specularColor};<br>
+&nbsp;&nbsp;border: 1px solid rgba(255, 255, 255, 0.95);<br>
+&nbsp;&nbsp;box-shadow: inset 0 1.5px 1px #fff;<br>
 }`;
     }
 
     // Audio Pod Playback Demo
     let isPlaying = true;
-    let animInterval;
     const playBtn = document.getElementById('playBtn');
     const scrubProgress = document.getElementById('scrubProgress');
     const currentTime = document.getElementById('currentTime');
