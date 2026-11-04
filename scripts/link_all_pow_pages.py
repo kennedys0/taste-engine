@@ -94,3 +94,4 @@ if old_footer_links in text:
 
 INDEX_FILE.write_text(text, encoding="utf-8")
 print("SUCCESS: docs/index.html successfully updated with PoW links.")
+

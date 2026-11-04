@@ -1517,29 +1517,37 @@
        STYLE 1: BENTO GRID
        ========================================================= */
     .bento-wrapper {
-      --taste-bento-bg: #0b0d10;
-      --taste-bento-surface: #15191e;
-      --taste-bento-surface-hover: #1c2229;
+      /* Refined Matte Graphite Slate — Bukan Hitam Pekat */
+      --taste-bento-bg: #13151b;
+      --taste-bento-surface: #1e222b;
+      --taste-bento-surface-elevated: #262b36;
+      --taste-bento-surface-hover: #2a2f3a;
       --taste-bento-border: 1px solid rgba(255, 255, 255, 0.08);
-      --taste-bento-text: #f4f4f6;
-      --taste-bento-text-muted: #9ca3af;
+      --taste-bento-text: #f4f4f7;
+      --taste-bento-text-muted: #8e95a5;
+      --taste-bento-accent-cta: #ff5722;
+      --taste-bento-accent-cta-hover: #f4511e;
       --taste-bento-accent: #8b5cf6;
-      --taste-bento-tile-hero-bg: linear-gradient(135deg, #181d24 0%, #12151a 100%);
-      font-family: 'DM Sans', var(--shell-font);
+      --taste-bento-tile-hero-bg: #1e222b;
+      --taste-bento-radius: 24px;
+      font-family: 'Space Grotesk', -apple-system, sans-serif;
       background-color: var(--taste-bento-bg);
       color: var(--taste-bento-text);
       padding: 1.5rem;
-      border-radius: 18px;
+      border-radius: 24px;
     }
     [data-theme="light"] .bento-wrapper {
-      --taste-bento-bg: #f8f9fa;
+      --taste-bento-bg: #f3f4f6;
       --taste-bento-surface: #ffffff;
-      --taste-bento-surface-hover: #f1f3f5;
+      --taste-bento-surface-elevated: #e5e7eb;
+      --taste-bento-surface-hover: #f9fafb;
       --taste-bento-border: 1px solid rgba(0, 0, 0, 0.08);
       --taste-bento-text: #111827;
       --taste-bento-text-muted: #6b7280;
+      --taste-bento-accent-cta: #ff5722;
+      --taste-bento-accent-cta-hover: #f4511e;
       --taste-bento-accent: #7c3aed;
-      --taste-bento-tile-hero-bg: linear-gradient(135deg, #ffffff 0%, #f3f4f6 100%);
+      --taste-bento-tile-hero-bg: #ffffff;
     }
     .bento-grid-demo {
       display: grid;
@@ -2238,32 +2246,54 @@
         </div>
         <div class="showcase-actions">
           <a href="bento.html" class="pow-link-btn">PoW Guide &rarr;</a>
-          <button class="copy-token-btn" data-tokens="--taste-bento-bg: #0b0d10; --taste-bento-surface: #15191e; --taste-bento-text: #f4f4f6; --taste-bento-border: 1px solid rgba(255,255,255,0.08); --taste-bento-accent: #8b5cf6;">Copy Tokens</button>
+          <button class="copy-token-btn" data-tokens="--taste-bento-bg: #13151b; --taste-bento-surface: #1e222b; --taste-bento-surface-elevated: #262b36; --taste-bento-text: #f4f4f7; --taste-bento-border: 1px solid rgba(255,255,255,0.08); --taste-bento-accent-cta: #ff5722;">Copy Tokens</button>
         </div>
       </div>
       <div class="showcase-body">
         <div class="bento-wrapper">
-          <div class="bento-grid-demo">
-            <div class="bento-tile hero">
+          <div class="bento-grid-demo" style="grid-template-columns: 1.4fr 1fr; gap: 14px;">
+            <!-- Tile 1: Profile & Two-Tone Narrative -->
+            <div class="bento-tile hero" style="border-radius: 20px; padding: 1.35rem; display: flex; flex-direction: column; justify-content: space-between;">
               <div>
-                <span class="bento-tag">Hero Tile 2×2</span>
-                <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.25rem;">Deploy instantly</h3>
-                <p style="font-size: 0.8rem; color: var(--taste-bento-text-muted);">Unified deployment engine with zero configuration overhead.</p>
+                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
+                  <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--taste-bento-surface-elevated); display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 800;">AC</div>
+                  <span style="font-size: 0.7rem; font-weight: 600; color: #10b981; background: rgba(16,185,129,0.12); padding: 0.15rem 0.5rem; border-radius: 999px;">● Available</span>
+                </div>
+                <div style="font-size: 1.05rem; font-weight: 700; line-height: 1.35; margin-bottom: 0.65rem;">
+                  <span style="color: var(--taste-bento-text);">alex chen is a systems designer</span>
+                  <span style="color: var(--taste-bento-text-muted); font-weight: 500;"> engineering autonomous agent runtimes.</span>
+                </div>
               </div>
-              <button class="bento-btn">Get Started →</button>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 14px;">
-              <div class="bento-tile">
-                <span class="bento-tag">Metrics</span>
-                <span style="font-size: 1.4rem; font-weight: 800; letter-spacing: -0.02em;">48ms</span>
-                <span style="font-size: 0.75rem; color: var(--taste-bento-text-muted);">Global edge latency</span>
-              </div>
-              <div class="bento-tile">
-                <span class="bento-tag">Status</span>
-                <span style="font-size: 0.85rem; font-weight: 600;">99.99%</span>
-                <span style="font-size: 0.75rem; color: var(--taste-bento-text-muted);">Uptime SLA</span>
+              <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
+                <span style="font-size: 0.68rem; padding: 0.2rem 0.55rem; border-radius: 999px; background: var(--taste-bento-surface-elevated); color: var(--taste-bento-text-muted);">Token Hierarchy</span>
+                <span style="font-size: 0.68rem; padding: 0.2rem 0.55rem; border-radius: 999px; background: var(--taste-bento-surface-elevated); color: var(--taste-bento-text-muted);">Zero-Slop</span>
               </div>
             </div>
+
+            <!-- Right Column: Contact CTA Pill & Live Geo -->
+            <div style="display: flex; flex-direction: column; gap: 12px;">
+              <div class="bento-tile" style="border-radius: 20px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
+                <div style="font-size: 0.7rem; font-weight: 700; color: var(--taste-bento-text-muted); text-transform: uppercase;">Direct Contact</div>
+                <div style="font-size: 0.95rem; font-weight: 700; margin: 0.35rem 0;">Have a project in mind?</div>
+                <button class="bento-btn" style="background: var(--taste-bento-accent-cta); color: #fff; border: none; padding: 0.55rem 0.9rem; border-radius: 999px; font-weight: 700; font-size: 0.785rem; cursor: pointer; margin-top: 0.25rem;">hey@alexchen.dev &rarr;</button>
+              </div>
+
+              <div class="bento-tile" style="border-radius: 20px; padding: 0.95rem 1.15rem; display: flex; align-items: center; justify-content: space-between;">
+                <div>
+                  <div style="font-size: 0.785rem; font-weight: 700;">Brooklyn, New York</div>
+                  <div style="font-size: 0.7rem; color: var(--taste-bento-text-muted); font-family: monospace;">GMT-5 &bull; EST</div>
+                </div>
+                <div style="width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--taste-bento-text-muted); opacity: 0.6; display: flex; align-items: center; justify-content: center; font-size: 0.75rem;">&oplus;</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Capsule Link Strip -->
+          <div style="display: flex; gap: 0.5rem; margin-top: 12px; overflow-x: auto; padding-top: 4px;">
+            <span style="font-size: 0.725rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px; background: var(--taste-bento-surface); border: var(--taste-bento-border); color: var(--taste-bento-text-muted);">github.</span>
+            <span style="font-size: 0.725rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px; background: var(--taste-bento-surface); border: var(--taste-bento-border); color: var(--taste-bento-text-muted);">figma.</span>
+            <span style="font-size: 0.725rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px; background: var(--taste-bento-surface); border: var(--taste-bento-border); color: var(--taste-bento-text-muted);">dribbble.</span>
+            <span style="font-size: 0.725rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px; background: var(--taste-bento-surface); border: var(--taste-bento-border); color: var(--taste-bento-text-muted);">x.com.</span>
           </div>
         </div>
       </div>

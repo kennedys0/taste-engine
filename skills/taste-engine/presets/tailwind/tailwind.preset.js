@@ -43,9 +43,10 @@ module.exports = {
           'term-cyan': 'var(--taste-term-cyan, #00e5ff)',
 
           // Bento: deep rich modular slate
-          'bento-bg': 'var(--taste-bento-bg, #090a0f)',
-          'bento-surface': 'var(--taste-bento-surface, #13151f)',
-          'bento-surface-elevated': 'var(--taste-bento-surface-elevated, #1b1e2c)',
+          'bento-bg': 'var(--taste-bento-bg, #13151b)',
+          'bento-surface': 'var(--taste-bento-surface, #1e222b)',
+          'bento-surface-elevated': 'var(--taste-bento-surface-elevated, #262b36)',
+          'bento-cta': 'var(--taste-bento-accent-cta, #ff5722)',
           'bento-border': 'var(--taste-bento-border, rgba(255, 255, 255, 0.08))',
 
           // Swiss / Editorial: stark modernist ink
@@ -111,7 +112,7 @@ module.exports = {
         'clay-full': '9999px',
         'neo': '0.375rem',
         'brutal': '0px',
-        'bento': '1.25rem',
+        'bento': '1.75rem',
       },
       borderWidth: {
         'neo': '2.5px',

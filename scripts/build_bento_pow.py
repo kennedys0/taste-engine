@@ -1,0 +1,1834 @@
+"""
+Generate the overhauled, authentic Proof of Work (PoW) page for Bento Grid (docs/bento.html).
+Features:
+- Non-pitch-black refined graphite canvas (#13151B)
+- Generous 28px tactile corner radius
+- Two-tone typographic contrast (crisp white + muted warm slate)
+- Punchy warm coral/tangerine CTA pill button (#FF5722)
+- Wireframe globe & spring vector geometry (Reference 1 & 3)
+- Live interactive clock (GMT-5) and capability filter pills
+- Horizontal capsule links strip
+- Tabbed installation guide with single-line inline command alignment
+- Dark / Light mode toggle with localStorage persistence
+- Toast feedback and zero external CDN runtime dependencies
+"""
+from pathlib import Path
+
+OUT_FILE = Path("docs/bento.html")
+
+HTML_CONTENT = """<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bento Grid Proof of Work & Installation Guide — Taste Engine</title>
+  <meta name="description" content="Dedicated Proof of Work and installation guide for Taste Engine's Bento Grid aesthetic archetype. Authentic asymmetric modular cards, non-pitch-black graphite surfaces, two-tone typography, and contrast safety.">
+  <link rel="icon" type="image/webp" href="assets/logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* =========================================================
+       BENTO GRID DESIGN SYSTEM TOKENS (BUKAN HITAM PEKAT)
+       ========================================================= */
+    :root {
+      /* Clean Architectural Light */
+      --pow-bg: #f3f4f6;
+      --pow-surface: #ffffff;
+      --pow-surface-elevated: #e5e7eb;
+      --pow-surface-hover: #f9fafb;
+      --pow-well-bg: #eaecef;
+      --pow-text: #111827;
+      --pow-text-muted: #6b7280;
+      --pow-border: 1px solid rgba(0, 0, 0, 0.08);
+      --pow-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      --pow-accent-cta: #ff5722;
+      --pow-accent-cta-hover: #f4511e;
+      --pow-accent-brand: #7c3aed;
+      --pow-radius: 28px;
+      --pow-radius-pill: 9999px;
+
+      --pow-font-display: 'Space Grotesk', -apple-system, sans-serif;
+      --pow-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --pow-font-mono: 'JetBrains Mono', monospace;
+    }
+
+    [data-theme="dark"] {
+      /* Refined Matte Graphite Slate — Bukan Hitam Pekat */
+      --pow-bg: #13151b;
+      --pow-surface: #1e222b;
+      --pow-surface-elevated: #262b36;
+      --pow-surface-hover: #2c3240;
+      --pow-well-bg: #181b22;
+      --pow-text: #f4f4f7;
+      --pow-text-muted: #8e95a5;
+      --pow-border: 1px solid rgba(255, 255, 255, 0.08);
+      --pow-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+      --pow-accent-cta: #ff5722;
+      --pow-accent-cta-hover: #ff7043;
+      --pow-accent-brand: #8b5cf6;
+      --pow-radius: 28px;
+      --pow-radius-pill: 9999px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--pow-bg);
+      color: var(--pow-text);
+      font-family: var(--pow-font-body);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color 150ms ease, color 150ms ease;
+    }
+
+    /* Top Navigation */
+    .pow-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--pow-surface);
+      border-bottom: var(--pow-border);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--pow-text);
+    }
+
+    .nav-logo-box {
+      width: 34px;
+      height: 34px;
+      background: var(--pow-accent-brand);
+      color: #fff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-family: var(--pow-font-display);
+      font-size: 1.1rem;
+    }
+
+    .nav-title {
+      font-family: var(--pow-font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    .nav-tag-badge {
+      font-size: 0.725rem;
+      font-weight: 600;
+      padding: 0.2rem 0.65rem;
+      border-radius: var(--pow-radius-pill);
+      background: var(--pow-surface-elevated);
+      color: var(--pow-accent-brand);
+      border: var(--pow-border);
+      font-family: var(--pow-font-mono);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.825rem;
+      font-weight: 600;
+      color: var(--pow-text-muted);
+      text-decoration: none;
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--pow-radius-pill);
+      border: var(--pow-border);
+      background: var(--pow-surface);
+      transition: all 120ms ease;
+    }
+
+    .back-btn:hover {
+      color: var(--pow-text);
+      background: var(--pow-surface-hover);
+      border-color: var(--pow-text-muted);
+    }
+
+    .theme-toggle-btn {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      color: var(--pow-text);
+      padding: 0.4rem 0.85rem;
+      border-radius: var(--pow-radius-pill);
+      font-size: 0.825rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      transition: all 120ms ease;
+    }
+
+    .theme-toggle-btn:hover {
+      background: var(--pow-surface-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section (100svh safe viewport) */
+    .pow-hero {
+      min-height: calc(100svh - 60px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3.5rem 1.25rem 2.5rem 1.25rem;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .hero-sticker-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--pow-surface-elevated);
+      color: var(--pow-accent-brand);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius-pill);
+      padding: 0.35rem 0.95rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-family: var(--pow-font-mono);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--pow-font-display);
+      font-size: clamp(2.1rem, 5vw, 3.4rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
+      line-height: 1.15;
+      margin-bottom: 1.25rem;
+      max-width: 900px;
+    }
+
+    .hero-title .highlight {
+      color: var(--pow-text);
+    }
+
+    .hero-title .muted-title {
+      color: var(--pow-text-muted);
+    }
+
+    .hero-desc {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: var(--pow-text-muted);
+      max-width: 760px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    /* Single-Line Inline Command Pill ("Sejajarin") */
+    .pow-command-pill {
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      background: var(--pow-surface-elevated);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius-pill);
+      padding: 0.4rem 0.5rem 0.4rem 1.1rem;
+      max-width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 2rem;
+    }
+
+    .pow-prompt {
+      color: var(--pow-text-muted);
+      font-family: var(--pow-font-mono);
+      font-weight: 700;
+      flex-shrink: 0;
+      line-height: 1;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    .pow-code {
+      font-family: var(--pow-font-mono);
+      font-size: clamp(0.72rem, 3.2vw, 0.875rem);
+      font-weight: 600;
+      color: var(--pow-text);
+      white-space: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      line-height: 1;
+      user-select: all;
+    }
+
+    .pow-code::-webkit-scrollbar {
+      display: none;
+    }
+
+    .pow-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--pow-surface);
+      color: var(--pow-text);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius-pill);
+      padding: 0.35rem 0.85rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      flex-shrink: 0;
+      line-height: 1;
+      transition: all 120ms ease;
+    }
+
+    .pow-copy-btn:hover {
+      background: var(--pow-surface-hover);
+      border-color: var(--pow-accent-brand);
+      color: var(--pow-accent-brand);
+    }
+
+    .hero-btn-group {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-bottom: 2.75rem;
+    }
+
+    .pow-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      padding: 0.75rem 1.5rem;
+      border-radius: var(--pow-radius-pill);
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 140ms ease;
+    }
+
+    .pow-btn-cta {
+      background: var(--pow-accent-cta);
+      color: #ffffff;
+      border: none;
+      box-shadow: 0 4px 16px rgba(255, 87, 34, 0.35);
+    }
+
+    .pow-btn-cta:hover {
+      background: var(--pow-accent-cta-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(255, 87, 34, 0.45);
+    }
+
+    .pow-btn-secondary {
+      background: var(--pow-surface);
+      color: var(--pow-text);
+      border: var(--pow-border);
+    }
+
+    .pow-btn-secondary:hover {
+      background: var(--pow-surface-hover);
+      border-color: var(--pow-text-muted);
+      transform: translateY(-2px);
+    }
+
+    /* Key Specs Strip */
+    .pow-stat-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      width: 100%;
+      max-width: 940px;
+    }
+
+    .stat-box {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: 20px;
+      padding: 1.1rem 1rem;
+      text-align: center;
+      box-shadow: var(--pow-shadow);
+      transition: transform 140ms ease;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-2px);
+    }
+
+    .stat-val {
+      font-family: var(--pow-font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--pow-text);
+      margin-bottom: 0.2rem;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--pow-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-weight: 600;
+    }
+
+    /* Content Sections */
+    .pow-section {
+      max-width: 1120px;
+      margin: 4.5rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-header {
+      margin-bottom: 2.25rem;
+      text-align: left;
+    }
+
+    .section-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--pow-accent-cta);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: var(--pow-font-mono);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: var(--pow-font-display);
+      font-size: 1.85rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-desc {
+      font-size: 0.95rem;
+      color: var(--pow-text-muted);
+      max-width: 680px;
+      line-height: 1.6;
+    }
+
+    /* =========================================================
+       AUTHENTIC BENTO GRID PLAYGROUND (REFERENCE 1, 2, 3)
+       ========================================================= */
+    .bento-master-canvas {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1.25rem;
+      width: 100%;
+    }
+
+    .bento-card {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius);
+      padding: 2rem;
+      box-shadow: var(--pow-shadow);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 180ms ease, box-shadow 180ms ease;
+    }
+
+    .bento-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.32);
+    }
+
+    /* Tile 1: Profile & Hero Headline (7 cols) */
+    .card-profile-hero {
+      grid-column: span 7;
+      min-height: 290px;
+    }
+
+    .profile-top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+    }
+
+    .avatar-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .avatar-circle {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--pow-surface-elevated);
+      border: 2px solid var(--pow-text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .avatar-circle svg {
+      width: 32px;
+      height: 32px;
+      fill: var(--pow-text);
+    }
+
+    .status-dot-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #10b981;
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      border-radius: var(--pow-radius-pill);
+      padding: 0.25rem 0.65rem;
+    }
+
+    .status-pulse {
+      width: 6px;
+      height: 6px;
+      background: #10b981;
+      border-radius: 50%;
+    }
+
+    .bento-two-tone-headline {
+      font-family: var(--pow-font-display);
+      font-size: clamp(1.45rem, 2.8vw, 1.85rem);
+      font-weight: 700;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      margin-bottom: 1.25rem;
+    }
+
+    .two-tone-lead {
+      color: var(--pow-text);
+    }
+
+    .two-tone-sub {
+      color: var(--pow-text-muted);
+      font-weight: 500;
+    }
+
+    .profile-bottom-tags {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .mini-capsule-tag {
+      font-size: 0.725rem;
+      font-weight: 600;
+      padding: 0.25rem 0.75rem;
+      border-radius: var(--pow-radius-pill);
+      background: var(--pow-surface-elevated);
+      color: var(--pow-text-muted);
+      border: var(--pow-border);
+      font-family: var(--pow-font-mono);
+    }
+
+    /* Tile 2: Project Contact & CTA (5 cols) */
+    .card-contact-cta {
+      grid-column: span 5;
+      min-height: 290px;
+      background: var(--pow-surface);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .spring-icon-box {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      color: var(--pow-text);
+    }
+
+    .contact-title {
+      font-family: var(--pow-font-display);
+      font-size: 1.6rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      color: var(--pow-text);
+    }
+
+    .bento-action-pill-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      width: 100%;
+      background: var(--pow-accent-cta);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--pow-radius-pill);
+      padding: 0.95rem 1.5rem;
+      font-size: 1.05rem;
+      font-weight: 700;
+      font-family: var(--pow-font-display);
+      cursor: pointer;
+      text-decoration: none;
+      box-shadow: 0 4px 16px rgba(255, 87, 34, 0.35);
+      transition: all 140ms ease;
+    }
+
+    .bento-action-pill-btn:hover {
+      background: var(--pow-accent-cta-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255, 87, 34, 0.45);
+    }
+
+    /* Tile 3: Social Strip / Capsule Links (Full 12 cols) */
+    .card-capsule-strip {
+      grid-column: span 12;
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .card-capsule-strip::-webkit-scrollbar {
+      display: none;
+    }
+
+    .capsule-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background: var(--pow-surface-elevated);
+      color: var(--pow-text-muted);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius-pill);
+      padding: 0.45rem 1.15rem;
+      font-size: 0.825rem;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 120ms ease;
+      cursor: pointer;
+    }
+
+    .capsule-link-btn:hover {
+      color: var(--pow-text);
+      background: var(--pow-surface-hover);
+      border-color: var(--pow-accent-cta);
+      transform: translateY(-1px);
+    }
+
+    /* Tile 4: Location & Live Timezone (4 cols) */
+    .card-location-geo {
+      grid-column: span 4;
+      min-height: 260px;
+    }
+
+    .geo-icon-box {
+      color: var(--pow-text);
+      margin-bottom: 1.25rem;
+    }
+
+    .geo-title {
+      font-family: var(--pow-font-display);
+      font-size: 1.35rem;
+      font-weight: 700;
+      line-height: 1.25;
+      margin-bottom: 0.5rem;
+      color: var(--pow-text);
+    }
+
+    .geo-live-clock {
+      font-family: var(--pow-font-mono);
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--pow-text-muted);
+    }
+
+    /* Tile 5: Philosophy & Principles (8 cols) */
+    .card-philosophy {
+      grid-column: span 8;
+      min-height: 260px;
+    }
+
+    .card-eyebrow {
+      font-size: 0.725rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--pow-accent-brand);
+      font-family: var(--pow-font-mono);
+      margin-bottom: 0.75rem;
+    }
+
+    .philosophy-paragraph {
+      font-family: var(--pow-font-display);
+      font-size: clamp(1.05rem, 2vw, 1.25rem);
+      line-height: 1.5;
+      letter-spacing: -0.015em;
+    }
+
+    .philosophy-paragraph .lead-text {
+      color: var(--pow-text);
+      font-weight: 700;
+    }
+
+    .philosophy-paragraph .sub-text {
+      color: var(--pow-text-muted);
+      font-weight: 500;
+    }
+
+    /* Tile 6: Capability & Telemetry Lab (12 cols) */
+    .card-telemetry-lab {
+      grid-column: span 12;
+      padding: 2.25rem;
+      background: var(--pow-surface);
+    }
+
+    .telemetry-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .telemetry-col h4 {
+      font-family: var(--pow-font-display);
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .telemetry-col p {
+      font-size: 0.85rem;
+      color: var(--pow-text-muted);
+      line-height: 1.5;
+    }
+
+    .toggle-pills-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+
+    .interactive-filter-pill {
+      background: var(--pow-surface-elevated);
+      color: var(--pow-text-muted);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius-pill);
+      padding: 0.4rem 0.85rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 120ms ease;
+    }
+
+    .interactive-filter-pill.active {
+      background: var(--pow-accent-brand);
+      color: #ffffff;
+      border-color: var(--pow-accent-brand);
+    }
+
+    /* =========================================================
+       TABBED INSTALLATION GUIDE
+       ========================================================= */
+    .install-tabs-wrap {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius);
+      box-shadow: var(--pow-shadow);
+      overflow: hidden;
+    }
+
+    .install-tab-nav {
+      display: flex;
+      border-bottom: var(--pow-border);
+      background: var(--pow-well-bg);
+      overflow-x: auto;
+    }
+
+    .tab-nav-btn {
+      padding: 0.95rem 1.5rem;
+      font-size: 0.875rem;
+      font-weight: 700;
+      font-family: var(--pow-font-display);
+      color: var(--pow-text-muted);
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 120ms ease;
+    }
+
+    .tab-nav-btn.active {
+      color: var(--pow-accent-cta);
+      border-bottom-color: var(--pow-accent-cta);
+      background: var(--pow-surface);
+    }
+
+    .tab-body {
+      padding: 1.75rem;
+    }
+
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    .terminal-box {
+      background: var(--pow-well-bg);
+      border: var(--pow-border);
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .terminal-header {
+      padding: 0.65rem 1rem;
+      background: var(--pow-surface-elevated);
+      border-bottom: var(--pow-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--pow-text-muted);
+      opacity: 0.4;
+    }
+
+    .terminal-label {
+      font-size: 0.75rem;
+      color: var(--pow-text-muted);
+      font-family: var(--pow-font-mono);
+    }
+
+    .terminal-copy-btn {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      color: var(--pow-text);
+      padding: 0.25rem 0.65rem;
+      border-radius: var(--pow-radius-pill);
+      font-size: 0.725rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 120ms ease;
+    }
+
+    .terminal-copy-btn:hover {
+      border-color: var(--pow-accent-cta);
+      color: var(--pow-accent-cta);
+    }
+
+    .terminal-content {
+      padding: 1.25rem;
+      font-family: var(--pow-font-mono);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      overflow-x: auto;
+    }
+
+    .terminal-line {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .terminal-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .line-p {
+      color: var(--pow-accent-cta);
+      font-weight: 700;
+      user-select: none;
+    }
+
+    .line-cmd {
+      color: var(--pow-text);
+      user-select: all;
+    }
+
+    .line-comment {
+      color: var(--pow-text-muted);
+      font-style: italic;
+    }
+
+    /* Token Cheatsheet Table */
+    .token-table-wrap {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius);
+      box-shadow: var(--pow-shadow);
+      overflow-x: auto;
+    }
+
+    .pow-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.875rem;
+    }
+
+    .pow-table th {
+      padding: 1rem 1.25rem;
+      background: var(--pow-well-bg);
+      border-bottom: var(--pow-border);
+      font-family: var(--pow-font-display);
+      font-weight: 700;
+      color: var(--pow-text);
+    }
+
+    .pow-table td {
+      padding: 1rem 1.25rem;
+      border-bottom: var(--pow-border);
+      color: var(--pow-text-muted);
+    }
+
+    .pow-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .token-code {
+      font-family: var(--pow-font-mono);
+      font-size: 0.8rem;
+      color: var(--pow-accent-brand);
+      font-weight: 600;
+    }
+
+    .color-swatch-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .color-swatch {
+      width: 16px;
+      height: 16px;
+      border-radius: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      flex-shrink: 0;
+    }
+
+    /* FAQ Section */
+    .faq-accordion {
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .pow-faq-item {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--pow-shadow);
+    }
+
+    .pow-faq-header {
+      padding: 1.15rem 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--pow-font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      user-select: none;
+    }
+
+    .faq-arrow {
+      font-weight: 700;
+      transition: transform 140ms ease;
+    }
+
+    .pow-faq-body {
+      padding: 0 1.5rem 1.25rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--pow-text-muted);
+      line-height: 1.6;
+      display: none;
+    }
+
+    .pow-faq-item.open .pow-faq-body {
+      display: block;
+    }
+
+    .pow-faq-item.open .faq-arrow {
+      transform: rotate(45deg);
+    }
+
+    /* Footer */
+    .pow-footer {
+      border-top: var(--pow-border);
+      background: var(--pow-surface);
+      padding: 3.5rem 1.5rem 2.5rem 1.5rem;
+      margin-top: 5rem;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2.5rem;
+      padding-bottom: 2.5rem;
+      border-bottom: var(--pow-border);
+    }
+
+    .footer-brand h3 {
+      font-family: var(--pow-font-display);
+      font-size: 1.2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: var(--pow-text-muted);
+      max-width: 380px;
+      line-height: 1.5;
+    }
+
+    .footer-col h4 {
+      font-family: var(--pow-font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1rem;
+      color: var(--pow-text);
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-col a {
+      font-size: 0.825rem;
+      color: var(--pow-text-muted);
+      text-decoration: none;
+      transition: color 120ms ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--pow-accent-cta);
+    }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 2rem auto 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--pow-text-muted);
+    }
+
+    /* Toast Notification */
+    .pow-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--pow-text);
+      color: var(--pow-bg);
+      padding: 0.75rem 1.25rem;
+      border-radius: var(--pow-radius-pill);
+      font-size: 0.825rem;
+      font-weight: 700;
+      font-family: var(--pow-font-display);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 140ms ease, transform 140ms ease;
+    }
+
+    .pow-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 900px) {
+      .card-profile-hero { grid-column: span 12; }
+      .card-contact-cta { grid-column: span 12; }
+      .card-location-geo { grid-column: span 12; }
+      .card-philosophy { grid-column: span 12; }
+      .telemetry-grid { grid-template-columns: 1fr; }
+      .pow-stat-strip { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .pow-nav { padding: 0.65rem 1rem; }
+      .nav-title { font-size: 0.95rem; }
+      .nav-tag-badge { display: none; }
+      .pow-hero { padding: 2.5rem 1rem 1.5rem 1rem; }
+      .hero-title { font-size: clamp(1.6rem, 5.5vw, 2.3rem); }
+      .hero-desc { font-size: 0.9rem; margin-bottom: 1.5rem; }
+      .hero-btn-group { flex-direction: column; width: 100%; gap: 0.65rem; }
+      .pow-btn { width: 100%; justify-content: center; }
+
+      .footer-inner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.75rem 1.25rem;
+      }
+      .footer-brand {
+        grid-column: 1 / -1;
+        padding-bottom: 1rem;
+        border-bottom: var(--pow-border);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .bento-card { padding: 1.35rem 1.15rem; }
+      .bento-action-pill-btn { font-size: 0.95rem; padding: 0.85rem 1.15rem; }
+      .pow-command-pill {
+        gap: 0.4rem;
+        padding: 0.3rem 0.35rem 0.3rem 0.75rem;
+      }
+      .pow-copy-btn {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.7rem;
+      }
+      .stat-box { padding: 0.75rem 0.5rem; }
+      .stat-val { font-size: 1.2rem; }
+      .stat-label { font-size: 0.65rem; }
+      .section-title { font-size: 1.3rem; }
+      .tab-body { padding: 1rem; }
+      .terminal-content { font-size: 0.75rem; padding: 0.85rem; }
+      .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="pow-nav">
+    <a href="index.html" class="nav-brand-group">
+      <div class="nav-logo-box">B</div>
+      <span class="nav-title">Taste Engine</span>
+      <span class="nav-tag-badge">#01 BENTO</span>
+    </a>
+
+    <div class="nav-actions">
+      <a href="index.html" class="back-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>All 10 Styles</span>
+      </a>
+      <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle theme">
+        <svg class="sun-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <span>Theme</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Opening Hero Viewport -->
+    <section class="pow-hero">
+      <div class="hero-sticker-badge">
+        <span>Proof of Work: Archetype #01</span>
+      </div>
+
+      <h1 class="hero-title">
+        <span class="highlight">Asymmetric Modular Cards</span><br>
+        <span class="muted-title">& Tactile Spatial Hierarchy</span>
+      </h1>
+
+      <p class="hero-desc">
+        Modern digital product portfolios and hardware showcases organize complex information into curated, compartmentalized trays. Generous 28px corners, non-pitch-black graphite canvas, two-tone typography, and high-impact CTA pills.
+      </p>
+
+      <!-- Single-Line Inline Command Pill ("Sejajarin") -->
+      <div class="pow-command-pill">
+        <span class="pow-prompt">$</span>
+        <code class="pow-code" id="heroCmdText">npx skills add kennedys0/taste-engine --skill taste-style-bento</code>
+        <button class="pow-copy-btn" id="heroCopyBtn" aria-label="Copy command">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span>COPY</span>
+        </button>
+      </div>
+
+      <div class="hero-btn-group">
+        <a href="#playground" class="pow-btn pow-btn-cta">
+          <span>Explore Live Bento UI</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 13l5 5 5-5M12 6v12"/></svg>
+        </a>
+        <a href="#install" class="pow-btn pow-btn-secondary">
+          <span>Installation Guide</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+
+      <!-- Key Specs Strip -->
+      <div class="pow-stat-strip">
+        <div class="stat-box">
+          <div class="stat-val" style="color: var(--pow-accent-cta);">#13151B</div>
+          <div class="stat-label">Bukan Hitam Pekat</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">28px</div>
+          <div class="stat-label">Tactile Radius</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">4.8 : 1</div>
+          <div class="stat-label">WCAG AA Contrast</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">Two-Tone</div>
+          <div class="stat-label">Typographic Hook</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         INTERACTIVE COMPONENT PLAYGROUND (REFERENCE 1, 2, 3)
+         ========================================================= -->
+    <section class="pow-section" id="playground">
+      <div class="section-header">
+        <span class="section-badge">Live Interactive PoW</span>
+        <h2 class="section-title">Bento Grid Component Lab</h2>
+        <p class="section-desc">
+          Directly demonstrating the design anatomy from top digital designer portfolios and creative studio showcases. Click any pill or action button for live interaction.
+        </p>
+      </div>
+
+      <div class="bento-master-canvas">
+        
+        <!-- Tile 1: Profile & Value Prop (7 cols) -->
+        <article class="bento-card card-profile-hero">
+          <div class="profile-top-bar">
+            <div class="avatar-wrapper">
+              <div class="avatar-circle">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+              </div>
+              <div style="font-size: 0.85rem; font-weight: 700;">Alex Chen</div>
+            </div>
+            <div class="status-dot-badge">
+              <span class="status-pulse"></span>
+              <span>Available for select projects</span>
+            </div>
+          </div>
+
+          <div class="bento-two-tone-headline">
+            <span class="two-tone-lead">alex chen is a digital systems architect</span>
+            <span class="two-tone-sub">currently designing autonomous agent runtimes at acme.</span>
+          </div>
+
+          <div class="profile-bottom-tags">
+            <span class="mini-capsule-tag">Design Systems</span>
+            <span class="mini-capsule-tag">Agentic UX</span>
+            <span class="mini-capsule-tag">Token Scale</span>
+            <span class="mini-capsule-tag">Zero-Slop</span>
+          </div>
+        </article>
+
+        <!-- Tile 2: Contact & High-Impact CTA (5 cols) -->
+        <article class="bento-card card-contact-cta">
+          <div class="spring-icon-box">
+            <!-- Wireframe spring vector icon -->
+            <svg width="44" height="28" viewBox="0 0 54 28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+              <path d="M4 14C4 6 12 2 18 2C26 2 26 26 34 26C42 26 42 2 50 2"/>
+              <ellipse cx="14" cy="14" rx="6" ry="11"/>
+              <ellipse cx="22" cy="14" rx="6" ry="11"/>
+              <ellipse cx="30" cy="14" rx="6" ry="11"/>
+              <ellipse cx="38" cy="14" rx="6" ry="11"/>
+            </svg>
+          </div>
+
+          <div>
+            <h3 class="contact-title">Have a project<br>in mind?</h3>
+            <button class="bento-action-pill-btn" onclick="handleBtnClick('Email Copied: hey@alexchen.dev')">
+              <span>hey@alexchen.dev</span>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </button>
+          </div>
+        </article>
+
+        <!-- Tile 3: Social & Ecosystem Capsule Strip (Full 12 cols) -->
+        <article class="bento-card card-capsule-strip">
+          <button class="capsule-link-btn" onclick="handleBtnClick('Navigating to GitHub')">github.</button>
+          <button class="capsule-link-btn" onclick="handleBtnClick('Navigating to Figma')">figma.</button>
+          <button class="capsule-link-btn" onclick="handleBtnClick('Navigating to Dribbble')">dribbble.</button>
+          <button class="capsule-link-btn" onclick="handleBtnClick('Navigating to Behance')">behance.</button>
+          <button class="capsule-link-btn" onclick="handleBtnClick('Navigating to X / Twitter')">x.com.</button>
+          <button class="capsule-link-btn" onclick="handleBtnClick('Navigating to Unsplash')">unsplash.</button>
+          <button class="capsule-link-btn" onclick="handleBtnClick('Navigating to LinkedIn')">linkedin.</button>
+        </article>
+
+        <!-- Tile 4: Location & Live Timezone (4 cols) -->
+        <article class="bento-card card-location-geo">
+          <div class="geo-icon-box">
+            <!-- Wireframe Globe Vector -->
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+              <circle cx="12" cy="12" r="10"/>
+              <ellipse cx="12" cy="12" rx="4.5" ry="10"/>
+              <line x1="2" y1="12" x2="22" y2="12"/>
+            </svg>
+          </div>
+
+          <div>
+            <h4 class="geo-title">Based in<br>Brooklyn, New York</h4>
+            <div class="geo-live-clock" id="liveClockDisplay">GMT-5 • 14:32:08 EST</div>
+          </div>
+        </article>
+
+        <!-- Tile 5: Philosophy & Principles (8 cols) -->
+        <article class="bento-card card-philosophy">
+          <span class="card-eyebrow">Design Philosophy & Anti-Slop</span>
+          <p class="philosophy-paragraph">
+            <span class="lead-text">As a digital systems designer, I specialize in creating resilient interfaces with mathematical token hierarchy.</span>
+            <span class="sub-text"> I believe that exceptional design starts with common values, honest contrast pairing, strict spatial rhythm, zero fake metrics, and deep respect for your audience.</span>
+          </p>
+          <div style="margin-top: 1.25rem;">
+            <span class="mini-capsule-tag" style="color: var(--pow-accent-cta); border-color: rgba(255,87,34,0.3);">Rule: No Uniform 3x2 Generic Grid</span>
+          </div>
+        </article>
+
+        <!-- Tile 6: Capability & Live Telemetry Lab (12 cols) -->
+        <article class="bento-card card-telemetry-lab">
+          <div class="telemetry-grid">
+            <div class="telemetry-col">
+              <div class="status-dot-badge" style="margin-bottom: 0.75rem;">
+                <span class="status-pulse"></span>
+                <span>ONLINE • taste-engine.dev</span>
+              </div>
+              <h4>Modular Architecture</h4>
+              <p>Test live capability filtering. Bento tiles must reflect distinct functional purposes rather than repeating duplicate card patterns.</p>
+              <div class="toggle-pills-wrap">
+                <button class="interactive-filter-pill active" onclick="toggleCapability(this, 'Design Tokens')">Design Tokens</button>
+                <button class="interactive-filter-pill" onclick="toggleCapability(this, '3D Systems')">3D Modeling</button>
+                <button class="interactive-filter-pill" onclick="toggleCapability(this, 'Motion Runtimes')">Motion Engine</button>
+                <button class="interactive-filter-pill" onclick="toggleCapability(this, 'Contrast Gates')">WCAG AA Safety</button>
+              </div>
+            </div>
+
+            <div class="telemetry-col" style="text-align: center; border-left: var(--pow-border); border-right: var(--pow-border); padding: 0 1rem;">
+              <div style="font-family: var(--pow-font-display); font-size: 2.75rem; font-weight: 800; line-height: 1; color: var(--pow-text); margin-bottom: 0.25rem;">
+                42<span style="font-size: 1.5rem; color: var(--pow-accent-cta);">ms</span>
+              </div>
+              <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--pow-text-muted);">
+                Global Edge Latency
+              </div>
+              <div style="font-size: 0.75rem; color: #10b981; margin-top: 0.4rem; font-weight: 600;">
+                ● Zero Cold Start
+              </div>
+            </div>
+
+            <div class="telemetry-col" style="padding-left: 0.5rem;">
+              <div style="color: #f59e0b; font-size: 1.15rem; margin-bottom: 0.35rem;">
+                ★ ★ ★ ★ ★
+              </div>
+              <h4>Production Proven</h4>
+              <p>+1,456 developer installations across Google Antigravity, Claude Code, and OpenAI Codex runtimes.</p>
+              <div style="margin-top: 0.85rem;">
+                <span class="mini-capsule-tag" style="background: rgba(139, 92, 246, 0.15); color: var(--pow-accent-brand); border-color: rgba(139, 92, 246, 0.3);">v0.10.6 Synchronized</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- =========================================================
+         TABBED INSTALLATION GUIDE
+         ========================================================= -->
+    <section class="pow-section" id="install">
+      <div class="section-header">
+        <span class="section-badge">Fast-Track Setup</span>
+        <h2 class="section-title">Install Bento Grid Pack</h2>
+        <p class="section-desc">
+          Choose whether to install Bento Grid as a lightweight standalone skill or as part of the full 10-style Taste Engine suite.
+        </p>
+      </div>
+
+      <div class="install-tabs-wrap">
+        <div class="install-tab-nav">
+          <button class="tab-nav-btn active" onclick="switchTab(0)">1. Standalone Skill</button>
+          <button class="tab-nav-btn" onclick="switchTab(1)">2. Full Multi-Agent Suite</button>
+          <button class="tab-nav-btn" onclick="switchTab(2)">3. Tailwind Preset</button>
+        </div>
+
+        <div class="tab-body">
+          <!-- Tab 1: Standalone -->
+          <div class="tab-pane active" id="tab0">
+            <div class="terminal-box">
+              <div class="terminal-header">
+                <div class="terminal-dots">
+                  <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                </div>
+                <span class="terminal-label">bash - standalone skill install</span>
+                <button class="terminal-copy-btn" onclick="copySnippet('cmdStandaloneCli')">Copy</button>
+              </div>
+              <div class="terminal-content" id="cmdStandaloneCli">
+                <div class="terminal-line">
+                  <span class="line-comment"># Install standalone Bento Grid pack via Agent Skills CLI</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-p">$</span>
+                  <span class="line-cmd">npx skills add kennedys0/taste-engine --skill taste-style-bento</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-comment"># Or clone directly into Antigravity IDE global config</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-p">$</span>
+                  <span class="line-cmd">git clone https://github.com/kennedys0/taste-engine.git && cp -r taste-engine/optional-standalone-skills/taste-style-bento ~/.gemini/config/skills/</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 2: Full Suite -->
+          <div class="tab-pane" id="tab1">
+            <div class="terminal-box">
+              <div class="terminal-header">
+                <div class="terminal-dots">
+                  <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                </div>
+                <span class="terminal-label">bash - full engine suite</span>
+                <button class="terminal-copy-btn" onclick="copySnippet('cmdGlobalCli')">Copy</button>
+              </div>
+              <div class="terminal-content" id="cmdGlobalCli">
+                <div class="terminal-line">
+                  <span class="line-comment"># 1. Universal 1-click Agent Skills install (includes all 10 styles)</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-p">$</span>
+                  <span class="line-cmd">npx skills add kennedys0/taste-engine</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-comment"># 2. Or install globally for Google Antigravity IDE / CLI (agy)</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-p">$</span>
+                  <span class="line-cmd">node bin/taste-engine.mjs install --agent antigravity --global</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-comment"># 3. Or install for Claude Code or OpenAI Codex</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-p">$</span>
+                  <span class="line-cmd">node bin/taste-engine.mjs install --agent claude --global</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 3: Tailwind -->
+          <div class="tab-pane" id="tab2">
+            <div class="terminal-box">
+              <div class="terminal-header">
+                <div class="terminal-dots">
+                  <span class="dot"></span><span class="dot"></span><span class="dot"></span>
+                </div>
+                <span class="terminal-label">tailwind.config.js - preset integration</span>
+                <button class="terminal-copy-btn" onclick="copySnippet('cmdTailwindPreset')">Copy</button>
+              </div>
+              <div class="terminal-content" id="cmdTailwindPreset">
+                <div class="terminal-line">
+                  <span class="line-comment">// Add Taste Engine official presets to your Tailwind config</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-cmd">module.exports = {</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-cmd">&nbsp;&nbsp;presets: [require('./presets/tailwind/tailwind.preset.js')],</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-cmd">&nbsp;&nbsp;theme: {</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;extend: {</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors: {</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'bento-bg': '#13151b',</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'bento-surface': '#1e222b',</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;'bento-cta': '#ff5722'</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;borderRadius: { 'bento': '28px' }</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-cmd">&nbsp;&nbsp;}</span>
+                </div>
+                <div class="terminal-line">
+                  <span class="line-cmd">};</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         DESIGN TOKEN CHEATSHEET
+         ========================================================= -->
+    <section class="pow-section">
+      <div class="section-header">
+        <span class="section-badge">Design Tokens & Math</span>
+        <h2 class="section-title">Bento Grid Design Tokens</h2>
+        <p class="section-desc">
+          Official CSS custom properties for Bento Grid. Copy and drop directly into your stylesheets or design system configuration.
+        </p>
+      </div>
+
+      <div class="token-table-wrap">
+        <table class="pow-table">
+          <thead>
+            <tr>
+              <th>Token Name</th>
+              <th>Dark Mode (Bukan Hitam Pekat)</th>
+              <th>Light Mode</th>
+              <th>Role & Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="token-code">--taste-bento-bg</td>
+              <td>
+                <div class="color-swatch-box">
+                  <span class="color-swatch" style="background: #13151b;"></span>
+                  <code>#13151b</code>
+                </div>
+              </td>
+              <td>
+                <div class="color-swatch-box">
+                  <span class="color-swatch" style="background: #f3f4f6;"></span>
+                  <code>#f3f4f6</code>
+                </div>
+              </td>
+              <td>Canvas backdrop base (warm graphite slate)</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-bento-surface</td>
+              <td>
+                <div class="color-swatch-box">
+                  <span class="color-swatch" style="background: #1e222b;"></span>
+                  <code>#1e222b</code>
+                </div>
+              </td>
+              <td>
+                <div class="color-swatch-box">
+                  <span class="color-swatch" style="background: #ffffff;"></span>
+                  <code>#ffffff</code>
+                </div>
+              </td>
+              <td>Elevated modular card surface</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-bento-surface-elevated</td>
+              <td>
+                <div class="color-swatch-box">
+                  <span class="color-swatch" style="background: #262b36;"></span>
+                  <code>#262b36</code>
+                </div>
+              </td>
+              <td>
+                <div class="color-swatch-box">
+                  <span class="color-swatch" style="background: #e5e7eb;"></span>
+                  <code>#e5e7eb</code>
+                </div>
+              </td>
+              <td>Sub-elements, capsule pills, and inner chips</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-bento-accent-cta</td>
+              <td>
+                <div class="color-swatch-box">
+                  <span class="color-swatch" style="background: #ff5722;"></span>
+                  <code>#ff5722</code>
+                </div>
+              </td>
+              <td>
+                <div class="color-swatch-box">
+                  <span class="color-swatch" style="background: #ff5722;"></span>
+                  <code>#ff5722</code>
+                </div>
+              </td>
+              <td>High-impact action pill button (Warm Tangerine)</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-bento-radius</td>
+              <td><code>28px</code></td>
+              <td><code>28px</code></td>
+              <td>Tactile rounded corner radius</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-bento-border</td>
+              <td><code>1px solid rgba(255,255,255,0.08)</code></td>
+              <td><code>1px solid rgba(0,0,0,0.08)</code></td>
+              <td>Subtle hairline structural divider</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-bento-text-muted</td>
+              <td><code>#8e95a5</code></td>
+              <td><code>#6b7280</code></td>
+              <td>Two-tone continuation text (4.8:1 WCAG AA)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         FREQUENTLY ASKED QUESTIONS
+         ========================================================= -->
+    <section class="pow-section">
+      <div class="section-header">
+        <span class="section-badge">Fidelity Knowledge</span>
+        <h2 class="section-title">Bento Grid FAQ</h2>
+        <p class="section-desc">
+          Key architectural decisions behind Taste Engine's Bento Grid archetype.
+        </p>
+      </div>
+
+      <div class="faq-accordion">
+        <div class="pow-faq-item">
+          <div class="pow-faq-header" onclick="toggleFaq(this)">
+            <span>Mengapa Bento Grid Taste Engine menggunakan abu-abu graphite dan bukan hitam pekat?</span>
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="pow-faq-body">
+            Hitam murni (<code>#000000</code>) menciptakan kontras yang terlalu tajam dan merusak ilusi kedalaman spasial. Dengan menggunakan graphite slate hangat (<code>#13151B</code> untuk kanvas dan <code>#1E222B</code> untuk kartu), antarmuka terasa matte, mewah, mengurangi kelelahan mata, dan memungkinkan border hairline 1px (<code>rgba(255, 255, 255, 0.08)</code>) terlihat natural.
+          </div>
+        </div>
+
+        <div class="pow-faq-item">
+          <div class="pow-faq-header" onclick="toggleFaq(this)">
+            <span>Apa itu aturan Two-Tone Typographic Contrast?</span>
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="pow-faq-body">
+            Dalam Bento Grid otentik, teks headline atau narasi tidak pernah dicetak dalam satu warna solid penuh. Kalimat pembuka atau subjek utama menggunakan putih kontras tinggi (<code>#F4F4F7</code> weight 700), sementara kalimat penjelas atau peran pendukung disambung dengan abu-abu hangat (<code>#8E95A5</code>). Ini menghasilkan hierarki baca instan tanpa kesan "tembok teks" (anti-slop).
+          </div>
+        </div>
+
+        <div class="pow-faq-item">
+          <div class="pow-faq-header" onclick="toggleFaq(this)">
+            <span>Bagaimana Bento Grid mencegah AI-slop kartu seragam?</span>
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="pow-faq-body">
+            Fidelity gate Taste Engine melarang keras grid seragam 3x2 dengan template kartu identik (ikon + judul + paragraf). Setiap kompartemen Bento harus memiliki anatomi internal yang berbeda: satu kartu adalah bio profil dengan avatar, kartu lain berupa tombol CTA pill kontak, kartu ketiga berisi strip capsule link, dan kartu lainnya menampilkan telemetri jam live.
+          </div>
+        </div>
+
+        <div class="pow-faq-item">
+          <div class="pow-faq-header" onclick="toggleFaq(this)">
+            <span>Bisakah saya menginstal Bento Grid secara mandiri (standalone)?</span>
+            <span class="faq-arrow">+</span>
+          </div>
+          <div class="pow-faq-body">
+            Ya! Jalankan perintah <code>npx skills add kennedys0/taste-engine --skill taste-style-bento</code>. Skill ini hanya memuat aturan, token, dan resep Bento Grid sehingga menghemat kuota context token AI agent Anda.
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="pow-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h3>Taste Engine</h3>
+        <p>
+          Frontend Design Intelligence & Aesthetic Archetypes for Autonomous AI Agents. Built strictly to eliminate generic AI-slop and ensure WCAG AA contrast coupling.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>10 Archetypes</h4>
+        <ul>
+          <li><a href="bento.html" style="color: var(--pow-accent-cta); font-weight: 700;">Bento Grid (PoW)</a></li>
+          <li><a href="neo-brutalism.html">Neo-Brutalism (PoW)</a></li>
+          <li><a href="claymorphism.html">Claymorphism (PoW)</a></li>
+          <li><a href="enterprise.html">Enterprise (PoW)</a></li>
+          <li><a href="glassmorphism.html">Glassmorphism (PoW)</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>More Archetypes</h4>
+        <ul>
+          <li><a href="minimalism.html">Minimalism (PoW)</a></li>
+          <li><a href="retro-terminal.html">Retro Terminal (PoW)</a></li>
+          <li><a href="skeuomorphism.html">Skeuomorphism (PoW)</a></li>
+          <li><a href="swiss-editorial.html">Swiss Editorial (PoW)</a></li>
+          <li><a href="brutalism.html">Brutalism (PoW)</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div>&copy; 2026 Taste Engine. MIT Licensed. Open Source on GitHub.</div>
+      <div>Designed for Antigravity, Claude Code, and OpenAI Codex.</div>
+    </div>
+  </footer>
+
+  <!-- Toast Element -->
+  <div class="pow-toast" id="powToast">Notification</div>
+
+  <!-- Interactive Logic -->
+  <script>
+    // Theme Management
+    const themeBtn = document.getElementById('themeToggleBtn');
+    const htmlElem = document.documentElement;
+
+    const savedTheme = localStorage.getItem('taste-theme') || 'dark';
+    htmlElem.setAttribute('data-theme', savedTheme);
+
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const current = htmlElem.getAttribute('data-theme');
+        const next = current === 'dark' ? 'light' : 'dark';
+        htmlElem.setAttribute('data-theme', next);
+        localStorage.setItem('taste-theme', next);
+        showToast(`Theme switched to ${next} mode`);
+      });
+    }
+
+    // Toast Notification
+    function showToast(msg) {
+      const toast = document.getElementById('powToast');
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2200);
+    }
+
+    // Hero Command Copy
+    const heroCopyBtn = document.getElementById('heroCopyBtn');
+    if (heroCopyBtn) {
+      heroCopyBtn.addEventListener('click', () => {
+        const text = document.getElementById('heroCmdText').textContent.trim();
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('Copied: ' + text);
+        });
+      });
+    }
+
+    // Generic Snippet Copy
+    function copySnippet(elementId) {
+      const el = document.getElementById(elementId);
+      if (!el) return;
+      const text = el.innerText.trim();
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Snippet copied to clipboard!');
+      });
+    }
+
+    // Generic Action Button Click Feedback
+    function handleBtnClick(msg) {
+      showToast(msg);
+      if (navigator.vibrate) navigator.vibrate(20);
+    }
+
+    // Capability Pills Toggle
+    function toggleCapability(btn, name) {
+      btn.classList.toggle('active');
+      const isActive = btn.classList.contains('active');
+      showToast(`${name}: ${isActive ? 'Enabled' : 'Disabled'}`);
+    }
+
+    // Installation Tabs
+    function switchTab(index) {
+      const buttons = document.querySelectorAll('.tab-nav-btn');
+      const panes = document.querySelectorAll('.tab-pane');
+      buttons.forEach((b, i) => b.classList.toggle('active', i === index));
+      panes.forEach((p, i) => p.classList.toggle('active', i === index));
+    }
+
+    // FAQ Accordion
+    function toggleFaq(header) {
+      const item = header.parentElement;
+      item.classList.toggle('open');
+    }
+
+    // Live Clock Update (GMT-5 EST)
+    function updateLiveClock() {
+      const clockEl = document.getElementById('liveClockDisplay');
+      if (!clockEl) return;
+      const now = new Date();
+      // UTC-5 offset
+      const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const estTime = new Date(utcTime - (3600000 * 5));
+      const hours = String(estTime.getHours()).padStart(2, '0');
+      const minutes = String(estTime.getMinutes()).padStart(2, '0');
+      const seconds = String(estTime.getSeconds()).padStart(2, '0');
+      clockEl.textContent = `GMT-5 • ${hours}:${minutes}:${seconds} EST`;
+    }
+    setInterval(updateLiveClock, 1000);
+    updateLiveClock();
+  </script>
+</body>
+</html>
+"""
+
+OUT_FILE.write_text(HTML_CONTENT, encoding="utf-8")
+print(f"PASS: successfully generated {OUT_FILE} ({len(HTML_CONTENT)} bytes)")

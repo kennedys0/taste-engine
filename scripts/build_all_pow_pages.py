@@ -9,81 +9,6 @@ DOCS_DIR.mkdir(exist_ok=True)
 # Definition of all 10 style archetypes
 STYLES = [
     {
-        "id": "bento",
-        "label": "Bento Grid",
-        "tagline": "Asymmetric Modular Cards & Visual Weight Hierarchy",
-        "badge": "Archetype #01",
-        "desc": "Bento Grid organizes complex product features into asymmetric, rounded tiles with strict visual weight hierarchy, diverse internal tile anatomy, and unified spatial rhythm.",
-        "standalone_pkg": "taste-style-bento",
-        "accent_name": "Electric Violet",
-        "accent_hex": "#8b5cf6",
-        "accent_hex_light": "#7c3aed",
-        "font_display": "'Space Grotesk', -apple-system, sans-serif",
-        "font_mono": "'JetBrains Mono', monospace",
-        "stats": [
-            ("24px", "Tile Corner Radius"),
-            ("20px", "Gap Grid Rhythm"),
-            ("2×2", "Hero Tile Hierarchy"),
-            ("WCAG AA", "Contrast Coupled")
-        ],
-        "css_tokens": {
-            "dark": {
-                "bg": "#0b0d10",
-                "surface": "#15191e",
-                "surface_hover": "#1c2229",
-                "well_bg": "#101317",
-                "text": "#f4f4f6",
-                "text_muted": "#9ca3af",
-                "border": "1px solid rgba(255, 255, 255, 0.08)",
-                "shadow": "0 8px 24px rgba(0, 0, 0, 0.35)",
-                "accent": "#8b5cf6",
-                "radius": "24px",
-                "radius_btn": "9999px"
-            },
-            "light": {
-                "bg": "#f8f9fa",
-                "surface": "#ffffff",
-                "surface_hover": "#f1f3f5",
-                "well_bg": "#f0f2f5",
-                "text": "#111827",
-                "text_muted": "#6b7280",
-                "border": "1px solid rgba(0, 0, 0, 0.08)",
-                "shadow": "0 8px 24px rgba(0, 0, 0, 0.06)",
-                "accent": "#7c3aed",
-                "radius": "24px",
-                "radius_btn": "9999px"
-            }
-        },
-        "playground_html": """
-        <div class="bento-demo-grid">
-          <div class="bento-tile bento-hero">
-            <div>
-              <span class="bento-tag">Hero Tile 2×2</span>
-              <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.35rem;">Multi-Agent Orchestration</h3>
-              <p style="font-size: 0.85rem; color: var(--pow-text-muted);">Coordinate Antigravity, Claude Code, and Codex from one unified interface.</p>
-            </div>
-            <button class="pow-btn pow-btn-primary" onclick="handleBtnClick('Deploy Agents')">Deploy Agents →</button>
-          </div>
-          <div style="display: flex; flex-direction: column; gap: 14px;">
-            <div class="bento-tile">
-              <span class="bento-tag">Latency</span>
-              <div style="font-size: 1.5rem; font-weight: 800; margin: 0.25rem 0;">42ms</div>
-              <span style="font-size: 0.75rem; color: var(--pow-text-muted);">Global edge response</span>
-            </div>
-            <div class="bento-tile">
-              <span class="bento-tag">Status</span>
-              <div style="font-size: 0.875rem; font-weight: 700; margin-top: 0.25rem; color: #10b981;">● All Agents Active</div>
-            </div>
-          </div>
-        </div>
-        """,
-        "faqs": [
-            ("What makes a Bento Grid authentic?", "Strict asymmetric hierarchy: one primary hero tile (2×2), diverse internal tile anatomy (not repeated clone cards), and uniform gap rhythm."),
-            ("Can I install just the Bento Grid skill?", "Yes, run `npx skills add kennedys0/taste-engine --skill taste-style-bento` to install only this standalone style pack."),
-            ("How does Bento Grid adapt to mobile screens?", "On mobile (< 768px), the multi-span grid automatically collapses into an ergonomic 1-column stack while preserving card order and padding.")
-        ]
-    },
-    {
         "id": "brutalism",
         "label": "Brutalism",
         "tagline": "Raw Structural Scaffolding & Zero Cosmetic Camouflage",
@@ -1911,3 +1836,4 @@ for s in STYLES:
     print(f"PASS: generated {out_file.name} ({len(content)} bytes)")
 
 print("SUCCESS: All style PoW pages generated.")
+

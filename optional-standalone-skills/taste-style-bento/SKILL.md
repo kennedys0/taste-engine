@@ -47,40 +47,51 @@ A successful bento grid implementation demonstrates **all** of the following:
 
 ## Typography and typewriting
 
-Contemporary, refined sans: DM Sans, Manrope, Inter, or system sans. Primary hero headings: 28–44 px (weight 700); tile titles: 18–22 px (weight 600); body: 14–15 px; captions/tags: 12–13 px. Keep body text brief and scannable.
+Contemporary, refined sans: Space Grotesk, DM Sans, Manrope, Inter, or system sans. Primary hero headings: 28–44 px (weight 700); tile titles: 18–22 px (weight 600); body: 14–15 px; captions/tags: 12–13 px. Keep body text brief and scannable.
+
+**Two-Tone Typographic Contrast (Signature Pattern):**
+In narrative, profile, or value-statement tiles, do not render whole paragraphs in uniform white or uniform gray. Use two-tone contrast: the primary message hook or subject is rendered in crisp high-contrast white (`#F4F4F7`, weight 700), while the sentence continuation, role modifier, or supporting explanation seamlessly continues in warm muted slate gray (`#8E95A5`, weight 400–500).
 
 ## Color direction
 
-- **Dark Mode (Default Modern Matte):**
-  - **Canvas Base:** Obsidian deep slate (`#0B0D10`).
-  - **Tile Background:** Elevated slate (`#15191E`).
-  - **Primary Typography:** Crisp porcelain (`#F4F4F6`).
-  - **Secondary / Muted Text:** Balanced cool gray (`#9CA3AF` — passes 4.5:1 WCAG AA).
-  - **Hairline Border:** Translucent white stroke (`rgba(255, 255, 255, 0.08)`).
-- **Light Mode (Clean Architectural):**
-  - **Canvas Base:** Crisp off-white (`#F8F9FA`).
-  - **Tile Background:** Pure white porcelain (`#FFFFFF`).
+- **Dark Mode (Default Refined Matte Slate — Bukan Hitam Pekat):**
+  - **No Pitch Black Rule:** Never use `#000000` or raw black for canvas or card surfaces. Pitch black creates harsh unnatural contrast and flattens depth. Use refined dark graphite/charcoal slate.
+  - **Canvas Base:** Soft dark graphite slate (`#13151B`).
+  - **Tile Background:** Elevated matte charcoal (`#1E222B`).
+  - **Elevated Sub-elements / Pill Capsules:** Slightly lighter charcoal (`#262B36`).
+  - **Primary Typography:** Crisp porcelain (`#F4F4F7`).
+  - **Secondary / Muted Text:** Warm slate gray (`#8E95A5` — passes 4.8:1 WCAG AA).
+  - **Hairline Border:** Translucent white stroke (`1px solid rgba(255, 255, 255, 0.08)` or `#2A2F3B`).
+  - **High-Impact CTA Accent:** Warm Tangerine / Coral (`#FF5722`), providing instant visual pull for action pills (`hey@...`, `Start Project →`).
+  - **Brand Accent:** Electric Violet (`#8B5CF6`) or Neon Lime (`#C7F265`).
+- **Light Mode (Clean Architectural Ceramic):**
+  - **Canvas Base:** Soft warm off-white (`#F3F4F6`).
+  - **Tile Background:** Pure white ceramic (`#FFFFFF`).
+  - **Elevated Sub-elements / Pill Capsules:** Soft light gray (`#E5E7EB`).
   - **Primary Typography:** Deep charcoal ink (`#111827`).
   - **Secondary / Muted Text:** Slate gray (`#6B7280` — passes 4.5:1 WCAG AA).
-  - **Hairline Border:** Translucent dark stroke (`rgba(0, 0, 0, 0.08)`).
-- **Brand Accent:** High-contrast signature color (e.g. Electric Violet `#8B5CF6`, Cyan `#06B6D4`, or Emerald `#10B981`) meeting minimum 3:1 contrast against both dark and light tile fills.
+  - **Hairline Border:** Translucent dark stroke (`1px solid rgba(0, 0, 0, 0.08)`).
+  - **High-Impact CTA Accent:** Warm Tangerine / Coral (`#FF5722`).
 - **Theme Coupling & Anti-Collision Rule:** Canvas, tile surfaces, typography, and borders MUST adapt in synchronized pairs. When switching to dark mode, text must turn light; when switching to light mode, text must turn dark. Never allow dark text (`#111827`) on dark tiles or white text (`#FFFFFF`) on light tiles.
 
 ## Layout and geometry
 
-CSS Grid: `grid-template-columns: repeat(3, 1fr)` or `repeat(4, 1fr)`; gaps: 16px–24px. Card radii: 20px–28px. All tile borders must align flush along horizontal and vertical grid tracks.
+CSS Grid: `grid-template-columns: repeat(3, 1fr)` or `repeat(4, 1fr)`; gaps: 16px–24px. Card radii: 24px–28px. All tile borders must align flush along horizontal and vertical grid tracks. Generous corner rounding (`24px–28px`) is essential for the soft, tactile bento compartmentalization.
 
 ## Surfaces, depth, texture
 
-- **Bento Tile:** Solid background with subtle hairline stroke (`1px solid var(--taste-bento-border)`) and soft ambient drop shadow (`0 8px 24px rgba(0, 0, 0, 0.12)`).
-- **Hover Interaction:** Subtle elevation (`transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18)`).
+- **Bento Tile:** Solid background with subtle hairline stroke (`1px solid var(--taste-bento-border)`) and soft ambient drop shadow (`0 8px 24px rgba(0, 0, 0, 0.16)`).
+- **Hover Interaction:** Subtle elevation (`transform: translateY(-2px); box-shadow: 0 12px 32px rgba(0, 0, 0, 0.24)`).
+- **Sub-capsules / Pill Bars:** Inline horizontal rows of pill buttons (`border-radius: 9999px; background: var(--taste-bento-surface-elevated); padding: 0.45rem 1rem;`).
 
 ## Component anatomy and interaction
 
-- **Hero Tile (2x2 or 2x1):** Primary value proposition, rich visual or live code preview, prominent CTA.
-- **Interactive Action Tile:** Integrated toggle, quick filter, or copyable command block.
-- **Metric / Status Tile:** Clean tabular number with concrete label and real data.
-- **Showcase Tile:** High-fidelity screenshot, asset preview, or architectural diagram.
+1. **Hero Profile / Value Tile (2x2 or 2x1):** Avatar portrait with subtle border ring, bold two-tone headline ("Name is a Role currently doing Activity"), and status indicator.
+2. **Contact / CTA Tile (1x1 or 2x1):** Abstract wireframe vector icon (spring, wave, geometric), direct question ("Have a project in mind?"), and high-contrast full-pill button (`#FF5722`, `border-radius: 9999px`).
+3. **Capsule Links Strip (Full Width Row):** A continuous horizontal sequence of capsule pills (`[ github. ] [ dribbble. ] [ figma. ] [ x.com. ] [ linkedin. ]`) with clean hover feedback.
+4. **Location & Timezone Tile (1x1):** Wireframe globe SVG icon, city/region heading ("Based in Brooklyn, New York"), and muted real-time timezone tag ("GMT-5 / 14:30 EST").
+5. **Product / Capability Showcase Tile (2x1 or 2x2):** High-fidelity mobile screen frame or card mockup with status pill (`● ONLINE`), interactive tag chips (`[ 3D Modeling ] [ Design Tokens ] [ Micro-interactions ]`), and social proof metric (`★ ★ ★ ★ ★ +1,456 reviews`).
+6. **Craft & Philosophy Tile:** Two-tone manifesto paragraph conveying core design principles.
 
 ## Motion
 
@@ -99,21 +110,22 @@ Direct, punchy, and informative. Examples: “Instant deployment”, “Zero con
 
 ## Starter tokens (suggestions, not a complete theme)
 
-| Token | Dark mode default | Light mode default |
+| Token | Dark mode default (Bukan Hitam Pekat) | Light mode default |
 | --- | --- | --- |
-| `--taste-bento-bg` | `#0b0d10` | `#f8f9fa` |
-| `--taste-bento-surface` | `#15191e` | `#ffffff` |
-| `--taste-bento-text` | `#f4f4f6` | `#111827` |
-| `--taste-bento-text-muted` | `#9ca3af` | `#6b7280` |
+| `--taste-bento-bg` | `#13151b` | `#f3f4f6` |
+| `--taste-bento-surface` | `#1e222b` | `#ffffff` |
+| `--taste-bento-surface-elevated` | `#262b36` | `#e5e7eb` |
+| `--taste-bento-text` | `#f4f4f7` | `#111827` |
+| `--taste-bento-text-muted` | `#8e95a5` | `#6b7280` |
 | `--taste-bento-border` | `1px solid rgba(255, 255, 255, 0.08)` | `1px solid rgba(0, 0, 0, 0.08)` |
-| `--taste-bento-radius` | `24px` | `24px` |
+| `--taste-bento-radius` | `28px` | `28px` |
 | `--taste-bento-gap` | `20px` | `20px` |
-| `--taste-bento-shadow` | `0 8px 24px rgba(0, 0, 0, 0.25)` | `0 8px 24px rgba(0, 0, 0, 0.06)` |
-| `--taste-bento-accent` | `#8b5cf6` | `#7c3aed` |
+| `--taste-bento-shadow` | `0 8px 24px rgba(0, 0, 0, 0.20)` | `0 8px 24px rgba(0, 0, 0, 0.06)` |
+| `--taste-bento-accent-cta` | `#ff5722` | `#ff5722` |
+| `--taste-bento-accent-brand` | `#8b5cf6` | `#7c3aed` |
+| `--taste-bento-font-display` | `Space Grotesk, DM Sans, sans-serif` | `Space Grotesk, DM Sans, sans-serif` |
 | `--taste-bento-font-body` | `DM Sans, Manrope, system-ui, sans-serif` | `DM Sans, Manrope, system-ui, sans-serif` |
 | `--taste-bento-motion-duration` | `180ms` | `180ms` |
-
-Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-bento-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values.
 
 ## Hero composition (full first viewport)
 
