@@ -86,30 +86,10 @@
       z-index: 1000;
       background: var(--pow-surface);
       border-bottom: var(--pow-border);
-      display: grid;
-      grid-template-columns: auto auto 1fr auto auto auto;
-      align-items: stretch;
-      min-height: 58px;
-    }
-
-    .nav-cell {
       display: flex;
-      align-items: center;
-      padding: 0 1.25rem;
-      border-right: var(--pow-border);
-      font-family: var(--pow-font-mono);
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-      text-decoration: none;
-      color: var(--pow-text);
-      transition: background-color 0ms, color 0ms;
-    }
-
-    .nav-cell:hover:not(.no-hover) {
-      background: var(--pow-surface-hover);
-      color: var(--pow-surface-hover-text);
+      align-items: stretch;
+      height: 60px;
+      width: 100%;
     }
 
     .nav-brand-cell {
@@ -117,12 +97,11 @@
       align-items: center;
       gap: 0.75rem;
       padding: 0 1.5rem;
-      font-family: var(--pow-font-display);
-      font-size: 1.65rem;
-      letter-spacing: -0.02em;
-      line-height: 1;
       border-right: var(--pow-border);
+      text-decoration: none;
+      color: var(--pow-text);
       background: var(--pow-surface);
+      flex-shrink: 0;
     }
 
     .brand-logo-img {
@@ -132,70 +111,90 @@
       display: block;
     }
 
-    .nav-tagline-cell {
-      font-size: 0.7rem;
-      font-weight: 800;
-      line-height: 1.2;
-      padding: 0 1rem;
-      border-right: var(--pow-border);
-      color: var(--pow-text-muted);
-      letter-spacing: 0.05em;
+    .brand-text {
+      font-family: var(--pow-font-display);
+      font-size: 2.1rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
     }
 
-    .nav-cmd-cell {
+    .nav-tagline-cell {
       display: flex;
-      align-items: center;
-      gap: 0.75rem;
+      flex-direction: column;
+      justify-content: center;
       padding: 0 1.25rem;
       border-right: var(--pow-border);
-      background: var(--pow-surface-elevated);
-      overflow-x: auto;
-      white-space: nowrap;
-    }
-
-    .nav-cmd-code {
       font-family: var(--pow-font-mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--pow-text);
-    }
-
-    .nav-copy-btn {
-      background: var(--pow-surface);
-      color: var(--pow-text);
-      border: var(--pow-border);
-      padding: 0.35rem 0.75rem;
-      font-family: var(--pow-font-mono);
-      font-size: 0.7rem;
+      font-size: 0.625rem;
       font-weight: 800;
-      cursor: pointer;
+      line-height: 1.2;
+      letter-spacing: 0.08em;
+      color: var(--pow-text);
       text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .nav-links-track {
+      display: flex;
+      align-items: stretch;
+      flex: 1;
+    }
+
+    .nav-cell {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1.35rem;
+      border-right: var(--pow-border);
+      font-family: var(--pow-font-mono);
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      color: var(--pow-text);
+      white-space: nowrap;
       transition: background 0ms, color 0ms;
     }
 
-    .nav-copy-btn:hover {
-      background: var(--pow-text);
-      color: var(--pow-surface);
+    .nav-cell:hover:not(.no-hover) {
+      background: var(--pow-surface-hover);
+      color: var(--pow-surface-hover-text);
+    }
+
+    .nav-right-track {
+      display: flex;
+      align-items: stretch;
+      margin-left: auto;
+      flex-shrink: 0;
+    }
+
+    .nav-theme-cell {
+      cursor: pointer;
+      font-family: var(--pow-font-mono);
+      font-weight: 800;
+      border-left: var(--pow-border);
+      padding: 0 1.35rem;
     }
 
     .nav-action-yellow {
       background: var(--pow-signal-yellow);
       color: #0a0a0a !important;
+      font-family: var(--pow-font-mono);
       font-weight: 900;
-      padding: 0 1.5rem;
-      border-right: var(--pow-border);
+      padding: 0 1.65rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      border-right: none;
+      border-left: var(--pow-border);
       cursor: pointer;
     }
 
     .nav-action-yellow:hover {
       background: #0a0a0a !important;
       color: var(--pow-signal-yellow) !important;
-    }
-
-    .nav-theme-cell {
-      padding: 0 1.25rem;
-      cursor: pointer;
-      font-weight: 800;
     }
 
     /* =========================================================
@@ -265,6 +264,7 @@
     .hero-action-group {
       display: flex;
       gap: 1rem;
+      align-items: center;
       flex-wrap: wrap;
     }
 
@@ -289,6 +289,56 @@
     .brut-btn-action:hover {
       background: var(--pow-surface-hover);
       color: var(--pow-surface-hover-text);
+    }
+
+    /* Single-Line Architectural CLI Command Box */
+    .hero-command-box {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      padding: 0.4rem 0.45rem 0.4rem 1.1rem;
+      box-shadow: 4px 4px 0px var(--pow-text);
+    }
+
+    .cmd-prompt-glyph {
+      font-family: var(--pow-font-mono);
+      font-weight: 900;
+      color: var(--pow-signal-red);
+      font-size: 0.95rem;
+      user-select: none;
+    }
+
+    .cmd-code-text {
+      font-family: var(--pow-font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--pow-text);
+      white-space: nowrap;
+    }
+
+    .cmd-copy-action-btn {
+      background: #0a0a0a;
+      color: #ffffff;
+      border: 1.5px solid var(--pow-text);
+      padding: 0.45rem 0.9rem;
+      font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0ms, color 0ms;
+    }
+
+    [data-theme="dark"] .cmd-copy-action-btn {
+      background: var(--pow-signal-yellow);
+      color: #0a0a0a;
+    }
+
+    .cmd-copy-action-btn:hover {
+      background: var(--pow-signal-yellow);
+      color: #0a0a0a;
     }
 
     .brut-btn-red {
@@ -1244,10 +1294,21 @@
        ========================================================= */
     @media (max-width: 1024px) {
       .pow-nav {
-        grid-template-columns: auto 1fr auto;
+        overflow-x: auto;
+        scrollbar-width: none;
       }
-      .nav-tagline-cell, .nav-cmd-cell {
+      .pow-nav::-webkit-scrollbar {
         display: none;
+      }
+      .nav-links-track {
+        flex-shrink: 0;
+      }
+      .nav-tagline-cell {
+        display: none;
+      }
+      .hero-command-box {
+        max-width: 100%;
+        overflow-x: auto;
       }
       .brut-hero-grid {
         grid-template-columns: 1fr;
@@ -1293,33 +1354,36 @@
 <body>
 
   <!-- =========================================================
-       TOP BLUEPRINT NAVIGATION (CELLULAR GRID HEADER)
+       TOP BLUEPRINT NAVIGATION (FAITHFUL TO REFERENCE 1)
        ========================================================= -->
   <header class="pow-nav">
     <a href="index.html" class="nav-brand-cell">
       <img src="assets/logo.webp" alt="Taste Engine Logo" class="brand-logo-img">
-      <span>BRUT.</span>
+      <span class="brand-text">BRUT.</span>
     </a>
 
     <div class="nav-tagline-cell">
-      DIGITAL ARCHITECTURE<br>STUDIO // (2026)
+      <span>DIGITAL</span>
+      <span>DESIGN</span>
+      <span>STUDIO</span>
     </div>
 
-    <div class="nav-cmd-cell">
-      <span style="color: var(--pow-signal-red); font-weight: 900;">$</span>
-      <code class="nav-cmd-code" id="navCmdText">npx skills add kennedys0/taste-engine --skill taste-style-brutalism</code>
-      <button class="nav-copy-btn" id="navCopyBtn" title="Copy CLI Command">Copy</button>
+    <div class="nav-links-track">
+      <a href="#work" class="nav-cell">Work</a>
+      <a href="index.html" class="nav-cell">About</a>
+      <a href="#services" class="nav-cell">Services</a>
+      <a href="#install" class="nav-cell">Journal</a>
+      <a href="#faq" class="nav-cell">Contact</a>
     </div>
 
-    <a href="#work" class="nav-cell">Work</a>
-    <a href="#install" class="nav-cell">Install</a>
-
-    <div class="nav-cell nav-action-yellow" onclick="handleAction('Opening Project Inquiry')">
-      Start a Project ↗
-    </div>
-
-    <div class="nav-cell nav-theme-cell" id="themeToggleBtn" title="Toggle Theme Inversion">
-      Theme
+    <div class="nav-right-track">
+      <div class="nav-cell nav-theme-cell" id="themeToggleBtn" title="Toggle Theme Inversion">
+        Theme ◐
+      </div>
+      <a href="#install" class="nav-cell nav-action-yellow" onclick="handleAction('Opening Project Inquiry')">
+        <span>Start a Project</span>
+        <span>↗</span>
+      </a>
     </div>
   </header>
 
@@ -1349,14 +1413,12 @@
             <span>View Our Work</span>
             <span>↗</span>
           </a>
-          <a href="#install" class="brut-btn-action" onclick="handleAction('Navigating to Installation Guide')">
-            <span>CLI Specification</span>
-            <span>↘</span>
-          </a>
-          <button class="brut-btn-red" onclick="handleAction('Requesting Studio Dispatch')">
-            <span>Live Dispatch</span>
-            <span>●</span>
-          </button>
+          
+          <div class="hero-command-box">
+            <span class="cmd-prompt-glyph">$</span>
+            <code class="cmd-code-text" id="navCmdText">npx skills add kennedys0/taste-engine --skill taste-style-brutalism</code>
+            <button class="cmd-copy-action-btn" id="navCopyBtn" title="Copy CLI Command">Copy</button>
+          </div>
         </div>
       </div>
 
