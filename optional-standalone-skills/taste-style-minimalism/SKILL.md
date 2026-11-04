@@ -30,7 +30,7 @@ Use this skill only after a user explicitly chooses  or a confirmed project conf
 A successful minimalist implementation demonstrates **all** of the following:
 
 1. **Active Proportional Negative Space:** Whitespace is deliberate and calibrated, not accidental empty voids. It frames content purposefully and directs the user's eye directly to key tasks without needing boxes, badges, or arrows.
-2. **Mathematically Calibrated Typographic Scale:** Clear contrast between display titles (32px–44px, weight 600), section anchors (18px–22px, weight 600), body text (15px–16px, weight 400, line-height 1.6), and metadata (12px–13px, weight 500).
+2. **Mathematically Calibrated Typographic Scale:** Clear contrast between display titles (32px–44px, weight 600–700), section anchors (18px–22px, weight 600), body text (15px–16px, weight 400, line-height 1.6), and metadata (12px–13px, weight 500 tabular figures).
 3. **Razor-Sharp Spatial Alignment:** Grouping is achieved through alignment, proximity, and subtle hairline dividers (`1px solid rgba(0, 0, 0, 0.08)` or `rgba(255, 255, 255, 0.10)`), completely eliminating unnecessary nested cards.
 4. **Accessible High Contrast (WCAG AA/AAA):** Text, icons, and interactive elements maintain strong contrast against neutral surfaces. Faint unreadable `#999999` text on white is strictly prohibited.
 5. **Clear Action Affordances:** Primary interactive controls are immediately discoverable, featuring high-contrast fills, distinct hover states, and visible keyboard focus indicators (`:focus-visible`).
@@ -47,28 +47,30 @@ A successful minimalist implementation demonstrates **all** of the following:
 
 ## Typography and typewriting
 
-Pure, neutral UI sans: Inter, Source Sans 3, SF Pro, or system sans. Headlines: 32–44 px (weight 600–700, `letter-spacing: -0.02em`); body: 15–16 px (weight 400, line-height 1.6); captions/metadata: 12–13 px (weight 500). Calm, scannable type scale.
+Pure, neutral UI sans: Inter, Source Sans 3, SF Pro, or system sans paired with JetBrains Mono for code and tabular figures. Headlines: 32–44 px (weight 600–700, `letter-spacing: -0.025em`); section titles: 18–22 px (weight 600); body: 15–16 px (weight 400, line-height 1.6); captions/metadata: 12–13 px (weight 500 monospace, tabular numbers). Calm, scannable type scale with golden-ratio line heights.
 
 ## Color direction
 
 - **Light Mode (Clean Studio Light):**
   - **Canvas Base:** Soft paper white (`#FAFAF9` or `#FFFFFF`).
+  - **Surface Elevated:** Pure white (`#FFFFFF`).
   - **Typography / Ink:** Deep slate black (`#18181B`).
   - **Secondary Text:** Balanced neutral slate (`#52525B` — passes 4.5:1 WCAG AA).
   - **Hairline Divider:** Translucent gray (`rgba(0, 0, 0, 0.08)` or `#E4E4E7`).
 - **Dark Mode (Disciplined Studio Dark):**
   - **Canvas Base:** Muted obsidian canvas (`#121214`).
+  - **Surface Elevated:** Dense slate obsidian (`#18181B` / `#1F1F23`).
   - **Typography / Ink:** Crisp porcelain (`#F4F4F5`).
   - **Secondary Text:** Balanced slate (`#A1A1AA` — passes 4.5:1 WCAG AA).
-  - **Hairline Divider:** Translucent white (`rgba(255, 255, 255, 0.10)` or `#27272A`).
-- **Brand Accent:** Singular functional accent (e.g. Cobalt `#2563EB` light / `#3B82F6` dark, or Deep Forest `#059669`).
+  - **Hairline Divider:** Translucent white (`rgba(255, 255, 255, 0.09)` or `#27272A`).
+- **Brand Accent:** Singular functional accent (e.g. high-contrast ink anchor `#18181B` light / `#F4F4F5` dark, or calibrated Cobalt `#2563EB` light / `#3B82F6` dark).
 - **Theme Coupling Rule:** Canvas, typography, secondary text, and dividers MUST flip synchronously. When user requests dark mode, text must turn light (`#F4F4F5`); when light mode, text must turn dark (`#18181B`). Never leave dark text on dark canvas.
 
 ## Layout and geometry
 
 - **Strict 1:1 circle geometry (anti-oval):** Any circular UI element (status indicator dots, avatars, circular buttons with `border-radius: 50%`) must enforce `aspect-ratio: 1 / 1; flex-shrink: 0;` to prevent them from squishing into distorted ovals when viewport shrinks down to 320px.
 - **Responsive 320px baseline & fluid typography:** All layouts must scale gracefully down to 320px width without horizontal blowout. Typography and paddings must scale down proportionally (hero titles clamp to 1.35rem–1.65rem, section headings to 1.2rem–1.45rem, code to 0.725rem–0.785rem) to prevent bloated interfaces ("UI bengkak"). Top navigation headers must collapse links behind an accessible hamburger menu on narrow mobile screens (< 768px) rather than crowding the header.
-Consistent 4px/8px spacing grid; gentle, unified corner radii (`6px–12px`); subtle hairline borders where structural separation is necessary. Negative space groups related information naturally.
+Consistent 4px/8px spacing grid; gentle, unified corner radii (`6px–8px`); subtle hairline borders where structural separation is necessary. Negative space groups related information naturally.
 
 ## Surfaces, depth, texture
 
@@ -77,10 +79,16 @@ Surfaces are quiet, flat, and matte. Minimal or zero box-shadows (`0 1px 3px rgb
 ## Component anatomy and interaction
 
 - **Iconography — zero emojis:** Emojis are strictly banned as interface icons, status indicators, or button prefixes across all UI elements. Use Lucide or clean vector SVGs (16px–24px) with consistent stroke weight (1.5px–2px) and currentColor.
-- **Primary Action (CTA):** Solid dark pill or rounded rectangle with white text, high contrast, and smooth hover transition.
-- **Secondary Action:** Unadorned text link or subtle outline button with hairline border.
-- **Form Input:** Clean input field with visible border, clear placeholder, and high-contrast focus ring (`outline: 2px solid #18181B; outline-offset: 2px;`).
-- **Content Row / List:** Clean horizontal rows separated by hairline dividers with aligned tabular data.
+- **Hairline Navigation Header:** Fixed or sticky top bar with subtle hairline dividing stroke (`1px solid rgba(0, 0, 0, 0.08)`), brand mark, horizontal link row on desktop, and a dedicated high-contrast installation CTA. On mobile viewports (< 768px), links collapse into an accessible hamburger button with 44px+ tap target drawer.
+- **Single-Line Inline Command Pill ("Sejajarin"):** Monospace command snippet bar (`$ npx skills add kennedys0/taste-engine --skill taste-style-minimalism`) aligned in a single horizontal row with `line-height: 1; flex-shrink: 0;` and a one-click copy button.
+- **Primary Action (CTA):** Solid dark pill or rounded rectangle (`border-radius: 6px`) with high contrast fill, distinct hover state, and zero visual blur noise.
+- **Secondary Action:** Unadorned text link or subtle outline button with hairline border (`1px solid var(--pow-border)`).
+- **Restrained Form Input:** Clean input field with visible hairline border, clear placeholder, and high-contrast focus ring (`outline: 2px solid var(--pow-accent); outline-offset: 2px;`).
+- **Hairline Data Matrix (Anti-Card-Clutter):** Dense, scannable data list grouped through proximity and 1px hairline dividers without nested card boxes. Includes tabular numbers (`font-variant-numeric: tabular-nums;`), semantic status pills (`Active`, `Verified`), and compact action buttons.
+- **Minimalist Toggle Switch:** Pill-shaped track with smooth sliding circular knob enforcing `aspect-ratio: 1 / 1; flex-shrink: 0;` (never deforms into an oval).
+- **Segmented Control Tabs:** Flush inline segmented pill bar (`border-radius: 4px`) for density, scale, or view switching.
+- **Hairline Accordion:** Flush collapsible section headers with Lucide `ChevronDown` SVG rotating 180° on toggle, revealing clean body copy.
+- **Mathematical 4-Metric Grid:** Box grid separated by 1px hairline rules without individual floating card shadows.
 
 ## Motion
 
@@ -99,23 +107,25 @@ Calm, concise, and helpful. Examples: “Save changes”, “Account settings”
 
 ## Starter tokens (suggestions, not a complete theme)
 
-| Token | Light mode default | Dark mode default |
-| --- | --- | --- |
-| `--taste-mini-bg` | `#fafaf9` | `#121214` |
-| `--taste-mini-ink` | `#18181b` | `#f4f4f5` |
-| `--taste-mini-muted` | `#52525b` | `#a1a1aa` |
-| `--taste-mini-border` | `1px solid rgba(0, 0, 0, 0.08)` | `1px solid rgba(255, 255, 255, 0.10)` |
-| `--taste-mini-radius` | `8px` | `8px` |
-| `--taste-mini-accent` | `#2563eb` | `#3b82f6` |
-| `--taste-mini-font-body` | `Inter, -apple-system, system-ui, sans-serif` | `Inter, -apple-system, system-ui, sans-serif` |
-| `--taste-mini-motion-duration` | `140ms` | `140ms` |
+| Token | Light mode default | Dark mode default | Architectural Role |
+| --- | --- | --- | --- |
+| `--taste-mini-bg` | `#fafaf9` | `#121214` | Base canvas backdrop base |
+| `--taste-mini-surface` | `#ffffff` | `#18181b` | Elevated surface / card fill |
+| `--taste-mini-ink` | `#18181b` | `#f4f4f5` | Primary typography & vector icons (WCAG AAA) |
+| `--taste-mini-muted` | `#52525b` | `#a1a1aa` | Secondary metadata text (4.5:1+) |
+| `--taste-mini-border` | `1px solid rgba(0, 0, 0, 0.08)` | `1px solid rgba(255, 255, 255, 0.09)` | Subtle structural hairline dividing rule |
+| `--taste-mini-accent` | `#18181b` | `#f4f4f5` | Primary functional action fill |
+| `--taste-mini-radius` | `6px` | `6px` | Gentle unified corner radius |
+| `--taste-mini-font-sans` | `Inter, system-ui, sans-serif` | `Inter, system-ui, sans-serif` | Pure unembellished typography stack |
+| `--taste-mini-font-mono` | `JetBrains Mono, monospace` | `JetBrains Mono, monospace` | Tabular metadata and monospace code font |
+| `--taste-mini-space-unit` | `4px / 8px` | `4px / 8px` | Mathematical grid rhythm base |
+| `--taste-mini-motion-duration` | `140ms` | `140ms` | Subtle ease-out micro-transition timing |
 
 Tokens represent a **direction** and are not copy-paste guaranteed for every palette/platform. Define `--taste-mini-*` at project level, ensure color contrast, and adapt via theme tokens rather than scattering literal values.
 
 ## Hero composition (full first viewport)
 
 **When a public-facing portfolio/landing/homepage has a hero:** use a one-visible-screen header+hero composition. Base height on `min-height: 100svh` with `100vh` fallback, subtracting the **real** header only when it is in normal flow; let the hero expand for accessibility and short mobile screens. Do not apply this to private dashboards or other task screens; direct user overrides win. **Style-specific direction:** Compose the first viewport around a crystal-clear headline, one primary action, and generous, intentional white space. Do not invent filler cards, fake testimonials, or decorative badges to clutter the canvas. See the router `references/hero-layout.md` when present. Standalone use follows the same responsive and anti-slop principles.
-
 
 ## Style-specific quality gate
 
