@@ -113,17 +113,17 @@ function uninstall(dest, dryRun = false) {
   fs.rmSync(dest, { recursive: true, force: true });
   console.log(`Uninstalled ${dest}`);
 }
-try {
+function main() {
   const [command='help', ...args]=process.argv.slice(2);
-  if(command==='help' || command==='--help' || command==='-h') help();
-  else if(command==='version' || command==='--version' || command==='-v') console.log(VERSION);
-  else if(command==='update' || command==='-update' || command==='--update') {
+  if(command==='help' || command==='--help' || command==='-h') { help(); return; }
+  if(command==='version' || command==='--version' || command==='-v') { console.log(VERSION); return; }
+  if(command==='update' || command==='-update' || command==='--update') {
     const updateScript = path.join(source, 'scripts', 'update.sh');
     if (!fs.existsSync(updateScript)) throw new Error(`Update script not found at ${updateScript}`);
     const res = spawnSync('bash', [updateScript, ...args], { stdio: 'inherit' });
     process.exit(res.status ?? 0);
   }
-  else if(command==='gallery' || command==='preview' || command==='--gallery' || command==='--preview') {
+  if(command==='gallery' || command==='preview' || command==='--gallery' || command==='--preview') {
     if(args.includes('--help') || args.includes('-h')) { help(); return; }
     const galleryPath = path.join(repoRoot, 'docs', 'index.html');
     if(!fs.existsSync(galleryPath)) throw new Error('Gallery not found at docs/index.html');
@@ -133,19 +133,21 @@ try {
     exec(openCmd, (err) => {
       if(err) console.log(`You can open the gallery manually in your browser:\n  file://${galleryPath}`);
     });
+    return;
   }
-  else if(command==='preset' || command==='presets' || command==='--preset' || command==='--presets') {
+  if(command==='preset' || command==='presets' || command==='--preset' || command==='--presets') {
     if(args.includes('--help') || args.includes('-h')) { help(); return; }
     const presetDir = path.join(source, 'presets');
     console.log(`Taste Engine Presets (v${VERSION})\n\nAvailable presets in ${presetDir}:\n  - presets/tailwind/tailwind.preset.js (Tailwind CSS theme extension)\n  - presets/tailwind/taste-components.css (Component layers: .taste-clay-btn, etc.)\n  - presets/shadcn/shadcn-themes.css (shadcn/ui theme variable overrides)\n\nRun 'taste-engine init [dir]' to scaffold presets into your project.`);
+    return;
   }
-  else if(command==='init' || command==='--init' || command==='-init') {
+  if(command==='init' || command==='--init' || command==='-init') {
     let targetDir = process.cwd();
     let dryRun = false;
     for(let i = 0; i < args.length; i++) {
       const a = args[i];
       if(a === '--help' || a === '-h') { help(); return; }
-      else if(a === '--dry-run' || a === '-n') dryRun = true;
+      if(a === '--dry-run' || a === '-n') dryRun = true;
       else if(a === '--cwd') {
         if(i + 1 >= args.length || args[i + 1].startsWith('-')) throw new Error('Missing --cwd value');
         targetDir = path.resolve(args[++i]);
@@ -161,10 +163,11 @@ try {
     fs.mkdirSync(dest, { recursive: true });
     fs.cpSync(path.join(source, 'presets'), dest, { recursive: true });
     console.log(`Copied Taste Engine presets to ${dest}\nSee ${path.join(source, 'references', 'tailwind-shadcn.md')} for setup guide.`);
+    return;
   }
-  else if(command==='install' || command==='doctor' || command==='uninstall') {
+  if(command==='install' || command==='doctor' || command==='uninstall') {
     const o=parse(args);
-    if(o.help) { help(); process.exit(0); }
+    if(o.help) { help(); return; }
     if(command==='install') assertSource();
     for(const dest of targets(o)) {
       if(command==='install') install(dest, o.dryRun);
@@ -176,5 +179,10 @@ try {
         if(!ok) process.exitCode=1;
       }
     }
-  } else throw new Error(`Unknown command: ${command}`);
+    return;
+  }
+  throw new Error(`Unknown command: ${command}`);
+}
+try {
+  main();
 } catch(e) { console.error(`Taste Engine: ${e.message}`); process.exitCode=1; }
