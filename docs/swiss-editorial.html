@@ -4,45 +4,81 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Swiss / Editorial Proof of Work & Installation Guide — Taste Engine</title>
-  <meta name="description" content="Dedicated Proof of Work and installation guide for Taste Engine's Swiss / Editorial aesthetic archetype. Experience authentic design tokens, zero AI-slop, and contrast safety.">
+  <meta name="description" content="Dedicated Proof of Work and installation guide for Taste Engine's Swiss / Editorial aesthetic archetype. Experience rigorous 12-column grid hierarchy, stark typographic scale contrast, structural hairline rules, zero AI-slop, and contrast safety.">
   <link rel="icon" type="image/webp" href="assets/logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* =========================================================
-       SWISS / EDITORIAL DESIGN SYSTEM TOKENS
+       SWISS / EDITORIAL DESIGN SYSTEM TOKENS (CANONICAL)
        ========================================================= */
     :root {
-      --pow-bg: #fbfaf6;
-      --pow-surface: #ffffff;
-      --pow-surface-hover: #f5f4ef;
-      --pow-well-bg: #f2f1eb;
-      --pow-text: #111111;
-      --pow-text-muted: #555555;
-      --pow-border: 1px solid #111111;
-      --pow-shadow: none;
-      --pow-accent: #d62828;
-      --pow-radius: 0px;
-      --pow-radius-btn: 0px;
+      /* Light Mode: Crisp Gallery White Paper */
+      --swiss-bg: #FFFFFF;
+      --swiss-surface: #FFFFFF;
+      --swiss-surface-hover: #F5F5F5;
+      --swiss-well-bg: #F8F8F7;
+      --swiss-text: #111111;
+      --swiss-text-muted: #555555;
+      --swiss-border: 1px solid #111111;
+      --swiss-rule: 1px solid #111111;
+      --swiss-rule-subtle: 1px solid rgba(17, 17, 17, 0.15);
+      --swiss-accent: #E3000F; /* Classic Zurich Signal Red */
+      --swiss-accent-text: #FFFFFF;
+      --swiss-radius: 0px; /* Razor sharp */
+      --swiss-radius-btn: 0px;
+      --swiss-shadow: none; /* Strictly zero drop shadow in Swiss style */
 
-      --pow-font-display: 'Space Grotesk', Helvetica, -apple-system, sans-serif;
-      --pow-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --pow-font-mono: 'JetBrains Mono', monospace;
+      --swiss-font-display: 'Space Grotesk', Helvetica, -apple-system, sans-serif;
+      --swiss-font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --swiss-font-mono: 'JetBrains Mono', monospace;
     }
 
     [data-theme="dark"] {
-      --pow-bg: #141416;
-      --pow-surface: #1c1c1f;
-      --pow-surface-hover: #25252a;
-      --pow-well-bg: #0f0f11;
-      --pow-text: #fdfdfd;
-      --pow-text-muted: #8e8e93;
-      --pow-border: 1px solid rgba(255, 255, 255, 0.15);
-      --pow-shadow: none;
-      --pow-accent: #e63946;
-      --pow-radius: 0px;
-      --pow-radius-btn: 0px;
+      /* Dark Mode: Pitch Obsidian Monolith */
+      --swiss-bg: #0D0D0D;
+      --swiss-surface: #141414;
+      --swiss-surface-hover: #1E1E1E;
+      --swiss-well-bg: #111111;
+      --swiss-text: #F5F5F5;
+      --swiss-text-muted: #9CA3AF;
+      --swiss-border: 1px solid rgba(255, 255, 255, 0.20);
+      --swiss-rule: 1px solid rgba(255, 255, 255, 0.20);
+      --swiss-rule-subtle: 1px solid rgba(255, 255, 255, 0.08);
+      --swiss-accent: #EF4444; /* Vivid Dark-mode Signal Red */
+      --swiss-accent-text: #FFFFFF;
+      --swiss-radius: 0px;
+      --swiss-radius-btn: 0px;
+      --swiss-shadow: none;
+    }
+
+    /* Dynamic Accent Overrides */
+    [data-accent="blue"] {
+      --swiss-accent: #002FA7; /* International Klein Blue */
+      --swiss-accent-text: #FFFFFF;
+    }
+    [data-theme="dark"][data-accent="blue"] {
+      --swiss-accent: #3B82F6;
+      --swiss-accent-text: #FFFFFF;
+    }
+
+    [data-accent="green"] {
+      --swiss-accent: #007A3D; /* Basel Forest Green */
+      --swiss-accent-text: #FFFFFF;
+    }
+    [data-theme="dark"][data-accent="green"] {
+      --swiss-accent: #10B981;
+      --swiss-accent-text: #FFFFFF;
+    }
+
+    [data-accent="mono"] {
+      --swiss-accent: #111111;
+      --swiss-accent-text: #FFFFFF;
+    }
+    [data-theme="dark"][data-accent="mono"] {
+      --swiss-accent: #F5F5F5;
+      --swiss-accent-text: #111111;
     }
 
     *, *::before, *::after {
@@ -51,67 +87,122 @@
       padding: 0;
     }
 
+    html, body {
+      overflow-x: hidden !important;
+      max-width: 100vw !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
     body {
-      background-color: var(--pow-bg);
-      color: var(--pow-text);
-      font-family: var(--pow-font-body);
+      background-color: var(--swiss-bg);
+      color: var(--swiss-text);
+      font-family: var(--swiss-font-body);
       font-size: 16px;
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      transition: background-color 150ms ease, color 150ms ease;
+      transition: background-color 140ms ease, color 140ms ease;
     }
 
-    /* Top Navigation */
-    .pow-nav {
+    /* =========================================================
+       CRITICAL ANTI-OVAL CIRCULAR PRESERVATION
+       ========================================================= */
+    .avatar-circle,
+    .brand-logo-img,
+    .color-swatch,
+    .dot,
+    .status-dot,
+    .metric-dot,
+    .nav-hamburger-btn,
+    .mobile-drawer-close-btn,
+    .theme-icon-box {
+      aspect-ratio: 1 / 1 !important;
+      flex-shrink: 0 !important;
+      border-radius: 50% !important;
+    }
+
+    /* =========================================================
+       TOP NAVIGATION (SWISS STRUCTURAL HEADER)
+       ========================================================= */
+    .swiss-nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--pow-surface);
-      border-bottom: var(--pow-border);
-      padding: 0.75rem 1.5rem;
+      background: var(--swiss-surface);
+      border-bottom: var(--swiss-rule);
+      padding: 0.85rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 1.25rem;
+      transition: background-color 140ms ease, border-color 140ms ease;
     }
 
     .nav-brand-group {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.85rem;
       text-decoration: none;
-      color: var(--pow-text);
+      color: var(--swiss-text);
     }
 
     .nav-logo-box {
-      width: 32px;
-      height: 32px;
-      background: var(--pow-accent);
-      color: #fff;
-      border-radius: 6px;
+      width: 34px;
+      height: 34px;
+      background: var(--swiss-accent);
+      color: var(--swiss-accent-text);
+      border-radius: 0px; /* Sharp 0px */
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-family: var(--pow-font-display);
+      font-family: var(--swiss-font-display);
+      font-size: 0.95rem;
+      letter-spacing: -0.02em;
+      transition: background-color 140ms ease, color 140ms ease;
     }
 
     .nav-title {
-      font-family: var(--pow-font-display);
-      font-weight: 700;
-      font-size: 1.05rem;
+      font-family: var(--swiss-font-display);
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
     }
 
     .nav-tag-badge {
-      background: rgba(255, 255, 255, 0.1);
-      border: var(--pow-border);
-      font-family: var(--pow-font-mono);
-      font-size: 0.7rem;
-      font-weight: 600;
-      padding: 0.2rem 0.55rem;
-      border-radius: 4px;
+      background: var(--swiss-well-bg);
+      border: var(--swiss-rule);
+      font-family: var(--swiss-font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: 0px;
       text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--swiss-text);
+    }
+
+    /* Desktop Navigation Links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      color: var(--swiss-text-muted);
+      text-decoration: none;
+      font-family: var(--swiss-font-display);
+      font-size: 0.825rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 120ms ease;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      color: var(--swiss-accent);
     }
 
     .nav-actions {
@@ -120,269 +211,869 @@
       gap: 0.75rem;
     }
 
-    .pow-btn-sm {
+    /* Swiss Action Buttons (Sharp, Bold, Zero-Radius) */
+    .swiss-btn-sm {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.45rem 0.85rem;
-      background: var(--pow-surface);
-      color: var(--pow-text);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius-btn);
-      font-family: var(--pow-font-display);
-      font-size: 0.8rem;
-      font-weight: 600;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.5rem 0.9rem;
+      background: var(--swiss-surface);
+      color: var(--swiss-text);
+      border: var(--swiss-rule);
+      border-radius: 0px;
+      font-family: var(--swiss-font-display);
+      font-size: 0.785rem;
+      font-weight: 700;
       text-decoration: none;
       cursor: pointer;
-      transition: background 120ms ease, transform 90ms ease;
+      user-select: none;
+      transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
     }
 
-    .pow-btn-sm:hover {
-      background: var(--pow-surface-hover);
-      transform: translateY(-1px);
+    .swiss-btn-sm:hover {
+      background: var(--swiss-text);
+      color: var(--swiss-bg);
     }
 
-    /* Hero Section (100svh safe viewport) */
-    .pow-hero {
+    .swiss-btn-install-header {
+      background: var(--swiss-accent);
+      color: var(--swiss-accent-text);
+      border-color: var(--swiss-accent);
+    }
+
+    .swiss-btn-install-header:hover {
+      background: var(--swiss-text);
+      color: var(--swiss-bg);
+      border-color: var(--swiss-text);
+    }
+
+    /* Mobile Hamburger Button */
+    .nav-hamburger-btn {
+      display: none;
+      width: 36px;
+      height: 36px;
+      background: var(--swiss-surface);
+      color: var(--swiss-text);
+      border: var(--swiss-rule);
+      border-radius: 0px !important;
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+      transition: background 120ms ease;
+    }
+
+    .nav-hamburger-btn:hover {
+      background: var(--swiss-surface-hover);
+    }
+
+    /* =========================================================
+       MOBILE NAVIGATION DRAWER OVERLAY
+       ========================================================= */
+    .mobile-nav-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 200ms ease;
+    }
+
+    .mobile-nav-backdrop.open {
+      display: block;
+      opacity: 1;
+    }
+
+    .mobile-nav-drawer {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: 300px;
+      max-width: 86vw;
+      height: 100vh;
+      background: var(--swiss-surface);
+      border-left: var(--swiss-rule);
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      transition: right 240ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-nav-drawer.open {
+      right: 0;
+    }
+
+    .mobile-drawer-header {
+      padding: 1.25rem 1.25rem 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: var(--swiss-rule);
+    }
+
+    .mobile-drawer-tag {
+      font-family: var(--swiss-font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--swiss-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .mobile-drawer-close-btn {
+      width: 32px;
+      height: 32px;
+      background: var(--swiss-surface);
+      color: var(--swiss-text);
+      border: var(--swiss-rule);
+      border-radius: 0px !important;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-drawer-body {
+      padding: 1.25rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 1rem;
+      color: var(--swiss-text);
+      text-decoration: none;
+      font-family: var(--swiss-font-display);
+      font-size: 0.9rem;
+      font-weight: 700;
+      background: var(--swiss-surface);
+      border: var(--swiss-rule);
+      border-radius: 0px;
+      min-height: 44px;
+      transition: background 120ms ease, color 120ms ease;
+    }
+
+    .mobile-nav-link:hover {
+      background: var(--swiss-text);
+      color: var(--swiss-bg);
+    }
+
+    .mobile-drawer-footer {
+      padding: 1.25rem;
+      border-top: var(--swiss-rule);
+    }
+
+    .mobile-drawer-cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.85rem;
+      background: var(--swiss-accent);
+      color: var(--swiss-accent-text);
+      border: var(--swiss-rule);
+      border-radius: 0px;
+      font-family: var(--swiss-font-display);
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-decoration: none;
+      min-height: 46px;
+    }
+
+    /* =========================================================
+       HERO SECTION (100svh safe viewport — SWISS SCALE)
+       ========================================================= */
+    .swiss-hero {
       min-height: calc(100svh - 60px);
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
-      text-align: center;
-      padding: 3.5rem 1.25rem 2.5rem 1.25rem;
-      max-width: 1080px;
+      padding: 4rem 2rem 3rem 2rem;
+      max-width: 1160px;
       margin: 0 auto;
+      border-bottom: var(--swiss-rule);
     }
 
-    .hero-sticker-badge {
+    .hero-editorial-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      background: var(--pow-well-bg);
-      color: var(--pow-accent);
-      border: var(--pow-border);
-      border-radius: 999px;
-      padding: 0.35rem 0.95rem;
-      font-family: var(--pow-font-mono);
-      font-size: 0.785rem;
+      gap: 0.65rem;
+      background: var(--swiss-well-bg);
+      color: var(--swiss-accent);
+      border: var(--swiss-rule);
+      border-radius: 0px;
+      padding: 0.35rem 0.85rem;
+      font-family: var(--swiss-font-mono);
+      font-size: 0.8rem;
       font-weight: 700;
       text-transform: uppercase;
+      letter-spacing: 0.08em;
       margin-bottom: 1.5rem;
     }
 
     .hero-title {
-      font-family: var(--pow-font-display);
-      font-size: clamp(2rem, 5.5vw, 3.6rem);
+      font-family: var(--swiss-font-display);
+      font-size: clamp(2.35rem, 6.2vw, 4.4rem);
       font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.25rem;
-      max-width: 920px;
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+      margin-bottom: 1.5rem;
+      max-width: 1020px;
+      color: var(--swiss-text);
+      text-transform: uppercase;
+    }
+
+    .hero-title span.accent-text {
+      color: var(--swiss-accent);
+    }
+
+    .hero-grid-split {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 3rem;
+      width: 100%;
+      align-items: flex-start;
+      margin-bottom: 2.5rem;
     }
 
     .hero-desc {
-      font-size: clamp(0.95rem, 2vw, 1.15rem);
-      color: var(--pow-text-muted);
-      max-width: 740px;
-      margin-bottom: 2rem;
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      color: var(--swiss-text-muted);
+      line-height: 1.62;
+      max-width: 720px;
+    }
+
+    .hero-asymmetric-quote {
+      border-left: 3px solid var(--swiss-accent);
+      padding-left: 1.25rem;
+      font-family: var(--swiss-font-mono);
+      font-size: 0.825rem;
+      color: var(--swiss-text);
       line-height: 1.6;
     }
 
     /* Single-Line Inline Command Pill ("Sejajarin") */
-    .pow-command-pill {
+    .swiss-command-pill {
       display: inline-flex;
       flex-direction: row;
       align-items: center;
-      justify-content: center;
-      gap: 0.65rem;
-      background: var(--pow-well-bg);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius-btn);
-      padding: 0.4rem 0.5rem 0.4rem 1.1rem;
+      gap: 0.75rem;
+      background: var(--swiss-well-bg);
+      border: var(--swiss-rule);
+      border-radius: 0px;
+      padding: 0.5rem 0.6rem 0.5rem 1.25rem;
       max-width: 100%;
       box-sizing: border-box;
       margin-bottom: 2rem;
     }
 
-    .pow-prompt {
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      color: var(--pow-accent);
+    .command-prompt-glyph {
+      font-family: var(--swiss-font-mono);
+      font-weight: 800;
+      color: var(--swiss-accent);
       flex-shrink: 0;
       line-height: 1;
-      font-size: 0.9rem;
+      font-size: 1rem;
       user-select: none;
     }
 
-    .pow-code {
-      font-family: var(--pow-font-mono);
-      font-size: clamp(0.72rem, 3.2vw, 0.875rem);
-      font-weight: 600;
-      color: var(--pow-text);
+    .command-code-text {
+      font-family: var(--swiss-font-mono);
+      font-size: clamp(0.72rem, 3vw, 0.875rem);
+      font-weight: 700;
+      color: var(--swiss-text);
       white-space: nowrap;
       overflow-x: auto;
       scrollbar-width: none;
       line-height: 1;
       user-select: all;
+      min-width: 0 !important;
+      flex: 1 1 auto !important;
     }
 
-    .pow-code::-webkit-scrollbar {
+    .command-code-text::-webkit-scrollbar {
       display: none;
     }
 
-    .pow-copy-btn {
+    .command-copy-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      background: var(--pow-surface);
-      color: var(--pow-text);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius-btn);
-      padding: 0.4rem 0.8rem;
-      font-family: var(--pow-font-display);
+      gap: 0.4rem;
+      background: var(--swiss-surface);
+      color: var(--swiss-text);
+      border: var(--swiss-rule);
+      border-radius: 0px;
+      padding: 0.45rem 0.85rem;
+      font-family: var(--swiss-font-display);
       font-size: 0.75rem;
-      font-weight: 700;
+      font-weight: 800;
       cursor: pointer;
       flex-shrink: 0;
       line-height: 1;
-      transition: background 120ms ease;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      transition: background 120ms ease, color 120ms ease;
     }
 
-    .pow-copy-btn:hover {
-      background: var(--pow-surface-hover);
+    .command-copy-btn:hover {
+      background: var(--swiss-text);
+      color: var(--swiss-bg);
     }
 
     /* Hero CTA Group */
     .hero-btn-group {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2.75rem;
+      gap: 1.25rem;
+      margin-bottom: 3rem;
       flex-wrap: wrap;
     }
 
-    .pow-btn {
+    .swiss-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      font-family: var(--pow-font-display);
-      font-weight: 700;
-      font-size: 0.925rem;
-      border: var(--pow-border);
-      border-radius: var(--pow-radius-btn);
+      gap: 0.6rem;
+      padding: 0.9rem 1.85rem;
+      font-family: var(--swiss-font-display);
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      border: var(--swiss-rule);
+      border-radius: 0px;
       cursor: pointer;
-      transition: transform 100ms ease, background 120ms ease;
       text-decoration: none;
+      user-select: none;
+      transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
     }
 
-    .pow-btn-primary {
-      background: var(--pow-accent);
-      color: #ffffff;
-      border-color: var(--pow-accent);
+    .swiss-btn-primary {
+      background: var(--swiss-text);
+      color: var(--swiss-bg);
+      border-color: var(--swiss-text);
     }
 
-    .pow-btn-secondary {
-      background: var(--pow-surface);
-      color: var(--pow-text);
+    .swiss-btn-primary:hover {
+      background: var(--swiss-accent);
+      color: var(--swiss-accent-text);
+      border-color: var(--swiss-accent);
     }
 
-    .pow-btn:hover {
-      transform: translateY(-2px);
+    .swiss-btn-secondary {
+      background: transparent;
+      color: var(--swiss-text);
+      border-color: var(--swiss-text);
     }
 
-    /* 4-Stat Strip */
-    .pow-stat-strip {
+    .swiss-btn-secondary:hover {
+      background: var(--swiss-well-bg);
+      border-color: var(--swiss-accent);
+      color: var(--swiss-accent);
+    }
+
+    /* 4-Stat Editorial Strip */
+    .swiss-stat-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
       width: 100%;
-      max-width: 960px;
+      border-top: var(--swiss-rule);
+      border-left: var(--swiss-rule);
     }
 
-    .stat-box {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius);
-      padding: 1rem 0.85rem;
-      text-align: center;
-      box-shadow: var(--pow-shadow);
+    .stat-editorial-box {
+      border-right: var(--swiss-rule);
+      border-bottom: var(--swiss-rule);
+      padding: 1.25rem 1.15rem;
+      background: var(--swiss-surface);
+      text-align: left;
+    }
+
+    .stat-index {
+      font-family: var(--swiss-font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--swiss-accent);
+      margin-bottom: 0.35rem;
     }
 
     .stat-val {
-      font-family: var(--pow-font-display);
-      font-size: 1.5rem;
+      font-family: var(--swiss-font-display);
+      font-size: 1.65rem;
       font-weight: 800;
-      line-height: 1.1;
+      line-height: 1.15;
       margin-bottom: 0.25rem;
-      color: var(--pow-text);
+      color: var(--swiss-text);
+      letter-spacing: -0.02em;
     }
 
     .stat-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--pow-text-muted);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--swiss-text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
     }
 
-    /* Content Sections */
-    .pow-section {
-      max-width: 1080px;
-      margin: 4.5rem auto;
-      padding: 0 1.25rem;
+    /* =========================================================
+       SECTION COMMON STYLES (SWISS HAALINE RULES)
+       ========================================================= */
+    .swiss-section {
+      max-width: 1160px;
+      margin: 5rem auto;
+      padding: 0 2rem;
     }
 
     .section-header {
-      margin-bottom: 2.25rem;
+      margin-bottom: 2.75rem;
+      border-top: var(--swiss-rule);
+      padding-top: 1.75rem;
     }
 
     .section-badge {
       display: inline-block;
-      font-family: var(--pow-font-mono);
+      font-family: var(--swiss-font-mono);
       font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
-      padding: 0.25rem 0.65rem;
-      background: var(--pow-well-bg);
-      color: var(--pow-accent);
-      border: var(--pow-border);
-      border-radius: 4px;
-      margin-bottom: 0.75rem;
+      letter-spacing: 0.06em;
+      color: var(--swiss-accent);
+      margin-bottom: 0.65rem;
     }
 
     .section-title {
-      font-family: var(--pow-font-display);
-      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      font-family: var(--swiss-font-display);
+      font-size: clamp(1.75rem, 4.2vw, 2.6rem);
       font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      color: var(--swiss-text);
+      text-transform: uppercase;
     }
 
     .section-desc {
-      font-size: 1rem;
-      color: var(--pow-text-muted);
-      max-width: 680px;
-      margin-top: 0.5rem;
-      line-height: 1.6;
+      font-size: 1.05rem;
+      color: var(--swiss-text-muted);
+      max-width: 760px;
+      margin-top: 0.65rem;
+      line-height: 1.62;
     }
 
-    /* Tabbed Installation Card */
-    .pow-card {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      box-shadow: var(--pow-shadow);
-      border-radius: var(--pow-radius);
+    /* =========================================================
+       STUDIO LAB INTERACTIVE SHOWCASE (#playground)
+       ========================================================= */
+    .studio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .editorial-module {
+      background: var(--swiss-surface);
+      border: var(--swiss-rule);
+      border-radius: 0px;
+      padding: 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      box-sizing: border-box;
+      min-width: 0;
+    }
+
+    .module-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      border-bottom: var(--swiss-rule);
+      padding-bottom: 0.85rem;
+      gap: 0.75rem;
+    }
+
+    .module-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      min-width: 0;
+    }
+
+    .module-title {
+      font-family: var(--swiss-font-display);
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      white-space: nowrap;
+      text-overflow: ellipsis;
       overflow: hidden;
+    }
+
+    .module-tag {
+      font-family: var(--swiss-font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.15rem 0.5rem;
+      background: var(--swiss-well-bg);
+      border: var(--swiss-rule);
+      color: var(--swiss-accent);
+      flex-shrink: 0;
+    }
+
+    /* Module 1: Typographic Scale & Modular Rhythm */
+    .calibrator-control-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+    }
+
+    .calibrator-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.825rem;
+      font-weight: 700;
+      font-family: var(--swiss-font-display);
+      text-transform: uppercase;
+    }
+
+    .calibrator-badge {
+      font-family: var(--swiss-font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--swiss-accent);
+    }
+
+    .swiss-slider {
+      width: 100%;
+      height: 6px;
+      background: var(--swiss-well-bg);
+      border: var(--swiss-rule);
+      border-radius: 0px;
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .swiss-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 0px; /* Sharp */
+      background: var(--swiss-text);
+      border: 1px solid var(--swiss-bg);
+      cursor: ew-resize;
+    }
+
+    .swiss-slider::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      border-radius: 0px;
+      background: var(--swiss-text);
+      border: 1px solid var(--swiss-bg);
+      cursor: ew-resize;
+    }
+
+    /* Live Editorial Preview Canvas */
+    .editorial-preview-stage {
+      background: var(--swiss-well-bg);
+      border: var(--swiss-rule);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      position: relative;
+    }
+
+    .stage-section-marker {
+      font-family: var(--swiss-font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--swiss-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-bottom: 1px solid var(--swiss-accent);
+      padding-bottom: 0.25rem;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .stage-headline {
+      font-family: var(--swiss-font-display);
+      font-size: 2.4rem;
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.035em;
+      color: var(--swiss-text);
+      text-transform: uppercase;
+      transition: font-size 80ms ease, letter-spacing 80ms ease;
+    }
+
+    .stage-pullquote {
+      font-size: 0.875rem;
+      color: var(--swiss-text-muted);
+      line-height: 1.6;
+      border-left: 2px solid var(--swiss-text);
+      padding-left: 0.85rem;
+    }
+
+    .token-preview-code {
+      background: var(--swiss-surface);
+      border: var(--swiss-rule);
+      padding: 0.65rem 0.85rem;
+      font-family: var(--swiss-font-mono);
+      font-size: 0.725rem;
+      color: var(--swiss-accent);
+      line-height: 1.5;
+      overflow-x: auto;
+    }
+
+    /* Module 2: Colorway Selector */
+    .colorway-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+
+    .colorway-btn {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 0.85rem;
+      background: var(--swiss-surface);
+      border: var(--swiss-rule);
+      border-radius: 0px;
+      font-family: var(--swiss-font-display);
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      color: var(--swiss-text);
+      transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
+    }
+
+    .colorway-btn:hover {
+      background: var(--swiss-surface-hover);
+    }
+
+    .colorway-btn.active {
+      border: 2px solid var(--swiss-text);
+      background: var(--swiss-well-bg);
+    }
+
+    .color-swatch-box {
+      width: 16px;
+      height: 16px;
+      border-radius: 0px;
+      border: 1px solid var(--swiss-text);
+      flex-shrink: 0;
+    }
+
+    /* Module 3: 12-Column Publication Matrix Table */
+    .filter-tabs-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      border-bottom: var(--swiss-rule-subtle);
+      padding-bottom: 0.75rem;
+    }
+
+    .filter-tab-btn {
+      background: transparent;
+      border: var(--swiss-rule);
+      border-radius: 0px;
+      padding: 0.35rem 0.75rem;
+      font-family: var(--swiss-font-mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--swiss-text-muted);
+      text-transform: uppercase;
+      transition: all 120ms ease;
+    }
+
+    .filter-tab-btn:hover {
+      color: var(--swiss-text);
+      border-color: var(--swiss-text);
+    }
+
+    .filter-tab-btn.active {
+      background: var(--swiss-text);
+      color: var(--swiss-bg);
+      border-color: var(--swiss-text);
+    }
+
+    .editorial-table-bay {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      border: var(--swiss-rule);
+      background: var(--swiss-surface);
+    }
+
+    .editorial-index-table {
+      width: 100%;
+      min-width: 500px;
+      border-collapse: collapse;
+      font-size: 0.825rem;
+      text-align: left;
+    }
+
+    .editorial-index-table th {
+      padding: 0.65rem 0.85rem;
+      background: var(--swiss-well-bg);
+      border-bottom: var(--swiss-rule);
+      font-family: var(--swiss-font-mono);
+      font-weight: 700;
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--swiss-text-muted);
+    }
+
+    .editorial-index-table td {
+      padding: 0.75rem 0.85rem;
+      border-bottom: var(--swiss-rule-subtle);
+      color: var(--swiss-text);
+    }
+
+    .editorial-index-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .index-numeral {
+      font-family: var(--swiss-font-mono);
+      font-weight: 800;
+      color: var(--swiss-accent);
+    }
+
+    .status-badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: var(--swiss-font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--swiss-accent);
+    }
+
+    .status-badge-live::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      background: var(--swiss-accent);
+      border-radius: 0px;
+    }
+
+    .action-toolbar-row {
+      display: flex;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .toolbar-action-btn {
+      padding: 0.55rem 0.95rem;
+      background: var(--swiss-surface);
+      color: var(--swiss-text);
+      border: var(--swiss-rule);
+      border-radius: 0px;
+      font-family: var(--swiss-font-display);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 120ms ease, color 120ms ease;
+    }
+
+    .toolbar-action-btn:hover {
+      background: var(--swiss-text);
+      color: var(--swiss-bg);
+    }
+
+    /* Module 4: Contrast Safety & Form Inputs */
+    .contrast-matrix-table {
+      width: 100%;
+      min-width: 480px;
+      border-collapse: collapse;
+      font-size: 0.785rem;
+    }
+
+    .contrast-matrix-table th {
+      text-align: left;
+      padding: 0.55rem 0.75rem;
+      background: var(--swiss-well-bg);
+      border-bottom: var(--swiss-rule);
+      font-family: var(--swiss-font-mono);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--swiss-text-muted);
+    }
+
+    .contrast-matrix-table td {
+      padding: 0.65rem 0.75rem;
+      border-bottom: var(--swiss-rule-subtle);
+      color: var(--swiss-text);
+    }
+
+    .badge-pass {
+      display: inline-block;
+      padding: 0.15rem 0.45rem;
+      background: var(--swiss-text);
+      color: var(--swiss-bg);
+      font-family: var(--swiss-font-mono);
+      font-weight: 800;
+      font-size: 0.68rem;
+    }
+
+    .swiss-input-group {
+      display: flex;
+      gap: 0.5rem;
+      width: 100%;
+    }
+
+    .swiss-text-input {
+      flex: 1;
+      padding: 0.65rem 0.85rem;
+      background: var(--swiss-surface);
+      color: var(--swiss-text);
+      border: var(--swiss-rule);
+      border-radius: 0px;
+      font-family: var(--swiss-font-mono);
+      font-size: 0.825rem;
+      outline: none;
+    }
+
+    .swiss-text-input:focus-visible {
+      outline: 2px solid var(--swiss-accent);
+      outline-offset: 1px;
+    }
+
+    /* =========================================================
+       INSTALLATION GUIDE SECTION (#install)
+       ========================================================= */
+    .installation-module {
+      background: var(--swiss-surface);
+      border: var(--swiss-rule);
+      border-radius: 0px;
+      overflow: hidden;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     .tab-header-strip {
       display: flex;
-      background: var(--pow-well-bg);
-      border-bottom: var(--pow-border);
+      background: var(--swiss-well-bg);
+      border-bottom: var(--swiss-rule);
       overflow-x: auto;
       scrollbar-width: none;
     }
@@ -395,29 +1086,30 @@
       padding: 0.85rem 1.4rem;
       background: transparent;
       border: none;
-      border-right: var(--pow-border);
-      font-family: var(--pow-font-display);
+      border-right: var(--swiss-rule);
+      font-family: var(--swiss-font-display);
       font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--pow-text-muted);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--swiss-text-muted);
       cursor: pointer;
       white-space: nowrap;
       transition: background 120ms ease, color 120ms ease;
     }
 
     .tab-switch-btn:hover {
-      background: var(--pow-surface-hover);
-      color: var(--pow-text);
+      color: var(--swiss-text);
     }
 
     .tab-switch-btn.active {
-      background: var(--pow-surface);
-      color: var(--pow-accent);
-      border-bottom: 2px solid var(--pow-accent);
+      background: var(--swiss-surface);
+      color: var(--swiss-accent);
+      border-bottom: 2px solid var(--swiss-accent);
     }
 
     .tab-body {
-      padding: 1.75rem;
+      padding: 2rem;
       display: none;
     }
 
@@ -426,978 +1118,1094 @@
     }
 
     .install-step-title {
-      font-family: var(--pow-font-display);
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 0.65rem;
+      font-family: var(--swiss-font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
     }
 
     .install-step-desc {
-      font-size: 0.9rem;
-      color: var(--pow-text-muted);
-      margin-bottom: 1.25rem;
+      font-size: 0.925rem;
+      color: var(--swiss-text-muted);
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
     }
 
-    /* Terminal Console Window */
-    .pow-terminal {
-      background: #0d1117;
-      color: #f0f6fc;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 8px;
+    /* Terminal Console Window (Sharp Monolith) */
+    .swiss-terminal {
+      background: #0C0D0E;
+      color: #E2E8F0;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 0px;
       overflow: hidden;
       margin-bottom: 1.5rem;
     }
 
-    .terminal-topbar {
-      background: #161b22;
-      padding: 0.65rem 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    .terminal-titlebar {
+      background: #16181A;
+      padding: 0.6rem 1rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .terminal-dots {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
     }
 
     .dot {
       width: 10px;
       height: 10px;
-      border-radius: 50%;
+      border-radius: 50% !important;
     }
 
-    .dot.red { background: #ff5f56; }
-    .dot.yellow { background: #ffbd2e; }
-    .dot.green { background: #27c93f; }
+    .dot.red { background: #EF4444; }
+    .dot.yellow { background: #FFAE00; }
+    .dot.green { background: #10B981; }
 
     .terminal-label {
-      font-family: var(--pow-font-mono);
-      font-size: 0.75rem;
-      color: #8b949e;
-      font-weight: 600;
+      font-family: var(--swiss-font-mono);
+      font-size: 0.72rem;
+      color: #94A3B8;
+      text-transform: uppercase;
+    }
+
+    .terminal-copy-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.35rem 0.65rem;
+      background: rgba(255, 255, 255, 0.08);
+      color: #E2E8F0;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 0px;
+      font-family: var(--swiss-font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      cursor: pointer;
     }
 
     .terminal-content {
-      padding: 1.15rem;
-      font-family: var(--pow-font-mono);
+      padding: 1.25rem;
+      font-family: var(--swiss-font-mono);
       font-size: 0.85rem;
       line-height: 1.6;
       overflow-x: auto;
     }
 
-    .terminal-line {
-      display: flex;
-      align-items: baseline;
-      gap: 0.75rem;
-      margin-bottom: 0.45rem;
-    }
-
-    .terminal-line:last-child {
-      margin-bottom: 0;
-    }
-
-    .line-p {
-      color: var(--pow-accent);
+    .terminal-content .cmd {
+      color: #38BDF8;
       font-weight: 700;
-      user-select: none;
-      flex-shrink: 0;
     }
 
-    .line-cmd {
-      color: #f0f6fc;
-      word-break: break-all;
+    .terminal-content .comment {
+      color: #64748B;
     }
 
-    .line-comment {
-      color: #8b949e;
-      font-style: italic;
-    }
-
-    /* Bento Demo Specifics */
-    .bento-demo-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 16px;
-    }
-
-    .bento-tile {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius);
-      padding: 1.75rem;
-      box-shadow: var(--pow-shadow);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .bento-tag {
-      display: inline-block;
-      font-size: 0.725rem;
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      color: var(--pow-accent);
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-    }
-
-    /* Accordion / FAQ */
-    .pow-faq-item {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      box-shadow: var(--pow-shadow);
-      border-radius: var(--pow-radius);
-      margin-bottom: 1rem;
-      overflow: hidden;
-    }
-
-    .pow-faq-header {
-      padding: 1rem 1.25rem;
-      font-family: var(--pow-font-display);
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      user-select: none;
-      background: var(--pow-surface);
-      transition: background 120ms ease;
-    }
-
-    .pow-faq-header:hover {
-      background: var(--pow-surface-hover);
-    }
-
-    .faq-arrow {
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      transition: transform 180ms ease;
-    }
-
-    .pow-faq-item.open .faq-arrow {
-      transform: rotate(90deg);
-    }
-
-    .pow-faq-body {
-      padding: 0 1.25rem 1.25rem 1.25rem;
-      font-size: 0.875rem;
-      color: var(--pow-text-muted);
-      line-height: 1.6;
-      display: none;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 1rem;
-    }
-
-    .pow-faq-item.open .pow-faq-body {
-      display: block;
-    }
-
-    /* Token Specification Table */
+    /* =========================================================
+       DESIGN TOKENS CHEATSHEET SECTION (#tokens)
+       ========================================================= */
     .token-table-wrap {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      box-shadow: var(--pow-shadow);
-      border-radius: var(--pow-radius);
       overflow-x: auto;
+      border: var(--swiss-rule);
+      background: var(--swiss-surface);
     }
 
-    .pow-table {
+    .swiss-table {
       width: 100%;
       border-collapse: collapse;
+      font-size: 0.85rem;
       text-align: left;
     }
 
-    .pow-table th, .pow-table td {
-      padding: 0.9rem 1.25rem;
-      border-bottom: var(--pow-border);
-      font-size: 0.85rem;
-    }
-
-    .pow-table th {
-      background: var(--pow-well-bg);
-      font-family: var(--pow-font-display);
-      font-weight: 700;
+    .swiss-table th {
+      background: var(--swiss-well-bg);
+      padding: 0.95rem 1.25rem;
+      font-family: var(--swiss-font-display);
+      font-weight: 800;
+      font-size: 0.785rem;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      color: var(--swiss-text-muted);
+      border-bottom: var(--swiss-rule);
     }
 
-    .pow-table tr:last-child td {
+    .swiss-table td {
+      padding: 0.95rem 1.25rem;
+      border-bottom: var(--swiss-rule-subtle);
+      color: var(--swiss-text);
+    }
+
+    .swiss-table tr:last-child td {
       border-bottom: none;
     }
 
     .token-code {
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      color: var(--pow-accent);
-    }
-
-    /* Footer (Balanced 2-column mobile architecture) */
-    .pow-footer {
-      background: var(--pow-surface);
-      border-top: var(--pow-border);
-      margin-top: 5rem;
-      padding: 3rem 1.25rem 2rem 1.25rem;
-    }
-
-    .footer-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 2.5rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .footer-brand h4 {
-      font-family: var(--pow-font-display);
-      font-size: 1.2rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-brand p {
-      font-size: 0.85rem;
-      color: var(--pow-text-muted);
-      max-width: 380px;
-      line-height: 1.6;
-    }
-
-    .footer-col h5 {
-      font-family: var(--pow-font-display);
+      font-family: var(--swiss-font-mono);
       font-size: 0.8rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 1rem;
-      color: var(--pow-text);
+      color: var(--swiss-accent);
     }
 
-    .footer-col ul {
-      list-style: none;
+    /* =========================================================
+       FAQ ACCORDION SECTION (#faq)
+       ========================================================= */
+    .swiss-faq-item {
+      background: var(--swiss-surface);
+      border: var(--swiss-rule);
+      margin-bottom: -1px; /* Shared hairline border */
+      overflow: hidden;
+      transition: background 140ms ease;
     }
 
-    .footer-col ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-col ul a {
-      color: var(--pow-text-muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: color 90ms ease;
-    }
-
-    .footer-col ul a:hover {
-      color: var(--pow-accent);
-    }
-
-    .footer-bottom {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding-top: 1.5rem;
-      border-top: var(--pow-border);
+    .swiss-faq-header {
+      padding: 1.25rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      font-size: 0.8rem;
-      color: var(--pow-text-muted);
+      cursor: pointer;
+      font-family: var(--swiss-font-display);
+      font-weight: 800;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      user-select: none;
     }
 
-    /* Toast Notification */
-    .pow-toast {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: var(--pow-surface);
-      color: var(--pow-text);
-      border: var(--pow-border);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-      padding: 0.65rem 1.2rem;
-      border-radius: var(--pow-radius-btn);
-      font-family: var(--pow-font-display);
-      font-size: 0.85rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 150ms ease, transform 150ms ease;
-      pointer-events: none;
-      z-index: 1000;
+    .swiss-faq-header:hover {
+      background: var(--swiss-well-bg);
     }
 
-    .pow-toast.show {
-      opacity: 1;
-      transform: translateY(0);
+    .faq-icon-arrow {
+      transition: transform 180ms ease;
+      color: var(--swiss-accent);
+      flex-shrink: 0;
+    }
+
+    .swiss-faq-item.open .faq-icon-arrow {
+      transform: rotate(90deg);
+    }
+
+    .swiss-faq-body {
+      padding: 0 1.5rem 1.35rem 1.5rem;
+      color: var(--swiss-text-muted);
+      font-size: 0.925rem;
+      line-height: 1.65;
+      display: none;
+      border-top: var(--swiss-rule-subtle);
+      padding-top: 1rem;
+    }
+
+    .swiss-faq-item.open .swiss-faq-body {
+      display: block;
     }
 
     /* =========================================================
-       RESPONSIVE BREAKPOINTS (FLUID & COMPACT MOBILE)
+       SITE FOOTER
        ========================================================= */
-    @media (max-width: 768px) {
-      .pow-nav { padding: 0.65rem 1rem; }
-      .nav-title { font-size: 0.95rem; }
-      .nav-tag-badge { display: none; }
-      
-      .pow-hero { padding: 2.5rem 1rem 1.5rem 1rem; }
-      .hero-title { font-size: clamp(1.6rem, 5.5vw, 2.3rem); }
-      .hero-desc { font-size: 0.9rem; margin-bottom: 1.5rem; }
-
-      .hero-btn-group { flex-direction: column; width: 100%; gap: 0.65rem; }
-      .pow-btn { width: 100%; }
-
-      .pow-stat-strip { grid-template-columns: repeat(2, 1fr); gap: 0.65rem; }
-      .stat-val { font-size: 1.35rem; }
-
-      .bento-demo-grid { grid-template-columns: 1fr; }
-
-      .footer-inner {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.75rem 1.25rem;
-      }
-      .footer-brand {
-        grid-column: 1 / -1;
-        padding-bottom: 1rem;
-        border-bottom: var(--pow-border);
-      }
-      .footer-bottom {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 1rem;
-      }
+    .swiss-footer {
+      background: var(--swiss-surface);
+      border-top: var(--swiss-rule);
+      padding: 4.5rem 2rem 2.5rem 2rem;
+      margin-top: 6rem;
     }
 
-    @media (max-width: 480px) {
-      .hero-title { font-size: 1.45rem; line-height: 1.18; }
-      .hero-desc { font-size: 0.825rem; }
-      .pow-stat-strip { grid-template-columns: 1fr 1fr; gap: 0.45rem; }
-      .stat-box { padding: 0.75rem 0.5rem; }
-      .stat-val { font-size: 1.2rem; }
-      .stat-label { font-size: 0.65rem; }
-
-      .section-title { font-size: 1.3rem; }
-      .section-desc { font-size: 0.825rem; }
-
-      .tab-body { padding: 1rem; }
-      .terminal-content { font-size: 0.75rem; padding: 0.85rem; }
-
-      .pow-command-pill {
-        gap: 0.4rem;
-        padding: 0.3rem 0.35rem 0.3rem 0.75rem;
-      }
-      .pow-copy-btn {
-        padding: 0.35rem 0.6rem;
-        font-size: 0.7rem;
-      }
+    .footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3.5rem;
+      margin-bottom: 3.5rem;
     }
 
-    /* --- Mobile Hamburger & Drawer Navigation --- */
-    .nav-hamburger-btn {
-      display: none;
+    .footer-brand h4 {
+      font-family: var(--swiss-font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-brand p {
+      color: var(--swiss-text-muted);
+      font-size: 0.875rem;
+      line-height: 1.65;
+      max-width: 380px;
+    }
+
+    .footer-col h5 {
+      font-family: var(--swiss-font-display);
+      font-size: 0.825rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1.25rem;
+      color: var(--swiss-text);
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .footer-col a {
+      color: var(--swiss-text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 120ms ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--swiss-accent);
+    }
+
+    .footer-bottom {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding-top: 1.75rem;
+      border-top: var(--swiss-rule-subtle);
+      display: flex;
       align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: var(--pow-radius-sm, 6px);
-      background: var(--pow-surface-elevated, #FFFFFF);
-      border: var(--pow-border, 1px solid #CBD5E1);
-      color: var(--pow-text, #0F172A);
-      cursor: pointer;
-      transition: all 120ms ease;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--swiss-text-muted);
     }
 
-    .nav-hamburger-btn:hover {
-      border-color: var(--pow-accent, #3B82F6);
-      color: var(--pow-accent, #3B82F6);
-    }
-
-    .mobile-nav-backdrop {
+    /* =========================================================
+       TOAST NOTIFICATION
+       ========================================================= */
+    .swiss-toast {
       position: fixed;
-      inset: 0;
-      background: rgba(10, 12, 16, 0.6);
-      -webkit-backdrop-filter: blur(4px);
-      backdrop-filter: blur(4px);
-      z-index: 998;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--swiss-text);
+      color: var(--swiss-bg);
+      border: 1px solid var(--swiss-text);
+      border-radius: 0px;
+      padding: 0.75rem 1.25rem;
+      font-family: var(--swiss-font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      z-index: 2000;
+      transform: translateY(100px);
       opacity: 0;
       pointer-events: none;
-      transition: opacity 200ms ease;
+      transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease;
     }
 
-    .mobile-nav-backdrop.open {
+    .swiss-toast.show {
+      transform: translateY(0);
       opacity: 1;
       pointer-events: auto;
     }
 
-    .mobile-nav-drawer {
-      position: fixed;
-      top: 0;
-      right: -320px;
-      width: min(300px, 86vw);
-      height: 100vh;
-      height: 100dvh;
-      z-index: 999;
-      background: var(--pow-surface-elevated, #FFFFFF);
-      border-left: var(--pow-border, 1px solid #CBD5E1);
-      box-shadow: -10px 0 35px rgba(0, 0, 0, 0.35);
-      display: flex;
-      flex-direction: column;
-      transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
-      padding: 1.25rem 1.25rem;
-      box-sizing: border-box;
-    }
+    /* =========================================================
+       RESPONSIVE BREAKPOINTS (DOWN TO 320PX STRICT ANTI-BLOAT)
+       ========================================================= */
+    @media (max-width: 900px) {
+      .swiss-nav {
+        padding: 0.65rem 1rem !important;
+      }
+      .nav-links.desktop-only,
+      .nav-actions .desktop-only {
+        display: none !important;
+      }
+      .nav-hamburger-btn {
+        display: inline-flex !important;
+        width: 36px !important;
+        height: 36px !important;
+        flex-shrink: 0 !important;
+      }
+      .nav-tag-badge {
+        display: none !important;
+      }
+      #themeLabel {
+        display: none !important;
+      }
+      #themeToggleBtn {
+        padding: 0.5rem !important;
+        min-width: 36px !important;
+        height: 36px !important;
+        justify-content: center !important;
+        flex-shrink: 0 !important;
+      }
 
-    .mobile-nav-drawer.open {
-      transform: translateX(-320px);
-    }
+      .swiss-hero {
+        padding: 2.5rem 1rem 2rem 1rem !important;
+        min-height: auto !important;
+      }
+      .hero-title {
+        font-size: clamp(1.6rem, 5.5vw, 2.6rem) !important;
+        line-height: 1.15 !important;
+      }
+      .hero-grid-split {
+        grid-template-columns: 1fr !important;
+        gap: 1.5rem !important;
+      }
 
-    .mobile-drawer-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-bottom: 0.85rem;
-      border-bottom: 1px solid var(--pow-border, #CBD5E1);
-      margin-bottom: 1.25rem;
-    }
+      .swiss-stat-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+      }
 
-    .style-drawer-tag {
-      font-family: var(--pow-font-mono, monospace);
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--pow-accent, #3B82F6);
-    }
+      .swiss-section {
+        padding: 0 1rem !important;
+        margin: 3rem auto !important;
+      }
 
-    .mobile-drawer-close-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 4px;
-      background: var(--pow-surface, #F8FAFC);
-      border: var(--pow-border, 1px solid #CBD5E1);
-      color: var(--pow-text, #0F172A);
-      cursor: pointer;
-    }
+      .studio-grid {
+        grid-template-columns: minmax(0, 1fr) !important;
+        gap: 1.5rem !important;
+      }
 
-    .mobile-drawer-body {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      flex: 1;
-      overflow-y: auto;
-    }
+      .editorial-module {
+        padding: 1.25rem 1rem !important;
+      }
 
-    .mobile-nav-link {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      min-height: 44px;
-      padding: 0.65rem 0.85rem;
-      border-radius: var(--pow-radius-sm, 6px);
-      background: var(--pow-surface, #F8FAFC);
-      border: var(--pow-border, 1px solid #CBD5E1);
-      color: var(--pow-text, #0F172A);
-      text-decoration: none;
-      font-family: var(--pow-font-sans, inherit);
-      font-weight: 600;
-      font-size: 0.85rem;
-      transition: all 120ms ease;
-    }
+      .hero-btn-group {
+        flex-direction: column !important;
+        width: 100% !important;
+        gap: 0.75rem !important;
+      }
+      .swiss-btn {
+        width: 100% !important;
+      }
 
-    .mobile-nav-link:hover {
-      border-color: var(--pow-accent, #3B82F6);
-      color: var(--pow-accent, #3B82F6);
-      transform: translateX(3px);
-    }
-
-    .mobile-drawer-footer {
-      padding-top: 1rem;
-      border-top: 1px solid var(--pow-border, #CBD5E1);
-    }
-
-    .mobile-drawer-cta-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      width: 100%;
-      min-height: 44px;
-      padding: 0.75rem 1rem;
-      background: var(--pow-accent, #3B82F6);
-      color: #FFFFFF;
-      border-radius: var(--pow-radius-btn, 6px);
-      font-family: var(--pow-font-sans, inherit);
-      font-weight: 700;
-      font-size: 0.85rem;
-      text-decoration: none;
-    }
-
-    /* Strict 320px Responsive Baseline & Anti-Bloat Fluid Typography */
-    @media (max-width: 768px) {
-      .pow-nav { padding: 0.65rem 1rem !important; }
-      .nav-actions .desktop-only { display: none !important; }
-      .nav-hamburger-btn { display: inline-flex !important; }
-      .nav-tag-badge { display: none !important; }
+      .footer-inner {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 2rem 1.25rem !important;
+      }
+      .footer-brand {
+        grid-column: 1 / -1 !important;
+        padding-bottom: 1.25rem !important;
+        border-bottom: var(--swiss-rule-subtle) !important;
+      }
+      .footer-bottom {
+        flex-direction: column-reverse !important;
+        text-align: center !important;
+        gap: 1rem !important;
+      }
     }
 
     @media (max-width: 480px) {
-      html { font-size: 15px; }
-      body { overflow-x: hidden; }
-      .nav-title { font-size: 0.95rem; }
-      .pow-hero { padding: 2rem 0.75rem 1.25rem 0.75rem !important; }
-      .hero-title { font-size: clamp(1.35rem, 5.5vw, 1.75rem) !important; line-height: 1.25; margin-bottom: 0.85rem; }
-      .hero-desc { font-size: 0.85rem !important; line-height: 1.55; }
-      .pow-section { padding: 2.25rem 0.75rem !important; }
-      .section-title { font-size: clamp(1.2rem, 4.5vw, 1.45rem) !important; }
-      .section-desc { font-size: 0.85rem !important; }
+      html { font-size: 14.5px; }
+      .hero-title {
+        font-size: clamp(1.4rem, 4.8vw, 1.85rem) !important;
+      }
+      .section-title {
+        font-size: clamp(1.25rem, 4vw, 1.5rem) !important;
+      }
+      .colorway-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .tab-body {
+        padding: 1.25rem 0.85rem !important;
+      }
+      .footer-inner {
+        grid-template-columns: 1fr !important;
+        gap: 1.75rem !important;
+      }
     }
 
     @media (max-width: 360px) {
       html { font-size: 14px; }
-      .pow-nav { padding: 0.45rem 0.5rem !important; }
-      .pow-hero { padding: 1.5rem 0.5rem 1rem 0.5rem !important; }
-      .hero-title { font-size: 1.35rem !important; }
-      .pow-stat-strip { grid-template-columns: 1fr !important; }
-    }
-  
-    /* --- Strict 1:1 Circle Geometry Preservation (Anti-Oval) --- */
-    .avatar-circle,
-    .clay-avatar-frame,
-    .clay-circle-btn,
-    .track-play-btn,
-    .mix-floating-play,
-    .ctrl-circle-btn,
-    .nav-hamburger-btn,
-    .brut-hamburger-btn,
-    .mobile-drawer-close-btn,
-    .brand-logo-img,
-    .nav-logo-img,
-    .nav-logo-box,
-    .pipeline-icon-box,
-    .verify-icon-box,
-    .pod-cover-icon,
-    .metric-icon-squircle,
-    .color-swatch,
-    .dot,
-    .clay-dot,
-    .hero-badge-dot,
-    .live-dot-green,
-    .live-pulse-dot,
-    .legend-color-dot,
-    .status-dot,
-    .skeuo-led {
-      aspect-ratio: 1 / 1 !important;
-      flex-shrink: 0 !important;
-    }
-    img.avatar-circle,
-    img.brand-logo-img,
-    img.nav-logo-img {
-      object-fit: cover;
+      .swiss-stat-strip {
+        grid-template-columns: 1fr !important;
+      }
+      .stat-editorial-box {
+        padding: 0.85rem 0.65rem !important;
+      }
+      .hero-title {
+        font-size: 1.25rem !important;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation -->
-  <header class="pow-nav">
+  <!-- Top Navigation Header -->
+  <header class="swiss-nav">
     <a href="index.html" class="nav-brand-group">
       <div class="nav-logo-box">TE</div>
       <strong class="nav-title">Taste Engine</strong>
-      <span class="nav-tag-badge">Swiss / Editorial PoW</span>
+      <span class="nav-tag-badge">#10 SWISS / EDITORIAL</span>
     </a>
+
+    <!-- Desktop Nav Links -->
+    <nav class="nav-links desktop-only" aria-label="Desktop navigation">
+      <a href="#playground" class="nav-link">[01_STUDIO_LAB]</a>
+      <a href="#install" class="nav-link">[02_INSTALLATION]</a>
+      <a href="#tokens" class="nav-link">[03_TOKENS]</a>
+      <a href="#faq" class="nav-link">[04_FAQ]</a>
+    </nav>
+
     <div class="nav-actions">
-      <a href="index.html" class="pow-btn-sm desktop-only" title="Back to main gallery">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        <span>All 10 Styles</span>
+      <a href="index.html" class="swiss-btn-sm desktop-only" title="Back to main gallery">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>[ 10 STYLES ]</span>
       </a>
-      <button class="pow-btn-sm" id="themeToggleBtn" aria-label="Toggle theme">
-        <span id="themeLabel"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>LIGHT</span>
+      <a href="#install" class="swiss-btn-sm swiss-btn-install-header desktop-only" title="Install this style">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        <span>[ INSTALL ]</span>
+      </a>
+      <button class="swiss-btn-sm" id="themeToggleBtn" aria-label="Toggle paper/obsidian theme">
+        <svg id="themeIcon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <span id="themeLabel">[PAPER_LIGHT]</span>
       </button>
-      <button class="nav-hamburger-btn" id="navHamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" onclick="openMobileNav()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      <button class="nav-hamburger-btn" id="navHamburgerBtn" aria-label="Open mobile navigation menu" aria-expanded="false" onclick="openMobileNav()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
       </button>
     </div>
   </header>
 
-  <!-- Mobile Navigation Drawer Overlay (SWISS-EDITORIAL // GRID) -->
+  <!-- Mobile Navigation Drawer Overlay (SWISS-EDITORIAL // 12-COL GRID) -->
   <div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="closeMobileNav()"></div>
-  <div class="mobile-nav-drawer" id="mobileNavDrawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+  <div class="mobile-nav-drawer" id="mobileNavDrawer" role="dialog" aria-modal="true" aria-label="Editorial Navigation">
     <div class="mobile-drawer-header">
-      <span class="style-drawer-tag">SWISS-EDITORIAL // GRID</span>
-      <button class="mobile-drawer-close-btn" onclick="closeMobileNav()" aria-label="Close navigation menu">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      <span class="mobile-drawer-tag">┌─[SWISS_12COL_GRID]─┐</span>
+      <button class="mobile-drawer-close-btn" onclick="closeMobileNav()" aria-label="Close menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
     </div>
     <div class="mobile-drawer-body">
       <a href="#playground" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
-        <span>Interactive Showcase</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span>[01_STUDIO_LAB]</span>
       </a>
       <a href="#install" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-        <span>Installation Guide</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        <span>[02_INSTALLATION]</span>
       </a>
       <a href="#tokens" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-        <span>Design Tokens</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        <span>[03_TOKENS]</span>
       </a>
       <a href="#faq" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
-        <span>FAQ Guide</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
+        <span>[04_FAQ]</span>
       </a>
       <a href="index.html" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
-        <span>All 10 Styles</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>[ 10 STYLES GALLERY ]</span>
       </a>
     </div>
     <div class="mobile-drawer-footer">
       <a href="#install" class="mobile-drawer-cta-btn" onclick="closeMobileNav()">
-        <span>INSTALL THIS SKILL</span>
+        <span>[ ENGAGE INSTALLATION ]</span>
       </a>
     </div>
   </div>
 
   <main>
     <!-- Opening Hero Viewport -->
-    <section class="pow-hero">
-      <div class="hero-sticker-badge">
-        <span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Proof of Work: Archetype #10</span>
+    <section class="swiss-hero">
+      <div class="hero-editorial-badge">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <span>00 / ARCHETYPE #10 — ZÜRICH 1957</span>
       </div>
 
       <h1 class="hero-title">
-        Typographic Precision, Numbered Scaffolding & Asymmetric Tension
+        Typographic Precision.<br>
+        <span class="accent-text">Architectural Tension.</span>
       </h1>
 
-      <p class="hero-desc">
-        Swiss / Editorial achieves typographic elegance through stark display-to-body scale contrast, structural hairline rules, section indexing markers, and intentional negative space. This entire page demonstrates the authentic design tokens, contrast coupling, and anti-slop rules of this style.
-      </p>
+      <div class="hero-grid-split">
+        <p class="hero-desc">
+          Swiss / International Typographic Style achieves visceral authority through uncompromising typographic scale contrast, disciplined 12-column scaffolding, structural hairline dividing rules, and intentional active negative space. Zero drop shadows. Zero rounded cards. Zero AI-slop.
+        </p>
+        <div class="hero-asymmetric-quote">
+          “The grid system is an aid, not a guarantee. It permits a number of possible uses and each designer can look for a solution appropriate to his personal style.”<br>
+          <strong style="color: var(--swiss-accent);">— Josef Müller-Brockmann</strong>
+        </div>
+      </div>
 
       <!-- Single-Line Inline Command Pill ("Sejajarin") -->
-      <div class="pow-command-pill">
-        <span class="pow-prompt">$</span>
-        <code class="pow-code" id="heroCmdText">npx skills add kennedys0/taste-style-swiss-editorial</code>
-        <button class="pow-copy-btn" id="heroCopyBtn" aria-label="Copy command">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      <div class="swiss-command-pill">
+        <span class="command-prompt-glyph">$</span>
+        <code class="command-code-text" id="heroCmdText">npx skills add kennedys0/taste-engine --skill taste-style-swiss-editorial</code>
+        <button class="command-copy-btn" id="heroCopyBtn" aria-label="Copy installation command">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           <span>COPY</span>
         </button>
       </div>
 
+      <!-- Hero CTA Group -->
       <div class="hero-btn-group">
-        <a href="#install" class="pow-btn pow-btn-primary">
-          <span>Installation Guide ↓</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 13l5 5 5-5M12 6v12"/></svg>
+        <a href="#playground" class="swiss-btn swiss-btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <span>[ 01_TEST STUDIO LAB → ]</span>
         </a>
-        <a href="#playground" class="pow-btn pow-btn-secondary">
-          <span>Explore Interactive UI →</span>
+        <a href="#install" class="swiss-btn swiss-btn-secondary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+          <span>[ 02_INSTALLATION MANUAL ↓ ]</span>
         </a>
       </div>
 
-      <!-- 4-Stat Strip -->
-      <div class="pow-stat-strip">
-        <div class="stat-box">
+      <!-- 4-Stat Editorial Strip -->
+      <div class="swiss-stat-strip">
+        <div class="stat-editorial-box">
+          <div class="stat-index">01.1</div>
           <div class="stat-val">48px–72px</div>
           <div class="stat-label">Headline Contrast</div>
         </div>
-        <div class="stat-box">
-          <div class="stat-val">01, 02</div>
-          <div class="stat-label">Numbered Markers</div>
+        <div class="stat-editorial-box">
+          <div class="stat-index">01.2</div>
+          <div class="stat-val">12-COL</div>
+          <div class="stat-label">Asymmetric Grid</div>
         </div>
-        <div class="stat-box">
-          <div class="stat-val">1px Hairline</div>
-          <div class="stat-label">Structural Dividing Rules</div>
+        <div class="stat-editorial-box">
+          <div class="stat-index">01.3</div>
+          <div class="stat-val">1px HAIRLINE</div>
+          <div class="stat-label">Structural Rules</div>
         </div>
-        <div class="stat-box">
-          <div class="stat-val">Asymmetric</div>
-          <div class="stat-label">Editorial Grid Tension</div>
+        <div class="stat-editorial-box">
+          <div class="stat-index">01.4</div>
+          <div class="stat-val">0 EMOJI</div>
+          <div class="stat-label">Pure Lucide SVGs</div>
         </div>
       </div>
     </section>
 
-    <!-- Interactive Installation Guide Section -->
-    <section class="pow-section" id="install">
+    <!-- Studio Lab Section (#playground) -->
+    <section class="swiss-section" id="playground">
       <div class="section-header">
-        <span class="section-badge">How to Install</span>
-        <h2 class="section-title">Install Swiss / Editorial or Full Engine</h2>
+        <span class="section-badge">[ 01 / LIVE INTERACTIVE POW ]</span>
+        <h2 class="section-title">Swiss / Editorial Studio Lab</h2>
         <p class="section-desc">
-          Choose whether you want this single standalone Swiss / Editorial skill or the full 10-style automated Taste Engine suite for your AI coding agents.
+          Interact with dynamic typographic scale ratios, calibrate asymmetric column rhythm, select signature Zurich Red vs Klein Blue signal colorways, and inspect structured editorial indices.
         </p>
       </div>
 
-      <div class="pow-card">
-        <!-- Tab Headers -->
-        <div class="tab-header-strip">
-          <button class="tab-switch-btn active" data-tab="tab-standalone">1. Standalone Style Skill</button>
-          <button class="tab-switch-btn" data-tab="tab-global">2. Full Taste Engine (Global)</button>
-          <button class="tab-switch-btn" data-tab="tab-tailwind">3. Tailwind & shadcn Preset</button>
+      <div class="studio-grid">
+        
+        <!-- Module 1: Typographic Scale & Modular Rhythm Synthesizer -->
+        <div class="editorial-module">
+          <div class="module-header">
+            <div class="module-title-group">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7V4h16v3M9 20h6M12 4v16"/></svg>
+              <span class="module-title">01.1 // Typographic Scale Synthesizer</span>
+            </div>
+            <span class="module-tag">DISPLAY CALIBRATOR</span>
+          </div>
+
+          <!-- Sliders -->
+          <div class="calibrator-control-row">
+            <div class="calibrator-label-row">
+              <span>Display Headline Scale</span>
+              <span class="calibrator-badge" id="headlineScaleBadge">56px (3.5rem)</span>
+            </div>
+            <input type="range" min="32" max="76" value="56" class="swiss-slider" id="headlineSlider" oninput="updateSwissCalibrator()">
+          </div>
+
+          <div class="calibrator-control-row">
+            <div class="calibrator-label-row">
+              <span>Letter-Spacing Tracking</span>
+              <span class="calibrator-badge" id="trackingBadge">-0.035em</span>
+            </div>
+            <input type="range" min="-6" max="4" value="-3.5" step="0.5" class="swiss-slider" id="trackingSlider" oninput="updateSwissCalibrator()">
+          </div>
+
+          <!-- Live Stage -->
+          <div class="editorial-preview-stage">
+            <div class="stage-section-marker">
+              <span>SECTION 01.1 // DIE NEUE GRAPHIK</span>
+              <span>INDEX: ZÜRICH 1957</span>
+            </div>
+            <h3 class="stage-headline" id="stageHeadline">FORM FOLLOWS RHYTHM.</h3>
+            <p class="stage-pullquote" id="stagePullquote">
+              “A design is finished not when there is nothing more to add, but when there is nothing left to take away. In Swiss typography, scale and structure communicate meaning.”
+            </p>
+            <div class="token-preview-code" id="calibratorCssOutput">
+              --taste-swiss-display-size: 56px;<br>
+              --taste-swiss-tracking: -0.035em;
+            </div>
+          </div>
         </div>
 
-        <!-- Tab 1: Standalone Skill -->
-        <div class="tab-body active" id="tab-standalone">
-          <h3 class="install-step-title">Option A: Install Dedicated Swiss / Editorial Skill</h3>
+        <!-- Module 2: Editorial Colorway & Signal Accent Calibrator -->
+        <div class="editorial-module">
+          <div class="module-header">
+            <div class="module-title-group">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+              <span class="module-title">01.2 // Signal Accent Calibrator</span>
+            </div>
+            <span class="module-tag" id="colorwayTag">ZÜRICH RED</span>
+          </div>
+
+          <div class="colorway-grid">
+            <button class="colorway-btn active" id="btnColorRed" onclick="selectColorway('red')">
+              <div class="color-swatch-box" style="background: #E3000F;"></div>
+              <span>ZÜRICH RED</span>
+            </button>
+            <button class="colorway-btn" id="btnColorBlue" onclick="selectColorway('blue')">
+              <div class="color-swatch-box" style="background: #002FA7;"></div>
+              <span>KLEIN BLUE</span>
+            </button>
+            <button class="colorway-btn" id="btnColorGreen" onclick="selectColorway('green')">
+              <div class="color-swatch-box" style="background: #007A3D;"></div>
+              <span>BASEL GREEN</span>
+            </button>
+            <button class="colorway-btn" id="btnColorMono" onclick="selectColorway('mono')">
+              <div class="color-swatch-box" style="background: var(--swiss-text);"></div>
+              <span>MONOCHROME</span>
+            </button>
+          </div>
+
+          <div style="font-size: 0.85rem; color: var(--swiss-text-muted); line-height: 1.6; border-left: 2px solid var(--swiss-accent); padding-left: 0.85rem;">
+            The Swiss design canon limits color to a functional signal. Exactly one high-contrast accent highlights critical telemetry or interactive paths, preserving the integrity of the monochrome typographic plane.
+          </div>
+
+          <!-- Interactive Test Buttons -->
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button class="swiss-btn swiss-btn-primary" style="padding: 0.65rem 1.25rem; font-size: 0.825rem;" onclick="dispatchSwissAction('PRIMARY ACTION TRIGGER')">
+              PRIMARY CTA BLOCK
+            </button>
+            <button class="swiss-btn swiss-btn-secondary" style="padding: 0.65rem 1.25rem; font-size: 0.825rem;" onclick="dispatchSwissAction('HAIRLINE OUTLINE TRIGGER')">
+              HAIRLINE OUTLINE
+            </button>
+          </div>
+        </div>
+
+        <!-- Module 3: Asymmetrical 12-Column Publication Grid -->
+        <div class="editorial-module" style="grid-column: 1 / -1;">
+          <div class="module-header">
+            <div class="module-title-group">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="0"/><path d="M3 9h18M3 15h18M9 3v18M15 3v18"/></svg>
+              <span class="module-title">01.3 // 12-Column Publication Index & Manifest</span>
+            </div>
+            <span class="module-tag">INDEXED SCAFFOLDING</span>
+          </div>
+
+          <!-- Filter Toolbar -->
+          <div class="filter-tabs-row">
+            <button class="filter-tab-btn active" onclick="filterEditorialTable('all', this)">[ 00 / ALL ARCHIVES ]</button>
+            <button class="filter-tab-btn" onclick="filterEditorialTable('monograph', this)">[ 01 / MONOGRAPHS ]</button>
+            <button class="filter-tab-btn" onclick="filterEditorialTable('technical', this)">[ 02 / SPECIFICATIONS ]</button>
+            <button class="filter-tab-btn" onclick="filterEditorialTable('historical', this)">[ 03 / ESSAYS ]</button>
+          </div>
+
+          <!-- Data Bay -->
+          <div class="editorial-table-bay">
+            <table class="editorial-index-table">
+              <thead>
+                <tr>
+                  <th style="width: 70px;">Index</th>
+                  <th>Publication Title / Reference</th>
+                  <th>Classification</th>
+                  <th>Grid Alignment</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody id="editorialTableBody">
+                <tr data-cat="monograph">
+                  <td class="index-numeral">01.01</td>
+                  <td><strong>Grid Systems in Graphic Design</strong> (Josef Müller-Brockmann)</td>
+                  <td>Monograph</td>
+                  <td>12-Col Modular</td>
+                  <td><span class="status-badge-live">AUTHORITATIVE</span></td>
+                </tr>
+                <tr data-cat="historical">
+                  <td class="index-numeral">01.02</td>
+                  <td><strong>The Bauhaus & Ulm School Pedagogical Lineage</strong></td>
+                  <td>Essay</td>
+                  <td>Asymmetric 8:4</td>
+                  <td><span class="status-badge-live">VERIFIED</span></td>
+                </tr>
+                <tr data-cat="technical">
+                  <td class="index-numeral">01.03</td>
+                  <td><strong>Extreme Typographic Scale & Mathematical Ratio</strong></td>
+                  <td>Specification</td>
+                  <td>Tight Tracking</td>
+                  <td><span class="status-badge-live">WCAG AAA</span></td>
+                </tr>
+                <tr data-cat="technical">
+                  <td class="index-numeral">01.04</td>
+                  <td><strong>Structural Hairline Dividing Rules & Shelving</strong></td>
+                  <td>Specification</td>
+                  <td>1px Boundary</td>
+                  <td><span class="status-badge-live">ZERO RADIUS</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Action Toolbar -->
+          <div class="action-toolbar-row">
+            <button class="toolbar-action-btn" onclick="dispatchSwissAction('DISPATCH NEW MONOGRAPH')">
+              [ + APPEND ARCHIVE RECORD ]
+            </button>
+            <button class="toolbar-action-btn" onclick="dispatchSwissAction('RECALIBRATE GRID INDEX')">
+              [ ↺ RECALIBRATE RHYTHM ]
+            </button>
+            <button class="toolbar-action-btn" onclick="dispatchSwissAction('EXPORT MANIFEST METADATA')">
+              [ ⤓ EXPORT SCHEMA ]
+            </button>
+          </div>
+        </div>
+
+        <!-- Module 4: WCAG AAA Typographic Contrast & Spec Matrix -->
+        <div class="editorial-module" style="grid-column: 1 / -1;">
+          <div class="module-header">
+            <div class="module-title-group">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span class="module-title">01.4 // Typographic Contrast & Form Input Matrix</span>
+            </div>
+            <span class="module-tag">AAA CERTIFIED</span>
+          </div>
+
+          <div class="editorial-table-bay">
+            <table class="contrast-matrix-table">
+              <thead>
+                <tr>
+                  <th>Interface Surface</th>
+                  <th>Typography Foreground</th>
+                  <th>Contrast Ratio</th>
+                  <th>WCAG Level</th>
+                  <th>Coupled Safety Rule</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Gallery White Paper (`#FFFFFF`)</td>
+                  <td>Deep Obsidian Ink (`#111111`)</td>
+                  <td>18.5 : 1</td>
+                  <td><span class="badge-pass">PASS AAA</span></td>
+                  <td>Authoritative contrast; sharp high-contrast letterforms</td>
+                </tr>
+                <tr>
+                  <td>Pitch Obsidian Canvas (`#0D0D0D`)</td>
+                  <td>Bone White Display (`#F5F5F5`)</td>
+                  <td>17.8 : 1</td>
+                  <td><span class="badge-pass">PASS AAA</span></td>
+                  <td>Polarity strictly flips; black text on dark background strictly banned</td>
+                </tr>
+                <tr>
+                  <td>Zurich Signal Red (`#E3000F`)</td>
+                  <td>Pure White Typography (`#FFFFFF`)</td>
+                  <td>4.9 : 1</td>
+                  <td><span class="badge-pass">PASS AA</span></td>
+                  <td>High-visibility focal signal for active states and primary CTAs</td>
+                </tr>
+                <tr>
+                  <td>International Klein Blue (`#002FA7`)</td>
+                  <td>Pure White Typography (`#FFFFFF`)</td>
+                  <td>8.2 : 1</td>
+                  <td><span class="badge-pass">PASS AAA</span></td>
+                  <td>Exceeds AAA requirements for medium and bold display elements</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Form Controls Demonstration -->
+          <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+            <div style="font-family: var(--swiss-font-mono); font-size: 0.75rem; font-weight: 700; color: var(--swiss-accent);">
+              FORM CONTROL DEMO // ZERO-RADIUS SEARCH
+            </div>
+            <div class="swiss-input-group">
+              <input type="text" class="swiss-text-input" placeholder="SEARCH ARCHIVAL INDEX BY KEYWORD..." id="swissSearchInput">
+              <button class="swiss-btn swiss-btn-primary" style="padding: 0.65rem 1.25rem; font-size: 0.8rem;" onclick="dispatchSwissAction('SEARCH EXECUTED')">
+                QUERY
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Installation Guide Section (#install) -->
+    <section class="swiss-section" id="install">
+      <div class="section-header">
+        <span class="section-badge">[ 02 / PACKAGE DEPLOYMENT ]</span>
+        <h2 class="section-title">Install Swiss / Editorial Archetype</h2>
+        <p class="section-desc">
+          Integrate Taste Engine's Swiss / Editorial pack into your AI coding assistant workspace or directly into Next.js, Vite, or vanilla web stacks.
+        </p>
+      </div>
+
+      <div class="installation-module">
+        <div class="tab-header-strip">
+          <button class="tab-switch-btn active" data-tab="tab-npx">1. npx skills (CLI)</button>
+          <button class="tab-switch-btn" data-tab="tab-npm">2. npm / pnpm</button>
+          <button class="tab-switch-btn" data-tab="tab-cdn">3. CSS CDN</button>
+          <button class="tab-switch-btn" data-tab="tab-manual">4. Manual CSS Tokens</button>
+        </div>
+
+        <!-- Tab 1: npx skills -->
+        <div class="tab-body active" id="tab-npx">
+          <h3 class="install-step-title">Deploy as Standalone AI Coding Skill</h3>
           <p class="install-step-desc">
-            Installs only the Swiss / Editorial style pack. Perfect if your project has already committed to this exact aesthetic and does not need a 10-style selector.
+            Equip your agent with the dedicated Swiss / Editorial archetype. Works with Antigravity, Claude Code, and OpenAI Codex.
           </p>
 
-          <div class="pow-terminal">
-            <div class="terminal-topbar">
+          <div class="swiss-terminal">
+            <div class="terminal-titlebar">
               <div class="terminal-dots">
                 <span class="dot red"></span>
                 <span class="dot yellow"></span>
                 <span class="dot green"></span>
               </div>
               <span class="terminal-label">bash — universal agent skills cli</span>
-              <button class="pow-btn-sm" onclick="copySnippet('cmdStandaloneCli')">Copy</button>
+              <button class="terminal-copy-action-btn" onclick="copySnippet('cmdNpx')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>COPY</span>
+              </button>
             </div>
-            <div class="terminal-content" id="cmdStandaloneCli">
-              <div class="terminal-line">
-                <span class="line-comment"># Install standalone Swiss / Editorial pack via Agent Skills CLI</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-p">$</span>
-                <span class="line-cmd">npx skills add kennedys0/taste-engine --skill taste-style-swiss-editorial</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-comment"># Or install directly for Antigravity IDE global config</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-p">$</span>
-                <span class="line-cmd">git clone https://github.com/kennedys0/taste-engine.git && cp -r taste-engine/optional-standalone-skills/taste-style-swiss-editorial ~/.gemini/config/skills/</span>
-              </div>
+            <div class="terminal-content" id="cmdNpx">
+              <span class="comment"># 1. Install standalone Swiss / Editorial skill into your current agent workspace</span><br>
+              <span class="cmd">npx skills add kennedys0/taste-engine --skill taste-style-swiss-editorial</span><br><br>
+              <span class="comment"># 2. Or install the complete Taste Engine suite (all 10 styles + routing + anti-slop)</span><br>
+              <span class="cmd">npx skills add kennedys0/taste-engine</span>
             </div>
           </div>
         </div>
 
-        <!-- Tab 2: Global Engine -->
-        <div class="tab-body" id="tab-global">
-          <h3 class="install-step-title">Option B: Install Full Taste Engine (All 10 Styles + SEO + Anti-Slop)</h3>
+        <!-- Tab 2: npm / pnpm -->
+        <div class="tab-body" id="tab-npm">
+          <h3 class="install-step-title">Node Package Manager Installation</h3>
           <p class="install-step-desc">
-            Equips your AI agent with the autonomous style router, preflight interviews, 10 aesthetic packs, full-screen hero gating, and automatic SEO audit.
+            Install via npm or pnpm to bundle the style tokens and presets directly into your JavaScript build pipeline.
           </p>
 
-          <div class="pow-terminal">
-            <div class="terminal-topbar">
+          <div class="swiss-terminal">
+            <div class="terminal-titlebar">
               <div class="terminal-dots">
                 <span class="dot red"></span>
                 <span class="dot yellow"></span>
                 <span class="dot green"></span>
               </div>
-              <span class="terminal-label">bash — multi-agent native installer</span>
-              <button class="pow-btn-sm" onclick="copySnippet('cmdGlobalCli')">Copy</button>
+              <span class="terminal-label">bash — package manager</span>
+              <button class="terminal-copy-action-btn" onclick="copySnippet('cmdNpm')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>COPY</span>
+              </button>
             </div>
-            <div class="terminal-content" id="cmdGlobalCli">
-              <div class="terminal-line">
-                <span class="line-comment"># 1. Universal 1-click Agent Skills install</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-p">$</span>
-                <span class="line-cmd">npx skills add kennedys0/taste-engine</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-comment"># 2. Or install globally for Google Antigravity IDE / CLI (agy)</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-p">$</span>
-                <span class="line-cmd">node bin/taste-engine.mjs install --agent antigravity --global</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-comment"># 3. Or install for Claude Code or OpenAI Codex</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-p">$</span>
-                <span class="line-cmd">node bin/taste-engine.mjs install --agent claude --global</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-p">$</span>
-                <span class="line-cmd">node bin/taste-engine.mjs install --agent codex --global</span>
-              </div>
+            <div class="terminal-content" id="cmdNpm">
+              <span class="comment"># Install via npm</span><br>
+              <span class="cmd">npm install @taste-engine/style-swiss-editorial</span><br><br>
+              <span class="comment"># Or install via pnpm</span><br>
+              <span class="cmd">pnpm add @taste-engine/style-swiss-editorial</span>
             </div>
           </div>
         </div>
 
-        <!-- Tab 3: Tailwind & shadcn -->
-        <div class="tab-body" id="tab-tailwind">
-          <h3 class="install-step-title">Option C: Tailwind CSS & shadcn/ui Preset</h3>
+        <!-- Tab 3: CSS CDN -->
+        <div class="tab-body" id="tab-cdn">
+          <h3 class="install-step-title">Load via Global Stylesheet CDN</h3>
           <p class="install-step-desc">
-            Scaffold Swiss / Editorial utility tokens directly into your React, Next.js, or Vite frontend stack.
+            Embed authentic Swiss typographic hierarchy, 12-column rules, and zero-radius geometry without build steps.
           </p>
 
-          <div class="pow-terminal">
-            <div class="terminal-topbar">
+          <div class="swiss-terminal">
+            <div class="terminal-titlebar">
               <div class="terminal-dots">
                 <span class="dot red"></span>
                 <span class="dot yellow"></span>
                 <span class="dot green"></span>
               </div>
-              <span class="terminal-label">tailwind.config.js — preset integration</span>
-              <button class="pow-btn-sm" onclick="copySnippet('cmdTailwindPreset')">Copy</button>
+              <span class="terminal-label">html — cdn link</span>
+              <button class="terminal-copy-action-btn" onclick="copySnippet('cmdCdn')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>COPY</span>
+              </button>
             </div>
-            <div class="terminal-content" id="cmdTailwindPreset">
-              <div class="terminal-line">
-                <span class="line-comment">// Add Taste Engine official presets to your Tailwind config</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">module.exports = {</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;presets: [require('./presets/tailwind/tailwind.preset.js')],</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;theme: {</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;extend: {</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors: { 'swiss-editorial': '#d62828' }</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;}</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;}</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">};</span>
-              </div>
+            <div class="terminal-content" id="cmdCdn">
+              <span class="cmd">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@taste-engine/styles@latest/dist/swiss-editorial.min.css"&gt;</span>
             </div>
           </div>
         </div>
-      </div>
-    </section>
 
-    <!-- Interactive Component Playground (PoW) -->
-    <section class="pow-section" id="playground">
-      <div class="section-header">
-        <span class="section-badge">Live Interactive PoW</span>
-        <h2 class="section-title">Swiss / Editorial Component Lab</h2>
-        <p class="section-desc">
-          Test interactive components and layout structure built strictly according to Taste Engine's Swiss / Editorial fidelity rules.
-        </p>
-      </div>
+        <!-- Tab 4: Manual Import -->
+        <div class="tab-body" id="tab-manual">
+          <h3 class="install-step-title">Manual CSS Variable Import</h3>
+          <p class="install-step-desc">
+            Copy the raw Swiss / Editorial token definitions directly into your global stylesheet.
+          </p>
 
-      <div class="pow-card" style="padding: 2rem;">
-        
-        <div style="background: var(--pow-surface); border: var(--pow-border); padding: 2.5rem;">
-          <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--pow-accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
-            <span style="font-family: var(--pow-font-mono); font-size: 0.85rem; font-weight: 700;">SECTION 01 // PRINCIPLES</span>
-            <span style="font-family: var(--pow-font-mono); font-size: 0.75rem; color: var(--pow-text-muted);">ZÜRICH 1957</span>
+          <div class="swiss-terminal">
+            <div class="terminal-titlebar">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="terminal-label">css — token definitions</span>
+              <button class="terminal-copy-action-btn" onclick="copySnippet('cmdManual')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>COPY</span>
+              </button>
+            </div>
+            <div class="terminal-content" id="cmdManual">
+              :root {<br>
+              &nbsp;&nbsp;--taste-swiss-bg: #FFFFFF;<br>
+              &nbsp;&nbsp;--taste-swiss-ink: #111111;<br>
+              &nbsp;&nbsp;--taste-swiss-accent: #E3000F;<br>
+              &nbsp;&nbsp;--taste-swiss-muted: #6B7280;<br>
+              &nbsp;&nbsp;--taste-swiss-rule: 1px solid #111111;<br>
+              &nbsp;&nbsp;--taste-swiss-radius: 0px;<br>
+              &nbsp;&nbsp;--taste-swiss-font-heading: 'Space Grotesk', -apple-system, sans-serif;<br>
+              &nbsp;&nbsp;--taste-swiss-font-body: 'Inter', -apple-system, sans-serif;<br>
+              }
+            </div>
           </div>
-          <h3 style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.1; margin-bottom: 1rem; letter-spacing: -0.03em;">FORM FOLLOWS RHYTHM.</h3>
-          <p style="font-size: 0.95rem; color: var(--pow-text-muted); line-height: 1.6; max-width: 600px; margin-bottom: 2rem;">Asymmetric column tension, disciplined type scales, and singular high-contrast signal accents.</p>
-          <button class="pow-btn pow-btn-primary" onclick="handleBtnClick('Editorial Publication')">READ COMPLETE VOLUME →</button>
         </div>
-        
+
       </div>
     </section>
 
-    <!-- Design Token Cheatsheet -->
-    <section class="pow-section">
+    <!-- Design Tokens Cheatsheet Section (#tokens) -->
+    <section class="swiss-section" id="tokens">
       <div class="section-header">
-        <span class="section-badge">Tokens & Math</span>
-        <h2 class="section-title">Swiss / Editorial Design Tokens</h2>
+        <span class="section-badge">[ 03 / SPECIFICATION MATRIX ]</span>
+        <h2 class="section-title">Swiss Editorial Design Tokens</h2>
         <p class="section-desc">
-          Standardized CSS custom properties for instant copy-pasting into any stylesheet.
+          Comprehensive token mappings engineered for grid-driven hierarchy, structural hairline dividing rules, and razor-sharp geometry.
         </p>
       </div>
 
       <div class="token-table-wrap">
-        <table class="pow-table">
+        <table class="swiss-table">
           <thead>
             <tr>
               <th>Token Name</th>
-              <th>Light Mode</th>
-              <th>Dark Mode</th>
-              <th>Description</th>
+              <th>Light Mode Default</th>
+              <th>Dark Mode Default</th>
+              <th>Architectural Role</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="token-code">--taste-swiss-editorial-bg</td>
-              <td>#fbfaf6</td>
-              <td>#141416</td>
-              <td>Canvas backdrop base</td>
+              <td class="token-code">--taste-swiss-bg</td>
+              <td>#FFFFFF</td>
+              <td>#0D0D0D</td>
+              <td>Paper white / obsidian canvas foundation</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-swiss-editorial-surface</td>
-              <td>#ffffff</td>
-              <td>#1c1c1f</td>
-              <td>Card surface background</td>
-            </tr>
-            <tr>
-              <td class="token-code">--taste-swiss-editorial-text</td>
+              <td class="token-code">--taste-swiss-ink</td>
               <td>#111111</td>
-              <td>#fdfdfd</td>
-              <td>Primary text & icon color</td>
+              <td>#F5F5F5</td>
+              <td>Primary typographic ink (sharp authoritative grotesk)</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-swiss-editorial-border</td>
+              <td class="token-code">--taste-swiss-accent</td>
+              <td>#E3000F</td>
+              <td>#EF4444</td>
+              <td>Singular signal accent (Zurich rail clock red)</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-swiss-muted</td>
+              <td>#6B7280</td>
+              <td>#9CA3AF</td>
+              <td>Secondary metadata, numbered indexes, captions</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-swiss-rule</td>
               <td>1px solid #111111</td>
-              <td>1px solid rgba(255, 255, 255, 0.15)</td>
-              <td>Structural stroke specification</td>
+              <td>1px solid rgba(255,255,255,0.20)</td>
+              <td>Structural horizontal and vertical hairline dividers</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-swiss-editorial-accent</td>
-              <td>#d62828</td>
-              <td>#e63946</td>
-              <td>Primary action accent</td>
+              <td class="token-code">--taste-swiss-radius</td>
+              <td>0px</td>
+              <td>0px</td>
+              <td>Strictly zero border-radius; razor-sharp corners</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-swiss-font-heading</td>
+              <td>'Space Grotesk', sans-serif</td>
+              <td>'Space Grotesk', sans-serif</td>
+              <td>High-contrast display headline typography</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-swiss-font-body</td>
+              <td>'Inter', system-ui</td>
+              <td>'Inter', system-ui</td>
+              <td>Disciplined editorial body text</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-swiss-shadow</td>
+              <td>none</td>
+              <td>none</td>
+              <td>Zero drop shadows; depth is communicated via scale</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- FAQ Accordion -->
-    <section class="pow-section">
+    <!-- FAQ Accordion Section (#faq) -->
+    <section class="swiss-section" id="faq">
       <div class="section-header">
-        <span class="section-badge">FAQ & Verification</span>
+        <span class="section-badge">[ 04 / DESIGN RATIONALE ]</span>
         <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-desc">
+          Clarifications on physical affordance, typographic scale contrast, zero drop shadows, and dark mode coupling.
+        </p>
       </div>
 
-      <div class="pow-faq-item open">
-        <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>What makes Swiss Editorial unique?</span>
-          <span class="faq-arrow">▶</span>
+      <div class="swiss-faq-item open">
+        <div class="swiss-faq-header" onclick="toggleFaq(this)">
+          <span>Why does Swiss Editorial strictly forbid rounded corners and drop shadows?</span>
+          <svg class="faq-icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
-        <div class="pow-faq-body">
-          Massive typographic contrast (48–72px display headlines), structural hairline dividers, numbered section badges (01, 02), and zero decorative noise.
-        </div>
-      </div>
-
-      <div class="pow-faq-item">
-        <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>Why is the accent color red?</span>
-          <span class="faq-arrow">▶</span>
-        </div>
-        <div class="pow-faq-body">
-          International Typographic Style traditionally utilizes an iconic signal red accent (like Swiss rail clocks) to create instant focal hierarchy.
+        <div class="swiss-faq-body">
+          International Typographic Style (born in Zürich and Basel in the 1950s) treats the surface as ink on paper. Rounded corners and decorative shadows introduce arbitrary softness that conflicts with mathematical grid discipline. Spatial depth is communicated purely through typographic scale, weight, and 1px structural dividing rules.
         </div>
       </div>
 
-      <div class="pow-faq-item">
-        <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>Can I install just Swiss Editorial?</span>
-          <span class="faq-arrow">▶</span>
+      <div class="swiss-faq-item">
+        <div class="swiss-faq-header" onclick="toggleFaq(this)">
+          <span>How does dramatic typographic scale contrast work without mobile bloat?</span>
+          <svg class="faq-icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
-        <div class="pow-faq-body">
-          Yes, run `npx skills add kennedys0/taste-engine --skill taste-style-swiss-editorial`.
+        <div class="swiss-faq-body">
+          We employ strict fluid typography via CSS `clamp()`: display headlines scale smoothly from 56px–72px on large desktop down to 32px–40px on mobile viewports. Tight letter-spacing tracking (`-0.035em`) prevents word-wrapping blowout, maintaining authoritative tension down to 320px screens.
+        </div>
+      </div>
+
+      <div class="swiss-faq-item">
+        <div class="swiss-faq-header" onclick="toggleFaq(this)">
+          <span>How does the Theme Coupling rule ensure instant readability?</span>
+          <svg class="faq-icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="swiss-faq-body">
+          In Swiss Editorial, dark and light modes represent an authoritative polarity inversion. In light mode, paper is pure white (`#FFFFFF`) and ink is deep black (`#111111`) delivering an 18.5:1 contrast ratio. In dark mode, canvas flips to obsidian (`#0D0D0D`) and typography flips to bone white (`#F5F5F5`). Primary buttons invert cleanly (black block with white text flips to white block with black text).
+        </div>
+      </div>
+
+      <div class="swiss-faq-item">
+        <div class="swiss-faq-header" onclick="toggleFaq(this)">
+          <span>Can I install just the Swiss Editorial skill standalone in my agent?</span>
+          <svg class="faq-icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="swiss-faq-body">
+          Yes! Run `npx skills add kennedys0/taste-engine --skill taste-style-swiss-editorial` to install only this standalone package without pulling other styles.
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Site Footer (2-column balanced mobile grid) -->
-  <footer class="pow-footer">
+  <!-- Site Footer -->
+  <footer class="swiss-footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <h4>Taste Engine</h4>
         <p>Open-source frontend design intelligence pack for AI coding agents. Elevate design fidelity, eliminate AI-slop, and enforce contrast safety.</p>
-        <p style="margin-top: 0.5rem; font-size: 0.775rem;">Created by <a href="https://github.com/kennedys0" target="_blank" rel="noopener" style="color: var(--pow-accent); font-weight: 700;">Mochamad Vikry (@kennedys0)</a></p>
+        <p style="margin-top: 0.65rem; font-size: 0.775rem;">Created by <a href="https://github.com/kennedys0" target="_blank" rel="noopener" style="color: var(--swiss-accent); font-weight: 700; text-decoration: none;">Mochamad Vikry (@kennedys0)</a></p>
       </div>
 
       <div class="footer-col">
@@ -1408,7 +2216,9 @@
           <li><a href="claymorphism.html">Claymorphism (PoW)</a></li>
           <li><a href="enterprise.html">Enterprise (PoW)</a></li>
           <li><a href="glassmorphism.html">Glassmorphism (PoW)</a></li>
-          <li><a href="swiss-editorial.html">Swiss Editorial (PoW)</a></li>
+          <li><a href="minimalism.html">Minimalism (PoW)</a></li>
+          <li><a href="retro-terminal.html">Retro-Terminal (PoW)</a></li>
+          <li><a href="skeuomorphism.html">Skeuomorphism (PoW)</a></li>
         </ul>
       </div>
 
@@ -1425,48 +2235,57 @@
 
     <div class="footer-bottom">
       <p>&copy; 2026 Mochamad Vikry. Released under the MIT License.</p>
-      <a href="#" class="pow-btn-sm" style="text-decoration:none;">
-        <span>↑ Back to Top</span>
+      <a href="#" class="swiss-btn-sm" style="text-decoration:none;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+        <span>Back to Top</span>
       </a>
     </div>
   </footer>
 
   <!-- Toast Notification -->
-  <div class="pow-toast" id="powToast">
-    <span id="toastMsg">COPIED TO CLIPBOARD</span>
+  <div class="swiss-toast" id="swissToast">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    <span id="toastMsg">ACTION EXECUTED</span>
   </div>
 
   <script>
-    // Theme Toggling with LocalStorage Persistence
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    const themeLabel = document.getElementById('themeLabel');
-    const htmlEl = document.documentElement;
+    // =========================================================
+    // SWISS / EDITORIAL STUDIO CONTROLLER & INTERACTION
+    // =========================================================
 
-    function applyTheme(theme) {
-      htmlEl.setAttribute('data-theme', theme);
-      localStorage.setItem('taste-theme-pow-swiss-editorial', theme);
-      if (theme === 'dark') {
-        themeLabel.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>LIGHT';
-      } else {
-        themeLabel.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>DARK';
-      }
+    let currentAccent = 'red';
+    let audioCtx = null;
+    let toastTimeout = null;
+    let monographCount = 4;
+
+    // Web Audio API: Subtle Crisp Mechanical Click
+    function playSwissClick(freq = 880, duration = 0.02) {
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + duration);
+        gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
     }
 
-    const savedTheme = localStorage.getItem('taste-theme-pow-swiss-editorial') || 'dark';
-    applyTheme(savedTheme);
-
-    themeToggleBtn.addEventListener('click', () => {
-      const current = htmlEl.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      applyTheme(next);
-      showToast(`Switched to ${next.toUpperCase()} mode`);
-    });
-
     // Toast Notification Utility
-    let toastTimeout;
     function showToast(msg) {
-      const toast = document.getElementById('powToast');
+      const toast = document.getElementById('swissToast');
       const toastMsg = document.getElementById('toastMsg');
+      if (!toast || !toastMsg) return;
       toastMsg.textContent = msg;
       toast.classList.add('show');
       clearTimeout(toastTimeout);
@@ -1475,59 +2294,231 @@
       }, 2200);
     }
 
-    // Hero Quick Copy Button
-    const heroCopyBtn = document.getElementById('heroCopyBtn');
-    const heroCmdText = document.getElementById('heroCmdText');
-    if (heroCopyBtn && heroCmdText) {
-      heroCopyBtn.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(heroCmdText.textContent.trim());
-          showToast('Copied installation command!');
-        } catch (e) {
-          showToast('Command copied');
-        }
-      });
+    // Module 1: Typographic Calibrator
+    function updateSwissCalibrator() {
+      const headlineSlider = document.getElementById('headlineSlider');
+      const trackingSlider = document.getElementById('trackingSlider');
+      const scaleBadge = document.getElementById('headlineScaleBadge');
+      const trackingBadge = document.getElementById('trackingBadge');
+      const headlineEl = document.getElementById('stageHeadline');
+      const cssOut = document.getElementById('calibratorCssOutput');
+
+      if (!headlineSlider || !trackingSlider || !headlineEl) return;
+
+      const size = headlineSlider.value;
+      const trackingVal = parseFloat(trackingSlider.value) / 100;
+      const trackingStr = `${trackingVal > 0 ? '+' : ''}${trackingVal.toFixed(3)}em`;
+
+      if (scaleBadge) scaleBadge.textContent = `${size}px (${(size/16).toFixed(2)}rem)`;
+      if (trackingBadge) trackingBadge.textContent = trackingStr;
+
+      headlineEl.style.fontSize = `${size}px`;
+      headlineEl.style.letterSpacing = trackingStr;
+
+      if (cssOut) {
+        cssOut.innerHTML = `--taste-swiss-display-size: ${size}px;<br>--taste-swiss-tracking: ${trackingStr};`;
+      }
     }
 
-    // Tab Switcher
-    const tabButtons = document.querySelectorAll('.tab-switch-btn');
-    const tabBodies = document.querySelectorAll('.tab-body');
+    // Module 2: Signal Accent Calibrator
+    function selectColorway(accentName) {
+      currentAccent = accentName;
+      document.querySelectorAll('.colorway-btn').forEach(b => b.classList.remove('active'));
+      
+      const activeBtn = document.getElementById(`btnColor${accentName.charAt(0).toUpperCase() + accentName.slice(1)}`);
+      if (activeBtn) activeBtn.classList.add('active');
 
-    tabButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabButtons.forEach(b => b.classList.remove('active'));
-        tabBodies.forEach(b => b.classList.remove('active'));
+      const tag = document.getElementById('colorwayTag');
+      if (tag) tag.textContent = `${accentName.toUpperCase()} SIGNAL`;
 
-        btn.classList.add('active');
-        const targetId = btn.getAttribute('data-tab');
-        const targetBody = document.getElementById(targetId);
-        if (targetBody) targetBody.classList.add('active');
+      const htmlEl = document.documentElement;
+      if (accentName === 'red') {
+        htmlEl.removeAttribute('data-accent');
+      } else {
+        htmlEl.setAttribute('data-accent', accentName);
+      }
+
+      playSwissClick(1020);
+      showToast(`Applied ${accentName.toUpperCase()} signal accent`);
+    }
+
+    // Module 3: Table Filter & Actions
+    function filterEditorialTable(category, btn) {
+      document.querySelectorAll('.filter-tab-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+
+      const rows = document.querySelectorAll('#editorialTableBody tr');
+      rows.forEach(row => {
+        if (category === 'all' || row.getAttribute('data-cat') === category) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
       });
-    });
+
+      playSwissClick(760);
+      showToast(`Filter: ${category.toUpperCase()}`);
+    }
+
+    function dispatchSwissAction(actionName) {
+      playSwissClick(820);
+      if (actionName.includes('APPEND')) {
+        monographCount++;
+        const tbody = document.getElementById('editorialTableBody');
+        if (tbody) {
+          const tr = document.createElement('tr');
+          tr.setAttribute('data-cat', 'monograph');
+          tr.innerHTML = `
+            <td class="index-numeral">01.0${monographCount}</td>
+            <td><strong>Archival Monograph Entry #${monographCount}</strong></td>
+            <td>Monograph</td>
+            <td>12-Col Modular</td>
+            <td><span class="status-badge-live">ONLINE</span></td>
+          `;
+          tbody.appendChild(tr);
+        }
+      }
+      showToast(actionName);
+    }
+
+    // Theme Switcher & Authority Polarity Flip
+    function applyTheme(theme) {
+      const htmlEl = document.documentElement;
+      htmlEl.setAttribute('data-theme', theme);
+      try {
+        localStorage.setItem('taste-theme-pow-swiss-editorial', theme);
+      } catch (e) {}
+
+      const themeLabel = document.getElementById('themeLabel');
+      if (themeLabel) {
+        themeLabel.textContent = theme === 'dark' ? '[PAPER_LIGHT]' : '[OBSIDIAN_DARK]';
+      }
+
+      const themeIcon = document.getElementById('themeIcon');
+      if (themeIcon) {
+        if (theme === 'dark') {
+          themeIcon.innerHTML = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>';
+        } else {
+          themeIcon.innerHTML = '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>';
+        }
+      }
+    }
+
+    // Mobile Navigation Controls
+    function openMobileNav() {
+      const backdrop = document.getElementById('mobileNavBackdrop');
+      const drawer = document.getElementById('mobileNavDrawer');
+      const hamburger = document.getElementById('navHamburgerBtn');
+      if (backdrop) backdrop.classList.add('open');
+      if (drawer) drawer.classList.add('open');
+      if (hamburger) hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      playSwissClick(640);
+    }
+
+    function closeMobileNav() {
+      const backdrop = document.getElementById('mobileNavBackdrop');
+      const drawer = document.getElementById('mobileNavDrawer');
+      const hamburger = document.getElementById('navHamburgerBtn');
+      if (backdrop) backdrop.classList.remove('open');
+      if (drawer) drawer.classList.remove('open');
+      if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      playSwissClick(520);
+    }
 
     // Snippet Copier
     async function copySnippet(elemId) {
       const el = document.getElementById(elemId);
       if (!el) return;
-      const text = el.innerText.trim();
+      const text = (el.innerText || el.textContent || '').trim();
       try {
         await navigator.clipboard.writeText(text);
-        showToast('Terminal snippet copied!');
+        playSwissClick(940);
+        showToast('Copied to buffer!');
       } catch (e) {
         showToast('Snippet copied');
       }
     }
 
-    // Component Button Click Handler
-    function handleBtnClick(name) {
-      showToast(`Action: ${name}`);
-    }
-
     // FAQ Accordion Toggle
     function toggleFaq(header) {
       const item = header.parentElement;
-      item.classList.toggle('open');
+      if (item) {
+        item.classList.toggle('open');
+        playSwissClick(item.classList.contains('open') ? 780 : 560);
+      }
     }
+
+    // Safe Page Initialization
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Initialize Theme from LocalStorage
+      let savedTheme = 'dark';
+      try {
+        savedTheme = localStorage.getItem('taste-theme-pow-swiss-editorial') || 'dark';
+      } catch (e) {}
+      applyTheme(savedTheme);
+
+      // 2. Bind Theme Toggle Button
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          applyTheme(next);
+          playSwissClick(740);
+          showToast(`Switched to ${next.toUpperCase()} mode`);
+        });
+      }
+
+      // 3. Bind Keyboard Escape for Drawer
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMobileNav();
+      });
+
+      // 4. Bind Hero Copy Button
+      const heroCopyBtn = document.getElementById('heroCopyBtn');
+      const heroCmdText = document.getElementById('heroCmdText');
+      if (heroCopyBtn && heroCmdText) {
+        heroCopyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(heroCmdText.textContent.trim());
+            playSwissClick(900);
+            showToast('Installation command copied!');
+          } catch (e) {
+            showToast('Command copied');
+          }
+        });
+      }
+
+      // 5. Bind Tab Switchers
+      const tabButtons = document.querySelectorAll('.tab-switch-btn');
+      const tabBodies = document.querySelectorAll('.tab-body');
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabButtons.forEach(b => b.classList.remove('active'));
+          tabBodies.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const targetId = btn.getAttribute('data-tab');
+          const targetBody = document.getElementById(targetId);
+          if (targetBody) targetBody.classList.add('active');
+          playSwissClick(620);
+        });
+      });
+
+      // 6. Bind Enter Key on Search Input
+      const searchInput = document.getElementById('swissSearchInput');
+      if (searchInput) {
+        searchInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            dispatchSwissAction(`SEARCH: "${searchInput.value.trim()}"`);
+          }
+        });
+      }
+
+      // 7. Initial UI sync
+      updateSwissCalibrator();
+    });
   </script>
 </body>
 </html>
