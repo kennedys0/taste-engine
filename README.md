@@ -14,7 +14,7 @@ A portable, open-source Agent Skill for building distinctive, accessible fronten
 [![Version](https://img.shields.io/badge/version-0.10.8-4F46E5.svg)](CHANGELOG.md)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-111111.svg)](https://agentskills.io/)
 
-[Live Showcase](docs/index.html) · [Installation](#install) · [CLI Setup](#enable-global-taste-engine-cli-command) · [How it works](#how-it-works) · [Styles](#style-library) · [Quality principles](#quality-without-a-house-style) · [Contributing](#contributing)
+[Live Showcase](https://kennedys0.github.io/taste-engine/) · [Installation](#install) · [CLI Setup](#enable-global-taste-engine-cli-command) · [How it works](#how-it-works) · [Styles](#style-library) · [Quality principles](#quality-without-a-house-style) · [Contributing](#contributing)
 
 </div>
 
