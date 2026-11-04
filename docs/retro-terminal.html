@@ -1,79 +1,179 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="dark" data-phosphor="amber">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Retro Terminal Proof of Work & Installation Guide — Taste Engine</title>
-  <meta name="description" content="Dedicated Proof of Work and installation guide for Taste Engine's Retro Terminal aesthetic archetype. Experience authentic design tokens, zero AI-slop, and contrast safety.">
+  <meta name="description" content="Dedicated Proof of Work and installation guide for Taste Engine's Retro Terminal aesthetic archetype. Experience authentic CRT phosphor luminescence, scanlines, and zero AI-slop.">
   <link rel="icon" type="image/webp" href="assets/logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&family=Fira+Code:wght@500;700&display=swap" rel="stylesheet">
   <style>
     /* =========================================================
        RETRO TERMINAL DESIGN SYSTEM TOKENS
+       Authentic CRT developer console, phosphor luminescence,
+       subtle raster scanlines, and tabular monospace structure.
        ========================================================= */
     :root {
-      --pow-bg: #121a12;
-      --pow-surface: #182418;
-      --pow-surface-hover: #203020;
-      --pow-well-bg: #0c120c;
-      --pow-text: #52ff00;
-      --pow-text-muted: #88cc66;
-      --pow-border: 1.5px solid #52ff00;
-      --pow-shadow: 0 0 10px rgba(82, 255, 0, 0.25);
-      --pow-accent: #52ff00;
-      --pow-radius: 2px;
-      --pow-radius-btn: 2px;
+      /* Base Theme: Classic Amber CRT (VT220 / amber phosphor) */
+      --term-bg: #0C0D0E;
+      --term-surface: #14171A;
+      --term-surface-elevated: #1B2024;
+      --term-well-bg: #080A0B;
+      --term-phosphor: #FFB000;
+      --term-phosphor-rgb: 255, 176, 0;
+      --term-text: var(--term-phosphor);
+      --term-text-muted: #A37C24;
+      --term-border: 1px solid rgba(var(--term-phosphor-rgb), 0.35);
+      --term-border-strong: 1.5px solid var(--term-phosphor);
+      --term-glow: 0 0 7px rgba(var(--term-phosphor-rgb), 0.45);
+      --term-glow-strong: 0 0 14px rgba(var(--term-phosphor-rgb), 0.65);
+      --term-accent: var(--term-phosphor);
+      --term-scanline-opacity: 0.18;
+      
+      /* Semantic Statuses */
+      --term-success: #50FA7B;
+      --term-warning: #FFCC00;
+      --term-error: #FF5555;
+      --term-cyan: #00F0FF;
 
-      --pow-font-display: 'JetBrains Mono', monospace;
-      --pow-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --pow-font-mono: 'JetBrains Mono', monospace;
+      --term-radius: 2px;
+      --term-radius-btn: 2px;
+      --term-font-mono: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     }
 
-    [data-theme="dark"] {
-      --pow-bg: #0a0f0a;
-      --pow-surface: #101810;
-      --pow-surface-hover: #162216;
-      --pow-well-bg: #060906;
-      --pow-text: #00ff66;
-      --pow-text-muted: #55aa77;
-      --pow-border: 1.5px solid #00ff66;
-      --pow-shadow: 0 0 12px rgba(0, 255, 102, 0.2);
-      --pow-accent: #00ff66;
-      --pow-radius: 2px;
-      --pow-radius-btn: 2px;
+    /* Phosphor Mode: Matrix Green (VT100 / IBM 3270) */
+    [data-phosphor="green"] {
+      --term-bg: #080D0A;
+      --term-surface: #0E1611;
+      --term-surface-elevated: #142018;
+      --term-well-bg: #040805;
+      --term-phosphor: #33FF33;
+      --term-phosphor-rgb: 51, 255, 51;
+      --term-text-muted: #4A8550;
+      --term-border: 1px solid rgba(51, 255, 51, 0.35);
+      --term-border-strong: 1.5px solid #33FF33;
+      --term-glow: 0 0 7px rgba(51, 255, 51, 0.45);
+      --term-glow-strong: 0 0 14px rgba(51, 255, 51, 0.65);
     }
 
+    /* Phosphor Mode: Cyberdeck Cyan (DEC / Cyberpunk CLI) */
+    [data-phosphor="cyan"] {
+      --term-bg: #0A0E12;
+      --term-surface: #10161E;
+      --term-surface-elevated: #16202A;
+      --term-well-bg: #05080C;
+      --term-phosphor: #00F0FF;
+      --term-phosphor-rgb: 0, 240, 255;
+      --term-text-muted: #3D7F8A;
+      --term-border: 1px solid rgba(0, 240, 255, 0.35);
+      --term-border-strong: 1.5px solid #00F0FF;
+      --term-glow: 0 0 7px rgba(0, 240, 255, 0.45);
+      --term-glow-strong: 0 0 14px rgba(0, 240, 255, 0.65);
+    }
+
+    /* Light Mode: Vintage Parchment Teletype (High-Contrast Ink) */
+    [data-theme="light"] {
+      --term-bg: #F4F1EA;
+      --term-surface: #E8E4DA;
+      --term-surface-elevated: #DFDAD0;
+      --term-well-bg: #DED9CD;
+      --term-phosphor: #5C3A00;
+      --term-phosphor-rgb: 92, 58, 0;
+      --term-text: #241600;
+      --term-text-muted: #6B552F;
+      --term-border: 1px solid #C4BDAC;
+      --term-border-strong: 1.5px solid #5C3A00;
+      --term-glow: none;
+      --term-glow-strong: none;
+      --term-scanline-opacity: 0;
+
+      --term-success: #047857;
+      --term-warning: #B45309;
+      --term-error: #B91C1C;
+      --term-cyan: #0284C7;
+    }
+
+    /* Base Reset */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    body {
-      background-color: var(--pow-bg);
-      color: var(--pow-text);
-      font-family: var(--pow-font-body);
-      font-size: 16px;
-      line-height: 1.55;
-      -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      transition: background-color 150ms ease, color 150ms ease;
+    html {
+      scroll-behavior: smooth;
     }
 
-    /* Top Navigation */
-    .pow-nav {
+    body {
+      background-color: var(--term-bg);
+      color: var(--term-text);
+      font-family: var(--term-font-mono);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      position: relative;
+      transition: background-color 140ms ease, color 140ms ease;
+    }
+
+    /* CRT Horizontal Raster Scanlines */
+    body::before {
+      content: " ";
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background: linear-gradient(
+        rgba(18, 16, 16, 0) 50%, 
+        rgba(0, 0, 0, var(--term-scanline-opacity)) 50%
+      );
+      background-size: 100% 3px;
+      z-index: 9999;
+      pointer-events: none;
+      opacity: 1;
+      transition: opacity 140ms ease;
+    }
+
+    [data-theme="light"] body::before {
+      display: none;
+    }
+
+    /* --- Strict 1:1 Circle Geometry Preservation (Anti-Oval) --- */
+    .brand-logo-img,
+    .nav-logo-box,
+    .nav-hamburger-btn,
+    .mobile-drawer-close-btn,
+    .dot,
+    .status-dot,
+    .swatch-circle,
+    .terminal-led,
+    .circle-icon {
+      aspect-ratio: 1 / 1 !important;
+      flex-shrink: 0 !important;
+    }
+    img.brand-logo-img {
+      object-fit: cover;
+    }
+
+    /* =========================================================
+       TOP STICKY NAVIGATION
+       ========================================================= */
+    .term-nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--pow-surface);
-      border-bottom: var(--pow-border);
+      background: var(--term-surface);
+      border-bottom: var(--term-border);
       padding: 0.75rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
+      transition: background-color 140ms ease, border-color 140ms ease;
     }
 
     .nav-brand-group {
@@ -81,752 +181,139 @@
       align-items: center;
       gap: 0.75rem;
       text-decoration: none;
-      color: var(--pow-text);
+      color: var(--term-phosphor);
+      flex-shrink: 0;
     }
 
     .nav-logo-box {
       width: 32px;
       height: 32px;
-      background: var(--pow-accent);
-      color: #fff;
-      border-radius: 6px;
+      background: var(--term-well-bg);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-family: var(--pow-font-display);
+      font-family: var(--term-font-mono);
+      font-size: 0.9rem;
+      text-shadow: var(--term-glow);
     }
 
     .nav-title {
-      font-family: var(--pow-font-display);
-      font-weight: 700;
-      font-size: 1.05rem;
+      font-family: var(--term-font-mono);
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: -0.01em;
+      text-shadow: var(--term-glow);
     }
 
     .nav-tag-badge {
-      background: rgba(255, 255, 255, 0.1);
-      border: var(--pow-border);
-      font-family: var(--pow-font-mono);
+      background: var(--term-well-bg);
+      border: var(--term-border);
+      color: var(--term-text-muted);
+      font-family: var(--term-font-mono);
       font-size: 0.7rem;
-      font-weight: 600;
+      font-weight: 700;
       padding: 0.2rem 0.55rem;
-      border-radius: 4px;
+      border-radius: var(--term-radius);
       text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Desktop Navigation Links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .nav-link {
+      color: var(--term-text-muted);
+      text-decoration: none;
+      font-family: var(--term-font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: color 120ms ease, text-shadow 120ms ease;
+    }
+
+    .nav-link:hover {
+      color: var(--term-phosphor);
+      text-shadow: var(--term-glow);
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
+      flex-shrink: 0;
     }
 
-    .pow-btn-sm {
+    .term-btn-sm {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
       padding: 0.45rem 0.85rem;
-      background: var(--pow-surface);
-      color: var(--pow-text);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius-btn);
-      font-family: var(--pow-font-display);
-      font-size: 0.8rem;
-      font-weight: 600;
+      background: var(--term-surface);
+      color: var(--term-phosphor);
+      border: var(--term-border);
+      border-radius: var(--term-radius-btn);
+      font-family: var(--term-font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
       text-decoration: none;
       cursor: pointer;
-      transition: background 120ms ease, transform 90ms ease;
+      transition: background 120ms ease, color 120ms ease, border-color 120ms ease;
     }
 
-    .pow-btn-sm:hover {
-      background: var(--pow-surface-hover);
-      transform: translateY(-1px);
+    .term-btn-sm:hover {
+      background: var(--term-phosphor);
+      color: var(--term-bg);
+      border-color: var(--term-phosphor);
     }
 
-    /* Hero Section (100svh safe viewport) */
-    .pow-hero {
-      min-height: calc(100svh - 60px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 3.5rem 1.25rem 2.5rem 1.25rem;
-      max-width: 1080px;
-      margin: 0 auto;
+    .term-btn-sm:active {
+      transform: translateY(1px);
     }
 
-    .hero-sticker-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--pow-well-bg);
-      color: var(--pow-accent);
-      border: var(--pow-border);
-      border-radius: 999px;
-      padding: 0.35rem 0.95rem;
-      font-family: var(--pow-font-mono);
-      font-size: 0.785rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
+    .term-btn-install-header {
+      background: rgba(var(--term-phosphor-rgb), 0.15);
+      border-color: var(--term-phosphor);
+      text-shadow: var(--term-glow);
     }
 
-    .hero-title {
-      font-family: var(--pow-font-display);
-      font-size: clamp(2rem, 5.5vw, 3.6rem);
-      font-weight: 800;
-      line-height: 1.15;
-      letter-spacing: -0.03em;
-      margin-bottom: 1.25rem;
-      max-width: 920px;
-    }
-
-    .hero-desc {
-      font-size: clamp(0.95rem, 2vw, 1.15rem);
-      color: var(--pow-text-muted);
-      max-width: 740px;
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
-
-    /* Single-Line Inline Command Pill ("Sejajarin") */
-    .pow-command-pill {
-      display: inline-flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      gap: 0.65rem;
-      background: var(--pow-well-bg);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius-btn);
-      padding: 0.4rem 0.5rem 0.4rem 1.1rem;
-      max-width: 100%;
-      box-sizing: border-box;
-      margin-bottom: 2rem;
-    }
-
-    .pow-prompt {
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      color: var(--pow-accent);
-      flex-shrink: 0;
-      line-height: 1;
-      font-size: 0.9rem;
-      user-select: none;
-    }
-
-    .pow-code {
-      font-family: var(--pow-font-mono);
-      font-size: clamp(0.72rem, 3.2vw, 0.875rem);
-      font-weight: 600;
-      color: var(--pow-text);
-      white-space: nowrap;
-      overflow-x: auto;
-      scrollbar-width: none;
-      line-height: 1;
-      user-select: all;
-    }
-
-    .pow-code::-webkit-scrollbar {
-      display: none;
-    }
-
-    .pow-copy-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      background: var(--pow-surface);
-      color: var(--pow-text);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius-btn);
-      padding: 0.4rem 0.8rem;
-      font-family: var(--pow-font-display);
-      font-size: 0.75rem;
-      font-weight: 700;
-      cursor: pointer;
-      flex-shrink: 0;
-      line-height: 1;
-      transition: background 120ms ease;
-    }
-
-    .pow-copy-btn:hover {
-      background: var(--pow-surface-hover);
-    }
-
-    /* Hero CTA Group */
-    .hero-btn-group {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 2.75rem;
-      flex-wrap: wrap;
-    }
-
-    .pow-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      font-family: var(--pow-font-display);
-      font-weight: 700;
-      font-size: 0.925rem;
-      border: var(--pow-border);
-      border-radius: var(--pow-radius-btn);
-      cursor: pointer;
-      transition: transform 100ms ease, background 120ms ease;
-      text-decoration: none;
-    }
-
-    .pow-btn-primary {
-      background: var(--pow-accent);
-      color: #ffffff;
-      border-color: var(--pow-accent);
-    }
-
-    .pow-btn-secondary {
-      background: var(--pow-surface);
-      color: var(--pow-text);
-    }
-
-    .pow-btn:hover {
-      transform: translateY(-2px);
-    }
-
-    /* 4-Stat Strip */
-    .pow-stat-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      width: 100%;
-      max-width: 960px;
-    }
-
-    .stat-box {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius);
-      padding: 1rem 0.85rem;
-      text-align: center;
-      box-shadow: var(--pow-shadow);
-    }
-
-    .stat-val {
-      font-family: var(--pow-font-display);
-      font-size: 1.5rem;
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 0.25rem;
-      color: var(--pow-text);
-    }
-
-    .stat-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--pow-text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-
-    /* Content Sections */
-    .pow-section {
-      max-width: 1080px;
-      margin: 4.5rem auto;
-      padding: 0 1.25rem;
-    }
-
-    .section-header {
-      margin-bottom: 2.25rem;
-    }
-
-    .section-badge {
-      display: inline-block;
-      font-family: var(--pow-font-mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      padding: 0.25rem 0.65rem;
-      background: var(--pow-well-bg);
-      color: var(--pow-accent);
-      border: var(--pow-border);
-      border-radius: 4px;
-      margin-bottom: 0.75rem;
-    }
-
-    .section-title {
-      font-family: var(--pow-font-display);
-      font-size: clamp(1.6rem, 4vw, 2.3rem);
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      line-height: 1.2;
-    }
-
-    .section-desc {
-      font-size: 1rem;
-      color: var(--pow-text-muted);
-      max-width: 680px;
-      margin-top: 0.5rem;
-      line-height: 1.6;
-    }
-
-    /* Tabbed Installation Card */
-    .pow-card {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      box-shadow: var(--pow-shadow);
-      border-radius: var(--pow-radius);
-      overflow: hidden;
-    }
-
-    .tab-header-strip {
-      display: flex;
-      background: var(--pow-well-bg);
-      border-bottom: var(--pow-border);
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .tab-header-strip::-webkit-scrollbar {
-      display: none;
-    }
-
-    .tab-switch-btn {
-      padding: 0.85rem 1.4rem;
-      background: transparent;
-      border: none;
-      border-right: var(--pow-border);
-      font-family: var(--pow-font-display);
-      font-size: 0.85rem;
-      font-weight: 700;
-      color: var(--pow-text-muted);
-      cursor: pointer;
-      white-space: nowrap;
-      transition: background 120ms ease, color 120ms ease;
-    }
-
-    .tab-switch-btn:hover {
-      background: var(--pow-surface-hover);
-      color: var(--pow-text);
-    }
-
-    .tab-switch-btn.active {
-      background: var(--pow-surface);
-      color: var(--pow-accent);
-      border-bottom: 2px solid var(--pow-accent);
-    }
-
-    .tab-body {
-      padding: 1.75rem;
-      display: none;
-    }
-
-    .tab-body.active {
-      display: block;
-    }
-
-    .install-step-title {
-      font-family: var(--pow-font-display);
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 0.65rem;
-    }
-
-    .install-step-desc {
-      font-size: 0.9rem;
-      color: var(--pow-text-muted);
-      margin-bottom: 1.25rem;
-    }
-
-    /* Terminal Console Window */
-    .pow-terminal {
-      background: #0d1117;
-      color: #f0f6fc;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 8px;
-      overflow: hidden;
-      margin-bottom: 1.5rem;
-    }
-
-    .terminal-topbar {
-      background: #161b22;
-      padding: 0.65rem 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .terminal-dots {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-
-    .dot.red { background: #ff5f56; }
-    .dot.yellow { background: #ffbd2e; }
-    .dot.green { background: #27c93f; }
-
-    .terminal-label {
-      font-family: var(--pow-font-mono);
-      font-size: 0.75rem;
-      color: #8b949e;
-      font-weight: 600;
-    }
-
-    .terminal-content {
-      padding: 1.15rem;
-      font-family: var(--pow-font-mono);
-      font-size: 0.85rem;
-      line-height: 1.6;
-      overflow-x: auto;
-    }
-
-    .terminal-line {
-      display: flex;
-      align-items: baseline;
-      gap: 0.75rem;
-      margin-bottom: 0.45rem;
-    }
-
-    .terminal-line:last-child {
-      margin-bottom: 0;
-    }
-
-    .line-p {
-      color: var(--pow-accent);
-      font-weight: 700;
-      user-select: none;
-      flex-shrink: 0;
-    }
-
-    .line-cmd {
-      color: #f0f6fc;
-      word-break: break-all;
-    }
-
-    .line-comment {
-      color: #8b949e;
-      font-style: italic;
-    }
-
-    /* Bento Demo Specifics */
-    .bento-demo-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 16px;
-    }
-
-    .bento-tile {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius);
-      padding: 1.75rem;
-      box-shadow: var(--pow-shadow);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .bento-tag {
-      display: inline-block;
-      font-size: 0.725rem;
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      color: var(--pow-accent);
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-    }
-
-    /* Accordion / FAQ */
-    .pow-faq-item {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      box-shadow: var(--pow-shadow);
-      border-radius: var(--pow-radius);
-      margin-bottom: 1rem;
-      overflow: hidden;
-    }
-
-    .pow-faq-header {
-      padding: 1rem 1.25rem;
-      font-family: var(--pow-font-display);
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      user-select: none;
-      background: var(--pow-surface);
-      transition: background 120ms ease;
-    }
-
-    .pow-faq-header:hover {
-      background: var(--pow-surface-hover);
-    }
-
-    .faq-arrow {
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      transition: transform 180ms ease;
-    }
-
-    .pow-faq-item.open .faq-arrow {
-      transform: rotate(90deg);
-    }
-
-    .pow-faq-body {
-      padding: 0 1.25rem 1.25rem 1.25rem;
-      font-size: 0.875rem;
-      color: var(--pow-text-muted);
-      line-height: 1.6;
-      display: none;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 1rem;
-    }
-
-    .pow-faq-item.open .pow-faq-body {
-      display: block;
-    }
-
-    /* Token Specification Table */
-    .token-table-wrap {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      box-shadow: var(--pow-shadow);
-      border-radius: var(--pow-radius);
-      overflow-x: auto;
-    }
-
-    .pow-table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-    }
-
-    .pow-table th, .pow-table td {
-      padding: 0.9rem 1.25rem;
-      border-bottom: var(--pow-border);
-      font-size: 0.85rem;
-    }
-
-    .pow-table th {
-      background: var(--pow-well-bg);
-      font-family: var(--pow-font-display);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .pow-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .token-code {
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      color: var(--pow-accent);
-    }
-
-    /* Footer (Balanced 2-column mobile architecture) */
-    .pow-footer {
-      background: var(--pow-surface);
-      border-top: var(--pow-border);
-      margin-top: 5rem;
-      padding: 3rem 1.25rem 2rem 1.25rem;
-    }
-
-    .footer-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 2.5rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .footer-brand h4 {
-      font-family: var(--pow-font-display);
-      font-size: 1.2rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-brand p {
-      font-size: 0.85rem;
-      color: var(--pow-text-muted);
-      max-width: 380px;
-      line-height: 1.6;
-    }
-
-    .footer-col h5 {
-      font-family: var(--pow-font-display);
-      font-size: 0.8rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 1rem;
-      color: var(--pow-text);
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-col ul a {
-      color: var(--pow-text-muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: color 90ms ease;
-    }
-
-    .footer-col ul a:hover {
-      color: var(--pow-accent);
-    }
-
-    .footer-bottom {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding-top: 1.5rem;
-      border-top: var(--pow-border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      font-size: 0.8rem;
-      color: var(--pow-text-muted);
-    }
-
-    /* Toast Notification */
-    .pow-toast {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: var(--pow-surface);
-      color: var(--pow-text);
-      border: var(--pow-border);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-      padding: 0.65rem 1.2rem;
-      border-radius: var(--pow-radius-btn);
-      font-family: var(--pow-font-display);
-      font-size: 0.85rem;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 150ms ease, transform 150ms ease;
-      pointer-events: none;
-      z-index: 1000;
-    }
-
-    .pow-toast.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* =========================================================
-       RESPONSIVE BREAKPOINTS (FLUID & COMPACT MOBILE)
-       ========================================================= */
-    @media (max-width: 768px) {
-      .pow-nav { padding: 0.65rem 1rem; }
-      .nav-title { font-size: 0.95rem; }
-      .nav-tag-badge { display: none; }
-      
-      .pow-hero { padding: 2.5rem 1rem 1.5rem 1rem; }
-      .hero-title { font-size: clamp(1.6rem, 5.5vw, 2.3rem); }
-      .hero-desc { font-size: 0.9rem; margin-bottom: 1.5rem; }
-
-      .hero-btn-group { flex-direction: column; width: 100%; gap: 0.65rem; }
-      .pow-btn { width: 100%; }
-
-      .pow-stat-strip { grid-template-columns: repeat(2, 1fr); gap: 0.65rem; }
-      .stat-val { font-size: 1.35rem; }
-
-      .bento-demo-grid { grid-template-columns: 1fr; }
-
-      .footer-inner {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.75rem 1.25rem;
-      }
-      .footer-brand {
-        grid-column: 1 / -1;
-        padding-bottom: 1rem;
-        border-bottom: var(--pow-border);
-      }
-      .footer-bottom {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-title { font-size: 1.45rem; line-height: 1.18; }
-      .hero-desc { font-size: 0.825rem; }
-      .pow-stat-strip { grid-template-columns: 1fr 1fr; gap: 0.45rem; }
-      .stat-box { padding: 0.75rem 0.5rem; }
-      .stat-val { font-size: 1.2rem; }
-      .stat-label { font-size: 0.65rem; }
-
-      .section-title { font-size: 1.3rem; }
-      .section-desc { font-size: 0.825rem; }
-
-      .tab-body { padding: 1rem; }
-      .terminal-content { font-size: 0.75rem; padding: 0.85rem; }
-
-      .pow-command-pill {
-        gap: 0.4rem;
-        padding: 0.3rem 0.35rem 0.3rem 0.75rem;
-      }
-      .pow-copy-btn {
-        padding: 0.35rem 0.6rem;
-        font-size: 0.7rem;
-      }
-    }
-
-    /* --- Mobile Hamburger & Drawer Navigation --- */
+    /* Hamburger Button (Terminal ASCII Bracketed) */
     .nav-hamburger-btn {
       display: none;
       align-items: center;
       justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: var(--pow-radius-sm, 6px);
-      background: var(--pow-surface-elevated, #FFFFFF);
-      border: var(--pow-border, 1px solid #CBD5E1);
-      color: var(--pow-text, #0F172A);
+      width: 34px;
+      height: 34px;
+      border-radius: var(--term-radius-btn);
+      background: var(--term-well-bg);
+      border: var(--term-border);
+      color: var(--term-phosphor);
       cursor: pointer;
       transition: all 120ms ease;
     }
 
     .nav-hamburger-btn:hover {
-      border-color: var(--pow-accent, #3B82F6);
-      color: var(--pow-accent, #3B82F6);
+      background: var(--term-phosphor);
+      color: var(--term-bg);
     }
 
+    /* Mobile Navigation Drawer Overlay (Authentic Terminal Frame) */
     .mobile-nav-backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(10, 12, 16, 0.6);
-      -webkit-backdrop-filter: blur(4px);
-      backdrop-filter: blur(4px);
+      background: rgba(12, 13, 14, 0.75);
+      backdrop-filter: blur(3px);
       z-index: 998;
       opacity: 0;
       pointer-events: none;
-      transition: opacity 200ms ease;
+      transition: opacity 180ms ease;
     }
 
     .mobile-nav-backdrop.open {
@@ -837,23 +324,23 @@
     .mobile-nav-drawer {
       position: fixed;
       top: 0;
-      right: -320px;
-      width: min(300px, 86vw);
+      right: -340px;
+      width: min(320px, 88vw);
       height: 100vh;
       height: 100dvh;
       z-index: 999;
-      background: var(--pow-surface-elevated, #FFFFFF);
-      border-left: var(--pow-border, 1px solid #CBD5E1);
-      box-shadow: -10px 0 35px rgba(0, 0, 0, 0.35);
+      background: var(--term-surface);
+      border-left: var(--term-border);
+      box-shadow: -10px 0 35px rgba(0, 0, 0, 0.6);
       display: flex;
       flex-direction: column;
-      transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+      transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
       padding: 1.25rem 1.25rem;
       box-sizing: border-box;
     }
 
     .mobile-nav-drawer.open {
-      transform: translateX(-320px);
+      transform: translateX(-340px);
     }
 
     .mobile-drawer-header {
@@ -861,28 +348,34 @@
       align-items: center;
       justify-content: space-between;
       padding-bottom: 0.85rem;
-      border-bottom: 1px solid var(--pow-border, #CBD5E1);
+      border-bottom: 1px dashed var(--term-text-muted);
       margin-bottom: 1.25rem;
     }
 
     .style-drawer-tag {
-      font-family: var(--pow-font-mono, monospace);
+      font-family: var(--term-font-mono);
       font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--pow-accent, #3B82F6);
+      font-weight: 800;
+      color: var(--term-phosphor);
+      text-shadow: var(--term-glow);
     }
 
     .mobile-drawer-close-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 4px;
-      background: var(--pow-surface, #F8FAFC);
-      border: var(--pow-border, 1px solid #CBD5E1);
-      color: var(--pow-text, #0F172A);
+      width: 30px;
+      height: 30px;
+      border-radius: var(--term-radius);
+      background: var(--term-well-bg);
+      border: var(--term-border);
+      color: var(--term-phosphor);
       cursor: pointer;
+    }
+
+    .mobile-drawer-close-btn:hover {
+      background: var(--term-phosphor);
+      color: var(--term-bg);
     }
 
     .mobile-drawer-body {
@@ -899,26 +392,26 @@
       gap: 0.75rem;
       min-height: 44px;
       padding: 0.65rem 0.85rem;
-      border-radius: var(--pow-radius-sm, 6px);
-      background: var(--pow-surface, #F8FAFC);
-      border: var(--pow-border, 1px solid #CBD5E1);
-      color: var(--pow-text, #0F172A);
+      border-radius: var(--term-radius);
+      background: var(--term-well-bg);
+      border: var(--term-border);
+      color: var(--term-phosphor);
       text-decoration: none;
-      font-family: var(--pow-font-sans, inherit);
-      font-weight: 600;
-      font-size: 0.85rem;
+      font-family: var(--term-font-mono);
+      font-weight: 700;
+      font-size: 0.8rem;
       transition: all 120ms ease;
     }
 
     .mobile-nav-link:hover {
-      border-color: var(--pow-accent, #3B82F6);
-      color: var(--pow-accent, #3B82F6);
-      transform: translateX(3px);
+      background: var(--term-phosphor);
+      color: var(--term-bg);
+      transform: translateX(2px);
     }
 
     .mobile-drawer-footer {
       padding-top: 1rem;
-      border-top: 1px solid var(--pow-border, #CBD5E1);
+      border-top: 1px dashed var(--term-text-muted);
     }
 
     .mobile-drawer-cta-btn {
@@ -929,135 +422,1346 @@
       width: 100%;
       min-height: 44px;
       padding: 0.75rem 1rem;
-      background: var(--pow-accent, #3B82F6);
-      color: #FFFFFF;
-      border-radius: var(--pow-radius-btn, 6px);
-      font-family: var(--pow-font-sans, inherit);
-      font-weight: 700;
-      font-size: 0.85rem;
+      background: var(--term-phosphor);
+      color: var(--term-bg);
+      border-radius: var(--term-radius-btn);
+      font-family: var(--term-font-mono);
+      font-weight: 800;
+      font-size: 0.8rem;
       text-decoration: none;
     }
 
-    /* Strict 320px Responsive Baseline & Anti-Bloat Fluid Typography */
+    /* =========================================================
+       HERO SECTION (100svh safe viewport)
+       ========================================================= */
+    .pow-hero {
+      min-height: calc(100svh - 60px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3.5rem 1.25rem 2.5rem 1.25rem;
+      position: relative;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .ascii-hero-banner {
+      font-family: var(--term-font-mono);
+      font-size: clamp(0.6rem, 1.8vw, 0.75rem);
+      line-height: 1.25;
+      color: var(--term-text-muted);
+      margin-bottom: 1.25rem;
+      white-space: pre;
+      text-align: left;
+      user-select: none;
+      overflow-x: auto;
+      max-width: 100%;
+    }
+
+    .hero-sticker-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--term-well-bg);
+      color: var(--term-phosphor);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      padding: 0.35rem 0.9rem;
+      font-family: var(--term-font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      text-shadow: var(--term-glow);
+    }
+
+    .hero-title {
+      font-family: var(--term-font-mono);
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      max-width: 960px;
+      text-shadow: var(--term-glow);
+    }
+
+    .hero-title span.highlight {
+      color: var(--term-bg);
+      background: var(--term-phosphor);
+      padding: 0.1rem 0.45rem;
+      border-radius: var(--term-radius);
+      display: inline-block;
+      text-shadow: none;
+      margin: 0 0.15rem;
+    }
+
+    .hero-desc {
+      font-size: clamp(0.9rem, 1.8vw, 1.05rem);
+      color: var(--term-text-muted);
+      max-width: 760px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+      font-weight: 500;
+    }
+
+    /* Single-Line Inline Command Pill ("Sejajarin") */
+    .term-command-pill {
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      background: var(--term-well-bg);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      padding: 0.4rem 0.5rem 0.4rem 1.1rem;
+      max-width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 2rem;
+      box-shadow: var(--term-glow);
+    }
+
+    .term-prompt {
+      font-family: var(--term-font-mono);
+      font-weight: 800;
+      color: var(--term-success);
+      flex-shrink: 0;
+      line-height: 1;
+      font-size: 0.85rem;
+      user-select: none;
+    }
+
+    .term-code {
+      font-family: var(--term-font-mono);
+      font-size: clamp(0.72rem, 3.2vw, 0.85rem);
+      font-weight: 600;
+      color: var(--term-phosphor);
+      white-space: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      line-height: 1;
+      user-select: all;
+    }
+
+    .term-code::-webkit-scrollbar {
+      display: none;
+    }
+
+    .term-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--term-surface);
+      color: var(--term-phosphor);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      padding: 0.4rem 0.8rem;
+      font-family: var(--term-font-mono);
+      font-size: 0.725rem;
+      font-weight: 800;
+      cursor: pointer;
+      flex-shrink: 0;
+      line-height: 1;
+      transition: background 120ms ease, color 120ms ease;
+    }
+
+    .term-copy-btn:hover {
+      background: var(--term-phosphor);
+      color: var(--term-bg);
+    }
+
+    /* Hero CTA Group */
+    .hero-btn-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.75rem;
+      flex-wrap: wrap;
+    }
+
+    .term-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-family: var(--term-font-mono);
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      border: var(--term-border);
+      border-radius: var(--term-radius-btn);
+      cursor: pointer;
+      transition: background 120ms ease, color 120ms ease, box-shadow 120ms ease;
+      text-decoration: none;
+    }
+
+    .term-btn-primary {
+      background: var(--term-phosphor);
+      color: var(--term-bg);
+      border-color: var(--term-phosphor);
+      box-shadow: var(--term-glow);
+    }
+
+    .term-btn-primary:hover {
+      background: transparent;
+      color: var(--term-phosphor);
+    }
+
+    .term-btn-secondary {
+      background: var(--term-surface);
+      color: var(--term-phosphor);
+    }
+
+    .term-btn-secondary:hover {
+      background: var(--term-well-bg);
+      border-color: var(--term-phosphor);
+      text-shadow: var(--term-glow);
+    }
+
+    /* 4-Stat Terminal Strip */
+    .term-stat-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .stat-box {
+      background: var(--term-surface);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      padding: 1rem 0.85rem;
+      text-align: center;
+    }
+
+    .stat-val {
+      font-family: var(--term-font-mono);
+      font-size: 1.45rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+      color: var(--term-phosphor);
+      text-shadow: var(--term-glow);
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--term-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Content Sections */
+    .term-section {
+      max-width: 1080px;
+      margin: 4.5rem auto;
+      padding: 0 1.25rem;
+    }
+
+    .section-header {
+      margin-bottom: 2.25rem;
+    }
+
+    .section-badge {
+      display: inline-block;
+      font-family: var(--term-font-mono);
+      font-size: 0.725rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      background: var(--term-well-bg);
+      color: var(--term-phosphor);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      margin-bottom: 0.75rem;
+      text-shadow: var(--term-glow);
+    }
+
+    .section-title {
+      font-family: var(--term-font-mono);
+      font-size: clamp(1.4rem, 3.8vw, 2.2rem);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      line-height: 1.25;
+      text-shadow: var(--term-glow);
+    }
+
+    .section-desc {
+      font-size: 0.95rem;
+      color: var(--term-text-muted);
+      max-width: 720px;
+      margin-top: 0.5rem;
+      line-height: 1.6;
+    }
+
+    /* Tabbed Installation Card */
+    .term-card {
+      background: var(--term-surface);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      overflow: hidden;
+      box-shadow: var(--term-glow);
+    }
+
+    .tab-header-strip {
+      display: flex;
+      background: var(--term-well-bg);
+      border-bottom: var(--term-border);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tab-header-strip::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-switch-btn {
+      padding: 0.85rem 1.4rem;
+      background: transparent;
+      border: none;
+      border-right: var(--term-border);
+      font-family: var(--term-font-mono);
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--term-text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 120ms ease, color 120ms ease;
+    }
+
+    .tab-switch-btn:hover {
+      background: var(--term-surface-elevated);
+      color: var(--term-phosphor);
+    }
+
+    .tab-switch-btn.active {
+      background: var(--term-surface);
+      color: var(--term-phosphor);
+      border-bottom: 2px solid var(--term-phosphor);
+      text-shadow: var(--term-glow);
+    }
+
+    .tab-body {
+      padding: 1.75rem;
+      display: none;
+    }
+
+    .tab-body.active {
+      display: block;
+    }
+
+    .install-step-title {
+      font-family: var(--term-font-mono);
+      font-size: 1.05rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 0.65rem;
+      text-shadow: var(--term-glow);
+    }
+
+    .install-step-desc {
+      font-size: 0.875rem;
+      color: var(--term-text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    /* Terminal Console Window */
+    .console-terminal {
+      background: #060809;
+      color: #FAFAFA;
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .terminal-topbar {
+      background: #0E1214;
+      padding: 0.65rem 1rem;
+      border-bottom: var(--term-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .terminal-dots {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      aspect-ratio: 1 / 1 !important;
+      flex-shrink: 0 !important;
+      border-radius: 50% !important;
+    }
+
+    .dot.red { background: #FF5555; }
+    .dot.yellow { background: #FFB000; }
+    .dot.green { background: #50FA7B; }
+
+    .terminal-label {
+      font-family: var(--term-font-mono);
+      font-size: 0.725rem;
+      color: var(--term-text-muted);
+      font-weight: 700;
+    }
+
+    .terminal-content {
+      padding: 1.15rem;
+      font-family: var(--term-font-mono);
+      font-size: 0.825rem;
+      line-height: 1.6;
+      overflow-x: auto;
+    }
+
+    .terminal-line {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .terminal-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .line-p {
+      color: var(--term-phosphor);
+      font-weight: 800;
+      user-select: none;
+      flex-shrink: 0;
+      text-shadow: var(--term-glow);
+    }
+
+    .line-cmd {
+      color: #FAFAFA;
+      word-break: break-all;
+    }
+
+    .line-comment {
+      color: #6C727A;
+      font-style: italic;
+    }
+
+    /* =========================================================
+       INTERACTIVE RETRO-TERMINAL STUDIO LAB (POW PLAYGROUND)
+       ========================================================= */
+    .studio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+    }
+
+    .studio-panel {
+      background: var(--term-surface);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: var(--term-glow);
+    }
+
+    .studio-panel-header {
+      background: var(--term-well-bg);
+      border-bottom: var(--term-border);
+      padding: 0.75rem 1.15rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .studio-panel-title {
+      font-family: var(--term-font-mono);
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--term-phosphor);
+      text-shadow: var(--term-glow);
+    }
+
+    .studio-panel-badge {
+      font-family: var(--term-font-mono);
+      font-size: 0.68rem;
+      font-weight: 800;
+      padding: 0.15rem 0.5rem;
+      background: var(--term-surface);
+      color: var(--term-phosphor);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+    }
+
+    .studio-panel-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      flex: 1;
+    }
+
+    .panel-instruction {
+      font-size: 0.825rem;
+      color: var(--term-text-muted);
+      line-height: 1.5;
+    }
+
+    /* Module 1: Interactive CLI Prompt & Shell Emulator */
+    .cli-screen {
+      background: var(--term-well-bg);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      padding: 1rem;
+      min-height: 200px;
+      max-height: 260px;
+      overflow-y: auto;
+      font-family: var(--term-font-mono);
+      font-size: 0.8rem;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .cli-log-entry {
+      word-break: break-word;
+    }
+
+    .cli-tag {
+      font-weight: 800;
+    }
+    .tag-ok { color: var(--term-success); }
+    .tag-exec { color: var(--term-phosphor); }
+    .tag-info { color: var(--term-cyan); }
+    .tag-err { color: var(--term-error); }
+
+    .cli-input-line {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--term-well-bg);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      padding: 0.45rem 0.75rem;
+    }
+
+    .cli-prompt-label {
+      color: var(--term-success);
+      font-weight: 800;
+      font-size: 0.8rem;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .cli-input-box {
+      background: transparent;
+      border: none;
+      color: var(--term-phosphor);
+      font-family: var(--term-font-mono);
+      font-size: 0.825rem;
+      font-weight: 700;
+      outline: none;
+      flex: 1;
+      width: 100%;
+    }
+
+    .cli-caret {
+      display: inline-block;
+      width: 8px;
+      height: 15px;
+      background: var(--term-phosphor);
+      animation: blink 1s step-end infinite;
+      vertical-align: middle;
+      flex-shrink: 0;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      51%, 100% { opacity: 0; }
+    }
+
+    .cli-quick-pills {
+      display: flex;
+      gap: 0.35rem;
+      flex-wrap: wrap;
+    }
+
+    .cli-pill-btn {
+      padding: 0.25rem 0.55rem;
+      background: var(--term-well-bg);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      color: var(--term-phosphor);
+      font-family: var(--term-font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 120ms ease;
+    }
+
+    .cli-pill-btn:hover {
+      background: var(--term-phosphor);
+      color: var(--term-bg);
+    }
+
+    /* Module 2: CRT Phosphor Mode Switcher & Raster Calibrator */
+    .calibrator-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .phosphor-btn-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.5rem;
+    }
+
+    .phosphor-mode-btn {
+      padding: 0.65rem 0.5rem;
+      background: var(--term-well-bg);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      color: var(--term-phosphor);
+      font-family: var(--term-font-mono);
+      font-size: 0.725rem;
+      font-weight: 800;
+      cursor: pointer;
+      text-align: center;
+      transition: all 120ms ease;
+    }
+
+    .phosphor-mode-btn.active {
+      background: var(--term-phosphor);
+      color: var(--term-bg);
+      border-color: var(--term-phosphor);
+      box-shadow: var(--term-glow);
+    }
+
+    .control-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .control-label-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-family: var(--term-font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--term-phosphor);
+    }
+
+    .control-val-badge {
+      font-family: var(--term-font-mono);
+      font-size: 0.7rem;
+      padding: 0.1rem 0.4rem;
+      background: var(--term-well-bg);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      color: var(--term-text-muted);
+    }
+
+    .term-range-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      background: var(--term-well-bg);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      outline: none;
+    }
+
+    .term-range-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 16px;
+      height: 16px;
+      background: var(--term-phosphor);
+      border: 1px solid var(--term-bg);
+      border-radius: var(--term-radius);
+      box-shadow: var(--term-glow);
+      cursor: pointer;
+    }
+
+    .crt-preview-box {
+      background: var(--term-well-bg);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      padding: 1.25rem;
+      text-align: center;
+      font-family: var(--term-font-mono);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--term-phosphor);
+      text-shadow: var(--term-glow);
+      cursor: pointer;
+      user-select: none;
+      transition: all 120ms ease;
+    }
+
+    .crt-preview-box:hover {
+      background: rgba(var(--term-phosphor-rgb), 0.1);
+    }
+
+    .calibrator-css-pill {
+      background: #060809;
+      color: var(--term-phosphor);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      padding: 0.65rem 0.85rem;
+      font-family: var(--term-font-mono);
+      font-size: 0.725rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      overflow-x: auto;
+    }
+
+    .calibrator-css-code {
+      white-space: nowrap;
+    }
+
+    /* Module 3: Tabular Monospace Matrix & Bracketed Controls (Card-in-Card) */
+    .parent-card-demo {
+      background: var(--term-surface);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .parent-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px dashed var(--term-text-muted);
+      padding-bottom: 0.65rem;
+    }
+
+    .parent-card-title {
+      font-family: var(--term-font-mono);
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--term-phosphor);
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+      text-shadow: var(--term-glow);
+    }
+
+    /* Approved Nested Sub-Panel / Action Well (Card-in-Card) */
+    .nested-action-well {
+      background: var(--term-well-bg);
+      border: 1px dashed var(--term-border);
+      border-radius: var(--term-radius);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .process-table-wrap {
+      overflow-x: auto;
+    }
+
+    .process-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--term-font-mono);
+      font-size: 0.75rem;
+      text-align: left;
+    }
+
+    .process-table th, .process-table td {
+      padding: 0.45rem 0.5rem;
+      border-bottom: 1px solid rgba(var(--term-phosphor-rgb), 0.15);
+    }
+
+    .process-table th {
+      color: var(--term-text-muted);
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .action-btn-strip {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .term-bracket-btn {
+      padding: 0.45rem 0.85rem;
+      background: var(--term-surface);
+      color: var(--term-phosphor);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      font-family: var(--term-font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 120ms ease;
+    }
+
+    .term-bracket-btn:hover {
+      background: var(--term-phosphor);
+      color: var(--term-bg);
+      border-color: var(--term-phosphor);
+    }
+
+    .shortcut-hints {
+      font-size: 0.7rem;
+      color: var(--term-text-muted);
+      display: flex;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+    }
+
+    /* Module 4: Pop Palette & Contrast Matrix */
+    .palette-swatches-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.65rem;
+    }
+
+    .swatch-card {
+      background: var(--term-well-bg);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      padding: 0.75rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      transition: all 120ms ease;
+    }
+
+    .swatch-card:hover {
+      border-color: var(--term-phosphor);
+      background: var(--term-surface);
+    }
+
+    .swatch-card.active {
+      border-color: var(--term-phosphor) !important;
+      background: var(--term-surface-elevated) !important;
+      box-shadow: var(--term-glow);
+    }
+
+    .swatch-circle {
+      width: 28px;
+      height: 28px;
+      aspect-ratio: 1 / 1 !important;
+      flex-shrink: 0 !important;
+      border: 1px solid var(--term-border);
+      border-radius: 50% !important;
+    }
+
+    .swatch-name {
+      font-family: var(--term-font-mono);
+      font-size: 0.725rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .swatch-ratio {
+      font-family: var(--term-font-mono);
+      font-size: 0.65rem;
+      color: var(--term-text-muted);
+      font-weight: 700;
+    }
+
+    .contrast-rule-box {
+      background: var(--term-well-bg);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      padding: 0.85rem;
+      font-size: 0.775rem;
+      line-height: 1.55;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .contrast-rule-title {
+      font-family: var(--term-font-mono);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--term-phosphor);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      text-shadow: var(--term-glow);
+    }
+
+    /* =========================================================
+       DESIGN TOKENS MATRIX TABLE
+       ========================================================= */
+    .token-table-wrap {
+      background: var(--term-surface);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      overflow-x: auto;
+      box-shadow: var(--term-glow);
+    }
+
+    .term-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .term-table th, .term-table td {
+      padding: 0.9rem 1.25rem;
+      border-bottom: 1px solid rgba(var(--term-phosphor-rgb), 0.2);
+      font-size: 0.825rem;
+    }
+
+    .term-table th {
+      background: var(--term-well-bg);
+      font-family: var(--term-font-mono);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--term-phosphor);
+    }
+
+    .term-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .token-code {
+      font-family: var(--term-font-mono);
+      font-weight: 800;
+      color: var(--term-phosphor);
+    }
+
+    .swatch-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .color-swatch {
+      width: 16px;
+      height: 16px;
+      border: 1px solid var(--term-border);
+      border-radius: 2px;
+    }
+
+    /* =========================================================
+       FAQ ACCORDION (Lucide Chevrons & Monospace Dividers)
+       ========================================================= */
+    .term-faq-item {
+      background: var(--term-surface);
+      border: var(--term-border);
+      border-radius: var(--term-radius);
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: border-color 120ms ease;
+    }
+
+    .term-faq-header {
+      padding: 1rem 1.25rem;
+      font-family: var(--term-font-mono);
+      font-size: 0.875rem;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      user-select: none;
+      background: var(--term-surface);
+      color: var(--term-phosphor);
+      transition: background 120ms ease;
+    }
+
+    .term-faq-header:hover {
+      background: var(--term-surface-elevated);
+      text-shadow: var(--term-glow);
+    }
+
+    .faq-chevron {
+      transition: transform 180ms ease;
+      flex-shrink: 0;
+    }
+
+    .term-faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .term-faq-body {
+      padding: 0 1.25rem 1.25rem 1.25rem;
+      font-size: 0.825rem;
+      color: var(--term-text-muted);
+      line-height: 1.6;
+      display: none;
+      border-top: 1px dashed var(--term-border);
+      margin-top: -1px;
+      padding-top: 1rem;
+    }
+
+    .term-faq-item.open .term-faq-body {
+      display: block;
+    }
+
+    /* =========================================================
+       FOOTER (Balanced 3-column / 2-column mobile architecture)
+       ========================================================= */
+    .term-footer {
+      background: var(--term-surface);
+      border-top: var(--term-border);
+      margin-top: 5rem;
+      padding: 3rem 1.25rem 2rem 1.25rem;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand h4 {
+      font-family: var(--term-font-mono);
+      font-size: 1.1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+      color: var(--term-phosphor);
+      text-shadow: var(--term-glow);
+    }
+
+    .footer-brand p {
+      font-size: 0.8rem;
+      color: var(--term-text-muted);
+      max-width: 380px;
+      line-height: 1.6;
+    }
+
+    .footer-col h5 {
+      font-family: var(--term-font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+      color: var(--term-phosphor);
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-col ul a {
+      color: var(--term-text-muted);
+      text-decoration: none;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: color 90ms ease;
+    }
+
+    .footer-col ul a:hover {
+      color: var(--term-phosphor);
+      text-shadow: var(--term-glow);
+    }
+
+    .footer-bottom {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding-top: 1.5rem;
+      border-top: 1px dashed var(--term-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.75rem;
+      color: var(--term-text-muted);
+    }
+
+    /* Toast Notification */
+    .term-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--term-well-bg);
+      color: var(--term-phosphor);
+      border: var(--term-border);
+      box-shadow: var(--term-glow-strong);
+      padding: 0.65rem 1.2rem;
+      border-radius: var(--term-radius);
+      font-family: var(--term-font-mono);
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 150ms ease, transform 150ms ease;
+      pointer-events: none;
+      z-index: 10000;
+    }
+
+    .term-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       RESPONSIVE BREAKPOINTS (FLUID & COMPACT DOWN TO 320PX)
+       ========================================================= */
+    @media (max-width: 860px) {
+      .studio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 768px) {
-      .pow-nav { padding: 0.65rem 1rem !important; }
-      .nav-actions .desktop-only { display: none !important; }
-      .nav-hamburger-btn { display: inline-flex !important; }
-      .nav-tag-badge { display: none !important; }
+      .term-nav {
+        padding: 0.65rem 1rem !important;
+      }
+      .nav-links.desktop-only,
+      .nav-actions .desktop-only {
+        display: none !important;
+      }
+      .nav-hamburger-btn {
+        display: inline-flex !important;
+      }
+      .nav-tag-badge {
+        display: none !important;
+      }
+      
+      .pow-hero {
+        padding: 2.5rem 1rem 1.5rem 1rem;
+      }
+      .hero-title {
+        font-size: clamp(1.4rem, 5vw, 2.1rem);
+      }
+      .hero-desc {
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-btn-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.65rem;
+      }
+      .term-btn {
+        width: 100%;
+      }
+
+      .term-stat-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.65rem;
+      }
+      .stat-val {
+        font-size: 1.25rem;
+      }
+
+      .footer-inner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.75rem 1.25rem;
+      }
+      .footer-brand {
+        grid-column: 1 / -1;
+        padding-bottom: 1rem;
+        border-bottom: 1px dashed var(--term-border);
+      }
+      .footer-bottom {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 1rem;
+      }
     }
 
     @media (max-width: 480px) {
-      html { font-size: 15px; }
-      body { overflow-x: hidden; }
-      .nav-title { font-size: 0.95rem; }
-      .pow-hero { padding: 2rem 0.75rem 1.25rem 0.75rem !important; }
-      .hero-title { font-size: clamp(1.35rem, 5.5vw, 1.75rem) !important; line-height: 1.25; margin-bottom: 0.85rem; }
-      .hero-desc { font-size: 0.85rem !important; line-height: 1.55; }
-      .pow-section { padding: 2.25rem 0.75rem !important; }
-      .section-title { font-size: clamp(1.2rem, 4.5vw, 1.45rem) !important; }
-      .section-desc { font-size: 0.85rem !important; }
+      html {
+        font-size: 14.5px;
+      }
+      .nav-title {
+        font-size: 0.9rem;
+      }
+      .pow-hero {
+        padding: 2rem 0.75rem 1.25rem 0.75rem !important;
+      }
+      .hero-title {
+        font-size: clamp(1.25rem, 4.8vw, 1.65rem) !important;
+        line-height: 1.25;
+        margin-bottom: 0.85rem;
+      }
+      .hero-desc {
+        font-size: 0.8rem !important;
+      }
+
+      .term-stat-strip {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.45rem;
+      }
+      .stat-box {
+        padding: 0.75rem 0.5rem;
+      }
+      .stat-val {
+        font-size: 1.15rem;
+      }
+      .stat-label {
+        font-size: 0.625rem;
+      }
+
+      .section-title {
+        font-size: clamp(1.15rem, 4vw, 1.4rem) !important;
+      }
+      .section-desc {
+        font-size: 0.8rem !important;
+      }
+
+      .tab-body {
+        padding: 1rem;
+      }
+      .terminal-content {
+        font-size: 0.725rem;
+        padding: 0.85rem;
+      }
+
+      .term-command-pill {
+        gap: 0.4rem;
+        padding: 0.3rem 0.35rem 0.3rem 0.75rem;
+      }
+      .term-copy-btn {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.68rem;
+      }
+
+      .palette-swatches-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .phosphor-btn-grid {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 360px) {
-      html { font-size: 14px; }
-      .pow-nav { padding: 0.45rem 0.5rem !important; }
-      .pow-hero { padding: 1.5rem 0.5rem 1rem 0.5rem !important; }
-      .hero-title { font-size: 1.35rem !important; }
-      .pow-stat-strip { grid-template-columns: 1fr !important; }
-    }
-  
-    /* --- Strict 1:1 Circle Geometry Preservation (Anti-Oval) --- */
-    .avatar-circle,
-    .clay-avatar-frame,
-    .clay-circle-btn,
-    .track-play-btn,
-    .mix-floating-play,
-    .ctrl-circle-btn,
-    .nav-hamburger-btn,
-    .brut-hamburger-btn,
-    .mobile-drawer-close-btn,
-    .brand-logo-img,
-    .nav-logo-img,
-    .nav-logo-box,
-    .pipeline-icon-box,
-    .verify-icon-box,
-    .pod-cover-icon,
-    .metric-icon-squircle,
-    .color-swatch,
-    .dot,
-    .clay-dot,
-    .hero-badge-dot,
-    .live-dot-green,
-    .live-pulse-dot,
-    .legend-color-dot,
-    .status-dot,
-    .skeuo-led {
-      aspect-ratio: 1 / 1 !important;
-      flex-shrink: 0 !important;
-    }
-    img.avatar-circle,
-    img.brand-logo-img,
-    img.nav-logo-img {
-      object-fit: cover;
+      html {
+        font-size: 13.5px;
+      }
+      .term-nav {
+        padding: 0.45rem 0.5rem !important;
+      }
+      .pow-hero {
+        padding: 1.5rem 0.5rem 1rem 0.5rem !important;
+      }
+      .hero-title {
+        font-size: 1.25rem !important;
+      }
+      .term-stat-strip {
+        grid-template-columns: 1fr !important;
+      }
     }
   </style>
 </head>
 <body>
 
   <!-- Top Navigation -->
-  <header class="pow-nav">
+  <header class="term-nav">
     <a href="index.html" class="nav-brand-group">
-      <div class="nav-logo-box">TE</div>
+      <div class="nav-logo-box">&gt;_</div>
       <strong class="nav-title">Taste Engine</strong>
-      <span class="nav-tag-badge">Retro Terminal PoW</span>
+      <span class="nav-tag-badge">#08 RETRO-TERMINAL</span>
     </a>
+
+    <!-- Desktop Nav Links -->
+    <nav class="nav-links desktop-only" aria-label="Desktop navigation">
+      <a href="#playground" class="nav-link">[01_CONSOLE_DECK]</a>
+      <a href="#install" class="nav-link">[02_INSTALLATION]</a>
+      <a href="#tokens" class="nav-link">[03_TOKENS]</a>
+      <a href="#faq" class="nav-link">[04_FAQ]</a>
+    </nav>
+
     <div class="nav-actions">
-      <a href="index.html" class="pow-btn-sm desktop-only" title="Back to main gallery">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        <span>All 10 Styles</span>
+      <a href="index.html" class="term-btn-sm desktop-only" title="Back to main gallery">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>[ 10 STYLES ]</span>
       </a>
-      <button class="pow-btn-sm" id="themeToggleBtn" aria-label="Toggle theme">
-        <span id="themeLabel"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>LIGHT</span>
+      <a href="#install" class="term-btn-sm term-btn-install-header desktop-only" title="Install this style">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        <span>[ INSTALL ]</span>
+      </a>
+      <button class="term-btn-sm" id="themeToggleBtn" aria-label="Toggle theme">
+        <span id="themeLabel">[CRT_LIGHT]</span>
       </button>
       <button class="nav-hamburger-btn" id="navHamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" onclick="openMobileNav()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
       </button>
     </div>
   </header>
 
-  <!-- Mobile Navigation Drawer Overlay (TERMINAL // VT100 PHOSPHOR) -->
+  <!-- Mobile Navigation Drawer Overlay (Authentic Terminal Frame) -->
   <div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="closeMobileNav()"></div>
   <div class="mobile-nav-drawer" id="mobileNavDrawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
     <div class="mobile-drawer-header">
-      <span class="style-drawer-tag">TERMINAL // VT100 PHOSPHOR</span>
+      <span class="style-drawer-tag">┌─[SYS_NAV_DECK]───┐</span>
       <button class="mobile-drawer-close-btn" onclick="closeMobileNav()" aria-label="Close navigation menu">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
       </button>
     </div>
     <div class="mobile-drawer-body">
       <a href="#playground" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
-        <span>Interactive Showcase</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>[01_CONSOLE_DECK]</span>
       </a>
       <a href="#install" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-        <span>Installation Guide</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        <span>[02_INSTALLATION]</span>
       </a>
       <a href="#tokens" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-        <span>Design Tokens</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        <span>[03_DESIGN_TOKENS]</span>
       </a>
       <a href="#faq" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
-        <span>FAQ Guide</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
+        <span>[04_FAQ_GUIDE]</span>
       </a>
       <a href="index.html" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
-        <span>All 10 Styles</span>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
+        <span>[ ALL 10 STYLES ]</span>
       </a>
     </div>
     <div class="mobile-drawer-footer">
       <a href="#install" class="mobile-drawer-cta-btn" onclick="closeMobileNav()">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
         <span>INSTALL THIS SKILL</span>
       </a>
     </div>
@@ -1066,12 +1770,19 @@
   <main>
     <!-- Opening Hero Viewport -->
     <section class="pow-hero">
+      <div class="ascii-hero-banner">
+┌────────────────────────────────────────────────────────┐
+│ SYS://TASTE-ENGINE -- ARCHETYPE #08 [RETRO-TERMINAL]   │
+│ VT220 PHOSPHOR CRT EMULATOR // 100% MONOSPACE TABULAR  │
+└────────────────────────────────────────────────────────┘</div>
+
       <div class="hero-sticker-badge">
-        <span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Proof of Work: Archetype #08</span>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+        <span>SYS://PROOF_OF_WORK -- ARCHETYPE #08</span>
       </div>
 
       <h1 class="hero-title">
-        Authentic CRT Console Language & Phosphor Luminescence
+        Authentic CRT Console & <span class="highlight">Phosphor Luminescence</span>
       </h1>
 
       <p class="hero-desc">
@@ -1079,27 +1790,26 @@
       </p>
 
       <!-- Single-Line Inline Command Pill ("Sejajarin") -->
-      <div class="pow-command-pill">
-        <span class="pow-prompt">$</span>
-        <code class="pow-code" id="heroCmdText">npx skills add kennedys0/taste-style-retro-terminal</code>
-        <button class="pow-copy-btn" id="heroCopyBtn" aria-label="Copy command">
+      <div class="term-command-pill">
+        <span class="term-prompt">visitor@retro-deck:~$</span>
+        <code class="term-code" id="heroCmdText">npx skills add kennedys0/taste-engine --skill taste-style-retro-terminal</code>
+        <button class="term-copy-btn" id="heroCopyBtn" aria-label="Copy command">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          <span>COPY</span>
+          <span>[ COPY ]</span>
         </button>
       </div>
 
       <div class="hero-btn-group">
-        <a href="#install" class="pow-btn pow-btn-primary">
-          <span>Installation Guide ↓</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 13l5 5 5-5M12 6v12"/></svg>
+        <a href="#install" class="term-btn term-btn-primary">
+          <span>[ INSTALLATION GUIDE ↓ ]</span>
         </a>
-        <a href="#playground" class="pow-btn pow-btn-secondary">
-          <span>Explore Interactive UI →</span>
+        <a href="#playground" class="term-btn term-btn-secondary">
+          <span>[ EXPLORE CONSOLE LAB → ]</span>
         </a>
       </div>
 
       <!-- 4-Stat Strip -->
-      <div class="pow-stat-strip">
+      <div class="term-stat-strip">
         <div class="stat-box">
           <div class="stat-val">0 0 8px</div>
           <div class="stat-label">Phosphor Glow</div>
@@ -1109,50 +1819,302 @@
           <div class="stat-label">CRT Raster Lines</div>
         </div>
         <div class="stat-box">
-          <div class="stat-val">ASCII</div>
+          <div class="stat-val">ASCII ┌─┐</div>
           <div class="stat-label">Bracketed Frames</div>
         </div>
         <div class="stat-box">
           <div class="stat-val">100% Mono</div>
-          <div class="stat-label">Terminal Monospace</div>
+          <div class="stat-label">Terminal Tabular</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Component Playground (PoW) -->
+    <section class="term-section" id="playground">
+      <div class="section-header">
+        <span class="section-badge">[LIVE_INTERACTIVE_DECK]</span>
+        <h2 class="section-title">Retro-Terminal Studio Lab</h2>
+        <p class="section-desc">
+          Test interactive shell commands, switch CRT phosphor color modes, calibrate raster scanline opacity, and verify tabular monospace data structures.
+        </p>
+      </div>
+
+      <div class="studio-grid">
+        <!-- Module 1: Interactive CLI Prompt & Shell Emulator -->
+        <div class="studio-panel">
+          <div class="studio-panel-header">
+            <span class="studio-panel-title">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+              01: Shell Console Emulator
+            </span>
+            <span class="studio-panel-badge" id="cliStatusBadge">SHELL: ACTIVE</span>
+          </div>
+          <div class="studio-panel-body">
+            <p class="panel-instruction">
+              Type commands into the shell prompt below (e.g. <code>help</code>, <code>status</code>, <code>theme amber</code>, <code>theme green</code>, <code>theme cyan</code>, <code>scanlines</code>, <code>clear</code>) or click a quick action.
+            </p>
+
+            <!-- Virtual CRT Terminal Screen Buffer -->
+            <div class="cli-screen" id="cliScreen">
+              <div class="cli-log-entry" style="color:var(--term-text-muted);">
+                SYS://RETRO-TERMINAL KERNEL v0.10.6 -- BOOT OK
+              </div>
+              <div class="cli-log-entry">
+                <span class="cli-tag tag-ok">[SYS_INIT]</span> PHOSPHOR RASTER DRIVER INITIALIZED
+              </div>
+              <div class="cli-log-entry">
+                <span class="cli-tag tag-info">[DISPLAY]</span> VT220 COLOR EMULATOR: AMBER (590NM)
+              </div>
+              <div class="cli-log-entry">
+                <span class="cli-tag tag-exec">[PROMPT]</span> Type 'help' or click quick pills below to dispatch commands.
+              </div>
+            </div>
+
+            <!-- Active Input Line -->
+            <div class="cli-input-line">
+              <span class="cli-prompt-label">visitor@retro-deck:~$</span>
+              <input type="text" id="cliInput" class="cli-input-box" placeholder="type command..." autocomplete="off" spellcheck="false">
+              <span class="cli-caret"></span>
+            </div>
+
+            <!-- Quick Command Pills -->
+            <div class="cli-quick-pills">
+              <button class="cli-pill-btn" onclick="runPresetCli('help')">[ help ]</button>
+              <button class="cli-pill-btn" onclick="runPresetCli('status')">[ status ]</button>
+              <button class="cli-pill-btn" onclick="runPresetCli('theme amber')">[ theme amber ]</button>
+              <button class="cli-pill-btn" onclick="runPresetCli('theme green')">[ theme green ]</button>
+              <button class="cli-pill-btn" onclick="runPresetCli('theme cyan')">[ theme cyan ]</button>
+              <button class="cli-pill-btn" onclick="runPresetCli('clear')">[ clear ]</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 2: CRT Phosphor Mode Switcher & Raster Calibrator -->
+        <div class="studio-panel">
+          <div class="studio-panel-header">
+            <span class="studio-panel-title">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              02: CRT Phosphor & Raster Calibrator
+            </span>
+            <span class="studio-panel-badge" id="crtModeBadge">AMBER CRT</span>
+          </div>
+          <div class="studio-panel-body">
+            <div class="calibrator-controls">
+              <!-- Mode Selection -->
+              <div class="control-row">
+                <div class="control-label-group">
+                  <span>Phosphor Hardware Mode</span>
+                </div>
+                <div class="phosphor-btn-grid">
+                  <button class="phosphor-mode-btn active" id="btnModeAmber" onclick="setPhosphorMode('amber')">[ AMBER CRT ]</button>
+                  <button class="phosphor-mode-btn" id="btnModeGreen" onclick="setPhosphorMode('green')">[ MATRIX GREEN ]</button>
+                  <button class="phosphor-mode-btn" id="btnModeCyan" onclick="setPhosphorMode('cyan')">[ CYBER CYAN ]</button>
+                </div>
+              </div>
+
+              <!-- Scanline Opacity Slider -->
+              <div class="control-row">
+                <div class="control-label-group">
+                  <span>Raster Scanline Opacity</span>
+                  <span class="control-val-badge" id="scanlineValBadge">18%</span>
+                </div>
+                <input type="range" min="0" max="60" step="5" value="18" class="term-range-slider" id="scanlineSlider" oninput="updateCrtCalibrator()">
+              </div>
+
+              <!-- Glow Radius Slider -->
+              <div class="control-row">
+                <div class="control-label-group">
+                  <span>Phosphor Radiation Glow</span>
+                  <span class="control-val-badge" id="glowValBadge">7px</span>
+                </div>
+                <input type="range" min="0" max="16" step="1" value="7" class="term-range-slider" id="glowSlider" oninput="updateCrtCalibrator()">
+              </div>
+            </div>
+
+            <!-- Morphing Live Preview Box -->
+            <div class="crt-preview-box" id="crtPreviewBox" onclick="testCrtPreviewClick()" title="Click to test click audio feedback">
+              &gt; PHOSPHOR LUMINESCENCE ACTIVE_
+            </div>
+
+            <!-- CSS Snippet Generator -->
+            <div class="calibrator-css-pill">
+              <code class="calibrator-css-code" id="calibratorCssOutput">color: #FFB000; text-shadow: 0 0 7px rgba(255, 176, 0, 0.45);</code>
+              <button class="term-btn-sm" style="padding: 0.25rem 0.6rem; font-size: 0.68rem;" onclick="copySnippet('calibratorCssOutput')">[ COPY ]</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 3: Tabular Monospace Matrix & Bracketed Controls (Card-in-Card) -->
+        <div class="studio-panel">
+          <div class="studio-panel-header">
+            <span class="studio-panel-title">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h10v10H7z"/></svg>
+              03: Card-in-Card Process Deck
+            </span>
+            <span class="studio-panel-badge">MULTIPLEXER PANE</span>
+          </div>
+          <div class="studio-panel-body">
+            <!-- Demonstrating Approved Nested Action Well -->
+            <div class="parent-card-demo">
+              <div class="parent-card-header">
+                <span class="parent-card-title">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                  ┌─[PROCESS_DISPATCHER]───┐
+                </span>
+                <span class="studio-panel-badge" style="color:var(--term-success);">3 RUNNING</span>
+              </div>
+
+              <!-- Distinct Nested Sub-Console Well -->
+              <div class="nested-action-well">
+                <div class="process-table-wrap">
+                  <table class="process-table">
+                    <thead>
+                      <tr>
+                        <th>PID</th>
+                        <th>DAEMON</th>
+                        <th>CPU</th>
+                        <th>MEM</th>
+                        <th>STATUS</th>
+                      </tr>
+                    </thead>
+                    <tbody id="processTableBody">
+                      <tr>
+                        <td>1042</td>
+                        <td>crt-rasterd</td>
+                        <td>0.8%</td>
+                        <td>14MB</td>
+                        <td style="color:var(--term-success);">[RUNNING]</td>
+                      </tr>
+                      <tr>
+                        <td>1048</td>
+                        <td>style-router</td>
+                        <td>1.2%</td>
+                        <td>28MB</td>
+                        <td style="color:var(--term-success);">[RUNNING]</td>
+                      </tr>
+                      <tr>
+                        <td>1055</td>
+                        <td>anti-slop-gate</td>
+                        <td>0.2%</td>
+                        <td>9MB</td>
+                        <td style="color:var(--term-phosphor);">[STANDBY]</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
+                <div class="action-btn-strip">
+                  <button class="term-bracket-btn" onclick="dispatchProcessAction('DISPATCH NEW PID')">[ DISPATCH ]</button>
+                  <button class="term-bracket-btn" onclick="dispatchProcessAction('RESTART SERVICES')">[ RESTART ]</button>
+                  <button class="term-bracket-btn" onclick="dispatchProcessAction('CLEAR BUFFERS')">[ FLUSH ]</button>
+                </div>
+
+                <div class="shortcut-hints">
+                  <span>[ENTER] Exec</span>
+                  <span>[ESC] Abort</span>
+                  <span>[TAB] Complete</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 4: Pop Palette & Contrast Matrix -->
+        <div class="studio-panel">
+          <div class="studio-panel-header">
+            <span class="studio-panel-title">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+              04: Phosphor Palette & Contrast
+            </span>
+            <span class="studio-panel-badge">WCAG AAA COMPLIANT</span>
+          </div>
+          <div class="studio-panel-body">
+            <p class="panel-instruction">
+              Each phosphor tone is measured against obsidian base canvas for dark mode and parchment ivory for light mode to prevent unreadable color bleed.
+            </p>
+
+            <div class="palette-swatches-grid">
+              <div class="swatch-card active" onclick="selectPaletteTone('Amber CRT', '#FFB000', this)">
+                <div class="swatch-circle" style="background: #FFB000;"></div>
+                <span class="swatch-name">Amber</span>
+                <span class="swatch-ratio">11.4:1 (AAA)</span>
+              </div>
+              <div class="swatch-card" onclick="selectPaletteTone('Matrix Green', '#33FF33', this)">
+                <div class="swatch-circle" style="background: #33FF33;"></div>
+                <span class="swatch-name">Green</span>
+                <span class="swatch-ratio">13.8:1 (AAA)</span>
+              </div>
+              <div class="swatch-card" onclick="selectPaletteTone('Cyber Cyan', '#00F0FF', this)">
+                <div class="swatch-circle" style="background: #00F0FF;"></div>
+                <span class="swatch-name">Cyan</span>
+                <span class="swatch-ratio">14.1:1 (AAA)</span>
+              </div>
+              <div class="swatch-card" onclick="selectPaletteTone('Alert Red', '#FF5555', this)">
+                <div class="swatch-circle" style="background: #FF5555;"></div>
+                <span class="swatch-name">Alert</span>
+                <span class="swatch-ratio">6.2:1 (AA)</span>
+              </div>
+              <div class="swatch-card" onclick="selectPaletteTone('Parchment Ink', '#5C3A00', this)">
+                <div class="swatch-circle" style="background: #5C3A00; border-color: #D5D0C3;"></div>
+                <span class="swatch-name">Parchment</span>
+                <span class="swatch-ratio">8.9:1 (AAA)</span>
+              </div>
+              <div class="swatch-card" onclick="selectPaletteTone('Obsidian', '#0C0D0E', this)">
+                <div class="swatch-circle" style="background: #0C0D0E; border-color: #FFB000;"></div>
+                <span class="swatch-name">Obsidian</span>
+                <span class="swatch-ratio">BASE (0:0)</span>
+              </div>
+            </div>
+
+            <!-- Contrast Rule Box -->
+            <div class="contrast-rule-box">
+              <span class="contrast-rule-title">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Teletype Light Mode Inversion Rule
+              </span>
+              <span>
+                In Light Mode (vintage teletype paper), phosphor glow and dark scanlines are turned off, and bright amber flips to deep carbon burnt amber (<code>#5C3A00</code>) against ivory paper (<code>#F4F1EA</code>) to prevent neon-on-white illegibility.
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Interactive Installation Guide Section -->
-    <section class="pow-section" id="install">
+    <section class="term-section" id="install">
       <div class="section-header">
-        <span class="section-badge">How to Install</span>
+        <span class="section-badge">[PACKAGE_DEPLOYMENT]</span>
         <h2 class="section-title">Install Retro Terminal or Full Engine</h2>
         <p class="section-desc">
           Choose whether you want this single standalone Retro Terminal skill or the full 10-style automated Taste Engine suite for your AI coding agents.
         </p>
       </div>
 
-      <div class="pow-card">
+      <div class="term-card">
         <!-- Tab Headers -->
         <div class="tab-header-strip">
-          <button class="tab-switch-btn active" data-tab="tab-standalone">1. Standalone Style Skill</button>
-          <button class="tab-switch-btn" data-tab="tab-global">2. Full Taste Engine (Global)</button>
-          <button class="tab-switch-btn" data-tab="tab-tailwind">3. Tailwind & shadcn Preset</button>
+          <button class="tab-switch-btn active" data-tab="tab-standalone">[01: STANDALONE SKILL]</button>
+          <button class="tab-switch-btn" data-tab="tab-global">[02: FULL TASTE ENGINE]</button>
+          <button class="tab-switch-btn" data-tab="tab-tailwind">[03: TAILWIND PRESET]</button>
         </div>
 
         <!-- Tab 1: Standalone Skill -->
         <div class="tab-body active" id="tab-standalone">
-          <h3 class="install-step-title">Option A: Install Dedicated Retro Terminal Skill</h3>
+          <h3 class="install-step-title">&gt; Option A: Dedicated Retro Terminal Skill</h3>
           <p class="install-step-desc">
             Installs only the Retro Terminal style pack. Perfect if your project has already committed to this exact aesthetic and does not need a 10-style selector.
           </p>
 
-          <div class="pow-terminal">
+          <div class="console-terminal">
             <div class="terminal-topbar">
               <div class="terminal-dots">
                 <span class="dot red"></span>
                 <span class="dot yellow"></span>
                 <span class="dot green"></span>
               </div>
-              <span class="terminal-label">bash — universal agent skills cli</span>
-              <button class="pow-btn-sm" onclick="copySnippet('cmdStandaloneCli')">Copy</button>
+              <span class="terminal-label">bash — agent skills cli</span>
+              <button class="term-btn-sm" onclick="copySnippet('cmdStandaloneCli')">[ COPY ]</button>
             </div>
             <div class="terminal-content" id="cmdStandaloneCli">
               <div class="terminal-line">
@@ -1175,12 +2137,12 @@
 
         <!-- Tab 2: Global Engine -->
         <div class="tab-body" id="tab-global">
-          <h3 class="install-step-title">Option B: Install Full Taste Engine (All 10 Styles + SEO + Anti-Slop)</h3>
+          <h3 class="install-step-title">&gt; Option B: Full Taste Engine (All 10 Styles + SEO + Anti-Slop)</h3>
           <p class="install-step-desc">
             Equips your AI agent with the autonomous style router, preflight interviews, 10 aesthetic packs, full-screen hero gating, and automatic SEO audit.
           </p>
 
-          <div class="pow-terminal">
+          <div class="console-terminal">
             <div class="terminal-topbar">
               <div class="terminal-dots">
                 <span class="dot red"></span>
@@ -1188,7 +2150,7 @@
                 <span class="dot green"></span>
               </div>
               <span class="terminal-label">bash — multi-agent native installer</span>
-              <button class="pow-btn-sm" onclick="copySnippet('cmdGlobalCli')">Copy</button>
+              <button class="term-btn-sm" onclick="copySnippet('cmdGlobalCli')">[ COPY ]</button>
             </div>
             <div class="terminal-content" id="cmdGlobalCli">
               <div class="terminal-line">
@@ -1222,12 +2184,12 @@
 
         <!-- Tab 3: Tailwind & shadcn -->
         <div class="tab-body" id="tab-tailwind">
-          <h3 class="install-step-title">Option C: Tailwind CSS & shadcn/ui Preset</h3>
+          <h3 class="install-step-title">&gt; Option C: Tailwind CSS & shadcn/ui Preset</h3>
           <p class="install-step-desc">
             Scaffold Retro Terminal utility tokens directly into your React, Next.js, or Vite frontend stack.
           </p>
 
-          <div class="pow-terminal">
+          <div class="console-terminal">
             <div class="terminal-topbar">
               <div class="terminal-dots">
                 <span class="dot red"></span>
@@ -1235,11 +2197,11 @@
                 <span class="dot green"></span>
               </div>
               <span class="terminal-label">tailwind.config.js — preset integration</span>
-              <button class="pow-btn-sm" onclick="copySnippet('cmdTailwindPreset')">Copy</button>
+              <button class="term-btn-sm" onclick="copySnippet('cmdTailwindPreset')">[ COPY ]</button>
             </div>
             <div class="terminal-content" id="cmdTailwindPreset">
               <div class="terminal-line">
-                <span class="line-comment">// Add Taste Engine official presets to your Tailwind config</span>
+                <span class="line-comment">// Add to your Tailwind config or copy presets/tailwind/</span>
               </div>
               <div class="terminal-line">
                 <span class="line-cmd">module.exports = {</span>
@@ -1254,7 +2216,10 @@
                 <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;extend: {</span>
               </div>
               <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors: { 'retro-terminal': '#52ff00' }</span>
+                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;fontFamily: { 'mono': ['JetBrains Mono', 'monospace'] },</span>
+              </div>
+              <div class="terminal-line">
+                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors: { 'term-amber': '#FFB000', 'term-green': '#33FF33', 'term-cyan': '#00F0FF' }</span>
               </div>
               <div class="terminal-line">
                 <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;}</span>
@@ -1271,82 +2236,86 @@
       </div>
     </section>
 
-    <!-- Interactive Component Playground (PoW) -->
-    <section class="pow-section" id="playground">
-      <div class="section-header">
-        <span class="section-badge">Live Interactive PoW</span>
-        <h2 class="section-title">Retro Terminal Component Lab</h2>
-        <p class="section-desc">
-          Test interactive components and layout structure built strictly according to Taste Engine's Retro Terminal fidelity rules.
-        </p>
-      </div>
-
-      <div class="pow-card" style="padding: 2rem;">
-        
-        <div style="background: var(--pow-well-bg); border: var(--pow-border); box-shadow: var(--pow-shadow); padding: 1.5rem; font-family: var(--pow-font-mono); font-size: 0.85rem; line-height: 1.8;">
-          <div style="color: var(--pow-text-muted); border-bottom: 1px dashed var(--pow-accent); padding-bottom: 0.5rem; margin-bottom: 1rem;">
-            SYS://TASTE-ENGINE/CONSOLE v0.10.6 -- READY
-          </div>
-          <div><span style="color: #ff5c00;">[STATUS]</span> INITIALIZING STYLE PACKS... [OK]</div>
-          <div><span style="color: var(--pow-accent);">[PASS]</span> PHOSPHOR RASTER MATRIX LOCKED</div>
-          <div style="margin-top: 1rem;">
-            <button class="pow-btn pow-btn-primary" onclick="handleBtnClick('RUN BATCH SCRIPT')">&gt; EXECUTE SCRIPT_</button>
-          </div>
-        </div>
-        
-      </div>
-    </section>
-
     <!-- Design Token Cheatsheet -->
-    <section class="pow-section">
+    <section class="term-section" id="tokens">
       <div class="section-header">
-        <span class="section-badge">Tokens & Math</span>
-        <h2 class="section-title">Retro Terminal Design Tokens</h2>
+        <span class="section-badge">[TOKEN_SPECIFICATION]</span>
+        <h2 class="section-title">Retro-Terminal Design Tokens</h2>
         <p class="section-desc">
           Standardized CSS custom properties for instant copy-pasting into any stylesheet.
         </p>
       </div>
 
       <div class="token-table-wrap">
-        <table class="pow-table">
+        <table class="term-table">
           <thead>
             <tr>
               <th>Token Name</th>
-              <th>Light Mode</th>
-              <th>Dark Mode</th>
-              <th>Description</th>
+              <th>Dark CRT Default</th>
+              <th>Light Teletype</th>
+              <th>Specification</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="token-code">--taste-retro-terminal-bg</td>
-              <td>#121a12</td>
-              <td>#0a0f0a</td>
+              <td class="token-code">--taste-term-bg</td>
+              <td><span class="swatch-pill"><span class="color-swatch" style="background:#0C0D0E"></span>#0C0D0E</span></td>
+              <td><span class="swatch-pill"><span class="color-swatch" style="background:#F4F1EA"></span>#F4F1EA</span></td>
               <td>Canvas backdrop base</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-retro-terminal-surface</td>
-              <td>#182418</td>
-              <td>#101810</td>
-              <td>Card surface background</td>
+              <td class="token-code">--taste-term-surface</td>
+              <td><span class="swatch-pill"><span class="color-swatch" style="background:#14171A"></span>#14171A</span></td>
+              <td><span class="swatch-pill"><span class="color-swatch" style="background:#E8E4DA"></span>#E8E4DA</span></td>
+              <td>Console panel background</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-retro-terminal-text</td>
-              <td>#52ff00</td>
-              <td>#00ff66</td>
-              <td>Primary text & icon color</td>
+              <td class="token-code">--taste-term-well-bg</td>
+              <td><span class="swatch-pill"><span class="color-swatch" style="background:#080A0B"></span>#080A0B</span></td>
+              <td><span class="swatch-pill"><span class="color-swatch" style="background:#DED9CD"></span>#DED9CD</span></td>
+              <td>Nested action well / buffer</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-retro-terminal-border</td>
-              <td>1.5px solid #52ff00</td>
-              <td>1.5px solid #00ff66</td>
+              <td class="token-code">--taste-term-phosphor</td>
+              <td><span class="swatch-pill"><span class="color-swatch" style="background:#FFB000"></span>#FFB000</span></td>
+              <td><span class="swatch-pill"><span class="color-swatch" style="background:#5C3A00"></span>#5C3A00</span></td>
+              <td>Phosphor text & command stroke</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-term-text-muted</td>
+              <td><span class="swatch-pill"><span class="color-swatch" style="background:#A37C24"></span>#A37C24</span></td>
+              <td><span class="swatch-pill"><span class="color-swatch" style="background:#6B552F"></span>#6B552F</span></td>
+              <td>Secondary metadata text</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-term-border</td>
+              <td>1px solid rgba(255,176,0,0.35)</td>
+              <td>1px solid #C4BDAC</td>
               <td>Structural stroke specification</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-retro-terminal-accent</td>
-              <td>#52ff00</td>
-              <td>#00ff66</td>
-              <td>Primary action accent</td>
+              <td class="token-code">--taste-term-glow</td>
+              <td>0 0 7px rgba(255,176,0,0.45)</td>
+              <td>none</td>
+              <td>Phosphor luminance radiation</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-term-scanline</td>
+              <td>repeating-linear-gradient(0deg, ...)</td>
+              <td>none</td>
+              <td>CRT horizontal raster lines</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-term-radius</td>
+              <td>2px</td>
+              <td>2px</td>
+              <td>Minimal terminal corner radius</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-term-font-mono</td>
+              <td>JetBrains Mono, monospace</td>
+              <td>JetBrains Mono, monospace</td>
+              <td>Monospace character grid font</td>
             </tr>
           </tbody>
         </table>
@@ -1354,62 +2323,82 @@
     </section>
 
     <!-- FAQ Accordion -->
-    <section class="pow-section">
+    <section class="term-section" id="faq">
       <div class="section-header">
-        <span class="section-badge">FAQ & Verification</span>
+        <span class="section-badge">[SYS_VERIFICATION]</span>
         <h2 class="section-title">Frequently Asked Questions</h2>
       </div>
 
-      <div class="pow-faq-item open">
-        <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>Are CRT scanlines allowed under anti-slop rules?</span>
-          <span class="faq-arrow">▶</span>
+      <div class="term-faq-item open">
+        <div class="term-faq-header" onclick="toggleFaq(this)">
+          <span>&gt; Are CRT scanlines allowed under anti-slop rules?</span>
+          <svg class="faq-chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <div class="pow-faq-body">
-          Yes, Retro Terminal has an explicit exception in `references/anti-slop.md` for subtle scanline rasters and phosphor glow when tied to authentic console tools.
-        </div>
-      </div>
-
-      <div class="pow-faq-item">
-        <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>What font is recommended?</span>
-          <span class="faq-arrow">▶</span>
-        </div>
-        <div class="pow-faq-body">
-          JetBrains Mono, Fira Code, IBM Plex Mono, or standard monospace system fonts.
+        <div class="term-faq-body">
+          Yes! Retro Terminal has an explicit exception in Taste Engine's anti-slop guidelines: subtle scanline rasters and phosphor glow are essential material-enabling properties that give terminal consoles authentic display depth. Removing them to satisfy a generic flat heuristic is classified as an aesthetic regression.
         </div>
       </div>
 
-      <div class="pow-faq-item">
-        <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>Can I install just Retro Terminal?</span>
-          <span class="faq-arrow">▶</span>
+      <div class="term-faq-item">
+        <div class="term-faq-header" onclick="toggleFaq(this)">
+          <span>&gt; How does Retro Terminal handle light mode without color collisions?</span>
+          <svg class="faq-chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
-        <div class="pow-faq-body">
-          Yes, run `npx skills add kennedys0/taste-engine --skill taste-style-retro-terminal`.
+        <div class="term-faq-body">
+          In light mode, Retro Terminal translates the aesthetic into a vintage teletype / parchment terminal: canvas becomes warm paper ivory (<code>#F4F1EA</code>), phosphor glow and dark scanlines are turned off, and bright amber inverts to deep carbon burnt amber (<code>#5C3A00</code>), maintaining WCAG AAA contrast (> 8.9:1).
+        </div>
+      </div>
+
+      <div class="term-faq-item">
+        <div class="term-faq-header" onclick="toggleFaq(this)">
+          <span>&gt; Is card-in-card permissible in Retro Terminal?</span>
+          <svg class="faq-chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="term-faq-body">
+          Yes! A nested surface is fully permitted when it models terminal multiplexers (tmux/screen panes), process monitoring wells, or code execution containers (e.g. <code>--taste-term-well-bg</code> with dashed border). Mindless decorative card stacking without distinct command boundaries remains disallowed.
+        </div>
+      </div>
+
+      <div class="term-faq-item">
+        <div class="term-faq-header" onclick="toggleFaq(this)">
+          <span>&gt; Can I install only Retro Terminal without other styles?</span>
+          <svg class="faq-chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="term-faq-body">
+          Yes, run <code>npx skills add kennedys0/taste-engine --skill taste-style-retro-terminal</code> to install this standalone skill directly into your AI coding agents.
+        </div>
+      </div>
+
+      <div class="term-faq-item">
+        <div class="term-faq-header" onclick="toggleFaq(this)">
+          <span>&gt; How does Retro Terminal maintain responsiveness down to 320px?</span>
+          <svg class="faq-chevron" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="term-faq-body">
+          All typography scales down using fluid CSS <code>clamp()</code> formulas, all command pills feature scrollable single-line wrappers, top navigation collapses into an accessible mobile hamburger drawer, and circular elements enforce <code>aspect-ratio: 1 / 1 !important; flex-shrink: 0 !important;</code> to eliminate oval squishing.
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Site Footer (2-column balanced mobile grid) -->
-  <footer class="pow-footer">
+  <!-- Site Footer (Balanced 3-column / 2-column mobile architecture) -->
+  <footer class="term-footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <h4>Taste Engine</h4>
         <p>Open-source frontend design intelligence pack for AI coding agents. Elevate design fidelity, eliminate AI-slop, and enforce contrast safety.</p>
-        <p style="margin-top: 0.5rem; font-size: 0.775rem;">Created by <a href="https://github.com/kennedys0" target="_blank" rel="noopener" style="color: var(--pow-accent); font-weight: 700;">Mochamad Vikry (@kennedys0)</a></p>
+        <p style="margin-top: 0.5rem; font-size: 0.775rem;">Created by <a href="https://github.com/kennedys0" target="_blank" rel="noopener" style="color: var(--term-phosphor); font-weight: 700;">Mochamad Vikry (@kennedys0)</a></p>
       </div>
 
       <div class="footer-col">
         <h5>Aesthetic Archetypes</h5>
         <ul>
-          <li><a href="bento.html">Bento Grid (PoW)</a></li>
+          <li><a href="retro-terminal.html">Retro Terminal (PoW)</a></li>
           <li><a href="neo-brutalism.html">Neo-Brutalism (PoW)</a></li>
-          <li><a href="claymorphism.html">Claymorphism (PoW)</a></li>
-          <li><a href="enterprise.html">Enterprise (PoW)</a></li>
+          <li><a href="minimalism.html">Minimalism (PoW)</a></li>
           <li><a href="glassmorphism.html">Glassmorphism (PoW)</a></li>
-          <li><a href="swiss-editorial.html">Swiss Editorial (PoW)</a></li>
+          <li><a href="claymorphism.html">Claymorphism (PoW)</a></li>
+          <li><a href="enterprise.html">Enterprise B2B (PoW)</a></li>
         </ul>
       </div>
 
@@ -1417,8 +2406,8 @@
         <h5>Navigation & Source</h5>
         <ul>
           <li><a href="index.html">Main Style Gallery</a></li>
-          <li><a href="index.html#installation">Installation Guide</a></li>
-          <li><a href="index.html#tokens">Token Matrix</a></li>
+          <li><a href="#install">Installation Guide</a></li>
+          <li><a href="#tokens">Token Matrix</a></li>
           <li><a href="https://github.com/kennedys0/taste-engine" target="_blank" rel="noopener">GitHub Repository</a></li>
         </ul>
       </div>
@@ -1426,49 +2415,64 @@
 
     <div class="footer-bottom">
       <p>&copy; 2026 Mochamad Vikry. Released under the MIT License.</p>
-      <a href="#" class="pow-btn-sm" style="text-decoration:none;">
-        <span>↑ Back to Top</span>
+      <a href="#" class="term-btn-sm" style="text-decoration:none;">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+        <span>[ ↑ BACK TO TOP ]</span>
       </a>
     </div>
   </footer>
 
   <!-- Toast Notification -->
-  <div class="pow-toast" id="powToast">
-    <span id="toastMsg">COPIED TO CLIPBOARD</span>
+  <div class="term-toast" id="termToast">
+    <span id="toastMsg">&gt; COPIED TO BUFFER</span>
   </div>
 
   <script>
-    // Theme Toggling with LocalStorage Persistence
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    const themeLabel = document.getElementById('themeLabel');
-    const htmlEl = document.documentElement;
+    // =========================================================
+    // RETRO TERMINAL STUDIO LAB & INTERACTION CONTROLLER
+    // =========================================================
 
-    function applyTheme(theme) {
-      htmlEl.setAttribute('data-theme', theme);
-      localStorage.setItem('taste-theme-pow-retro-terminal', theme);
-      if (theme === 'dark') {
-        themeLabel.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>LIGHT';
-      } else {
-        themeLabel.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>DARK';
+    // Global State Variables (Declared at top to avoid TDZ)
+    let currentPhosphor = 'amber';
+    let scanlineOpacity = 18;
+    let glowRadius = 7;
+    let hapticSoundEnabled = true;
+    let toastTimeout = null;
+    let audioCtx = null;
+    let processCounter = 1056;
+
+    // Synthetic Terminal Mechanical / Relay Click (Web Audio API)
+    function playTerminalClick(freq = 750) {
+      if (!hapticSoundEnabled) return;
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(140, audioCtx.currentTime + 0.025);
+        gain.gain.setValueAtTime(0.05, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.025);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.025);
+      } catch (e) {
+        // AudioContext blocked or not supported - silently ignore
       }
     }
 
-    const savedTheme = localStorage.getItem('taste-theme-pow-retro-terminal') || 'dark';
-    applyTheme(savedTheme);
-
-    themeToggleBtn.addEventListener('click', () => {
-      const current = htmlEl.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      applyTheme(next);
-      showToast(`Switched to ${next.toUpperCase()} mode`);
-    });
-
     // Toast Notification Utility
-    let toastTimeout;
     function showToast(msg) {
-      const toast = document.getElementById('powToast');
+      const toast = document.getElementById('termToast');
       const toastMsg = document.getElementById('toastMsg');
-      toastMsg.textContent = msg;
+      if (!toast || !toastMsg) return;
+      toastMsg.textContent = `> ${msg.toUpperCase()}`;
       toast.classList.add('show');
       clearTimeout(toastTimeout);
       toastTimeout = setTimeout(() => {
@@ -1476,59 +2480,317 @@
       }, 2200);
     }
 
-    // Hero Quick Copy Button
-    const heroCopyBtn = document.getElementById('heroCopyBtn');
-    const heroCmdText = document.getElementById('heroCmdText');
-    if (heroCopyBtn && heroCmdText) {
-      heroCopyBtn.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(heroCmdText.textContent.trim());
-          showToast('Copied installation command!');
-        } catch (e) {
-          showToast('Command copied');
-        }
-      });
+    // Module 2: CRT Calibrator & Phosphor Modes
+    function setPhosphorMode(mode) {
+      currentPhosphor = mode;
+      document.documentElement.setAttribute('data-phosphor', mode);
+      
+      document.querySelectorAll('.phosphor-mode-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById(`btnMode${mode.charAt(0).toUpperCase() + mode.slice(1)}`);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const modeBadge = document.getElementById('crtModeBadge');
+      if (modeBadge) modeBadge.textContent = `${mode.toUpperCase()} CRT`;
+
+      updateCrtCalibrator();
+      playTerminalClick(650);
+      showToast(`Phosphor switched to ${mode.toUpperCase()}`);
     }
 
-    // Tab Switcher
-    const tabButtons = document.querySelectorAll('.tab-switch-btn');
-    const tabBodies = document.querySelectorAll('.tab-body');
+    function updateCrtCalibrator() {
+      const scanlineSlider = document.getElementById('scanlineSlider');
+      const glowSlider = document.getElementById('glowSlider');
+      const scanlineValBadge = document.getElementById('scanlineValBadge');
+      const glowValBadge = document.getElementById('glowValBadge');
+      const box = document.getElementById('crtPreviewBox');
+      const cssOut = document.getElementById('calibratorCssOutput');
 
-    tabButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabButtons.forEach(b => b.classList.remove('active'));
-        tabBodies.forEach(b => b.classList.remove('active'));
+      if (!scanlineSlider || !glowSlider) return;
 
-        btn.classList.add('active');
-        const targetId = btn.getAttribute('data-tab');
-        const targetBody = document.getElementById(targetId);
-        if (targetBody) targetBody.classList.add('active');
-      });
-    });
+      scanlineOpacity = scanlineSlider.value;
+      glowRadius = glowSlider.value;
+
+      if (scanlineValBadge) scanlineValBadge.textContent = `${scanlineOpacity}%`;
+      if (glowValBadge) glowValBadge.textContent = `${glowRadius}px`;
+
+      document.documentElement.style.setProperty('--term-scanline-opacity', scanlineOpacity / 100);
+
+      let colorHex = '#FFB000';
+      let rgbStr = '255, 176, 0';
+      if (currentPhosphor === 'green') {
+        colorHex = '#33FF33';
+        rgbStr = '51, 255, 51';
+      } else if (currentPhosphor === 'cyan') {
+        colorHex = '#00F0FF';
+        rgbStr = '0, 240, 255';
+      }
+
+      const glowCss = glowRadius === '0' ? 'none' : `0 0 ${glowRadius}px rgba(${rgbStr}, 0.55)`;
+      if (box) {
+        box.style.textShadow = glowCss;
+        box.style.boxShadow = glowRadius === '0' ? 'none' : `inset 0 0 ${glowRadius * 1.5}px rgba(${rgbStr}, 0.15)`;
+      }
+
+      if (cssOut) {
+        cssOut.textContent = `color: ${colorHex}; text-shadow: ${glowCss};`;
+      }
+    }
+
+    function testCrtPreviewClick() {
+      playTerminalClick(880);
+      showToast('CRT phosphor test beam fired');
+    }
+
+    // Module 1: CLI Shell Prompt Execution
+    function executeCliCommand(rawCmd) {
+      const screen = document.getElementById('cliScreen');
+      if (!screen) return;
+
+      const cmd = rawCmd.trim().toLowerCase();
+      if (!cmd) return;
+
+      playTerminalClick(720);
+
+      // Add user command echo
+      const echoEntry = document.createElement('div');
+      echoEntry.className = 'cli-log-entry';
+      echoEntry.innerHTML = `<span class="cli-tag tag-exec">&gt; ${escapeHtml(rawCmd)}</span>`;
+      screen.appendChild(echoEntry);
+
+      // Process commands
+      const resEntry = document.createElement('div');
+      resEntry.className = 'cli-log-entry';
+
+      if (cmd === 'help') {
+        resEntry.innerHTML = `
+          <div style="color:var(--term-phosphor); font-weight:800;">[AVAILABLE_COMMANDS]</div>
+          <div>  help                - Display command manual</div>
+          <div>  status              - Query kernel telemetry</div>
+          <div>  theme [amber|green|cyan] - Switch phosphor mode</div>
+          <div>  scanlines [on|off]  - Toggle raster CRT lines</div>
+          <div>  clear               - Purge screen buffer</div>
+        `;
+      } else if (cmd === 'status') {
+        const uptime = Math.floor(performance.now() / 1000);
+        resEntry.innerHTML = `
+          <span class="cli-tag tag-ok">[KERNEL_TELEMETRY]</span><br>
+          &nbsp;&nbsp;PHOSPHOR: ${currentPhosphor.toUpperCase()} | UPTIME: ${uptime}s | SCANLINES: ${scanlineOpacity}%<br>
+          &nbsp;&nbsp;ACTIVE_DAEMONS: 3 running, 0 failed | CONTRAST_RATIO: 11.4:1 (PASS)
+        `;
+      } else if (cmd === 'theme amber') {
+        setPhosphorMode('amber');
+        resEntry.innerHTML = `<span class="cli-tag tag-ok">[OK]</span> Switched CRT hardware mode to AMBER VT220`;
+      } else if (cmd === 'theme green') {
+        setPhosphorMode('green');
+        resEntry.innerHTML = `<span class="cli-tag tag-ok">[OK]</span> Switched CRT hardware mode to MATRIX GREEN VT100`;
+      } else if (cmd === 'theme cyan') {
+        setPhosphorMode('cyan');
+        resEntry.innerHTML = `<span class="cli-tag tag-ok">[OK]</span> Switched CRT hardware mode to CYBER CYAN DEC`;
+      } else if (cmd === 'scanlines on') {
+        document.getElementById('scanlineSlider').value = 18;
+        updateCrtCalibrator();
+        resEntry.innerHTML = `<span class="cli-tag tag-ok">[OK]</span> Raster scanlines enabled (18% density)`;
+      } else if (cmd === 'scanlines off') {
+        document.getElementById('scanlineSlider').value = 0;
+        updateCrtCalibrator();
+        resEntry.innerHTML = `<span class="cli-tag tag-ok">[OK]</span> Raster scanlines disabled (0% density)`;
+      } else if (cmd === 'clear') {
+        screen.innerHTML = `
+          <div class="cli-log-entry" style="color:var(--term-text-muted);">
+            SYS://RETRO-TERMINAL BUFFER PURGED -- READY
+          </div>
+        `;
+        return;
+      } else {
+        resEntry.innerHTML = `<span class="cli-tag tag-err">[ERR]</span> Unknown command: '${escapeHtml(cmd)}'. Type 'help'.`;
+      }
+
+      screen.appendChild(resEntry);
+      screen.scrollTop = screen.scrollHeight;
+    }
+
+    function runPresetCli(cmd) {
+      const input = document.getElementById('cliInput');
+      if (input) input.value = cmd;
+      executeCliCommand(cmd);
+      if (input) input.value = '';
+    }
+
+    function escapeHtml(str) {
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+    }
+
+    // Module 3: Card-in-Card Process Actions
+    function dispatchProcessAction(actionName) {
+      processCounter++;
+      const tableBody = document.getElementById('processTableBody');
+      if (tableBody && actionName === 'DISPATCH NEW PID') {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${processCounter}</td>
+          <td>subagent-${processCounter}</td>
+          <td>0.4%</td>
+          <td>12MB</td>
+          <td style="color:var(--term-success);">[SPAWNED]</td>
+        `;
+        tableBody.appendChild(row);
+      }
+      playTerminalClick(600);
+      showToast(`${actionName}`);
+    }
+
+    // Module 4: Pop Palette Selection
+    function selectPaletteTone(name, hex, card) {
+      document.querySelectorAll('.swatch-card').forEach(c => c.classList.remove('active'));
+      if (card && card.classList) card.classList.add('active');
+
+      if (name.includes('Amber')) {
+        setPhosphorMode('amber');
+      } else if (name.includes('Green')) {
+        setPhosphorMode('green');
+      } else if (name.includes('Cyan')) {
+        setPhosphorMode('cyan');
+      }
+
+      playTerminalClick(700);
+      showToast(`Selected ${name} (${hex})`);
+    }
+
+    // Theme Management
+    function applyTheme(theme) {
+      const htmlEl = document.documentElement;
+      const themeLabel = document.getElementById('themeLabel');
+      htmlEl.setAttribute('data-theme', theme);
+      try {
+        localStorage.setItem('taste-theme-pow-retro-terminal', theme);
+      } catch (e) {}
+
+      if (themeLabel) {
+        if (theme === 'dark') {
+          themeLabel.textContent = '[CRT_LIGHT]';
+        } else {
+          themeLabel.textContent = '[CRT_DARK]';
+        }
+      }
+      updateCrtCalibrator();
+    }
+
+    // Mobile Navigation Drawer Controls
+    function openMobileNav() {
+      const backdrop = document.getElementById('mobileNavBackdrop');
+      const drawer = document.getElementById('mobileNavDrawer');
+      const hamburger = document.getElementById('navHamburgerBtn');
+      if (backdrop) backdrop.classList.add('open');
+      if (drawer) drawer.classList.add('open');
+      if (hamburger) hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      playTerminalClick(500);
+    }
+
+    function closeMobileNav() {
+      const backdrop = document.getElementById('mobileNavBackdrop');
+      const drawer = document.getElementById('mobileNavDrawer');
+      const hamburger = document.getElementById('navHamburgerBtn');
+      if (backdrop) backdrop.classList.remove('open');
+      if (drawer) drawer.classList.remove('open');
+      if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      playTerminalClick(420);
+    }
 
     // Snippet Copier
     async function copySnippet(elemId) {
       const el = document.getElementById(elemId);
       if (!el) return;
-      const text = el.innerText.trim();
+      const text = (el.innerText || el.textContent || '').trim();
       try {
         await navigator.clipboard.writeText(text);
-        showToast('Terminal snippet copied!');
+        playTerminalClick(800);
+        showToast('Copied to buffer!');
       } catch (e) {
-        showToast('Snippet copied');
+        showToast('Buffer copied');
       }
-    }
-
-    // Component Button Click Handler
-    function handleBtnClick(name) {
-      showToast(`Action: ${name}`);
     }
 
     // FAQ Accordion Toggle
     function toggleFaq(header) {
       const item = header.parentElement;
-      item.classList.toggle('open');
+      if (item) {
+        item.classList.toggle('open');
+        playTerminalClick(item.classList.contains('open') ? 600 : 450);
+      }
     }
+
+    // Safe Page Initialization
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Initialize Theme from LocalStorage
+      let savedTheme = 'dark';
+      try {
+        savedTheme = localStorage.getItem('taste-theme-pow-retro-terminal') || 'dark';
+      } catch (e) {}
+      applyTheme(savedTheme);
+
+      // 2. Bind Theme Toggle Button
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          applyTheme(next);
+          playTerminalClick(650);
+          showToast(`Switched to ${next.toUpperCase()} mode`);
+        });
+      }
+
+      // 3. Bind Keyboard Escape for Drawer
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMobileNav();
+      });
+
+      // 4. Bind Hero Copy Button
+      const heroCopyBtn = document.getElementById('heroCopyBtn');
+      const heroCmdText = document.getElementById('heroCmdText');
+      if (heroCopyBtn && heroCmdText) {
+        heroCopyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(heroCmdText.textContent.trim());
+            playTerminalClick(820);
+            showToast('Installation command copied!');
+          } catch (e) {
+            showToast('Command copied');
+          }
+        });
+      }
+
+      // 5. Bind Tab Switchers
+      const tabButtons = document.querySelectorAll('.tab-switch-btn');
+      const tabBodies = document.querySelectorAll('.tab-body');
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabButtons.forEach(b => b.classList.remove('active'));
+          tabBodies.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const targetId = btn.getAttribute('data-tab');
+          const targetBody = document.getElementById(targetId);
+          if (targetBody) targetBody.classList.add('active');
+          playTerminalClick(520);
+        });
+      });
+
+      // 6. Bind CLI Shell Input Keydown
+      const cliInput = document.getElementById('cliInput');
+      if (cliInput) {
+        cliInput.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter') {
+            executeCliCommand(cliInput.value);
+            cliInput.value = '';
+          }
+        });
+      }
+
+      // 7. Initial Calibrator Update
+      updateCrtCalibrator();
+    });
   </script>
 </body>
 </html>

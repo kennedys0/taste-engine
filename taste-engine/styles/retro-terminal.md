@@ -73,6 +73,7 @@ Corners are sharp or minimal (`0px–4px`); 1px solid terminal panel borders; ti
 
 - **Terminal Screen:** Deep black background with static scanline raster overlay.
 - **Console Panel:** 1px solid border (`1px solid rgba(255, 176, 0, 0.3)` or `#2A2F35`) with subtle inset shadow.
+- **Nested Sub-Panels / Action Wells (Card-in-Card):** Permissible when encapsulating distinct terminal multiplexer panes, process monitoring wells, or code execution containers (e.g. `background: var(--taste-term-well-bg, #080A0B); border: 1px dashed var(--taste-term-border);`). Mindless decorative nesting without distinct command boundaries remains disallowed.
 - **Active Cursor:** Block caret with 1s pulse or solid active state.
 
 ## Component anatomy and interaction
@@ -104,7 +105,9 @@ Precise, technical, and command-driven. Examples: `deploy --prod`, `status: heal
 | --- | --- | --- |
 | `--taste-term-bg` | `#0c0d0e` | `#f4f1ea` |
 | `--taste-term-surface` | `#14171a` | `#e8e4da` |
+| `--taste-term-well-bg` | `#080a0b` | `#ded9cd` |
 | `--taste-term-text` | `#ffb000` | `#5c3a00` |
+| `--taste-term-text-muted` | `#8a7030` | `#7d6945` |
 | `--taste-term-amber` | `#ffb000` | `#5c3a00` |
 | `--taste-term-glow` | `0 0 6px rgba(255, 176, 0, 0.45)` | `none` |
 | `--taste-term-border` | `1px solid rgba(255, 176, 0, 0.25)` | `1px solid #d5d0c3` |
