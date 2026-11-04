@@ -8,11 +8,10 @@
   <link rel="icon" type="image/webp" href="assets/logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400..800;1,9..40,400..800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     /* =========================================================
-       GLOBAL RESET & TACTILE THEME TOKENS
-       Dark mode: Matte Charcoal + Recessed Wells + Radiant Neon Gradient
+       ZERO-SLOP DESIGN TOKENS (MATTE CHARCOAL + DISCIPLINED TACTILE ACCENTS)
        ========================================================= */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     
@@ -21,68 +20,67 @@
     }
 
     :root {
-      /* Dark Mode Palette (Referenced from tactile neumorphic charcoal + neon violet/cyan) */
-      --shell-bg: #15171c;
-      --shell-surface: #1e2026;
-      --shell-surface-elevated: #242730;
-      --shell-surface-pressed: #18191e;
-      --shell-well-bg: #121317;
+      /* Dark Theme (Default) */
+      --shell-bg: #0d0f14;
+      --shell-surface: #141720;
+      --shell-surface-elevated: #1a1e2a;
+      --shell-surface-hover: #212636;
+      --shell-well-bg: #090b0e;
       --shell-border: rgba(255, 255, 255, 0.08);
       --shell-border-subtle: rgba(255, 255, 255, 0.04);
+      --shell-border-focus: #6366f1;
+      
       --shell-text: #f8fafc;
       --shell-text-muted: #94a3b8;
       --shell-text-dim: #64748b;
       
-      /* Vibrant Radiant Accents */
-      --shell-accent: #a855f7;
-      --shell-accent-hover: #c084fc;
-      --shell-accent-cyan: #06b6d4;
-      --shell-accent-pink: #ec4899;
-      --shell-gradient-primary: linear-gradient(135deg, #ec4899 0%, #a855f7 48%, #06b6d4 100%);
-      --shell-gradient-hover: linear-gradient(135deg, #f43f5e 0%, #c084fc 48%, #38bdf8 100%);
-      --shell-gradient-subtle: rgba(168, 85, 247, 0.12);
+      /* Disciplined Accent Tokens */
+      --shell-accent: #6366f1;
+      --shell-accent-hover: #4f46e5;
+      --shell-accent-subtle: rgba(99, 102, 241, 0.12);
+      --shell-accent-border: rgba(99, 102, 241, 0.35);
 
-      /* Tactile Shadow & Inset Form Profiles */
-      --shell-shadow-extruded: 10px 18px 30px rgba(0, 0, 0, 0.48), -4px -5px 14px rgba(255, 255, 255, 0.035);
-      --shell-shadow-card: 8px 16px 28px rgba(0, 0, 0, 0.40), -3px -4px 10px rgba(255, 255, 255, 0.03);
-      --shell-shadow-pill: 5px 8px 16px rgba(0, 0, 0, 0.42), -2px -3px 8px rgba(255, 255, 255, 0.03);
-      --shell-bevel-specular: inset 1px 1px 1.5px rgba(255, 255, 255, 0.10), inset -1px -1px 2px rgba(0, 0, 0, 0.55);
-      --shell-well-recessed: inset 4px 6px 12px rgba(0, 0, 0, 0.55), inset -2px -2px 6px rgba(255, 255, 255, 0.035);
-      --shell-glow-accent: 0 0 20px rgba(168, 85, 247, 0.35);
+      /* Tactile Elevation Profiles */
+      --shell-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+      --shell-shadow-card: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      --shell-shadow-elevated: 0 12px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      --shell-well-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.65), inset 0 0 1px rgba(0, 0, 0, 0.8);
+      --shell-specular-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 
       --shell-font: 'Inter', system-ui, -apple-system, sans-serif;
       --shell-font-mono: 'JetBrains Mono', monospace;
-      --shell-radius: 16px;
+      --shell-radius-sm: 8px;
+      --shell-radius: 14px;
+      --shell-radius-lg: 20px;
       --shell-radius-pill: 9999px;
-      transition: background-color 200ms ease, color 200ms ease;
+      
+      transition: background-color 180ms ease, color 180ms ease;
     }
 
     [data-theme="light"] {
-      --shell-bg: #f1f4f8;
+      --shell-bg: #f8fafc;
       --shell-surface: #ffffff;
-      --shell-surface-elevated: #f8fafc;
-      --shell-surface-pressed: #e2e8f0;
-      --shell-well-bg: #e8ecf2;
-      --shell-border: rgba(0, 0, 0, 0.08);
+      --shell-surface-elevated: #f1f5f9;
+      --shell-surface-hover: #e2e8f0;
+      --shell-well-bg: #eef2f6;
+      --shell-border: rgba(0, 0, 0, 0.09);
       --shell-border-subtle: rgba(0, 0, 0, 0.04);
+      --shell-border-focus: #4f46e5;
+
       --shell-text: #0f172a;
       --shell-text-muted: #475569;
       --shell-text-dim: #94a3b8;
-      
-      --shell-accent: #7c3aed;
-      --shell-accent-hover: #6d28d9;
-      --shell-accent-cyan: #0284c7;
-      --shell-accent-pink: #db2777;
-      --shell-gradient-primary: linear-gradient(135deg, #db2777 0%, #7c3aed 48%, #0284c7 100%);
-      --shell-gradient-hover: linear-gradient(135deg, #be185d 0%, #6d28d9 48%, #0369a1 100%);
-      --shell-gradient-subtle: rgba(124, 58, 237, 0.10);
 
-      --shell-shadow-extruded: 8px 16px 28px rgba(148, 163, 184, 0.35), -4px -6px 16px rgba(255, 255, 255, 0.9);
-      --shell-shadow-card: 6px 12px 24px rgba(148, 163, 184, 0.28), -3px -4px 12px rgba(255, 255, 255, 0.85);
-      --shell-shadow-pill: 4px 8px 14px rgba(148, 163, 184, 0.3), -2px -3px 8px rgba(255, 255, 255, 0.9);
-      --shell-bevel-specular: inset 1px 1px 2px rgba(255, 255, 255, 0.95), inset -1px -1px 2px rgba(148, 163, 184, 0.3);
-      --shell-well-recessed: inset 3px 4px 8px rgba(148, 163, 184, 0.35), inset -2px -2px 6px rgba(255, 255, 255, 0.8);
-      --shell-glow-accent: 0 0 16px rgba(124, 58, 237, 0.25);
+      --shell-accent: #4f46e5;
+      --shell-accent-hover: #4338ca;
+      --shell-accent-subtle: rgba(79, 70, 229, 0.08);
+      --shell-accent-border: rgba(79, 70, 229, 0.3);
+
+      --shell-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+      --shell-shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+      --shell-shadow-elevated: 0 10px 25px rgba(0, 0, 0, 0.08);
+      --shell-well-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.06);
+      --shell-specular-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.9);
     }
 
     body {
@@ -94,111 +92,128 @@
       display: flex;
       flex-direction: column;
       overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* SVG Icon Helper */
+    .icon {
+      display: inline-block;
+      width: 1em;
+      height: 1em;
+      stroke-width: 0;
+      stroke: currentColor;
+      fill: currentColor;
+      flex-shrink: 0;
+      vertical-align: -0.125em;
+    }
+    .icon-stroke {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
     }
 
     /* =========================================================
-       NAVIGATION BAR
+       TOP STICKY NAVIGATION
        ========================================================= */
     .top-nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(21, 23, 28, 0.86);
-      backdrop-filter: blur(18px);
-      -webkit-backdrop-filter: blur(18px);
+      background: rgba(13, 15, 20, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--shell-border);
-      padding: 0.75rem 2rem;
+      padding: 0.75rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
+      gap: 1rem;
     }
 
     [data-theme="light"] .top-nav {
-      background: rgba(241, 244, 248, 0.88);
+      background: rgba(248, 250, 252, 0.90);
     }
 
     .brand-group {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
     }
 
     .brand-title {
       display: inline-flex;
       align-items: center;
-      gap: 0.65rem;
-      font-weight: 800;
-      font-size: 1.15rem;
-      letter-spacing: -0.025em;
+      gap: 0.55rem;
+      font-weight: 700;
+      font-size: 1.05rem;
+      letter-spacing: -0.02em;
       color: var(--shell-text);
       text-decoration: none;
     }
 
     .brand-logo-img {
-      width: 34px;
-      height: 34px;
+      width: 28px;
+      height: 28px;
       object-fit: contain;
-      filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.4));
-      border-radius: 8px;
+      border-radius: 6px;
     }
 
     .brand-badge {
       font-size: 0.7rem;
-      font-weight: 700;
-      padding: 2px 8px;
-      border-radius: 9999px;
-      background: var(--shell-gradient-subtle);
+      font-weight: 600;
+      padding: 1px 7px;
+      border-radius: var(--shell-radius-pill);
+      background: var(--shell-accent-subtle);
       color: var(--shell-accent);
-      border: 1px solid rgba(168, 85, 247, 0.35);
-      letter-spacing: 0.04em;
+      border: 1px solid var(--shell-accent-border);
     }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 1.75rem;
+      gap: 1.5rem;
       list-style: none;
     }
 
     .nav-links a {
       color: var(--shell-text-muted);
       text-decoration: none;
-      font-size: 0.9rem;
-      font-weight: 600;
-      transition: color 150ms ease;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 140ms ease;
     }
 
     .nav-links a:hover {
-      color: var(--shell-accent);
+      color: var(--shell-text);
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.6rem;
     }
 
     .theme-toggle-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
       background: var(--shell-surface);
       color: var(--shell-text);
       border: 1px solid var(--shell-border);
       border-radius: var(--shell-radius-pill);
-      padding: 0.45rem 0.95rem;
-      font-size: 0.825rem;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
-      box-shadow: var(--shell-shadow-pill), var(--shell-bevel-specular);
-      transition: all 150ms ease;
+      box-shadow: var(--shell-shadow-sm);
+      transition: all 140ms ease;
     }
 
     .theme-toggle-btn:hover {
       background: var(--shell-surface-elevated);
-      color: var(--shell-accent);
-      transform: translateY(-1px);
+      border-color: var(--shell-border-focus);
     }
 
     .gh-btn {
@@ -209,88 +224,78 @@
       color: var(--shell-text);
       border: 1px solid var(--shell-border);
       border-radius: var(--shell-radius-pill);
-      padding: 0.45rem 0.95rem;
-      font-size: 0.825rem;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.8rem;
       font-weight: 600;
       text-decoration: none;
-      box-shadow: var(--shell-shadow-pill), var(--shell-bevel-specular);
-      transition: all 150ms ease;
+      box-shadow: var(--shell-shadow-sm);
+      transition: all 140ms ease;
     }
 
     .gh-btn:hover {
       background: var(--shell-surface-elevated);
-      color: var(--shell-accent);
-      transform: translateY(-1px);
+      border-color: var(--shell-border-focus);
     }
 
     /* =========================================================
-       HERO BANNER & OFFICIAL WEBP ASSET
+       HERO BANNER
        ========================================================= */
     .hero-banner {
-      max-width: 1240px;
-      margin: 3.5rem auto 2.5rem auto;
-      padding: 0 1.5rem;
+      max-width: 1120px;
+      margin: 3rem auto 2.5rem auto;
+      padding: 0 1.25rem;
       text-align: center;
     }
 
     .hero-badge-pill {
       display: inline-flex;
       align-items: center;
-      gap: 0.55rem;
+      gap: 0.5rem;
       background: var(--shell-surface);
       border: 1px solid var(--shell-border);
-      padding: 0.4rem 1.15rem;
+      padding: 0.35rem 0.95rem;
       border-radius: var(--shell-radius-pill);
-      font-size: 0.825rem;
+      font-size: 0.785rem;
       font-weight: 600;
       color: var(--shell-text-muted);
       margin-bottom: 1.5rem;
-      box-shadow: var(--shell-shadow-pill), var(--shell-bevel-specular);
+      box-shadow: var(--shell-shadow-sm);
     }
 
-    .hero-badge-pill .pill-spark {
-      color: #eab308;
-      font-size: 0.9rem;
+    .hero-badge-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10b981;
+      box-shadow: 0 0 6px #10b981;
     }
 
     .hero-title {
-      font-size: clamp(2.3rem, 5.2vw, 3.8rem);
+      font-size: clamp(2.1rem, 4.5vw, 3.4rem);
       font-weight: 800;
-      letter-spacing: -0.038em;
-      line-height: 1.14;
-      margin-bottom: 1.25rem;
-    }
-
-    .hero-title-accent {
-      background: var(--shell-gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      filter: drop-shadow(0 2px 8px rgba(168, 85, 247, 0.25));
+      letter-spacing: -0.035em;
+      line-height: 1.15;
+      color: var(--shell-text);
+      margin-bottom: 1rem;
     }
 
     .hero-subtitle {
-      font-size: clamp(1rem, 2vw, 1.2rem);
+      font-size: clamp(0.975rem, 1.8vw, 1.15rem);
       color: var(--shell-text-muted);
-      max-width: 780px;
-      margin: 0 auto 2.25rem auto;
-      line-height: 1.65;
+      max-width: 740px;
+      margin: 0 auto 2rem auto;
+      line-height: 1.6;
     }
 
-    /* Hero Banner Image Frame (Using assets/banner.webp) */
+    /* Official Brand Banner Frame */
     .hero-banner-frame {
-      max-width: 1080px;
+      max-width: 960px;
       margin: 0 auto 2.5rem auto;
-      border-radius: 20px;
+      border-radius: var(--shell-radius);
       overflow: hidden;
       background: var(--shell-surface);
       border: 1px solid var(--shell-border);
-      box-shadow: var(--shell-shadow-extruded), var(--shell-bevel-specular);
-      transition: transform 220ms ease, box-shadow 220ms ease;
-    }
-
-    .hero-banner-frame:hover {
-      transform: translateY(-2px);
-      box-shadow: 12px 24px 38px rgba(0, 0, 0, 0.55), -4px -5px 16px rgba(255, 255, 255, 0.04);
+      box-shadow: var(--shell-shadow-card);
     }
 
     .hero-banner-img {
@@ -300,31 +305,30 @@
       object-fit: cover;
     }
 
-    /* Quick Install Pill with Recessed Well */
+    /* Quick Install Pill with Clean Well */
     .hero-quick-install {
       display: inline-flex;
       align-items: center;
-      gap: 0.85rem;
-      background: var(--shell-surface);
+      gap: 0.75rem;
+      background: var(--shell-well-bg);
       border: 1px solid var(--shell-border);
       border-radius: var(--shell-radius-pill);
-      padding: 0.45rem 0.6rem 0.45rem 1.35rem;
-      margin-bottom: 2rem;
-      box-shadow: var(--shell-shadow-pill), var(--shell-bevel-specular);
+      padding: 0.35rem 0.45rem 0.35rem 1.1rem;
+      margin-bottom: 1.75rem;
+      box-shadow: var(--shell-well-shadow);
       max-width: 100%;
     }
 
-    .quick-install-label {
-      font-size: 0.75rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.07em;
-      color: var(--shell-accent);
+    .quick-install-prompt {
+      color: var(--shell-text-dim);
+      font-family: var(--shell-font-mono);
+      font-size: 0.85rem;
+      user-select: none;
     }
 
     .quick-install-code {
       font-family: var(--shell-font-mono);
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       color: var(--shell-text);
       user-select: all;
     }
@@ -332,386 +336,172 @@
     .quick-copy-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      background: var(--shell-gradient-primary);
-      color: #ffffff;
-      border: none;
+      gap: 0.35rem;
+      background: var(--shell-surface-elevated);
+      color: var(--shell-text);
+      border: 1px solid var(--shell-border);
       border-radius: var(--shell-radius-pill);
-      padding: 0.45rem 1rem;
-      font-size: 0.785rem;
-      font-weight: 700;
+      padding: 0.4rem 0.85rem;
+      font-size: 0.75rem;
+      font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 4px 12px rgba(168, 85, 247, 0.35);
-      transition: transform 120ms ease, opacity 120ms ease;
+      box-shadow: var(--shell-shadow-sm);
+      transition: background 120ms ease, border-color 120ms ease;
     }
 
     .quick-copy-btn:hover {
-      opacity: 0.95;
-      transform: translateY(-1px);
+      background: var(--shell-surface-hover);
+      border-color: var(--shell-accent);
+    }
+
+    .quick-copy-btn:active {
+      transform: translateY(1px);
     }
 
     .hero-cta-group {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1.15rem;
-      margin-bottom: 3.5rem;
+      gap: 0.85rem;
+      margin-bottom: 3rem;
       flex-wrap: wrap;
     }
 
     .cta-primary-btn {
-      background: var(--shell-gradient-primary);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--shell-accent);
       color: #ffffff;
       text-decoration: none;
-      padding: 0.85rem 2rem;
+      padding: 0.75rem 1.6rem;
       border-radius: var(--shell-radius-pill);
-      font-weight: 700;
-      font-size: 0.95rem;
-      box-shadow: 0 6px 18px rgba(168, 85, 247, 0.4);
-      transition: all 160ms ease;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.35);
+      transition: background 140ms ease, transform 120ms ease;
     }
 
     .cta-primary-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(168, 85, 247, 0.55);
+      background: var(--shell-accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .cta-primary-btn:active {
+      transform: translateY(1px);
     }
 
     .cta-secondary-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       background: var(--shell-surface);
       color: var(--shell-text);
       border: 1px solid var(--shell-border);
       text-decoration: none;
-      padding: 0.85rem 2rem;
+      padding: 0.75rem 1.6rem;
       border-radius: var(--shell-radius-pill);
-      font-weight: 700;
-      font-size: 0.95rem;
-      box-shadow: var(--shell-shadow-pill), var(--shell-bevel-specular);
-      transition: all 160ms ease;
+      font-weight: 600;
+      font-size: 0.9rem;
+      box-shadow: var(--shell-shadow-sm);
+      transition: background 140ms ease, border-color 140ms ease, transform 120ms ease;
     }
 
     .cta-secondary-btn:hover {
-      color: var(--shell-accent);
-      border-color: rgba(168, 85, 247, 0.4);
-      transform: translateY(-2px);
+      background: var(--shell-surface-elevated);
+      border-color: var(--shell-accent);
+      transform: translateY(-1px);
     }
 
-    /* Key Stats Strip */
+    .cta-secondary-btn:active {
+      transform: translateY(1px);
+    }
+
+    /* Key Stats Strip (Solid, Authoritative Typography) */
     .hero-stats-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
-      max-width: 1080px;
+      gap: 1rem;
+      max-width: 980px;
       margin: 0 auto;
     }
 
     .stat-card {
       background: var(--shell-surface);
       border: 1px solid var(--shell-border);
-      border-radius: 18px;
-      padding: 1.4rem 1rem;
+      border-radius: var(--shell-radius);
+      padding: 1.25rem 1rem;
       text-align: center;
-      box-shadow: var(--shell-shadow-card), var(--shell-bevel-specular);
-      transition: transform 150ms ease;
-    }
-
-    .stat-card:hover {
-      transform: translateY(-2px);
+      box-shadow: var(--shell-shadow-sm);
     }
 
     .stat-num {
       display: block;
-      font-size: 1.75rem;
+      font-size: 1.65rem;
       font-weight: 800;
       letter-spacing: -0.025em;
-      background: var(--shell-gradient-primary);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      margin-bottom: 0.25rem;
+      color: var(--shell-text);
+      margin-bottom: 0.2rem;
     }
 
     .stat-desc {
-      font-size: 0.825rem;
+      font-size: 0.8rem;
       color: var(--shell-text-muted);
-      font-weight: 600;
-    }
-
-    /* =========================================================
-       FEATURED TACTILE DEMO SHOWCASE
-       (Faithful interactive realization of the user's reference image)
-       ========================================================= */
-    .tactile-demo-wrap {
-      max-width: 1080px;
-      margin: 4rem auto 0 auto;
-      background: var(--shell-surface);
-      border: 1px solid var(--shell-border);
-      border-radius: 24px;
-      padding: 2.5rem 2rem;
-      box-shadow: var(--shell-shadow-extruded), var(--shell-bevel-specular);
-    }
-
-    .tactile-demo-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      margin-bottom: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .tactile-demo-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.75rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      padding: 4px 12px;
-      border-radius: var(--shell-radius-pill);
-      background: var(--shell-gradient-subtle);
-      color: var(--shell-accent);
-      border: 1px solid rgba(168, 85, 247, 0.3);
-    }
-
-    .tactile-demo-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
-    }
-
-    .tactile-widget {
-      background: var(--shell-surface);
-      border: 1px solid var(--shell-border);
-      border-radius: 20px;
-      padding: 1.5rem;
-      box-shadow: var(--shell-shadow-card), var(--shell-bevel-specular);
-    }
-
-    .tactile-well {
-      background: var(--shell-well-bg);
-      box-shadow: var(--shell-well-recessed);
-      border-radius: 16px;
-      padding: 1.25rem;
-    }
-
-    /* Equalizer Bars */
-    .equalizer-wrap {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      height: 90px;
-      padding: 0 0.5rem;
-    }
-
-    .eq-bar {
-      width: 10px;
-      border-radius: 9999px;
-      background: var(--shell-gradient-primary);
-      box-shadow: 0 0 8px rgba(168, 85, 247, 0.4);
-      transition: height 300ms ease;
-    }
-
-    /* Tactile Dial Gauges */
-    .gauge-widget {
-      display: flex;
-      align-items: center;
-      justify-content: space-around;
-      gap: 1rem;
-    }
-
-    .gauge-dial {
-      position: relative;
-      width: 110px;
-      height: 110px;
-      border-radius: 50%;
-      background: var(--shell-surface);
-      box-shadow: var(--shell-shadow-card), var(--shell-bevel-specular);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .gauge-dial-ring {
-      position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      background: conic-gradient(from -90deg, #ec4899 0%, #a855f7 50%, #06b6d4 85%, transparent 85%);
-      mask: radial-gradient(transparent 50px, #000 51px);
-      -webkit-mask: radial-gradient(transparent 50px, #000 51px);
-    }
-
-    .gauge-val {
-      font-size: 1.5rem;
-      font-weight: 800;
-      line-height: 1;
-    }
-
-    .gauge-unit {
-      font-size: 0.725rem;
-      color: var(--shell-text-muted);
-      font-weight: 600;
-      margin-top: 2px;
-    }
-
-    /* Tactile Toggle Switch */
-    .tactile-toggle-row {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 1.25rem;
-    }
-
-    .tactile-toggle {
-      position: relative;
-      width: 58px;
-      height: 32px;
-      border-radius: 9999px;
-      background: var(--shell-well-bg);
-      box-shadow: var(--shell-well-recessed);
-      cursor: pointer;
-      border: 1px solid var(--shell-border);
-    }
-
-    .tactile-toggle-knob {
-      position: absolute;
-      top: 3px;
-      left: 4px;
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      background: var(--shell-gradient-primary);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4), 0 0 10px rgba(168, 85, 247, 0.5);
-      transition: transform 200ms ease;
-    }
-
-    .tactile-toggle.active .tactile-toggle-knob {
-      transform: translateX(26px);
-      background: #f8fafc;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
-    }
-
-    /* Circular Tactile Action Buttons */
-    .tactile-btn-row {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      margin-top: 1rem;
-    }
-
-    .tactile-circle-btn {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: var(--shell-surface);
-      border: 1px solid var(--shell-border);
-      color: var(--shell-text);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      cursor: pointer;
-      box-shadow: var(--shell-shadow-pill), var(--shell-bevel-specular);
-      transition: transform 120ms ease, box-shadow 120ms ease;
-    }
-
-    .tactile-circle-btn:active {
-      transform: scale(0.95);
-      box-shadow: var(--shell-well-recessed);
-    }
-
-    .tactile-pill-btn {
-      background: var(--shell-surface);
-      border: 1px solid var(--shell-border);
-      color: var(--shell-text);
-      border-radius: var(--shell-radius-pill);
-      padding: 8px 18px;
-      font-size: 0.785rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      cursor: pointer;
-      box-shadow: var(--shell-shadow-pill), var(--shell-bevel-specular);
-      transition: all 120ms ease;
-    }
-
-    .tactile-pill-btn:active {
-      transform: scale(0.97);
-      box-shadow: var(--shell-well-recessed);
-    }
-
-    /* Recessed Pill Search Well */
-    .tactile-search-well {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      background: var(--shell-well-bg);
-      box-shadow: var(--shell-well-recessed);
-      border-radius: var(--shell-radius-pill);
-      padding: 8px 16px;
-      border: 1px solid var(--shell-border);
-    }
-
-    .tactile-search-input {
-      background: transparent;
-      border: none;
-      outline: none;
-      color: var(--shell-text);
-      font-size: 0.85rem;
-      width: 100%;
-      font-family: inherit;
+      font-weight: 500;
     }
 
     /* =========================================================
        SECTION CONTAINERS & HEADERS
        ========================================================= */
     .content-section {
-      max-width: 1300px;
-      margin: 5rem auto;
-      padding: 0 1.5rem;
+      max-width: 1240px;
+      margin: 4.5rem auto;
+      padding: 0 1.25rem;
+      width: 100%;
     }
 
     .section-header {
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 2.75rem;
     }
 
     .section-eyebrow {
       display: inline-block;
       font-size: 0.75rem;
-      font-weight: 800;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
       color: var(--shell-accent);
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .section-title {
-      font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+      font-size: clamp(1.75rem, 3.2vw, 2.35rem);
       font-weight: 800;
       letter-spacing: -0.025em;
-      margin-bottom: 0.75rem;
+      color: var(--shell-text);
+      margin-bottom: 0.65rem;
     }
 
     .section-desc {
-      font-size: 1rem;
+      font-size: 0.975rem;
       color: var(--shell-text-muted);
-      max-width: 680px;
+      max-width: 650px;
       margin: 0 auto;
       line-height: 1.6;
     }
 
     /* =========================================================
-       SHOWCASE GALLERY STYLING & FILTERS
+       SHOWCASE GALLERY
        ========================================================= */
     .filter-bar {
       display: flex;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 0.6rem;
-      max-width: 1200px;
-      margin: 0 auto 2.5rem auto;
-      padding: 0 1rem;
+      gap: 0.5rem;
+      max-width: 1100px;
+      margin: 0 auto 2.25rem auto;
+      padding: 0 0.5rem;
     }
 
     .filter-chip {
@@ -719,30 +509,29 @@
       color: var(--shell-text-muted);
       border: 1px solid var(--shell-border);
       border-radius: var(--shell-radius-pill);
-      padding: 0.45rem 1.15rem;
-      font-size: 0.85rem;
+      padding: 0.4rem 0.95rem;
+      font-size: 0.825rem;
       font-weight: 600;
       cursor: pointer;
-      box-shadow: var(--shell-shadow-pill), var(--shell-bevel-specular);
-      transition: all 150ms ease;
+      box-shadow: var(--shell-shadow-sm);
+      transition: all 140ms ease;
     }
 
     .filter-chip:hover {
       color: var(--shell-text);
-      transform: translateY(-1px);
+      border-color: var(--shell-accent);
     }
 
     .filter-chip.active {
-      background: var(--shell-gradient-primary);
+      background: var(--shell-accent);
       color: #ffffff;
-      border-color: transparent;
-      box-shadow: 0 4px 14px rgba(168, 85, 247, 0.45);
+      border-color: var(--shell-accent);
     }
 
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(580px, 1fr));
-      gap: 2rem;
+      grid-template-columns: repeat(auto-fill, minmax(540px, 1fr));
+      gap: 1.75rem;
     }
 
     .showcase-card {
@@ -752,62 +541,65 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      box-shadow: var(--shell-shadow-card), var(--shell-bevel-specular);
-      transition: transform 180ms ease, box-shadow 180ms ease;
+      box-shadow: var(--shell-shadow-card);
+      transition: transform 160ms ease, box-shadow 160ms ease;
     }
 
     .showcase-card:hover {
       transform: translateY(-2px);
-      box-shadow: var(--shell-shadow-extruded), var(--shell-bevel-specular);
+      box-shadow: var(--shell-shadow-elevated);
     }
 
     .showcase-header {
-      padding: 1.25rem 1.5rem;
+      padding: 1.15rem 1.35rem;
       border-bottom: 1px solid var(--shell-border);
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      background: rgba(0, 0, 0, 0.15);
+      background: rgba(0, 0, 0, 0.12);
     }
 
     [data-theme="light"] .showcase-header {
-      background: rgba(0, 0, 0, 0.03);
+      background: rgba(0, 0, 0, 0.02);
     }
 
     .showcase-title-group h2 {
-      font-size: 1.25rem;
+      font-size: 1.2rem;
       font-weight: 700;
       letter-spacing: -0.01em;
+      color: var(--shell-text);
     }
 
     .showcase-signature {
-      font-size: 0.8rem;
+      font-size: 0.785rem;
       color: var(--shell-text-muted);
     }
 
     .copy-token-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
       background: var(--shell-surface);
       color: var(--shell-text);
       border: 1px solid var(--shell-border);
       border-radius: var(--shell-radius-pill);
-      padding: 0.4rem 0.9rem;
+      padding: 0.35rem 0.8rem;
       font-size: 0.75rem;
       font-weight: 600;
       cursor: pointer;
-      box-shadow: var(--shell-shadow-pill), var(--shell-bevel-specular);
+      box-shadow: var(--shell-shadow-sm);
       transition: all 120ms ease;
       white-space: nowrap;
     }
 
     .copy-token-btn:hover {
-      background: var(--shell-gradient-primary);
-      color: #ffffff;
-      border-color: transparent;
+      background: var(--shell-surface-elevated);
+      border-color: var(--shell-accent);
     }
 
     .showcase-body {
-      padding: 1.5rem;
+      padding: 1.35rem;
       flex: 1;
       display: flex;
       flex-direction: column;
@@ -820,65 +612,75 @@
     .pipeline-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1.5rem;
+      gap: 1.25rem;
     }
 
     .pipeline-card {
       background: var(--shell-surface);
       border: 1px solid var(--shell-border);
-      border-radius: 20px;
-      padding: 2rem 1.5rem;
+      border-radius: var(--shell-radius);
+      padding: 1.75rem 1.35rem;
       position: relative;
       display: flex;
       flex-direction: column;
-      box-shadow: var(--shell-shadow-card), var(--shell-bevel-specular);
-      transition: transform 180ms ease, border-color 180ms ease;
+      box-shadow: var(--shell-shadow-card);
+      transition: transform 160ms ease, border-color 160ms ease;
     }
 
     .pipeline-card:hover {
-      transform: translateY(-3px);
-      border-color: rgba(168, 85, 247, 0.4);
+      transform: translateY(-2px);
+      border-color: var(--shell-accent-border);
     }
 
     .pipeline-step-badge {
       display: inline-block;
       align-self: flex-start;
-      font-size: 0.7rem;
-      font-weight: 800;
+      font-size: 0.685rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      padding: 3px 10px;
+      padding: 2px 8px;
       border-radius: var(--shell-radius-pill);
-      background: var(--shell-gradient-subtle);
+      background: var(--shell-accent-subtle);
       color: var(--shell-accent);
-      border: 1px solid rgba(168, 85, 247, 0.3);
+      border: 1px solid var(--shell-accent-border);
       margin-bottom: 1.25rem;
     }
 
-    .pipeline-icon {
-      font-size: 2.2rem;
-      margin-bottom: 1rem;
+    .pipeline-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--shell-well-bg);
+      border: 1px solid var(--shell-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--shell-accent);
+      font-size: 1.25rem;
+      margin-bottom: 1.15rem;
     }
 
     .pipeline-card h3 {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: -0.01em;
-      margin-bottom: 0.75rem;
+      color: var(--shell-text);
+      margin-bottom: 0.65rem;
     }
 
     .pipeline-card p {
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       color: var(--shell-text-muted);
       line-height: 1.55;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.15rem;
       flex: 1;
     }
 
     .pipeline-features {
       list-style: none;
       border-top: 1px solid var(--shell-border);
-      padding-top: 1rem;
+      padding-top: 0.95rem;
     }
 
     .pipeline-features li {
@@ -887,105 +689,117 @@
       gap: 0.5rem;
       font-size: 0.785rem;
       color: var(--shell-text-muted);
-      margin-bottom: 0.5rem;
-      font-weight: 500;
+      margin-bottom: 0.45rem;
     }
 
-    .pipeline-features li::before {
-      content: "✓";
+    .pipeline-features svg {
       color: #10b981;
-      font-weight: 800;
-      font-size: 0.85rem;
+      flex-shrink: 0;
     }
 
     /* =========================================================
-       INSTALLATION GUIDE (MULTI-AGENT TABS)
+       FULLY RESPONSIVE INSTALLATION GUIDE (MOBILE-FIRST ARCHITECTURE)
        ========================================================= */
     .install-container {
-      max-width: 980px;
+      max-width: 940px;
       margin: 0 auto;
+      width: 100%;
     }
 
+    /* Responsive Segmented Tabs Bar */
     .install-tabs {
-      display: flex;
-      gap: 0.6rem;
-      overflow-x: auto;
-      padding-bottom: 0.75rem;
-      margin-bottom: 1.25rem;
-      scrollbar-width: thin;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 0.45rem;
+      margin-bottom: 1rem;
+      background: var(--shell-well-bg);
+      border: 1px solid var(--shell-border);
+      padding: 0.45rem;
+      border-radius: var(--shell-radius);
     }
 
     .install-tab-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.55rem;
-      background: var(--shell-surface);
+      justify-content: center;
+      gap: 0.45rem;
+      background: transparent;
       color: var(--shell-text-muted);
-      border: 1px solid var(--shell-border);
-      border-radius: var(--shell-radius-pill);
-      padding: 0.65rem 1.25rem;
-      font-size: 0.85rem;
+      border: 1px solid transparent;
+      border-radius: var(--shell-radius-sm);
+      padding: 0.55rem 0.75rem;
+      font-size: 0.8rem;
       font-weight: 600;
       cursor: pointer;
-      white-space: nowrap;
-      box-shadow: var(--shell-shadow-pill), var(--shell-bevel-specular);
-      transition: all 150ms ease;
+      text-align: center;
+      transition: background 120ms ease, color 120ms ease;
     }
 
     .install-tab-btn:hover {
       color: var(--shell-text);
-      transform: translateY(-1px);
+      background: var(--shell-surface);
     }
 
     .install-tab-btn.active {
-      background: var(--shell-gradient-primary);
-      color: #ffffff;
-      border-color: transparent;
-      box-shadow: 0 4px 16px rgba(168, 85, 247, 0.45);
+      background: var(--shell-surface);
+      color: var(--shell-text);
+      border-color: var(--shell-border);
+      box-shadow: var(--shell-shadow-sm);
     }
 
+    .install-tab-btn svg {
+      color: var(--shell-text-dim);
+    }
+
+    .install-tab-btn.active svg {
+      color: var(--shell-accent);
+    }
+
+    /* Installation Terminal Panel */
     .install-panel {
       display: none;
       background: var(--shell-surface);
       border: 1px solid var(--shell-border);
-      border-radius: 20px;
+      border-radius: var(--shell-radius);
       overflow: hidden;
-      box-shadow: var(--shell-shadow-extruded), var(--shell-bevel-specular);
+      box-shadow: var(--shell-shadow-card);
     }
 
     .install-panel.active {
       display: block;
-      animation: fadeIn 200ms ease-out;
+      animation: tabFadeIn 180ms ease-out;
     }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(4px); }
+    @keyframes tabFadeIn {
+      from { opacity: 0; transform: translateY(3px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
     .panel-header {
-      background: rgba(0, 0, 0, 0.25);
+      background: rgba(0, 0, 0, 0.2);
       border-bottom: 1px solid var(--shell-border);
-      padding: 0.95rem 1.35rem;
+      padding: 0.75rem 1.15rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 0.75rem;
+      flex-wrap: wrap;
     }
 
     [data-theme="light"] .panel-header {
-      background: rgba(0, 0, 0, 0.04);
+      background: rgba(0, 0, 0, 0.02);
     }
 
     .window-dots {
       display: flex;
       align-items: center;
       gap: 6px;
+      flex-shrink: 0;
     }
 
     .dot {
-      width: 10px;
-      height: 10px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
     }
 
@@ -995,43 +809,55 @@
 
     .window-title {
       font-family: var(--shell-font-mono);
-      font-size: 0.8rem;
+      font-size: 0.785rem;
       color: var(--shell-text-muted);
       font-weight: 500;
+      flex: 1;
+      min-width: 140px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .copy-cmd-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      background: var(--shell-surface);
+      gap: 0.35rem;
+      background: var(--shell-surface-elevated);
       color: var(--shell-text);
       border: 1px solid var(--shell-border);
       border-radius: var(--shell-radius-pill);
-      padding: 0.35rem 0.85rem;
+      padding: 0.3rem 0.75rem;
       font-size: 0.75rem;
       font-weight: 600;
       cursor: pointer;
-      box-shadow: var(--shell-shadow-pill), var(--shell-bevel-specular);
+      box-shadow: var(--shell-shadow-sm);
       transition: all 120ms ease;
+      flex-shrink: 0;
     }
 
     .copy-cmd-btn:hover {
-      background: var(--shell-gradient-primary);
-      color: #ffffff;
-      border-color: transparent;
+      background: var(--shell-surface-hover);
+      border-color: var(--shell-accent);
     }
 
+    .copy-cmd-btn:active {
+      transform: translateY(1px);
+    }
+
+    /* Pre-wrapped, Mobile-safe Terminal Code Container */
     .terminal-body {
-      padding: 1.5rem;
+      padding: 1.25rem;
       font-family: var(--shell-font-mono);
-      font-size: 0.875rem;
-      line-height: 1.65;
+      font-size: 0.85rem;
+      line-height: 1.7;
       color: var(--shell-text);
-      overflow-x: auto;
       background: var(--shell-well-bg);
-      box-shadow: var(--shell-well-recessed);
+      box-shadow: var(--shell-well-shadow);
       margin: 0;
+      overflow-x: auto;
+      white-space: pre-wrap;
+      word-break: break-all;
     }
 
     .terminal-body code {
@@ -1040,126 +866,137 @@
 
     .panel-footer-note {
       border-top: 1px solid var(--shell-border);
-      padding: 1.1rem 1.5rem;
+      padding: 0.95rem 1.25rem;
       background: var(--shell-surface);
-      font-size: 0.85rem;
+      font-size: 0.825rem;
       color: var(--shell-text-muted);
       line-height: 1.55;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+
+    .panel-footer-note svg {
+      color: var(--shell-accent);
+      flex-shrink: 0;
+      margin-top: 2px;
     }
 
     .panel-footer-note code {
       font-family: var(--shell-font-mono);
-      font-size: 0.8rem;
+      font-size: 0.785rem;
       background: var(--shell-well-bg);
-      padding: 2px 7px;
-      border-radius: 6px;
       border: 1px solid var(--shell-border);
+      padding: 1px 6px;
+      border-radius: 4px;
       color: var(--shell-text);
     }
 
+    /* Responsive CLI Verification Box */
     .cli-verify-card {
-      margin-top: 2rem;
+      margin-top: 1.75rem;
       background: var(--shell-surface);
       border: 1px solid var(--shell-border);
-      border-radius: 20px;
-      padding: 1.5rem 1.75rem;
+      border-radius: var(--shell-radius);
+      padding: 1.25rem 1.35rem;
       display: flex;
       align-items: center;
-      gap: 1.25rem;
-      box-shadow: var(--shell-shadow-card), var(--shell-bevel-specular);
+      gap: 1.15rem;
+      box-shadow: var(--shell-shadow-card);
     }
 
-    .verify-icon {
-      font-size: 2rem;
+    .verify-icon-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--shell-accent-subtle);
+      border: 1px solid var(--shell-accent-border);
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 50px;
-      height: 50px;
-      border-radius: 14px;
-      background: var(--shell-gradient-subtle);
-      border: 1px solid rgba(168, 85, 247, 0.35);
+      color: var(--shell-accent);
       flex-shrink: 0;
     }
 
     .verify-text h4 {
-      font-size: 1rem;
+      font-size: 0.95rem;
       font-weight: 700;
-      margin-bottom: 0.35rem;
+      color: var(--shell-text);
+      margin-bottom: 0.25rem;
     }
 
     .verify-text p {
-      font-size: 0.85rem;
+      font-size: 0.825rem;
       color: var(--shell-text-muted);
-      margin-bottom: 0.6rem;
+      margin-bottom: 0.5rem;
     }
 
     .inline-code {
       display: inline-block;
       font-family: var(--shell-font-mono);
-      font-size: 0.825rem;
+      font-size: 0.8rem;
       background: var(--shell-well-bg);
-      box-shadow: var(--shell-well-recessed);
       border: 1px solid var(--shell-border);
-      padding: 5px 12px;
-      border-radius: 8px;
+      padding: 3px 10px;
+      border-radius: 6px;
       color: var(--shell-accent);
       font-weight: 600;
+      word-break: break-all;
     }
 
     /* =========================================================
        FAQ ACCORDION
        ========================================================= */
     .faq-container {
-      max-width: 900px;
+      max-width: 860px;
       margin: 0 auto;
+      width: 100%;
     }
 
     .faq-accordion {
       display: flex;
       flex-direction: column;
-      gap: 1.15rem;
+      gap: 0.85rem;
     }
 
     .faq-item {
       background: var(--shell-surface);
       border: 1px solid var(--shell-border);
-      border-radius: 16px;
+      border-radius: var(--shell-radius);
       overflow: hidden;
-      box-shadow: var(--shell-shadow-card), var(--shell-bevel-specular);
-      transition: border-color 150ms ease, box-shadow 150ms ease;
+      box-shadow: var(--shell-shadow-sm);
+      transition: border-color 140ms ease;
     }
 
     .faq-item:hover {
-      border-color: rgba(168, 85, 247, 0.35);
+      border-color: var(--shell-accent-border);
     }
 
     .faq-item.open {
       border-color: var(--shell-accent);
-      box-shadow: var(--shell-shadow-extruded), var(--shell-bevel-specular);
     }
 
     .faq-question {
       width: 100%;
       background: none;
       border: none;
-      padding: 1.35rem 1.6rem;
+      padding: 1.15rem 1.35rem;
       text-align: left;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 1rem;
-      font-size: 1.05rem;
-      font-weight: 700;
+      font-size: 0.975rem;
+      font-weight: 600;
       color: var(--shell-text);
       cursor: pointer;
       font-family: inherit;
     }
 
     .faq-chevron {
-      color: var(--shell-text-muted);
+      color: var(--shell-text-dim);
       flex-shrink: 0;
-      transition: transform 200ms ease, color 150ms ease;
+      transition: transform 200ms ease, color 140ms ease;
     }
 
     .faq-item.open .faq-chevron {
@@ -1170,18 +1007,18 @@
     .faq-answer {
       max-height: 0;
       overflow: hidden;
-      transition: max-height 250ms ease-out;
+      transition: max-height 240ms ease-out;
     }
 
     .faq-answer-inner {
-      padding: 0 1.6rem 1.4rem 1.6rem;
+      padding: 0 1.35rem 1.25rem 1.35rem;
       color: var(--shell-text-muted);
-      font-size: 0.925rem;
-      line-height: 1.65;
+      font-size: 0.9rem;
+      line-height: 1.6;
     }
 
     .faq-answer-inner p:not(:last-child) {
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.65rem;
     }
 
     .faq-answer-inner code {
@@ -1189,8 +1026,8 @@
       font-size: 0.8rem;
       background: var(--shell-well-bg);
       border: 1px solid var(--shell-border);
-      padding: 2px 7px;
-      border-radius: 6px;
+      padding: 2px 6px;
+      border-radius: 4px;
       color: var(--shell-text);
     }
 
@@ -1200,39 +1037,41 @@
     .token-ref-card {
       background: var(--shell-surface);
       border: 1px solid var(--shell-border);
-      border-radius: 20px;
+      border-radius: var(--shell-radius);
       overflow: hidden;
-      box-shadow: var(--shell-shadow-card), var(--shell-bevel-specular);
+      box-shadow: var(--shell-shadow-card);
     }
 
     .token-table-wrap {
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
     .token-table {
       width: 100%;
       border-collapse: collapse;
       text-align: left;
-      font-size: 0.875rem;
+      font-size: 0.85rem;
+      min-width: 600px;
     }
 
     .token-table th {
-      background: rgba(0, 0, 0, 0.2);
+      background: rgba(0, 0, 0, 0.18);
       border-bottom: 1px solid var(--shell-border);
-      padding: 1.1rem 1.5rem;
+      padding: 0.95rem 1.25rem;
       font-weight: 700;
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       color: var(--shell-text-muted);
     }
 
     [data-theme="light"] .token-table th {
-      background: rgba(0, 0, 0, 0.03);
+      background: rgba(0, 0, 0, 0.02);
     }
 
     .token-table td {
-      padding: 1.1rem 1.5rem;
+      padding: 0.95rem 1.25rem;
       border-bottom: 1px solid var(--shell-border);
       vertical-align: middle;
     }
@@ -1243,12 +1082,12 @@
 
     .token-table code {
       font-family: var(--shell-font-mono);
-      font-size: 0.825rem;
+      font-size: 0.8rem;
       color: var(--shell-accent);
-      background: var(--shell-gradient-subtle);
-      padding: 3px 8px;
-      border-radius: 6px;
-      border: 1px solid rgba(168, 85, 247, 0.25);
+      background: var(--shell-accent-subtle);
+      padding: 2px 7px;
+      border-radius: 5px;
+      border: 1px solid var(--shell-accent-border);
     }
 
     .boilerplate-box {
@@ -1257,46 +1096,45 @@
     }
 
     .boilerplate-header {
-      padding: 0.95rem 1.5rem;
+      padding: 0.85rem 1.25rem;
       border-bottom: 1px solid var(--shell-border);
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      font-size: 0.85rem;
-      font-weight: 700;
+      font-size: 0.825rem;
+      font-weight: 600;
     }
 
     /* =========================================================
        FOOTER
        ========================================================= */
     .site-footer {
-      margin-top: 6.5rem;
+      margin-top: 5.5rem;
       background: var(--shell-surface);
       border-top: 1px solid var(--shell-border);
-      padding: 4.5rem 2rem 2.5rem 2rem;
-      box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.25);
+      padding: 4rem 1.5rem 2rem 1.5rem;
     }
 
     .footer-inner {
-      max-width: 1200px;
+      max-width: 1140px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 3.5rem;
+      gap: 2.5rem;
+      margin-bottom: 3rem;
     }
 
     .footer-tagline {
-      font-size: 0.9rem;
+      font-size: 0.875rem;
       color: var(--shell-text-muted);
-      margin: 1rem 0;
-      line-height: 1.6;
-      max-width: 380px;
+      margin: 0.85rem 0;
+      line-height: 1.55;
+      max-width: 360px;
     }
 
     .footer-credit {
-      font-size: 0.825rem;
+      font-size: 0.8rem;
       color: var(--shell-text-muted);
     }
 
@@ -1307,11 +1145,11 @@
     }
 
     .footer-col h4 {
-      font-size: 0.85rem;
-      font-weight: 800;
+      font-size: 0.825rem;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.15rem;
       color: var(--shell-text);
     }
 
@@ -1320,38 +1158,41 @@
     }
 
     .footer-col ul li {
-      margin-bottom: 0.65rem;
+      margin-bottom: 0.55rem;
     }
 
     .footer-col ul a {
       color: var(--shell-text-muted);
       text-decoration: none;
-      font-size: 0.875rem;
-      transition: color 150ms ease;
+      font-size: 0.85rem;
+      transition: color 120ms ease;
     }
 
     .footer-col ul a:hover {
-      color: var(--shell-accent);
+      color: var(--shell-text);
     }
 
     .footer-bottom {
-      max-width: 1200px;
+      max-width: 1140px;
       margin: 0 auto;
-      padding-top: 2rem;
+      padding-top: 1.75rem;
       border-top: 1px solid var(--shell-border);
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      font-size: 0.825rem;
-      color: var(--shell-text-muted);
+      font-size: 0.8rem;
+      color: var(--shell-text-dim);
     }
 
     .back-to-top-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
       color: var(--shell-text-muted);
       text-decoration: none;
-      font-weight: 600;
-      transition: color 150ms ease;
+      font-weight: 500;
+      transition: color 120ms ease;
     }
 
     .back-to-top-btn:hover {
@@ -1359,29 +1200,40 @@
     }
 
     /* =========================================================
-       RESPONSIVE BREAKPOINTS
+       RESPONSIVE BREAKPOINTS (TESTED FOR ZERO OVERFLOW)
        ========================================================= */
     @media (max-width: 1024px) {
-      .tactile-demo-grid { grid-template-columns: 1fr; }
       .pipeline-grid { grid-template-columns: repeat(2, 1fr); }
       .hero-stats-strip { grid-template-columns: repeat(2, 1fr); }
-      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .gallery-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 768px) {
       .top-nav { padding: 0.75rem 1rem; }
       .nav-links { display: none; }
-      .gallery-grid { grid-template-columns: 1fr; }
-      .pipeline-grid { grid-template-columns: 1fr; }
-      .hero-stats-strip { grid-template-columns: 1fr 1fr; }
-      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
-      .hero-quick-install { border-radius: 16px; flex-direction: column; align-items: flex-start; padding: 0.75rem; }
+      .hero-quick-install {
+        border-radius: var(--shell-radius);
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 0.75rem;
+        width: 100%;
+      }
       .quick-copy-btn { align-self: flex-end; }
+      .hero-cta-group { flex-direction: column; width: 100%; }
+      .cta-primary-btn, .cta-secondary-btn { width: 100%; justify-content: center; }
+      .cli-verify-card { flex-direction: column; align-items: flex-start; }
+      .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+      .install-tabs { grid-template-columns: repeat(2, 1fr); }
     }
 
     @media (max-width: 480px) {
       .hero-stats-strip { grid-template-columns: 1fr; }
-      .footer-bottom { flex-direction: column; text-align: center; }
+      .pipeline-grid { grid-template-columns: 1fr; }
+      .install-tabs { grid-template-columns: 1fr; }
+      .panel-header { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+      .copy-cmd-btn { align-self: flex-end; }
+      .footer-bottom { flex-direction: column; text-align: center; gap: 0.75rem; }
     }
 
     /* Toast Notification */
@@ -1389,20 +1241,20 @@
       position: fixed;
       bottom: 24px;
       right: 24px;
-      background: #1e1b4b;
-      color: #e0e7ff;
-      border: 1px solid #a855f7;
+      background: var(--shell-surface-elevated);
+      color: var(--shell-text);
+      border: 1px solid var(--shell-border-focus);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.45);
-      padding: 12px 20px;
+      padding: 10px 18px;
       border-radius: var(--shell-radius-pill);
-      font-size: 0.85rem;
+      font-size: 0.825rem;
       font-weight: 600;
       display: flex;
       align-items: center;
       gap: 0.5rem;
       opacity: 0;
       transform: translateY(10px);
-      transition: opacity 200ms ease, transform 200ms ease;
+      transition: opacity 180ms ease, transform 180ms ease;
       pointer-events: none;
       z-index: 1000;
     }
@@ -2010,7 +1862,7 @@
 </head>
 <body>
 
-  <!-- Top Sticky Navigation with Logo Asset -->
+  <!-- Top Sticky Navigation -->
   <header class="top-nav">
     <div class="brand-group">
       <a href="#" class="brand-title">
@@ -2029,12 +1881,12 @@
     </nav>
 
     <div class="nav-actions">
-      <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Dark and Light Mode">
-        <span id="themeIcon">☀️</span>
+      <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+        <svg id="themeIcon" class="icon icon-stroke" width="15" height="15" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         <span id="themeLabel">Light Mode</span>
       </button>
       <a href="https://github.com/kennedys0/taste-engine" target="_blank" rel="noopener" class="gh-btn" aria-label="GitHub Repository">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        <svg class="icon" width="15" height="15" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
         <span>GitHub</span>
       </a>
     </div>
@@ -2043,45 +1895,51 @@
   <!-- Hero Banner -->
   <section class="hero-banner">
     <div class="hero-badge-pill">
-      <span class="pill-spark">⚡</span>
-      <span>Frontend Design Intelligence for AI Agents · Zero AI-Slop · 100% Contrast Safe (WCAG AA)</span>
+      <span class="hero-badge-dot"></span>
+      <span>10 Curated Aesthetics · Zero AI-Slop · 100% Contrast Safe (WCAG AA)</span>
     </div>
     
     <h1 class="hero-title">
       Frontend Design Intelligence<br>
-      <span class="hero-title-accent">Engineered for Autonomous AI Agents</span>
+      for Autonomous AI Agents
     </h1>
     
     <p class="hero-subtitle">
-      Taste Engine equips Antigravity, Claude Code, and OpenAI Codex with 10 production-grade design archetypes, paired dark/light mode token coupling, and strict anti-slop quality gates.
+      Taste Engine equips Antigravity, Claude Code, and OpenAI Codex with 10 distinctive aesthetic archetypes, mathematical token scales, and paired dark/light mode contrast gating.
     </p>
 
-    <!-- Official Brand Banner from assets/banner.webp -->
+    <!-- Official Brand Banner Frame -->
     <div class="hero-banner-frame">
       <img src="assets/banner.webp" alt="Taste Engine Official Banner" class="hero-banner-img">
     </div>
 
     <!-- Quick 1-click Install Pill -->
     <div class="hero-quick-install">
-      <span class="quick-install-label">Quick Install:</span>
+      <span class="quick-install-prompt">$</span>
       <code class="quick-install-code" id="heroInstallCmd">npx skills add kennedys0/taste-engine</code>
       <button class="quick-copy-btn" id="heroCopyBtn" title="Copy install command" aria-label="Copy install command">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+        <svg class="icon-stroke" width="13" height="13" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
         <span>Copy</span>
       </button>
     </div>
 
     <!-- CTA Group -->
     <div class="hero-cta-group">
-      <a href="#showcase" class="cta-primary-btn">Explore 10 Styles ↓</a>
-      <a href="#installation" class="cta-secondary-btn">Installation Guide →</a>
+      <a href="#showcase" class="cta-primary-btn">
+        <span>Explore 10 Styles</span>
+        <svg class="icon-stroke" width="14" height="14" viewBox="0 0 24 24"><path d="M7 13l5 5 5-5M12 6v12"/></svg>
+      </a>
+      <a href="#installation" class="cta-secondary-btn">
+        <span>Installation Guide</span>
+        <svg class="icon-stroke" width="14" height="14" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
     </div>
 
     <!-- Key Stats Strip -->
     <div class="hero-stats-strip">
       <div class="stat-card">
         <span class="stat-num">10</span>
-        <span class="stat-desc">Curated Aesthetics</span>
+        <span class="stat-desc">Aesthetic Archetypes</span>
       </div>
       <div class="stat-card">
         <span class="stat-num">100%</span>
@@ -2092,83 +1950,8 @@
         <span class="stat-desc">AI-Slop Clichés</span>
       </div>
       <div class="stat-card">
-        <span class="stat-num">Universal</span>
+        <span class="stat-num">Multi-Agent</span>
         <span class="stat-desc">Antigravity · Claude · Codex</span>
-      </div>
-    </div>
-
-    <!-- Interactive Tactile Demo inspired by user's Dark Mode reference image -->
-    <div class="tactile-demo-wrap">
-      <div class="tactile-demo-header">
-        <div>
-          <span class="tactile-demo-badge">Tactile Dark Claymorphism</span>
-          <h3 style="font-size: 1.35rem; font-weight: 800; margin-top: 0.4rem;">Live Tactile Dashboard Experience</h3>
-        </div>
-        <div style="font-size: 0.85rem; color: var(--shell-text-muted);">
-          Matte charcoal · Recessed wells · Radiant neon violet/cyan
-        </div>
-      </div>
-
-      <div class="tactile-demo-grid">
-        <!-- Weather & Glowing Radial Dial -->
-        <div class="tactile-widget">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 1rem;">
-            <div>
-              <span style="font-size: 2rem; font-weight: 800; line-height: 1;">26°</span>
-              <p style="font-size: 0.8rem; color: var(--shell-text-muted); font-weight: 600;">Clear Sky</p>
-            </div>
-            <div style="width: 48px; height: 48px; border-radius: 50%; background: var(--shell-gradient-primary); box-shadow: 0 0 16px rgba(168, 85, 247, 0.6);"></div>
-          </div>
-          <div class="tactile-well" style="margin-top: 1rem;">
-            <p style="font-size: 0.785rem; font-weight: 700; color: var(--shell-text);">New York City, USA</p>
-            <p style="font-size: 0.725rem; color: var(--shell-text-muted); margin-top: 2px;">Real-time climate telemetry</p>
-          </div>
-          <div class="tactile-btn-row">
-            <button class="tactile-pill-btn">Resume</button>
-            <button class="tactile-pill-btn">Pause</button>
-            <button class="tactile-circle-btn" title="Settings">⚙️</button>
-          </div>
-        </div>
-
-        <!-- Frequency Equalizer & Tactile Search -->
-        <div class="tactile-widget">
-          <div class="tactile-search-well" style="margin-bottom: 1rem;">
-            <span style="font-size: 0.85rem;">🔍</span>
-            <input type="text" class="tactile-search-input" value="Search telemetry..." readonly>
-          </div>
-          <div class="tactile-well">
-            <span style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--shell-accent);">Audio Spectrum</span>
-            <div class="equalizer-wrap" style="margin-top: 0.5rem;">
-              <div class="eq-bar" style="height: 45%;"></div>
-              <div class="eq-bar" style="height: 75%;"></div>
-              <div class="eq-bar" style="height: 95%;"></div>
-              <div class="eq-bar" style="height: 60%;"></div>
-              <div class="eq-bar" style="height: 80%;"></div>
-              <div class="eq-bar" style="height: 35%;"></div>
-              <div class="eq-bar" style="height: 65%;"></div>
-            </div>
-          </div>
-          <div class="tactile-toggle-row">
-            <span style="font-size: 0.825rem; font-weight: 600; color: var(--shell-text-muted);">Active Relay</span>
-            <div class="tactile-toggle active" id="demoToggle">
-              <div class="tactile-toggle-knob"></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Metric Gauges (14 Km & 9.2 Good) -->
-        <div class="tactile-widget gauge-widget">
-          <div class="gauge-dial">
-            <div class="gauge-dial-ring"></div>
-            <span class="gauge-val">14</span>
-            <span class="gauge-unit">Km</span>
-          </div>
-          <div class="gauge-dial">
-            <div class="gauge-dial-ring" style="background: conic-gradient(from -90deg, #38bdf8 0%, #a855f7 60%, transparent 60%);"></div>
-            <span class="gauge-val">9.2</span>
-            <span class="gauge-unit">Good</span>
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -2178,9 +1961,9 @@
        ========================================================= -->
   <section id="showcase" class="content-section">
     <div class="section-header">
-      <span class="section-eyebrow">Interactive Style Gallery</span>
+      <span class="section-eyebrow">Interactive Gallery</span>
       <h2 class="section-title">Live Material Fidelity Preview</h2>
-      <p class="section-desc">Experience all 10 curated aesthetics across dark and light modes. Every component adheres to paired token coupling with zero black-on-black or white-on-white collisions.</p>
+      <p class="section-desc">Test all 10 styles across dark and light modes. Every component adheres to paired token coupling with guaranteed WCAG AA readability.</p>
     </div>
 
     <!-- Filter Buttons -->
@@ -2454,96 +2237,146 @@
        ========================================================= -->
   <section id="how-it-works" class="content-section">
     <div class="section-header">
-      <span class="section-eyebrow">Architecture & Pipeline</span>
+      <span class="section-eyebrow">Architecture Flow</span>
       <h2 class="section-title">How Taste Engine Works</h2>
-      <p class="section-desc">From a raw user prompt to a world-class production interface — here is the 4-phase transformation pipeline executed by your AI agent.</p>
+      <p class="section-desc">From a user prompt to a production-grade interface — here is the 4-phase transformation pipeline executed by your AI agent.</p>
     </div>
 
     <div class="pipeline-grid">
       <!-- Step 1 -->
       <div class="pipeline-card">
         <span class="pipeline-step-badge">Phase 01</span>
-        <div class="pipeline-icon">🎯</div>
+        <div class="pipeline-icon-box">
+          <svg class="icon-stroke" width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M22 12h-4M6 12H2M12 6V2M12 22v-4"/></svg>
+        </div>
         <h3>Archetype Discovery</h3>
-        <p>The agent analyzes project domain, target audience, and brand personality. Requirements are intelligently mapped to the optimal aesthetic (e.g., Fintech & Analytics → Data Cockpit, Developer Tools → Retro Terminal or Swiss Editorial).</p>
+        <p>The agent inspects project context, domain, and user persona. It maps requirements to the optimal visual archetype (e.g. Fintech → Data Cockpit, Dev Tools → Retro Terminal or Swiss Editorial) before writing UI code.</p>
         <ul class="pipeline-features">
-          <li>Automatic domain-context mapping</li>
-          <li>User tone & persona calibration</li>
-          <li>Prevents generic default blue templates</li>
+          <li>
+            <svg class="icon-stroke" width="13" height="13" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Context-to-aesthetic mapping</span>
+          </li>
+          <li>
+            <svg class="icon-stroke" width="13" height="13" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Persona & tone calibration</span>
+          </li>
+          <li>
+            <svg class="icon-stroke" width="13" height="13" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Eliminates generic blue templates</span>
+          </li>
         </ul>
       </div>
 
       <!-- Step 2 -->
       <div class="pipeline-card">
         <span class="pipeline-step-badge">Phase 02</span>
-        <div class="pipeline-icon">📐</div>
-        <h3>Mathematical Design Tokens</h3>
-        <p>Instead of arbitrary CSS, Taste Engine injects a unified token architecture with exact typographic ratios, 4px/8px spatial rhythm, specific border radii, and consistent semantic color roles.</p>
+        <div class="pipeline-icon-box">
+          <svg class="icon-stroke" width="22" height="22" viewBox="0 0 24 24"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></svg>
+        </div>
+        <h3>Mathematical Tokens</h3>
+        <p>Injects structured design tokens: calibrated typographic ratios, strict 4px/8px spatial rhythm, specific border radii, and predictable CSS variables instead of arbitrary inline styles.</p>
         <ul class="pipeline-features">
-          <li>Strict font family & scale pairings</li>
-          <li>Layered elevation shadows (multi-stop)</li>
-          <li>Modular CSS custom properties</li>
+          <li>
+            <svg class="icon-stroke" width="13" height="13" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Strict font & scale pairings</span>
+          </li>
+          <li>
+            <svg class="icon-stroke" width="13" height="13" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Consistent shadow elevations</span>
+          </li>
+          <li>
+            <svg class="icon-stroke" width="13" height="13" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Standardized CSS variables</span>
+          </li>
         </ul>
       </div>
 
       <!-- Step 3 -->
       <div class="pipeline-card">
         <span class="pipeline-step-badge">Phase 03</span>
-        <div class="pipeline-icon">🌗</div>
+        <div class="pipeline-icon-box">
+          <svg class="icon-stroke" width="22" height="22" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 0 20z"/></svg>
+        </div>
         <h3>Paired Dark/Light Coupling</h3>
-        <p>Background, surface, ink (text), and border tokens invert in mathematically synchronized pairs. Completely eliminates fatal contrast collisions like black text on dark backgrounds or white text on pale surfaces.</p>
+        <p>Background, surface, ink (text), and border tokens invert in mathematically synchronized pairs. Completely prevents contrast collisions such as black text on dark surfaces or white on white.</p>
         <ul class="pipeline-features">
-          <li>Guaranteed WCAG AA contrast ratio (≥ 4.5:1)</li>
-          <li>Automatic theme inversion via <code>[data-theme]</code></li>
-          <li>Zero manual color patching required</li>
+          <li>
+            <svg class="icon-stroke" width="13" height="13" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Guaranteed WCAG AA (min 4.5:1)</span>
+          </li>
+          <li>
+            <svg class="icon-stroke" width="13" height="13" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Automatic [data-theme] inversion</span>
+          </li>
+          <li>
+            <svg class="icon-stroke" width="13" height="13" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Zero manual color patching</span>
+          </li>
         </ul>
       </div>
 
       <!-- Step 4 -->
       <div class="pipeline-card">
         <span class="pipeline-step-badge">Phase 04</span>
-        <div class="pipeline-icon">🛡️</div>
+        <div class="pipeline-icon-box">
+          <svg class="icon-stroke" width="22" height="22" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+        </div>
         <h3>Anti-Slop Quality Gate</h3>
-        <p>Before delivering code, the agent validates the UI against the 7 Universal Quality Gates: no floating ungrounded cards, no generic AI glow halos, no meaningless glassmorphism, and full button state completeness.</p>
+        <p>Before delivering code, the agent validates the UI against the 7 Universal Quality Gates: no floating ungrounded cards, no generic AI glow halos, no meaningless glassmorphism, and full state completeness.</p>
         <ul class="pipeline-features">
-          <li>Eliminates cheap AI design clichés</li>
-          <li>Enforces hover, active & focus states</li>
-          <li>Production-ready for React, Next.js, Vue, Tailwind, etc.</li>
+          <li>
+            <svg class="icon-stroke" width="13" height="13" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Bans repetitive AI cliches</span>
+          </li>
+          <li>
+            <svg class="icon-stroke" width="13" height="13" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Enforces hover & active states</span>
+          </li>
+          <li>
+            <svg class="icon-stroke" width="13" height="13" viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>
+            <span>Production-ready clean CSS</span>
+          </li>
         </ul>
       </div>
     </div>
   </section>
 
   <!-- =========================================================
-       SECTION 3: INSTALLATION GUIDE (MULTI-AGENT TABS)
+       SECTION 3: FULLY RESPONSIVE INSTALLATION GUIDE
        ========================================================= -->
   <section id="installation" class="content-section">
     <div class="section-header">
-      <span class="section-eyebrow">Installation Guide</span>
-      <h2 class="section-title">Install Taste Engine in Seconds</h2>
-      <p class="section-desc">Choose your preferred AI Agent below and run the one-line installation command.</p>
+      <span class="section-eyebrow">Installation</span>
+      <h2 class="section-title">Install in Seconds</h2>
+      <p class="section-desc">Select your target AI Agent environment below to get the single-line installation command.</p>
     </div>
 
     <div class="install-container">
-      <!-- Agent Navigation Tabs -->
+      <!-- Responsive Segmented Tabs Bar -->
       <div class="install-tabs" role="tablist" aria-label="Installation agent targets">
         <button class="install-tab-btn active" data-tab="antigravity" role="tab" aria-selected="true">
-          <span>🚀 Antigravity IDE</span>
+          <svg class="icon-stroke" width="14" height="14" viewBox="0 0 24 24"><path d="M4 17l6-6-6-6M12 19h8"/></svg>
+          <span>Antigravity IDE</span>
         </button>
         <button class="install-tab-btn" data-tab="agy" role="tab" aria-selected="false">
-          <span>⚡ Antigravity CLI (agy)</span>
+          <svg class="icon-stroke" width="14" height="14" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <span>Antigravity CLI</span>
         </button>
         <button class="install-tab-btn" data-tab="claude" role="tab" aria-selected="false">
-          <span>🤖 Claude Code</span>
+          <svg class="icon-stroke" width="14" height="14" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><circle cx="12" cy="5" r="2"/><path d="M12 7v4M8 16h0M16 16h0"/></svg>
+          <span>Claude Code</span>
         </button>
         <button class="install-tab-btn" data-tab="codex" role="tab" aria-selected="false">
-          <span>💻 Codex / Copilot</span>
+          <svg class="icon-stroke" width="14" height="14" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          <span>Codex / Copilot</span>
         </button>
         <button class="install-tab-btn" data-tab="skills-cli" role="tab" aria-selected="false">
-          <span>📦 Universal Skills CLI</span>
+          <svg class="icon-stroke" width="14" height="14" viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+          <span>Skills CLI</span>
         </button>
         <button class="install-tab-btn" data-tab="standalone" role="tab" aria-selected="false">
-          <span>🎨 Single Style Skill</span>
+          <svg class="icon-stroke" width="14" height="14" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+          <span>Single Style</span>
         </button>
       </div>
 
@@ -2557,19 +2390,20 @@
               <span class="dot dot-yellow"></span>
               <span class="dot dot-green"></span>
             </div>
-            <span class="window-title">Antigravity IDE — Global or Local Setup</span>
+            <span class="window-title">Antigravity IDE — Global or Project Setup</span>
             <button class="copy-cmd-btn" data-target="cmd-antigravity" aria-label="Copy command">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <svg class="icon-stroke" width="12" height="12" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               <span>Copy</span>
             </button>
           </div>
-          <pre class="terminal-body"><code id="cmd-antigravity"># Global installation across all your Antigravity workspaces:
+          <pre class="terminal-body"><code id="cmd-antigravity"># Global install across all Antigravity workspaces:
 node bin/taste-engine.mjs install --agent antigravity --global
 
-# OR install locally to the active project workspace:
+# OR local install into the current project workspace:
 node bin/taste-engine.mjs install --agent antigravity</code></pre>
           <div class="panel-footer-note">
-            💡 <strong>Antigravity Tip:</strong> Once installed, the skill automatically activates in <code>~/.gemini/config/skills/taste-engine</code>. You can immediately ask in chat: <em>"Apply Neo-Brutalism in Dark Mode for this dashboard."</em>
+            <svg class="icon-stroke" width="15" height="15" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div><strong>Antigravity IDE:</strong> Installed to <code>~/.gemini/config/skills/taste-engine</code>. The IDE discovers the skill automatically. Prompt in chat: <em>"Apply Neo-Brutalism in Dark Mode for this dashboard."</em></div>
           </div>
         </div>
 
@@ -2581,19 +2415,20 @@ node bin/taste-engine.mjs install --agent antigravity</code></pre>
               <span class="dot dot-yellow"></span>
               <span class="dot dot-green"></span>
             </div>
-            <span class="window-title">Antigravity CLI (agy) Terminal</span>
+            <span class="window-title">Antigravity CLI (agy)</span>
             <button class="copy-cmd-btn" data-target="cmd-agy" aria-label="Copy command">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <svg class="icon-stroke" width="12" height="12" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               <span>Copy</span>
             </button>
           </div>
           <pre class="terminal-body"><code id="cmd-agy"># Add via Universal Skills CLI:
 npx skills add kennedys0/taste-engine
 
-# Verify skill installation status in agy:
+# Verify installed skill in agy CLI:
 agy skills list</code></pre>
           <div class="panel-footer-note">
-            💡 <strong>CLI Info:</strong> Antigravity CLI automatically loads all skills registered in your user configuration directory.
+            <svg class="icon-stroke" width="15" height="15" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div><strong>CLI Environment:</strong> The <code>agy</code> command line discovers skills registered in user configuration paths or workspace roots.</div>
           </div>
         </div>
 
@@ -2607,17 +2442,18 @@ agy skills list</code></pre>
             </div>
             <span class="window-title">Anthropic Claude Code</span>
             <button class="copy-cmd-btn" data-target="cmd-claude" aria-label="Copy command">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <svg class="icon-stroke" width="12" height="12" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               <span>Copy</span>
             </button>
           </div>
-          <pre class="terminal-body"><code id="cmd-claude"># Installation via Taste Engine Installer:
+          <pre class="terminal-body"><code id="cmd-claude"># Installation via Taste Engine installer:
 node bin/taste-engine.mjs install --agent claude --global
 
-# OR via Skills CLI:
+# OR installation via Skills CLI:
 npx skills add kennedys0/taste-engine</code></pre>
           <div class="panel-footer-note">
-            💡 <strong>Claude Code Integration:</strong> Skill installed to <code>~/.claude/skills/taste-engine</code> and immediately available to the Claude Code CLI.
+            <svg class="icon-stroke" width="15" height="15" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div><strong>Claude Code:</strong> Installed to <code>~/.claude/skills/taste-engine</code>. Readily loaded by the Claude CLI.</div>
           </div>
         </div>
 
@@ -2631,17 +2467,18 @@ npx skills add kennedys0/taste-engine</code></pre>
             </div>
             <span class="window-title">OpenAI Codex & GitHub Copilot Workspace</span>
             <button class="copy-cmd-btn" data-target="cmd-codex" aria-label="Copy command">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <svg class="icon-stroke" width="12" height="12" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               <span>Copy</span>
             </button>
           </div>
-          <pre class="terminal-body"><code id="cmd-codex"># Installation for Codex / Copilot context:
+          <pre class="terminal-body"><code id="cmd-codex"># Global installation for Codex / Copilot:
 node bin/taste-engine.mjs install --agent codex --global
 
-# Or install directly to your project repository:
+# OR project installation:
 node bin/taste-engine.mjs install --agent codex</code></pre>
           <div class="panel-footer-note">
-            💡 <strong>Codex / Copilot:</strong> Skill guidance files reside at <code>~/.codex/skills/taste-engine</code> or <code>.agents/skills/taste-engine</code> in your repository.
+            <svg class="icon-stroke" width="15" height="15" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div><strong>Codex / Copilot:</strong> Files saved to <code>~/.codex/skills/taste-engine</code> or <code>.agents/skills/taste-engine</code>.</div>
           </div>
         </div>
 
@@ -2655,7 +2492,7 @@ node bin/taste-engine.mjs install --agent codex</code></pre>
             </div>
             <span class="window-title">Universal Skills CLI (npx skills)</span>
             <button class="copy-cmd-btn" data-target="cmd-skills-cli" aria-label="Copy command">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <svg class="icon-stroke" width="12" height="12" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               <span>Copy</span>
             </button>
           </div>
@@ -2665,7 +2502,8 @@ npx skills add kennedys0/taste-engine
 # List installed skills on your machine:
 npx skills list</code></pre>
           <div class="panel-footer-note">
-            💡 <strong>Ecosystem Standard:</strong> Works with all agent environments supporting the official Agent Skills Registry standard.
+            <svg class="icon-stroke" width="15" height="15" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div><strong>Ecosystem Standard:</strong> Compatible with all agents and hosts adopting the open Agent Skills standard.</div>
           </div>
         </div>
 
@@ -2679,7 +2517,7 @@ npx skills list</code></pre>
             </div>
             <span class="window-title">Single Standalone Style Installation</span>
             <button class="copy-cmd-btn" data-target="cmd-standalone" aria-label="Copy command">
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              <svg class="icon-stroke" width="12" height="12" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
               <span>Copy</span>
             </button>
           </div>
@@ -2695,16 +2533,19 @@ npx skills add kennedys0/taste-style-claymorphism
 # Install only the Swiss / Editorial style:
 npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
           <div class="panel-footer-note">
-            💡 <strong>Save Context Tokens:</strong> If you only need 1 specific aesthetic for a targeted project, use the standalone packages above for maximum prompt efficiency.
+            <svg class="icon-stroke" width="15" height="15" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+            <div><strong>Save Context Tokens:</strong> If your project strictly targets one design language, use standalone packages to minimize context consumption.</div>
           </div>
         </div>
       </div>
 
-      <!-- CLI Offline Gallery Tip -->
+      <!-- Offline Gallery Tip -->
       <div class="cli-verify-card">
-        <div class="verify-icon">✨</div>
+        <div class="verify-icon-box">
+          <svg class="icon-stroke" width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
         <div class="verify-text">
-          <h4>Launch the Interactive Gallery Showcase Offline in Your Browser</h4>
+          <h4>Preview All Styles Offline in Your Browser</h4>
           <p>Run this command in your repository terminal at any time to open this interactive showcase locally:</p>
           <code class="inline-code">node bin/taste-engine.mjs gallery</code>
         </div>
@@ -2713,13 +2554,13 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
   </section>
 
   <!-- =========================================================
-       SECTION 4: FAQ ACCORDION (100% English)
+       SECTION 4: FAQ ACCORDION (100% CLEAN ENGLISH)
        ========================================================= -->
   <section id="faq" class="content-section">
     <div class="section-header">
-      <span class="section-eyebrow">Frequently Asked Questions</span>
-      <h2 class="section-title">Common Questions & Answers</h2>
-      <p class="section-desc">Everything you need to know about Taste Engine's architecture, framework compatibility, contrast rules, and custom styling.</p>
+      <span class="section-eyebrow">FAQ</span>
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <p class="section-desc">Technical answers on framework independence, contrast gating, codebase preservation, and custom styling.</p>
     </div>
 
     <div class="faq-container">
@@ -2729,12 +2570,12 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
             <span>What is Taste Engine and why do I need it?</span>
-            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            <svg class="faq-chevron icon-stroke" width="16" height="16" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p>By default, AI coding agents produce uniform, repetitive frontend designs (<em>AI-slop</em>): floating purple shadows, low contrast, ungrounded cards, and generic layouts that look cheap and unfinished.</p>
-              <p><strong>Taste Engine</strong> is an intelligence skill pack that equips AI agents with 10 curated design aesthetics (Bento, Brutalism, Claymorphism, Cockpit, Cyberpunk, Glassmorphism, Minimalism, Retro Terminal, Skeuomorphism, Swiss Editorial) backed by strict quality gates to deliver world-class designer-level interfaces.</p>
+              <p>By default, AI coding agents generate uniform, repetitive frontend designs (often termed <em>AI-slop</em>): ungrounded floating cards, low-contrast text, purposeless blur effects, and generic blue-purple gradients.</p>
+              <p><strong>Taste Engine</strong> is an intelligence skill pack that equips AI agents with 10 distinctive aesthetic archetypes (Bento, Brutalism, Claymorphism, Cockpit, Cyberpunk, Glassmorphism, Minimalism, Retro Terminal, Skeuomorphism, Swiss Editorial) backed by strict quality gates to produce production-grade frontend code.</p>
             </div>
           </div>
         </div>
@@ -2742,13 +2583,13 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
         <!-- Question 2 -->
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
-            <span>Is Taste Engine locked to any specific framework (React, Vue, Tailwind, etc.)?</span>
-            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            <span>Is Taste Engine tied to any specific JavaScript UI framework?</span>
+            <svg class="faq-chevron icon-stroke" width="16" height="16" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p><strong>Not at all (100% Framework-Agnostic).</strong> Taste Engine provides pure design principles, mathematical tokens, and clean CSS formulas.</p>
-              <p>You can use it seamlessly with React, Next.js, Vue, Svelte, Nuxt, Astro, plain HTML, Tailwind CSS, shadcn/ui, MUI, Vanilla CSS, or any modern frontend stack.</p>
+              <p><strong>No. Taste Engine is 100% framework-agnostic.</strong> It injects pure design principles, mathematical tokens, and native CSS recipes.</p>
+              <p>You can use it seamlessly with React, Next.js, Vue, Svelte, Nuxt, Astro, HTML/CSS, Tailwind CSS, shadcn/ui, MUI, or any other UI stack.</p>
             </div>
           </div>
         </div>
@@ -2756,13 +2597,13 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
         <!-- Question 3 -->
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
-            <span>How does Taste Engine prevent contrast collisions in Dark & Light mode?</span>
-            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            <span>How does Taste Engine prevent contrast collisions in Dark & Light modes?</span>
+            <svg class="faq-chevron icon-stroke" width="16" height="16" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p>Every style in Taste Engine enforces <strong>Strict Paired Coupling</strong>. Color tokens are mathematically paired across background, surface, ink (text), and borders.</p>
-              <p>When toggling between <code>[data-theme="dark"]</code> and <code>[data-theme="light"]</code>, all token pairs invert symmetrically and are guaranteed to meet minimum <strong>WCAG AA (≥ 4.5:1)</strong> readability standards. Anti-slop rules explicitly ban dark text on dark surfaces or pale text on light cards.</p>
+              <p>Every style in Taste Engine enforces <strong>Strict Paired Coupling</strong>. Tokens for background, surface, ink (text), and borders are defined as synchronized mathematical pairs.</p>
+              <p>When toggling between <code>[data-theme="dark"]</code> and <code>[data-theme="light"]</code>, all token pairs invert symmetrically and are guaranteed to meet minimum <strong>WCAG AA (≥ 4.5:1)</strong> readability standards. Anti-slop quality gates explicitly ban dark text on dark surfaces or pale text on light cards.</p>
             </div>
           </div>
         </div>
@@ -2770,13 +2611,13 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
         <!-- Question 4 -->
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
-            <span>Will Taste Engine overwrite or conflict with my existing codebase styles?</span>
-            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            <span>Will Taste Engine overwrite or conflict with my existing codebase CSS?</span>
+            <svg class="faq-chevron icon-stroke" width="16" height="16" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p><strong>No.</strong> Taste Engine is non-destructive and additive. All tokens and CSS classes use unique namespaces such as <code>--taste-[style]-*</code>, ensuring full isolation from your global styles.</p>
-              <p>The quality gates also instruct the agent to respect existing component architecture and naming conventions in established projects.</p>
+              <p><strong>No.</strong> Taste Engine is non-destructive and additive. All tokens and CSS classes use unique namespaces such as <code>--taste-[style]-*</code>, ensuring zero collision with your global stylesheets.</p>
+              <p>Quality gates also instruct the agent to respect existing component architecture and naming conventions in established projects.</p>
             </div>
           </div>
         </div>
@@ -2785,13 +2626,13 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
             <span>Can I install just one specific style instead of the whole bundle?</span>
-            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            <svg class="faq-chevron icon-stroke" width="16" height="16" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p><strong>Yes!</strong> Taste Engine provides 10 independent standalone skills in the <code>optional-standalone-skills/</code> directory. You can install each style individually using:</p>
+              <p><strong>Yes.</strong> Taste Engine provides 10 independent standalone skills in the <code>optional-standalone-skills/</code> directory. You can install each style individually using:</p>
               <code>npx skills add kennedys0/taste-style-[style-name]</code>
-              <p style="margin-top:0.6rem;">For example: <code>npx skills add kennedys0/taste-style-cyberpunk-hud</code>. This saves context tokens when a project only requires a single aesthetic.</p>
+              <p style="margin-top:0.5rem;">For example: <code>npx skills add kennedys0/taste-style-cyberpunk-hud</code>. This minimizes token usage if your project only requires a single aesthetic.</p>
             </div>
           </div>
         </div>
@@ -2800,12 +2641,12 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
             <span>How do I verify that Taste Engine is active in my AI Agent?</span>
-            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            <svg class="faq-chevron icon-stroke" width="16" height="16" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p>In Antigravity IDE, check your installed skills menu or run <code>agy skills list</code> in the CLI.</p>
-              <p>To verify directly in chat, prompt: <em>"Use Taste Engine to review and redesign this card component with a Bento Grid aesthetic."</em> Your agent will immediately load and apply the Taste Engine rules.</p>
+              <p>In Antigravity IDE, check your installed skills list or run <code>agy skills list</code> in the CLI.</p>
+              <p>To test directly in chat, ask: <em>"Use Taste Engine to review and redesign this card component with a Bento Grid aesthetic."</em> Your agent will recognize the skill and apply its architectural constraints.</p>
             </div>
           </div>
         </div>
@@ -2814,11 +2655,11 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
         <div class="faq-item">
           <button class="faq-question" aria-expanded="false">
             <span>Can I customize color tokens or add new custom styles?</span>
-            <svg class="faq-chevron" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+            <svg class="faq-chevron icon-stroke" width="16" height="16" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p>Absolutely. You can override CSS variables directly in your stylesheet (for example, overriding <code>--taste-cyber-accent: #00ffcc;</code>).</p>
+              <p>Yes. You can override CSS custom properties in your stylesheets (for example, overriding <code>--taste-cyber-accent: #00ffcc;</code>).</p>
               <p>To contribute a new aesthetic pack, add a markdown specification in <code>taste-engine/styles/</code> and validate it with our test runner: <code>python taste-engine/scripts/validate-pack.py</code>.</p>
             </div>
           </div>
@@ -2830,10 +2671,10 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
 
   <!-- =========================================================
        SECTION 5: DESIGN TOKEN CHEATSHEET
-       ========================================================= -->
+       ========================================================= */
   <section id="tokens" class="content-section">
     <div class="section-header">
-      <span class="section-eyebrow">Token Reference</span>
+      <span class="section-eyebrow">Design Tokens</span>
       <h2 class="section-title">Standard Token Architecture</h2>
       <p class="section-desc">Every style follows a standardized CSS variable naming convention, easily mapped to Tailwind CSS theme configuration or plain CSS custom properties.</p>
     </div>
@@ -2883,8 +2724,8 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
             <tr>
               <td><code>--taste-[style]-accent</code></td>
               <td>Primary action buttons & indicators</td>
-              <td>Vibrant neon purple / cyan gradient</td>
-              <td>Deep, contrast-anchored purple highlight</td>
+              <td>High-chroma highlight</td>
+              <td>Deep, contrast-anchored highlight</td>
             </tr>
           </tbody>
         </table>
@@ -2894,26 +2735,26 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
         <div class="boilerplate-header">
           <span>Quick Starter CSS Boilerplate</span>
           <button class="copy-cmd-btn" data-target="cmd-boilerplate" aria-label="Copy boilerplate">
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <svg class="icon-stroke" width="12" height="12" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
             <span>Copy CSS</span>
           </button>
         </div>
         <pre class="terminal-body"><code id="cmd-boilerplate">/* Root Dark Theme Default */
 :root {
-  --app-bg: var(--taste-bento-bg, #15171c);
-  --app-surface: var(--taste-bento-surface, #1e2026);
+  --app-bg: var(--taste-bento-bg, #0d0f14);
+  --app-surface: var(--taste-bento-surface, #141720);
   --app-text: var(--taste-bento-text, #f8fafc);
   --app-border: var(--taste-bento-border, rgba(255, 255, 255, 0.08));
-  --app-accent: var(--taste-bento-accent, #a855f7);
+  --app-accent: var(--taste-bento-accent, #6366f1);
 }
 
 /* Light Theme Transition */
 [data-theme="light"] {
-  --app-bg: #f1f4f8;
+  --app-bg: #f8fafc;
   --app-surface: #ffffff;
   --app-text: #0f172a;
   --app-border: rgba(0, 0, 0, 0.08);
-  --app-accent: #7c3aed;
+  --app-accent: #4f46e5;
 }</code></pre>
       </div>
     </div>
@@ -2927,7 +2768,7 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
       <div class="footer-col-brand">
         <div class="brand-group">
           <img src="assets/logo.webp" alt="Taste Engine Logo" class="brand-logo-img">
-          <strong style="font-size: 1.15rem; font-weight: 800;">Taste Engine</strong>
+          <strong style="font-size: 1.05rem; font-weight: 700;">Taste Engine</strong>
           <span class="brand-badge">v0.10.5</span>
         </div>
         <p class="footer-tagline">Open-source frontend design intelligence pack for AI coding agents. Elevate design fidelity, eliminate AI-slop, and enforce contrast safety.</p>
@@ -2971,13 +2812,16 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
 
     <div class="footer-bottom">
       <p>© 2026 Mochamad Vikry. Released under the MIT License.</p>
-      <a href="#" class="back-to-top-btn">Back to top ↑</a>
+      <a href="#" class="back-to-top-btn">
+        <span>Back to top</span>
+        <svg class="icon-stroke" width="13" height="13" viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
+      </a>
     </div>
   </footer>
 
   <!-- Toast Notification -->
   <div id="toast" class="toast" role="status" aria-live="polite">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+    <svg class="icon-stroke" width="15" height="15" viewBox="0 0 24 24" style="color: #10b981;"><path d="M20 6L9 17l-5-5"/></svg>
     <span id="toastMsg">Command copied to clipboard!</span>
   </div>
 
@@ -2990,14 +2834,17 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
     const themeIcon = document.getElementById('themeIcon');
     const themeLabel = document.getElementById('themeLabel');
 
+    const sunSvg = '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+    const moonSvg = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+
     function updateThemeUI(theme) {
       if (theme === 'light') {
         html.setAttribute('data-theme', 'light');
-        themeIcon.textContent = '🌙';
+        themeIcon.innerHTML = moonSvg;
         themeLabel.textContent = 'Dark Mode';
       } else {
         html.setAttribute('data-theme', 'dark');
-        themeIcon.textContent = '☀️';
+        themeIcon.innerHTML = sunSvg;
         themeLabel.textContent = 'Light Mode';
       }
     }
@@ -3043,7 +2890,7 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
       clearTimeout(toastTimeout);
       toastTimeout = setTimeout(() => {
         toast.classList.remove('show');
-      }, 2400);
+      }, 2200);
     }
 
     // =========================================================
@@ -3055,9 +2902,9 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
         const tokens = btn.getAttribute('data-tokens');
         try {
           await navigator.clipboard.writeText(tokens);
-          showToast('Copied CSS tokens to clipboard!');
+          showToast('Copied CSS tokens to clipboard');
         } catch {
-          showToast('Tokens: ' + tokens);
+          showToast('Tokens copied');
         }
       });
     });
@@ -3071,9 +2918,9 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
       heroCopyBtn.addEventListener('click', async () => {
         try {
           await navigator.clipboard.writeText(heroInstallCmd.textContent.trim());
-          showToast('Copied install command!');
+          showToast('Copied installation command');
         } catch {
-          showToast('Command copied!');
+          showToast('Command copied');
         }
       });
     }
@@ -3111,9 +2958,9 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
         if (codeEl) {
           try {
             await navigator.clipboard.writeText(codeEl.textContent.trim());
-            showToast('Copied to clipboard!');
+            showToast('Copied command to clipboard');
           } catch {
-            showToast('Copied!');
+            showToast('Copied to clipboard');
           }
         }
       });
@@ -3131,7 +2978,7 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
       questionBtn.addEventListener('click', () => {
         const isOpen = item.classList.contains('open');
 
-        // Close all other items for clean accordion behavior
+        // Close other accordion items
         faqItems.forEach(otherItem => {
           if (otherItem !== item) {
             otherItem.classList.remove('open');
@@ -3151,14 +2998,6 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
         }
       });
     });
-
-    // Demo Toggle Switch Interaction
-    const demoToggle = document.getElementById('demoToggle');
-    if (demoToggle) {
-      demoToggle.addEventListener('click', () => {
-        demoToggle.classList.toggle('active');
-      });
-    }
-  </script>
+    </script>
 </body>
 </html>
