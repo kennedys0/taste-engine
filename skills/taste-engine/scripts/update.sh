@@ -144,11 +144,20 @@ if [[ -n "$REPO" && -z "$ZIP_PATH" ]]; then
   else
     API="$API/latest"
   fi
-  curl -fsSL --connect-timeout 12 --max-time 45 \
+  AUTH_HEADER=()
+  if [[ -n "${GITHUB_TOKEN:-}" ]]; then
+    AUTH_HEADER=(-H "Authorization: Bearer $GITHUB_TOKEN")
+  fi
+
+  API_SUCCESS=0
+  if curl -fsSL "${AUTH_HEADER[@]}" --connect-timeout 12 --max-time 45 \
     -H 'Accept: application/vnd.github+json' \
-    -H 'User-Agent: taste-engine-updater' "$API" -o "$WORK/release.json" \
-    || fail 'GitHub release not accessible; verify public repo and published Release'
-  python3 - "$WORK/release.json" "$WORK/download-url" "$WORK/release-digest" <<'PY'
+    -H 'User-Agent: taste-engine-updater' "$API" -o "$WORK/release.json" 2>/dev/null; then
+    API_SUCCESS=1
+  fi
+
+  if [[ $API_SUCCESS -eq 1 ]]; then
+    python3 - "$WORK/release.json" "$WORK/download-url" "$WORK/release-digest" <<'PY'
 import json,re,sys
 r=json.load(open(sys.argv[1],encoding='utf-8'))
 assets=[a for a in r.get('assets',[]) if re.fullmatch(r'taste-engine-v\d+\.\d+\.\d+\.zip',a.get('name',''))]
@@ -160,12 +169,26 @@ if not re.fullmatch(r'https://github\.com/[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+/releas
 open(sys.argv[2],'w').write(url)
 open(sys.argv[3],'w').write(a.get('digest') or '')
 PY
-  DOWNLOAD_URL="$(cat "$WORK/download-url")"
+    DOWNLOAD_URL="$(cat "$WORK/download-url")"
+    [[ ! -f "$WORK/release-digest" ]] || RELEASE_SHA="$(cat "$WORK/release-digest")"
+  else
+    # Fallback when GitHub API is rate-limited (HTTP 403) or unauthenticated
+    info "GitHub API rate limit or auth constraint detected; resolving release directly via web redirect..."
+    if [[ -z "$TAG" ]]; then
+      TAG_URL="$(curl -fsSIL --connect-timeout 12 --max-time 30 -o /dev/null -w "%{url_effective}" "https://github.com/$REPO/releases/latest" 2>/dev/null || true)"
+      TAG_NAME="${TAG_URL##*/}"
+    else
+      TAG_NAME="$TAG"
+    fi
+    [[ -n "$TAG_NAME" && "$TAG_NAME" =~ ^v?[0-9]+\.[0-9]+\.[0-9]+ ]] || fail 'Could not resolve latest release tag from GitHub'
+    DOWNLOAD_URL="https://github.com/$REPO/releases/download/$TAG_NAME/taste-engine-$TAG_NAME.zip"
+    RELEASE_SHA=""
+  fi
   ZIP_PATH="$WORK/release.zip"
   curl -fsSL --retry 2 --connect-timeout 12 --max-time 180 \
     -H 'User-Agent: taste-engine-updater' "$DOWNLOAD_URL" -o "$ZIP_PATH" \
     || fail 'Failed to download release ZIP'
-  RELEASE_SHA="$(cat "$WORK/release-digest")"
+  [[ ! -f "$WORK/release-digest" ]] || RELEASE_SHA="$(cat "$WORK/release-digest")"
   if [[ -z "$EXPECTED_SHA" && "$RELEASE_SHA" =~ ^sha256:[0-9a-fA-F]{64}$ ]]; then
     EXPECTED_SHA="${RELEASE_SHA#sha256:}"
     EXPECTED_SHA="${EXPECTED_SHA,,}"

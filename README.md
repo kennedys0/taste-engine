@@ -23,7 +23,7 @@ A portable, open-source Agent Skill for building distinctive, accessible fronten
     alt="Taste Engine — Design systems for AI agents, routed by taste"
 
     width="100%"
-
+  
   />
 
 </p>
@@ -179,6 +179,19 @@ node bin/taste-engine.mjs doctor --agent antigravity --global
 
 
 The installer supports `antigravity`, `antigravity-cli` (alias `agy`), `claude-code` (alias `claude`), `codex`, or `all`. It backs up an existing Taste Engine directory before replacing it and refuses to overwrite an unrelated skill. See [INSTALL.md](INSTALL.md) for paths and update options.
+
+### Enable global `taste-engine` CLI command
+
+To run `taste-engine -v` and `taste-engine -update` anywhere in your terminal:
+
+```bash
+mkdir -p ~/.local/bin
+ln -sf ~/.gemini/config/skills/taste-engine/scripts/update.sh ~/.local/bin/taste-engine
+chmod +x ~/.local/bin/taste-engine
+```
+
+- `taste-engine -v` — check current installed version.
+- `taste-engine -update` — automatically download and apply the latest release from GitHub.
 
 
 
