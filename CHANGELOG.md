@@ -2,6 +2,13 @@
 
 All notable changes to Taste Engine are documented here. Release tags use semantic versioning.
 
+## [0.10.10] - 2026-11-05
+
+### Fixed
+
+- **CLI ESM Syntax Fix:** Encapsulated CLI dispatcher execution inside a `main()` function to eliminate illegal top-level `return` statements in ECMAScript modules.
+- **CI Release Automation:** Added `workflow_dispatch` trigger to the release workflow.
+
 ## [0.10.9] - 2026-11-05
 
 ### Added

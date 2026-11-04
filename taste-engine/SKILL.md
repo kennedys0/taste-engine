@@ -8,7 +8,7 @@ license: MIT
 
 metadata:
 
-  version: "0.10.9"
+  version: "0.10.10"
 
 ---
 
