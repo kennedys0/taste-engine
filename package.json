@@ -1,10 +1,13 @@
 {
   "name": "@kennedys0/taste-engine",
   "version": "0.10.8",
-  "private": true,
   "description": "Style-agnostic frontend agent skill with adaptive style routing, anti-slop review, SEO and motion guidance",
   "type": "module",
   "bin": {"taste-engine": "./bin/taste-engine.mjs"},
+  "exports": {
+    ".": "./bin/taste-engine.mjs",
+    "./presets/*": "./taste-engine/presets/*"
+  },
   "scripts": {
     "check": "python3 scripts/sync-agent-skills.py --check && python3 taste-engine/scripts/validate-pack.py",
     "test:cli": "node --test tests/cli.test.mjs"
