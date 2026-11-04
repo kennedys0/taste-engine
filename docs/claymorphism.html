@@ -1335,53 +1335,68 @@
     }
 
     /* =========================================================
-       TABBED INSTALLATION GUIDE SECTION
+       CLAYMORPHISM INSTALLATION GUIDE (SCULPTED CLAY CHASSIS)
        ========================================================= */
-    .pow-card {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      box-shadow: var(--pow-shadow);
-      border-radius: var(--pow-radius);
-      overflow: hidden;
+    .clay-install-chassis {
+      background: var(--clay-chassis-bg);
+      border: var(--clay-chassis-border);
+      border-radius: 36px;
+      box-shadow: var(--clay-chassis-shadow);
+      padding: 1.75rem;
+      position: relative;
     }
 
-    .tab-header-strip {
+    /* Sunken Well Tab Track */
+    .clay-tab-track {
       display: flex;
       background: var(--clay-well-bg);
-      border-bottom: var(--pow-border);
+      border: var(--clay-well-border);
+      box-shadow: var(--clay-well-shadow);
+      border-radius: 9999px;
+      padding: 0.4rem;
+      gap: 0.5rem;
       overflow-x: auto;
       scrollbar-width: none;
+      margin-bottom: 1.75rem;
     }
 
-    .tab-header-strip::-webkit-scrollbar { display: none; }
+    .clay-tab-track::-webkit-scrollbar { display: none; }
 
-    .tab-switch-btn {
-      padding: 0.9rem 1.5rem;
+    .clay-tab-pill {
+      flex: 1;
+      min-width: fit-content;
+      padding: 0.75rem 1.4rem;
       background: transparent;
       border: none;
-      border-right: var(--pow-border);
+      border-radius: 9999px;
       font-family: var(--pow-font-display);
       font-size: 0.85rem;
-      font-weight: 700;
+      font-weight: 800;
       color: var(--pow-text-muted);
       cursor: pointer;
       white-space: nowrap;
-      transition: background 120ms ease, color 120ms ease;
+      transition: all 120ms ease;
+      user-select: none;
     }
 
-    .tab-switch-btn:hover {
-      background: var(--pow-surface-hover);
+    .clay-tab-pill:hover {
       color: var(--pow-text);
+      transform: translateY(-1px);
     }
 
-    .tab-switch-btn.active {
-      background: var(--pow-surface);
+    .clay-tab-pill.active {
+      background: var(--clay-card-bg);
       color: var(--pow-accent);
-      border-bottom: 2px solid var(--pow-accent);
+      box-shadow: 0 8px 18px rgba(60, 30, 110, 0.18), inset 2px 2px 4px rgba(255, 255, 255, 0.95), inset -2px -3px 4px rgba(150, 140, 185, 0.25);
+    }
+
+    [data-theme="dark"] .clay-tab-pill.active {
+      background: var(--pow-accent);
+      color: #FFFFFF;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.45), inset 2px 2px 4px rgba(255, 255, 255, 0.35), inset -2px -3px 5px rgba(0, 0, 0, 0.5);
     }
 
     .tab-body {
-      padding: 1.75rem;
       display: none;
     }
 
@@ -1394,59 +1409,91 @@
       font-size: 1.15rem;
       font-weight: 800;
       margin-bottom: 0.65rem;
+      color: var(--pow-text);
     }
 
     .install-step-desc {
       font-size: 0.9rem;
       color: var(--pow-text-muted);
       margin-bottom: 1.25rem;
+      line-height: 1.5;
     }
 
-    /* Terminal Console Window */
-    .pow-terminal {
-      background: #0D1117;
-      color: #F0F6FC;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 16px;
+    /* Sculpted Deep Clay Console Pod */
+    .clay-terminal-pod {
+      background: #251D3A;
+      color: #F5F2FC;
+      border: 2px solid rgba(255, 255, 255, 0.18);
+      border-radius: 28px;
       overflow: hidden;
-      margin-bottom: 1.5rem;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+      box-shadow: inset 3px 4px 8px rgba(0, 0, 0, 0.55), inset -2px -2px 5px rgba(255, 255, 255, 0.12), 0 16px 32px rgba(110, 85, 170, 0.25);
+      margin-bottom: 1.25rem;
     }
 
-    .terminal-topbar {
-      background: #161B22;
-      padding: 0.65rem 1rem;
+    [data-theme="dark"] .clay-terminal-pod {
+      background: #151126;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      box-shadow: inset 3px 4px 8px rgba(0, 0, 0, 0.7), inset -2px -2px 5px rgba(255, 255, 255, 0.08), 0 16px 36px rgba(0, 0, 0, 0.55);
+    }
+
+    .clay-terminal-topbar {
+      background: rgba(255, 255, 255, 0.06);
+      padding: 0.75rem 1.25rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       align-items: center;
       justify-content: space-between;
     }
 
-    .terminal-dots {
+    .clay-dots-group {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
     }
 
-    .dot {
-      width: 10px;
-      height: 10px;
+    .clay-dot {
+      width: 12px;
+      height: 12px;
       border-radius: 50%;
+      box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.6), inset -1px -1px 2px rgba(0, 0, 0, 0.3);
     }
 
-    .dot.red { background: #FF5F56; }
-    .dot.yellow { background: #FFBD2E; }
-    .dot.green { background: #27C93F; }
+    .clay-dot.coral { background: #FF7B90; }
+    .clay-dot.amber { background: #FFD066; }
+    .clay-dot.mint { background: #66DDA0; }
 
-    .terminal-label {
+    .clay-terminal-label {
       font-family: var(--pow-font-mono);
       font-size: 0.75rem;
-      color: #8B949E;
-      font-weight: 600;
+      color: rgba(255, 255, 255, 0.7);
+      font-weight: 700;
+    }
+
+    .clay-copy-pill {
+      background: rgba(255, 255, 255, 0.12);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 9999px;
+      padding: 0.35rem 0.85rem;
+      font-family: var(--pow-font-display);
+      font-size: 0.75rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.4), 0 3px 6px rgba(0, 0, 0, 0.2);
+      transition: transform 90ms ease, background 120ms ease;
+    }
+
+    .clay-copy-pill:hover {
+      background: rgba(255, 255, 255, 0.22);
+      transform: translateY(-1px);
+    }
+
+    .clay-copy-pill:active {
+      transform: scale(0.95);
     }
 
     .terminal-content {
-      padding: 1.2rem;
+      padding: 1.35rem;
       font-family: var(--pow-font-mono);
       font-size: 0.85rem;
       line-height: 1.6;
@@ -1480,93 +1527,148 @@
     }
 
     /* =========================================================
-       TOKEN SPECIFICATION TABLE & FAQ
+       CLAY TOKEN CHASSIS & PEBBLE SWATCHES
        ========================================================= */
-    .token-table-wrap {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      box-shadow: var(--pow-shadow);
-      border-radius: var(--pow-radius);
-      overflow-x: auto;
+    .clay-token-chassis {
+      background: var(--clay-chassis-bg);
+      border: var(--clay-chassis-border);
+      border-radius: 36px;
+      box-shadow: var(--clay-chassis-shadow);
+      padding: 1.75rem;
     }
 
-    .pow-table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
+    .clay-token-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.15rem;
     }
 
-    .pow-table th, .pow-table td {
-      padding: 0.95rem 1.35rem;
-      border-bottom: var(--pow-border);
-      font-size: 0.85rem;
+    .clay-token-pod {
+      background: var(--clay-card-bg);
+      border: var(--clay-card-border);
+      border-radius: 26px;
+      box-shadow: var(--clay-card-shadow);
+      padding: 1.35rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      transition: transform 120ms ease;
     }
 
-    .pow-table th {
+    .clay-token-pod:hover {
+      transform: translateY(-2px);
+    }
+
+    .token-top-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .token-name-well {
       background: var(--clay-well-bg);
-      font-family: var(--pow-font-display);
-      font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .pow-table tr:last-child td { border-bottom: none; }
-
-    .token-code {
+      border: var(--clay-well-border);
+      box-shadow: var(--clay-well-shadow);
+      border-radius: 9999px;
+      padding: 0.3rem 0.85rem;
       font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
       font-weight: 700;
       color: var(--pow-accent);
     }
 
-    /* FAQ Accordion */
-    .pow-faq-item {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      box-shadow: var(--pow-shadow);
-      border-radius: 20px;
-      margin-bottom: 1rem;
-      overflow: hidden;
+    .clay-color-pebble {
+      width: 34px;
+      height: 34px;
+      border-radius: 12px;
+      box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.75), inset -2px -2px 4px rgba(0, 0, 0, 0.25), 0 4px 8px rgba(0, 0, 0, 0.12);
+      flex-shrink: 0;
     }
 
-    .pow-faq-header {
-      padding: 1.15rem 1.35rem;
-      font-family: var(--pow-font-display);
-      font-size: 0.95rem;
-      font-weight: 800;
-      cursor: pointer;
+    .token-value-box {
+      font-family: var(--pow-font-mono);
+      font-size: 0.825rem;
+      font-weight: 700;
+      color: var(--pow-text);
+      word-break: break-all;
+    }
+
+    .token-desc-p {
+      font-size: 0.76rem;
+      color: var(--pow-text-muted);
+      line-height: 1.45;
+    }
+
+    /* =========================================================
+       CLAYMORPHISM FAQ PILLOWS
+       ========================================================= */
+    .clay-faq-pillow {
+      background: var(--clay-card-bg);
+      border: var(--clay-card-border);
+      border-radius: 28px;
+      box-shadow: var(--clay-card-shadow);
+      margin-bottom: 1.15rem;
+      overflow: hidden;
+      transition: box-shadow 140ms ease;
+    }
+
+    .clay-faq-header {
+      padding: 1.25rem 1.6rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 1rem;
+      cursor: pointer;
       user-select: none;
-      background: var(--pow-surface);
-      transition: background 120ms ease;
     }
 
-    .pow-faq-header:hover {
-      background: var(--pow-surface-hover);
+    .clay-faq-title {
+      font-family: var(--pow-font-display);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--pow-text);
+      line-height: 1.3;
     }
 
-    .faq-arrow {
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      transition: transform 180ms ease;
+    .clay-faq-toggle-btn {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: var(--clay-well-bg);
+      border: var(--clay-well-border);
+      box-shadow: var(--clay-well-shadow);
+      color: var(--pow-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      transition: transform 200ms cubic-bezier(0.34, 1.56, 0.64, 1), background 120ms ease;
     }
 
-    .pow-faq-item.open .faq-arrow {
-      transform: rotate(90deg);
+    .clay-faq-pillow.open .clay-faq-toggle-btn {
+      transform: rotate(45deg);
+      background: var(--pow-accent);
+      color: #FFFFFF;
+      box-shadow: 0 4px 10px rgba(130, 71, 229, 0.4), inset 1px 1px 2px rgba(255, 255, 255, 0.6);
     }
 
-    .pow-faq-body {
-      padding: 0 1.35rem 1.35rem 1.35rem;
-      font-size: 0.875rem;
-      color: var(--pow-text-muted);
+    .clay-faq-answer-well {
+      background: var(--clay-well-bg);
+      border: var(--clay-well-border);
+      box-shadow: var(--clay-well-shadow);
+      border-radius: 20px;
+      padding: 1.25rem 1.5rem;
+      margin: 0 1rem 1.25rem 1rem;
+      font-size: 0.88rem;
+      color: var(--pow-text);
       line-height: 1.6;
       display: none;
-      border-top: var(--pow-border);
-      padding-top: 1rem;
     }
 
-    .pow-faq-item.open .pow-faq-body {
+    .clay-faq-pillow.open .clay-faq-answer-well {
       display: block;
     }
 
@@ -1706,6 +1808,10 @@
       .nav-command-pill {
         display: none;
       }
+      .clay-tab-track {
+        flex-direction: column;
+        border-radius: 24px;
+      }
     }
 
     @media (max-width: 768px) {
@@ -1715,6 +1821,7 @@
       .hero-title { font-size: clamp(1.8rem, 6vw, 2.5rem); }
       .pow-stat-strip { grid-template-columns: repeat(2, 1fr); }
       .footer-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+      .clay-token-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 520px) {
@@ -1834,21 +1941,14 @@
                 <!-- SVG Stylized 3D Avatar with Headphones -->
                 <svg viewBox="0 0 80 80" class="clay-avatar-svg">
                   <circle cx="40" cy="40" r="38" fill="#E6DEFA"/>
-                  <!-- Hair Bun -->
                   <circle cx="40" cy="22" r="14" fill="#6C4835"/>
-                  <!-- Face -->
                   <ellipse cx="40" cy="44" rx="18" ry="20" fill="#FDDCB5"/>
-                  <!-- Hair Fringe -->
                   <path d="M22 36 Q40 24 58 36 Q40 32 22 36 Z" fill="#6C4835"/>
-                  <!-- Eyes -->
                   <ellipse cx="33" cy="42" rx="2.5" ry="3.5" fill="#3D2619"/>
                   <ellipse cx="47" cy="42" rx="2.5" ry="3.5" fill="#3D2619"/>
-                  <!-- Cheeks -->
                   <circle cx="30" cy="48" r="3" fill="#FFA5A5" opacity="0.6"/>
                   <circle cx="50" cy="48" r="3" fill="#FFA5A5" opacity="0.6"/>
-                  <!-- Smile -->
                   <path d="M36 50 Q40 54 44 50" stroke="#8D5B4C" stroke-width="2" fill="none" stroke-linecap="round"/>
-                  <!-- Purple Headphones -->
                   <path d="M20 42 A20 20 0 0 1 60 42" stroke="#8247E5" stroke-width="4.5" fill="none" stroke-linecap="round"/>
                   <rect x="18" y="38" width="6" height="12" rx="3" fill="#9D80E4"/>
                   <rect x="56" y="38" width="6" height="12" rx="3" fill="#9D80E4"/>
@@ -1961,10 +2061,8 @@
             <!-- Decorative 3D Clay Plant SVG -->
             <div class="hero-banner-art">
               <svg class="clay-plant-box" viewBox="0 0 100 110">
-                <!-- Clay Pot -->
                 <path d="M25 65 L32 105 L68 105 L75 65 Z" fill="#E8927C" stroke="#D1745E" stroke-width="2"/>
                 <ellipse cx="50" cy="65" rx="25" ry="6" fill="#F4A591"/>
-                <!-- Green Clay Leaves -->
                 <path d="M50 62 Q50 30 30 20 Q45 40 50 62 Z" fill="#48BB78"/>
                 <path d="M50 62 Q50 25 70 18 Q55 40 50 62 Z" fill="#38A169"/>
                 <path d="M50 62 Q40 38 20 40 Q40 52 50 62 Z" fill="#68D391"/>
@@ -2105,18 +2203,12 @@
 
               <div class="clay-donut-layout">
                 <div class="donut-svg-wrap">
-                  <!-- Donut SVG: Circumference = 339.29 (r=54) -->
                   <svg viewBox="0 0 140 140" width="100%" height="100%">
                     <circle cx="70" cy="70" r="50" fill="transparent" stroke="#E6E0F8" stroke-width="22"/>
-                    <!-- Pop 45% = 141.37 -->
                     <circle cx="70" cy="70" r="50" fill="transparent" stroke="#9E85ED" stroke-width="22" stroke-dasharray="141.37 314.16" stroke-dashoffset="0"/>
-                    <!-- Lo-fi 25% = 78.54 -->
                     <circle cx="70" cy="70" r="50" fill="transparent" stroke="#FFA28A" stroke-width="22" stroke-dasharray="78.54 314.16" stroke-dashoffset="-141.37"/>
-                    <!-- Synthwave 15% = 47.12 -->
                     <circle cx="70" cy="70" r="50" fill="transparent" stroke="#FFCE54" stroke-width="22" stroke-dasharray="47.12 314.16" stroke-dashoffset="-219.91"/>
-                    <!-- Ambient 10% = 31.42 -->
                     <circle cx="70" cy="70" r="50" fill="transparent" stroke="#72D5A3" stroke-width="22" stroke-dasharray="31.42 314.16" stroke-dashoffset="-267.03"/>
-                    <!-- Indie 5% = 15.71 -->
                     <circle cx="70" cy="70" r="50" fill="transparent" stroke="#68B4FA" stroke-width="22" stroke-dasharray="15.71 314.16" stroke-dashoffset="-298.45"/>
                   </svg>
                 </div>
@@ -2164,7 +2256,6 @@
               </div>
 
               <div class="track-list">
-                <!-- Track 1 -->
                 <div class="track-item-row" id="track1">
                   <div class="track-art-box" style="background: linear-gradient(135deg, #FF9A8B, #FF6A88);">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
@@ -2178,7 +2269,6 @@
                   </button>
                 </div>
 
-                <!-- Track 2 -->
                 <div class="track-item-row" id="track2">
                   <div class="track-art-box" style="background: linear-gradient(135deg, #FEE140, #FA709A);">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
@@ -2192,7 +2282,6 @@
                   </button>
                 </div>
 
-                <!-- Track 3 -->
                 <div class="track-item-row" id="track3">
                   <div class="track-art-box" style="background: linear-gradient(135deg, #A8EDEA, #FED6E3);">
                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5A4A7A" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="#5A4A7A"/></svg>
@@ -2211,12 +2300,9 @@
             <!-- Right: Daily Cozy Mix -->
             <div class="daily-mix-card">
               <div class="mix-cover-art">
-                <!-- Cozy Studio Artwork SVG -->
                 <svg viewBox="0 0 160 110" width="100%" height="100%">
-                  <!-- Wall Lamp -->
                   <circle cx="135" cy="40" r="12" fill="#FFE58F" opacity="0.6"/>
                   <line x1="135" y1="20" x2="135" y2="40" stroke="#FFFFFF" stroke-width="2"/>
-                  <!-- Cozy Armchair -->
                   <rect x="35" y="45" width="55" height="40" rx="14" fill="#9370DB"/>
                   <rect x="25" y="55" width="15" height="30" rx="7" fill="#7B56CE"/>
                   <rect x="85" y="55" width="15" height="30" rx="7" fill="#7B56CE"/>
@@ -2237,7 +2323,6 @@
           <!-- Discovery Banner Strip -->
           <div class="clay-discovery-strip">
             <div class="discovery-left">
-              <!-- 3D Yellow Clay Star SVG -->
               <svg class="clay-star-icon" viewBox="0 0 40 40">
                 <polygon points="20,2 25,14 38,15 28,24 31,37 20,30 9,37 12,24 2,15 15,14" fill="#FFC933" stroke="#E5AC12" stroke-width="1.5"/>
                 <circle cx="15" cy="18" r="2" fill="#3D2619"/>
@@ -2257,7 +2342,7 @@
       </div>
     </section>
 
-    <!-- Interactive Installation Guide Section -->
+    <!-- Interactive Installation Guide Section (Sculpted Clay Chassis) -->
     <section class="pow-section" id="install">
       <div class="section-header">
         <span class="section-badge">How to Install</span>
@@ -2267,12 +2352,12 @@
         </p>
       </div>
 
-      <div class="pow-card">
-        <!-- Tab Headers -->
-        <div class="tab-header-strip">
-          <button class="tab-switch-btn active" data-tab="tab-standalone">1. Standalone Style Skill</button>
-          <button class="tab-switch-btn" data-tab="tab-global">2. Full Taste Engine (Global)</button>
-          <button class="tab-switch-btn" data-tab="tab-tailwind">3. Tailwind & shadcn Preset</button>
+      <div class="clay-install-chassis">
+        <!-- Sunken Well Tab Track with 3D Clay Pills -->
+        <div class="clay-tab-track">
+          <button class="clay-tab-pill active" data-tab="tab-standalone">1. Standalone Style Skill</button>
+          <button class="clay-tab-pill" data-tab="tab-global">2. Full Taste Engine (Global)</button>
+          <button class="clay-tab-pill" data-tab="tab-tailwind">3. Tailwind & shadcn Preset</button>
         </div>
 
         <!-- Tab 1: Standalone Skill -->
@@ -2282,15 +2367,15 @@
             Installs only the Claymorphism style pack. Perfect if your project has already committed to this exact aesthetic and does not need a 10-style selector.
           </p>
 
-          <div class="pow-terminal">
-            <div class="terminal-topbar">
-              <div class="terminal-dots">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
+          <div class="clay-terminal-pod">
+            <div class="clay-terminal-topbar">
+              <div class="clay-dots-group">
+                <span class="clay-dot coral"></span>
+                <span class="clay-dot amber"></span>
+                <span class="clay-dot mint"></span>
               </div>
-              <span class="terminal-label">bash — universal agent skills cli</span>
-              <button class="pow-btn-sm" onclick="copySnippet('cmdStandaloneCli')">Copy</button>
+              <span class="clay-terminal-label">bash — universal agent skills cli</span>
+              <button class="clay-copy-pill" onclick="copySnippet('cmdStandaloneCli')">Copy Command</button>
             </div>
             <div class="terminal-content" id="cmdStandaloneCli">
               <div class="terminal-line">
@@ -2318,15 +2403,15 @@
             Equips your AI agent with the autonomous style router, preflight interviews, 10 aesthetic packs, full-screen hero gating, and automatic SEO audit.
           </p>
 
-          <div class="pow-terminal">
-            <div class="terminal-topbar">
-              <div class="terminal-dots">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
+          <div class="clay-terminal-pod">
+            <div class="clay-terminal-topbar">
+              <div class="clay-dots-group">
+                <span class="clay-dot coral"></span>
+                <span class="clay-dot amber"></span>
+                <span class="clay-dot mint"></span>
               </div>
-              <span class="terminal-label">bash — multi-agent native installer</span>
-              <button class="pow-btn-sm" onclick="copySnippet('cmdGlobalCli')">Copy</button>
+              <span class="clay-terminal-label">bash — multi-agent native installer</span>
+              <button class="clay-copy-pill" onclick="copySnippet('cmdGlobalCli')">Copy Command</button>
             </div>
             <div class="terminal-content" id="cmdGlobalCli">
               <div class="terminal-line">
@@ -2365,15 +2450,15 @@
             Scaffold Claymorphism utility tokens directly into your React, Next.js, or Vite frontend stack.
           </p>
 
-          <div class="pow-terminal">
-            <div class="terminal-topbar">
-              <div class="terminal-dots">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
+          <div class="clay-terminal-pod">
+            <div class="clay-terminal-topbar">
+              <div class="clay-dots-group">
+                <span class="clay-dot coral"></span>
+                <span class="clay-dot amber"></span>
+                <span class="clay-dot mint"></span>
               </div>
-              <span class="terminal-label">tailwind.config.js — preset integration</span>
-              <button class="pow-btn-sm" onclick="copySnippet('cmdTailwindPreset')">Copy</button>
+              <span class="clay-terminal-label">tailwind.config.js — preset integration</span>
+              <button class="clay-copy-pill" onclick="copySnippet('cmdTailwindPreset')">Copy Command</button>
             </div>
             <div class="terminal-content" id="cmdTailwindPreset">
               <div class="terminal-line">
@@ -2409,108 +2494,154 @@
       </div>
     </section>
 
-    <!-- Design Token Cheatsheet -->
+    <!-- Design Token Cheatsheet (Sculpted Clay Pebble Swatches) -->
     <section class="pow-section">
       <div class="section-header">
         <span class="section-badge">Tokens & Math</span>
         <h2 class="section-title">Claymorphism Design Tokens</h2>
         <p class="section-desc">
-          Standardized CSS custom properties for instant copy-pasting into any stylesheet.
+          Tactile CSS custom properties with live 3D clay preview swatches demonstrating volumetric light, form shadows, and relief rim physics.
         </p>
       </div>
 
-      <div class="token-table-wrap">
-        <table class="pow-table">
-          <thead>
-            <tr>
-              <th>Token Name</th>
-              <th>Light Mode</th>
-              <th>Dark Mode</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td class="token-code">--taste-clay-bg</td>
-              <td>#EAE6F8</td>
-              <td>#141122</td>
-              <td>Canvas backdrop base</td>
-            </tr>
-            <tr>
-              <td class="token-code">--taste-clay-primary</td>
-              <td>#8247E5</td>
-              <td>#9A65F5</td>
-              <td>Primary action accent</td>
-            </tr>
-            <tr>
-              <td class="token-code">--taste-clay-surface</td>
-              <td>#FFFFFF</td>
-              <td>#27203E</td>
-              <td>Card surface background</td>
-            </tr>
-            <tr>
-              <td class="token-code">--taste-clay-text</td>
-              <td>#221D38</td>
-              <td>#F4F1FB</td>
-              <td>Primary text & icon color</td>
-            </tr>
-            <tr>
-              <td class="token-code">--taste-clay-well-bg</td>
-              <td>#E7E2F6</td>
-              <td>#181329</td>
-              <td>Recessed sunken input track</td>
-            </tr>
-            <tr>
-              <td class="token-code">--taste-clay-inner-primary</td>
-              <td>inset 2px 3px 5px rgba(255,255,255,0.45), inset -3px -4px 6px rgba(40,15,95,0.35)</td>
-              <td>inset 2px 3px 5px rgba(255,255,255,0.2), inset -3px -4px 6px rgba(0,0,0,0.6)</td>
-              <td>Volumetric dual inner shadow</td>
-            </tr>
-            <tr>
-              <td class="token-code">--taste-clay-radius-pill</td>
-              <td>9999px</td>
-              <td>9999px</td>
-              <td>Full tactile pill contour</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="clay-token-chassis">
+        <div class="clay-token-grid">
+          
+          <!-- Token 1: Background Canvas -->
+          <div class="clay-token-pod">
+            <div class="token-top-row">
+              <span class="token-name-well">--taste-clay-bg</span>
+              <div class="clay-color-pebble" style="background: var(--pow-bg);"></div>
+            </div>
+            <div class="token-value-box">Light: #EAE6F8 | Dark: #141122</div>
+            <p class="token-desc-p">Tactile pastel lilac base backdrop providing ambient contrast beneath floating clay surfaces.</p>
+          </div>
+
+          <!-- Token 2: Primary Violet Accent -->
+          <div class="clay-token-pod">
+            <div class="token-top-row">
+              <span class="token-name-well">--taste-clay-primary</span>
+              <div class="clay-color-pebble" style="background: var(--pow-accent);"></div>
+            </div>
+            <div class="token-value-box">Light: #8247E5 | Dark: #9A65F5</div>
+            <p class="token-desc-p">Vibrant sculpted violet for primary action pills, active play buttons, and brand badges.</p>
+          </div>
+
+          <!-- Token 3: Card Surface Porcelain -->
+          <div class="clay-token-pod">
+            <div class="token-top-row">
+              <span class="token-name-well">--taste-clay-surface</span>
+              <div class="clay-color-pebble" style="background: var(--clay-card-bg);"></div>
+            </div>
+            <div class="token-value-box">Light: #FFFFFF | Dark: #27203E</div>
+            <p class="token-desc-p">Porcelain white clay surface with upper-left light highlights and bottom-right lavender depth.</p>
+          </div>
+
+          <!-- Token 4: Lavender Dock Accent -->
+          <div class="clay-token-pod">
+            <div class="token-top-row">
+              <span class="token-name-well">--taste-clay-dock</span>
+              <div class="clay-color-pebble" style="background: var(--clay-dock-bg);"></div>
+            </div>
+            <div class="token-value-box">Light: #9E85ED | Dark: #2B2149</div>
+            <p class="token-desc-p">Saturated pastel lavender accent panel for navigational bays and promo feature bars.</p>
+          </div>
+
+          <!-- Token 5: Sunken Input Well -->
+          <div class="clay-token-pod">
+            <div class="token-top-row">
+              <span class="token-name-well">--taste-clay-well</span>
+              <div class="clay-color-pebble" style="background: var(--clay-well-bg);"></div>
+            </div>
+            <div class="token-value-box">Light: #E7E2F6 | Dark: #181329</div>
+            <p class="token-desc-p">Recessed concave channel with reversed inset shadow and crisp white relief border rim.</p>
+          </div>
+
+          <!-- Token 6: Peach Accent -->
+          <div class="clay-token-pod">
+            <div class="token-top-row">
+              <span class="token-name-well">--taste-clay-peach</span>
+              <div class="clay-color-pebble" style="background: var(--clay-peach-bg);"></div>
+            </div>
+            <div class="token-value-box">Light: #FFEAE4 | Dark: #3A232D</div>
+            <p class="token-desc-p">Soft salmon/peach clay tile for pro membership, favorites, and high-priority alerts.</p>
+          </div>
+
+          <!-- Token 7: Volumetric Shadow Math -->
+          <div class="clay-token-pod">
+            <div class="token-top-row">
+              <span class="token-name-well">--taste-clay-shadow</span>
+              <div class="clay-color-pebble" style="background: linear-gradient(135deg, #FFF, #8247E5);"></div>
+            </div>
+            <div class="token-value-box">inset 3px 4px 6px / inset -3px -4px 6px</div>
+            <p class="token-desc-p">Dual opposing inner shadow formula: top-left incident specular light + bottom-right form thickness.</p>
+          </div>
+
+          <!-- Token 8: Pill Contour Radius -->
+          <div class="clay-token-pod">
+            <div class="token-top-row">
+              <span class="token-name-well">--taste-clay-radius</span>
+              <div class="clay-color-pebble" style="border-radius: 9999px; background: var(--pow-accent);"></div>
+            </div>
+            <div class="token-value-box">9999px (Pill) / 28px–36px (Cards)</div>
+            <p class="token-desc-p">Plush organic curvature eliminating harsh 90-degree corners to preserve pliable playdough physics.</p>
+          </div>
+
+        </div>
       </div>
     </section>
 
-    <!-- FAQ Accordion -->
+    <!-- FAQ Accordion (Tactile Clay FAQ Pillows) -->
     <section class="pow-section">
       <div class="section-header">
         <span class="section-badge">FAQ & Verification</span>
         <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-desc">
+          Everything you need to know about Taste Engine's Claymorphism fidelity standards, anti-slop rules, and dark mode math.
+        </p>
       </div>
 
-      <div class="pow-faq-item open">
-        <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>Why is Claymorphism not considered AI slop?</span>
-          <span class="faq-arrow">▶</span>
+      <!-- FAQ 1 -->
+      <div class="clay-faq-pillow open">
+        <div class="clay-faq-header" onclick="toggleClayFaq(this)">
+          <span class="clay-faq-title">Why is Claymorphism not considered AI slop?</span>
+          <div class="clay-faq-toggle-btn">+</div>
         </div>
-        <div class="pow-faq-body">
-          Claymorphism is an explicit material exception in Taste Engine because its depth is functional and tactile (opposing dual inner shadows simulating incident light and physical form thickness), not arbitrary decorative blur or glow filters.
-        </div>
-      </div>
-
-      <div class="pow-faq-item">
-        <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>How does Dark Mode maintain volumetric volume?</span>
-          <span class="faq-arrow">▶</span>
-        </div>
-        <div class="pow-faq-body">
-          In dark mode, inner specular highlights soften to delicate translucent white tints (12–18% opacity) while form shadows deepen into rich dark obsidian-indigo, preserving the pliable 3D sensation without washing out the text contrast.
+        <div class="clay-faq-answer-well">
+          Claymorphism is an explicit material exception in Taste Engine because its depth is functional, tactile, and physically coherent. Opposing dual inner shadows simulate incident light (upper-left) and form thickness (lower-right), creating tangible presence rather than arbitrary decorative glow or unreadable transparency.
         </div>
       </div>
 
-      <div class="pow-faq-item">
-        <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>Can I install just Claymorphism for my agents?</span>
-          <span class="faq-arrow">▶</span>
+      <!-- FAQ 2 -->
+      <div class="clay-faq-pillow">
+        <div class="clay-faq-header" onclick="toggleClayFaq(this)">
+          <span class="clay-faq-title">How does Dark Mode maintain volumetric 3D volume?</span>
+          <div class="clay-faq-toggle-btn">+</div>
         </div>
-        <div class="pow-faq-body">
-          Yes! Run `npx skills add kennedys0/taste-engine --skill taste-style-claymorphism` to equip your AI agent with only this specific aesthetic pack.
+        <div class="clay-faq-answer-well">
+          In dark mode, inner specular highlights soften to delicate translucent white tints (12–18% opacity) while form shadows deepen into rich dark obsidian-indigo, preserving the pliable 3D sensation without washing out the text contrast. Text automatically pairs with pale porcelain white for verified WCAG AA accessibility.
+        </div>
+      </div>
+
+      <!-- FAQ 3 -->
+      <div class="clay-faq-pillow">
+        <div class="clay-faq-header" onclick="toggleClayFaq(this)">
+          <span class="clay-faq-title">Can I install just the Claymorphism skill for my agents?</span>
+          <div class="clay-faq-toggle-btn">+</div>
+        </div>
+        <div class="clay-faq-answer-well">
+          Yes! Run <code>npx skills add kennedys0/taste-engine --skill taste-style-claymorphism</code> to equip your AI agent with only this specific aesthetic pack, or install the full Taste Engine suite for multi-style auto-routing.
+        </div>
+      </div>
+
+      <!-- FAQ 4 -->
+      <div class="clay-faq-pillow">
+        <div class="clay-faq-header" onclick="toggleClayFaq(this)">
+          <span class="clay-faq-title">What is the difference between Neumorphism and Claymorphism?</span>
+          <div class="clay-faq-toggle-btn">+</div>
+        </div>
+        <div class="clay-faq-answer-well">
+          Neumorphism extrudes directly from the exact same background color with soft outer blur, causing severe WCAG contrast failures. Claymorphism uses distinct high-contrast surfaces, dual inner shadows for thickness, and soft ambient drop shadows that float above the canvas with distinct color boundaries and 4.5:1+ text contrast.
         </div>
       </div>
     </section>
@@ -2629,8 +2760,8 @@
       });
     }
 
-    // Tab Switcher
-    const tabButtons = document.querySelectorAll('.tab-switch-btn');
+    // Clay Tab Switcher
+    const tabButtons = document.querySelectorAll('.clay-tab-pill');
     const tabBodies = document.querySelectorAll('.tab-body');
 
     tabButtons.forEach(btn => {
@@ -2689,13 +2820,11 @@
       const btn = row.querySelector('.play-svg');
       
       if (currentPlayingTrack === rowId) {
-        // Stop current
         row.classList.remove('playing');
         btn.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
         currentPlayingTrack = null;
         showToast(`Paused: ${name}`);
       } else {
-        // Reset previous
         if (currentPlayingTrack) {
           const prevRow = document.getElementById(currentPlayingTrack);
           if (prevRow) {
@@ -2703,7 +2832,6 @@
             prevRow.querySelector('.play-svg').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
           }
         }
-        // Play new
         row.classList.add('playing');
         btn.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
         currentPlayingTrack = rowId;
@@ -2711,10 +2839,10 @@
       }
     }
 
-    // FAQ Accordion Toggle
-    function toggleFaq(header) {
-      const item = header.parentElement;
-      item.classList.toggle('open');
+    // Clay FAQ Accordion Toggle
+    function toggleClayFaq(header) {
+      const pillow = header.parentElement;
+      pillow.classList.toggle('open');
     }
   </script>
 </body>
