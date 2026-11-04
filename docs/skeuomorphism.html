@@ -4,45 +4,115 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Skeuomorphism Proof of Work & Installation Guide — Taste Engine</title>
-  <meta name="description" content="Dedicated Proof of Work and installation guide for Taste Engine's Skeuomorphism aesthetic archetype. Experience authentic design tokens, zero AI-slop, and contrast safety.">
+  <meta name="description" content="Dedicated Proof of Work and installation guide for Taste Engine's Skeuomorphism aesthetic archetype. Experience authentic tactile hardware, knurled dials, beveled rims, recessed wells, zero AI-slop, and contrast safety.">
   <link rel="icon" type="image/webp" href="assets/logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* =========================================================
-       SKEUOMORPHISM DESIGN SYSTEM TOKENS
+       SKEUOMORPHISM TACTILE HARDWARE DESIGN TOKENS
        ========================================================= */
     :root {
-      --pow-bg: #e6e9ee;
-      --pow-surface: #f2f4f7;
-      --pow-surface-hover: #f8f9fa;
-      --pow-well-bg: #dbe0e7;
-      --pow-text: #1e293b;
-      --pow-text-muted: #64748b;
-      --pow-border: 1px solid #cbd5e1;
-      --pow-shadow: 0 8px 20px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-      --pow-accent: #c88a20;
-      --pow-radius: 10px;
-      --pow-radius-btn: 8px;
+      /* Light Chassis: Machined Brushed Aluminum */
+      --skeuo-bg: #E2E6EA;
+      --skeuo-chassis-bg: linear-gradient(180deg, #F8FAFC 0%, #E9ECEF 45%, #DDE2E7 100%);
+      --skeuo-chassis-border: 1px solid rgba(0, 0, 0, 0.16);
+      --skeuo-chassis-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 rgba(0, 0, 0, 0.12);
+      --skeuo-chassis-shadow: 0 12px 32px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.08);
 
-      --pow-font-display: 'Space Grotesk', -apple-system, sans-serif;
-      --pow-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --pow-font-mono: 'JetBrains Mono', monospace;
+      --skeuo-surface: #F1F4F8;
+      --skeuo-surface-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 0 rgba(0, 0, 0, 0.14);
+
+      /* Recessed Instrument Well */
+      --skeuo-well-bg: #CFD5DE;
+      --skeuo-well-inset: inset 0 3px 8px rgba(0, 0, 0, 0.22), 0 1px 0 rgba(255, 255, 255, 0.85);
+
+      /* Typography & Engraved Labels */
+      --skeuo-text: #1E2530;
+      --skeuo-text-muted: #526071;
+      --skeuo-text-engraved: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+      /* Tactile Buttons */
+      --skeuo-btn-bg: linear-gradient(180deg, #FFFFFF 0%, #E5E9F0 100%);
+      --skeuo-btn-border: 1px solid rgba(0, 0, 0, 0.22);
+      --skeuo-btn-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 rgba(0, 0, 0, 0.25);
+      --skeuo-btn-shadow: 0 4px 10px rgba(0, 0, 0, 0.12), 0 1px 3px rgba(0, 0, 0, 0.08);
+
+      --skeuo-accent: #C87A10;
+      --skeuo-accent-bg: linear-gradient(180deg, #E8901C 0%, #BF6D06 100%);
+      --skeuo-accent-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.65), inset 0 -1px 0 rgba(0, 0, 0, 0.4);
+      --skeuo-accent-shadow: 0 4px 12px rgba(200, 122, 16, 0.35);
+
+      /* Jewel Status LEDs */
+      --skeuo-led-green: #059669;
+      --skeuo-led-green-glow: 0 0 10px rgba(5, 150, 105, 0.65);
+      --skeuo-led-amber: #D97706;
+      --skeuo-led-amber-glow: 0 0 10px rgba(217, 119, 6, 0.65);
+      --skeuo-led-blue: #2563EB;
+      --skeuo-led-blue-glow: 0 0 10px rgba(37, 99, 235, 0.65);
+      --skeuo-led-red: #DC2626;
+      --skeuo-led-red-glow: 0 0 10px rgba(220, 38, 38, 0.65);
+
+      /* LCD Screen */
+      --skeuo-lcd-bg: #1A231C;
+      --skeuo-lcd-text: #34D399;
+      --skeuo-lcd-border: 1px solid #102A18;
+      --skeuo-lcd-inset: inset 0 2px 6px rgba(0, 0, 0, 0.9);
+
+      --skeuo-radius: 12px;
+      --skeuo-radius-btn: 7px;
+      --skeuo-font-display: 'Space Grotesk', -apple-system, sans-serif;
+      --skeuo-font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --skeuo-font-mono: 'JetBrains Mono', monospace;
     }
 
     [data-theme="dark"] {
-      --pow-bg: #181a1d;
-      --pow-surface: #22252a;
-      --pow-surface-hover: #2a2d33;
-      --pow-well-bg: #121417;
-      --pow-text: #e2e8f0;
-      --pow-text-muted: #94a3b8;
-      --pow-border: 1px solid #363b44;
-      --pow-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-      --pow-accent: #e5a93c;
-      --pow-radius: 10px;
-      --pow-radius-btn: 8px;
+      /* Dark Chassis: Anodized Gunmetal Studio Rack */
+      --skeuo-bg: #131518;
+      --skeuo-chassis-bg: linear-gradient(180deg, #323741 0%, #252932 45%, #1C1F26 100%);
+      --skeuo-chassis-border: 1px solid rgba(0, 0, 0, 0.85);
+      --skeuo-chassis-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.28), inset 0 -1px 0 rgba(0, 0, 0, 0.7);
+      --skeuo-chassis-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 3px 10px rgba(0, 0, 0, 0.5);
+
+      --skeuo-surface: #242831;
+      --skeuo-surface-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.18), inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+
+      /* Recessed Instrument Well */
+      --skeuo-well-bg: #14161A;
+      --skeuo-well-inset: inset 0 4px 10px rgba(0, 0, 0, 0.88), 0 1px 0 rgba(255, 255, 255, 0.1);
+
+      /* Typography & Engraved Labels */
+      --skeuo-text: #F3F4F6;
+      --skeuo-text-muted: #9CA3AF;
+      --skeuo-text-engraved: inset 0 1px 0 rgba(0, 0, 0, 0.7);
+
+      /* Tactile Buttons */
+      --skeuo-btn-bg: linear-gradient(180deg, #3A404E 0%, #262A34 100%);
+      --skeuo-btn-border: 1px solid rgba(0, 0, 0, 0.75);
+      --skeuo-btn-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 0 rgba(0, 0, 0, 0.6);
+      --skeuo-btn-shadow: 0 5px 12px rgba(0, 0, 0, 0.55), 0 1px 3px rgba(0, 0, 0, 0.4);
+
+      --skeuo-accent: #E59B24;
+      --skeuo-accent-bg: linear-gradient(180deg, #F5A934 0%, #B87210 100%);
+      --skeuo-accent-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 0 rgba(0, 0, 0, 0.5);
+      --skeuo-accent-shadow: 0 5px 16px rgba(229, 155, 36, 0.4);
+
+      /* Jewel Status LEDs */
+      --skeuo-led-green: #10B981;
+      --skeuo-led-green-glow: 0 0 12px rgba(16, 185, 129, 0.85);
+      --skeuo-led-amber: #FFAE00;
+      --skeuo-led-amber-glow: 0 0 12px rgba(255, 174, 0, 0.85);
+      --skeuo-led-blue: #3B82F6;
+      --skeuo-led-blue-glow: 0 0 12px rgba(59, 130, 246, 0.85);
+      --skeuo-led-red: #EF4444;
+      --skeuo-led-red-glow: 0 0 12px rgba(239, 68, 68, 0.85);
+
+      /* LCD Screen */
+      --skeuo-lcd-bg: #0C120E;
+      --skeuo-lcd-text: #10B981;
+      --skeuo-lcd-border: 1px solid #122818;
+      --skeuo-lcd-inset: inset 0 3px 8px rgba(0, 0, 0, 0.95);
     }
 
     *, *::before, *::after {
@@ -52,66 +122,116 @@
     }
 
     body {
-      background-color: var(--pow-bg);
-      color: var(--pow-text);
-      font-family: var(--pow-font-body);
+      background-color: var(--skeuo-bg);
+      color: var(--skeuo-text);
+      font-family: var(--skeuo-font-body);
       font-size: 16px;
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-      transition: background-color 150ms ease, color 150ms ease;
+      transition: background-color 160ms ease, color 160ms ease;
     }
 
-    /* Top Navigation */
-    .pow-nav {
+    /* =========================================================
+       CRITICAL ANTI-OVAL CIRCULAR PRESERVATION
+       ========================================================= */
+    .led-jewel,
+    .rotary-knob,
+    .status-dot,
+    .swatch-circle,
+    .nav-hamburger-btn,
+    .mobile-drawer-close-btn,
+    .vu-dot,
+    .screw-head,
+    .knob-housing,
+    .dot {
+      aspect-ratio: 1 / 1 !important;
+      flex-shrink: 0 !important;
+      border-radius: 50% !important;
+    }
+
+    /* =========================================================
+       TOP NAVIGATION HEADER
+       ========================================================= */
+    .skeuo-nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--pow-surface);
-      border-bottom: var(--pow-border);
-      padding: 0.75rem 1.5rem;
+      background: var(--skeuo-chassis-bg);
+      border-bottom: var(--skeuo-chassis-border);
+      box-shadow: var(--skeuo-chassis-shadow);
+      padding: 0.75rem 1.75rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 1.25rem;
     }
 
     .nav-brand-group {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.85rem;
       text-decoration: none;
-      color: var(--pow-text);
+      color: var(--skeuo-text);
     }
 
     .nav-logo-box {
-      width: 32px;
-      height: 32px;
-      background: var(--pow-accent);
-      color: #fff;
-      border-radius: 6px;
+      width: 34px;
+      height: 34px;
+      background: var(--skeuo-accent-bg);
+      color: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.3);
+      box-shadow: var(--skeuo-accent-bevel), 0 2px 5px rgba(0, 0, 0, 0.3);
+      border-radius: 7px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-family: var(--pow-font-display);
+      font-family: var(--skeuo-font-display);
+      font-size: 0.95rem;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     }
 
     .nav-title {
-      font-family: var(--pow-font-display);
+      font-family: var(--skeuo-font-display);
       font-weight: 700;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
+      letter-spacing: -0.01em;
     }
 
     .nav-tag-badge {
-      background: rgba(255, 255, 255, 0.1);
-      border: var(--pow-border);
-      font-family: var(--pow-font-mono);
-      font-size: 0.7rem;
-      font-weight: 600;
-      padding: 0.2rem 0.55rem;
-      border-radius: 4px;
+      background: var(--skeuo-well-bg);
+      border: var(--skeuo-chassis-border);
+      box-shadow: var(--skeuo-well-inset);
+      font-family: var(--skeuo-font-mono);
+      color: var(--skeuo-accent);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 0.25rem 0.65rem;
+      border-radius: 5px;
       text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Desktop Navigation Links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .nav-link {
+      color: var(--skeuo-text-muted);
+      text-decoration: none;
+      font-family: var(--skeuo-font-display);
+      font-size: 0.825rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      transition: color 120ms ease;
+    }
+
+    .nav-link:hover {
+      color: var(--skeuo-text);
     }
 
     .nav-actions {
@@ -120,106 +240,283 @@
       gap: 0.75rem;
     }
 
-    .pow-btn-sm {
+    /* Tactile Header Buttons */
+    .skeuo-btn-sm {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.45rem 0.85rem;
-      background: var(--pow-surface);
-      color: var(--pow-text);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius-btn);
-      font-family: var(--pow-font-display);
-      font-size: 0.8rem;
-      font-weight: 600;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.5rem 0.9rem;
+      background: var(--skeuo-btn-bg);
+      color: var(--skeuo-text);
+      border: var(--skeuo-btn-border);
+      box-shadow: var(--skeuo-btn-bevel), var(--skeuo-btn-shadow);
+      border-radius: var(--skeuo-radius-btn);
+      font-family: var(--skeuo-font-display);
+      font-size: 0.785rem;
+      font-weight: 700;
       text-decoration: none;
       cursor: pointer;
-      transition: background 120ms ease, transform 90ms ease;
+      user-select: none;
+      transition: transform 90ms ease, box-shadow 90ms ease, background 120ms ease;
     }
 
-    .pow-btn-sm:hover {
-      background: var(--pow-surface-hover);
-      transform: translateY(-1px);
+    .skeuo-btn-sm:active {
+      transform: translateY(1.5px);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.45);
     }
 
-    /* Hero Section (100svh safe viewport) */
-    .pow-hero {
+    .skeuo-btn-install-header {
+      background: var(--skeuo-accent-bg);
+      color: #FFFFFF;
+      border-color: rgba(0, 0, 0, 0.35);
+      box-shadow: var(--skeuo-accent-bevel), var(--skeuo-accent-shadow);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+    }
+
+    .skeuo-btn-install-header:active {
+      transform: translateY(1.5px);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.55);
+    }
+
+    /* Mobile Hamburger Button */
+    .nav-hamburger-btn {
+      display: none;
+      width: 38px;
+      height: 38px;
+      background: var(--skeuo-btn-bg);
+      color: var(--skeuo-text);
+      border: var(--skeuo-btn-border);
+      box-shadow: var(--skeuo-btn-bevel), var(--skeuo-btn-shadow);
+      cursor: pointer;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .nav-hamburger-btn:active {
+      transform: translateY(1.5px);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* =========================================================
+       MOBILE NAVIGATION DRAWER OVERLAY
+       ========================================================= */
+    .mobile-nav-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      opacity: 0;
+      transition: opacity 200ms ease;
+    }
+
+    .mobile-nav-backdrop.open {
+      display: block;
+      opacity: 1;
+    }
+
+    .mobile-nav-drawer {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: 290px;
+      max-width: 85vw;
+      height: 100vh;
+      background: var(--skeuo-chassis-bg);
+      border-left: var(--skeuo-chassis-border);
+      box-shadow: -8px 0 28px rgba(0, 0, 0, 0.6), var(--skeuo-chassis-highlight);
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      transition: right 240ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .mobile-nav-drawer.open {
+      right: 0;
+    }
+
+    .mobile-drawer-header {
+      padding: 1.25rem 1.25rem 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: var(--skeuo-chassis-border);
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.08);
+    }
+
+    .mobile-drawer-tag {
+      font-family: var(--skeuo-font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--skeuo-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .mobile-drawer-close-btn {
+      width: 34px;
+      height: 34px;
+      background: var(--skeuo-btn-bg);
+      color: var(--skeuo-text);
+      border: var(--skeuo-btn-border);
+      box-shadow: var(--skeuo-btn-bevel), var(--skeuo-btn-shadow);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .mobile-drawer-close-btn:active {
+      transform: translateY(1.5px);
+    }
+
+    .mobile-drawer-body {
+      padding: 1.25rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.75rem 1rem;
+      color: var(--skeuo-text);
+      text-decoration: none;
+      font-family: var(--skeuo-font-display);
+      font-size: 0.885rem;
+      font-weight: 700;
+      background: var(--skeuo-btn-bg);
+      border: var(--skeuo-btn-border);
+      box-shadow: var(--skeuo-btn-bevel), var(--skeuo-btn-shadow);
+      border-radius: var(--skeuo-radius-btn);
+      min-height: 44px;
+      transition: transform 90ms ease;
+    }
+
+    .mobile-nav-link:active {
+      transform: translateY(1.5px);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
+    }
+
+    .mobile-drawer-footer {
+      padding: 1.25rem;
+      border-top: var(--skeuo-chassis-border);
+    }
+
+    .mobile-drawer-cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      padding: 0.85rem;
+      background: var(--skeuo-accent-bg);
+      color: #FFFFFF;
+      border: 1px solid rgba(0, 0, 0, 0.4);
+      box-shadow: var(--skeuo-accent-bevel), var(--skeuo-accent-shadow);
+      border-radius: var(--skeuo-radius-btn);
+      font-family: var(--skeuo-font-display);
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-decoration: none;
+      min-height: 46px;
+    }
+
+    .mobile-drawer-cta-btn:active {
+      transform: translateY(1.5px);
+    }
+
+    /* =========================================================
+       HERO SECTION (100svh safe viewport)
+       ========================================================= */
+    .skeuo-hero {
       min-height: calc(100svh - 60px);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 3.5rem 1.25rem 2.5rem 1.25rem;
-      max-width: 1080px;
+      padding: 3.5rem 1.5rem 2.5rem 1.5rem;
+      max-width: 1120px;
       margin: 0 auto;
     }
 
     .hero-sticker-badge {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
-      background: var(--pow-well-bg);
-      color: var(--pow-accent);
-      border: var(--pow-border);
+      gap: 0.55rem;
+      background: var(--skeuo-well-bg);
+      color: var(--skeuo-accent);
+      border: var(--skeuo-chassis-border);
+      box-shadow: var(--skeuo-well-inset);
       border-radius: 999px;
-      padding: 0.35rem 0.95rem;
-      font-family: var(--pow-font-mono);
-      font-size: 0.785rem;
+      padding: 0.4rem 1.1rem;
+      font-family: var(--skeuo-font-mono);
+      font-size: 0.8rem;
       font-weight: 700;
       text-transform: uppercase;
+      letter-spacing: 0.05em;
       margin-bottom: 1.5rem;
     }
 
     .hero-title {
-      font-family: var(--pow-font-display);
-      font-size: clamp(2rem, 5.5vw, 3.6rem);
+      font-family: var(--skeuo-font-display);
+      font-size: clamp(2.1rem, 5.5vw, 3.8rem);
       font-weight: 800;
-      line-height: 1.15;
+      line-height: 1.14;
       letter-spacing: -0.03em;
       margin-bottom: 1.25rem;
-      max-width: 920px;
+      max-width: 960px;
+      color: var(--skeuo-text);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
     }
 
     .hero-desc {
       font-size: clamp(0.95rem, 2vw, 1.15rem);
-      color: var(--pow-text-muted);
-      max-width: 740px;
+      color: var(--skeuo-text-muted);
+      max-width: 760px;
       margin-bottom: 2rem;
-      line-height: 1.6;
+      line-height: 1.62;
     }
 
     /* Single-Line Inline Command Pill ("Sejajarin") */
-    .pow-command-pill {
+    .skeuo-command-pill {
       display: inline-flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
       gap: 0.65rem;
-      background: var(--pow-well-bg);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius-btn);
-      padding: 0.4rem 0.5rem 0.4rem 1.1rem;
+      background: var(--skeuo-well-bg);
+      border: var(--skeuo-chassis-border);
+      box-shadow: var(--skeuo-well-inset);
+      border-radius: var(--skeuo-radius-btn);
+      padding: 0.45rem 0.55rem 0.45rem 1.15rem;
       max-width: 100%;
       box-sizing: border-box;
       margin-bottom: 2rem;
     }
 
-    .pow-prompt {
-      font-family: var(--pow-font-mono);
+    .command-prompt-glyph {
+      font-family: var(--skeuo-font-mono);
       font-weight: 700;
-      color: var(--pow-accent);
+      color: var(--skeuo-accent);
       flex-shrink: 0;
       line-height: 1;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       user-select: none;
     }
 
-    .pow-code {
-      font-family: var(--pow-font-mono);
+    .command-code-text {
+      font-family: var(--skeuo-font-mono);
       font-size: clamp(0.72rem, 3.2vw, 0.875rem);
       font-weight: 600;
-      color: var(--pow-text);
+      color: var(--skeuo-text);
       white-space: nowrap;
       overflow-x: auto;
       scrollbar-width: none;
@@ -227,30 +524,32 @@
       user-select: all;
     }
 
-    .pow-code::-webkit-scrollbar {
+    .command-code-text::-webkit-scrollbar {
       display: none;
     }
 
-    .pow-copy-btn {
+    .command-copy-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      background: var(--pow-surface);
-      color: var(--pow-text);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius-btn);
-      padding: 0.4rem 0.8rem;
-      font-family: var(--pow-font-display);
+      gap: 0.4rem;
+      background: var(--skeuo-btn-bg);
+      color: var(--skeuo-text);
+      border: var(--skeuo-btn-border);
+      box-shadow: var(--skeuo-btn-bevel), var(--skeuo-btn-shadow);
+      border-radius: var(--skeuo-radius-btn);
+      padding: 0.45rem 0.85rem;
+      font-family: var(--skeuo-font-display);
       font-size: 0.75rem;
       font-weight: 700;
       cursor: pointer;
       flex-shrink: 0;
       line-height: 1;
-      transition: background 120ms ease;
+      transition: transform 90ms ease;
     }
 
-    .pow-copy-btn:hover {
-      background: var(--pow-surface-hover);
+    .command-copy-btn:active {
+      transform: translateY(1.5px);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4);
     }
 
     /* Hero CTA Group */
@@ -258,82 +557,104 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
+      gap: 1.1rem;
       margin-bottom: 2.75rem;
       flex-wrap: wrap;
     }
 
-    .pow-btn {
+    .skeuo-btn {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      font-family: var(--pow-font-display);
+      gap: 0.55rem;
+      padding: 0.85rem 1.75rem;
+      font-family: var(--skeuo-font-display);
       font-weight: 700;
-      font-size: 0.925rem;
-      border: var(--pow-border);
-      border-radius: var(--pow-radius-btn);
+      font-size: 0.95rem;
+      border: var(--skeuo-btn-border);
+      border-radius: var(--skeuo-radius-btn);
       cursor: pointer;
-      transition: transform 100ms ease, background 120ms ease;
       text-decoration: none;
+      user-select: none;
+      transition: transform 90ms ease, box-shadow 90ms ease;
     }
 
-    .pow-btn-primary {
-      background: var(--pow-accent);
-      color: #ffffff;
-      border-color: var(--pow-accent);
+    .skeuo-btn-primary {
+      background: var(--skeuo-accent-bg);
+      color: #FFFFFF;
+      border-color: rgba(0, 0, 0, 0.4);
+      box-shadow: var(--skeuo-accent-bevel), var(--skeuo-accent-shadow);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
     }
 
-    .pow-btn-secondary {
-      background: var(--pow-surface);
-      color: var(--pow-text);
+    .skeuo-btn-primary:active {
+      transform: translateY(1.5px);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.6);
     }
 
-    .pow-btn:hover {
-      transform: translateY(-2px);
+    .skeuo-btn-secondary {
+      background: var(--skeuo-btn-bg);
+      color: var(--skeuo-text);
+      box-shadow: var(--skeuo-btn-bevel), var(--skeuo-btn-shadow);
     }
 
-    /* 4-Stat Strip */
-    .pow-stat-strip {
+    .skeuo-btn-secondary:active {
+      transform: translateY(1.5px);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.45);
+    }
+
+    /* 4-Stat Hardware Meter Strip */
+    .skeuo-stat-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
       width: 100%;
-      max-width: 960px;
+      max-width: 1000px;
     }
 
-    .stat-box {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius);
-      padding: 1rem 0.85rem;
+    .stat-chassis-box {
+      background: var(--skeuo-chassis-bg);
+      border: var(--skeuo-chassis-border);
+      box-shadow: var(--skeuo-chassis-highlight), var(--skeuo-chassis-shadow);
+      border-radius: var(--skeuo-radius);
+      padding: 1.15rem 1rem;
       text-align: center;
-      box-shadow: var(--pow-shadow);
+      position: relative;
+    }
+
+    .stat-bezel-top {
+      position: absolute;
+      top: 6px;
+      left: 12px;
+      right: 12px;
+      height: 1px;
+      background: rgba(255, 255, 255, 0.2);
     }
 
     .stat-val {
-      font-family: var(--pow-font-display);
-      font-size: 1.5rem;
+      font-family: var(--skeuo-font-display);
+      font-size: 1.55rem;
       font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 0.25rem;
-      color: var(--pow-text);
+      line-height: 1.15;
+      margin-bottom: 0.3rem;
+      color: var(--skeuo-text);
     }
 
     .stat-label {
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--pow-text-muted);
+      font-size: 0.725rem;
+      font-weight: 700;
+      color: var(--skeuo-text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
     }
 
-    /* Content Sections */
-    .pow-section {
-      max-width: 1080px;
+    /* =========================================================
+       CONTENT SECTIONS COMMON
+       ========================================================= */
+    .skeuo-section {
+      max-width: 1120px;
       margin: 4.5rem auto;
-      padding: 0 1.25rem;
+      padding: 0 1.5rem;
     }
 
     .section-header {
@@ -342,47 +663,683 @@
 
     .section-badge {
       display: inline-block;
-      font-family: var(--pow-font-mono);
+      font-family: var(--skeuo-font-mono);
       font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
-      padding: 0.25rem 0.65rem;
-      background: var(--pow-well-bg);
-      color: var(--pow-accent);
-      border: var(--pow-border);
-      border-radius: 4px;
+      padding: 0.3rem 0.75rem;
+      background: var(--skeuo-well-bg);
+      color: var(--skeuo-accent);
+      border: var(--skeuo-chassis-border);
+      box-shadow: var(--skeuo-well-inset);
+      border-radius: 5px;
       margin-bottom: 0.75rem;
     }
 
     .section-title {
-      font-family: var(--pow-font-display);
-      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      font-family: var(--skeuo-font-display);
+      font-size: clamp(1.65rem, 4vw, 2.35rem);
       font-weight: 800;
       letter-spacing: -0.02em;
       line-height: 1.2;
+      color: var(--skeuo-text);
     }
 
     .section-desc {
       font-size: 1rem;
-      color: var(--pow-text-muted);
-      max-width: 680px;
+      color: var(--skeuo-text-muted);
+      max-width: 720px;
       margin-top: 0.5rem;
-      line-height: 1.6;
+      line-height: 1.62;
     }
 
-    /* Tabbed Installation Card */
-    .pow-card {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      box-shadow: var(--pow-shadow);
-      border-radius: var(--pow-radius);
-      overflow: hidden;
+    /* Master Hardware Chassis Enclosure */
+    .chassis-enclosure {
+      background: var(--skeuo-chassis-bg);
+      border: var(--skeuo-chassis-border);
+      box-shadow: var(--skeuo-chassis-highlight), var(--skeuo-chassis-shadow);
+      border-radius: var(--skeuo-radius);
+      padding: 2rem;
+      position: relative;
     }
 
+    /* =========================================================
+       STUDIO LAB INTERACTIVE SHOWCASE (#playground)
+       ========================================================= */
+    .studio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .hardware-module {
+      background: var(--skeuo-surface);
+      border: var(--skeuo-chassis-border);
+      box-shadow: var(--skeuo-surface-bevel), 0 8px 24px rgba(0, 0, 0, 0.25);
+      border-radius: 10px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .module-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+      padding-bottom: 0.75rem;
+    }
+
+    .module-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .module-title {
+      font-family: var(--skeuo-font-display);
+      font-size: 1rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .module-tag {
+      font-family: var(--skeuo-font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 0.15rem 0.45rem;
+      background: var(--skeuo-well-bg);
+      color: var(--skeuo-accent);
+      border-radius: 4px;
+      box-shadow: var(--skeuo-well-inset);
+    }
+
+    /* Module 1: Analog Channel Strip */
+    .channel-strip-well {
+      background: var(--skeuo-well-bg);
+      border: var(--skeuo-chassis-border);
+      box-shadow: var(--skeuo-well-inset);
+      border-radius: 8px;
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .strip-lcd-display {
+      background: var(--skeuo-lcd-bg);
+      color: var(--skeuo-lcd-text);
+      border: var(--skeuo-lcd-border);
+      box-shadow: var(--skeuo-lcd-inset);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      font-family: var(--skeuo-font-mono);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .lcd-label {
+      font-size: 0.72rem;
+      color: rgba(52, 211, 153, 0.65);
+      text-transform: uppercase;
+    }
+
+    .lcd-value {
+      font-size: 1.25rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    .controls-deck-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 1.25rem;
+      align-items: center;
+    }
+
+    /* Rotary Knob Construction */
+    .rotary-knob-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .knob-housing {
+      width: 78px;
+      height: 78px;
+      aspect-ratio: 1 / 1 !important;
+      flex-shrink: 0 !important;
+      background: radial-gradient(circle, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.1) 70%, transparent 100%);
+      border-radius: 50% !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      user-select: none;
+    }
+
+    .rotary-knob {
+      width: 66px;
+      height: 66px;
+      background: radial-gradient(circle at 35% 35%, #4A5260 0%, #292D36 60%, #1A1C22 100%);
+      border: 1px solid rgba(0, 0, 0, 0.8);
+      box-shadow: inset 0 2px 2px rgba(255, 255, 255, 0.4), inset 0 -2px 3px rgba(0, 0, 0, 0.8), 0 6px 14px rgba(0, 0, 0, 0.5);
+      cursor: grab;
+      position: relative;
+      transform: rotate(0deg);
+      transition: transform 60ms linear;
+    }
+
+    .knob-indicator-notch {
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 12px;
+      background: var(--skeuo-accent);
+      border-radius: 2px;
+      box-shadow: 0 0 4px var(--skeuo-accent);
+    }
+
+    .knob-step-buttons {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .knob-step-btn {
+      width: 28px;
+      height: 28px;
+      background: var(--skeuo-btn-bg);
+      color: var(--skeuo-text);
+      border: var(--skeuo-btn-border);
+      box-shadow: var(--skeuo-btn-bevel), var(--skeuo-btn-shadow);
+      border-radius: 4px;
+      font-weight: 800;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .knob-step-btn:active {
+      transform: translateY(1.5px);
+    }
+
+    /* Segmented VU Meter */
+    .vu-meter-column {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .vu-ladder {
+      display: flex;
+      gap: 4px;
+      background: rgba(0, 0, 0, 0.35);
+      padding: 6px;
+      border-radius: 6px;
+      border: 1px solid rgba(0, 0, 0, 0.4);
+    }
+
+    .vu-bar {
+      flex: 1;
+      height: 22px;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 2px;
+      transition: background 80ms ease, box-shadow 80ms ease;
+    }
+
+    .vu-bar.active-green {
+      background: #10B981;
+      box-shadow: 0 0 6px rgba(16, 185, 129, 0.8);
+    }
+
+    .vu-bar.active-amber {
+      background: #FFAE00;
+      box-shadow: 0 0 6px rgba(255, 174, 0, 0.8);
+    }
+
+    .vu-bar.active-red {
+      background: #EF4444;
+      box-shadow: 0 0 8px rgba(239, 68, 68, 0.9);
+    }
+
+    /* Tactile Channel Push-Buttons */
+    .tactile-buttons-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.65rem;
+    }
+
+    .tactile-toggle-btn {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      padding: 0.75rem 0.5rem;
+      background: var(--skeuo-btn-bg);
+      color: var(--skeuo-text);
+      border: var(--skeuo-btn-border);
+      box-shadow: var(--skeuo-btn-bevel), var(--skeuo-btn-shadow);
+      border-radius: 6px;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 90ms ease, box-shadow 90ms ease;
+    }
+
+    .tactile-toggle-btn:active {
+      transform: translateY(1.5px);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .tactile-toggle-btn.active {
+      background: var(--skeuo-well-bg);
+      box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.6);
+      border-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .btn-key-label {
+      font-family: var(--skeuo-font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Jewel LED Status Lights */
+    .led-jewel {
+      width: 12px;
+      height: 12px;
+      background: #3B4252;
+      border: 1px solid rgba(0, 0, 0, 0.6);
+      box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.2);
+      transition: background 120ms ease, box-shadow 120ms ease;
+    }
+
+    .led-jewel.active-green {
+      background: var(--skeuo-led-green);
+      box-shadow: var(--skeuo-led-green-glow), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+    }
+
+    .led-jewel.active-amber {
+      background: var(--skeuo-led-amber);
+      box-shadow: var(--skeuo-led-amber-glow), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+    }
+
+    .led-jewel.active-blue {
+      background: var(--skeuo-led-blue);
+      box-shadow: var(--skeuo-led-blue-glow), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+    }
+
+    .led-jewel.active-red {
+      background: var(--skeuo-led-red);
+      box-shadow: var(--skeuo-led-red-glow), inset 0 1px 1px rgba(255, 255, 255, 0.7);
+    }
+
+    /* Rocker Switch */
+    .rocker-switch-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 0.5rem;
+    }
+
+    .rocker-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .rocker-housing {
+      width: 58px;
+      height: 32px;
+      background: #15181C;
+      border: 1px solid rgba(0, 0, 0, 0.8);
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.8), 0 1px 0 rgba(255,255,255,0.15);
+      border-radius: 4px;
+      padding: 3px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+    }
+
+    .rocker-paddle {
+      width: 25px;
+      height: 24px;
+      background: linear-gradient(180deg, #4A5160 0%, #2A2E38 100%);
+      border: 1px solid rgba(0, 0, 0, 0.5);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 2px 4px rgba(0, 0, 0, 0.6);
+      border-radius: 3px;
+      transition: transform 140ms cubic-bezier(0.2, 0.8, 0.4, 1), background 140ms ease;
+    }
+
+    .rocker-housing.engaged .rocker-paddle {
+      transform: translateX(25px);
+      background: var(--skeuo-accent-bg);
+      box-shadow: var(--skeuo-accent-bevel), 0 2px 6px rgba(0, 0, 0, 0.5);
+    }
+
+    .rocker-state-label {
+      font-family: var(--skeuo-font-mono);
+      font-size: 0.785rem;
+      font-weight: 700;
+      color: var(--skeuo-text);
+    }
+
+    /* Module 2: Hardware Finish & Bevel Calibrator */
+    .finish-selector-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.65rem;
+    }
+
+    .finish-option-btn {
+      padding: 0.65rem 0.5rem;
+      background: var(--skeuo-btn-bg);
+      color: var(--skeuo-text);
+      border: var(--skeuo-btn-border);
+      box-shadow: var(--skeuo-btn-bevel), var(--skeuo-btn-shadow);
+      border-radius: 6px;
+      font-family: var(--skeuo-font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      transition: transform 90ms ease;
+    }
+
+    .finish-option-btn:active {
+      transform: translateY(1.5px);
+    }
+
+    .finish-option-btn.active {
+      background: var(--skeuo-accent-bg);
+      color: #FFFFFF;
+      border-color: rgba(0, 0, 0, 0.4);
+      box-shadow: var(--skeuo-accent-bevel), var(--skeuo-accent-shadow);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+    }
+
+    .slider-control-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .slider-header-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .slider-value-pill {
+      font-family: var(--skeuo-font-mono);
+      font-size: 0.72rem;
+      padding: 0.15rem 0.5rem;
+      background: var(--skeuo-well-bg);
+      border-radius: 4px;
+      box-shadow: var(--skeuo-well-inset);
+      color: var(--skeuo-accent);
+    }
+
+    .hardware-slider {
+      width: 100%;
+      height: 10px;
+      background: var(--skeuo-well-bg);
+      box-shadow: var(--skeuo-well-inset);
+      border-radius: 5px;
+      outline: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+    }
+
+    .hardware-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 22px;
+      height: 22px;
+      aspect-ratio: 1 / 1 !important;
+      flex-shrink: 0 !important;
+      background: var(--skeuo-btn-bg);
+      border: 1px solid rgba(0, 0, 0, 0.6);
+      box-shadow: var(--skeuo-btn-bevel), 0 3px 6px rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+      cursor: grab;
+    }
+
+    .hardware-slider::-moz-range-thumb {
+      width: 22px;
+      height: 22px;
+      aspect-ratio: 1 / 1 !important;
+      flex-shrink: 0 !important;
+      background: var(--skeuo-btn-bg);
+      border: 1px solid rgba(0, 0, 0, 0.6);
+      box-shadow: var(--skeuo-btn-bevel), 0 3px 6px rgba(0, 0, 0, 0.4);
+      border-radius: 50%;
+      cursor: grab;
+    }
+
+    /* Mechanical Travel Test Pad */
+    .travel-test-pad {
+      background: var(--skeuo-well-bg);
+      border: var(--skeuo-chassis-border);
+      box-shadow: var(--skeuo-well-inset);
+      border-radius: 8px;
+      padding: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .test-pad-btn {
+      padding: 0.75rem 1.25rem;
+      background: var(--skeuo-btn-bg);
+      color: var(--skeuo-text);
+      border: var(--skeuo-btn-border);
+      box-shadow: var(--skeuo-btn-bevel), var(--skeuo-btn-shadow);
+      border-radius: 6px;
+      font-family: var(--skeuo-font-display);
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 90ms ease, box-shadow 90ms ease;
+    }
+
+    .test-pad-btn:active {
+      transform: translateY(1.5px);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    .test-pad-status {
+      font-family: var(--skeuo-font-mono);
+      font-size: 0.75rem;
+      color: var(--skeuo-text-muted);
+    }
+
+    .token-preview-code {
+      background: var(--skeuo-lcd-bg);
+      color: var(--skeuo-lcd-text);
+      border: var(--skeuo-lcd-border);
+      box-shadow: var(--skeuo-lcd-inset);
+      border-radius: 6px;
+      padding: 0.75rem 1rem;
+      font-family: var(--skeuo-font-mono);
+      font-size: 0.75rem;
+      line-height: 1.5;
+      overflow-x: auto;
+    }
+
+    /* Module 3: Card-in-Card Rack-Mount Modular Pane */
+    .modular-rack-card {
+      background: var(--skeuo-chassis-bg);
+      border: var(--skeuo-chassis-border);
+      box-shadow: var(--skeuo-chassis-highlight), var(--skeuo-chassis-shadow);
+      border-radius: 10px;
+      padding: 1.25rem;
+      position: relative;
+    }
+
+    /* Nested Recessed Sub-Well (Card inside Card) */
+    .nested-instrument-well {
+      background: var(--skeuo-well-bg);
+      border: 1px dashed rgba(0, 0, 0, 0.35);
+      box-shadow: var(--skeuo-well-inset);
+      border-radius: 8px;
+      padding: 1.15rem;
+      margin-top: 0.85rem;
+    }
+
+    [data-theme="dark"] .nested-instrument-well {
+      border: 1px dashed rgba(255, 255, 255, 0.15);
+    }
+
+    .rack-param-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--skeuo-font-mono);
+      font-size: 0.785rem;
+      margin-bottom: 1rem;
+    }
+
+    .rack-param-table th {
+      text-align: left;
+      padding: 0.4rem 0.5rem;
+      color: var(--skeuo-text-muted);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+      font-size: 0.7rem;
+      text-transform: uppercase;
+    }
+
+    [data-theme="dark"] .rack-param-table th {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .rack-param-table td {
+      padding: 0.5rem;
+      color: var(--skeuo-text);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    [data-theme="dark"] .rack-param-table td {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .rack-action-row {
+      display: flex;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+    }
+
+    .rack-action-btn {
+      padding: 0.5rem 0.85rem;
+      background: var(--skeuo-btn-bg);
+      color: var(--skeuo-text);
+      border: var(--skeuo-btn-border);
+      box-shadow: var(--skeuo-btn-bevel), var(--skeuo-btn-shadow);
+      border-radius: 5px;
+      font-family: var(--skeuo-font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 90ms ease;
+    }
+
+    .rack-action-btn:active {
+      transform: translateY(1.5px);
+      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Module 4: Jewel Status Indicators & Contrast Table */
+    .jewels-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+      padding: 0.85rem 0;
+    }
+
+    .jewel-status-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--skeuo-well-bg);
+      border: var(--skeuo-chassis-border);
+      box-shadow: var(--skeuo-well-inset);
+      border-radius: 8px;
+      padding: 0.85rem 0.5rem;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 90ms ease;
+    }
+
+    .jewel-status-card:active {
+      transform: translateY(1.5px);
+    }
+
+    .jewel-status-card.selected {
+      border: 1px solid var(--skeuo-accent);
+    }
+
+    .jewel-label {
+      font-family: var(--skeuo-font-mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      color: var(--skeuo-text);
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .contrast-matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--skeuo-font-mono);
+      font-size: 0.75rem;
+    }
+
+    .contrast-matrix-table th {
+      text-align: left;
+      padding: 0.45rem 0.6rem;
+      background: var(--skeuo-well-bg);
+      color: var(--skeuo-text-muted);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+      font-size: 0.68rem;
+      text-transform: uppercase;
+    }
+
+    .contrast-matrix-table td {
+      padding: 0.55rem 0.6rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      color: var(--skeuo-text);
+    }
+
+    .badge-pass {
+      display: inline-block;
+      padding: 0.15rem 0.45rem;
+      background: rgba(16, 185, 129, 0.15);
+      color: #10B981;
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      border-radius: 4px;
+      font-weight: 800;
+      font-size: 0.68rem;
+    }
+
+    /* =========================================================
+       INSTALLATION GUIDE SECTION (#install)
+       ========================================================= */
     .tab-header-strip {
       display: flex;
-      background: var(--pow-well-bg);
-      border-bottom: var(--pow-border);
+      background: var(--skeuo-well-bg);
+      border-bottom: var(--skeuo-chassis-border);
       overflow-x: auto;
       scrollbar-width: none;
     }
@@ -395,25 +1352,25 @@
       padding: 0.85rem 1.4rem;
       background: transparent;
       border: none;
-      border-right: var(--pow-border);
-      font-family: var(--pow-font-display);
+      border-right: var(--skeuo-chassis-border);
+      font-family: var(--skeuo-font-display);
       font-size: 0.85rem;
       font-weight: 700;
-      color: var(--pow-text-muted);
+      color: var(--skeuo-text-muted);
       cursor: pointer;
       white-space: nowrap;
       transition: background 120ms ease, color 120ms ease;
     }
 
     .tab-switch-btn:hover {
-      background: var(--pow-surface-hover);
-      color: var(--pow-text);
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--skeuo-text);
     }
 
     .tab-switch-btn.active {
-      background: var(--pow-surface);
-      color: var(--pow-accent);
-      border-bottom: 2px solid var(--pow-accent);
+      background: var(--skeuo-chassis-bg);
+      color: var(--skeuo-accent);
+      border-bottom: 2px solid var(--skeuo-accent);
     }
 
     .tab-body {
@@ -426,7 +1383,7 @@
     }
 
     .install-step-title {
-      font-family: var(--pow-font-display);
+      font-family: var(--skeuo-font-display);
       font-size: 1.15rem;
       font-weight: 700;
       margin-bottom: 0.65rem;
@@ -434,328 +1391,348 @@
 
     .install-step-desc {
       font-size: 0.9rem;
-      color: var(--pow-text-muted);
+      color: var(--skeuo-text-muted);
       margin-bottom: 1.25rem;
     }
 
     /* Terminal Console Window */
-    .pow-terminal {
-      background: #0d1117;
-      color: #f0f6fc;
-      border: 1px solid rgba(255, 255, 255, 0.12);
+    .skeuo-terminal {
+      background: #0B0D10;
+      color: #E2E8F0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.85);
       border-radius: 8px;
       overflow: hidden;
       margin-bottom: 1.5rem;
     }
 
-    .terminal-topbar {
-      background: #161b22;
-      padding: 0.65rem 1rem;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    .terminal-titlebar {
+      background: linear-gradient(180deg, #252830 0%, #1A1C22 100%);
+      padding: 0.55rem 1rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .terminal-dots {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      gap: 0.45rem;
     }
 
     .dot {
       width: 10px;
       height: 10px;
-      border-radius: 50%;
+      aspect-ratio: 1 / 1 !important;
+      flex-shrink: 0 !important;
+      border-radius: 50% !important;
     }
 
-    .dot.red { background: #ff5f56; }
-    .dot.yellow { background: #ffbd2e; }
-    .dot.green { background: #27c93f; }
+    .dot.red { background: #EF4444; }
+    .dot.yellow { background: #FFAE00; }
+    .dot.green { background: #10B981; }
 
     .terminal-label {
-      font-family: var(--pow-font-mono);
-      font-size: 0.75rem;
-      color: #8b949e;
-      font-weight: 600;
+      font-family: var(--skeuo-font-mono);
+      font-size: 0.72rem;
+      color: #94A3B8;
+    }
+
+    .terminal-copy-action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.3rem 0.65rem;
+      background: rgba(255, 255, 255, 0.08);
+      color: #E2E8F0;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 4px;
+      font-family: var(--skeuo-font-mono);
+      font-size: 0.7rem;
+      cursor: pointer;
+    }
+
+    .terminal-copy-action-btn:active {
+      transform: translateY(1px);
     }
 
     .terminal-content {
       padding: 1.15rem;
-      font-family: var(--pow-font-mono);
-      font-size: 0.85rem;
+      font-family: var(--skeuo-font-mono);
+      font-size: 0.825rem;
       line-height: 1.6;
       overflow-x: auto;
     }
 
-    .terminal-line {
-      display: flex;
-      align-items: baseline;
-      gap: 0.75rem;
-      margin-bottom: 0.45rem;
-    }
-
-    .terminal-line:last-child {
-      margin-bottom: 0;
-    }
-
-    .line-p {
-      color: var(--pow-accent);
+    .terminal-content .cmd {
+      color: #38BDF8;
       font-weight: 700;
-      user-select: none;
-      flex-shrink: 0;
     }
 
-    .line-cmd {
-      color: #f0f6fc;
-      word-break: break-all;
+    .terminal-content .comment {
+      color: #64748B;
     }
 
-    .line-comment {
-      color: #8b949e;
-      font-style: italic;
-    }
-
-    /* Bento Demo Specifics */
-    .bento-demo-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 16px;
-    }
-
-    .bento-tile {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius);
-      padding: 1.75rem;
-      box-shadow: var(--pow-shadow);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .bento-tag {
-      display: inline-block;
-      font-size: 0.725rem;
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      color: var(--pow-accent);
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-    }
-
-    /* Accordion / FAQ */
-    .pow-faq-item {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      box-shadow: var(--pow-shadow);
-      border-radius: var(--pow-radius);
-      margin-bottom: 1rem;
-      overflow: hidden;
-    }
-
-    .pow-faq-header {
-      padding: 1rem 1.25rem;
-      font-family: var(--pow-font-display);
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      user-select: none;
-      background: var(--pow-surface);
-      transition: background 120ms ease;
-    }
-
-    .pow-faq-header:hover {
-      background: var(--pow-surface-hover);
-    }
-
-    .faq-arrow {
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      transition: transform 180ms ease;
-    }
-
-    .pow-faq-item.open .faq-arrow {
-      transform: rotate(90deg);
-    }
-
-    .pow-faq-body {
-      padding: 0 1.25rem 1.25rem 1.25rem;
-      font-size: 0.875rem;
-      color: var(--pow-text-muted);
-      line-height: 1.6;
-      display: none;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 1rem;
-    }
-
-    .pow-faq-item.open .pow-faq-body {
-      display: block;
-    }
-
-    /* Token Specification Table */
+    /* =========================================================
+       DESIGN TOKENS CHEATSHEET SECTION (#tokens)
+       ========================================================= */
     .token-table-wrap {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      box-shadow: var(--pow-shadow);
-      border-radius: var(--pow-radius);
       overflow-x: auto;
+      border-radius: var(--skeuo-radius);
+      border: var(--skeuo-chassis-border);
+      box-shadow: var(--skeuo-chassis-shadow);
     }
 
-    .pow-table {
+    .skeuo-table {
       width: 100%;
       border-collapse: collapse;
+      background: var(--skeuo-chassis-bg);
+      font-size: 0.85rem;
       text-align: left;
     }
 
-    .pow-table th, .pow-table td {
-      padding: 0.9rem 1.25rem;
-      border-bottom: var(--pow-border);
-      font-size: 0.85rem;
-    }
-
-    .pow-table th {
-      background: var(--pow-well-bg);
-      font-family: var(--pow-font-display);
-      font-weight: 700;
+    .skeuo-table th {
+      background: var(--skeuo-well-bg);
+      padding: 0.85rem 1.15rem;
+      font-family: var(--skeuo-font-display);
+      font-weight: 800;
+      font-size: 0.785rem;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
+      letter-spacing: 0.04em;
+      color: var(--skeuo-text-muted);
+      border-bottom: var(--skeuo-chassis-border);
     }
 
-    .pow-table tr:last-child td {
-      border-bottom: none;
+    .skeuo-table td {
+      padding: 0.85rem 1.15rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      color: var(--skeuo-text);
+    }
+
+    [data-theme="dark"] .skeuo-table td {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     }
 
     .token-code {
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      color: var(--pow-accent);
-    }
-
-    /* Footer (Balanced 2-column mobile architecture) */
-    .pow-footer {
-      background: var(--pow-surface);
-      border-top: var(--pow-border);
-      margin-top: 5rem;
-      padding: 3rem 1.25rem 2rem 1.25rem;
-    }
-
-    .footer-inner {
-      max-width: 1080px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 2.5rem;
-      margin-bottom: 2.5rem;
-    }
-
-    .footer-brand h4 {
-      font-family: var(--pow-font-display);
-      font-size: 1.2rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-brand p {
-      font-size: 0.85rem;
-      color: var(--pow-text-muted);
-      max-width: 380px;
-      line-height: 1.6;
-    }
-
-    .footer-col h5 {
-      font-family: var(--pow-font-display);
+      font-family: var(--skeuo-font-mono);
       font-size: 0.8rem;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 1rem;
-      color: var(--pow-text);
+      color: var(--skeuo-accent);
     }
 
-    .footer-col ul {
-      list-style: none;
+    /* =========================================================
+       FAQ ACCORDION SECTION (#faq)
+       ========================================================= */
+    .skeuo-faq-item {
+      background: var(--skeuo-chassis-bg);
+      border: var(--skeuo-chassis-border);
+      box-shadow: var(--skeuo-chassis-highlight), 0 4px 12px rgba(0, 0, 0, 0.15);
+      border-radius: 8px;
+      margin-bottom: 0.85rem;
+      overflow: hidden;
+      transition: box-shadow 140ms ease;
     }
 
-    .footer-col ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-col ul a {
-      color: var(--pow-text-muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: color 90ms ease;
-    }
-
-    .footer-col ul a:hover {
-      color: var(--pow-accent);
-    }
-
-    .footer-bottom {
-      max-width: 1080px;
-      margin: 0 auto;
-      padding-top: 1.5rem;
-      border-top: var(--pow-border);
+    .skeuo-faq-header {
+      padding: 1.15rem 1.35rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      font-size: 0.8rem;
-      color: var(--pow-text-muted);
-    }
-
-    /* Toast Notification */
-    .pow-toast {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: var(--pow-surface);
-      color: var(--pow-text);
-      border: var(--pow-border);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-      padding: 0.65rem 1.2rem;
-      border-radius: var(--pow-radius-btn);
-      font-family: var(--pow-font-display);
-      font-size: 0.85rem;
+      cursor: pointer;
+      font-family: var(--skeuo-font-display);
       font-weight: 700;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 150ms ease, transform 150ms ease;
-      pointer-events: none;
-      z-index: 1000;
+      font-size: 0.95rem;
+      user-select: none;
     }
 
-    .pow-toast.show {
-      opacity: 1;
-      transform: translateY(0);
+    .faq-icon-arrow {
+      transition: transform 180ms ease;
+      color: var(--skeuo-accent);
+      flex-shrink: 0;
+    }
+
+    .skeuo-faq-item.open .faq-icon-arrow {
+      transform: rotate(90deg);
+    }
+
+    .skeuo-faq-body {
+      padding: 0 1.35rem 1.15rem 1.35rem;
+      color: var(--skeuo-text-muted);
+      font-size: 0.9rem;
+      line-height: 1.62;
+      display: none;
+    }
+
+    .skeuo-faq-item.open .skeuo-faq-body {
+      display: block;
     }
 
     /* =========================================================
-       RESPONSIVE BREAKPOINTS (FLUID & COMPACT MOBILE)
+       SITE FOOTER
        ========================================================= */
+    .skeuo-footer {
+      background: var(--skeuo-chassis-bg);
+      border-top: var(--skeuo-chassis-border);
+      box-shadow: var(--skeuo-chassis-highlight);
+      padding: 4rem 1.5rem 2.5rem 1.5rem;
+      margin-top: 5rem;
+    }
+
+    .footer-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-brand h4 {
+      font-family: var(--skeuo-font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-brand p {
+      color: var(--skeuo-text-muted);
+      font-size: 0.875rem;
+      line-height: 1.6;
+      max-width: 360px;
+    }
+
+    .footer-col h5 {
+      font-family: var(--skeuo-font-display);
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.15rem;
+      color: var(--skeuo-text);
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .footer-col a {
+      color: var(--skeuo-text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 120ms ease;
+    }
+
+    .footer-col a:hover {
+      color: var(--skeuo-text);
+    }
+
+    .footer-bottom {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding-top: 1.75rem;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      color: var(--skeuo-text-muted);
+    }
+
+    [data-theme="dark"] .footer-bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* =========================================================
+       TOAST NOTIFICATION
+       ========================================================= */
+    .skeuo-toast {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      background: var(--skeuo-chassis-bg);
+      color: var(--skeuo-text);
+      border: var(--skeuo-chassis-border);
+      box-shadow: var(--skeuo-chassis-highlight), 0 10px 25px rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      padding: 0.75rem 1.25rem;
+      font-family: var(--skeuo-font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      z-index: 2000;
+      transform: translateY(100px);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1), opacity 200ms ease;
+    }
+
+    .skeuo-toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    /* =========================================================
+       RESPONSIVE BREAKPOINTS (DOWN TO 320PX STRICT ANTI-BLOAT)
+       ========================================================= */
+    @media (max-width: 900px) {
+      .studio-grid {
+        grid-template-columns: 1fr;
+      }
+      .controls-deck-row {
+        grid-template-columns: 1fr;
+        justify-items: center;
+      }
+    }
+
     @media (max-width: 768px) {
-      .pow-nav { padding: 0.65rem 1rem; }
-      .nav-title { font-size: 0.95rem; }
-      .nav-tag-badge { display: none; }
-      
-      .pow-hero { padding: 2.5rem 1rem 1.5rem 1rem; }
-      .hero-title { font-size: clamp(1.6rem, 5.5vw, 2.3rem); }
-      .hero-desc { font-size: 0.9rem; margin-bottom: 1.5rem; }
+      .skeuo-nav {
+        padding: 0.65rem 1rem !important;
+      }
+      .nav-links.desktop-only,
+      .nav-actions .desktop-only {
+        display: none !important;
+      }
+      .nav-hamburger-btn {
+        display: inline-flex !important;
+      }
+      .nav-tag-badge {
+        display: none !important;
+      }
 
-      .hero-btn-group { flex-direction: column; width: 100%; gap: 0.65rem; }
-      .pow-btn { width: 100%; }
+      .skeuo-hero {
+        padding: 2.75rem 1rem 1.75rem 1rem;
+      }
+      .hero-title {
+        font-size: clamp(1.4rem, 5vw, 2.15rem);
+      }
+      .hero-desc {
+        font-size: 0.875rem;
+        margin-bottom: 1.5rem;
+      }
 
-      .pow-stat-strip { grid-template-columns: repeat(2, 1fr); gap: 0.65rem; }
-      .stat-val { font-size: 1.35rem; }
+      .hero-btn-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.65rem;
+      }
+      .skeuo-btn {
+        width: 100%;
+      }
 
-      .bento-demo-grid { grid-template-columns: 1fr; }
+      .skeuo-stat-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.65rem;
+      }
+      .stat-val {
+        font-size: 1.3rem;
+      }
 
       .footer-inner {
         grid-template-columns: repeat(2, 1fr);
@@ -764,7 +1741,10 @@
       .footer-brand {
         grid-column: 1 / -1;
         padding-bottom: 1rem;
-        border-bottom: var(--pow-border);
+        border-bottom: 1px dashed rgba(0, 0, 0, 0.15);
+      }
+      [data-theme="dark"] .footer-brand {
+        border-bottom: 1px dashed rgba(255, 255, 255, 0.15);
       }
       .footer-bottom {
         flex-direction: column-reverse;
@@ -774,627 +1754,834 @@
     }
 
     @media (max-width: 480px) {
-      .hero-title { font-size: 1.45rem; line-height: 1.18; }
-      .hero-desc { font-size: 0.825rem; }
-      .pow-stat-strip { grid-template-columns: 1fr 1fr; gap: 0.45rem; }
-      .stat-box { padding: 0.75rem 0.5rem; }
-      .stat-val { font-size: 1.2rem; }
-      .stat-label { font-size: 0.65rem; }
-
-      .section-title { font-size: 1.3rem; }
-      .section-desc { font-size: 0.825rem; }
-
-      .tab-body { padding: 1rem; }
-      .terminal-content { font-size: 0.75rem; padding: 0.85rem; }
-
-      .pow-command-pill {
-        gap: 0.4rem;
-        padding: 0.3rem 0.35rem 0.3rem 0.75rem;
+      html {
+        font-size: 14.5px;
       }
-      .pow-copy-btn {
-        padding: 0.35rem 0.6rem;
-        font-size: 0.7rem;
+      .nav-title {
+        font-size: 0.95rem;
       }
-    }
+      .skeuo-hero {
+        padding: 2rem 0.75rem 1.25rem 0.75rem !important;
+      }
+      .hero-title {
+        font-size: clamp(1.25rem, 4.8vw, 1.7rem) !important;
+        line-height: 1.24;
+      }
+      .hero-desc {
+        font-size: 0.8rem !important;
+      }
 
-    /* --- Mobile Hamburger & Drawer Navigation --- */
-    .nav-hamburger-btn {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: var(--pow-radius-sm, 6px);
-      background: var(--pow-surface-elevated, #FFFFFF);
-      border: var(--pow-border, 1px solid #CBD5E1);
-      color: var(--pow-text, #0F172A);
-      cursor: pointer;
-      transition: all 120ms ease;
-    }
+      .chassis-enclosure {
+        padding: 1.25rem 0.85rem !important;
+      }
 
-    .nav-hamburger-btn:hover {
-      border-color: var(--pow-accent, #3B82F6);
-      color: var(--pow-accent, #3B82F6);
-    }
+      .skeuo-stat-strip {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.45rem;
+      }
+      .stat-chassis-box {
+        padding: 0.85rem 0.5rem;
+      }
+      .stat-val {
+        font-size: 1.15rem;
+      }
+      .stat-label {
+        font-size: 0.625rem;
+      }
 
-    .mobile-nav-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(10, 12, 16, 0.6);
-      -webkit-backdrop-filter: blur(4px);
-      backdrop-filter: blur(4px);
-      z-index: 998;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 200ms ease;
-    }
+      .tactile-buttons-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
-    .mobile-nav-backdrop.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
+      .finish-selector-grid {
+        grid-template-columns: 1fr;
+      }
 
-    .mobile-nav-drawer {
-      position: fixed;
-      top: 0;
-      right: -320px;
-      width: min(300px, 86vw);
-      height: 100vh;
-      height: 100dvh;
-      z-index: 999;
-      background: var(--pow-surface-elevated, #FFFFFF);
-      border-left: var(--pow-border, 1px solid #CBD5E1);
-      box-shadow: -10px 0 35px rgba(0, 0, 0, 0.35);
-      display: flex;
-      flex-direction: column;
-      transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
-      padding: 1.25rem 1.25rem;
-      box-sizing: border-box;
-    }
+      .jewels-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
-    .mobile-nav-drawer.open {
-      transform: translateX(-320px);
-    }
+      .section-title {
+        font-size: clamp(1.15rem, 4vw, 1.45rem) !important;
+      }
+      .section-desc {
+        font-size: 0.8rem !important;
+      }
 
-    .mobile-drawer-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-bottom: 0.85rem;
-      border-bottom: 1px solid var(--pow-border, #CBD5E1);
-      margin-bottom: 1.25rem;
-    }
-
-    .style-drawer-tag {
-      font-family: var(--pow-font-mono, monospace);
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--pow-accent, #3B82F6);
-    }
-
-    .mobile-drawer-close-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 4px;
-      background: var(--pow-surface, #F8FAFC);
-      border: var(--pow-border, 1px solid #CBD5E1);
-      color: var(--pow-text, #0F172A);
-      cursor: pointer;
-    }
-
-    .mobile-drawer-body {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      flex: 1;
-      overflow-y: auto;
-    }
-
-    .mobile-nav-link {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      min-height: 44px;
-      padding: 0.65rem 0.85rem;
-      border-radius: var(--pow-radius-sm, 6px);
-      background: var(--pow-surface, #F8FAFC);
-      border: var(--pow-border, 1px solid #CBD5E1);
-      color: var(--pow-text, #0F172A);
-      text-decoration: none;
-      font-family: var(--pow-font-sans, inherit);
-      font-weight: 600;
-      font-size: 0.85rem;
-      transition: all 120ms ease;
-    }
-
-    .mobile-nav-link:hover {
-      border-color: var(--pow-accent, #3B82F6);
-      color: var(--pow-accent, #3B82F6);
-      transform: translateX(3px);
-    }
-
-    .mobile-drawer-footer {
-      padding-top: 1rem;
-      border-top: 1px solid var(--pow-border, #CBD5E1);
-    }
-
-    .mobile-drawer-cta-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      width: 100%;
-      min-height: 44px;
-      padding: 0.75rem 1rem;
-      background: var(--pow-accent, #3B82F6);
-      color: #FFFFFF;
-      border-radius: var(--pow-radius-btn, 6px);
-      font-family: var(--pow-font-sans, inherit);
-      font-weight: 700;
-      font-size: 0.85rem;
-      text-decoration: none;
-    }
-
-    /* Strict 320px Responsive Baseline & Anti-Bloat Fluid Typography */
-    @media (max-width: 768px) {
-      .pow-nav { padding: 0.65rem 1rem !important; }
-      .nav-actions .desktop-only { display: none !important; }
-      .nav-hamburger-btn { display: inline-flex !important; }
-      .nav-tag-badge { display: none !important; }
-    }
-
-    @media (max-width: 480px) {
-      html { font-size: 15px; }
-      body { overflow-x: hidden; }
-      .nav-title { font-size: 0.95rem; }
-      .pow-hero { padding: 2rem 0.75rem 1.25rem 0.75rem !important; }
-      .hero-title { font-size: clamp(1.35rem, 5.5vw, 1.75rem) !important; line-height: 1.25; margin-bottom: 0.85rem; }
-      .hero-desc { font-size: 0.85rem !important; line-height: 1.55; }
-      .pow-section { padding: 2.25rem 0.75rem !important; }
-      .section-title { font-size: clamp(1.2rem, 4.5vw, 1.45rem) !important; }
-      .section-desc { font-size: 0.85rem !important; }
+      .tab-body {
+        padding: 1rem;
+      }
+      .terminal-content {
+        font-size: 0.725rem;
+        padding: 0.85rem;
+      }
     }
 
     @media (max-width: 360px) {
-      html { font-size: 14px; }
-      .pow-nav { padding: 0.45rem 0.5rem !important; }
-      .pow-hero { padding: 1.5rem 0.5rem 1rem 0.5rem !important; }
-      .hero-title { font-size: 1.35rem !important; }
-      .pow-stat-strip { grid-template-columns: 1fr !important; }
-    }
-  
-    /* --- Strict 1:1 Circle Geometry Preservation (Anti-Oval) --- */
-    .avatar-circle,
-    .clay-avatar-frame,
-    .clay-circle-btn,
-    .track-play-btn,
-    .mix-floating-play,
-    .ctrl-circle-btn,
-    .nav-hamburger-btn,
-    .brut-hamburger-btn,
-    .mobile-drawer-close-btn,
-    .brand-logo-img,
-    .nav-logo-img,
-    .nav-logo-box,
-    .pipeline-icon-box,
-    .verify-icon-box,
-    .pod-cover-icon,
-    .metric-icon-squircle,
-    .color-swatch,
-    .dot,
-    .clay-dot,
-    .hero-badge-dot,
-    .live-dot-green,
-    .live-pulse-dot,
-    .legend-color-dot,
-    .status-dot,
-    .skeuo-led {
-      aspect-ratio: 1 / 1 !important;
-      flex-shrink: 0 !important;
-    }
-    img.avatar-circle,
-    img.brand-logo-img,
-    img.nav-logo-img {
-      object-fit: cover;
+      html {
+        font-size: 13.5px;
+      }
+      .skeuo-nav {
+        padding: 0.45rem 0.5rem !important;
+      }
+      .skeuo-hero {
+        padding: 1.5rem 0.5rem 1rem 0.5rem !important;
+      }
+      .hero-title {
+        font-size: 1.25rem !important;
+      }
+      .skeuo-stat-strip {
+        grid-template-columns: 1fr !important;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation -->
-  <header class="pow-nav">
+  <!-- Top Navigation Header -->
+  <header class="skeuo-nav">
     <a href="index.html" class="nav-brand-group">
       <div class="nav-logo-box">TE</div>
       <strong class="nav-title">Taste Engine</strong>
-      <span class="nav-tag-badge">Skeuomorphism PoW</span>
+      <span class="nav-tag-badge">#09 SKEUOMORPHISM</span>
     </a>
+
+    <!-- Desktop Nav Links -->
+    <nav class="nav-links desktop-only" aria-label="Desktop navigation">
+      <a href="#playground" class="nav-link">[01_HARDWARE_LAB]</a>
+      <a href="#install" class="nav-link">[02_INSTALLATION]</a>
+      <a href="#tokens" class="nav-link">[03_TOKENS]</a>
+      <a href="#faq" class="nav-link">[04_FAQ]</a>
+    </nav>
+
     <div class="nav-actions">
-      <a href="index.html" class="pow-btn-sm desktop-only" title="Back to main gallery">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        <span>All 10 Styles</span>
+      <a href="index.html" class="skeuo-btn-sm desktop-only" title="Back to main gallery">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>[ 10 STYLES ]</span>
       </a>
-      <button class="pow-btn-sm" id="themeToggleBtn" aria-label="Toggle theme">
-        <span id="themeLabel"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>LIGHT</span>
+      <a href="#install" class="skeuo-btn-sm skeuo-btn-install-header desktop-only" title="Install this style">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        <span>[ INSTALL ]</span>
+      </a>
+      <button class="skeuo-btn-sm" id="themeToggleBtn" aria-label="Toggle light/dark chassis mode">
+        <svg id="themeIcon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+        <span id="themeLabel">[CHASSIS_LIGHT]</span>
       </button>
-      <button class="nav-hamburger-btn" id="navHamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" onclick="openMobileNav()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      <button class="nav-hamburger-btn" id="navHamburgerBtn" aria-label="Open mobile hardware menu" aria-expanded="false" onclick="openMobileNav()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
       </button>
     </div>
   </header>
 
   <!-- Mobile Navigation Drawer Overlay (SKEUOMORPHISM // TACTILE) -->
   <div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="closeMobileNav()"></div>
-  <div class="mobile-nav-drawer" id="mobileNavDrawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+  <div class="mobile-nav-drawer" id="mobileNavDrawer" role="dialog" aria-modal="true" aria-label="Hardware Navigation">
     <div class="mobile-drawer-header">
-      <span class="style-drawer-tag">SKEUOMORPHISM // TACTILE</span>
-      <button class="mobile-drawer-close-btn" onclick="closeMobileNav()" aria-label="Close navigation menu">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      <span class="mobile-drawer-tag">┌─[HARDWARE_SYS_DECK]─┐</span>
+      <button class="mobile-drawer-close-btn" onclick="closeMobileNav()" aria-label="Close menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </button>
     </div>
     <div class="mobile-drawer-body">
       <a href="#playground" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
-        <span>Interactive Showcase</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        <span>[01_HARDWARE_LAB]</span>
       </a>
       <a href="#install" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-        <span>Installation Guide</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        <span>[02_INSTALLATION]</span>
       </a>
       <a href="#tokens" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-        <span>Design Tokens</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        <span>[03_TOKENS]</span>
       </a>
       <a href="#faq" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
-        <span>FAQ Guide</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
+        <span>[04_FAQ]</span>
       </a>
       <a href="index.html" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
-        <span>All 10 Styles</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>[ 10 STYLES GALLERY ]</span>
       </a>
     </div>
     <div class="mobile-drawer-footer">
       <a href="#install" class="mobile-drawer-cta-btn" onclick="closeMobileNav()">
-        <span>INSTALL THIS SKILL</span>
+        <span>[ ENGAGE INSTALLATION ]</span>
       </a>
     </div>
   </div>
 
   <main>
-    <!-- Opening Hero Viewport -->
-    <section class="pow-hero">
+    <!-- Hero Section (100svh safe viewport) -->
+    <section class="skeuo-hero">
       <div class="hero-sticker-badge">
-        <span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Proof of Work: Archetype #09</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+        <span>#09 TACTILE HARDWARE ARCHETYPE</span>
       </div>
 
-      <h1 class="hero-title">
-        Tangible Physical Metaphor & Specular Metallic Reflections
-      </h1>
+      <h1 class="hero-title">Tangible Digital Affordance.<br>Machined Studio Hardware.</h1>
 
       <p class="hero-desc">
-        Skeuomorphism bridges physical hardware affordances with digital software controls using specular bevel highlights, multi-stop metallic gradients, and mechanical click depression. This entire page demonstrates the authentic design tokens, contrast coupling, and anti-slop rules of this style.
+        Skeuomorphism bridges digital interfaces with physical industrial instruments. Featuring multi-stop reflective metal chassis, knurled rotary dials, spring-loaded push buttons, recessed LCD wells, and zero flat AI-slop.
       </p>
 
-      <!-- Single-Line Inline Command Pill ("Sejajarin") -->
-      <div class="pow-command-pill">
-        <span class="pow-prompt">$</span>
-        <code class="pow-code" id="heroCmdText">npx skills add kennedys0/taste-style-skeuomorphism</code>
-        <button class="pow-copy-btn" id="heroCopyBtn" aria-label="Copy command">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      <!-- Single-Line Inline Command Pill -->
+      <div class="skeuo-command-pill">
+        <span class="command-prompt-glyph">$</span>
+        <code class="command-code-text" id="heroCmdText">npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism</code>
+        <button class="command-copy-btn" id="heroCopyBtn" aria-label="Copy installation command">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           <span>COPY</span>
         </button>
       </div>
 
+      <!-- Hero CTA Group -->
       <div class="hero-btn-group">
-        <a href="#install" class="pow-btn pow-btn-primary">
-          <span>Installation Guide ↓</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 13l5 5 5-5M12 6v12"/></svg>
+        <a href="#playground" class="skeuo-btn skeuo-btn-primary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+          <span>TEST HARDWARE LAB</span>
         </a>
-        <a href="#playground" class="pow-btn pow-btn-secondary">
-          <span>Explore Interactive UI →</span>
+        <a href="#install" class="skeuo-btn skeuo-btn-secondary">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+          <span>INSTALLATION MANUAL</span>
         </a>
       </div>
 
-      <!-- 4-Stat Strip -->
-      <div class="pow-stat-strip">
-        <div class="stat-box">
-          <div class="stat-val">1px Bevel</div>
-          <div class="stat-label">Specular Top Rim</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-val">Multi-Stop</div>
-          <div class="stat-label">Metallic Gradient</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-val">Mechanical</div>
+      <!-- 4-Stat Hardware Meter Strip -->
+      <div class="skeuo-stat-strip">
+        <div class="stat-chassis-box">
+          <div class="stat-bezel-top"></div>
+          <div class="stat-val">1.5px</div>
           <div class="stat-label">Physical Travel</div>
         </div>
-        <div class="stat-box">
-          <div class="stat-val">Recessed</div>
-          <div class="stat-label">Display Well</div>
+        <div class="stat-chassis-box">
+          <div class="stat-bezel-top"></div>
+          <div class="stat-val">100%</div>
+          <div class="stat-label">Consistent Bevel</div>
+        </div>
+        <div class="stat-chassis-box">
+          <div class="stat-bezel-top"></div>
+          <div class="stat-val">AAA</div>
+          <div class="stat-label">WCAG Contrast</div>
+        </div>
+        <div class="stat-chassis-box">
+          <div class="stat-bezel-top"></div>
+          <div class="stat-val">0 EMOJI</div>
+          <div class="stat-label">Pure Lucide SVGs</div>
         </div>
       </div>
     </section>
 
-    <!-- Interactive Installation Guide Section -->
-    <section class="pow-section" id="install">
+    <!-- Studio Lab Section (#playground) -->
+    <section class="skeuo-section" id="playground">
       <div class="section-header">
-        <span class="section-badge">How to Install</span>
-        <h2 class="section-title">Install Skeuomorphism or Full Engine</h2>
+        <span class="section-badge">Live Hardware Deck</span>
+        <h2 class="section-title">Skeuomorphic Instrument Console</h2>
         <p class="section-desc">
-          Choose whether you want this single standalone Skeuomorphism skill or the full 10-style automated Taste Engine suite for your AI coding agents.
+          Interact with tactile hardware controls: rotate the analog rotary dial, engage mechanical switches with synthesized relay audio, adjust chassis bevels, and inspect recessed sub-wells.
         </p>
       </div>
 
-      <div class="pow-card">
-        <!-- Tab Headers -->
+      <div class="chassis-enclosure">
+        <div class="studio-grid">
+          
+          <!-- Module 1: Analog Channel Strip & Master Console -->
+          <div class="hardware-module">
+            <div class="module-header">
+              <div class="module-title-group">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                <span class="module-title">Master Channel 01</span>
+              </div>
+              <span class="module-tag">DSP ACTIVE</span>
+            </div>
+
+            <!-- Recessed LCD Readout -->
+            <div class="channel-strip-well">
+              <div class="strip-lcd-display">
+                <div>
+                  <div class="lcd-label">Signal Gain Output</div>
+                  <div class="lcd-value" id="lcdGainVal">+3.5 dB</div>
+                </div>
+                <div style="text-align: right;">
+                  <div class="lcd-label">State</div>
+                  <div class="lcd-value" id="lcdStateVal" style="color: #10B981;">ENGAGED</div>
+                </div>
+              </div>
+
+              <!-- Rotary Dial & VU Meter Controls -->
+              <div class="controls-deck-row">
+                <div class="rotary-knob-wrapper">
+                  <div class="knob-housing">
+                    <div class="rotary-knob" id="rotaryKnob" title="Click or use buttons to adjust gain" onclick="stepGain(1.5)">
+                      <div class="knob-indicator-notch"></div>
+                    </div>
+                  </div>
+                  <div class="knob-step-buttons">
+                    <button class="knob-step-btn" onclick="stepGain(-1.5)" aria-label="Decrease gain">-</button>
+                    <span style="font-family: var(--skeuo-font-mono); font-size: 0.75rem; align-self: center;">GAIN</span>
+                    <button class="knob-step-btn" onclick="stepGain(1.5)" aria-label="Increase gain">+</button>
+                  </div>
+                </div>
+
+                <!-- VU Meter Column -->
+                <div class="vu-meter-column">
+                  <div style="display: flex; justify-content: space-between; font-family: var(--skeuo-font-mono); font-size: 0.68rem; color: var(--skeuo-text-muted);">
+                    <span>-12dB</span>
+                    <span>0dB</span>
+                    <span>+6dB</span>
+                    <span>CLIP</span>
+                  </div>
+                  <div class="vu-ladder" id="vuLadder">
+                    <div class="vu-bar active-green"></div>
+                    <div class="vu-bar active-green"></div>
+                    <div class="vu-bar active-green"></div>
+                    <div class="vu-bar active-green"></div>
+                    <div class="vu-bar active-green"></div>
+                    <div class="vu-bar active-green"></div>
+                    <div class="vu-bar active-amber"></div>
+                    <div class="vu-bar active-amber"></div>
+                    <div class="vu-bar"></div>
+                    <div class="vu-bar"></div>
+                  </div>
+                  <div style="font-family: var(--skeuo-font-mono); font-size: 0.72rem; color: var(--skeuo-text-muted); text-align: center;">
+                    Damped Peak Response: <strong id="peakHeadroomTxt" style="color: var(--skeuo-text);">+4.2 dB RMS</strong>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tactile Channel Push-Buttons -->
+              <div class="tactile-buttons-strip">
+                <button class="tactile-toggle-btn active" id="btn48v" onclick="toggleChannelFeature('48V Phantom Power', this, 'active-red')">
+                  <div class="led-jewel active-red"></div>
+                  <span class="btn-key-label">+48V</span>
+                </button>
+                <button class="tactile-toggle-btn" id="btnLowCut" onclick="toggleChannelFeature('80Hz Low Cut', this, 'active-amber')">
+                  <div class="led-jewel"></div>
+                  <span class="btn-key-label">LOW CUT</span>
+                </button>
+                <button class="tactile-toggle-btn active" id="btnPhase" onclick="toggleChannelFeature('Phase Invert', this, 'active-blue')">
+                  <div class="led-jewel active-blue"></div>
+                  <span class="btn-key-label">PHASE</span>
+                </button>
+                <button class="tactile-toggle-btn active" id="btnComp" onclick="toggleChannelFeature('Optical Compressor', this, 'active-green')">
+                  <div class="led-jewel active-green"></div>
+                  <span class="btn-key-label">COMP</span>
+                </button>
+              </div>
+
+              <!-- Rocker Switch -->
+              <div class="rocker-switch-row">
+                <span style="font-family: var(--skeuo-font-display); font-weight: 700; font-size: 0.85rem;">Master Bypass Relay</span>
+                <div class="rocker-wrapper">
+                  <span class="rocker-state-label" id="rockerLabel">ACTIVE</span>
+                  <div class="rocker-housing engaged" id="masterRocker" onclick="toggleMasterRocker()" title="Toggle Master Relay Bypass">
+                    <div class="rocker-paddle"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Module 2: Chassis Finish & Bevel Calibrator -->
+          <div class="hardware-module">
+            <div class="module-header">
+              <div class="module-title-group">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+                <span class="module-title">Material Calibrator</span>
+              </div>
+              <span class="module-tag" id="finishTag">GUNMETAL RACK</span>
+            </div>
+
+            <!-- Finish Selection -->
+            <div class="finish-selector-grid">
+              <button class="finish-option-btn active" id="btnFinishGunmetal" onclick="selectHardwareFinish('gunmetal')">
+                ANODIZED GUNMETAL
+              </button>
+              <button class="finish-option-btn" id="btnFinishSilver" onclick="selectHardwareFinish('silver')">
+                BRUSHED SILVER
+              </button>
+              <button class="finish-option-btn" id="btnFinishBronze" onclick="selectHardwareFinish('bronze')">
+                STUDIO BRONZE
+              </button>
+            </div>
+
+            <!-- Sliders -->
+            <div class="slider-control-group">
+              <div class="slider-header-row">
+                <span>Specular Bevel Highlight</span>
+                <span class="slider-value-pill" id="bevelValBadge">35%</span>
+              </div>
+              <input type="range" min="0" max="100" value="35" class="hardware-slider" id="bevelSlider" oninput="updateCalibrator()">
+            </div>
+
+            <div class="slider-control-group">
+              <div class="slider-header-row">
+                <span>Recessed Inset Cavity Depth</span>
+                <span class="slider-value-pill" id="insetValBadge">8px</span>
+              </div>
+              <input type="range" min="2" max="16" value="8" class="hardware-slider" id="insetSlider" oninput="updateCalibrator()">
+            </div>
+
+            <!-- Mechanical Travel Test Pad -->
+            <div class="travel-test-pad">
+              <div>
+                <div style="font-weight: 700; font-size: 0.85rem; margin-bottom: 0.2rem;">Physical Travel Gauge</div>
+                <div class="test-pad-status" id="travelStatusTxt">Depression: 0.0px (Idle)</div>
+              </div>
+              <button class="test-pad-btn" id="testPadBtn" onmousedown="measurePress(true)" onmouseup="measurePress(false)" onmouseleave="measurePress(false)">
+                PRESS ME
+              </button>
+            </div>
+
+            <!-- Live Token Output -->
+            <div class="token-preview-code" id="calibratorCssOutput">
+              --taste-skeuo-chassis-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.35);<br>
+              --taste-skeuo-well-inset: inset 0 4px 8px rgba(0, 0, 0, 0.85);
+            </div>
+          </div>
+
+          <!-- Module 3: Card-in-Card Rack Modular Pane -->
+          <div class="hardware-module" style="grid-column: 1 / -1;">
+            <div class="module-header">
+              <div class="module-title-group">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+                <span class="module-title">Card-in-Card Modular Hardware Enclosure</span>
+              </div>
+              <span class="module-tag">ENCLOSURE WELL</span>
+            </div>
+
+            <div class="modular-rack-card">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <h4 style="font-family: var(--skeuo-font-display); font-size: 1rem; font-weight: 800;">Rack Frame Unit #09-A</h4>
+                  <p style="font-size: 0.8rem; color: var(--skeuo-text-muted);">Main chassis housing a recessed modular DSP sub-bay.</p>
+                </div>
+                <span style="font-family: var(--skeuo-font-mono); font-size: 0.75rem; color: var(--skeuo-accent); font-weight: 700;">[STATUS: SYNCHRONIZED]</span>
+              </div>
+
+              <!-- Nested Recessed Well (Card inside Card) -->
+              <div class="nested-instrument-well">
+                <table class="rack-param-table">
+                  <thead>
+                    <tr>
+                      <th>Module ID</th>
+                      <th>Sub-System</th>
+                      <th>DSP Load</th>
+                      <th>Headroom</th>
+                      <th>Action Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="rackTableBody">
+                    <tr>
+                      <td>MOD-01</td>
+                      <td>Analog Saturation Tube</td>
+                      <td>14.2%</td>
+                      <td>+6.0 dB</td>
+                      <td style="color: #10B981;">[OPTIMAL]</td>
+                    </tr>
+                    <tr>
+                      <td>MOD-02</td>
+                      <td>Dynamic Opto-Limiter</td>
+                      <td>21.8%</td>
+                      <td>+3.5 dB</td>
+                      <td style="color: #10B981;">[ENGAGED]</td>
+                    </tr>
+                    <tr>
+                      <td>MOD-03</td>
+                      <td>Discrete Stereo Panner</td>
+                      <td>8.4%</td>
+                      <td>+8.0 dB</td>
+                      <td style="color: #10B981;">[ONLINE]</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <div class="rack-action-row">
+                  <button class="rack-action-btn" onclick="dispatchHardwareAction('DISPATCH NEW DSP RACK')">
+                    [ DISPATCH NEW RACK ]
+                  </button>
+                  <button class="rack-action-btn" onclick="dispatchHardwareAction('RECALIBRATE HARDWARE RELAY')">
+                    [ RECALIBRATE RELAYS ]
+                  </button>
+                  <button class="rack-action-btn" onclick="dispatchHardwareAction('FLUSH BUFFER CACHE')">
+                    [ FLUSH AUDIO BUFFER ]
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Module 4: Jewel Status Indicators & Contrast Table -->
+          <div class="hardware-module" style="grid-column: 1 / -1;">
+            <div class="module-header">
+              <div class="module-title-group">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span class="module-title">Jewel LED Indicators & WCAG AAA Verification</span>
+              </div>
+              <span class="module-tag">CONTRAST COMPLIANT</span>
+            </div>
+
+            <div class="jewels-row">
+              <div class="jewel-status-card selected" onclick="selectJewelTone('Signal Amber', '#FFAE00', this)">
+                <div class="led-jewel active-amber"></div>
+                <div class="jewel-label">Signal Amber</div>
+                <div style="font-size: 0.68rem; color: var(--skeuo-text-muted);">#FFAE00</div>
+              </div>
+              <div class="jewel-status-card" onclick="selectJewelTone('Aviation Emerald', '#10B981', this)">
+                <div class="led-jewel active-green"></div>
+                <div class="jewel-label">Aviation Emerald</div>
+                <div style="font-size: 0.68rem; color: var(--skeuo-text-muted);">#10B981</div>
+              </div>
+              <div class="jewel-status-card" onclick="selectJewelTone('Studio Cobalt', '#2563EB', this)">
+                <div class="led-jewel active-blue"></div>
+                <div class="jewel-label">Studio Cobalt</div>
+                <div style="font-size: 0.68rem; color: var(--skeuo-text-muted);">#2563EB</div>
+              </div>
+              <div class="jewel-status-card" onclick="selectJewelTone('Alarm Crimson', '#EF4444', this)">
+                <div class="led-jewel active-red"></div>
+                <div class="jewel-label">Alarm Crimson</div>
+                <div style="font-size: 0.68rem; color: var(--skeuo-text-muted);">#EF4444</div>
+              </div>
+            </div>
+
+            <table class="contrast-matrix-table">
+              <thead>
+                <tr>
+                  <th>Interface Surface</th>
+                  <th>Typography Foreground</th>
+                  <th>Contrast Ratio</th>
+                  <th>WCAG Level</th>
+                  <th>Coupled Safety Rule</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Gunmetal Dark Chassis (`#252932`)</td>
+                  <td>Engraved Silver Text (`#F3F4F6`)</td>
+                  <td>11.2 : 1</td>
+                  <td><span class="badge-pass">PASS AAA</span></td>
+                  <td>Top 1px highlight ensures tactile boundary definition</td>
+                </tr>
+                <tr>
+                  <td>Brushed Silver Light Chassis (`#E9ECEF`)</td>
+                  <td>Deep Charcoal Text (`#1E2530`)</td>
+                  <td>10.8 : 1</td>
+                  <td><span class="badge-pass">PASS AAA</span></td>
+                  <td>Labels strictly flip to charcoal in light mode</td>
+                </tr>
+                <tr>
+                  <td>Recessed Well Cavity (`#14161A`)</td>
+                  <td>LCD Phosphorus Matrix (`#10B981`)</td>
+                  <td>9.6 : 1</td>
+                  <td><span class="badge-pass">PASS AAA</span></td>
+                  <td>Deep inset shadows prevent wash-out glare</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Installation Guide Section (#install) -->
+    <section class="skeuo-section" id="install">
+      <div class="section-header">
+        <span class="section-badge">Package Deployment</span>
+        <h2 class="section-title">Install Skeuomorphism Archetype</h2>
+        <p class="section-desc">
+          Integrate Taste Engine's Skeuomorphism pack into your AI coding assistant workspace or directly into Next.js, Vite, or vanilla web stacks.
+        </p>
+      </div>
+
+      <div class="chassis-enclosure" style="padding: 0;">
         <div class="tab-header-strip">
-          <button class="tab-switch-btn active" data-tab="tab-standalone">1. Standalone Style Skill</button>
-          <button class="tab-switch-btn" data-tab="tab-global">2. Full Taste Engine (Global)</button>
-          <button class="tab-switch-btn" data-tab="tab-tailwind">3. Tailwind & shadcn Preset</button>
+          <button class="tab-switch-btn active" data-tab="tab-npx">npx skills (CLI)</button>
+          <button class="tab-switch-btn" data-tab="tab-npm">npm / pnpm</button>
+          <button class="tab-switch-btn" data-tab="tab-cdn">CSS CDN</button>
+          <button class="tab-switch-btn" data-tab="tab-manual">Manual Import</button>
         </div>
 
-        <!-- Tab 1: Standalone Skill -->
-        <div class="tab-body active" id="tab-standalone">
-          <h3 class="install-step-title">Option A: Install Dedicated Skeuomorphism Skill</h3>
+        <!-- Tab 1: npx skills -->
+        <div class="tab-body active" id="tab-npx">
+          <h3 class="install-step-title">Deploy as Standalone AI Coding Skill</h3>
           <p class="install-step-desc">
-            Installs only the Skeuomorphism style pack. Perfect if your project has already committed to this exact aesthetic and does not need a 10-style selector.
+            Instantly teaches Antigravity, Claude Code, Cursor, and Codex how to engineer genuine skeuomorphic controls without AI-slop.
           </p>
 
-          <div class="pow-terminal">
-            <div class="terminal-topbar">
+          <div class="skeuo-terminal">
+            <div class="terminal-titlebar">
               <div class="terminal-dots">
                 <span class="dot red"></span>
                 <span class="dot yellow"></span>
                 <span class="dot green"></span>
               </div>
-              <span class="terminal-label">bash — universal agent skills cli</span>
-              <button class="pow-btn-sm" onclick="copySnippet('cmdStandaloneCli')">Copy</button>
+              <span class="terminal-label">bash -- terminal</span>
+              <button class="terminal-copy-action-btn" onclick="copySnippet('cmdNpx')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>COPY</span>
+              </button>
             </div>
-            <div class="terminal-content" id="cmdStandaloneCli">
-              <div class="terminal-line">
-                <span class="line-comment"># Install standalone Skeuomorphism pack via Agent Skills CLI</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-p">$</span>
-                <span class="line-cmd">npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-comment"># Or install directly for Antigravity IDE global config</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-p">$</span>
-                <span class="line-cmd">git clone https://github.com/kennedys0/taste-engine.git && cp -r taste-engine/optional-standalone-skills/taste-style-skeuomorphism ~/.gemini/config/skills/</span>
-              </div>
+            <div class="terminal-content" id="cmdNpx">
+              <span class="comment"># Add standalone Skeuomorphism style pack</span><br>
+              <span class="cmd">npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism</span><br><br>
+              <span class="comment"># Or install complete Taste Engine library (all 10 styles)</span><br>
+              <span class="cmd">npx skills add kennedys0/taste-engine</span>
             </div>
           </div>
         </div>
 
-        <!-- Tab 2: Global Engine -->
-        <div class="tab-body" id="tab-global">
-          <h3 class="install-step-title">Option B: Install Full Taste Engine (All 10 Styles + SEO + Anti-Slop)</h3>
+        <!-- Tab 2: npm / pnpm -->
+        <div class="tab-body" id="tab-npm">
+          <h3 class="install-step-title">Install via Node Package Manager</h3>
           <p class="install-step-desc">
-            Equips your AI agent with the autonomous style router, preflight interviews, 10 aesthetic packs, full-screen hero gating, and automatic SEO audit.
+            Add design token presets and utility mixins directly into your project dependencies.
           </p>
 
-          <div class="pow-terminal">
-            <div class="terminal-topbar">
+          <div class="skeuo-terminal">
+            <div class="terminal-titlebar">
               <div class="terminal-dots">
                 <span class="dot red"></span>
                 <span class="dot yellow"></span>
                 <span class="dot green"></span>
               </div>
-              <span class="terminal-label">bash — multi-agent native installer</span>
-              <button class="pow-btn-sm" onclick="copySnippet('cmdGlobalCli')">Copy</button>
+              <span class="terminal-label">bash -- npm</span>
+              <button class="terminal-copy-action-btn" onclick="copySnippet('cmdNpm')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>COPY</span>
+              </button>
             </div>
-            <div class="terminal-content" id="cmdGlobalCli">
-              <div class="terminal-line">
-                <span class="line-comment"># 1. Universal 1-click Agent Skills install</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-p">$</span>
-                <span class="line-cmd">npx skills add kennedys0/taste-engine</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-comment"># 2. Or install globally for Google Antigravity IDE / CLI (agy)</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-p">$</span>
-                <span class="line-cmd">node bin/taste-engine.mjs install --agent antigravity --global</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-comment"># 3. Or install for Claude Code or OpenAI Codex</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-p">$</span>
-                <span class="line-cmd">node bin/taste-engine.mjs install --agent claude --global</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-p">$</span>
-                <span class="line-cmd">node bin/taste-engine.mjs install --agent codex --global</span>
-              </div>
+            <div class="terminal-content" id="cmdNpm">
+              <span class="comment"># Using pnpm</span><br>
+              <span class="cmd">pnpm add @taste-engine/style-skeuomorphism</span><br><br>
+              <span class="comment"># Or npm</span><br>
+              <span class="cmd">npm install @taste-engine/style-skeuomorphism</span>
             </div>
           </div>
         </div>
 
-        <!-- Tab 3: Tailwind & shadcn -->
-        <div class="tab-body" id="tab-tailwind">
-          <h3 class="install-step-title">Option C: Tailwind CSS & shadcn/ui Preset</h3>
+        <!-- Tab 3: CSS CDN -->
+        <div class="tab-body" id="tab-cdn">
+          <h3 class="install-step-title">Load via Global Stylesheet CDN</h3>
           <p class="install-step-desc">
-            Scaffold Skeuomorphism utility tokens directly into your React, Next.js, or Vite frontend stack.
+            Embed authentic hardware chassis gradients, beveled rims, and recessed well tokens without build steps.
           </p>
 
-          <div class="pow-terminal">
-            <div class="terminal-topbar">
+          <div class="skeuo-terminal">
+            <div class="terminal-titlebar">
               <div class="terminal-dots">
                 <span class="dot red"></span>
                 <span class="dot yellow"></span>
                 <span class="dot green"></span>
               </div>
-              <span class="terminal-label">tailwind.config.js — preset integration</span>
-              <button class="pow-btn-sm" onclick="copySnippet('cmdTailwindPreset')">Copy</button>
+              <span class="terminal-label">html -- cdn</span>
+              <button class="terminal-copy-action-btn" onclick="copySnippet('cmdCdn')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>COPY</span>
+              </button>
             </div>
-            <div class="terminal-content" id="cmdTailwindPreset">
-              <div class="terminal-line">
-                <span class="line-comment">// Add Taste Engine official presets to your Tailwind config</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">module.exports = {</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;presets: [require('./presets/tailwind/tailwind.preset.js')],</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;theme: {</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;extend: {</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors: { 'skeuomorphism': '#c88a20' }</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;}</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;}</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">};</span>
-              </div>
+            <div class="terminal-content" id="cmdCdn">
+              <span class="cmd">&lt;link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@taste-engine/styles@latest/dist/skeuomorphism.min.css"&gt;</span>
             </div>
           </div>
         </div>
+
+        <!-- Tab 4: Manual Import -->
+        <div class="tab-body" id="tab-manual">
+          <h3 class="install-step-title">Manual CSS Variable Import</h3>
+          <p class="install-step-desc">
+            Copy the raw hardware token definitions into your global stylesheet.
+          </p>
+
+          <div class="skeuo-terminal">
+            <div class="terminal-titlebar">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="terminal-label">css -- tokens</span>
+              <button class="terminal-copy-action-btn" onclick="copySnippet('cmdManual')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <span>COPY</span>
+              </button>
+            </div>
+            <div class="terminal-content" id="cmdManual">
+              :root {<br>
+              &nbsp;&nbsp;--taste-skeuo-chassis-bg: linear-gradient(180deg, #323741 0%, #262A32 100%);<br>
+              &nbsp;&nbsp;--taste-skeuo-chassis-border: 1px solid rgba(0, 0, 0, 0.85);<br>
+              &nbsp;&nbsp;--taste-skeuo-chassis-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.28);<br>
+              &nbsp;&nbsp;--taste-skeuo-well-bg: #141619;<br>
+              &nbsp;&nbsp;--taste-skeuo-well-inset: inset 0 3px 6px rgba(0, 0, 0, 0.70), 0 1px 0 rgba(255, 255, 255, 0.12);<br>
+              &nbsp;&nbsp;--taste-skeuo-text: #F3F4F6;<br>
+              &nbsp;&nbsp;--taste-skeuo-btn-bg: linear-gradient(180deg, #3C424F 0%, #2A2E37 100%);<br>
+              &nbsp;&nbsp;--taste-skeuo-btn-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.40), inset 0 -1px 0 rgba(0, 0, 0, 0.50);<br>
+              &nbsp;&nbsp;--taste-skeuo-radius-panel: 12px;<br>
+              }
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-    <!-- Interactive Component Playground (PoW) -->
-    <section class="pow-section" id="playground">
+    <!-- Design Tokens Cheatsheet Section (#tokens) -->
+    <section class="skeuo-section" id="tokens">
       <div class="section-header">
-        <span class="section-badge">Live Interactive PoW</span>
-        <h2 class="section-title">Skeuomorphism Component Lab</h2>
-        <p class="section-desc">
-          Test interactive components and layout structure built strictly according to Taste Engine's Skeuomorphism fidelity rules.
-        </p>
-      </div>
-
-      <div class="pow-card" style="padding: 2rem;">
-        
-        <div style="background: linear-gradient(180deg, #2a2e35 0%, #1c1f24 100%); border: 1px solid #444b56; box-shadow: 0 12px 28px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.25); border-radius: 12px; padding: 2rem; max-width: 580px; margin: 0 auto;">
-          <div style="background: #111316; border: 1px solid #2d3139; box-shadow: inset 0 2px 5px rgba(0,0,0,0.8), 0 1px 0 rgba(255,255,255,0.1); border-radius: 6px; padding: 1rem 1.25rem; font-family: var(--pow-font-mono); color: #38bdf8; margin-bottom: 1.5rem;">
-            [PHYSICAL HARDWARE ENCODER: READY]
-          </div>
-          <button class="pow-btn pow-btn-primary" style="background: linear-gradient(180deg, #e5a93c 0%, #b87b1c 100%); color: #000; border: 1px solid #fbd38d; box-shadow: 0 4px 10px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.6); font-weight: 800;" onclick="handleBtnClick('Mechanical Dial Engage')">ENGAGE HARDWARE RELAY</button>
-        </div>
-        
-      </div>
-    </section>
-
-    <!-- Design Token Cheatsheet -->
-    <section class="pow-section">
-      <div class="section-header">
-        <span class="section-badge">Tokens & Math</span>
+        <span class="section-badge">Specification Matrix</span>
         <h2 class="section-title">Skeuomorphism Design Tokens</h2>
         <p class="section-desc">
-          Standardized CSS custom properties for instant copy-pasting into any stylesheet.
+          Comprehensive token mappings engineered for physical affordance, specular highlights, and mechanical travel.
         </p>
       </div>
 
       <div class="token-table-wrap">
-        <table class="pow-table">
+        <table class="skeuo-table">
           <thead>
             <tr>
               <th>Token Name</th>
-              <th>Light Mode</th>
-              <th>Dark Mode</th>
-              <th>Description</th>
+              <th>Dark Chassis Default</th>
+              <th>Light Chassis Default</th>
+              <th>Hardware Physical Role</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td class="token-code">--taste-skeuomorphism-bg</td>
-              <td>#e6e9ee</td>
-              <td>#181a1d</td>
-              <td>Canvas backdrop base</td>
+              <td class="token-code">--taste-skeuo-chassis-bg</td>
+              <td>linear-gradient(180deg, #323741, #262A32)</td>
+              <td>linear-gradient(180deg, #F5F7FA, #E4E7EB)</td>
+              <td>Base faceplate finish (gunmetal / brushed silver)</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-skeuomorphism-surface</td>
-              <td>#f2f4f7</td>
-              <td>#22252a</td>
-              <td>Card surface background</td>
+              <td class="token-code">--taste-skeuo-chassis-border</td>
+              <td>1px solid rgba(0, 0, 0, 0.8)</td>
+              <td>1px solid rgba(0, 0, 0, 0.15)</td>
+              <td>Machined structural enclosure perimeter</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-skeuomorphism-text</td>
-              <td>#1e293b</td>
-              <td>#e2e8f0</td>
-              <td>Primary text & icon color</td>
+              <td class="token-code">--taste-skeuo-chassis-highlight</td>
+              <td>inset 0 1px 0 rgba(255, 255, 255, 0.25)</td>
+              <td>inset 0 1px 0 rgba(255, 255, 255, 0.90)</td>
+              <td>Top specular hairline catching directional light</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-skeuomorphism-border</td>
-              <td>1px solid #cbd5e1</td>
-              <td>1px solid #363b44</td>
-              <td>Structural stroke specification</td>
+              <td class="token-code">--taste-skeuo-well-bg</td>
+              <td>#141619</td>
+              <td>#D1D5DB</td>
+              <td>Recessed sub-chassis / Card-in-Card well background</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-skeuomorphism-accent</td>
-              <td>#c88a20</td>
-              <td>#e5a93c</td>
-              <td>Primary action accent</td>
+              <td class="token-code">--taste-skeuo-well-inset</td>
+              <td>inset 0 3px 6px rgba(0,0,0,0.7)</td>
+              <td>inset 0 3px 6px rgba(0,0,0,0.18)</td>
+              <td>Cavity depth shadow distinguishing recessed wells</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-skeuo-text</td>
+              <td>#F3F4F6</td>
+              <td>#1F2937</td>
+              <td>Crisp engraved labels (anti-collision enforced)</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-skeuo-text-muted</td>
+              <td>#9CA3AF</td>
+              <td>#4B5563</td>
+              <td>Secondary hardware annotations and specs</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-skeuo-btn-bg</td>
+              <td>linear-gradient(180deg, #3C424F, #2A2E37)</td>
+              <td>linear-gradient(180deg, #FFFFFF, #E2E8F0)</td>
+              <td>Spring-loaded mechanical push-button core</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-skeuo-btn-bevel</td>
+              <td>inset 0 1px 0 rgba(255,255,255,0.4)</td>
+              <td>inset 0 1px 0 rgba(255,255,255,0.8)</td>
+              <td>Double-edged mechanical push button rim highlight</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-skeuo-led-active</td>
+              <td>#10B981</td>
+              <td>#059669</td>
+              <td>Jewel status indicator primary active tone</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-skeuo-led-glow</td>
+              <td>0 0 10px rgba(16, 185, 129, 0.75)</td>
+              <td>0 0 8px rgba(5, 150, 105, 0.45)</td>
+              <td>Radial optical pendaran through glass jewel lens</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-skeuo-radius-panel</td>
+              <td>12px</td>
+              <td>12px</td>
+              <td>Outer chassis rounded corner radius</td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- FAQ Accordion -->
-    <section class="pow-section">
+    <!-- FAQ Accordion Section (#faq) -->
+    <section class="skeuo-section" id="faq">
       <div class="section-header">
-        <span class="section-badge">FAQ & Verification</span>
+        <span class="section-badge">Design Rationale</span>
         <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-desc">
+          Clarifications on physical affordance, anti-slop boundaries, and light mode coupling.
+        </p>
       </div>
 
-      <div class="pow-faq-item open">
-        <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>Why is Skeuomorphism returning in modern UI?</span>
-          <span class="faq-arrow">▶</span>
+      <div class="skeuo-faq-item open">
+        <div class="skeuo-faq-header" onclick="toggleFaq(this)">
+          <span>Why does Taste Engine distinguish genuine Skeuomorphism from flat cards?</span>
+          <svg class="faq-icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
-        <div class="pow-faq-body">
-          Tangible affordances provide immediate clarity for complex physical machinery, audio synthesizers, and tactile gaming tools.
-        </div>
-      </div>
-
-      <div class="pow-faq-item">
-        <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>How are reflections handled?</span>
-          <span class="faq-arrow">▶</span>
-        </div>
-        <div class="pow-faq-body">
-          Multi-stop linear gradients simulate real metallic surface reflections, paired with 1px specular highlight rims.
+        <div class="skeuo-faq-body">
+          A flat card with standard rounded corners and a single subtle gradient is an aesthetic failure in Skeuomorphism. Genuine skeuomorphic UI demands directional light physics: top 1px specular highlights, bottom drop shadows, recessed well cavities with deep inset shadows, and 1.5px mechanical travel on button depression.
         </div>
       </div>
 
-      <div class="pow-faq-item">
-        <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>Can I install just Skeuomorphism?</span>
-          <span class="faq-arrow">▶</span>
+      <div class="skeuo-faq-item">
+        <div class="skeuo-faq-header" onclick="toggleFaq(this)">
+          <span>Are card-inside-card nested surfaces allowed in Skeuomorphism?</span>
+          <svg class="faq-icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
-        <div class="pow-faq-body">
-          Yes, run `npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism`.
+        <div class="skeuo-faq-body">
+          Yes, when representing physical hardware sub-chassis, modular rack-mount bays, or recessed display wells sunken into the main chassis faceplate (using `--taste-skeuo-well-bg` and `--taste-skeuo-well-inset`). Mindless decorative nesting without mechanical or enclosure logic remains disallowed.
+        </div>
+      </div>
+
+      <div class="skeuo-faq-item">
+        <div class="skeuo-faq-header" onclick="toggleFaq(this)">
+          <span>How does the Light Mode anti-collision rule protect readability?</span>
+          <svg class="faq-icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="skeuo-faq-body">
+          In light mode, the chassis transitions to brushed aluminum (`#E9ECEF`). All engraved labels, dial numbers, and control text strictly flip to deep charcoal (`#1F2937`), delivering a 10.8:1 contrast ratio that completely prevents white-on-silver legibility failures.
+        </div>
+      </div>
+
+      <div class="skeuo-faq-item">
+        <div class="skeuo-faq-header" onclick="toggleFaq(this)">
+          <span>Can I install just the Skeuomorphism skill in my agent?</span>
+          <svg class="faq-icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+        <div class="skeuo-faq-body">
+          Yes! Run `npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism` to install only this standalone package without pulling other styles.
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Site Footer (2-column balanced mobile grid) -->
-  <footer class="pow-footer">
+  <!-- Site Footer -->
+  <footer class="skeuo-footer">
     <div class="footer-inner">
       <div class="footer-brand">
         <h4>Taste Engine</h4>
         <p>Open-source frontend design intelligence pack for AI coding agents. Elevate design fidelity, eliminate AI-slop, and enforce contrast safety.</p>
-        <p style="margin-top: 0.5rem; font-size: 0.775rem;">Created by <a href="https://github.com/kennedys0" target="_blank" rel="noopener" style="color: var(--pow-accent); font-weight: 700;">Mochamad Vikry (@kennedys0)</a></p>
+        <p style="margin-top: 0.65rem; font-size: 0.775rem;">Created by <a href="https://github.com/kennedys0" target="_blank" rel="noopener" style="color: var(--skeuo-accent); font-weight: 700; text-decoration: none;">Mochamad Vikry (@kennedys0)</a></p>
       </div>
 
       <div class="footer-col">
@@ -1405,7 +2592,8 @@
           <li><a href="claymorphism.html">Claymorphism (PoW)</a></li>
           <li><a href="enterprise.html">Enterprise (PoW)</a></li>
           <li><a href="glassmorphism.html">Glassmorphism (PoW)</a></li>
-          <li><a href="swiss-editorial.html">Swiss Editorial (PoW)</a></li>
+          <li><a href="minimalism.html">Minimalism (PoW)</a></li>
+          <li><a href="retro-terminal.html">Retro-Terminal (PoW)</a></li>
         </ul>
       </div>
 
@@ -1422,48 +2610,87 @@
 
     <div class="footer-bottom">
       <p>&copy; 2026 Mochamad Vikry. Released under the MIT License.</p>
-      <a href="#" class="pow-btn-sm" style="text-decoration:none;">
-        <span>↑ Back to Top</span>
+      <a href="#" class="skeuo-btn-sm" style="text-decoration:none;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+        <span>Back to Top</span>
       </a>
     </div>
   </footer>
 
   <!-- Toast Notification -->
-  <div class="pow-toast" id="powToast">
-    <span id="toastMsg">COPIED TO CLIPBOARD</span>
+  <div class="skeuo-toast" id="skeuoToast">
+    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+    <span id="toastMsg">ACTION EXECUTED</span>
   </div>
 
   <script>
-    // Theme Toggling with LocalStorage Persistence
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    const themeLabel = document.getElementById('themeLabel');
-    const htmlEl = document.documentElement;
+    // =========================================================
+    // SKEUOMORPHISM HARDWARE LAB & CONTROLLER
+    // =========================================================
 
-    function applyTheme(theme) {
-      htmlEl.setAttribute('data-theme', theme);
-      localStorage.setItem('taste-theme-pow-skeuomorphism', theme);
-      if (theme === 'dark') {
-        themeLabel.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>LIGHT';
-      } else {
-        themeLabel.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>DARK';
-      }
+    // Global State Variables (Declared at top to prevent TDZ)
+    let currentGain = 3.5;
+    let masterRelayActive = true;
+    let selectedFinish = 'gunmetal';
+    let bevelHighlightVal = 35;
+    let insetCavityVal = 8;
+    let hapticSoundEnabled = true;
+    let audioCtx = null;
+    let toastTimeout = null;
+    let rackModuleCount = 3;
+
+    // Web Audio API: Synthesized Mechanical Switch Click
+    function playMechanicalSnap(freq = 620, duration = 0.035, type = 'square') {
+      if (!hapticSoundEnabled) return;
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(120, audioCtx.currentTime + duration);
+        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
     }
 
-    const savedTheme = localStorage.getItem('taste-theme-pow-skeuomorphism') || 'dark';
-    applyTheme(savedTheme);
-
-    themeToggleBtn.addEventListener('click', () => {
-      const current = htmlEl.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      applyTheme(next);
-      showToast(`Switched to ${next.toUpperCase()} mode`);
-    });
+    // Web Audio API: Analog Dial Tone
+    function playAnalogTone(freq = 440) {
+      if (!hapticSoundEnabled) return;
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.06);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.06);
+      } catch (e) {}
+    }
 
     // Toast Notification Utility
-    let toastTimeout;
     function showToast(msg) {
-      const toast = document.getElementById('powToast');
+      const toast = document.getElementById('skeuoToast');
       const toastMsg = document.getElementById('toastMsg');
+      if (!toast || !toastMsg) return;
       toastMsg.textContent = msg;
       toast.classList.add('show');
       clearTimeout(toastTimeout);
@@ -1472,59 +2699,316 @@
       }, 2200);
     }
 
-    // Hero Quick Copy Button
-    const heroCopyBtn = document.getElementById('heroCopyBtn');
-    const heroCmdText = document.getElementById('heroCmdText');
-    if (heroCopyBtn && heroCmdText) {
-      heroCopyBtn.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(heroCmdText.textContent.trim());
-          showToast('Copied installation command!');
-        } catch (e) {
-          showToast('Command copied');
-        }
-      });
+    // Module 1: Rotary Dial Gain Adjustment
+    function stepGain(delta) {
+      currentGain = Math.round((currentGain + delta) * 10) / 10;
+      if (currentGain < -12) currentGain = -12;
+      if (currentGain > 18) currentGain = 18;
+
+      updateGainUi();
+      playAnalogTone(300 + (currentGain + 12) * 25);
     }
 
-    // Tab Switcher
-    const tabButtons = document.querySelectorAll('.tab-switch-btn');
-    const tabBodies = document.querySelectorAll('.tab-body');
+    function updateGainUi() {
+      const lcdGain = document.getElementById('lcdGainVal');
+      const knob = document.getElementById('rotaryKnob');
+      const vuLadder = document.getElementById('vuLadder');
+      const peakHeadroom = document.getElementById('peakHeadroomTxt');
 
-    tabButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabButtons.forEach(b => b.classList.remove('active'));
-        tabBodies.forEach(b => b.classList.remove('active'));
+      if (lcdGain) {
+        const sign = currentGain > 0 ? '+' : '';
+        lcdGain.textContent = `${sign}${currentGain.toFixed(1)} dB`;
+      }
 
-        btn.classList.add('active');
-        const targetId = btn.getAttribute('data-tab');
-        const targetBody = document.getElementById(targetId);
-        if (targetBody) targetBody.classList.add('active');
-      });
-    });
+      // Angle calculation: -12dB is -135deg, +18dB is +135deg (total 270deg)
+      const fraction = (currentGain + 12) / 30; // 0 to 1
+      const angle = -135 + fraction * 270;
+      if (knob) {
+        knob.style.transform = `rotate(${angle}deg)`;
+      }
+
+      // Update VU Ladder Bars
+      if (vuLadder) {
+        const bars = vuLadder.querySelectorAll('.vu-bar');
+        const activeCount = Math.min(10, Math.max(1, Math.round(fraction * 10)));
+        bars.forEach((bar, idx) => {
+          bar.className = 'vu-bar';
+          if (idx < activeCount) {
+            if (idx < 6) bar.classList.add('active-green');
+            else if (idx < 8) bar.classList.add('active-amber');
+            else bar.classList.add('active-red');
+          }
+        });
+      }
+
+      if (peakHeadroom) {
+        const peakVal = (currentGain + 0.7).toFixed(1);
+        const sign = peakVal > 0 ? '+' : '';
+        peakHeadroom.textContent = `${sign}${peakVal} dB RMS`;
+      }
+    }
+
+    // Module 1: Tactile Push-Buttons Toggle
+    function toggleChannelFeature(name, btn, activeLedClass) {
+      if (!btn) return;
+      btn.classList.toggle('active');
+      const isNowActive = btn.classList.contains('active');
+      const led = btn.querySelector('.led-jewel');
+      if (led) {
+        if (isNowActive) {
+          led.classList.add(activeLedClass);
+        } else {
+          led.classList.remove(activeLedClass);
+        }
+      }
+      playMechanicalSnap(isNowActive ? 750 : 520);
+      showToast(`${name}: ${isNowActive ? 'ENGAGED' : 'DISENGAGED'}`);
+    }
+
+    // Module 1: Rocker Switch
+    function toggleMasterRocker() {
+      masterRelayActive = !masterRelayActive;
+      const rocker = document.getElementById('masterRocker');
+      const rockerLabel = document.getElementById('rockerLabel');
+      const lcdState = document.getElementById('lcdStateVal');
+
+      if (rocker) {
+        rocker.classList.toggle('engaged', masterRelayActive);
+      }
+
+      if (rockerLabel) {
+        rockerLabel.textContent = masterRelayActive ? 'ACTIVE' : 'BYPASS';
+      }
+
+      if (lcdState) {
+        lcdState.textContent = masterRelayActive ? 'ENGAGED' : 'BYPASS';
+        lcdState.style.color = masterRelayActive ? '#10B981' : '#FFAE00';
+      }
+
+      playMechanicalSnap(masterRelayActive ? 820 : 480, 0.045);
+      showToast(`Master Relay: ${masterRelayActive ? 'ENGAGED' : 'BYPASSED'}`);
+    }
+
+    // Module 2: Calibrator - Hardware Finish Selector
+    function selectHardwareFinish(finish) {
+      selectedFinish = finish;
+      document.querySelectorAll('.finish-option-btn').forEach(b => b.classList.remove('active'));
+      const activeBtn = document.getElementById(`btnFinish${finish.charAt(0).toUpperCase() + finish.slice(1)}`);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      const finishTag = document.getElementById('finishTag');
+      if (finishTag) finishTag.textContent = `${finish.toUpperCase()} RACK`;
+
+      const htmlEl = document.documentElement;
+      if (finish === 'silver') {
+        applyTheme('light');
+      } else {
+        applyTheme('dark');
+        if (finish === 'bronze') {
+          htmlEl.style.setProperty('--skeuo-chassis-bg', 'linear-gradient(180deg, #382F28 0%, #28211B 50%, #1A1511 100%)');
+        } else {
+          htmlEl.style.removeProperty('--skeuo-chassis-bg');
+        }
+      }
+
+      playMechanicalSnap(640);
+      showToast(`Selected ${finish.toUpperCase()} finish`);
+      updateCalibrator();
+    }
+
+    function updateCalibrator() {
+      const bevelSlider = document.getElementById('bevelSlider');
+      const insetSlider = document.getElementById('insetSlider');
+      const bevelBadge = document.getElementById('bevelValBadge');
+      const insetBadge = document.getElementById('insetValBadge');
+      const cssOut = document.getElementById('calibratorCssOutput');
+
+      if (!bevelSlider || !insetSlider) return;
+
+      bevelHighlightVal = bevelSlider.value;
+      insetCavityVal = insetSlider.value;
+
+      if (bevelBadge) bevelBadge.textContent = `${bevelHighlightVal}%`;
+      if (insetBadge) insetBadge.textContent = `${insetCavityVal}px`;
+
+      const alpha = (bevelHighlightVal / 100).toFixed(2);
+      const highlightRule = `inset 0 1px 0 rgba(255, 255, 255, ${alpha}), inset 0 -1px 0 rgba(0, 0, 0, 0.65)`;
+      const insetRule = `inset 0 ${Math.round(insetCavityVal / 2)}px ${insetCavityVal}px rgba(0, 0, 0, 0.85), 0 1px 0 rgba(255, 255, 255, 0.1)`;
+
+      document.documentElement.style.setProperty('--skeuo-chassis-highlight', highlightRule);
+      document.documentElement.style.setProperty('--skeuo-well-inset', insetRule);
+
+      if (cssOut) {
+        cssOut.innerHTML = `--taste-skeuo-chassis-highlight: ${highlightRule};<br>--taste-skeuo-well-inset: ${insetRule};`;
+      }
+    }
+
+    function measurePress(isDown) {
+      const statusTxt = document.getElementById('travelStatusTxt');
+      if (statusTxt) {
+        statusTxt.textContent = isDown ? 'Depression: 1.5px (Depressed)' : 'Depression: 0.0px (Idle)';
+        statusTxt.style.color = isDown ? 'var(--skeuo-accent)' : 'var(--skeuo-text-muted)';
+      }
+      playMechanicalSnap(isDown ? 720 : 490, 0.03);
+    }
+
+    // Module 3: Card-in-Card Rack Module Actions
+    function dispatchHardwareAction(actionName) {
+      rackModuleCount++;
+      const tbody = document.getElementById('rackTableBody');
+      if (tbody && actionName.includes('DISPATCH')) {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>MOD-0${rackModuleCount}</td>
+          <td>DSP Sub-Processor #${rackModuleCount}</td>
+          <td>11.0%</td>
+          <td>+4.5 dB</td>
+          <td style="color: #10B981;">[ONLINE]</td>
+        `;
+        tbody.appendChild(row);
+      }
+      playMechanicalSnap(680);
+      showToast(`${actionName}`);
+    }
+
+    // Module 4: Jewel Status Indicators Selection
+    function selectJewelTone(name, hex, card) {
+      document.querySelectorAll('.jewel-status-card').forEach(c => c.classList.remove('selected'));
+      if (card && card.classList) card.classList.add('selected');
+      playMechanicalSnap(800);
+      showToast(`Selected Jewel LED: ${name} (${hex})`);
+    }
+
+    // Theme Switcher & Coupling
+    function applyTheme(theme) {
+      const htmlEl = document.documentElement;
+      const themeLabel = document.getElementById('themeLabel');
+      const themeIcon = document.getElementById('themeIcon');
+
+      htmlEl.setAttribute('data-theme', theme);
+      try {
+        localStorage.setItem('taste-theme-pow-skeuomorphism', theme);
+      } catch (e) {}
+
+      if (themeLabel) {
+        themeLabel.textContent = theme === 'dark' ? '[CHASSIS_LIGHT]' : '[CHASSIS_DARK]';
+      }
+
+      if (themeIcon) {
+        if (theme === 'dark') {
+          themeIcon.innerHTML = '<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>';
+        } else {
+          themeIcon.innerHTML = '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>';
+        }
+      }
+    }
+
+    // Mobile Navigation Controls
+    function openMobileNav() {
+      const backdrop = document.getElementById('mobileNavBackdrop');
+      const drawer = document.getElementById('mobileNavDrawer');
+      const hamburger = document.getElementById('navHamburgerBtn');
+      if (backdrop) backdrop.classList.add('open');
+      if (drawer) drawer.classList.add('open');
+      if (hamburger) hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      playMechanicalSnap(550);
+    }
+
+    function closeMobileNav() {
+      const backdrop = document.getElementById('mobileNavBackdrop');
+      const drawer = document.getElementById('mobileNavDrawer');
+      const hamburger = document.getElementById('navHamburgerBtn');
+      if (backdrop) backdrop.classList.remove('open');
+      if (drawer) drawer.classList.remove('open');
+      if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      playMechanicalSnap(420);
+    }
 
     // Snippet Copier
     async function copySnippet(elemId) {
       const el = document.getElementById(elemId);
       if (!el) return;
-      const text = el.innerText.trim();
+      const text = (el.innerText || el.textContent || '').trim();
       try {
         await navigator.clipboard.writeText(text);
-        showToast('Terminal snippet copied!');
+        playMechanicalSnap(840);
+        showToast('Copied to buffer!');
       } catch (e) {
         showToast('Snippet copied');
       }
     }
 
-    // Component Button Click Handler
-    function handleBtnClick(name) {
-      showToast(`Action: ${name}`);
-    }
-
     // FAQ Accordion Toggle
     function toggleFaq(header) {
       const item = header.parentElement;
-      item.classList.toggle('open');
+      if (item) {
+        item.classList.toggle('open');
+        playMechanicalSnap(item.classList.contains('open') ? 640 : 480);
+      }
     }
+
+    // Safe Page Initialization
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Initialize Theme from LocalStorage
+      let savedTheme = 'dark';
+      try {
+        savedTheme = localStorage.getItem('taste-theme-pow-skeuomorphism') || 'dark';
+      } catch (e) {}
+      applyTheme(savedTheme);
+
+      // 2. Bind Theme Toggle Button
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          applyTheme(next);
+          playMechanicalSnap(700);
+          showToast(`Switched to ${next.toUpperCase()} chassis`);
+        });
+      }
+
+      // 3. Bind Keyboard Escape for Drawer
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMobileNav();
+      });
+
+      // 4. Bind Hero Copy Button
+      const heroCopyBtn = document.getElementById('heroCopyBtn');
+      const heroCmdText = document.getElementById('heroCmdText');
+      if (heroCopyBtn && heroCmdText) {
+        heroCopyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(heroCmdText.textContent.trim());
+            playMechanicalSnap(860);
+            showToast('Installation command copied!');
+          } catch (e) {
+            showToast('Command copied');
+          }
+        });
+      }
+
+      // 5. Bind Tab Switchers
+      const tabButtons = document.querySelectorAll('.tab-switch-btn');
+      const tabBodies = document.querySelectorAll('.tab-body');
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabButtons.forEach(b => b.classList.remove('active'));
+          tabBodies.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const targetId = btn.getAttribute('data-tab');
+          const targetBody = document.getElementById(targetId);
+          if (targetBody) targetBody.classList.add('active');
+          playMechanicalSnap(560);
+        });
+      });
+
+      // 6. Initial UI state sync
+      updateGainUi();
+      updateCalibrator();
+    });
   </script>
 </body>
 </html>

@@ -66,6 +66,7 @@ Component shapes strictly map to their physical metaphors: rotary dials, tactile
 - **Chassis Panel:** Multi-stop linear gradient (`linear-gradient(180deg, #323741 0%, #262A32 100%)`) with 1px top highlight and bottom drop shadow.
 - **Physical Push-Button:** Beveled rim with top highlight, radial button surface, and crisp active depression.
 - **Sunken Well / Display:** `box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.65), 0 1px 0 rgba(255, 255, 255, 0.15);`
+- **Nested Sub-Panels / Recessed Instrument Wells (Card-in-Card):** Permissible when encapsulating physical hardware sub-chassis, modular rack-mount bays, or recessed display wells sunken into the main chassis faceplate (e.g. `background: var(--taste-skeuo-well-bg, #141619); box-shadow: var(--taste-skeuo-well-inset); border: var(--taste-skeuo-chassis-border);`). Mindless decorative box-in-box nesting without mechanical or enclosure logic remains disallowed.
 
 ## Component anatomy and interaction
 
@@ -98,7 +99,9 @@ Technical, precise, and concise. Examples: “Master Output”, “Bypass”, �
 | `--taste-skeuo-chassis-bg` | `linear-gradient(180deg, #323741 0%, #262a32 100%)` | `linear-gradient(180deg, #f5f7fa 0%, #e4e7eb 100%)` |
 | `--taste-skeuo-chassis-border` | `1px solid rgba(0, 0, 0, 0.8)` | `1px solid rgba(0, 0, 0, 0.15)` |
 | `--taste-skeuo-chassis-highlight` | `inset 0 1px 0 rgba(255, 255, 255, 0.25)` | `inset 0 1px 0 rgba(255, 255, 255, 0.90)` |
+| `--taste-skeuo-well-bg` | `#141619` | `#d1d5db` |
 | `--taste-skeuo-text` | `#f3f4f6` | `#1f2937` |
+| `--taste-skeuo-text-muted` | `#9ca3af` | `#4b5563` |
 | `--taste-skeuo-btn-bg` | `linear-gradient(180deg, #3c424f 0%, #2a2e37 100%)` | `linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%)` |
 | `--taste-skeuo-btn-bevel` | `inset 0 1px 0 rgba(255, 255, 255, 0.40), inset 0 -1px 0 rgba(0, 0, 0, 0.50)` | `inset 0 1px 0 rgba(255, 255, 255, 0.80), inset 0 -1px 0 rgba(0, 0, 0, 0.20)` |
 | `--taste-skeuo-btn-shadow` | `0 4px 8px rgba(0, 0, 0, 0.50), 0 1px 2px rgba(0, 0, 0, 0.40)` | `0 4px 8px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08)` |
