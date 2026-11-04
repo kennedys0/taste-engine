@@ -38,7 +38,7 @@ A portable, open-source Agent Skill for building distinctive, accessible fronten
 
 
 
-[Live Showcase](docs/index.html) · [Installation](#install) · [How it works](#how-it-works) · [Styles](#style-library) · [Quality principles](#quality-without-a-house-style) · [Contributing](#contributing)
+[Live Showcase](docs/index.html) · [Installation](#install) · [CLI Setup](#enable-global-taste-engine-cli-command) · [How it works](#how-it-works) · [Styles](#style-library) · [Quality principles](#quality-without-a-house-style) · [Contributing](#contributing)
 
 
 

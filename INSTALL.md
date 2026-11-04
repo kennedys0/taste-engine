@@ -59,6 +59,13 @@ node bin/taste-engine.mjs version
 
 ## Updating
 
+**Using the global `taste-engine` shortcut:**
+
+```bash
+taste-engine -v        # Check version
+taste-engine -update   # Download and apply latest GitHub Release
+```
+
 **If installed with `npx skills add`:** use its managed update commands:
 
 ```bash
@@ -69,10 +76,10 @@ npx skills update -g
 **If installed manually in Antigravity IDE:** use the bundled Bash updater and a published Release. For an offline ZIP update, pass `--zip PATH`.
 
 ```bash
-bash ~/.gemini/config/skills/taste-engine/scripts/update.sh --repo kennedys0/taste-engine
+bash ~/.gemini/config/skills/taste-engine/scripts/update.sh
 
 # Or from an already downloaded release asset:
-bash ~/.gemini/config/skills/taste-engine/scripts/update.sh --zip ./taste-engine-v0.10.0.zip
+bash ~/.gemini/config/skills/taste-engine/scripts/update.sh --zip ./taste-engine-v0.10.8.zip
 ```
 
 The Bash updater requires Bash, Python 3, curl (for GitHub downloads), and standard Linux command-line tools. It checks archive contents, validates a staged installation, backs up the previous version, and restores it if activation fails. Never run arbitrary installer scripts from untrusted forks.
