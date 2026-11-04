@@ -1403,6 +1403,203 @@
     .pow-toast.show {
       display: flex;
     }
+
+    /* --- Mobile Hamburger & Drawer Navigation --- */
+    .nav-hamburger-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: var(--pow-radius-btn);
+      background: rgba(255, 255, 255, 0.65);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+      border: var(--pow-border);
+      box-shadow: inset 0 1px 0 var(--pow-specular), 0 2px 8px rgba(0, 0, 0, 0.04);
+      color: var(--pow-text);
+      cursor: pointer;
+      transition: background 140ms ease, border-color 140ms ease, transform 100ms ease;
+    }
+
+    .nav-hamburger-btn:hover {
+      background: rgba(255, 255, 255, 0.95);
+      border-color: var(--pow-accent);
+      color: var(--pow-accent);
+    }
+
+    .mobile-nav-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.35);
+      -webkit-backdrop-filter: blur(4px);
+      backdrop-filter: blur(4px);
+      z-index: 998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 220ms ease;
+    }
+
+    .mobile-nav-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-nav-drawer {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: min(300px, 86vw);
+      height: 100vh;
+      height: 100dvh;
+      z-index: 999;
+      background: rgba(255, 255, 255, 0.88);
+      -webkit-backdrop-filter: blur(28px) saturate(190%);
+      backdrop-filter: blur(28px) saturate(190%);
+      border-left: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: -10px 0 35px rgba(15, 23, 42, 0.15), inset 1px 0 0 rgba(255, 255, 255, 0.8);
+      display: flex;
+      flex-direction: column;
+      transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 1.25rem 1.25rem;
+      box-sizing: border-box;
+    }
+
+    .mobile-nav-drawer.open {
+      transform: translateX(-320px);
+    }
+
+    .mobile-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      margin-bottom: 1.25rem;
+    }
+
+    .mobile-drawer-close-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(15, 23, 42, 0.04);
+      border: 1px solid rgba(15, 23, 42, 0.08);
+      color: var(--pow-text);
+      cursor: pointer;
+      transition: all 120ms ease;
+    }
+
+    .mobile-drawer-close-btn:hover {
+      background: rgba(15, 23, 42, 0.08);
+      color: var(--pow-accent);
+    }
+
+    .mobile-drawer-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-height: 44px;
+      padding: 0.65rem 0.85rem;
+      border-radius: 10px;
+      color: var(--pow-text);
+      text-decoration: none;
+      font-family: var(--pow-font-display);
+      font-weight: 700;
+      font-size: 0.9rem;
+      transition: all 120ms ease;
+    }
+
+    .mobile-nav-link:hover, .mobile-nav-link:active {
+      background: var(--pow-accent-subtle);
+      color: var(--pow-accent);
+      transform: translateX(3px);
+    }
+
+    .mobile-drawer-footer {
+      padding-top: 1rem;
+      border-top: 1px solid rgba(15, 23, 42, 0.08);
+    }
+
+    .mobile-drawer-cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      min-height: 44px;
+      padding: 0.75rem 1rem;
+      background: var(--pow-accent);
+      color: #FFFFFF;
+      border-radius: var(--pow-radius-btn);
+      font-family: var(--pow-font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-decoration: none;
+      box-shadow: 0 4px 14px var(--pow-accent-glow);
+      transition: transform 120ms ease, background 120ms ease;
+    }
+
+    .mobile-drawer-cta-btn:hover {
+      background: var(--pow-accent-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Strict 320px Responsive Baseline & Anti-Bloat Fluid Typography */
+    @media (max-width: 768px) {
+      .pow-nav { padding: 0.65rem 1rem; }
+      .nav-links { display: none !important; }
+      .nav-actions .desktop-only { display: none !important; }
+      .nav-hamburger-btn { display: inline-flex; }
+      .nav-tag-badge { display: none; }
+    }
+
+    @media (max-width: 480px) {
+      html { font-size: 15px; }
+      body { overflow-x: hidden; }
+      .pow-nav { padding: 0.5rem 0.75rem; }
+      .nav-title { font-size: 1rem; }
+      .nav-logo-img { width: 28px; height: 28px; }
+      .pow-hero { padding: 2rem 0.75rem 1.5rem 0.75rem; }
+      .hero-glass-pod { padding: 1.4rem 0.85rem; border-radius: 18px; }
+      .hero-title { font-size: clamp(1.35rem, 5.5vw, 1.7rem) !important; line-height: 1.25; letter-spacing: -0.02em; margin-bottom: 0.85rem; }
+      .hero-desc { font-size: 0.85rem !important; line-height: 1.55; margin-bottom: 1.25rem; }
+      .hero-sticker-badge { font-size: 0.72rem; padding: 0.25rem 0.65rem; margin-bottom: 1rem; }
+      .pow-command-pill { max-width: 100%; padding: 0.35rem 0.65rem; font-size: 0.72rem; }
+      .pow-code { font-size: 0.72rem; }
+      .pow-section { padding: 2.5rem 0.75rem; }
+      .section-title { font-size: clamp(1.2rem, 4.5vw, 1.45rem) !important; }
+      .section-desc { font-size: 0.85rem !important; }
+      .nested-showcase-box { padding: 1.25rem 0.85rem; border-radius: 18px; }
+      .child-sub-card { padding: 1rem 0.85rem; }
+      .lab-controls-panel { padding: 1.25rem 0.85rem; }
+      .lab-preview-card { padding: 1.25rem 0.85rem; }
+      .install-card { padding: 1.25rem 0.85rem; }
+      .faq-card { padding: 1.25rem 0.85rem; }
+      .token-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .token-table th, .token-table td { padding: 0.5rem 0.5rem; font-size: 0.75rem; }
+    }
+
+    @media (max-width: 360px) {
+      html { font-size: 14px; }
+      .pow-nav { padding: 0.45rem 0.5rem; }
+      .pow-hero { padding: 1.5rem 0.5rem 1rem 0.5rem; }
+      .hero-glass-pod { padding: 1.15rem 0.65rem; }
+      .hero-title { font-size: 1.35rem !important; }
+      .pow-command-pill { padding: 0.3rem 0.5rem; }
+      .pow-code { font-size: 0.68rem; }
+      .pow-section { padding: 2rem 0.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -1427,15 +1624,64 @@
     </div>
 
     <div class="nav-actions">
-      <a href="index.html" class="pow-btn-sm">
+      <a href="index.html" class="pow-btn-sm desktop-only">
         <span>← All Styles</span>
       </a>
-      <a href="#install" class="pow-btn-sm pow-btn-install-header">
+      <a href="#install" class="pow-btn-sm pow-btn-install-header desktop-only">
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
         <span>Install Skill</span>
       </a>
+      <button class="nav-hamburger-btn" id="navHamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" onclick="openMobileNav()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
     </div>
   </nav>
+
+  <!-- Mobile Navigation Drawer Overlay (Glassmorphism Archetype) -->
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="closeMobileNav()"></div>
+  <div class="mobile-nav-drawer" id="mobileNavDrawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header">
+      <div class="nav-brand-group">
+        <img src="assets/logo.webp" alt="Taste Engine Logo" class="nav-logo-img">
+        <span class="nav-title">Taste Engine</span>
+      </div>
+      <button class="mobile-drawer-close-btn" onclick="closeMobileNav()" aria-label="Close navigation menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+    <div class="mobile-drawer-body">
+      <a href="#playground" class="mobile-nav-link" onclick="closeMobileNav()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        <span>Studio Lab</span>
+      </a>
+      <a href="#nested" class="mobile-nav-link" onclick="closeMobileNav()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/><path d="m14 9 3 3-3 3"/></svg>
+        <span>Nested Planes</span>
+      </a>
+      <a href="#install" class="mobile-nav-link" onclick="closeMobileNav()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        <span>Installation</span>
+      </a>
+      <a href="#tokens" class="mobile-nav-link" onclick="closeMobileNav()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        <span>Design Tokens</span>
+      </a>
+      <a href="#faq" class="mobile-nav-link" onclick="closeMobileNav()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
+        <span>FAQ</span>
+      </a>
+      <a href="index.html" class="mobile-nav-link" onclick="closeMobileNav()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        <span>← All 10 Styles Gallery</span>
+      </a>
+    </div>
+    <div class="mobile-drawer-footer">
+      <a href="#install" class="mobile-drawer-cta-btn" onclick="closeMobileNav()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
+        <span>Install Glassmorphism Skill</span>
+      </a>
+    </div>
+  </div>
 
   <main>
     <!-- Hero Section (One Full Viewport) -->

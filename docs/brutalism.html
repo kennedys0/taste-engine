@@ -1475,6 +1475,161 @@
         border-bottom: 2px solid rgba(255, 255, 255, 0.2);
       }
     }
+
+    /* --- Brutalism Mobile Hamburger & Architectural Drawer --- */
+    .brut-hamburger-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 100%;
+      min-height: 48px;
+      background: var(--pow-surface);
+      border-left: 2px solid var(--pow-border-color);
+      color: var(--pow-text);
+      cursor: pointer;
+    }
+
+    .brut-hamburger-btn:hover {
+      background: var(--pow-accent);
+      color: #000000;
+    }
+
+    .mobile-nav-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 200ms ease;
+    }
+
+    .mobile-nav-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-nav-drawer {
+      position: fixed;
+      top: 0;
+      right: -320px;
+      width: min(300px, 86vw);
+      height: 100vh;
+      height: 100dvh;
+      z-index: 999;
+      background: var(--pow-surface);
+      border-left: 3px solid var(--pow-border-color);
+      box-shadow: -10px 0 0 rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      transition: transform 200ms ease;
+      box-sizing: border-box;
+    }
+
+    .mobile-nav-drawer.open {
+      transform: translateX(-320px);
+    }
+
+    .mobile-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 1.25rem;
+      border-bottom: 2px solid var(--pow-border-color);
+      background: var(--pow-accent);
+      color: #000000;
+      font-family: var(--pow-font-mono);
+      font-weight: 900;
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    .mobile-drawer-close-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: #000000;
+      border: 2px solid #000000;
+      color: #FFFFFF;
+      cursor: pointer;
+    }
+
+    .mobile-drawer-body {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-height: 48px;
+      padding: 0.75rem 1.25rem;
+      border-bottom: 1px solid var(--pow-border-color);
+      color: var(--pow-text);
+      text-decoration: none;
+      font-family: var(--pow-font-mono);
+      font-weight: 700;
+      font-size: 0.825rem;
+      letter-spacing: 0.04em;
+    }
+
+    .mobile-nav-link:hover {
+      background: var(--pow-accent);
+      color: #000000;
+    }
+
+    .mobile-drawer-footer {
+      padding: 1rem;
+      border-top: 2px solid var(--pow-border-color);
+    }
+
+    .mobile-drawer-cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      min-height: 44px;
+      padding: 0.75rem 1rem;
+      background: var(--pow-accent);
+      color: #000000;
+      border: 2px solid var(--pow-border-color);
+      font-family: var(--pow-font-mono);
+      font-weight: 900;
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+
+    /* Strict 320px Responsive Baseline & Anti-Bloat Fluid Typography */
+    @media (max-width: 768px) {
+      .nav-tagline-cell { display: none !important; }
+      .nav-links-track { display: none !important; }
+      .nav-action-yellow { display: none !important; }
+      .brut-hamburger-btn { display: inline-flex !important; }
+    }
+
+    @media (max-width: 480px) {
+      html { font-size: 15px; }
+      body { overflow-x: hidden; }
+      .brand-text { font-size: 1.15rem !important; }
+      .hero-huge-title { font-size: clamp(1.4rem, 6vw, 1.9rem) !important; line-height: 1.15; }
+      .brut-hero-grid { grid-template-columns: 1fr; }
+      .blueprint-sidebar { border-left: none; border-top: 2px solid var(--pow-border-color); }
+      .pow-section { padding: 2.25rem 0.75rem !important; }
+      .section-title { font-size: clamp(1.2rem, 4.5vw, 1.45rem) !important; }
+    }
+
+    @media (max-width: 360px) {
+      html { font-size: 14px; }
+      .hero-huge-title { font-size: 1.35rem !important; }
+      .metric-cell { padding: 0.75rem 0.5rem; }
+    }
   </style>
 </head>
 <body>
@@ -1510,8 +1665,35 @@
         <span>Start a Project</span>
         <span>↗</span>
       </a>
+      <button class="brut-hamburger-btn" id="navHamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" onclick="openMobileNav()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+      </button>
     </div>
   </header>
+
+  <!-- Mobile Navigation Drawer Overlay (Brutalism Archetype) -->
+  <div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="closeMobileNav()"></div>
+  <div class="mobile-nav-drawer" id="mobileNavDrawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
+    <div class="mobile-drawer-header">
+      <span>BRUT // BLUEPRINT MENU</span>
+      <button class="mobile-drawer-close-btn" onclick="closeMobileNav()" aria-label="Close navigation menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+      </button>
+    </div>
+    <div class="mobile-drawer-body">
+      <a href="#work" class="mobile-nav-link" onclick="closeMobileNav()">01 // WORK</a>
+      <a href="index.html" class="mobile-nav-link" onclick="closeMobileNav()">02 // ABOUT</a>
+      <a href="#services" class="mobile-nav-link" onclick="closeMobileNav()">03 // SERVICES</a>
+      <a href="#install" class="mobile-nav-link" onclick="closeMobileNav()">04 // JOURNAL / INSTALL</a>
+      <a href="#faq" class="mobile-nav-link" onclick="closeMobileNav()">05 // CONTACT</a>
+      <a href="index.html" class="mobile-nav-link" onclick="closeMobileNav()">06 // ALL 10 STYLES</a>
+    </div>
+    <div class="mobile-drawer-footer">
+      <a href="#install" class="mobile-drawer-cta-btn" onclick="closeMobileNav()">
+        <span>START A PROJECT ↗</span>
+      </a>
+    </div>
+  </div>
 
   <main>
     <!-- =========================================================

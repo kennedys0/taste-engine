@@ -22,7 +22,7 @@ Do **not** mark an expressive style feature as defective just because the audito
 - [ ] **Content & truth:** no invented numbers, testimonials, logo strips, realtime statuses, urgency, placeholders masquerading as real users, or false successes.
 - [ ] **Copywriting:** headings say something; CTA predicts result; microcopy explains state/recovery; no generic motivational filler; locale is natural.
 - [ ] **Typography & controls:** coherent tokens, readable type hierarchy, working focus, labels, button shapes, and consistent component geometry.
-- [ ] **Responsive:** narrow mobile, intermediate and desktop checked where relevant; long strings/zoom don't clip; mobile is recomposed, not compressed.
+- [ ] **Responsive down to 320px & Mobile Header:** verified down to 320px viewport with zero horizontal scroll blowout; mobile typography scales down proportionally to prevent bloated UI; navigation header collapses comfortably into an accessible hamburger menu on narrow screens (< 768px).
 - [ ] **Motion:** purposeful and respects reduced motion; no idle bounce / glow loops unless explicitly justified as meaningful UI state.
 - [ ] **Functional integrity:** key actions work or are explicitly labeled unfinished; state transitions reflect real responses; empty/loading/error handling.
 - [ ] **Evidence:** only claim viewport checks, accessibility tests or end-to-end behavior actually performed. Note untested checks.

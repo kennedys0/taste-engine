@@ -78,6 +78,7 @@ Choose a cohesive pastel-and-saturated palette:
 
 ## Layout and geometry
 
+- **Responsive 320px baseline & fluid typography:** All layouts must scale gracefully down to 320px width without horizontal blowout. Typography and paddings must scale down proportionally (hero titles clamp to 1.35rem–1.65rem, section headings to 1.2rem–1.45rem, code to 0.725rem–0.785rem) to prevent bloated interfaces ("UI bengkak"). Top navigation headers must collapse links behind an accessible hamburger menu on narrow mobile screens (< 768px) rather than crowding the header.
 Radius 24–32 px cards, 20–26 px buttons, 9999px full pills or circles, 14–16 px squircle badges and checkboxes. Maintain consistent 8 px rhythm and comfortable gutters. Avoid random circles that have no semantic interaction.
 
 ## Surfaces, depth, texture
@@ -154,8 +155,8 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 ## Style-specific quality gate
 
-- **Do:** Ensure tactile dual inner shadows are visible; maintain consistent light direction (top-left to bottom-right); provide tactile active/press states; verify WCAG AA contrast on both primary and light clay; verify dark/light mode switching so text and surface colors adapt in coupled pairs (e.g. pale porcelain text on dark clay, dark ink text on light clay).
-- **Don't:** never use emojis as UI icons or button prefixes (always use Lucide or clean vector SVGs with currentColor); Do not treat simple rounded corners as clay; avoid balloon shadows, excessive glossy halos, unreadable light-on-light labels, ornamental badges, and dark/light mode collisions where dark text remains on dark clay.
+- **Do:** verify responsive fidelity down to 320px viewport with zero horizontal scroll blowout; ensure mobile typography scales down proportionally to prevent bloated UI; verify header navigation collapses into an accessible hamburger menu on narrow screens (< 768px); Ensure tactile dual inner shadows are visible; maintain consistent light direction (top-left to bottom-right); provide tactile active/press states; verify WCAG AA contrast on both primary and light clay; verify dark/light mode switching so text and surface colors adapt in coupled pairs (e.g. pale porcelain text on dark clay, dark ink text on light clay).
+- **Don't:** never force crowded horizontal navigation links on mobile headers (always use a hamburger menu); avoid bloated mobile font sizes that crowd small screens; never use emojis as UI icons or button prefixes (always use Lucide or clean vector SVGs with currentColor); Do not treat simple rounded corners as clay; avoid balloon shadows, excessive glossy halos, unreadable light-on-light labels, ornamental badges, and dark/light mode collisions where dark text remains on dark clay.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -169,7 +170,7 @@ Do not add decorative **card-inside-card** layers: a nested surface must represe
 
 **Theme and mode contrast integrity:** When a user requests dark mode or light mode (or builds a theme switcher), background and foreground colors MUST flip in synchronized pairs across all surfaces, text, borders, inputs, and semantic badges. Never leave black text on dark background, white text on white background, or unreadable low-contrast status pills. All states must meet WCAG AA contrast (minimum 4.5:1 for body/normal text, 3:1 for large headlines and interactive boundaries).
 
-**Responsive and motion:** compose mobile deliberately, check long labels, focus states and accessible contrast; no text clipping to fit a trendy layout. Static by default; use motion for meaningful interactions, respect reduced-motion preferences, avoid bounce/floating/pulsing decoration without a real state.
+**Responsive 320px baseline and fluid typography:** compose mobile deliberately down to 320px minimum viewport width with zero horizontal blowout. Typography and paddings must scale down proportionally (hero ~1.35rem, section headings ~1.2rem) to avoid bloated interfaces ("UI bengkak"). In top navigation bars, never force crowded horizontal links on mobile (< 768px); collapse navigation behind an accessible hamburger menu with comfortable tap targets. Static by default; use motion for meaningful interactions, respect reduced-motion preferences, avoid bounce/floating/pulsing decoration without a real state.
 
 **Critical/High findings block completion:** fabricated status/data, broken actions, inaccessible/clipped controls, misleading copy, theme contrast collisions or significant mobile failure must be fixed. Report what was actually verified; do not claim tests that did not run.
 

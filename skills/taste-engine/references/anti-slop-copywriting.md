@@ -27,7 +27,7 @@ Avoid repetitive abstract words: *innovative, seamless, effortlessly, powerful, 
 | "Supercharge your workflow" | "Create a report from completed work" | Concrete outcome, no hype |
 | "Seamless collaboration for everyone" | "Share the report link with the team" | Explains action and recipient |
 | "Experience next-gen analytics" | "Lihat transaksi per kategori" | Specific information hierarchy |
-| "Get Started Now! 🚀" | "Buat proyek" | Button predicts next screen/action |
+| "Get Started Now! [rocket icon]" | "Buat proyek" | Button predicts next screen/action |
 | "Something went wrong" | "The report was not saved. Try again." | Tells user what failed and what to do |
 | "Success! Amazing work!" | "Report saved successfully" | Confirms actual state without cheering |
 | "Nothing here yet!" | "No reports yet. Create your first report." | Honest empty state and useful next step |
