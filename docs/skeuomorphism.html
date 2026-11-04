@@ -745,19 +745,29 @@
       line-height: 1.62;
     }
 
-    /* Master Hardware Chassis Enclosure */
+    /* Structural Enclosure Container (Single-Plane Chassis Wrapper - Zero Card-on-Card) */
     .chassis-enclosure {
-      background: var(--skeuo-chassis-bg);
-      border: var(--skeuo-chassis-border);
-      box-shadow: var(--skeuo-chassis-highlight), var(--skeuo-chassis-shadow);
-      border-radius: var(--skeuo-radius);
-      padding: 2rem;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
       position: relative;
       width: 100%;
       max-width: 100%;
       box-sizing: border-box;
       min-width: 0;
+    }
+
+    .installation-module {
+      background: var(--skeuo-surface);
+      border: var(--skeuo-chassis-border);
+      box-shadow: var(--skeuo-chassis-shadow);
+      border-radius: var(--skeuo-radius);
       overflow: hidden;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      min-width: 0;
     }
 
     /* =========================================================
@@ -823,21 +833,13 @@
       box-shadow: var(--skeuo-well-inset);
     }
 
-    /* Module 1: Analog Channel Strip */
+    /* Module 1: Analog Channel Strip (Unibody Faceplate - Zero Card-on-Card) */
     .channel-strip-well {
-      background: var(--skeuo-well-bg);
-      border: var(--skeuo-chassis-border);
-      box-shadow: var(--skeuo-well-inset);
-      border-radius: 8px;
-      padding: 1.25rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      width: 100%;
-      max-width: 100%;
-      box-sizing: border-box;
-      min-width: 0;
-      overflow: hidden;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      display: contents;
     }
 
     .strip-lcd-display {
@@ -872,9 +874,11 @@
 
     .controls-deck-row {
       display: grid;
-      grid-template-columns: 140px 1fr;
+      grid-template-columns: 130px 140px 1fr;
       gap: 1.25rem;
       align-items: center;
+      width: 100%;
+      box-sizing: border-box;
     }
 
     /* Rotary Knob Construction */
@@ -1335,24 +1339,22 @@
       overflow-x: auto;
     }
 
-    /* Module 3: Card-in-Card Rack-Mount Modular Pane */
+    /* Module 3: DSP Sub-Processor Rack Console (Single Faceplate - Zero Card-on-Card) */
     .modular-rack-card {
-      background: var(--skeuo-chassis-bg);
-      border: var(--skeuo-chassis-border);
-      box-shadow: var(--skeuo-chassis-highlight), var(--skeuo-chassis-shadow);
-      border-radius: 10px;
-      padding: 1.25rem;
-      position: relative;
+      background: transparent;
+      border: none;
+      box-shadow: none;
+      padding: 0;
     }
 
-    /* Nested Recessed Sub-Well (Card inside Card) */
+    .debossed-telemetry-bay,
     .nested-instrument-well {
       background: var(--skeuo-well-bg);
-      border: 1px dashed rgba(0, 0, 0, 0.35);
+      border: var(--skeuo-chassis-border);
       box-shadow: var(--skeuo-well-inset);
       border-radius: 8px;
-      padding: 1.15rem;
-      margin-top: 0.85rem;
+      padding: 0.85rem;
+      margin-top: 0.5rem;
       overflow-x: auto !important;
       -webkit-overflow-scrolling: touch;
       max-width: 100% !important;
@@ -1360,8 +1362,9 @@
       scrollbar-width: thin;
     }
 
+    [data-theme="dark"] .debossed-telemetry-bay,
     [data-theme="dark"] .nested-instrument-well {
-      border: 1px dashed rgba(255, 255, 255, 0.15);
+      border: var(--skeuo-chassis-border);
     }
 
     .rack-param-table {
@@ -2010,12 +2013,13 @@
         overflow: hidden !important;
       }
       .chassis-enclosure {
-        padding: 1rem 0.65rem !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        background: transparent !important;
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
-        overflow: hidden !important;
-        border-radius: 12px !important;
       }
       .studio-grid {
         grid-template-columns: minmax(0, 1fr) !important;
@@ -2025,7 +2029,7 @@
         gap: 1.25rem !important;
       }
       .hardware-module {
-        padding: 1rem 0.65rem !important;
+        padding: 1.15rem 0.85rem !important;
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
@@ -2033,13 +2037,14 @@
         overflow: hidden !important;
         border-radius: 10px !important;
       }
+      .installation-module {
+        border-radius: 10px !important;
+      }
       .channel-strip-well {
-        padding: 0.85rem 0.55rem !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        box-sizing: border-box !important;
-        min-width: 0 !important;
-        overflow: hidden !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+        display: contents !important;
       }
       .module-header {
         display: flex !important;
@@ -2196,13 +2201,15 @@
         margin: 2rem auto !important;
       }
       .chassis-enclosure {
-        padding: 0.85rem 0.5rem !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
       }
       .hardware-module {
-        padding: 0.85rem 0.5rem !important;
+        padding: 0.85rem 0.55rem !important;
       }
       .channel-strip-well {
-        padding: 0.75rem 0.45rem !important;
+        padding: 0 !important;
       }
 
       .section-title {
@@ -2253,10 +2260,12 @@
         font-size: 0.58rem !important;
       }
       .chassis-enclosure {
-        padding: 0.75rem 0.4rem !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
       }
       .hardware-module {
-        padding: 0.75rem 0.4rem !important;
+        padding: 0.75rem 0.45rem !important;
       }
     }
   </style>
@@ -2403,124 +2412,121 @@
         <span class="section-badge">Live Hardware Deck</span>
         <h2 class="section-title">Skeuomorphic Instrument Console</h2>
         <p class="section-desc">
-          Interact with tactile hardware controls: rotate the analog rotary dial, engage mechanical switches with synthesized relay audio, adjust chassis bevels, and inspect recessed sub-wells.
+          Interact with tactile hardware controls: rotate the analog rotary dial, engage mechanical switches with synthesized relay audio, adjust chassis bevels, and inspect recessed sub-wells. Single-plane unibody chassis with zero card-on-card nesting.
         </p>
       </div>
 
-      <div class="chassis-enclosure">
-        <div class="studio-grid">
-          
-          <!-- Module 1: Analog Channel Strip & Master Console -->
-          <div class="hardware-module">
-            <div class="module-header">
-              <div class="module-title-group">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-                <span class="module-title">Master Channel 01</span>
+      <div class="studio-grid">
+        
+        <!-- Module 1: Analog Channel Strip (Direct Unibody Faceplate - Zero Card-on-Card) -->
+        <div class="hardware-module">
+          <div class="module-header">
+            <div class="module-title-group">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              <span class="module-title">Master Channel 01</span>
+            </div>
+            <span class="module-tag">DSP ACTIVE</span>
+          </div>
+
+          <!-- Recessed LCD Readout (Carved Directly into Module Faceplate) -->
+          <div class="strip-lcd-display">
+            <div>
+              <div class="lcd-label">Signal Gain Output</div>
+              <div class="lcd-value" id="lcdGainVal">+3.5 dB</div>
+            </div>
+            <div style="text-align: right;">
+              <div class="lcd-label">State</div>
+              <div class="lcd-value" id="lcdStateVal" style="color: #10B981;">ENGAGED</div>
+            </div>
+          </div>
+
+          <!-- Rotary Dial & VU Meter Controls (Directly on Faceplate) -->
+          <div class="controls-deck-row">
+            <div class="rotary-knob-wrapper">
+              <div class="knob-housing">
+                <div class="rotary-knob" id="rotaryKnob" title="Click or use buttons to adjust gain" onclick="stepGain(1.5)">
+                  <div class="knob-indicator-notch"></div>
+                </div>
               </div>
-              <span class="module-tag">DSP ACTIVE</span>
+              <div class="knob-step-buttons">
+                <button class="knob-step-btn" onclick="stepGain(-1.5)" aria-label="Decrease gain">-</button>
+                <span style="font-family: var(--skeuo-font-mono); font-size: 0.75rem; align-self: center; font-weight: 700;">GAIN</span>
+                <button class="knob-step-btn" onclick="stepGain(1.5)" aria-label="Increase gain">+</button>
+              </div>
             </div>
 
-            <!-- Recessed LCD Readout -->
-            <div class="channel-strip-well">
-              <div class="strip-lcd-display">
-                <div>
-                  <div class="lcd-label">Signal Gain Output</div>
-                  <div class="lcd-value" id="lcdGainVal">+3.5 dB</div>
-                </div>
-                <div style="text-align: right;">
-                  <div class="lcd-label">State</div>
-                  <div class="lcd-value" id="lcdStateVal" style="color: #10B981;">ENGAGED</div>
+            <!-- Vertical Pill Fader Slider (Ref Image 1 & 2 - Recessed Track into Faceplate) -->
+            <div style="display: flex; align-items: center; justify-content: center; gap: 0.85rem; min-width: 0;">
+              <div class="pill-fader-track" id="pillFaderTrack" onclick="toggleFaderLevel()" title="Click to adjust fader level">
+                <div class="pill-fader-fill" id="pillFaderFill">
+                  <span id="pillFaderPercent">75%</span>
                 </div>
               </div>
-
-              <!-- Rotary Dial & VU Meter Controls -->
-              <div class="controls-deck-row">
-                <div class="rotary-knob-wrapper">
-                  <div class="knob-housing">
-                    <div class="rotary-knob" id="rotaryKnob" title="Click or use buttons to adjust gain" onclick="stepGain(1.5)">
-                      <div class="knob-indicator-notch"></div>
-                    </div>
-                  </div>
-                  <div class="knob-step-buttons">
-                    <button class="knob-step-btn" onclick="stepGain(-1.5)" aria-label="Decrease gain">-</button>
-                    <span style="font-family: var(--skeuo-font-mono); font-size: 0.75rem; align-self: center; font-weight: 700;">GAIN</span>
-                    <button class="knob-step-btn" onclick="stepGain(1.5)" aria-label="Increase gain">+</button>
-                  </div>
-                </div>
-
-                <!-- Vertical Pill Fader Slider (Ref Image 1 & 2) -->
-                <div style="display: flex; align-items: center; justify-content: center; gap: 1rem;">
-                  <div class="pill-fader-track" id="pillFaderTrack" onclick="toggleFaderLevel()" title="Click to adjust fader level">
-                    <div class="pill-fader-fill" id="pillFaderFill">
-                      <span id="pillFaderPercent">75%</span>
-                    </div>
-                  </div>
-                  <div style="display: flex; flex-direction: column; gap: 0.35rem; font-family: var(--skeuo-font-mono); font-size: 0.72rem; color: var(--skeuo-text-muted);">
-                    <div style="font-weight: 800; color: var(--skeuo-text); font-size: 0.8rem;">PILL FADER</div>
-                    <div>STATUS: <strong style="color: var(--skeuo-accent);">CALIBRATED</strong></div>
-                    <div>MODE: TACTILE DUAL</div>
-                    <div style="font-size: 0.68rem; margin-top: 0.2rem;">Ref: 23:15 Widget Style</div>
-                  </div>
-                </div>
-
-                <!-- VU Meter Column -->
-                <div class="vu-meter-column">
-                  <div style="display: flex; justify-content: space-between; font-family: var(--skeuo-font-mono); font-size: 0.68rem; color: var(--skeuo-text-muted);">
-                    <span>-12dB</span>
-                    <span>0dB</span>
-                    <span>+6dB</span>
-                    <span>CLIP</span>
-                  </div>
-                  <div class="vu-ladder" id="vuLadder">
-                    <div class="vu-bar active-green"></div>
-                    <div class="vu-bar active-green"></div>
-                    <div class="vu-bar active-green"></div>
-                    <div class="vu-bar active-green"></div>
-                    <div class="vu-bar active-green"></div>
-                    <div class="vu-bar active-green"></div>
-                    <div class="vu-bar active-amber"></div>
-                    <div class="vu-bar active-amber"></div>
-                    <div class="vu-bar"></div>
-                    <div class="vu-bar"></div>
-                  </div>
-                  <div style="font-family: var(--skeuo-font-mono); font-size: 0.72rem; color: var(--skeuo-text-muted); text-align: center;">
-                    Damped Peak Response: <strong id="peakHeadroomTxt" style="color: var(--skeuo-text);">+4.2 dB RMS</strong>
-                  </div>
-                </div>
+              <div style="display: flex; flex-direction: column; gap: 0.25rem; font-family: var(--skeuo-font-mono); font-size: 0.72rem; color: var(--skeuo-text-muted); min-width: 0;">
+                <div style="font-weight: 800; color: var(--skeuo-text); font-size: 0.785rem;">PILL FADER</div>
+                <div>STATUS: <strong style="color: var(--skeuo-accent);">CALIBRATED</strong></div>
+                <div>MODE: TACTILE DUAL</div>
+                <div style="font-size: 0.65rem; margin-top: 0.15rem;">Ref: 23:15 Widget</div>
               </div>
+            </div>
 
-              <!-- Tactile Channel Push-Buttons -->
-              <div class="tactile-buttons-strip">
-                <button class="tactile-toggle-btn active" id="btn48v" onclick="toggleChannelFeature('48V Phantom Power', this, 'active-red')">
-                  <div class="led-jewel active-red"></div>
-                  <span class="btn-key-label">+48V</span>
-                </button>
-                <button class="tactile-toggle-btn" id="btnLowCut" onclick="toggleChannelFeature('80Hz Low Cut', this, 'active-amber')">
-                  <div class="led-jewel"></div>
-                  <span class="btn-key-label">LOW CUT</span>
-                </button>
-                <button class="tactile-toggle-btn active" id="btnPhase" onclick="toggleChannelFeature('Phase Invert', this, 'active-blue')">
-                  <div class="led-jewel active-blue"></div>
-                  <span class="btn-key-label">PHASE</span>
-                </button>
-                <button class="tactile-toggle-btn active" id="btnComp" onclick="toggleChannelFeature('Optical Compressor', this, 'active-green')">
-                  <div class="led-jewel active-green"></div>
-                  <span class="btn-key-label">COMP</span>
-                </button>
+            <!-- VU Meter Column -->
+            <div class="vu-meter-column">
+              <div style="display: flex; justify-content: space-between; font-family: var(--skeuo-font-mono); font-size: 0.68rem; color: var(--skeuo-text-muted);">
+                <span>-12dB</span>
+                <span>0dB</span>
+                <span>+6dB</span>
+                <span>CLIP</span>
               </div>
-
-              <!-- Rocker Switch -->
-              <div class="rocker-switch-row">
-                <span style="font-family: var(--skeuo-font-display); font-weight: 700; font-size: 0.85rem;">Master Bypass Relay</span>
-                <div class="rocker-wrapper">
-                  <span class="rocker-state-label" id="rockerLabel">ACTIVE</span>
-                  <div class="rocker-housing engaged" id="masterRocker" onclick="toggleMasterRocker()" title="Toggle Master Relay Bypass">
-                    <div class="rocker-paddle"></div>
-                  </div>
-                </div>
+              <div class="vu-ladder" id="vuLadder">
+                <div class="vu-bar active-green"></div>
+                <div class="vu-bar active-green"></div>
+                <div class="vu-bar active-green"></div>
+                <div class="vu-bar active-green"></div>
+                <div class="vu-bar active-green"></div>
+                <div class="vu-bar active-green"></div>
+                <div class="vu-bar active-amber"></div>
+                <div class="vu-bar active-amber"></div>
+                <div class="vu-bar"></div>
+                <div class="vu-bar"></div>
+              </div>
+              <div style="font-family: var(--skeuo-font-mono); font-size: 0.72rem; color: var(--skeuo-text-muted); text-align: center;">
+                Damped Peak Response: <strong id="peakHeadroomTxt" style="color: var(--skeuo-text);">+4.2 dB RMS</strong>
               </div>
             </div>
           </div>
+
+          <!-- Tactile Channel Push-Buttons (Extruded Directly from Faceplate) -->
+          <div class="tactile-buttons-strip">
+            <button class="tactile-toggle-btn active" id="btn48v" onclick="toggleChannelFeature('48V Phantom Power', this, 'active-red')">
+              <div class="led-jewel active-red"></div>
+              <span class="btn-key-label">+48V</span>
+            </button>
+            <button class="tactile-toggle-btn" id="btnLowCut" onclick="toggleChannelFeature('80Hz Low Cut', this, 'active-amber')">
+              <div class="led-jewel"></div>
+              <span class="btn-key-label">LOW CUT</span>
+            </button>
+            <button class="tactile-toggle-btn active" id="btnPhase" onclick="toggleChannelFeature('Phase Invert', this, 'active-blue')">
+              <div class="led-jewel active-blue"></div>
+              <span class="btn-key-label">PHASE</span>
+            </button>
+            <button class="tactile-toggle-btn active" id="btnComp" onclick="toggleChannelFeature('Optical Compressor', this, 'active-green')">
+              <div class="led-jewel active-green"></div>
+              <span class="btn-key-label">COMP</span>
+            </button>
+          </div>
+
+          <!-- Rocker Switch (Directly on Faceplate) -->
+          <div class="rocker-switch-row">
+            <span style="font-family: var(--skeuo-font-display); font-weight: 700; font-size: 0.85rem;">Master Bypass Relay</span>
+            <div class="rocker-wrapper">
+              <span class="rocker-state-label" id="rockerLabel">ACTIVE</span>
+              <div class="rocker-housing engaged" id="masterRocker" onclick="toggleMasterRocker()" title="Toggle Master Relay Bypass">
+                <div class="rocker-paddle"></div>
+              </div>
+            </div>
+          </div>
+        </div>
 
           <!-- Module 2: Chassis Finish & Bevel Calibrator -->
           <div class="hardware-module">
@@ -2580,76 +2586,75 @@
             </div>
           </div>
 
-          <!-- Module 3: Card-in-Card Rack Modular Pane -->
-          <div class="hardware-module" style="grid-column: 1 / -1;">
-            <div class="module-header">
-              <div class="module-title-group">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
-                <span class="module-title">Card-in-Card Modular Hardware Enclosure</span>
-              </div>
-              <span class="module-tag">ENCLOSURE WELL</span>
+        <!-- Module 3: DSP Sub-Processor Rack Console (Single Faceplate - Zero Card-on-Card) -->
+        <div class="hardware-module" style="grid-column: 1 / -1;">
+          <div class="module-header">
+            <div class="module-title-group">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"/><rect x="2" y="14" width="20" height="8" rx="2" ry="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></svg>
+              <span class="module-title">DSP Sub-Processor Rack Console</span>
             </div>
-
-            <div class="modular-rack-card">
-              <div style="display: flex; justify-content: space-between; align-items: center;">
-                <div>
-                  <h4 style="font-family: var(--skeuo-font-display); font-size: 1rem; font-weight: 800;">Rack Frame Unit #09-A</h4>
-                  <p style="font-size: 0.8rem; color: var(--skeuo-text-muted);">Main chassis housing a recessed modular DSP sub-bay.</p>
-                </div>
-                <span style="font-family: var(--skeuo-font-mono); font-size: 0.75rem; color: var(--skeuo-accent); font-weight: 700;">[STATUS: SYNCHRONIZED]</span>
-              </div>
-
-              <!-- Nested Recessed Well (Card inside Card) -->
-              <div class="nested-instrument-well">
-                <table class="rack-param-table">
-                  <thead>
-                    <tr>
-                      <th>Module ID</th>
-                      <th>Sub-System</th>
-                      <th>DSP Load</th>
-                      <th>Headroom</th>
-                      <th>Action Status</th>
-                    </tr>
-                  </thead>
-                  <tbody id="rackTableBody">
-                    <tr>
-                      <td>MOD-01</td>
-                      <td>Analog Saturation Tube</td>
-                      <td>14.2%</td>
-                      <td>+6.0 dB</td>
-                      <td style="color: #10B981;">[OPTIMAL]</td>
-                    </tr>
-                    <tr>
-                      <td>MOD-02</td>
-                      <td>Dynamic Opto-Limiter</td>
-                      <td>21.8%</td>
-                      <td>+3.5 dB</td>
-                      <td style="color: #10B981;">[ENGAGED]</td>
-                    </tr>
-                    <tr>
-                      <td>MOD-03</td>
-                      <td>Discrete Stereo Panner</td>
-                      <td>8.4%</td>
-                      <td>+8.0 dB</td>
-                      <td style="color: #10B981;">[ONLINE]</td>
-                    </tr>
-                  </tbody>
-                </table>
-
-                <div class="rack-action-row">
-                  <button class="rack-action-btn" onclick="dispatchHardwareAction('DISPATCH NEW DSP RACK')">
-                    [ DISPATCH NEW RACK ]
-                  </button>
-                  <button class="rack-action-btn" onclick="dispatchHardwareAction('RECALIBRATE HARDWARE RELAY')">
-                    [ RECALIBRATE RELAYS ]
-                  </button>
-                  <button class="rack-action-btn" onclick="dispatchHardwareAction('FLUSH BUFFER CACHE')">
-                    [ FLUSH AUDIO BUFFER ]
-                  </button>
-                </div>
-              </div>
-            </div>
+            <span class="module-tag">SINGLE-PLANE FACEPLATE</span>
           </div>
+
+          <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem;">
+            <div>
+              <h4 style="font-family: var(--skeuo-font-display); font-size: 0.95rem; font-weight: 800;">Rack Processing Sub-System #09-A</h4>
+              <p style="font-size: 0.8rem; color: var(--skeuo-text-muted);">Unibody faceplate telemetry with debossed parameter bay and tactile action keys.</p>
+            </div>
+            <span style="font-family: var(--skeuo-font-mono); font-size: 0.75rem; color: var(--skeuo-accent); font-weight: 700;">[STATUS: SYNCHRONIZED]</span>
+          </div>
+
+          <!-- Debossed Telemetry Bay (Carved Directly into Module Faceplate) -->
+          <div class="debossed-telemetry-bay">
+            <table class="rack-param-table">
+              <thead>
+                <tr>
+                  <th>Module ID</th>
+                  <th>Sub-System</th>
+                  <th>DSP Load</th>
+                  <th>Headroom</th>
+                  <th>Action Status</th>
+                </tr>
+              </thead>
+              <tbody id="rackTableBody">
+                <tr>
+                  <td>MOD-01</td>
+                  <td>Analog Saturation Tube</td>
+                  <td>14.2%</td>
+                  <td>+6.0 dB</td>
+                  <td style="color: #10B981;">[OPTIMAL]</td>
+                </tr>
+                <tr>
+                  <td>MOD-02</td>
+                  <td>Dynamic Opto-Limiter</td>
+                  <td>21.8%</td>
+                  <td>+3.5 dB</td>
+                  <td style="color: #10B981;">[ENGAGED]</td>
+                </tr>
+                <tr>
+                  <td>MOD-03</td>
+                  <td>Discrete Stereo Panner</td>
+                  <td>8.4%</td>
+                  <td>+8.0 dB</td>
+                  <td style="color: #10B981;">[ONLINE]</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Tactile Action Keys (Extruded Directly from Faceplate) -->
+          <div class="rack-action-row">
+            <button class="rack-action-btn" onclick="dispatchHardwareAction('DISPATCH NEW DSP RACK')">
+              [ DISPATCH NEW RACK ]
+            </button>
+            <button class="rack-action-btn" onclick="dispatchHardwareAction('RECALIBRATE HARDWARE RELAY')">
+              [ RECALIBRATE RELAYS ]
+            </button>
+            <button class="rack-action-btn" onclick="dispatchHardwareAction('FLUSH BUFFER CACHE')">
+              [ FLUSH AUDIO BUFFER ]
+            </button>
+          </div>
+        </div>
 
           <!-- Module 4: Jewel Status Indicators & Contrast Table -->
           <div class="hardware-module" style="grid-column: 1 / -1;">
@@ -2722,7 +2727,6 @@
             </div>
           </div>
 
-        </div>
       </div>
     </section>
 
@@ -2736,7 +2740,7 @@
         </p>
       </div>
 
-      <div class="chassis-enclosure" style="padding: 0;">
+      <div class="installation-module">
         <div class="tab-header-strip">
           <button class="tab-switch-btn active" data-tab="tab-npx">npx skills (CLI)</button>
           <button class="tab-switch-btn" data-tab="tab-npm">npm / pnpm</button>
@@ -2910,7 +2914,7 @@
               <td class="token-code">--taste-skeuo-well-bg</td>
               <td>#141619</td>
               <td>#D1D5DB</td>
-              <td>Recessed sub-chassis / Card-in-Card well background</td>
+              <td>Recessed instrument bay / debossed display well background</td>
             </tr>
             <tr>
               <td class="token-code">--taste-skeuo-well-inset</td>
@@ -2987,11 +2991,11 @@
 
       <div class="skeuo-faq-item">
         <div class="skeuo-faq-header" onclick="toggleFaq(this)">
-          <span>Are card-inside-card nested surfaces allowed in Skeuomorphism?</span>
+          <span>Why is 'card-on-card' stacking strictly avoided in Skeuomorphism?</span>
           <svg class="faq-icon-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
         </div>
         <div class="skeuo-faq-body">
-          Yes, when representing physical hardware sub-chassis, modular rack-mount bays, or recessed display wells sunken into the main chassis faceplate (using `--taste-skeuo-well-bg` and `--taste-skeuo-well-inset`). Mindless decorative nesting without mechanical or enclosure logic remains disallowed.
+          In physical hardware and authentic tactile design, controls and displays sit on a single structural faceplate. Elements are either extruded directly from the faceplate (tactile push-buttons, rotary dials) or debossed into sunken wells (recessed LCD displays, fader channels). Nesting an elevated card with drop shadows on top of another elevated card violates real-world tactile physics and creates visual clutter ('box-in-box' syndrome). Recessed wells are debossed cavities, not elevated cards.
         </div>
       </div>
 
