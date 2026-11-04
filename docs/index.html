@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     /* =========================================================
-       ZERO-SLOP DESIGN TOKENS (MATTE CHARCOAL + DISCIPLINED TACTILE ACCENTS)
+       CODEX-INSPIRED SLATE GREY DESIGN TOKENS (NON-PITCH-BLACK)
        ========================================================= */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     
@@ -20,31 +20,31 @@
     }
 
     :root {
-      /* Dark Theme (Default) */
-      --shell-bg: #0d0f14;
-      --shell-surface: #141720;
-      --shell-surface-elevated: #1a1e2a;
-      --shell-surface-hover: #212636;
-      --shell-well-bg: #090b0e;
-      --shell-border: rgba(255, 255, 255, 0.08);
-      --shell-border-subtle: rgba(255, 255, 255, 0.04);
-      --shell-border-focus: #6366f1;
+      /* Dark Theme (Codex / ChatGPT Neutral Slate-Grey Palette) */
+      --shell-bg: #212328;
+      --shell-surface: #2b2e36;
+      --shell-surface-elevated: #343842;
+      --shell-surface-hover: #3d424e;
+      --shell-well-bg: #1a1c21;
+      --shell-border: rgba(255, 255, 255, 0.12);
+      --shell-border-subtle: rgba(255, 255, 255, 0.06);
+      --shell-border-focus: #10b981;
       
-      --shell-text: #f8fafc;
-      --shell-text-muted: #94a3b8;
-      --shell-text-dim: #64748b;
+      --shell-text: #f3f4f6;
+      --shell-text-muted: #a6adbb;
+      --shell-text-dim: #717887;
       
-      /* Disciplined Accent Tokens */
-      --shell-accent: #6366f1;
-      --shell-accent-hover: #4f46e5;
-      --shell-accent-subtle: rgba(99, 102, 241, 0.12);
-      --shell-accent-border: rgba(99, 102, 241, 0.35);
+      /* Codex Emerald Accent Tokens */
+      --shell-accent: #10b981;
+      --shell-accent-hover: #059669;
+      --shell-accent-subtle: rgba(16, 185, 129, 0.14);
+      --shell-accent-border: rgba(16, 185, 129, 0.35);
 
       /* Tactile Elevation Profiles */
-      --shell-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
-      --shell-shadow-card: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-      --shell-shadow-elevated: 0 12px 32px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      --shell-well-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.65), inset 0 0 1px rgba(0, 0, 0, 0.8);
+      --shell-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.22);
+      --shell-shadow-card: 0 4px 14px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      --shell-shadow-elevated: 0 10px 28px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      --shell-well-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.35);
       --shell-specular-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.08);
 
       --shell-font: 'Inter', system-ui, -apple-system, sans-serif;
@@ -58,23 +58,23 @@
     }
 
     [data-theme="light"] {
-      --shell-bg: #f8fafc;
+      --shell-bg: #f7f7f8;
       --shell-surface: #ffffff;
-      --shell-surface-elevated: #f1f5f9;
-      --shell-surface-hover: #e2e8f0;
-      --shell-well-bg: #eef2f6;
-      --shell-border: rgba(0, 0, 0, 0.09);
-      --shell-border-subtle: rgba(0, 0, 0, 0.04);
-      --shell-border-focus: #4f46e5;
+      --shell-surface-elevated: #f0f0f2;
+      --shell-surface-hover: #e3e3e8;
+      --shell-well-bg: #ededf0;
+      --shell-border: rgba(0, 0, 0, 0.10);
+      --shell-border-subtle: rgba(0, 0, 0, 0.05);
+      --shell-border-focus: #059669;
 
-      --shell-text: #0f172a;
-      --shell-text-muted: #475569;
-      --shell-text-dim: #94a3b8;
+      --shell-text: #202123;
+      --shell-text-muted: #565869;
+      --shell-text-dim: #8e8ea0;
 
-      --shell-accent: #4f46e5;
-      --shell-accent-hover: #4338ca;
-      --shell-accent-subtle: rgba(79, 70, 229, 0.08);
-      --shell-accent-border: rgba(79, 70, 229, 0.3);
+      --shell-accent: #059669;
+      --shell-accent-hover: #047857;
+      --shell-accent-subtle: rgba(5, 150, 105, 0.10);
+      --shell-accent-border: rgba(5, 150, 105, 0.30);
 
       --shell-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
       --shell-shadow-card: 0 2px 8px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
@@ -121,7 +121,7 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(13, 15, 20, 0.88);
+      background: rgba(33, 35, 40, 0.90);
       backdrop-filter: blur(14px);
       -webkit-backdrop-filter: blur(14px);
       border-bottom: 1px solid var(--shell-border);
@@ -133,7 +133,7 @@
     }
 
     [data-theme="light"] .top-nav {
-      background: rgba(248, 250, 252, 0.90);
+      background: rgba(247, 247, 248, 0.92);
     }
 
     .brand-group {
@@ -2739,22 +2739,22 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
             <span>Copy CSS</span>
           </button>
         </div>
-        <pre class="terminal-body"><code id="cmd-boilerplate">/* Root Dark Theme Default */
+        <pre class="terminal-body"><code id="cmd-boilerplate">/* Root Dark Theme Default (Codex Slate-Grey) */
 :root {
-  --app-bg: var(--taste-bento-bg, #0d0f14);
-  --app-surface: var(--taste-bento-surface, #141720);
-  --app-text: var(--taste-bento-text, #f8fafc);
-  --app-border: var(--taste-bento-border, rgba(255, 255, 255, 0.08));
-  --app-accent: var(--taste-bento-accent, #6366f1);
+  --app-bg: var(--taste-bento-bg, #212328);
+  --app-surface: var(--taste-bento-surface, #2b2e36);
+  --app-text: var(--taste-bento-text, #f3f4f6);
+  --app-border: var(--taste-bento-border, rgba(255, 255, 255, 0.12));
+  --app-accent: var(--taste-bento-accent, #10b981);
 }
 
 /* Light Theme Transition */
 [data-theme="light"] {
-  --app-bg: #f8fafc;
+  --app-bg: #f7f7f8;
   --app-surface: #ffffff;
-  --app-text: #0f172a;
-  --app-border: rgba(0, 0, 0, 0.08);
-  --app-accent: #4f46e5;
+  --app-text: #202123;
+  --app-border: rgba(0, 0, 0, 0.10);
+  --app-accent: #059669;
 }</code></pre>
       </div>
     </div>
@@ -2998,6 +2998,6 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
         }
       });
     });
-    </script>
+  </script>
 </body>
 </html>
