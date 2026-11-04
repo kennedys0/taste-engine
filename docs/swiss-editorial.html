@@ -1,0 +1,1288 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Swiss / Editorial Proof of Work & Installation Guide — Taste Engine</title>
+  <meta name="description" content="Dedicated Proof of Work and installation guide for Taste Engine's Swiss / Editorial aesthetic archetype. Experience authentic design tokens, zero AI-slop, and contrast safety.">
+  <link rel="icon" type="image/webp" href="assets/logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    /* =========================================================
+       SWISS / EDITORIAL DESIGN SYSTEM TOKENS
+       ========================================================= */
+    :root {
+      --pow-bg: #fbfaf6;
+      --pow-surface: #ffffff;
+      --pow-surface-hover: #f5f4ef;
+      --pow-well-bg: #f2f1eb;
+      --pow-text: #111111;
+      --pow-text-muted: #555555;
+      --pow-border: 1px solid #111111;
+      --pow-shadow: none;
+      --pow-accent: #d62828;
+      --pow-radius: 0px;
+      --pow-radius-btn: 0px;
+
+      --pow-font-display: 'Space Grotesk', Helvetica, -apple-system, sans-serif;
+      --pow-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --pow-font-mono: 'JetBrains Mono', monospace;
+    }
+
+    [data-theme="dark"] {
+      --pow-bg: #141416;
+      --pow-surface: #1c1c1f;
+      --pow-surface-hover: #25252a;
+      --pow-well-bg: #0f0f11;
+      --pow-text: #fdfdfd;
+      --pow-text-muted: #8e8e93;
+      --pow-border: 1px solid rgba(255, 255, 255, 0.15);
+      --pow-shadow: none;
+      --pow-accent: #e63946;
+      --pow-radius: 0px;
+      --pow-radius-btn: 0px;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--pow-bg);
+      color: var(--pow-text);
+      font-family: var(--pow-font-body);
+      font-size: 16px;
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color 150ms ease, color 150ms ease;
+    }
+
+    /* Top Navigation */
+    .pow-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--pow-surface);
+      border-bottom: var(--pow-border);
+      padding: 0.75rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .nav-brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--pow-text);
+    }
+
+    .nav-logo-box {
+      width: 32px;
+      height: 32px;
+      background: var(--pow-accent);
+      color: #fff;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-family: var(--pow-font-display);
+    }
+
+    .nav-title {
+      font-family: var(--pow-font-display);
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .nav-tag-badge {
+      background: rgba(255, 255, 255, 0.1);
+      border: var(--pow-border);
+      font-family: var(--pow-font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      text-transform: uppercase;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .pow-btn-sm {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.85rem;
+      background: var(--pow-surface);
+      color: var(--pow-text);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius-btn);
+      font-family: var(--pow-font-display);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 120ms ease, transform 90ms ease;
+    }
+
+    .pow-btn-sm:hover {
+      background: var(--pow-surface-hover);
+      transform: translateY(-1px);
+    }
+
+    /* Hero Section (100svh safe viewport) */
+    .pow-hero {
+      min-height: calc(100svh - 60px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3.5rem 1.25rem 2.5rem 1.25rem;
+      max-width: 1080px;
+      margin: 0 auto;
+    }
+
+    .hero-sticker-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--pow-well-bg);
+      color: var(--pow-accent);
+      border: var(--pow-border);
+      border-radius: 999px;
+      padding: 0.35rem 0.95rem;
+      font-family: var(--pow-font-mono);
+      font-size: 0.785rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--pow-font-display);
+      font-size: clamp(2rem, 5.5vw, 3.6rem);
+      font-weight: 800;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+      max-width: 920px;
+    }
+
+    .hero-desc {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: var(--pow-text-muted);
+      max-width: 740px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    /* Single-Line Inline Command Pill ("Sejajarin") */
+    .pow-command-pill {
+      display: inline-flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      background: var(--pow-well-bg);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius-btn);
+      padding: 0.4rem 0.5rem 0.4rem 1.1rem;
+      max-width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 2rem;
+    }
+
+    .pow-prompt {
+      font-family: var(--pow-font-mono);
+      font-weight: 700;
+      color: var(--pow-accent);
+      flex-shrink: 0;
+      line-height: 1;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    .pow-code {
+      font-family: var(--pow-font-mono);
+      font-size: clamp(0.72rem, 3.2vw, 0.875rem);
+      font-weight: 600;
+      color: var(--pow-text);
+      white-space: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+      line-height: 1;
+      user-select: all;
+    }
+
+    .pow-code::-webkit-scrollbar {
+      display: none;
+    }
+
+    .pow-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--pow-surface);
+      color: var(--pow-text);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius-btn);
+      padding: 0.4rem 0.8rem;
+      font-family: var(--pow-font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      flex-shrink: 0;
+      line-height: 1;
+      transition: background 120ms ease;
+    }
+
+    .pow-copy-btn:hover {
+      background: var(--pow-surface-hover);
+    }
+
+    /* Hero CTA Group */
+    .hero-btn-group {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2.75rem;
+      flex-wrap: wrap;
+    }
+
+    .pow-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      font-family: var(--pow-font-display);
+      font-weight: 700;
+      font-size: 0.925rem;
+      border: var(--pow-border);
+      border-radius: var(--pow-radius-btn);
+      cursor: pointer;
+      transition: transform 100ms ease, background 120ms ease;
+      text-decoration: none;
+    }
+
+    .pow-btn-primary {
+      background: var(--pow-accent);
+      color: #ffffff;
+      border-color: var(--pow-accent);
+    }
+
+    .pow-btn-secondary {
+      background: var(--pow-surface);
+      color: var(--pow-text);
+    }
+
+    .pow-btn:hover {
+      transform: translateY(-2px);
+    }
+
+    /* 4-Stat Strip */
+    .pow-stat-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .stat-box {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius);
+      padding: 1rem 0.85rem;
+      text-align: center;
+      box-shadow: var(--pow-shadow);
+    }
+
+    .stat-val {
+      font-family: var(--pow-font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 0.25rem;
+      color: var(--pow-text);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--pow-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    /* Content Sections */
+    .pow-section {
+      max-width: 1080px;
+      margin: 4.5rem auto;
+      padding: 0 1.25rem;
+    }
+
+    .section-header {
+      margin-bottom: 2.25rem;
+    }
+
+    .section-badge {
+      display: inline-block;
+      font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      padding: 0.25rem 0.65rem;
+      background: var(--pow-well-bg);
+      color: var(--pow-accent);
+      border: var(--pow-border);
+      border-radius: 4px;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--pow-font-display);
+      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+
+    .section-desc {
+      font-size: 1rem;
+      color: var(--pow-text-muted);
+      max-width: 680px;
+      margin-top: 0.5rem;
+      line-height: 1.6;
+    }
+
+    /* Tabbed Installation Card */
+    .pow-card {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      box-shadow: var(--pow-shadow);
+      border-radius: var(--pow-radius);
+      overflow: hidden;
+    }
+
+    .tab-header-strip {
+      display: flex;
+      background: var(--pow-well-bg);
+      border-bottom: var(--pow-border);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .tab-header-strip::-webkit-scrollbar {
+      display: none;
+    }
+
+    .tab-switch-btn {
+      padding: 0.85rem 1.4rem;
+      background: transparent;
+      border: none;
+      border-right: var(--pow-border);
+      font-family: var(--pow-font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--pow-text-muted);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 120ms ease, color 120ms ease;
+    }
+
+    .tab-switch-btn:hover {
+      background: var(--pow-surface-hover);
+      color: var(--pow-text);
+    }
+
+    .tab-switch-btn.active {
+      background: var(--pow-surface);
+      color: var(--pow-accent);
+      border-bottom: 2px solid var(--pow-accent);
+    }
+
+    .tab-body {
+      padding: 1.75rem;
+      display: none;
+    }
+
+    .tab-body.active {
+      display: block;
+    }
+
+    .install-step-title {
+      font-family: var(--pow-font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 0.65rem;
+    }
+
+    .install-step-desc {
+      font-size: 0.9rem;
+      color: var(--pow-text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    /* Terminal Console Window */
+    .pow-terminal {
+      background: #0d1117;
+      color: #f0f6fc;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+    }
+
+    .terminal-topbar {
+      background: #161b22;
+      padding: 0.65rem 1rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .terminal-dots {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot.red { background: #ff5f56; }
+    .dot.yellow { background: #ffbd2e; }
+    .dot.green { background: #27c93f; }
+
+    .terminal-label {
+      font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
+      color: #8b949e;
+      font-weight: 600;
+    }
+
+    .terminal-content {
+      padding: 1.15rem;
+      font-family: var(--pow-font-mono);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      overflow-x: auto;
+    }
+
+    .terminal-line {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .terminal-line:last-child {
+      margin-bottom: 0;
+    }
+
+    .line-p {
+      color: var(--pow-accent);
+      font-weight: 700;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    .line-cmd {
+      color: #f0f6fc;
+      word-break: break-all;
+    }
+
+    .line-comment {
+      color: #8b949e;
+      font-style: italic;
+    }
+
+    /* Bento Demo Specifics */
+    .bento-demo-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 16px;
+    }
+
+    .bento-tile {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius);
+      padding: 1.75rem;
+      box-shadow: var(--pow-shadow);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .bento-tag {
+      display: inline-block;
+      font-size: 0.725rem;
+      font-family: var(--pow-font-mono);
+      font-weight: 700;
+      color: var(--pow-accent);
+      margin-bottom: 0.5rem;
+      text-transform: uppercase;
+    }
+
+    /* Accordion / FAQ */
+    .pow-faq-item {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      box-shadow: var(--pow-shadow);
+      border-radius: var(--pow-radius);
+      margin-bottom: 1rem;
+      overflow: hidden;
+    }
+
+    .pow-faq-header {
+      padding: 1rem 1.25rem;
+      font-family: var(--pow-font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      background: var(--pow-surface);
+      transition: background 120ms ease;
+    }
+
+    .pow-faq-header:hover {
+      background: var(--pow-surface-hover);
+    }
+
+    .faq-arrow {
+      font-family: var(--pow-font-mono);
+      font-weight: 700;
+      transition: transform 180ms ease;
+    }
+
+    .pow-faq-item.open .faq-arrow {
+      transform: rotate(90deg);
+    }
+
+    .pow-faq-body {
+      padding: 0 1.25rem 1.25rem 1.25rem;
+      font-size: 0.875rem;
+      color: var(--pow-text-muted);
+      line-height: 1.6;
+      display: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      padding-top: 1rem;
+    }
+
+    .pow-faq-item.open .pow-faq-body {
+      display: block;
+    }
+
+    /* Token Specification Table */
+    .token-table-wrap {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      box-shadow: var(--pow-shadow);
+      border-radius: var(--pow-radius);
+      overflow-x: auto;
+    }
+
+    .pow-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .pow-table th, .pow-table td {
+      padding: 0.9rem 1.25rem;
+      border-bottom: var(--pow-border);
+      font-size: 0.85rem;
+    }
+
+    .pow-table th {
+      background: var(--pow-well-bg);
+      font-family: var(--pow-font-display);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .pow-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .token-code {
+      font-family: var(--pow-font-mono);
+      font-weight: 700;
+      color: var(--pow-accent);
+    }
+
+    /* Footer (Balanced 2-column mobile architecture) */
+    .pow-footer {
+      background: var(--pow-surface);
+      border-top: var(--pow-border);
+      margin-top: 5rem;
+      padding: 3rem 1.25rem 2rem 1.25rem;
+    }
+
+    .footer-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .footer-brand h4 {
+      font-family: var(--pow-font-display);
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.85rem;
+      color: var(--pow-text-muted);
+      max-width: 380px;
+      line-height: 1.6;
+    }
+
+    .footer-col h5 {
+      font-family: var(--pow-font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 1rem;
+      color: var(--pow-text);
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-col ul a {
+      color: var(--pow-text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 90ms ease;
+    }
+
+    .footer-col ul a:hover {
+      color: var(--pow-accent);
+    }
+
+    .footer-bottom {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding-top: 1.5rem;
+      border-top: var(--pow-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--pow-text-muted);
+    }
+
+    /* Toast Notification */
+    .pow-toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--pow-surface);
+      color: var(--pow-text);
+      border: var(--pow-border);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      padding: 0.65rem 1.2rem;
+      border-radius: var(--pow-radius-btn);
+      font-family: var(--pow-font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 150ms ease, transform 150ms ease;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .pow-toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================================================
+       RESPONSIVE BREAKPOINTS (FLUID & COMPACT MOBILE)
+       ========================================================= */
+    @media (max-width: 768px) {
+      .pow-nav { padding: 0.65rem 1rem; }
+      .nav-title { font-size: 0.95rem; }
+      .nav-tag-badge { display: none; }
+      
+      .pow-hero { padding: 2.5rem 1rem 1.5rem 1rem; }
+      .hero-title { font-size: clamp(1.6rem, 5.5vw, 2.3rem); }
+      .hero-desc { font-size: 0.9rem; margin-bottom: 1.5rem; }
+
+      .hero-btn-group { flex-direction: column; width: 100%; gap: 0.65rem; }
+      .pow-btn { width: 100%; }
+
+      .pow-stat-strip { grid-template-columns: repeat(2, 1fr); gap: 0.65rem; }
+      .stat-val { font-size: 1.35rem; }
+
+      .bento-demo-grid { grid-template-columns: 1fr; }
+
+      .footer-inner {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.75rem 1.25rem;
+      }
+      .footer-brand {
+        grid-column: 1 / -1;
+        padding-bottom: 1rem;
+        border-bottom: var(--pow-border);
+      }
+      .footer-bottom {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 1rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-title { font-size: 1.45rem; line-height: 1.18; }
+      .hero-desc { font-size: 0.825rem; }
+      .pow-stat-strip { grid-template-columns: 1fr 1fr; gap: 0.45rem; }
+      .stat-box { padding: 0.75rem 0.5rem; }
+      .stat-val { font-size: 1.2rem; }
+      .stat-label { font-size: 0.65rem; }
+
+      .section-title { font-size: 1.3rem; }
+      .section-desc { font-size: 0.825rem; }
+
+      .tab-body { padding: 1rem; }
+      .terminal-content { font-size: 0.75rem; padding: 0.85rem; }
+
+      .pow-command-pill {
+        gap: 0.4rem;
+        padding: 0.3rem 0.35rem 0.3rem 0.75rem;
+      }
+      .pow-copy-btn {
+        padding: 0.35rem 0.6rem;
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <header class="pow-nav">
+    <a href="index.html" class="nav-brand-group">
+      <div class="nav-logo-box">TE</div>
+      <strong class="nav-title">Taste Engine</strong>
+      <span class="nav-tag-badge">Swiss / Editorial PoW</span>
+    </a>
+    <div class="nav-actions">
+      <a href="index.html" class="pow-btn-sm" title="Back to main gallery">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        <span>All 10 Styles</span>
+      </a>
+      <button class="pow-btn-sm" id="themeToggleBtn" aria-label="Toggle theme">
+        <span id="themeLabel">☀️ LIGHT</span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Opening Hero Viewport -->
+    <section class="pow-hero">
+      <div class="hero-sticker-badge">
+        <span>★ Proof of Work: Archetype #10</span>
+      </div>
+
+      <h1 class="hero-title">
+        Typographic Precision, Numbered Scaffolding & Asymmetric Tension
+      </h1>
+
+      <p class="hero-desc">
+        Swiss / Editorial achieves typographic elegance through stark display-to-body scale contrast, structural hairline rules, section indexing markers, and intentional negative space. This entire page demonstrates the authentic design tokens, contrast coupling, and anti-slop rules of this style.
+      </p>
+
+      <!-- Single-Line Inline Command Pill ("Sejajarin") -->
+      <div class="pow-command-pill">
+        <span class="pow-prompt">$</span>
+        <code class="pow-code" id="heroCmdText">npx skills add kennedys0/taste-style-swiss-editorial</code>
+        <button class="pow-copy-btn" id="heroCopyBtn" aria-label="Copy command">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+          <span>COPY</span>
+        </button>
+      </div>
+
+      <div class="hero-btn-group">
+        <a href="#install" class="pow-btn pow-btn-primary">
+          <span>Installation Guide ↓</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 13l5 5 5-5M12 6v12"/></svg>
+        </a>
+        <a href="#playground" class="pow-btn pow-btn-secondary">
+          <span>Explore Interactive UI →</span>
+        </a>
+      </div>
+
+      <!-- 4-Stat Strip -->
+      <div class="pow-stat-strip">
+        <div class="stat-box">
+          <div class="stat-val">48px–72px</div>
+          <div class="stat-label">Headline Contrast</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">01, 02</div>
+          <div class="stat-label">Numbered Markers</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">1px Hairline</div>
+          <div class="stat-label">Structural Dividing Rules</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-val">Asymmetric</div>
+          <div class="stat-label">Editorial Grid Tension</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Installation Guide Section -->
+    <section class="pow-section" id="install">
+      <div class="section-header">
+        <span class="section-badge">How to Install</span>
+        <h2 class="section-title">Install Swiss / Editorial or Full Engine</h2>
+        <p class="section-desc">
+          Choose whether you want this single standalone Swiss / Editorial skill or the full 10-style automated Taste Engine suite for your AI coding agents.
+        </p>
+      </div>
+
+      <div class="pow-card">
+        <!-- Tab Headers -->
+        <div class="tab-header-strip">
+          <button class="tab-switch-btn active" data-tab="tab-standalone">1. Standalone Style Skill</button>
+          <button class="tab-switch-btn" data-tab="tab-global">2. Full Taste Engine (Global)</button>
+          <button class="tab-switch-btn" data-tab="tab-tailwind">3. Tailwind & shadcn Preset</button>
+        </div>
+
+        <!-- Tab 1: Standalone Skill -->
+        <div class="tab-body active" id="tab-standalone">
+          <h3 class="install-step-title">Option A: Install Dedicated Swiss / Editorial Skill</h3>
+          <p class="install-step-desc">
+            Installs only the Swiss / Editorial style pack. Perfect if your project has already committed to this exact aesthetic and does not need a 10-style selector.
+          </p>
+
+          <div class="pow-terminal">
+            <div class="terminal-topbar">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="terminal-label">bash — universal agent skills cli</span>
+              <button class="pow-btn-sm" onclick="copySnippet('cmdStandaloneCli')">Copy</button>
+            </div>
+            <div class="terminal-content" id="cmdStandaloneCli">
+              <div class="terminal-line">
+                <span class="line-comment"># Install standalone Swiss / Editorial pack via Agent Skills CLI</span>
+              </div>
+              <div class="terminal-line">
+                <span class="line-p">$</span>
+                <span class="line-cmd">npx skills add kennedys0/taste-engine --skill taste-style-swiss-editorial</span>
+              </div>
+              <div class="terminal-line">
+                <span class="line-comment"># Or install directly for Antigravity IDE global config</span>
+              </div>
+              <div class="terminal-line">
+                <span class="line-p">$</span>
+                <span class="line-cmd">git clone https://github.com/kennedys0/taste-engine.git && cp -r taste-engine/optional-standalone-skills/taste-style-swiss-editorial ~/.gemini/config/skills/</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Global Engine -->
+        <div class="tab-body" id="tab-global">
+          <h3 class="install-step-title">Option B: Install Full Taste Engine (All 10 Styles + SEO + Anti-Slop)</h3>
+          <p class="install-step-desc">
+            Equips your AI agent with the autonomous style router, preflight interviews, 10 aesthetic packs, full-screen hero gating, and automatic SEO audit.
+          </p>
+
+          <div class="pow-terminal">
+            <div class="terminal-topbar">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="terminal-label">bash — multi-agent native installer</span>
+              <button class="pow-btn-sm" onclick="copySnippet('cmdGlobalCli')">Copy</button>
+            </div>
+            <div class="terminal-content" id="cmdGlobalCli">
+              <div class="terminal-line">
+                <span class="line-comment"># 1. Universal 1-click Agent Skills install</span>
+              </div>
+              <div class="terminal-line">
+                <span class="line-p">$</span>
+                <span class="line-cmd">npx skills add kennedys0/taste-engine</span>
+              </div>
+              <div class="terminal-line">
+                <span class="line-comment"># 2. Or install globally for Google Antigravity IDE / CLI (agy)</span>
+              </div>
+              <div class="terminal-line">
+                <span class="line-p">$</span>
+                <span class="line-cmd">node bin/taste-engine.mjs install --agent antigravity --global</span>
+              </div>
+              <div class="terminal-line">
+                <span class="line-comment"># 3. Or install for Claude Code or OpenAI Codex</span>
+              </div>
+              <div class="terminal-line">
+                <span class="line-p">$</span>
+                <span class="line-cmd">node bin/taste-engine.mjs install --agent claude --global</span>
+              </div>
+              <div class="terminal-line">
+                <span class="line-p">$</span>
+                <span class="line-cmd">node bin/taste-engine.mjs install --agent codex --global</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Tailwind & shadcn -->
+        <div class="tab-body" id="tab-tailwind">
+          <h3 class="install-step-title">Option C: Tailwind CSS & shadcn/ui Preset</h3>
+          <p class="install-step-desc">
+            Scaffold Swiss / Editorial utility tokens directly into your React, Next.js, or Vite frontend stack.
+          </p>
+
+          <div class="pow-terminal">
+            <div class="terminal-topbar">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="terminal-label">tailwind.config.js — preset integration</span>
+              <button class="pow-btn-sm" onclick="copySnippet('cmdTailwindPreset')">Copy</button>
+            </div>
+            <div class="terminal-content" id="cmdTailwindPreset">
+              <div class="terminal-line">
+                <span class="line-comment">// Add Taste Engine official presets to your Tailwind config</span>
+              </div>
+              <div class="terminal-line">
+                <span class="line-cmd">module.exports = {</span>
+              </div>
+              <div class="terminal-line">
+                <span class="line-cmd">&nbsp;&nbsp;presets: [require('./presets/tailwind/tailwind.preset.js')],</span>
+              </div>
+              <div class="terminal-line">
+                <span class="line-cmd">&nbsp;&nbsp;theme: {</span>
+              </div>
+              <div class="terminal-line">
+                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;extend: {</span>
+              </div>
+              <div class="terminal-line">
+                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors: { 'swiss-editorial': '#d62828' }</span>
+              </div>
+              <div class="terminal-line">
+                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;}</span>
+              </div>
+              <div class="terminal-line">
+                <span class="line-cmd">&nbsp;&nbsp;}</span>
+              </div>
+              <div class="terminal-line">
+                <span class="line-cmd">};</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Component Playground (PoW) -->
+    <section class="pow-section" id="playground">
+      <div class="section-header">
+        <span class="section-badge">Live Interactive PoW</span>
+        <h2 class="section-title">Swiss / Editorial Component Lab</h2>
+        <p class="section-desc">
+          Test interactive components and layout structure built strictly according to Taste Engine's Swiss / Editorial fidelity rules.
+        </p>
+      </div>
+
+      <div class="pow-card" style="padding: 2rem;">
+        
+        <div style="background: var(--pow-surface); border: var(--pow-border); padding: 2.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: baseline; border-bottom: 2px solid var(--pow-accent); padding-bottom: 0.5rem; margin-bottom: 1.5rem;">
+            <span style="font-family: var(--pow-font-mono); font-size: 0.85rem; font-weight: 700;">SECTION 01 // PRINCIPLES</span>
+            <span style="font-family: var(--pow-font-mono); font-size: 0.75rem; color: var(--pow-text-muted);">ZÜRICH 1957</span>
+          </div>
+          <h3 style="font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 800; line-height: 1.1; margin-bottom: 1rem; letter-spacing: -0.03em;">FORM FOLLOWS RHYTHM.</h3>
+          <p style="font-size: 0.95rem; color: var(--pow-text-muted); line-height: 1.6; max-width: 600px; margin-bottom: 2rem;">Asymmetric column tension, disciplined type scales, and singular high-contrast signal accents.</p>
+          <button class="pow-btn pow-btn-primary" onclick="handleBtnClick('Editorial Publication')">READ COMPLETE VOLUME →</button>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Design Token Cheatsheet -->
+    <section class="pow-section">
+      <div class="section-header">
+        <span class="section-badge">Tokens & Math</span>
+        <h2 class="section-title">Swiss / Editorial Design Tokens</h2>
+        <p class="section-desc">
+          Standardized CSS custom properties for instant copy-pasting into any stylesheet.
+        </p>
+      </div>
+
+      <div class="token-table-wrap">
+        <table class="pow-table">
+          <thead>
+            <tr>
+              <th>Token Name</th>
+              <th>Light Mode</th>
+              <th>Dark Mode</th>
+              <th>Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="token-code">--taste-swiss-editorial-bg</td>
+              <td>#fbfaf6</td>
+              <td>#141416</td>
+              <td>Canvas backdrop base</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-swiss-editorial-surface</td>
+              <td>#ffffff</td>
+              <td>#1c1c1f</td>
+              <td>Card surface background</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-swiss-editorial-text</td>
+              <td>#111111</td>
+              <td>#fdfdfd</td>
+              <td>Primary text & icon color</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-swiss-editorial-border</td>
+              <td>1px solid #111111</td>
+              <td>1px solid rgba(255, 255, 255, 0.15)</td>
+              <td>Structural stroke specification</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-swiss-editorial-accent</td>
+              <td>#d62828</td>
+              <td>#e63946</td>
+              <td>Primary action accent</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- FAQ Accordion -->
+    <section class="pow-section">
+      <div class="section-header">
+        <span class="section-badge">FAQ & Verification</span>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+      </div>
+
+      <div class="pow-faq-item open">
+        <div class="pow-faq-header" onclick="toggleFaq(this)">
+          <span>What makes Swiss Editorial unique?</span>
+          <span class="faq-arrow">▶</span>
+        </div>
+        <div class="pow-faq-body">
+          Massive typographic contrast (48–72px display headlines), structural hairline dividers, numbered section badges (01, 02), and zero decorative noise.
+        </div>
+      </div>
+
+      <div class="pow-faq-item">
+        <div class="pow-faq-header" onclick="toggleFaq(this)">
+          <span>Why is the accent color red?</span>
+          <span class="faq-arrow">▶</span>
+        </div>
+        <div class="pow-faq-body">
+          International Typographic Style traditionally utilizes an iconic signal red accent (like Swiss rail clocks) to create instant focal hierarchy.
+        </div>
+      </div>
+
+      <div class="pow-faq-item">
+        <div class="pow-faq-header" onclick="toggleFaq(this)">
+          <span>Can I install just Swiss Editorial?</span>
+          <span class="faq-arrow">▶</span>
+        </div>
+        <div class="pow-faq-body">
+          Yes, run `npx skills add kennedys0/taste-engine --skill taste-style-swiss-editorial`.
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Site Footer (2-column balanced mobile grid) -->
+  <footer class="pow-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <h4>Taste Engine</h4>
+        <p>Open-source frontend design intelligence pack for AI coding agents. Elevate design fidelity, eliminate AI-slop, and enforce contrast safety.</p>
+        <p style="margin-top: 0.5rem; font-size: 0.775rem;">Created by <a href="https://github.com/kennedys0" target="_blank" rel="noopener" style="color: var(--pow-accent); font-weight: 700;">Mochamad Vikry (@kennedys0)</a></p>
+      </div>
+
+      <div class="footer-col">
+        <h5>Aesthetic Archetypes</h5>
+        <ul>
+          <li><a href="bento.html">Bento Grid (PoW)</a></li>
+          <li><a href="neo-brutalism.html">Neo-Brutalism (PoW)</a></li>
+          <li><a href="claymorphism.html">Claymorphism (PoW)</a></li>
+          <li><a href="enterprise.html">Enterprise (PoW)</a></li>
+          <li><a href="glassmorphism.html">Glassmorphism (PoW)</a></li>
+          <li><a href="swiss-editorial.html">Swiss Editorial (PoW)</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5>Navigation & Source</h5>
+        <ul>
+          <li><a href="index.html">Main Style Gallery</a></li>
+          <li><a href="index.html#installation">Installation Guide</a></li>
+          <li><a href="index.html#tokens">Token Matrix</a></li>
+          <li><a href="https://github.com/kennedys0/taste-engine" target="_blank" rel="noopener">GitHub Repository</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Mochamad Vikry. Released under the MIT License.</p>
+      <a href="#" class="pow-btn-sm" style="text-decoration:none;">
+        <span>↑ Back to Top</span>
+      </a>
+    </div>
+  </footer>
+
+  <!-- Toast Notification -->
+  <div class="pow-toast" id="powToast">
+    <span id="toastMsg">COPIED TO CLIPBOARD</span>
+  </div>
+
+  <script>
+    // Theme Toggling with LocalStorage Persistence
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const themeLabel = document.getElementById('themeLabel');
+    const htmlEl = document.documentElement;
+
+    function applyTheme(theme) {
+      htmlEl.setAttribute('data-theme', theme);
+      localStorage.setItem('taste-theme-pow-swiss-editorial', theme);
+      if (theme === 'dark') {
+        themeLabel.textContent = '☀️ LIGHT';
+      } else {
+        themeLabel.textContent = '🌙 DARK';
+      }
+    }
+
+    const savedTheme = localStorage.getItem('taste-theme-pow-swiss-editorial') || 'dark';
+    applyTheme(savedTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const current = htmlEl.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+      showToast(`Switched to ${next.toUpperCase()} mode`);
+    });
+
+    // Toast Notification Utility
+    let toastTimeout;
+    function showToast(msg) {
+      const toast = document.getElementById('powToast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2200);
+    }
+
+    // Hero Quick Copy Button
+    const heroCopyBtn = document.getElementById('heroCopyBtn');
+    const heroCmdText = document.getElementById('heroCmdText');
+    if (heroCopyBtn && heroCmdText) {
+      heroCopyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(heroCmdText.textContent.trim());
+          showToast('Copied installation command!');
+        } catch (e) {
+          showToast('Command copied');
+        }
+      });
+    }
+
+    // Tab Switcher
+    const tabButtons = document.querySelectorAll('.tab-switch-btn');
+    const tabBodies = document.querySelectorAll('.tab-body');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabButtons.forEach(b => b.classList.remove('active'));
+        tabBodies.forEach(b => b.classList.remove('active'));
+
+        btn.classList.add('active');
+        const targetId = btn.getAttribute('data-tab');
+        const targetBody = document.getElementById(targetId);
+        if (targetBody) targetBody.classList.add('active');
+      });
+    });
+
+    // Snippet Copier
+    async function copySnippet(elemId) {
+      const el = document.getElementById(elemId);
+      if (!el) return;
+      const text = el.innerText.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast('Terminal snippet copied!');
+      } catch (e) {
+        showToast('Snippet copied');
+      }
+    }
+
+    // Component Button Click Handler
+    function handleBtnClick(name) {
+      showToast(`Action: ${name}`);
+    }
+
+    // FAQ Accordion Toggle
+    function toggleFaq(header) {
+      const item = header.parentElement;
+      item.classList.toggle('open');
+    }
+  </script>
+</body>
+</html>

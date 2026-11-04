@@ -1474,3 +1474,4 @@ HTML_CONTENT = """<!DOCTYPE html>
 
 OUT_FILE.write_text(HTML_CONTENT, encoding="utf-8")
 print(f"PASS: successfully generated {OUT_FILE} ({len(HTML_CONTENT)} bytes)")
+

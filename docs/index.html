@@ -582,6 +582,36 @@
       color: var(--shell-text-muted);
     }
 
+        .showcase-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pow-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      background: var(--shell-surface-elevated);
+      color: var(--shell-accent);
+      border: 1px solid var(--shell-border);
+      border-radius: var(--shell-radius-pill);
+      padding: 0.35rem 0.8rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-decoration: none;
+      box-shadow: var(--shell-shadow-sm);
+      transition: all 120ms ease;
+      white-space: nowrap;
+    }
+
+    .pow-link-btn:hover {
+      background: var(--shell-surface-hover);
+      border-color: var(--shell-accent);
+      transform: translateY(-1px);
+    }
+
     .copy-token-btn {
       display: inline-flex;
       align-items: center;
@@ -2206,7 +2236,10 @@
           <h2>Bento Grid</h2>
           <span class="showcase-signature">Asymmetric modular cards & strict visual hierarchy</span>
         </div>
-        <button class="copy-token-btn" data-tokens="--taste-bento-bg: #0b0d10; --taste-bento-surface: #15191e; --taste-bento-text: #f4f4f6; --taste-bento-border: 1px solid rgba(255,255,255,0.08); --taste-bento-accent: #8b5cf6;">Copy Tokens</button>
+        <div class="showcase-actions">
+          <a href="bento.html" class="pow-link-btn">PoW Guide &rarr;</a>
+          <button class="copy-token-btn" data-tokens="--taste-bento-bg: #0b0d10; --taste-bento-surface: #15191e; --taste-bento-text: #f4f4f6; --taste-bento-border: 1px solid rgba(255,255,255,0.08); --taste-bento-accent: #8b5cf6;">Copy Tokens</button>
+        </div>
       </div>
       <div class="showcase-body">
         <div class="bento-wrapper">
@@ -2243,7 +2276,10 @@
           <h2>Brutalism</h2>
           <span class="showcase-signature">Raw structural scaffolding, 0px corners, immediate flip</span>
         </div>
-        <button class="copy-token-btn" data-tokens="--taste-brutal-bg: #ffffff; --taste-brutal-ink: #000000; --taste-brutal-border: 2.5px solid #000000; --taste-brutal-signal: #ff0000; --taste-brutal-radius: 0px;">Copy Tokens</button>
+        <div class="showcase-actions">
+          <a href="brutalism.html" class="pow-link-btn">PoW Guide &rarr;</a>
+          <button class="copy-token-btn" data-tokens="--taste-brutal-bg: #ffffff; --taste-brutal-ink: #000000; --taste-brutal-border: 2.5px solid #000000; --taste-brutal-signal: #ff0000; --taste-brutal-radius: 0px;">Copy Tokens</button>
+        </div>
       </div>
       <div class="showcase-body">
         <div class="brutal-wrapper">
@@ -2265,7 +2301,10 @@
           <h2>Claymorphism</h2>
           <span class="showcase-signature">Volumetric dual inner shadows, molded porcelain surfaces</span>
         </div>
-        <button class="copy-token-btn" data-tokens="--taste-clay-bg: #d7d1f1; --taste-clay-primary: #813ffc; --taste-clay-light: #ecebf5; --taste-clay-inner-primary: inset 3px 4px 6px rgba(255,255,255,0.45), inset -4px -6px 8px rgba(40,10,110,0.40);">Copy Tokens</button>
+        <div class="showcase-actions">
+          <a href="claymorphism.html" class="pow-link-btn">PoW Guide &rarr;</a>
+          <button class="copy-token-btn" data-tokens="--taste-clay-bg: #d7d1f1; --taste-clay-primary: #813ffc; --taste-clay-light: #ecebf5; --taste-clay-inner-primary: inset 3px 4px 6px rgba(255,255,255,0.45), inset -4px -6px 8px rgba(40,10,110,0.40);">Copy Tokens</button>
+        </div>
       </div>
       <div class="showcase-body">
         <div class="clay-wrapper">
@@ -2288,7 +2327,10 @@
           <h2>Enterprise / Data-first</h2>
           <span class="showcase-signature">Dense cockpits, tabular-nums & calibrated status pills</span>
         </div>
-        <button class="copy-token-btn" data-tokens="--taste-ent-bg: #0f1117; --taste-ent-surface: #161922; --taste-ent-ink: #f9fafb; --taste-ent-border: 1px solid #232733; --taste-ent-accent: #3b82f6;">Copy Tokens</button>
+        <div class="showcase-actions">
+          <a href="enterprise.html" class="pow-link-btn">PoW Guide &rarr;</a>
+          <button class="copy-token-btn" data-tokens="--taste-ent-bg: #0f1117; --taste-ent-surface: #161922; --taste-ent-ink: #f9fafb; --taste-ent-border: 1px solid #232733; --taste-ent-accent: #3b82f6;">Copy Tokens</button>
+        </div>
       </div>
       <div class="showcase-body">
         <div class="ent-wrapper">
@@ -2328,7 +2370,10 @@
           <h2>Glassmorphism</h2>
           <span class="showcase-signature">Translucent frosted planes filtering ambient lighting</span>
         </div>
-        <button class="copy-token-btn" data-tokens="--taste-glass-blur: 18px; --taste-glass-surface: rgba(22, 28, 45, 0.55); --taste-glass-text: #f8fafc; --taste-glass-edge: rgba(255, 255, 255, 0.15);">Copy Tokens</button>
+        <div class="showcase-actions">
+          <a href="glassmorphism.html" class="pow-link-btn">PoW Guide &rarr;</a>
+          <button class="copy-token-btn" data-tokens="--taste-glass-blur: 18px; --taste-glass-surface: rgba(22, 28, 45, 0.55); --taste-glass-text: #f8fafc; --taste-glass-edge: rgba(255, 255, 255, 0.15);">Copy Tokens</button>
+        </div>
       </div>
       <div class="showcase-body">
         <div class="glass-scene">
@@ -2348,7 +2393,10 @@
           <h2>Minimalism</h2>
           <span class="showcase-signature">Intentional whitespace, quiet precision, no filler cards</span>
         </div>
-        <button class="copy-token-btn" data-tokens="--taste-mini-bg: #121214; --taste-mini-ink: #f4f4f5; --taste-mini-muted: #a1a1aa; --taste-mini-border: 1px solid rgba(255,255,255,0.10); --taste-mini-accent: #3b82f6;">Copy Tokens</button>
+        <div class="showcase-actions">
+          <a href="minimalism.html" class="pow-link-btn">PoW Guide &rarr;</a>
+          <button class="copy-token-btn" data-tokens="--taste-mini-bg: #121214; --taste-mini-ink: #f4f4f5; --taste-mini-muted: #a1a1aa; --taste-mini-border: 1px solid rgba(255,255,255,0.10); --taste-mini-accent: #3b82f6;">Copy Tokens</button>
+        </div>
       </div>
       <div class="showcase-body">
         <div class="mini-wrapper">
@@ -2370,7 +2418,10 @@
           <h2>Neo-brutalism</h2>
           <span class="showcase-signature">2.5px solid stroke, 4px hard offset shadow, pop color</span>
         </div>
-        <button class="copy-token-btn" data-tokens="--taste-neo-bg: #fffdf7; --taste-neo-ink: #121212; --taste-neo-border: 2.5px solid #121212; --taste-neo-shadow: 4px 4px 0 #121212; --taste-neo-accent: #ffe600;">Copy Tokens</button>
+        <div class="showcase-actions">
+          <a href="neo-brutalism.html" class="pow-link-btn">PoW Guide &rarr;</a>
+          <button class="copy-token-btn" data-tokens="--taste-neo-bg: #fffdf7; --taste-neo-ink: #121212; --taste-neo-border: 2.5px solid #121212; --taste-neo-shadow: 4px 4px 0 #121212; --taste-neo-accent: #ffe600;">Copy Tokens</button>
+        </div>
       </div>
       <div class="showcase-body">
         <div class="neo-wrapper">
@@ -2393,7 +2444,10 @@
           <h2>Retro-Terminal</h2>
           <span class="showcase-signature">CRT phosphor glow, static scanlines & monospace CLI prompt</span>
         </div>
-        <button class="copy-token-btn" data-tokens="--taste-term-bg: #0c0d0e; --taste-term-amber: #ffb000; --taste-term-glow: 0 0 6px rgba(255,176,0,0.45); --taste-term-border: 1px solid rgba(255,176,0,0.25);">Copy Tokens</button>
+        <div class="showcase-actions">
+          <a href="retro-terminal.html" class="pow-link-btn">PoW Guide &rarr;</a>
+          <button class="copy-token-btn" data-tokens="--taste-term-bg: #0c0d0e; --taste-term-amber: #ffb000; --taste-term-glow: 0 0 6px rgba(255,176,0,0.45); --taste-term-border: 1px solid rgba(255,176,0,0.25);">Copy Tokens</button>
+        </div>
       </div>
       <div class="showcase-body">
         <div class="term-wrapper">
@@ -2416,7 +2470,10 @@
           <h2>Skeuomorphism</h2>
           <span class="showcase-signature">Top-down specular bevel, metallic gradient, jewel LED</span>
         </div>
-        <button class="copy-token-btn" data-tokens="--taste-skeuo-chassis: linear-gradient(180deg, #323741 0%, #262a32 100%); --taste-skeuo-btn-bevel: inset 0 1px 0 rgba(255,255,255,0.40); --taste-skeuo-text: #f3f4f6;">Copy Tokens</button>
+        <div class="showcase-actions">
+          <a href="skeuomorphism.html" class="pow-link-btn">PoW Guide &rarr;</a>
+          <button class="copy-token-btn" data-tokens="--taste-skeuo-chassis: linear-gradient(180deg, #323741 0%, #262a32 100%); --taste-skeuo-btn-bevel: inset 0 1px 0 rgba(255,255,255,0.40); --taste-skeuo-text: #f3f4f6;">Copy Tokens</button>
+        </div>
       </div>
       <div class="showcase-body">
         <div class="skeuo-wrapper">
@@ -2437,7 +2494,10 @@
           <h2>Swiss / Editorial</h2>
           <span class="showcase-signature">Grid typography, massive scale contrast & hairline rules</span>
         </div>
-        <button class="copy-token-btn" data-tokens="--taste-swiss-bg: #0d0d0d; --taste-swiss-ink: #f5f5f5; --taste-swiss-rule: 1px solid rgba(255,255,255,0.20); --taste-swiss-accent: #ef4444;">Copy Tokens</button>
+        <div class="showcase-actions">
+          <a href="swiss-editorial.html" class="pow-link-btn">PoW Guide &rarr;</a>
+          <button class="copy-token-btn" data-tokens="--taste-swiss-bg: #0d0d0d; --taste-swiss-ink: #f5f5f5; --taste-swiss-rule: 1px solid rgba(255,255,255,0.20); --taste-swiss-accent: #ef4444;">Copy Tokens</button>
+        </div>
       </div>
       <div class="showcase-body">
         <div class="swiss-wrapper">
@@ -2996,14 +3056,18 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
       </div>
 
       <div class="footer-col">
-        <h4>Aesthetic Archetypes</h4>
+        <h4>Aesthetic Archetypes (PoW)</h4>
         <ul>
-          <li><a href="#showcase">Bento Grid</a></li>
-          <li><a href="#showcase">Neo-Brutalism</a></li>
-          <li><a href="#showcase">Claymorphism</a></li>
-          <li><a href="#showcase">Data Cockpit</a></li>
-          <li><a href="#showcase">Cyberpunk HUD</a></li>
-          <li><a href="#showcase">Swiss Editorial</a></li>
+          <li><a href="bento.html">Bento Grid (PoW)</a></li>
+          <li><a href="neo-brutalism.html">Neo-Brutalism (PoW)</a></li>
+          <li><a href="claymorphism.html">Claymorphism (PoW)</a></li>
+          <li><a href="enterprise.html">Enterprise (PoW)</a></li>
+          <li><a href="glassmorphism.html">Glassmorphism (PoW)</a></li>
+          <li><a href="minimalism.html">Minimalism (PoW)</a></li>
+          <li><a href="retro-terminal.html">Retro Terminal (PoW)</a></li>
+          <li><a href="skeuomorphism.html">Skeuomorphism (PoW)</a></li>
+          <li><a href="swiss-editorial.html">Swiss Editorial (PoW)</a></li>
+          <li><a href="brutalism.html">Brutalism (PoW)</a></li>
         </ul>
       </div>
 
