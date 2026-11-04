@@ -117,6 +117,45 @@
       --skeuo-lcd-inset: inset 5px 5px 14px rgba(0, 0, 0, 0.9), inset -3px -3px 8px rgba(255, 255, 255, 0.04);
     }
 
+    [data-finish="bronze"] {
+      /* Warm Sand / Tactile Clay Dual-Shadow Palette (Reference Image 2) */
+      --skeuo-bg: #D8D1C3;
+      --skeuo-surface: #D8D1C3;
+      --skeuo-chassis-bg: #D8D1C3;
+      --skeuo-chassis-border: 1px solid rgba(255, 255, 255, 0.5);
+      --skeuo-chassis-highlight: inset 1px 1px 1.5px rgba(255, 255, 255, 0.95), inset -1px -1px 1.5px rgba(158, 148, 132, 0.3);
+      --skeuo-chassis-shadow: 10px 10px 24px rgba(158, 148, 132, 0.65), -10px -10px 24px rgba(255, 255, 255, 0.95);
+
+      --skeuo-surface-bevel: inset 1px 1px 1.5px rgba(255, 255, 255, 0.95), inset -1px -1px 1.5px rgba(158, 148, 132, 0.3);
+
+      /* Sunken Recessed Well */
+      --skeuo-well-bg: #D8D1C3;
+      --skeuo-well-inset: inset 5px 5px 12px rgba(158, 148, 132, 0.7), inset -5px -5px 12px rgba(255, 255, 255, 0.95), 0 1px 0 rgba(255, 255, 255, 0.9);
+
+      /* Typography & Engraved Labels */
+      --skeuo-text: #5C4434;
+      --skeuo-text-muted: #8A7363;
+      --skeuo-text-engraved: 1px 1px 1px rgba(255, 255, 255, 0.85);
+
+      /* Tactile Buttons */
+      --skeuo-btn-bg: #D8D1C3;
+      --skeuo-btn-border: 1px solid rgba(255, 255, 255, 0.5);
+      --skeuo-btn-bevel: inset 1px 1px 1.5px rgba(255, 255, 255, 0.95), inset -1px -1px 1.5px rgba(158, 148, 132, 0.25);
+      --skeuo-btn-shadow: 6px 6px 14px rgba(158, 148, 132, 0.6), -6px -6px 14px rgba(255, 255, 255, 0.95);
+      --skeuo-btn-pressed: inset 4px 4px 9px rgba(158, 148, 132, 0.75), inset -4px -4px 9px rgba(255, 255, 255, 0.95);
+
+      --skeuo-accent: #8A583A;
+      --skeuo-accent-bg: linear-gradient(135deg, #8A583A 0%, #6E442B 100%);
+      --skeuo-accent-bevel: inset 1px 1px 1px rgba(255, 255, 255, 0.4), inset -1px -1px 1px rgba(0, 0, 0, 0.3);
+      --skeuo-accent-shadow: 6px 6px 16px rgba(138, 88, 58, 0.35), -4px -4px 12px rgba(255, 255, 255, 0.8);
+
+      /* LCD Screen */
+      --skeuo-lcd-bg: #D8D1C3;
+      --skeuo-lcd-text: #8A583A;
+      --skeuo-lcd-border: 1px solid rgba(255, 255, 255, 0.45);
+      --skeuo-lcd-inset: inset 5px 5px 12px rgba(158, 148, 132, 0.7), inset -5px -5px 12px rgba(255, 255, 255, 0.95);
+    }
+
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -2894,9 +2933,26 @@
       showToast(`Pill Fader: ${faderLevel}% (Ref Image 1 & 2)`);
     }
 
+    // Helper to reset any leftover inline CSS property overrides
+    function resetInlineOverrides() {
+      const htmlEl = document.documentElement;
+      const inlineProps = [
+        '--skeuo-bg', '--skeuo-surface', '--skeuo-chassis-bg', '--skeuo-well-bg',
+        '--skeuo-btn-bg', '--skeuo-text', '--skeuo-text-muted', '--skeuo-accent',
+        '--skeuo-accent-bg', '--skeuo-chassis-shadow', '--skeuo-btn-shadow',
+        '--skeuo-btn-pressed', '--skeuo-well-inset', '--skeuo-chassis-highlight',
+        '--skeuo-lcd-bg', '--skeuo-lcd-text', '--skeuo-lcd-inset',
+        '--skeuo-chassis-border', '--skeuo-btn-border', '--skeuo-surface-bevel',
+        '--skeuo-btn-bevel', '--skeuo-accent-bevel', '--skeuo-accent-shadow'
+      ];
+      inlineProps.forEach(prop => htmlEl.style.removeProperty(prop));
+    }
+
     // Module 2: Calibrator - Hardware Finish Selector
     function selectHardwareFinish(finish) {
       selectedFinish = finish;
+      resetInlineOverrides();
+
       document.querySelectorAll('.finish-option-btn').forEach(b => b.classList.remove('active'));
       const activeBtn = document.getElementById(`btnFinish${finish.charAt(0).toUpperCase() + finish.slice(1)}`);
       if (activeBtn) activeBtn.classList.add('active');
@@ -2905,37 +2961,21 @@
       if (finishTag) finishTag.textContent = `${finish.toUpperCase()} REF`;
 
       const htmlEl = document.documentElement;
-      if (finish === 'silver') {
-        applyTheme('light');
-        htmlEl.style.removeProperty('--skeuo-bg');
-        htmlEl.style.removeProperty('--skeuo-surface');
-        htmlEl.style.removeProperty('--skeuo-chassis-bg');
-        htmlEl.style.removeProperty('--skeuo-text');
-        htmlEl.style.removeProperty('--skeuo-accent');
-      } else if (finish === 'bronze') {
-        applyTheme('light');
-        // Warm Sand / Clay palette (Ref Image 2)
-        htmlEl.style.setProperty('--skeuo-bg', '#D8D1C3');
-        htmlEl.style.setProperty('--skeuo-surface', '#D8D1C3');
-        htmlEl.style.setProperty('--skeuo-chassis-bg', '#D8D1C3');
-        htmlEl.style.setProperty('--skeuo-well-bg', '#D8D1C3');
-        htmlEl.style.setProperty('--skeuo-btn-bg', '#D8D1C3');
-        htmlEl.style.setProperty('--skeuo-text', '#5C4434');
-        htmlEl.style.setProperty('--skeuo-text-muted', '#8A7363');
-        htmlEl.style.setProperty('--skeuo-accent', '#8A583A');
-        htmlEl.style.setProperty('--skeuo-chassis-shadow', '10px 10px 24px rgba(158, 148, 132, 0.65), -10px -10px 24px rgba(255, 255, 255, 0.95)');
-        htmlEl.style.setProperty('--skeuo-btn-shadow', '6px 6px 14px rgba(158, 148, 132, 0.6), -6px -6px 14px rgba(255, 255, 255, 0.95)');
-        htmlEl.style.setProperty('--skeuo-well-inset', 'inset 5px 5px 12px rgba(158, 148, 132, 0.7), inset -5px -5px 12px rgba(255, 255, 255, 0.95)');
+      if (finish === 'bronze') {
+        htmlEl.setAttribute('data-theme', 'light');
+        htmlEl.setAttribute('data-finish', 'bronze');
+        const themeLabel = document.getElementById('themeLabel');
+        if (themeLabel) themeLabel.textContent = '[CHASSIS_DARK]';
+      } else if (finish === 'silver') {
+        htmlEl.setAttribute('data-theme', 'light');
+        htmlEl.removeAttribute('data-finish');
+        const themeLabel = document.getElementById('themeLabel');
+        if (themeLabel) themeLabel.textContent = '[CHASSIS_DARK]';
       } else {
-        applyTheme('dark');
-        htmlEl.style.removeProperty('--skeuo-bg');
-        htmlEl.style.removeProperty('--skeuo-surface');
-        htmlEl.style.removeProperty('--skeuo-chassis-bg');
-        htmlEl.style.removeProperty('--skeuo-well-bg');
-        htmlEl.style.removeProperty('--skeuo-btn-bg');
-        htmlEl.style.removeProperty('--skeuo-text');
-        htmlEl.style.removeProperty('--skeuo-text-muted');
-        htmlEl.style.removeProperty('--skeuo-accent');
+        htmlEl.setAttribute('data-theme', 'dark');
+        htmlEl.removeAttribute('data-finish');
+        const themeLabel = document.getElementById('themeLabel');
+        if (themeLabel) themeLabel.textContent = '[CHASSIS_LIGHT]';
       }
 
       playMechanicalSnap(640);
@@ -2962,15 +3002,27 @@
       const d = parseInt(insetCavityVal, 10);
       const dHalf = Math.round(d / 2);
       const dTight = Math.max(1, Math.round(d / 4));
-      const isLight = document.documentElement.getAttribute("data-theme") === "light";
 
-      const highlightRule = isLight
-        ? `inset 0 1.5px 0 rgba(255, 255, 255, ${Math.min(1, alpha * 1.2)}), inset 0 -1.5px 0 rgba(0, 0, 0, 0.28)`
-        : `inset 0 1.5px 0 rgba(255, 255, 255, ${alpha}), inset 0 -1.5px 0 rgba(0, 0, 0, 0.85)`;
+      const isDark = document.documentElement.getAttribute("data-theme") === "dark";
+      const isBronze = document.documentElement.getAttribute("data-finish") === "bronze";
 
-      const insetRule = isLight
-        ? `inset 0 ${dHalf}px ${d}px rgba(0, 0, 0, 0.25), inset 0 ${dTight}px ${Math.round(d * 0.35)}px rgba(0, 0, 0, 0.35), inset 0 -1px 1px rgba(255, 255, 255, 0.6), 0 1.5px 0 rgba(255, 255, 255, 0.95)`
-        : `inset 0 ${dHalf}px ${d}px rgba(0, 0, 0, 0.92), inset 0 ${dTight}px ${Math.round(d * 0.35)}px rgba(0, 0, 0, 0.98), inset 0 -1px 2px rgba(255, 255, 255, 0.06), 0 1px 0 rgba(255, 255, 255, 0.16)`;
+      let highlightRule = "";
+      let insetRule = "";
+
+      if (isDark) {
+        // Dark Gunmetal slate - dark depth, subtle specular rim only (never white glow)
+        const darkSpecAlpha = Math.min(0.20, (bevelHighlightVal / 100) * 0.25).toFixed(2);
+        highlightRule = `inset 0 1.5px 0 rgba(255, 255, 255, ${darkSpecAlpha}), inset 0 -1.5px 0 rgba(0, 0, 0, 0.85)`;
+        insetRule = `inset 0 ${dHalf}px ${d}px rgba(0, 0, 0, 0.92), inset 0 ${dTight}px ${Math.round(d * 0.35)}px rgba(0, 0, 0, 0.98), inset 0 -1px 2px rgba(255, 255, 255, 0.04), 0 1px 0 rgba(255, 255, 255, 0.08)`;
+      } else if (isBronze) {
+        // Warm Sand Clay (Reference Image 2)
+        highlightRule = `inset 0 1.5px 0 rgba(255, 255, 255, ${alpha}), inset 0 -1.5px 0 rgba(158, 148, 132, 0.4)`;
+        insetRule = `inset 0 ${dHalf}px ${d}px rgba(158, 148, 132, 0.65), inset 0 ${dTight}px ${Math.round(d * 0.35)}px rgba(158, 148, 132, 0.8), inset 0 -1px 1px rgba(255, 255, 255, 0.6), 0 1.5px 0 rgba(255, 255, 255, 0.95)`;
+      } else {
+        // Molded Gray Silver (Reference Images 1 & 3)
+        highlightRule = `inset 0 1.5px 0 rgba(255, 255, 255, ${Math.min(1, alpha * 1.2)}), inset 0 -1.5px 0 rgba(0, 0, 0, 0.28)`;
+        insetRule = `inset 0 ${dHalf}px ${d}px rgba(0, 0, 0, 0.25), inset 0 ${dTight}px ${Math.round(d * 0.35)}px rgba(0, 0, 0, 0.35), inset 0 -1px 1px rgba(255, 255, 255, 0.6), 0 1.5px 0 rgba(255, 255, 255, 0.95)`;
+      }
 
       document.documentElement.style.setProperty("--skeuo-chassis-highlight", highlightRule);
       document.documentElement.style.setProperty("--skeuo-well-inset", insetRule);
@@ -3019,25 +3071,37 @@
     // Theme Switcher & Coupling
     function applyTheme(theme) {
       const htmlEl = document.documentElement;
-      const themeLabel = document.getElementById("themeLabel");
-      const themeIcon = document.getElementById("themeIcon");
-
+      resetInlineOverrides();
+      htmlEl.removeAttribute("data-finish");
       htmlEl.setAttribute("data-theme", theme);
       try {
         localStorage.setItem("taste-theme-pow-skeuomorphism", theme);
       } catch (e) {}
 
+      // Synchronize finish selector buttons in Material Calibrator
+      document.querySelectorAll(".finish-option-btn").forEach(b => b.classList.remove("active"));
+      const finishBtn = theme === "dark" 
+        ? document.getElementById("btnFinishGunmetal") 
+        : document.getElementById("btnFinishSilver");
+      if (finishBtn) finishBtn.classList.add("active");
+
+      const finishTag = document.getElementById("finishTag");
+      if (finishTag) finishTag.textContent = theme === "dark" ? "GUNMETAL REF" : "SILVER REF";
+
+      const themeLabel = document.getElementById("themeLabel");
       if (themeLabel) {
         themeLabel.textContent = theme === "dark" ? "[CHASSIS_LIGHT]" : "[CHASSIS_DARK]";
       }
 
+      const themeIcon = document.getElementById("themeIcon");
       if (themeIcon) {
         if (theme === "dark") {
           themeIcon.innerHTML = "<circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41\"/>";
         } else {
-          themeIcon.innerHTML = "<path d=\"M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z\"/>";
+          themeIcon.innerHTML = "<path d=\"M12 3a6 6 0 0 0 9 9 9 0 1 1-9-9Z\"/>";
         }
       }
+      updateCalibrator();
     }
 
     // Mobile Navigation Controls
