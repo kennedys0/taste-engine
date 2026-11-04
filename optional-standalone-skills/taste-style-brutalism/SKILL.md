@@ -40,6 +40,9 @@ A successful brutalist implementation demonstrates **all** of the following:
 9. **Controlled Operational Signal Colors:** The foundation is uncompromising black and white / concrete paper. Saturated color is strictly limited to high-voltage Warning Yellow (`#FFDE00`) and Signal Red (`#FF3B30`), used for operational status cells, active project rows, and primary conversion CTAs.
 10. **Structured Architectural Indexing:** Compartments must feature explicit structural numbering (`01`, `02`, `03`, `04`), directional arrows (`↗`, `→`, `↓`), and technical metadata brackets.
 11. **Single-Viewport Hero Composition ("1-Page Fit"):** The opening desktop hero must assemble the brand headline, architectural coordinate cell, status ticker, and primary action within a single view (`100svh`) before expanding into the project matrix and documentation.
+12. **Cellular Blueprint Navigation Architecture:** Navigation bars must be composed of discrete, bounded cells divided by continuous vertical lines. Never jam long code snippets or full command strings directly into the main navigation bar, which breaks rhythmic cell proportions; place CLI installation pills in the hero action group or a dedicated utility sub-bar. The brand cell features monumental condensed type, taglines must be vertically stacked, and the primary CTA cell must occupy the far right with high-voltage Caution Yellow (`#FFDE00`) and a directional corner arrow (`↗`).
+13. **Hero Void Elimination & Architectural Spec Grid:** A brutalist hero composition must never leave hollow, empty whitespace between the monumental headline and action buttons. Any vertical space below the headline must be actively structured with dense, authentic architectural data: a 3-compartment numbered technical spec grid (`01`, `02`, `03` with high-contrast index numbers and utility specs), and technical manifesto text paired with a tactile circular stamp seal (`TASTE ENGINE • VERIFIED ARCHETYPE • ★`).
+14. **Anti-Slop Headline Syntax:** Hero headlines must follow monumental condensed 3-line syntax (`WE DESIGN / WITHOUT / AI SLOP.`) paired with a square color bullet sub-statement (`■ FRONTEND INTELLIGENCE. AGENT RUNTIMES. ZERO SLOP.`) directly establishing purpose and eliminating generic agency marketing fluff.
 
 **First-viewport test:** In a desktop screenshot, identify the exposed structural border grid, the flat unornamented planes, and the stark monochrome authority **without reading the page title**. If it contains rounded cards or soft shadows, strip away the decorative camouflage immediately.
 
@@ -82,6 +85,9 @@ Surfaces are 100% flat, opaque, and structural. Zero shadows. Zero gradients. De
 - **Structural Panel:** Rectangular container with heavy top/bottom borders; dividers between internal sections.
 - **Metadata Tag:** Monospace tag enclosed in square brackets: `[DOC_REF: 4092]`.
 - **Form Controls:** Unadorned input fields with thick black border and high-contrast solid black focus ring (`outline: 3px solid #000000; outline-offset: 2px;`).
+- **Architectural Spec Cell:** A rectangular compartment bounded by 2px solid lines featuring a prominent 2rem+ monospace index number (`01`, `02`, `03`), an uppercase technical label, and brief, truthful functional specifications.
+- **Circular Stamp Seal:** An authentic vector circular stamp badge with running perimeter text (`TASTE ENGINE • VERIFIED ARCHETYPE •`) and a solid central graphic mark (`★`), celebrating verified structural fidelity without relying on soft decorative badges.
+- **Cellular Navigation Bar:** A full-width header divided into discrete architectural bays (`BRUT.` brand, stacked 3-line studio tag, individual link cells, theme polarity invert, and yellow action cell).
 
 ## Motion
 
@@ -123,8 +129,8 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 ## Style-specific quality gate
 
-- **Do:** Verify stark monochrome contrast; ensure 2–3px structural borders are solid; verify sharp 0px square corners; confirm single-viewport hero fit on desktop; enforce monumental condensed typography; verify controlled caution yellow (#ffde00) and signal red (#ff3b30) operational roles; verify dark/light mode polarity inversion so text and background never clash (no black-on-black or white-on-white text).
-- **Don't:** Do not add rounded corners, soft drop shadows, or smooth color gradients (strictly 0px radius); avoid arbitrary font size chaos; never use pill buttons; avoid oversized padding that breaks the single-viewport hero fit; avoid decorative filler badges or chatty marketing copy; do not leave black ink or borders when switching to dark canvas.
+- **Do:** Verify stark monochrome contrast; ensure 2–3px structural borders are solid; verify sharp 0px square corners; confirm single-viewport hero fit on desktop; enforce monumental condensed typography; verify controlled caution yellow (#ffde00) and signal red (#ff3b30) operational roles; verify dark/light mode polarity inversion so text and background never clash (no black-on-black or white-on-white text); verify cellular navigation without long code clutter; ensure hero voids are structured with 3-cell architectural spec grids; confirm circular stamp seal or technical metadata.
+- **Don't:** Do not add rounded corners, soft drop shadows, or smooth color gradients (strictly 0px radius); avoid arbitrary font size chaos; never use pill buttons; avoid oversized padding that breaks the single-viewport hero fit; avoid decorative filler badges or chatty marketing copy; do not leave black ink or borders when switching to dark canvas; never leave cavernous empty whitespace between hero headlines and buttons; do not place long command code strings inside the main navigation bar.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
