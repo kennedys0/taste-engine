@@ -121,6 +121,22 @@ for filename in ['assets/project-style.example.json', 'assets/project-style.sche
     except Exception as exc:
         errors.append(f'invalid {filename}: {exc}')
 if not (root/'scripts/update.sh').is_file(): errors.append('missing updater script: scripts/update.sh')
+pkg_file = project_root / 'package.json'
+if pkg_file.is_file():
+    try:
+        pkg_version = json.loads(pkg_file.read_text(encoding='utf-8')).get('version')
+        skill_ver_match = re.search(r'(?m)^\s*version:\s*["\']?(\d+\.\d+\.\d+)', main)
+        skill_version = skill_ver_match.group(1) if skill_ver_match else None
+        if skill_version != pkg_version:
+            errors.append(f'version mismatch: package.json ({pkg_version}) vs SKILL.md ({skill_version})')
+        cli_file = project_root / 'bin' / 'taste-engine.mjs'
+        if cli_file.is_file():
+            cli_match = re.search(r"const\s+VERSION\s*=\s*['\"]([^'\"]+)['\"]", cli_file.read_text(encoding='utf-8'))
+            cli_version = cli_match.group(1) if cli_match else None
+            if cli_version != pkg_version:
+                errors.append(f'version mismatch: package.json ({pkg_version}) vs CLI ({cli_version})')
+    except Exception as exc:
+        errors.append(f'failed checking version sync: {exc}')
 if errors:
     for error in errors:
         print('FAIL', error)

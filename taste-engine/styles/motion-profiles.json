@@ -1,6 +1,10 @@
 {
   "version": "0.7.0",
   "description": "Style-aligned optional motion guidance; not a requirement to install Anime.js. Durations are design starting points, not guaranteed runtime values.",
+  "reduced_motion": {
+    "override_duration_ms": 0,
+    "rule": "Honor @media (prefers-reduced-motion: reduce). When active, set duration_ms to 0 and disable all non-essential transforms and translations."
+  },
   "styles": {
     "claymorphism": {
       "interaction": "Pressed button with 1–2% compression and a brief return; keep existing sculpted shading.",

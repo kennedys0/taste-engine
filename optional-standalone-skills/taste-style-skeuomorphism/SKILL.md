@@ -3,7 +3,7 @@ name: taste-style-skeuomorphism
 description: Apply Skeuomorphism design style to user-selected frontend and UI work. Use only when the user explicitly chooses this style. Provides typography, color, layout, components, interactions, motion, copy and quality gates. Do not impose on unrelated work.
 license: MIT
 metadata:
-  version: "0.10.8"
+  version: "0.10.9"
 ---
 
 Use this skill only after a user explicitly chooses  or a confirmed project configuration specifies it. For unexplained new UI requests, use a style selector such as  instead of deciding the user's taste here. Existing brand, accessibility and user overrides outrank all examples below. The following style guide is not permission to start UI coding before style selection.

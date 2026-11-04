@@ -6,7 +6,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync, exec } from 'node:child_process';
 
-const VERSION = '0.10.8';
+const VERSION = '0.10.9';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const source = path.join(repoRoot, 'taste-engine');
 const agents = {
@@ -29,16 +29,23 @@ const alias = {
   'github-copilot': 'copilot', 'github_copilot': 'copilot',
 };
 function help() {
-  console.log(`Taste Engine ${VERSION}\n\nUsage:\n  taste-engine -v | --version | version                             Check installed version\n  taste-engine update | -update                                     Update skill to the latest release\n  taste-engine gallery                                              Preview all 10 styles interactively in your browser\n  taste-engine preset                                               List available Tailwind CSS & shadcn/ui presets\n  taste-engine init [dir]                                           Scaffold Tailwind & shadcn presets into your project\n  taste-engine install --agent <name|all> [--global|--project] [--cwd DIR]\n  taste-engine doctor [--agent <name|all>] [--global|--project] [--cwd DIR]\n  taste-engine help\n\nSupported agents:\n  antigravity, antigravity-cli (agy), claude-code (claude), codex,\n  cursor, cline, roo-code (roo), windsurf, copilot, all\n\nDefaults: project install; --agent all.\nFor GitHub-managed updates, use the installed scripts/update.sh (Antigravity)\nor npx skills update for installs managed by the skills CLI.\n`);
+  console.log(`Taste Engine ${VERSION}\n\nUsage:\n  taste-engine -v | --version | version                             Check installed version\n  taste-engine update | -update                                     Update skill to the latest release\n  taste-engine gallery | --gallery                                  Preview all 10 styles interactively in your browser\n  taste-engine preset | --preset                                    List available Tailwind CSS & shadcn/ui presets\n  taste-engine init | --init [dir] [--dry-run]                      Scaffold Tailwind & shadcn presets into your project\n  taste-engine install --agent <name|all> [--global|--project] [--cwd DIR] [--dry-run]\n  taste-engine uninstall --agent <name|all> [--global|--project] [--cwd DIR] [--dry-run]\n  taste-engine doctor [--agent <name|all>] [--global|--project] [--cwd DIR]\n  taste-engine help\n\nSupported agents:\n  antigravity, antigravity-cli (agy), claude-code (claude), codex,\n  cursor, cline, roo-code (roo), windsurf, copilot, all\n\nDefaults: project install; --agent all.\nFor GitHub-managed updates, use the installed scripts/update.sh (Antigravity)\nor npx skills update for installs managed by the skills CLI.\n`);
 }
 function parse(argv) {
-  const options = { agent: 'all', scope: 'project', cwd: process.cwd() };
+  const options = { agent: 'all', scope: 'project', cwd: process.cwd(), dryRun: false };
   for(let i = 0; i < argv.length; i++) {
     const val = argv[i];
-    if(val === '--agent' || val === '-a') options.agent = argv[++i];
+    if(val === '--agent' || val === '-a') {
+      if(i + 1 >= argv.length || argv[i + 1].startsWith('-')) throw new Error('Missing --agent value');
+      options.agent = argv[++i];
+    }
     else if(val === '--global' || val === '-g') options.scope = 'global';
     else if(val === '--project' || val === '-p') options.scope = 'project';
-    else if(val === '--cwd') options.cwd = path.resolve(argv[++i]);
+    else if(val === '--cwd') {
+      if(i + 1 >= argv.length || argv[i + 1].startsWith('-')) throw new Error('Missing --cwd value');
+      options.cwd = path.resolve(argv[++i]);
+    }
+    else if(val === '--dry-run' || val === '-n') options.dryRun = true;
     else if(val === '--help' || val === '-h') options.help = true;
     else throw new Error(`Unknown option: ${val}`);
   }
@@ -65,7 +72,11 @@ function assertSource() {
     if(!fs.existsSync(path.join(source,s.path))) throw new Error(`Missing style pack: ${s.path}`);
   }
 }
-function install(dest) {
+function install(dest, dryRun = false) {
+  if(dryRun) {
+    console.log(`[dry-run] Would install ${dest}`);
+    return;
+  }
   const parent=path.dirname(dest);
   fs.mkdirSync(parent,{recursive:true});
   const staging=fs.mkdtempSync(path.join(parent,'.taste-engine-stage-'));
@@ -86,6 +97,22 @@ function install(dest) {
     console.log(`Installed ${dest}${backup ? `\nBackup: ${backup}`:''}`);
   } finally { fs.rmSync(staging,{recursive:true,force:true}); }
 }
+function uninstall(dest, dryRun = false) {
+  if(!fs.existsSync(dest)) {
+    console.log(`NOT FOUND ${dest}`);
+    return;
+  }
+  const skill = path.join(dest, 'SKILL.md');
+  if(!fs.existsSync(skill) || !fs.readFileSync(skill, 'utf8').includes('name: taste-engine')) {
+    throw new Error(`Existing folder is not a Taste Engine skill: ${dest}`);
+  }
+  if(dryRun) {
+    console.log(`[dry-run] Would uninstall ${dest}`);
+    return;
+  }
+  fs.rmSync(dest, { recursive: true, force: true });
+  console.log(`Uninstalled ${dest}`);
+}
 try {
   const [command='help', ...args]=process.argv.slice(2);
   if(command==='help' || command==='--help' || command==='-h') help();
@@ -96,35 +123,52 @@ try {
     const res = spawnSync('bash', [updateScript, ...args], { stdio: 'inherit' });
     process.exit(res.status ?? 0);
   }
-  else if(command==='gallery' || command==='preview') {
+  else if(command==='gallery' || command==='preview' || command==='--gallery' || command==='--preview') {
+    if(args.includes('--help') || args.includes('-h')) { help(); return; }
     const galleryPath = path.join(repoRoot, 'docs', 'index.html');
     if(!fs.existsSync(galleryPath)) throw new Error('Gallery not found at docs/index.html');
     console.log(`Taste Engine: opening interactive style gallery (${galleryPath})`);
     const openCmd = process.platform === 'win32' ? `start "" "${galleryPath}"` :
                     process.platform === 'darwin' ? `open "${galleryPath}"` : `xdg-open "${galleryPath}"`;
-    import('node:child_process').then(cp => {
-      cp.exec(openCmd, (err) => {
-        if(err) console.log(`You can open the gallery manually in your browser:\n  file://${galleryPath}`);
-      });
+    exec(openCmd, (err) => {
+      if(err) console.log(`You can open the gallery manually in your browser:\n  file://${galleryPath}`);
     });
   }
-  else if(command==='preset' || command==='presets') {
+  else if(command==='preset' || command==='presets' || command==='--preset' || command==='--presets') {
+    if(args.includes('--help') || args.includes('-h')) { help(); return; }
     const presetDir = path.join(source, 'presets');
     console.log(`Taste Engine Presets (v${VERSION})\n\nAvailable presets in ${presetDir}:\n  - presets/tailwind/tailwind.preset.js (Tailwind CSS theme extension)\n  - presets/tailwind/taste-components.css (Component layers: .taste-clay-btn, etc.)\n  - presets/shadcn/shadcn-themes.css (shadcn/ui theme variable overrides)\n\nRun 'taste-engine init [dir]' to scaffold presets into your project.`);
   }
-  else if(command==='init') {
-    const targetDir = args[0] ? path.resolve(args[0]) : process.cwd();
+  else if(command==='init' || command==='--init' || command==='-init') {
+    let targetDir = process.cwd();
+    let dryRun = false;
+    for(let i = 0; i < args.length; i++) {
+      const a = args[i];
+      if(a === '--help' || a === '-h') { help(); return; }
+      else if(a === '--dry-run' || a === '-n') dryRun = true;
+      else if(a === '--cwd') {
+        if(i + 1 >= args.length || args[i + 1].startsWith('-')) throw new Error('Missing --cwd value');
+        targetDir = path.resolve(args[++i]);
+      }
+      else if(!a.startsWith('-')) targetDir = path.resolve(a);
+      else throw new Error(`Unknown option: ${a}`);
+    }
     const dest = path.join(targetDir, 'taste-presets');
+    if(dryRun) {
+      console.log(`[dry-run] Would scaffold Taste Engine presets to ${dest}`);
+      return;
+    }
     fs.mkdirSync(dest, { recursive: true });
     fs.cpSync(path.join(source, 'presets'), dest, { recursive: true });
     console.log(`Copied Taste Engine presets to ${dest}\nSee ${path.join(source, 'references', 'tailwind-shadcn.md')} for setup guide.`);
   }
-  else if(command==='install' || command==='doctor') {
+  else if(command==='install' || command==='doctor' || command==='uninstall') {
     const o=parse(args);
     if(o.help) { help(); process.exit(0); }
     if(command==='install') assertSource();
     for(const dest of targets(o)) {
-      if(command==='install') install(dest);
+      if(command==='install') install(dest, o.dryRun);
+      else if(command==='uninstall') uninstall(dest, o.dryRun);
       else {
         const skill=path.join(dest,'SKILL.md');
         const ok=fs.existsSync(skill) && fs.readFileSync(skill,'utf8').includes('name: taste-engine');

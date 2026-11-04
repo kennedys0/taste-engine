@@ -11,7 +11,7 @@ A portable, open-source Agent Skill for building distinctive, accessible fronten
 </p>
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-111111.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.10.8-4F46E5.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.10.9-4F46E5.svg)](CHANGELOG.md)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-111111.svg)](https://agentskills.io/)
 
 [Live Showcase](https://kennedys0.github.io/taste-engine/) · [Installation](#install) · [CLI Setup](#enable-global-taste-engine-cli-command) · [How it works](#how-it-works) · [Styles](#style-library) · [Quality principles](#quality-without-a-house-style) · [Contributing](#contributing)
@@ -106,9 +106,13 @@ node bin/taste-engine.mjs install --agent all --project
 
 node bin/taste-engine.mjs doctor --agent antigravity --global
 
+# Uninstall an installation
+
+node bin/taste-engine.mjs uninstall --agent antigravity --global
+
 ```
 
-The installer supports `antigravity`, `antigravity-cli` (alias `agy`), `claude-code` (alias `claude`), `codex`, `cursor`, `cline`, `roo-code` (alias `roo`), `windsurf`, `copilot`, or `all`. It backs up an existing Taste Engine directory before replacing it and refuses to overwrite an unrelated skill. See [INSTALL.md](INSTALL.md) for paths and update options.
+The installer supports `antigravity`, `antigravity-cli` (alias `agy`), `claude-code` (alias `claude`), `codex`, `cursor`, `cline`, `roo-code` (alias `roo`), `windsurf`, `copilot`, or `all`. It supports `--dry-run`, backs up an existing Taste Engine directory before replacing it, and refuses to overwrite or delete an unrelated skill directory. See [INSTALL.md](INSTALL.md) for paths and update options.
 
 ### Enable global `taste-engine` CLI command
 
@@ -131,13 +135,18 @@ Taste Engine includes official **Tailwind CSS presets** and **shadcn/ui theme va
 
 ```bash
 
-# Preview available presets
+# Preview available presets (alias: taste-engine --preset)
 
 taste-engine preset
 
-# Scaffold Tailwind preset & shadcn themes directly into your project
+# Scaffold Tailwind preset & shadcn themes directly into your project (alias: taste-engine --init)
 
 taste-engine init
+
+# Scaffold into a custom directory or preview with dry-run
+
+taste-engine init ./src --dry-run
+taste-engine --init ./src
 
 ```
 

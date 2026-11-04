@@ -8,7 +8,7 @@ license: MIT
 
 metadata:
 
-  version: "0.10.8"
+  version: "0.10.9"
 
 ---
 
@@ -236,7 +236,7 @@ Detailed routing, blends, and conflict rules: [style router](references/style-ro
 
 3. **Build project Design DNA:** type families + fallback, type scale, font weights, writing tone, palette roles, density, spacing, radius, border, elevation, layout grid, component anatomy, states, navigation, motion and reduced-motion rules. See [translation](references/translation.md).
 
-   - **Dark & light mode pair coupling:** when dark or light mode is requested, ensure paired design tokens for canvas, cards, text, borders, inputs, and semantic status pills flip in tandem so background and foreground colors never collide (zero black-on-black or white-on-white text). In dark mode, avoid harsh pitch-black (`#000000` or raw `#0d0f14`) canvas unless specifically requested; prefer warm neutral dark slate-grey (Codex / OpenAI aesthetic: canvas `#212328`, surfaces `#2b2e36`, elevated `#343842`, recessed wells `#1a1c21`, borders `rgba(255, 255, 255, 0.12)`) for lower eye strain, balanced contrast, and rich surface hierarchy.
+   - **Dark & light mode pair coupling:** when dark or light mode is requested, ensure paired design tokens for canvas, cards, text, borders, inputs, and semantic status pills flip in tandem so background and foreground colors never collide (zero black-on-black or white-on-white text). In dark mode, unless the chosen style pack specifically dictates otherwise (e.g., Brutalism's intentional `#000000` high-contrast canvas or Retro-Terminal's CRT phosphor dark), avoid harsh pitch-black canvas by default; prefer warm neutral dark slate-grey (Codex / OpenAI aesthetic: canvas `#212328`, surfaces `#2b2e36`, elevated `#343842`, recessed wells `#1a1c21`, borders `rgba(255, 255, 255, 0.12)`) for lower eye strain, balanced contrast, and rich surface hierarchy.
 
    - **Strict 320px baseline & mobile anti-bloat typography:** all layouts must function smoothly down to 320px minimum viewport width with zero horizontal scroll blowout. Scale typography, paddings, and card geometry down proportionally (`clamp()` or mobile queries) to prevent oversized, inflated interfaces ("UI bengkak"): hero titles clamp to `1.35rem`–`1.65rem`, section titles to `1.2rem`–`1.45rem`, body to `0.85rem`–`0.95rem`, and code snippets to `0.725rem`–`0.785rem` with `word-break: break-all` / `overflow-x: auto`.
 

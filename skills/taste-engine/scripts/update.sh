@@ -188,7 +188,6 @@ PY
   curl -fsSL --retry 2 --connect-timeout 12 --max-time 180 \
     -H 'User-Agent: taste-engine-updater' "$DOWNLOAD_URL" -o "$ZIP_PATH" \
     || fail 'Failed to download release ZIP'
-  [[ ! -f "$WORK/release-digest" ]] || RELEASE_SHA="$(cat "$WORK/release-digest")"
   if [[ -z "$EXPECTED_SHA" && "$RELEASE_SHA" =~ ^sha256:[0-9a-fA-F]{64}$ ]]; then
     EXPECTED_SHA="${RELEASE_SHA#sha256:}"
     EXPECTED_SHA="${EXPECTED_SHA,,}"

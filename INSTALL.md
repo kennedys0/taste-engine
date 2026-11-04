@@ -59,6 +59,7 @@ The installer defaults to `--project` in your current directory. Specify `--glob
 ```bash
 node bin/taste-engine.mjs install --agent all --project
 node bin/taste-engine.mjs doctor --agent all --project
+node bin/taste-engine.mjs uninstall --agent all --project
 node bin/taste-engine.mjs version
 ```
 
@@ -84,7 +85,7 @@ npx skills update -g
 bash ~/.gemini/config/skills/taste-engine/scripts/update.sh
 
 # Or from an already downloaded release asset:
-bash ~/.gemini/config/skills/taste-engine/scripts/update.sh --zip ./taste-engine-v0.10.8.zip
+bash ~/.gemini/config/skills/taste-engine/scripts/update.sh --zip ./taste-engine-v0.10.9.zip
 ```
 
 The Bash updater requires Bash, Python 3, curl (for GitHub downloads), and standard Linux command-line tools. It checks archive contents, validates a staged installation, backs up the previous version, and restores it if activation fails. Never run arbitrary installer scripts from untrusted forks.
