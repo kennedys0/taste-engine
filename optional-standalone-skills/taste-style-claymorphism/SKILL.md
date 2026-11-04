@@ -35,6 +35,9 @@ A successful claymorphism implementation demonstrates **all** of the following:
 3. **Plush Squircle and Pill Geometry:** Generous curvature (`24px–32px` cards, `20px–26px` buttons, `9999px` pills or circles, `14px` squircle checkboxes). Sharp 90-degree corners fail.
 4. **Sunken vs Raised Polarity:** Actionable components (buttons, badges, toggle thumbs, cards) are raised outward; containment wells (input fields, inactive switch channels) are recessed inward with reversed inset shadows and an optional white relief rim.
 5. **Tactile Compression on Interaction:** On hover, focus, and click, controls respond physically with subtle scale down (`scale(0.97–0.98)` or `translateY(1–2px)`) and tightened shadows, feeling like real, pliable clay pressed by a finger.
+6. **Multi-Surface Clay Composition Architecture:** Complex layouts (workspaces, dashboards, creative tools) must balance a saturated or pastel clay accent dock/panel (e.g. sidebar navigation with plush active white porcelain pills) with clean light porcelain card surfaces. This establishes visual hierarchy without burying the entire viewport in uniform monochrome candy.
+7. **3D Cylindrical Bar & Donut Visualizations:** When data or charts are present, render metrics using tactile 3D rounded cylinders (pill-capped vertical bars with dual inner shadows inside recessed tracking grooves) or plump, segmented clay donut rings. Never use razor-thin 1px wireframe charts that conflict with the pliable clay physics.
+8. **Plump Squircle Metric Compartments:** Metric cards must structure data with dedicated squircle icon bays (`12px–16px` border-radius with dual inner shadows and pastel color coding), prominent bold numeric typography, and soft tinted pill delta tags (`9999px` radius).
 
 **First-viewport test:** In a desktop screenshot, identify the raised sculpted buttons, the dual inner highlights/shadows, and the recessed input wells **without reading the page title**. If they appear flat or merely rounded, revise the shadow tokens before adding more content.
 
@@ -93,6 +96,9 @@ Surfaces must feel molded from physical matte clay:
 - **Toggle Switch:** Pill-shaped track with smooth clay thumb sphere; toggles between light track/purple thumb and purple track/white thumb.
 - **Checkbox:** Squircle container with dual inner shadow and vibrant purple checkmark (`✓`).
 - **Input Field:** Sunken well with left icon, legible placeholder, and white relief rim border.
+- **Cellular / Pill Navigation Bar:** Full-width header or sidebar dock divided into plush rounded pill bays (`9999px`), with the active route elevated as an extruded porcelain clay pill with soft dual inner shadows.
+- **3D Cylindrical Bar Chart:** Recessed sunken well tracks with vertical rounded 3D pill cylinders inside, featuring dual inner highlight and form shadow.
+- **Tactile Segmented Donut Chart:** Plump, rounded circular arc segments with tactile drop shadow and soft pastel color coding.
 
 ## Motion
 

@@ -4,45 +4,111 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Claymorphism Proof of Work & Installation Guide — Taste Engine</title>
-  <meta name="description" content="Dedicated Proof of Work and installation guide for Taste Engine's Claymorphism aesthetic archetype. Experience authentic design tokens, zero AI-slop, and contrast safety.">
+  <meta name="description" content="Dedicated Proof of Work and installation guide for Taste Engine's Claymorphism aesthetic archetype. Experience authentic tactile sculpted surfaces, dual inner shadows, and contrast safety.">
   <link rel="icon" type="image/webp" href="assets/logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
   <style>
     /* =========================================================
        CLAYMORPHISM DESIGN SYSTEM TOKENS
        ========================================================= */
     :root {
-      --pow-bg: #d7d1f1;
-      --pow-surface: #ecebf5;
-      --pow-surface-hover: #f3f2fa;
-      --pow-well-bg: #d7d1f1;
-      --pow-text: #28233d;
-      --pow-text-muted: #756d94;
-      --pow-border: 1px solid rgba(255, 255, 255, 0.8);
-      --pow-shadow: 8px 16px 24px rgba(110, 95, 160, 0.20), 2px 4px 8px rgba(110, 95, 160, 0.12);
-      --pow-accent: #813ffc;
-      --pow-radius: 28px;
-      --pow-radius-btn: 24px;
+      --pow-bg: #EAE6F8;
+      --pow-surface: #F8F6FD;
+      --pow-surface-hover: #FFFFFF;
+      --pow-well-bg: #E2DCF4;
+      --pow-text: #221D38;
+      --pow-text-muted: #6E6688;
+      --pow-border: 1.5px solid rgba(255, 255, 255, 0.85);
+      --pow-shadow: 0 16px 32px rgba(110, 95, 160, 0.18), 0 4px 8px rgba(110, 95, 160, 0.10);
+      --pow-accent: #8247E5;
+      --pow-accent-hover: #7135D4;
+      --pow-radius: 30px;
+      --pow-radius-btn: 9999px;
 
-      --pow-font-display: 'Space Grotesk', -apple-system, sans-serif;
-      --pow-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      /* Studio Clay Tokens (Light Porcelain & Pastel) */
+      --clay-chassis-bg: #F7F5FC;
+      --clay-chassis-border: 2px solid rgba(255, 255, 255, 0.9);
+      --clay-chassis-shadow: 0 24px 48px rgba(120, 105, 170, 0.22), inset 3px 4px 6px rgba(255, 255, 255, 0.9);
+      
+      --clay-dock-bg: #9E85ED;
+      --clay-dock-shadow: inset 3px 4px 6px rgba(255, 255, 255, 0.5), inset -3px -4px 6px rgba(50, 30, 110, 0.35), 0 12px 24px rgba(110, 85, 180, 0.3);
+      --clay-dock-text: #FFFFFF;
+      
+      --clay-card-bg: #FFFFFF;
+      --clay-card-border: 1px solid rgba(255, 255, 255, 0.7);
+      --clay-card-shadow: 0 12px 24px rgba(130, 115, 180, 0.14), inset 3px 3px 6px rgba(255, 255, 255, 0.95), inset -3px -4px 6px rgba(150, 140, 185, 0.22);
+      
+      --clay-hero-bg: #DCD2F8;
+      --clay-hero-shadow: 0 14px 28px rgba(130, 115, 190, 0.2), inset 3px 4px 6px rgba(255, 255, 255, 0.8), inset -4px -4px 7px rgba(70, 45, 130, 0.25);
+      
+      --clay-well-bg: #E7E2F6;
+      --clay-well-border: 2px solid rgba(255, 255, 255, 0.85);
+      --clay-well-shadow: inset 3px 3px 6px rgba(115, 100, 160, 0.25), inset -2px -2px 4px rgba(255, 255, 255, 0.85);
+
+      /* Pastel Accent Cards */
+      --clay-lilac-bg: #F0EBFC;
+      --clay-lilac-text: #6A38C2;
+      --clay-peach-bg: #FFEAE4;
+      --clay-peach-text: #D94826;
+      --clay-butter-bg: #FFF8D6;
+      --clay-butter-text: #966C05;
+      --clay-sky-bg: #E6F3FE;
+      --clay-sky-text: #0E6FB5;
+      --clay-mint-bg: #E7F7ED;
+      --clay-mint-text: #198038;
+
+      --pow-font-display: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --pow-font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --pow-font-mono: 'JetBrains Mono', monospace;
     }
 
     [data-theme="dark"] {
-      --pow-bg: #161326;
-      --pow-surface: #26203d;
-      --pow-surface-hover: #2f284b;
-      --pow-well-bg: #1e1a33;
-      --pow-text: #f3f0fa;
-      --pow-text-muted: #a49bbf;
-      --pow-border: 1px solid rgba(255, 255, 255, 0.08);
-      --pow-shadow: 8px 16px 24px rgba(0, 0, 0, 0.45), 2px 4px 8px rgba(0, 0, 0, 0.25);
-      --pow-accent: #813ffc;
-      --pow-radius: 28px;
-      --pow-radius-btn: 24px;
+      --pow-bg: #141122;
+      --pow-surface: #1E1932;
+      --pow-surface-hover: #26203D;
+      --pow-well-bg: #171328;
+      --pow-text: #F4F1FB;
+      --pow-text-muted: #A39ABF;
+      --pow-border: 1.5px solid rgba(255, 255, 255, 0.09);
+      --pow-shadow: 0 16px 36px rgba(0, 0, 0, 0.55), 0 4px 10px rgba(0, 0, 0, 0.35);
+      --pow-accent: #9A65F5;
+      --pow-accent-hover: #AA7BFA;
+      --pow-radius: 30px;
+      --pow-radius-btn: 9999px;
+
+      /* Studio Clay Tokens (Dark Sculpted Plum) */
+      --clay-chassis-bg: #1A152B;
+      --clay-chassis-border: 2px solid rgba(255, 255, 255, 0.1);
+      --clay-chassis-shadow: 0 24px 48px rgba(0, 0, 0, 0.65), inset 2px 3px 5px rgba(255, 255, 255, 0.12);
+      
+      --clay-dock-bg: #2B2149;
+      --clay-dock-shadow: inset 2px 3px 5px rgba(255, 255, 255, 0.2), inset -3px -4px 6px rgba(0, 0, 0, 0.6), 0 12px 24px rgba(0, 0, 0, 0.4);
+      --clay-dock-text: #F4F1FB;
+      
+      --clay-card-bg: #27203E;
+      --clay-card-border: 1px solid rgba(255, 255, 255, 0.08);
+      --clay-card-shadow: 0 12px 24px rgba(0, 0, 0, 0.4), inset 2px 3px 5px rgba(255, 255, 255, 0.12), inset -3px -4px 6px rgba(10, 5, 25, 0.55);
+      
+      --clay-hero-bg: #352A56;
+      --clay-hero-shadow: 0 14px 28px rgba(0, 0, 0, 0.45), inset 2px 3px 5px rgba(255, 255, 255, 0.18), inset -3px -4px 6px rgba(10, 5, 25, 0.65);
+      
+      --clay-well-bg: #181329;
+      --clay-well-border: 2px solid rgba(255, 255, 255, 0.1);
+      --clay-well-shadow: inset 3px 3px 6px rgba(0, 0, 0, 0.65), inset -2px -2px 4px rgba(255, 255, 255, 0.1);
+
+      /* Pastel Accent Cards (Dark Tinted Clay) */
+      --clay-lilac-bg: #30264E;
+      --clay-lilac-text: #C3A6FA;
+      --clay-peach-bg: #3A232D;
+      --clay-peach-text: #FFA590;
+      --clay-butter-bg: #3A321E;
+      --clay-butter-text: #FDE06D;
+      --clay-sky-bg: #1D2A40;
+      --clay-sky-text: #78C6FA;
+      --clay-mint-bg: #1A3626;
+      --clay-mint-text: #7AE29E;
     }
 
     *, *::before, *::after {
@@ -59,10 +125,10 @@
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-      transition: background-color 150ms ease, color 150ms ease;
+      transition: background-color 160ms ease, color 160ms ease;
     }
 
-    /* Top Navigation */
+    /* Top Navigation with Integrated Quick-Install Pill */
     .pow-nav {
       position: sticky;
       top: 0;
@@ -74,6 +140,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
+      backdrop-filter: blur(12px);
     }
 
     .nav-brand-group {
@@ -84,34 +151,76 @@
       color: var(--pow-text);
     }
 
-    .nav-logo-box {
+    .brand-logo-img {
       width: 32px;
       height: 32px;
-      background: var(--pow-accent);
-      color: #fff;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-family: var(--pow-font-display);
+      border-radius: 9px;
+      object-fit: contain;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
 
     .nav-title {
       font-family: var(--pow-font-display);
-      font-weight: 700;
+      font-weight: 800;
       font-size: 1.05rem;
+      letter-spacing: -0.01em;
     }
 
     .nav-tag-badge {
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--clay-well-bg);
+      color: var(--pow-accent);
       border: var(--pow-border);
       font-family: var(--pow-font-mono);
       font-size: 0.7rem;
-      font-weight: 600;
-      padding: 0.2rem 0.55rem;
-      border-radius: 4px;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 9999px;
       text-transform: uppercase;
+      box-shadow: var(--clay-well-shadow);
+    }
+
+    /* Aligned Nav Command Pill (Desktop) */
+    .nav-command-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--clay-well-bg);
+      border: var(--clay-well-border);
+      border-radius: 9999px;
+      padding: 0.35rem 0.5rem 0.35rem 0.95rem;
+      box-shadow: var(--clay-well-shadow);
+      max-width: 440px;
+    }
+
+    .nav-cmd-code {
+      font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--pow-text);
+      white-space: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-cmd-code::-webkit-scrollbar { display: none; }
+
+    .nav-copy-btn {
+      background: var(--pow-surface);
+      color: var(--pow-text);
+      border: var(--pow-border);
+      border-radius: 9999px;
+      padding: 0.3rem 0.7rem;
+      font-family: var(--pow-font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      transition: transform 90ms ease, background 120ms ease;
+    }
+
+    .nav-copy-btn:hover {
+      background: var(--pow-surface-hover);
+      transform: translateY(-1px);
     }
 
     .nav-actions {
@@ -124,16 +233,17 @@
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.45rem 0.85rem;
+      padding: 0.45rem 0.9rem;
       background: var(--pow-surface);
       color: var(--pow-text);
       border: var(--pow-border);
       border-radius: var(--pow-radius-btn);
       font-family: var(--pow-font-display);
       font-size: 0.8rem;
-      font-weight: 600;
+      font-weight: 700;
       text-decoration: none;
       cursor: pointer;
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.08), inset 1px 1px 2px rgba(255, 255, 255, 0.8);
       transition: background 120ms ease, transform 90ms ease;
     }
 
@@ -150,8 +260,8 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 3.5rem 1.25rem 2.5rem 1.25rem;
-      max-width: 1080px;
+      padding: 3rem 1.25rem 2.5rem 1.25rem;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
@@ -159,21 +269,22 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      background: var(--pow-well-bg);
+      background: var(--clay-well-bg);
       color: var(--pow-accent);
-      border: var(--pow-border);
-      border-radius: 999px;
-      padding: 0.35rem 0.95rem;
+      border: var(--clay-well-border);
+      border-radius: 9999px;
+      padding: 0.4rem 1.1rem;
       font-family: var(--pow-font-mono);
       font-size: 0.785rem;
       font-weight: 700;
       text-transform: uppercase;
+      box-shadow: var(--clay-well-shadow);
       margin-bottom: 1.5rem;
     }
 
     .hero-title {
       font-family: var(--pow-font-display);
-      font-size: clamp(2rem, 5.5vw, 3.6rem);
+      font-size: clamp(2.1rem, 5.2vw, 3.8rem);
       font-weight: 800;
       line-height: 1.15;
       letter-spacing: -0.03em;
@@ -184,7 +295,7 @@
     .hero-desc {
       font-size: clamp(0.95rem, 2vw, 1.15rem);
       color: var(--pow-text-muted);
-      max-width: 740px;
+      max-width: 760px;
       margin-bottom: 2rem;
       line-height: 1.6;
     }
@@ -196,10 +307,11 @@
       align-items: center;
       justify-content: center;
       gap: 0.65rem;
-      background: var(--pow-well-bg);
-      border: var(--pow-border);
+      background: var(--clay-well-bg);
+      border: var(--clay-well-border);
       border-radius: var(--pow-radius-btn);
-      padding: 0.4rem 0.5rem 0.4rem 1.1rem;
+      padding: 0.45rem 0.55rem 0.45rem 1.25rem;
+      box-shadow: var(--clay-well-shadow);
       max-width: 100%;
       box-sizing: border-box;
       margin-bottom: 2rem;
@@ -211,7 +323,7 @@
       color: var(--pow-accent);
       flex-shrink: 0;
       line-height: 1;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       user-select: none;
     }
 
@@ -227,9 +339,7 @@
       user-select: all;
     }
 
-    .pow-code::-webkit-scrollbar {
-      display: none;
-    }
+    .pow-code::-webkit-scrollbar { display: none; }
 
     .pow-copy-btn {
       display: inline-flex;
@@ -239,18 +349,24 @@
       color: var(--pow-text);
       border: var(--pow-border);
       border-radius: var(--pow-radius-btn);
-      padding: 0.4rem 0.8rem;
+      padding: 0.45rem 0.9rem;
       font-family: var(--pow-font-display);
       font-size: 0.75rem;
       font-weight: 700;
       cursor: pointer;
       flex-shrink: 0;
       line-height: 1;
-      transition: background 120ms ease;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08), inset 1px 1px 2px rgba(255, 255, 255, 0.9);
+      transition: background 120ms ease, transform 90ms ease;
     }
 
     .pow-copy-btn:hover {
       background: var(--pow-surface-hover);
+      transform: translateY(-1px);
+    }
+
+    .pow-copy-btn:active {
+      transform: scale(0.97);
     }
 
     /* Hero CTA Group */
@@ -258,7 +374,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
+      gap: 1.15rem;
       margin-bottom: 2.75rem;
       flex-wrap: wrap;
     }
@@ -267,54 +383,73 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
+      gap: 0.55rem;
+      padding: 0.85rem 1.85rem;
       font-family: var(--pow-font-display);
       font-weight: 700;
-      font-size: 0.925rem;
+      font-size: 0.95rem;
       border: var(--pow-border);
       border-radius: var(--pow-radius-btn);
       cursor: pointer;
-      transition: transform 100ms ease, background 120ms ease;
       text-decoration: none;
+      user-select: none;
+      transition: transform 100ms ease, box-shadow 120ms ease, background 120ms ease;
     }
 
     .pow-btn-primary {
       background: var(--pow-accent);
       color: #ffffff;
-      border-color: var(--pow-accent);
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: 0 10px 22px rgba(130, 71, 229, 0.35), inset 2px 3px 5px rgba(255, 255, 255, 0.45), inset -3px -4px 6px rgba(40, 15, 95, 0.35);
+    }
+
+    .pow-btn-primary:hover {
+      background: var(--pow-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 14px 28px rgba(130, 71, 229, 0.45), inset 2px 3px 5px rgba(255, 255, 255, 0.55), inset -3px -4px 6px rgba(40, 15, 95, 0.4);
     }
 
     .pow-btn-secondary {
       background: var(--pow-surface);
       color: var(--pow-text);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1), inset 2px 3px 4px rgba(255, 255, 255, 0.9), inset -2px -3px 5px rgba(140, 130, 180, 0.2);
     }
 
-    .pow-btn:hover {
+    .pow-btn-secondary:hover {
+      background: var(--pow-surface-hover);
       transform: translateY(-2px);
+    }
+
+    .pow-btn:active {
+      transform: scale(0.97) translateY(1px);
     }
 
     /* 4-Stat Strip */
     .pow-stat-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
+      gap: 1.15rem;
       width: 100%;
-      max-width: 960px;
+      max-width: 980px;
     }
 
     .stat-box {
       background: var(--pow-surface);
       border: var(--pow-border);
-      border-radius: var(--pow-radius);
-      padding: 1rem 0.85rem;
+      border-radius: 24px;
+      padding: 1.15rem 1rem;
       text-align: center;
-      box-shadow: var(--pow-shadow);
+      box-shadow: var(--clay-card-shadow);
+      transition: transform 120ms ease;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-2px);
     }
 
     .stat-val {
       font-family: var(--pow-font-display);
-      font-size: 1.5rem;
+      font-size: 1.55rem;
       font-weight: 800;
       line-height: 1.1;
       margin-bottom: 0.25rem;
@@ -323,21 +458,23 @@
 
     .stat-label {
       font-size: 0.75rem;
-      font-weight: 600;
+      font-weight: 700;
       color: var(--pow-text-muted);
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
 
-    /* Content Sections */
+    /* =========================================================
+       CLAYMORPHISM COMPONENT LAB (STUDIO DASHBOARD)
+       ========================================================= */
     .pow-section {
-      max-width: 1080px;
+      max-width: 1160px;
       margin: 4.5rem auto;
       padding: 0 1.25rem;
     }
 
     .section-header {
-      margin-bottom: 2.25rem;
+      margin-bottom: 2rem;
     }
 
     .section-badge {
@@ -346,17 +483,18 @@
       font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
-      padding: 0.25rem 0.65rem;
-      background: var(--pow-well-bg);
+      padding: 0.3rem 0.8rem;
+      background: var(--clay-well-bg);
       color: var(--pow-accent);
-      border: var(--pow-border);
-      border-radius: 4px;
+      border: var(--clay-well-border);
+      border-radius: 9999px;
+      box-shadow: var(--clay-well-shadow);
       margin-bottom: 0.75rem;
     }
 
     .section-title {
       font-family: var(--pow-font-display);
-      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      font-size: clamp(1.7rem, 4vw, 2.4rem);
       font-weight: 800;
       letter-spacing: -0.02em;
       line-height: 1.2;
@@ -365,12 +503,840 @@
     .section-desc {
       font-size: 1rem;
       color: var(--pow-text-muted);
-      max-width: 680px;
+      max-width: 720px;
       margin-top: 0.5rem;
       line-height: 1.6;
     }
 
-    /* Tabbed Installation Card */
+    /* Master Clay Chassis Shell */
+    .clay-studio-chassis {
+      background: var(--clay-chassis-bg);
+      border: var(--clay-chassis-border);
+      border-radius: 36px;
+      box-shadow: var(--clay-chassis-shadow);
+      padding: 1.25rem;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 1.25rem;
+      position: relative;
+    }
+
+    /* Sidebar Dock */
+    .clay-sidebar-dock {
+      background: var(--clay-dock-bg);
+      border-radius: 28px;
+      padding: 1.5rem 1rem;
+      box-shadow: var(--clay-dock-shadow);
+      color: var(--clay-dock-text);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .sidebar-user-block {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.65rem;
+      padding-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .clay-avatar-frame {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      box-shadow: 0 8px 18px rgba(30, 15, 70, 0.3), inset 2px 3px 5px rgba(255, 255, 255, 0.9), inset -2px -3px 5px rgba(120, 100, 170, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border: 3px solid rgba(255, 255, 255, 0.9);
+      position: relative;
+    }
+
+    .clay-avatar-svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .sidebar-user-name {
+      font-family: var(--pow-font-display);
+      font-size: 1rem;
+      font-weight: 800;
+      color: #FFFFFF;
+      line-height: 1.2;
+    }
+
+    .sidebar-user-role {
+      font-size: 0.75rem;
+      color: rgba(255, 255, 255, 0.85);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .live-pulse-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #4ADE80;
+      box-shadow: 0 0 8px #4ADE80;
+    }
+
+    /* Sidebar Navigation Links */
+    .sidebar-nav-menu {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      list-style: none;
+    }
+
+    .clay-nav-btn {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.65rem 1rem;
+      border: none;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.88);
+      font-family: var(--pow-font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      border-radius: 9999px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 120ms ease;
+      user-select: none;
+    }
+
+    .clay-nav-btn:hover {
+      background: rgba(255, 255, 255, 0.16);
+      color: #FFFFFF;
+      transform: translateX(3px);
+    }
+
+    .clay-nav-btn.active {
+      background: #FFFFFF;
+      color: var(--pow-accent);
+      box-shadow: 0 8px 18px rgba(40, 20, 80, 0.25), inset 2px 2px 4px rgba(255, 255, 255, 0.95), inset -2px -3px 4px rgba(150, 140, 185, 0.3);
+    }
+
+    .clay-nav-icon {
+      width: 18px;
+      height: 18px;
+      flex-shrink: 0;
+    }
+
+    /* Pro Studio Card */
+    .clay-pro-card {
+      background: var(--clay-peach-bg);
+      color: var(--clay-peach-text);
+      border-radius: 22px;
+      padding: 1.15rem 1rem;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), inset 2px 3px 4px rgba(255, 255, 255, 0.6), inset -2px -3px 5px rgba(140, 40, 30, 0.25);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 0.45rem;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .clay-crown-icon {
+      width: 32px;
+      height: 32px;
+    }
+
+    .pro-title {
+      font-family: var(--pow-font-display);
+      font-weight: 800;
+      font-size: 0.9rem;
+      line-height: 1.2;
+    }
+
+    .pro-subtitle {
+      font-size: 0.72rem;
+      opacity: 0.88;
+      line-height: 1.35;
+    }
+
+    .clay-pro-btn {
+      margin-top: 0.35rem;
+      width: 100%;
+      padding: 0.45rem 0.85rem;
+      background: #FF725E;
+      color: #FFFFFF;
+      border: none;
+      border-radius: 9999px;
+      font-family: var(--pow-font-display);
+      font-weight: 800;
+      font-size: 0.75rem;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(217, 72, 38, 0.35), inset 1px 2px 3px rgba(255, 255, 255, 0.55), inset -2px -2px 4px rgba(120, 20, 10, 0.3);
+      transition: transform 90ms ease, background 120ms ease;
+    }
+
+    .clay-pro-btn:hover {
+      background: #F85A44;
+      transform: translateY(-1px);
+    }
+
+    .clay-pro-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* Main Studio Deck */
+    .clay-main-deck {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    /* Deck Topbar */
+    .clay-deck-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .deck-title-group h3 {
+      font-family: var(--pow-font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--pow-text);
+      line-height: 1.2;
+    }
+
+    .deck-search-well {
+      flex: 1;
+      max-width: 440px;
+      background: var(--clay-well-bg);
+      border: var(--clay-well-border);
+      border-radius: 9999px;
+      box-shadow: var(--clay-well-shadow);
+      padding: 0.5rem 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .deck-search-input {
+      border: none;
+      background: transparent;
+      outline: none;
+      width: 100%;
+      font-family: var(--pow-font-body);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--pow-text);
+    }
+
+    .deck-search-input::placeholder {
+      color: var(--pow-text-muted);
+    }
+
+    .deck-actions-group {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+    }
+
+    .clay-circle-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1), inset 1px 2px 3px rgba(255, 255, 255, 0.9), inset -1px -2px 3px rgba(150, 140, 180, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      position: relative;
+      color: var(--pow-text);
+      transition: transform 90ms ease, background 120ms ease;
+    }
+
+    .clay-circle-btn:hover {
+      background: var(--pow-surface-hover);
+      transform: translateY(-1px);
+    }
+
+    .clay-circle-btn:active {
+      transform: scale(0.95);
+    }
+
+    .notification-pill-badge {
+      position: absolute;
+      top: -2px;
+      right: -2px;
+      background: #FF5A79;
+      color: #FFFFFF;
+      font-size: 0.65rem;
+      font-weight: 800;
+      width: 17px;
+      height: 17px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(255, 90, 121, 0.5);
+      border: 1.5px solid #FFFFFF;
+    }
+
+    /* Greeting Hero Banner */
+    .clay-hero-banner {
+      background: var(--clay-hero-bg);
+      border-radius: 28px;
+      box-shadow: var(--clay-hero-shadow);
+      padding: 1.65rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-banner-content {
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .hero-banner-tag {
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--pow-accent);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-banner-title {
+      font-family: var(--pow-font-display);
+      font-size: clamp(1.25rem, 2.5vw, 1.65rem);
+      font-weight: 800;
+      color: var(--pow-text);
+      line-height: 1.25;
+    }
+
+    .hero-banner-desc {
+      font-size: 0.88rem;
+      color: var(--pow-text-muted);
+      line-height: 1.5;
+    }
+
+    .clay-play-pill-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.55rem;
+      padding: 0.65rem 1.35rem;
+      background: var(--pow-accent);
+      color: #FFFFFF;
+      border: none;
+      border-radius: 9999px;
+      font-family: var(--pow-font-display);
+      font-weight: 800;
+      font-size: 0.85rem;
+      cursor: pointer;
+      margin-top: 0.35rem;
+      box-shadow: 0 8px 18px rgba(130, 71, 229, 0.35), inset 2px 2px 4px rgba(255, 255, 255, 0.5), inset -2px -3px 5px rgba(50, 20, 100, 0.35);
+      transition: transform 90ms ease, background 120ms ease;
+      align-self: flex-start;
+    }
+
+    .clay-play-pill-btn:hover {
+      background: var(--pow-accent-hover);
+      transform: translateY(-1px);
+    }
+
+    .clay-play-pill-btn:active {
+      transform: scale(0.97);
+    }
+
+    .hero-banner-art {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .clay-plant-box {
+      width: 100px;
+      height: 110px;
+    }
+
+    /* 4 Metric Cards Row */
+    .clay-metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+
+    .clay-metric-tile {
+      border-radius: 24px;
+      padding: 1.25rem 1rem;
+      box-shadow: var(--clay-card-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      transition: transform 120ms ease;
+    }
+
+    .clay-metric-tile:hover {
+      transform: translateY(-2px);
+    }
+
+    .clay-metric-tile.lilac { background: var(--clay-lilac-bg); }
+    .clay-metric-tile.peach { background: var(--clay-peach-bg); }
+    .clay-metric-tile.butter { background: var(--clay-butter-bg); }
+    .clay-metric-tile.sky { background: var(--clay-sky-bg); }
+
+    .metric-icon-squircle {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1), inset 1px 2px 3px rgba(255, 255, 255, 0.7), inset -1px -2px 3px rgba(0, 0, 0, 0.15);
+    }
+
+    .metric-icon-squircle.lilac { background: #9D80E4; color: #FFFFFF; }
+    .metric-icon-squircle.peach { background: #FF856B; color: #FFFFFF; }
+    .metric-icon-squircle.butter { background: #FFC633; color: #FFFFFF; }
+    .metric-icon-squircle.sky { background: #45A2E8; color: #FFFFFF; }
+
+    .metric-label {
+      font-size: 0.785rem;
+      font-weight: 700;
+      color: var(--pow-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .metric-val {
+      font-family: var(--pow-font-display);
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: var(--pow-text);
+      line-height: 1.1;
+    }
+
+    .metric-delta-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      color: #198038;
+      background: rgba(25, 128, 56, 0.12);
+      padding: 0.2rem 0.55rem;
+      border-radius: 9999px;
+      align-self: flex-start;
+    }
+
+    [data-theme="dark"] .metric-delta-tag {
+      color: #6FDC8C;
+      background: rgba(111, 220, 140, 0.15);
+    }
+
+    /* Mid Analytics Row (Bar Chart + Donut Chart) */
+    .clay-analytics-row {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 1rem;
+    }
+
+    .clay-card-pod {
+      background: var(--clay-card-bg);
+      border-radius: 28px;
+      box-shadow: var(--clay-card-shadow);
+      border: var(--clay-card-border);
+      padding: 1.4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .pod-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .pod-title {
+      font-family: var(--pow-font-display);
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--pow-text);
+    }
+
+    .pod-action-pill {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--pow-text-muted);
+      background: var(--clay-well-bg);
+      border: var(--clay-well-border);
+      box-shadow: var(--clay-well-shadow);
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    /* 3D Cylindrical Bar Chart */
+    .clay-barchart-stage {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      height: 180px;
+      padding: 1.25rem 0.5rem 0.25rem 0.5rem;
+      gap: 0.65rem;
+    }
+
+    .bar-column {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.55rem;
+      flex: 1;
+      height: 100%;
+      justify-content: flex-end;
+    }
+
+    .cylinder-track {
+      width: 26px;
+      height: 135px;
+      background: var(--clay-well-bg);
+      border: var(--clay-well-border);
+      box-shadow: var(--clay-well-shadow);
+      border-radius: 9999px;
+      display: flex;
+      align-items: flex-end;
+      padding: 2.5px;
+      position: relative;
+    }
+
+    .cylinder-pill-bar {
+      width: 100%;
+      border-radius: 9999px;
+      box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.8), inset -2px -3px 5px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.12);
+      cursor: pointer;
+      position: relative;
+      transition: height 240ms cubic-bezier(0.34, 1.56, 0.64, 1), transform 100ms ease;
+    }
+
+    .cylinder-pill-bar:hover {
+      transform: scaleY(1.05);
+    }
+
+    .bar-tooltip {
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--pow-text);
+      color: var(--pow-bg);
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 0.2rem 0.45rem;
+      border-radius: 6px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 120ms ease;
+    }
+
+    .cylinder-pill-bar:hover .bar-tooltip {
+      opacity: 1;
+    }
+
+    .bar-day-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--pow-text-muted);
+    }
+
+    /* Donut Chart Display */
+    .clay-donut-layout {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      gap: 1.25rem;
+      padding: 0.5rem 0;
+    }
+
+    .donut-svg-wrap {
+      width: 130px;
+      height: 130px;
+      flex-shrink: 0;
+      filter: drop-shadow(0 8px 16px rgba(100, 85, 150, 0.2));
+    }
+
+    .donut-legend-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      list-style: none;
+    }
+
+    .donut-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.8rem;
+      color: var(--pow-text);
+      font-weight: 600;
+    }
+
+    .legend-color-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 4px;
+      box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.7);
+    }
+
+    .legend-pct {
+      margin-left: auto;
+      font-weight: 800;
+      color: var(--pow-text-muted);
+      font-size: 0.75rem;
+    }
+
+    /* Bottom Row (Recently Played + Daily Mix) */
+    .clay-bottom-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 1rem;
+    }
+
+    .track-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .track-item-row {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.65rem 0.85rem;
+      border-radius: 18px;
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05), inset 1px 1px 2px rgba(255, 255, 255, 0.8);
+      transition: all 120ms ease;
+    }
+
+    .track-item-row:hover {
+      transform: translateX(3px);
+      background: var(--pow-surface-hover);
+    }
+
+    .track-item-row.playing {
+      border-color: var(--pow-accent);
+      background: var(--clay-well-bg);
+    }
+
+    .track-art-box {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), inset 1px 2px 3px rgba(255, 255, 255, 0.6);
+      flex-shrink: 0;
+    }
+
+    .track-meta {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .track-name {
+      font-family: var(--pow-font-display);
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--pow-text);
+      line-height: 1.2;
+    }
+
+    .track-artist {
+      font-size: 0.74rem;
+      color: var(--pow-text-muted);
+      font-weight: 600;
+    }
+
+    .track-play-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1), inset 1px 1px 2px rgba(255, 255, 255, 0.9), inset -1px -1px 2px rgba(0, 0, 0, 0.15);
+      color: var(--pow-accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 90ms ease, background 120ms ease;
+    }
+
+    .track-play-btn:hover {
+      background: var(--pow-accent);
+      color: #FFFFFF;
+      transform: scale(1.06);
+    }
+
+    .track-play-btn:active {
+      transform: scale(0.92);
+    }
+
+    /* Daily Chill Card */
+    .daily-mix-card {
+      background: var(--clay-lilac-bg);
+      border-radius: 28px;
+      padding: 1.25rem;
+      box-shadow: var(--clay-card-shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      position: relative;
+    }
+
+    .mix-cover-art {
+      width: 100%;
+      height: 135px;
+      border-radius: 20px;
+      background: linear-gradient(135deg, #A58DEC, #8247E5);
+      box-shadow: inset 2px 2px 4px rgba(255, 255, 255, 0.5), 0 8px 18px rgba(110, 80, 180, 0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mix-floating-play {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: #FFFFFF;
+      color: var(--pow-accent);
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 6px 14px rgba(40, 20, 80, 0.3), inset 2px 2px 3px rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 90ms ease;
+    }
+
+    .mix-floating-play:hover {
+      transform: scale(1.08);
+    }
+
+    .mix-floating-play:active {
+      transform: scale(0.94);
+    }
+
+    .mix-title-h4 {
+      font-family: var(--pow-font-display);
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--pow-text);
+      line-height: 1.2;
+    }
+
+    .mix-meta-p {
+      font-size: 0.75rem;
+      color: var(--pow-text-muted);
+      font-weight: 600;
+    }
+
+    /* Bottom Discovery Banner */
+    .clay-discovery-strip {
+      background: var(--clay-dock-bg);
+      color: #FFFFFF;
+      border-radius: 24px;
+      box-shadow: var(--clay-dock-shadow);
+      padding: 1.15rem 1.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+
+    .discovery-left {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .clay-star-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+    }
+
+    .discovery-headline {
+      font-family: var(--pow-font-display);
+      font-size: 0.95rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    .discovery-subtext {
+      font-size: 0.785rem;
+      opacity: 0.88;
+    }
+
+    .clay-discovery-btn {
+      padding: 0.6rem 1.35rem;
+      background: #FFFFFF;
+      color: var(--pow-accent);
+      border: none;
+      border-radius: 9999px;
+      font-family: var(--pow-font-display);
+      font-weight: 800;
+      font-size: 0.825rem;
+      cursor: pointer;
+      box-shadow: 0 6px 14px rgba(40, 20, 80, 0.25), inset 2px 2px 3px rgba(255, 255, 255, 0.9);
+      transition: transform 90ms ease;
+    }
+
+    .clay-discovery-btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .clay-discovery-btn:active {
+      transform: scale(0.96);
+    }
+
+    /* =========================================================
+       TABBED INSTALLATION GUIDE SECTION
+       ========================================================= */
     .pow-card {
       background: var(--pow-surface);
       border: var(--pow-border);
@@ -381,18 +1347,16 @@
 
     .tab-header-strip {
       display: flex;
-      background: var(--pow-well-bg);
+      background: var(--clay-well-bg);
       border-bottom: var(--pow-border);
       overflow-x: auto;
       scrollbar-width: none;
     }
 
-    .tab-header-strip::-webkit-scrollbar {
-      display: none;
-    }
+    .tab-header-strip::-webkit-scrollbar { display: none; }
 
     .tab-switch-btn {
-      padding: 0.85rem 1.4rem;
+      padding: 0.9rem 1.5rem;
       background: transparent;
       border: none;
       border-right: var(--pow-border);
@@ -428,7 +1392,7 @@
     .install-step-title {
       font-family: var(--pow-font-display);
       font-size: 1.15rem;
-      font-weight: 700;
+      font-weight: 800;
       margin-bottom: 0.65rem;
     }
 
@@ -440,16 +1404,17 @@
 
     /* Terminal Console Window */
     .pow-terminal {
-      background: #0d1117;
-      color: #f0f6fc;
+      background: #0D1117;
+      color: #F0F6FC;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 8px;
+      border-radius: 16px;
       overflow: hidden;
       margin-bottom: 1.5rem;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
     }
 
     .terminal-topbar {
-      background: #161b22;
+      background: #161B22;
       padding: 0.65rem 1rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
@@ -469,19 +1434,19 @@
       border-radius: 50%;
     }
 
-    .dot.red { background: #ff5f56; }
-    .dot.yellow { background: #ffbd2e; }
-    .dot.green { background: #27c93f; }
+    .dot.red { background: #FF5F56; }
+    .dot.yellow { background: #FFBD2E; }
+    .dot.green { background: #27C93F; }
 
     .terminal-label {
       font-family: var(--pow-font-mono);
       font-size: 0.75rem;
-      color: #8b949e;
+      color: #8B949E;
       font-weight: 600;
     }
 
     .terminal-content {
-      padding: 1.15rem;
+      padding: 1.2rem;
       font-family: var(--pow-font-mono);
       font-size: 0.85rem;
       line-height: 1.6;
@@ -495,9 +1460,7 @@
       margin-bottom: 0.45rem;
     }
 
-    .terminal-line:last-child {
-      margin-bottom: 0;
-    }
+    .terminal-line:last-child { margin-bottom: 0; }
 
     .line-p {
       color: var(--pow-accent);
@@ -507,58 +1470,69 @@
     }
 
     .line-cmd {
-      color: #f0f6fc;
+      color: #F0F6FC;
       word-break: break-all;
     }
 
     .line-comment {
-      color: #8b949e;
+      color: #8B949E;
       font-style: italic;
     }
 
-    /* Bento Demo Specifics */
-    .bento-demo-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 16px;
-    }
-
-    .bento-tile {
+    /* =========================================================
+       TOKEN SPECIFICATION TABLE & FAQ
+       ========================================================= */
+    .token-table-wrap {
       background: var(--pow-surface);
       border: var(--pow-border);
-      border-radius: var(--pow-radius);
-      padding: 1.75rem;
       box-shadow: var(--pow-shadow);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      border-radius: var(--pow-radius);
+      overflow-x: auto;
     }
 
-    .bento-tag {
-      display: inline-block;
-      font-size: 0.725rem;
+    .pow-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+    }
+
+    .pow-table th, .pow-table td {
+      padding: 0.95rem 1.35rem;
+      border-bottom: var(--pow-border);
+      font-size: 0.85rem;
+    }
+
+    .pow-table th {
+      background: var(--clay-well-bg);
+      font-family: var(--pow-font-display);
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .pow-table tr:last-child td { border-bottom: none; }
+
+    .token-code {
       font-family: var(--pow-font-mono);
       font-weight: 700;
       color: var(--pow-accent);
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
     }
 
-    /* Accordion / FAQ */
+    /* FAQ Accordion */
     .pow-faq-item {
       background: var(--pow-surface);
       border: var(--pow-border);
       box-shadow: var(--pow-shadow);
-      border-radius: var(--pow-radius);
+      border-radius: 20px;
       margin-bottom: 1rem;
       overflow: hidden;
     }
 
     .pow-faq-header {
-      padding: 1rem 1.25rem;
+      padding: 1.15rem 1.35rem;
       font-family: var(--pow-font-display);
       font-size: 0.95rem;
-      font-weight: 700;
+      font-weight: 800;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -583,12 +1557,12 @@
     }
 
     .pow-faq-body {
-      padding: 0 1.25rem 1.25rem 1.25rem;
+      padding: 0 1.35rem 1.35rem 1.35rem;
       font-size: 0.875rem;
       color: var(--pow-text-muted);
       line-height: 1.6;
       display: none;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-top: var(--pow-border);
       padding-top: 1rem;
     }
 
@@ -596,46 +1570,7 @@
       display: block;
     }
 
-    /* Token Specification Table */
-    .token-table-wrap {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      box-shadow: var(--pow-shadow);
-      border-radius: var(--pow-radius);
-      overflow-x: auto;
-    }
-
-    .pow-table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-    }
-
-    .pow-table th, .pow-table td {
-      padding: 0.9rem 1.25rem;
-      border-bottom: var(--pow-border);
-      font-size: 0.85rem;
-    }
-
-    .pow-table th {
-      background: var(--pow-well-bg);
-      font-family: var(--pow-font-display);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .pow-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .token-code {
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      color: var(--pow-accent);
-    }
-
-    /* Footer (Balanced 2-column mobile architecture) */
+    /* Footer */
     .pow-footer {
       background: var(--pow-surface);
       border-top: var(--pow-border);
@@ -644,7 +1579,7 @@
     }
 
     .footer-inner {
-      max-width: 1080px;
+      max-width: 1100px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
@@ -669,7 +1604,7 @@
     .footer-col h5 {
       font-family: var(--pow-font-display);
       font-size: 0.8rem;
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.06em;
       margin-bottom: 1rem;
@@ -696,7 +1631,7 @@
     }
 
     .footer-bottom {
-      max-width: 1080px;
+      max-width: 1100px;
       margin: 0 auto;
       padding-top: 1.5rem;
       border-top: var(--pow-border);
@@ -716,12 +1651,12 @@
       background: var(--pow-surface);
       color: var(--pow-text);
       border: var(--pow-border);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-      padding: 0.65rem 1.2rem;
-      border-radius: var(--pow-radius-btn);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+      padding: 0.75rem 1.35rem;
+      border-radius: 9999px;
       font-family: var(--pow-font-display);
       font-size: 0.85rem;
-      font-weight: 700;
+      font-weight: 800;
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -737,77 +1672,81 @@
       transform: translateY(0);
     }
 
-    /* =========================================================
-       RESPONSIVE BREAKPOINTS (FLUID & COMPACT MOBILE)
-       ========================================================= */
-    @media (max-width: 768px) {
-      .pow-nav { padding: 0.65rem 1rem; }
-      .nav-title { font-size: 0.95rem; }
-      .nav-tag-badge { display: none; }
-      
-      .pow-hero { padding: 2.5rem 1rem 1.5rem 1rem; }
-      .hero-title { font-size: clamp(1.6rem, 5.5vw, 2.3rem); }
-      .hero-desc { font-size: 0.9rem; margin-bottom: 1.5rem; }
-
-      .hero-btn-group { flex-direction: column; width: 100%; gap: 0.65rem; }
-      .pow-btn { width: 100%; }
-
-      .pow-stat-strip { grid-template-columns: repeat(2, 1fr); gap: 0.65rem; }
-      .stat-val { font-size: 1.35rem; }
-
-      .bento-demo-grid { grid-template-columns: 1fr; }
-
-      .footer-inner {
+    /* Responsive Breakpoints */
+    @media (max-width: 960px) {
+      .clay-studio-chassis {
+        grid-template-columns: 1fr;
+      }
+      .clay-sidebar-dock {
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+      .sidebar-user-block {
+        flex-direction: row;
+        border-bottom: none;
+        border-right: 1px solid rgba(255, 255, 255, 0.15);
+        padding-bottom: 0;
+        padding-right: 1rem;
+      }
+      .sidebar-nav-menu {
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex: 1;
+      }
+      .clay-pro-card {
+        display: none;
+      }
+      .clay-metrics-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1.75rem 1.25rem;
       }
-      .footer-brand {
-        grid-column: 1 / -1;
-        padding-bottom: 1rem;
-        border-bottom: var(--pow-border);
+      .clay-analytics-row, .clay-bottom-grid {
+        grid-template-columns: 1fr;
       }
-      .footer-bottom {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 1rem;
+      .nav-command-pill {
+        display: none;
       }
     }
 
-    @media (max-width: 480px) {
-      .hero-title { font-size: 1.45rem; line-height: 1.18; }
-      .hero-desc { font-size: 0.825rem; }
-      .pow-stat-strip { grid-template-columns: 1fr 1fr; gap: 0.45rem; }
-      .stat-box { padding: 0.75rem 0.5rem; }
-      .stat-val { font-size: 1.2rem; }
-      .stat-label { font-size: 0.65rem; }
+    @media (max-width: 768px) {
+      .pow-nav { padding: 0.65rem 1rem; }
+      .nav-tag-badge { display: none; }
+      .pow-hero { padding: 2.5rem 1rem 1.5rem 1rem; }
+      .hero-title { font-size: clamp(1.8rem, 6vw, 2.5rem); }
+      .pow-stat-strip { grid-template-columns: repeat(2, 1fr); }
+      .footer-inner { grid-template-columns: 1fr; gap: 1.5rem; }
+    }
 
-      .section-title { font-size: 1.3rem; }
-      .section-desc { font-size: 0.825rem; }
-
-      .tab-body { padding: 1rem; }
-      .terminal-content { font-size: 0.75rem; padding: 0.85rem; }
-
-      .pow-command-pill {
-        gap: 0.4rem;
-        padding: 0.3rem 0.35rem 0.3rem 0.75rem;
-      }
-      .pow-copy-btn {
-        padding: 0.35rem 0.6rem;
-        font-size: 0.7rem;
-      }
+    @media (max-width: 520px) {
+      .clay-metrics-grid { grid-template-columns: 1fr; }
+      .hero-banner-art { display: none; }
+      .clay-barchart-stage { height: 150px; }
+      .cylinder-track { width: 18px; }
+      .footer-bottom { flex-direction: column; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation -->
+  <!-- Top Navigation with Integrated Quick-Install Pill -->
   <header class="pow-nav">
     <a href="index.html" class="nav-brand-group">
-      <div class="nav-logo-box">TE</div>
+      <img src="assets/logo.webp" alt="Taste Engine Logo" class="brand-logo-img">
       <strong class="nav-title">Taste Engine</strong>
-      <span class="nav-tag-badge">Claymorphism PoW</span>
+      <span class="nav-tag-badge">#04 CLAYMORPHISM</span>
     </a>
+
+    <!-- Single-Line Inline Command Pill (Aligned) -->
+    <div class="nav-command-pill">
+      <span style="color: var(--pow-accent); font-family: var(--pow-font-mono); font-weight: 700;">$</span>
+      <code class="nav-cmd-code" id="navCmdText">npx skills add kennedys0/taste-engine --skill taste-style-claymorphism</code>
+      <button class="nav-copy-btn" id="navCopyBtn" title="Copy command">Copy</button>
+    </div>
+
     <div class="nav-actions">
+      <a href="#install" class="pow-btn-sm">
+        <span>Install Guide</span>
+      </a>
       <a href="index.html" class="pow-btn-sm" title="Back to main gallery">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
         <span>All 10 Styles</span>
@@ -819,7 +1758,7 @@
   </header>
 
   <main>
-    <!-- Opening Hero Viewport -->
+    <!-- Opening Hero Viewport (100svh safe viewport) -->
     <section class="pow-hero">
       <div class="hero-sticker-badge">
         <span>★ Proof of Work: Archetype #04</span>
@@ -844,12 +1783,12 @@
       </div>
 
       <div class="hero-btn-group">
-        <a href="#install" class="pow-btn pow-btn-primary">
-          <span>Installation Guide ↓</span>
+        <a href="#playground" class="pow-btn pow-btn-primary">
+          <span>Explore Interactive UI ↓</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 13l5 5 5-5M12 6v12"/></svg>
         </a>
-        <a href="#playground" class="pow-btn pow-btn-secondary">
-          <span>Explore Interactive UI →</span>
+        <a href="#install" class="pow-btn pow-btn-secondary">
+          <span>Installation Guide →</span>
         </a>
       </div>
 
@@ -857,10 +1796,10 @@
       <div class="pow-stat-strip">
         <div class="stat-box">
           <div class="stat-val">Dual Inner</div>
-          <div class="stat-label">Volumetric Shadow</div>
+          <div class="stat-label">Volumetric Depth</div>
         </div>
         <div class="stat-box">
-          <div class="stat-val">24px</div>
+          <div class="stat-val">28px+</div>
           <div class="stat-label">Pill Contour Radius</div>
         </div>
         <div class="stat-box">
@@ -871,6 +1810,450 @@
           <div class="stat-val">Tactile</div>
           <div class="stat-label">Active Compression</div>
         </div>
+      </div>
+    </section>
+
+    <!-- Interactive Component Playground (PoW): Claymorphic Audio Studio Dashboard -->
+    <section class="pow-section" id="playground">
+      <div class="section-header">
+        <span class="section-badge">Live Interactive PoW</span>
+        <h2 class="section-title">Claymorphic Audio Studio Deck</h2>
+        <p class="section-desc">
+          Directly demonstrating sculpted 3D clay components: volumetric pill bars, dual-shadowed squircle tiles, sunken input channels, and tactile physics. Click any button or play track for live tactile feedback.
+        </p>
+      </div>
+
+      <!-- Master Clay Chassis -->
+      <div class="clay-studio-chassis">
+        
+        <!-- Left Sidebar Dock -->
+        <aside class="clay-sidebar-dock">
+          <div>
+            <div class="sidebar-user-block">
+              <div class="clay-avatar-frame">
+                <!-- SVG Stylized 3D Avatar with Headphones -->
+                <svg viewBox="0 0 80 80" class="clay-avatar-svg">
+                  <circle cx="40" cy="40" r="38" fill="#E6DEFA"/>
+                  <!-- Hair Bun -->
+                  <circle cx="40" cy="22" r="14" fill="#6C4835"/>
+                  <!-- Face -->
+                  <ellipse cx="40" cy="44" rx="18" ry="20" fill="#FDDCB5"/>
+                  <!-- Hair Fringe -->
+                  <path d="M22 36 Q40 24 58 36 Q40 32 22 36 Z" fill="#6C4835"/>
+                  <!-- Eyes -->
+                  <ellipse cx="33" cy="42" rx="2.5" ry="3.5" fill="#3D2619"/>
+                  <ellipse cx="47" cy="42" rx="2.5" ry="3.5" fill="#3D2619"/>
+                  <!-- Cheeks -->
+                  <circle cx="30" cy="48" r="3" fill="#FFA5A5" opacity="0.6"/>
+                  <circle cx="50" cy="48" r="3" fill="#FFA5A5" opacity="0.6"/>
+                  <!-- Smile -->
+                  <path d="M36 50 Q40 54 44 50" stroke="#8D5B4C" stroke-width="2" fill="none" stroke-linecap="round"/>
+                  <!-- Purple Headphones -->
+                  <path d="M20 42 A20 20 0 0 1 60 42" stroke="#8247E5" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+                  <rect x="18" y="38" width="6" height="12" rx="3" fill="#9D80E4"/>
+                  <rect x="56" y="38" width="6" height="12" rx="3" fill="#9D80E4"/>
+                </svg>
+              </div>
+              <div>
+                <h4 class="sidebar-user-name">Mia Chen</h4>
+                <div class="sidebar-user-role">
+                  <span class="live-pulse-dot"></span>
+                  <span>Audio Architect</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Navigation Bay -->
+            <ul class="sidebar-nav-menu" style="margin-top: 1.25rem;">
+              <li>
+                <button class="clay-nav-btn active" onclick="handleNavClick(this, 'Dashboard')">
+                  <svg class="clay-nav-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+                  <span>Dashboard</span>
+                </button>
+              </li>
+              <li>
+                <button class="clay-nav-btn" onclick="handleNavClick(this, 'My Stems')">
+                  <svg class="clay-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                  <span>My Stems</span>
+                </button>
+              </li>
+              <li>
+                <button class="clay-nav-btn" onclick="handleNavClick(this, 'Favorites')">
+                  <svg class="clay-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+                  <span>Favorites</span>
+                </button>
+              </li>
+              <li>
+                <button class="clay-nav-btn" onclick="handleNavClick(this, 'Playlists')">
+                  <svg class="clay-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                  <span>Playlists</span>
+                </button>
+              </li>
+              <li>
+                <button class="clay-nav-btn" onclick="handleNavClick(this, 'Synthesizer')">
+                  <svg class="clay-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                  <span>Sound Design</span>
+                </button>
+              </li>
+              <li>
+                <button class="clay-nav-btn" onclick="handleNavClick(this, 'Settings')">
+                  <svg class="clay-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                  <span>Settings</span>
+                </button>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Bottom Pro Card -->
+          <div class="clay-pro-card">
+            <!-- 3D Gold Clay Crown SVG -->
+            <svg class="clay-crown-icon" viewBox="0 0 40 40">
+              <path d="M6 30 L10 14 L18 22 L24 8 L30 22 L38 14 L34 30 Z" fill="#FFC72C" stroke="#D49A00" stroke-width="1.5"/>
+              <circle cx="10" cy="14" r="2.5" fill="#FFE58F"/>
+              <circle cx="24" cy="8" r="3" fill="#FFE58F"/>
+              <circle cx="38" cy="14" r="2.5" fill="#FFE58F"/>
+            </svg>
+            <strong class="pro-title">Taste Studio Pro</strong>
+            <p class="pro-subtitle">Unlock unlimited audio stems & lossless exports</p>
+            <button class="clay-pro-btn" onclick="showToast('Upgraded to Taste Studio Pro!')">Upgrade Now</button>
+          </div>
+        </aside>
+
+        <!-- Right Main Deck -->
+        <div class="clay-main-deck">
+          
+          <!-- Top Bar -->
+          <div class="clay-deck-topbar">
+            <div class="deck-title-group">
+              <span style="font-size: 0.72rem; font-weight: 800; color: var(--pow-accent); text-transform: uppercase;">Workspace</span>
+              <h3>Audio Studio Panel</h3>
+            </div>
+
+            <!-- Sunken Well Search Input -->
+            <div class="deck-search-well">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="color: var(--pow-accent); flex-shrink: 0;"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+              <input type="text" class="deck-search-input" placeholder="Search stems, presets, synths..." aria-label="Search">
+            </div>
+
+            <div class="deck-actions-group">
+              <button class="clay-circle-btn" onclick="showToast('No new notifications')" aria-label="Notifications">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                <span class="notification-pill-badge">3</span>
+              </button>
+              <button class="clay-circle-btn" onclick="showToast('Profile: Mia Chen (Online)')" aria-label="User Profile">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </button>
+            </div>
+          </div>
+
+          <!-- Greeting Hero Banner -->
+          <div class="clay-hero-banner">
+            <div class="hero-banner-content">
+              <span class="hero-banner-tag">♫ Session Active</span>
+              <h4 class="hero-banner-title">Good morning, Mia! ☀️</h4>
+              <p class="hero-banner-desc">Ready to craft some rich ambient audio stems and sculpt new waveforms today?</p>
+              <button class="clay-play-pill-btn" id="heroPlayBtn" onclick="toggleHeroPlay()">
+                <svg id="heroPlayIcon" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                <span id="heroPlayLabel">Play Daily Focus Stem</span>
+              </button>
+            </div>
+
+            <!-- Decorative 3D Clay Plant SVG -->
+            <div class="hero-banner-art">
+              <svg class="clay-plant-box" viewBox="0 0 100 110">
+                <!-- Clay Pot -->
+                <path d="M25 65 L32 105 L68 105 L75 65 Z" fill="#E8927C" stroke="#D1745E" stroke-width="2"/>
+                <ellipse cx="50" cy="65" rx="25" ry="6" fill="#F4A591"/>
+                <!-- Green Clay Leaves -->
+                <path d="M50 62 Q50 30 30 20 Q45 40 50 62 Z" fill="#48BB78"/>
+                <path d="M50 62 Q50 25 70 18 Q55 40 50 62 Z" fill="#38A169"/>
+                <path d="M50 62 Q40 38 20 40 Q40 52 50 62 Z" fill="#68D391"/>
+                <path d="M50 62 Q60 38 80 38 Q60 52 50 62 Z" fill="#48BB78"/>
+                <path d="M50 62 Q50 15 50 5 Q52 30 50 62 Z" fill="#2F855A"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- 4 Clay Metric Cards -->
+          <div class="clay-metrics-grid">
+            
+            <!-- Card 1: Lilac -->
+            <div class="clay-metric-tile lilac">
+              <div class="metric-icon-squircle lilac">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+              </div>
+              <span class="metric-label">Played Tracks</span>
+              <strong class="metric-val">1,248</strong>
+              <span class="metric-delta-tag">↑ +18% this week</span>
+            </div>
+
+            <!-- Card 2: Peach -->
+            <div class="clay-metric-tile peach">
+              <div class="metric-icon-squircle peach">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              </div>
+              <span class="metric-label">Favorites</span>
+              <strong class="metric-val">128</strong>
+              <span class="metric-delta-tag">↑ +8 today</span>
+            </div>
+
+            <!-- Card 3: Butter Yellow -->
+            <div class="clay-metric-tile butter">
+              <div class="metric-icon-squircle butter">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </div>
+              <span class="metric-label">Listening Hours</span>
+              <strong class="metric-val">34.6h</strong>
+              <span class="metric-delta-tag">↑ +6.2h this week</span>
+            </div>
+
+            <!-- Card 4: Sky Blue -->
+            <div class="clay-metric-tile sky">
+              <div class="metric-icon-squircle sky">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+              </div>
+              <span class="metric-label">Daily Streak</span>
+              <strong class="metric-val">7 Days</strong>
+              <span class="metric-delta-tag">★ Active streak</span>
+            </div>
+
+          </div>
+
+          <!-- Mid Analytics Row (3D Cylinders + Donut) -->
+          <div class="clay-analytics-row">
+            
+            <!-- Left Pod: 3D Cylindrical Bar Chart -->
+            <div class="clay-card-pod">
+              <div class="pod-header">
+                <strong class="pod-title">Weekly Listening Overview</strong>
+                <span class="pod-action-pill" onclick="showToast('Range: Past 7 Days')">This Week ▼</span>
+              </div>
+
+              <div class="clay-barchart-stage">
+                <!-- Mon -->
+                <div class="bar-column">
+                  <div class="cylinder-track">
+                    <div class="cylinder-pill-bar" style="height: 55%; background: linear-gradient(180deg, #B59DF0, #8A65E5);">
+                      <span class="bar-tooltip">3.4h</span>
+                    </div>
+                  </div>
+                  <span class="bar-day-label">Mon</span>
+                </div>
+                <!-- Tue -->
+                <div class="bar-column">
+                  <div class="cylinder-track">
+                    <div class="cylinder-pill-bar" style="height: 75%; background: linear-gradient(180deg, #FFB29F, #FF7658);">
+                      <span class="bar-tooltip">5.2h</span>
+                    </div>
+                  </div>
+                  <span class="bar-day-label">Tue</span>
+                </div>
+                <!-- Wed -->
+                <div class="bar-column">
+                  <div class="cylinder-track">
+                    <div class="cylinder-pill-bar" style="height: 90%; background: linear-gradient(180deg, #FFD278, #FFA826);">
+                      <span class="bar-tooltip">6.8h</span>
+                    </div>
+                  </div>
+                  <span class="bar-day-label">Wed</span>
+                </div>
+                <!-- Thu -->
+                <div class="bar-column">
+                  <div class="cylinder-track">
+                    <div class="cylinder-pill-bar" style="height: 100%; background: linear-gradient(180deg, #FFE285, #FFC11E);">
+                      <span class="bar-tooltip">7.5h</span>
+                    </div>
+                  </div>
+                  <span class="bar-day-label">Thu</span>
+                </div>
+                <!-- Fri -->
+                <div class="bar-column">
+                  <div class="cylinder-track">
+                    <div class="cylinder-pill-bar" style="height: 65%; background: linear-gradient(180deg, #99E2B4, #52B788);">
+                      <span class="bar-tooltip">4.6h</span>
+                    </div>
+                  </div>
+                  <span class="bar-day-label">Fri</span>
+                </div>
+                <!-- Sat -->
+                <div class="bar-column">
+                  <div class="cylinder-track">
+                    <div class="cylinder-pill-bar" style="height: 80%; background: linear-gradient(180deg, #9AD1FE, #4EA8DE);">
+                      <span class="bar-tooltip">5.9h</span>
+                    </div>
+                  </div>
+                  <span class="bar-day-label">Sat</span>
+                </div>
+                <!-- Sun -->
+                <div class="bar-column">
+                  <div class="cylinder-track">
+                    <div class="cylinder-pill-bar" style="height: 48%; background: linear-gradient(180deg, #CBB6F7, #9B78EC);">
+                      <span class="bar-tooltip">2.9h</span>
+                    </div>
+                  </div>
+                  <span class="bar-day-label">Sun</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Pod: 3D Donut Chart -->
+            <div class="clay-card-pod">
+              <div class="pod-header">
+                <strong class="pod-title">Top Sound Genres</strong>
+                <span class="pod-action-pill" onclick="showToast('Genre distribution refreshed')">Analysis</span>
+              </div>
+
+              <div class="clay-donut-layout">
+                <div class="donut-svg-wrap">
+                  <!-- Donut SVG: Circumference = 339.29 (r=54) -->
+                  <svg viewBox="0 0 140 140" width="100%" height="100%">
+                    <circle cx="70" cy="70" r="50" fill="transparent" stroke="#E6E0F8" stroke-width="22"/>
+                    <!-- Pop 45% = 141.37 -->
+                    <circle cx="70" cy="70" r="50" fill="transparent" stroke="#9E85ED" stroke-width="22" stroke-dasharray="141.37 314.16" stroke-dashoffset="0"/>
+                    <!-- Lo-fi 25% = 78.54 -->
+                    <circle cx="70" cy="70" r="50" fill="transparent" stroke="#FFA28A" stroke-width="22" stroke-dasharray="78.54 314.16" stroke-dashoffset="-141.37"/>
+                    <!-- Synthwave 15% = 47.12 -->
+                    <circle cx="70" cy="70" r="50" fill="transparent" stroke="#FFCE54" stroke-width="22" stroke-dasharray="47.12 314.16" stroke-dashoffset="-219.91"/>
+                    <!-- Ambient 10% = 31.42 -->
+                    <circle cx="70" cy="70" r="50" fill="transparent" stroke="#72D5A3" stroke-width="22" stroke-dasharray="31.42 314.16" stroke-dashoffset="-267.03"/>
+                    <!-- Indie 5% = 15.71 -->
+                    <circle cx="70" cy="70" r="50" fill="transparent" stroke="#68B4FA" stroke-width="22" stroke-dasharray="15.71 314.16" stroke-dashoffset="-298.45"/>
+                  </svg>
+                </div>
+
+                <ul class="donut-legend-list">
+                  <li class="donut-legend-item">
+                    <span class="legend-color-dot" style="background: #9E85ED;"></span>
+                    <span>Pop / Electronic</span>
+                    <span class="legend-pct">45%</span>
+                  </li>
+                  <li class="donut-legend-item">
+                    <span class="legend-color-dot" style="background: #FFA28A;"></span>
+                    <span>Lo-fi Chill</span>
+                    <span class="legend-pct">25%</span>
+                  </li>
+                  <li class="donut-legend-item">
+                    <span class="legend-color-dot" style="background: #FFCE54;"></span>
+                    <span>Synthwave</span>
+                    <span class="legend-pct">15%</span>
+                  </li>
+                  <li class="donut-legend-item">
+                    <span class="legend-color-dot" style="background: #72D5A3;"></span>
+                    <span>Ambient Space</span>
+                    <span class="legend-pct">10%</span>
+                  </li>
+                  <li class="donut-legend-item">
+                    <span class="legend-color-dot" style="background: #68B4FA;"></span>
+                    <span>Indie Acoustic</span>
+                    <span class="legend-pct">5%</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Row: Recently Played + Daily Mix -->
+          <div class="clay-bottom-grid">
+            
+            <!-- Left: Recently Played Tracks -->
+            <div class="clay-card-pod">
+              <div class="pod-header">
+                <strong class="pod-title">Recently Played Stems</strong>
+                <span class="pod-action-pill" onclick="showToast('Loading track catalog...')">View All</span>
+              </div>
+
+              <div class="track-list">
+                <!-- Track 1 -->
+                <div class="track-item-row" id="track1">
+                  <div class="track-art-box" style="background: linear-gradient(135deg, #FF9A8B, #FF6A88);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+                  </div>
+                  <div class="track-meta">
+                    <strong class="track-name">Sunset Drive (Lofi Mix)</strong>
+                    <span class="track-artist">Nordic Soundlab • 112 BPM</span>
+                  </div>
+                  <button class="track-play-btn" onclick="toggleTrack('track1', 'Sunset Drive')" aria-label="Play Track">
+                    <svg class="play-svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  </button>
+                </div>
+
+                <!-- Track 2 -->
+                <div class="track-item-row" id="track2">
+                  <div class="track-art-box" style="background: linear-gradient(135deg, #FEE140, #FA709A);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
+                  </div>
+                  <div class="track-meta">
+                    <strong class="track-name">Golden Hour Acoustic</strong>
+                    <span class="track-artist">Aura Beats • 94 BPM</span>
+                  </div>
+                  <button class="track-play-btn" onclick="toggleTrack('track2', 'Golden Hour')" aria-label="Play Track">
+                    <svg class="play-svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  </button>
+                </div>
+
+                <!-- Track 3 -->
+                <div class="track-item-row" id="track3">
+                  <div class="track-art-box" style="background: linear-gradient(135deg, #A8EDEA, #FED6E3);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5A4A7A" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8" fill="#5A4A7A"/></svg>
+                  </div>
+                  <div class="track-meta">
+                    <strong class="track-name">Coffee Shop Rain Sounds</strong>
+                    <span class="track-artist">Cozy Room Session • 78 BPM</span>
+                  </div>
+                  <button class="track-play-btn" onclick="toggleTrack('track3', 'Coffee Shop Rain')" aria-label="Play Track">
+                    <svg class="play-svg" width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right: Daily Cozy Mix -->
+            <div class="daily-mix-card">
+              <div class="mix-cover-art">
+                <!-- Cozy Studio Artwork SVG -->
+                <svg viewBox="0 0 160 110" width="100%" height="100%">
+                  <!-- Wall Lamp -->
+                  <circle cx="135" cy="40" r="12" fill="#FFE58F" opacity="0.6"/>
+                  <line x1="135" y1="20" x2="135" y2="40" stroke="#FFFFFF" stroke-width="2"/>
+                  <!-- Cozy Armchair -->
+                  <rect x="35" y="45" width="55" height="40" rx="14" fill="#9370DB"/>
+                  <rect x="25" y="55" width="15" height="30" rx="7" fill="#7B56CE"/>
+                  <rect x="85" y="55" width="15" height="30" rx="7" fill="#7B56CE"/>
+                  <ellipse cx="62" cy="85" rx="30" ry="8" fill="#5E38B8"/>
+                </svg>
+                <button class="mix-floating-play" onclick="showToast('Playing Daily Cozy Mix!')" aria-label="Play Daily Mix">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                </button>
+              </div>
+              <div>
+                <h4 class="mix-title-h4">Cozy Studio Moods</h4>
+                <p class="mix-meta-p">80 curated soundscapes • Updated 2 hours ago</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Discovery Banner Strip -->
+          <div class="clay-discovery-strip">
+            <div class="discovery-left">
+              <!-- 3D Yellow Clay Star SVG -->
+              <svg class="clay-star-icon" viewBox="0 0 40 40">
+                <polygon points="20,2 25,14 38,15 28,24 31,37 20,30 9,37 12,24 2,15 15,14" fill="#FFC933" stroke="#E5AC12" stroke-width="1.5"/>
+                <circle cx="15" cy="18" r="2" fill="#3D2619"/>
+                <circle cx="25" cy="18" r="2" fill="#3D2619"/>
+                <path d="M17 23 Q20 26 23 23" stroke="#3D2619" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+              </svg>
+              <div>
+                <strong class="discovery-headline">Discover Fresh Audio Presets</strong>
+                <p class="discovery-subtext">Sculpted synthesizer soundscapes tailored to your current creative vibe.</p>
+              </div>
+            </div>
+            <button class="clay-discovery-btn" onclick="showToast('Exploring audio library...')">Explore Presets →</button>
+          </div>
+
+        </div>
+
       </div>
     </section>
 
@@ -1009,7 +2392,7 @@
                 <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;extend: {</span>
               </div>
               <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors: { 'claymorphism': '#813ffc' }</span>
+                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors: { 'claymorphism': '#8247E5' }</span>
               </div>
               <div class="terminal-line">
                 <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;}</span>
@@ -1023,33 +2406,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- Interactive Component Playground (PoW) -->
-    <section class="pow-section" id="playground">
-      <div class="section-header">
-        <span class="section-badge">Live Interactive PoW</span>
-        <h2 class="section-title">Claymorphism Component Lab</h2>
-        <p class="section-desc">
-          Test interactive components and layout structure built strictly according to Taste Engine's Claymorphism fidelity rules.
-        </p>
-      </div>
-
-      <div class="pow-card" style="padding: 2rem;">
-        
-        <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem;">
-          <div style="background: var(--pow-surface); border-radius: var(--pow-radius); box-shadow: var(--pow-shadow), inset 3px 4px 6px rgba(255, 255, 255, 0.45), inset -4px -6px 8px rgba(40, 10, 110, 0.35); padding: 2rem;">
-            <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Sculpted Clay Pill</h3>
-            <p style="font-size: 0.85rem; color: var(--pow-text-muted); margin-bottom: 1.5rem;">Molded tactile volume with dual opposing inner shadows and soft ambient blur.</p>
-            <button class="pow-btn pow-btn-primary" style="box-shadow: 6px 12px 18px rgba(129, 63, 252, 0.35), inset 2px 3px 4px rgba(255, 255, 255, 0.5), inset -3px -4px 6px rgba(40, 10, 110, 0.4);" onclick="handleBtnClick('Tactile Press')">Press Clay Button</button>
-          </div>
-          <div style="background: var(--pow-well-bg); border-radius: var(--pow-radius); box-shadow: inset 3px 4px 8px rgba(110, 95, 165, 0.25), inset -2px -2px 6px rgba(255, 255, 255, 0.4); padding: 2rem; border: 1.5px solid rgba(255, 255, 255, 0.3);">
-            <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">Sunken Inset Well</h3>
-            <p style="font-size: 0.85rem; color: var(--pow-text-muted);">Recessed concave depth with white relief rim highlight for inputs and tracks.</p>
-          </div>
-        </div>
-        
       </div>
     </section>
 
@@ -1075,34 +2431,46 @@
           </thead>
           <tbody>
             <tr>
-              <td class="token-code">--taste-claymorphism-bg</td>
-              <td>#d7d1f1</td>
-              <td>#161326</td>
+              <td class="token-code">--taste-clay-bg</td>
+              <td>#EAE6F8</td>
+              <td>#141122</td>
               <td>Canvas backdrop base</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-claymorphism-surface</td>
-              <td>#ecebf5</td>
-              <td>#26203d</td>
+              <td class="token-code">--taste-clay-primary</td>
+              <td>#8247E5</td>
+              <td>#9A65F5</td>
+              <td>Primary action accent</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-clay-surface</td>
+              <td>#FFFFFF</td>
+              <td>#27203E</td>
               <td>Card surface background</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-claymorphism-text</td>
-              <td>#28233d</td>
-              <td>#f3f0fa</td>
+              <td class="token-code">--taste-clay-text</td>
+              <td>#221D38</td>
+              <td>#F4F1FB</td>
               <td>Primary text & icon color</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-claymorphism-border</td>
-              <td>1px solid rgba(255, 255, 255, 0.8)</td>
-              <td>1px solid rgba(255, 255, 255, 0.08)</td>
-              <td>Structural stroke specification</td>
+              <td class="token-code">--taste-clay-well-bg</td>
+              <td>#E7E2F6</td>
+              <td>#181329</td>
+              <td>Recessed sunken input track</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-claymorphism-accent</td>
-              <td>#813ffc</td>
-              <td>#813ffc</td>
-              <td>Primary action accent</td>
+              <td class="token-code">--taste-clay-inner-primary</td>
+              <td>inset 2px 3px 5px rgba(255,255,255,0.45), inset -3px -4px 6px rgba(40,15,95,0.35)</td>
+              <td>inset 2px 3px 5px rgba(255,255,255,0.2), inset -3px -4px 6px rgba(0,0,0,0.6)</td>
+              <td>Volumetric dual inner shadow</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-clay-radius-pill</td>
+              <td>9999px</td>
+              <td>9999px</td>
+              <td>Full tactile pill contour</td>
             </tr>
           </tbody>
         </table>
@@ -1118,31 +2486,31 @@
 
       <div class="pow-faq-item open">
         <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>Why is Claymorphism not considered slop?</span>
+          <span>Why is Claymorphism not considered AI slop?</span>
           <span class="faq-arrow">▶</span>
         </div>
         <div class="pow-faq-body">
-          Claymorphism is an explicit material exception in Taste Engine because its depth is functional and tactile (dual inner shadows), not decorative clutter.
+          Claymorphism is an explicit material exception in Taste Engine because its depth is functional and tactile (opposing dual inner shadows simulating incident light and physical form thickness), not arbitrary decorative blur or glow filters.
         </div>
       </div>
 
       <div class="pow-faq-item">
         <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>How does Dark Mode work in Claymorphism?</span>
+          <span>How does Dark Mode maintain volumetric volume?</span>
           <span class="faq-arrow">▶</span>
         </div>
         <div class="pow-faq-body">
-          In dark mode, inner specular highlights soften to subtle white tints while form shadows deepen into rich dark indigo, preserving volume.
+          In dark mode, inner specular highlights soften to delicate translucent white tints (12–18% opacity) while form shadows deepen into rich dark obsidian-indigo, preserving the pliable 3D sensation without washing out the text contrast.
         </div>
       </div>
 
       <div class="pow-faq-item">
         <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>Can I install just Claymorphism?</span>
+          <span>Can I install just Claymorphism for my agents?</span>
           <span class="faq-arrow">▶</span>
         </div>
         <div class="pow-faq-body">
-          Yes, run `npx skills add kennedys0/taste-engine --skill taste-style-claymorphism`.
+          Yes! Run `npx skills add kennedys0/taste-engine --skill taste-style-claymorphism` to equip your AI agent with only this specific aesthetic pack.
         </div>
       </div>
     </section>
@@ -1161,6 +2529,7 @@
         <h5>Aesthetic Archetypes</h5>
         <ul>
           <li><a href="bento.html">Bento Grid (PoW)</a></li>
+          <li><a href="brutalism.html">Brutalism (PoW)</a></li>
           <li><a href="neo-brutalism.html">Neo-Brutalism (PoW)</a></li>
           <li><a href="claymorphism.html">Claymorphism (PoW)</a></li>
           <li><a href="enterprise.html">Enterprise (PoW)</a></li>
@@ -1246,6 +2615,20 @@
       });
     }
 
+    // Nav Copy Button
+    const navCopyBtn = document.getElementById('navCopyBtn');
+    const navCmdText = document.getElementById('navCmdText');
+    if (navCopyBtn && navCmdText) {
+      navCopyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(navCmdText.textContent.trim());
+          showToast('Copied installation command!');
+        } catch (e) {
+          showToast('Command copied');
+        }
+      });
+    }
+
     // Tab Switcher
     const tabButtons = document.querySelectorAll('.tab-switch-btn');
     const tabBodies = document.querySelectorAll('.tab-body');
@@ -1275,9 +2658,57 @@
       }
     }
 
-    // Component Button Click Handler
-    function handleBtnClick(name) {
-      showToast(`Action: ${name}`);
+    // Interactive Navigation Links in Deck
+    function handleNavClick(btn, label) {
+      document.querySelectorAll('.clay-nav-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      showToast(`Navigated to: ${label}`);
+    }
+
+    // Hero Daily Focus Play Button
+    let heroPlaying = false;
+    function toggleHeroPlay() {
+      heroPlaying = !heroPlaying;
+      const label = document.getElementById('heroPlayLabel');
+      const icon = document.getElementById('heroPlayIcon');
+      if (heroPlaying) {
+        label.textContent = 'Pause Daily Focus Stem';
+        icon.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+        showToast('Playing: Daily Focus Stem (432Hz)');
+      } else {
+        label.textContent = 'Play Daily Focus Stem';
+        icon.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+        showToast('Paused');
+      }
+    }
+
+    // Track Item Play / Pause Simulator
+    let currentPlayingTrack = null;
+    function toggleTrack(rowId, name) {
+      const row = document.getElementById(rowId);
+      const btn = row.querySelector('.play-svg');
+      
+      if (currentPlayingTrack === rowId) {
+        // Stop current
+        row.classList.remove('playing');
+        btn.innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+        currentPlayingTrack = null;
+        showToast(`Paused: ${name}`);
+      } else {
+        // Reset previous
+        if (currentPlayingTrack) {
+          const prevRow = document.getElementById(currentPlayingTrack);
+          if (prevRow) {
+            prevRow.classList.remove('playing');
+            prevRow.querySelector('.play-svg').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+          }
+        }
+        // Play new
+        row.classList.add('playing');
+        btn.innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+        currentPlayingTrack = rowId;
+        showToast(`Now Playing: ${name}`);
+      }
     }
 
     // FAQ Accordion Toggle
