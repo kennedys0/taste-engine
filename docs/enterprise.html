@@ -3,46 +3,116 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Enterprise / Data-first Proof of Work & Installation Guide — Taste Engine</title>
-  <meta name="description" content="Dedicated Proof of Work and installation guide for Taste Engine's Enterprise / Data-first aesthetic archetype. Experience authentic design tokens, zero AI-slop, and contrast safety.">
+  <title>Enterprise Dashboard Proof of Work & Installation Guide — Taste Engine</title>
+  <meta name="description" content="Dedicated Proof of Work and installation guide for Taste Engine's Enterprise / Data-first dashboard archetype. Experience high-density data cockpits, tabular alignment, and contrast safety.">
   <link rel="icon" type="image/webp" href="assets/logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     /* =========================================================
-       ENTERPRISE / DATA-FIRST DESIGN SYSTEM TOKENS
+       ENTERPRISE DASHBOARD DESIGN SYSTEM TOKENS
        ========================================================= */
     :root {
-      --pow-bg: #f8fafc;
-      --pow-surface: #ffffff;
-      --pow-surface-hover: #f1f5f9;
-      --pow-well-bg: #f1f5f9;
-      --pow-text: #0f172a;
-      --pow-text-muted: #64748b;
-      --pow-border: 1px solid #e2e8f0;
-      --pow-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-      --pow-accent: #1d4ed8;
+      --pow-bg: #F8FAFC;
+      --pow-surface: #FFFFFF;
+      --pow-surface-hover: #F1F5F9;
+      --pow-surface-active: #E2E8F0;
+      --pow-well-bg: #F1F5F9;
+      --pow-text: #0F172A;
+      --pow-text-muted: #64748B;
+      --pow-border: 1px solid #E2E8F0;
+      --pow-border-strong: 1px solid #CBD5E1;
+      --pow-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+      --pow-shadow-lg: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+      
+      --pow-accent: #2563EB;
+      --pow-accent-hover: #1D4ED8;
+      --pow-accent-subtle: #EFF6FF;
+      --pow-accent-border: #BFDBFE;
+
       --pow-radius: 6px;
       --pow-radius-btn: 6px;
+      --pow-radius-card: 8px;
 
-      --pow-font-display: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --pow-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      /* Semantic Operational Tokens (WCAG AA Contrast) */
+      --status-success-bg: #ECFDF5;
+      --status-success-text: #065F46;
+      --status-success-border: #A7F3D0;
+      --status-success-dot: #10B981;
+
+      --status-active-bg: #EFF6FF;
+      --status-active-text: #1E40AF;
+      --status-active-border: #BFDBFE;
+      --status-active-dot: #3B82F6;
+
+      --status-warning-bg: #FEF3C7;
+      --status-warning-text: #92400E;
+      --status-warning-border: #FDE68A;
+      --status-warning-dot: #F59E0B;
+
+      --status-error-bg: #FEE2E2;
+      --status-error-text: #991B1B;
+      --status-error-border: #FECACA;
+      --status-error-dot: #EF4444;
+
+      --status-neutral-bg: #F1F5F9;
+      --status-neutral-text: #475569;
+      --status-neutral-border: #CBD5E1;
+      --status-neutral-dot: #94A3B8;
+
+      --pow-font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --pow-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
       --pow-font-mono: 'JetBrains Mono', monospace;
     }
 
     [data-theme="dark"] {
-      --pow-bg: #0f172a;
-      --pow-surface: #1e293b;
-      --pow-surface-hover: #283548;
-      --pow-well-bg: #0b1120;
-      --pow-text: #f8fafc;
-      --pow-text-muted: #94a3b8;
-      --pow-border: 1px solid rgba(255, 255, 255, 0.12);
-      --pow-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
-      --pow-accent: #2563eb;
+      --pow-bg: #0B0F19;
+      --pow-surface: #111827;
+      --pow-surface-hover: #1E293B;
+      --pow-surface-active: #2D3748;
+      --pow-well-bg: #070B14;
+      --pow-text: #F8FAFC;
+      --pow-text-muted: #94A3B8;
+      --pow-border: 1px solid rgba(255, 255, 255, 0.08);
+      --pow-border-strong: 1px solid rgba(255, 255, 255, 0.16);
+      --pow-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+      --pow-shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.6);
+
+      --pow-accent: #3B82F6;
+      --pow-accent-hover: #60A5FA;
+      --pow-accent-subtle: rgba(59, 130, 246, 0.15);
+      --pow-accent-border: rgba(59, 130, 246, 0.35);
+
       --pow-radius: 6px;
       --pow-radius-btn: 6px;
+      --pow-radius-card: 8px;
+
+      /* Semantic Operational Tokens (Dark Mode) */
+      --status-success-bg: rgba(16, 185, 129, 0.15);
+      --status-success-text: #34D399;
+      --status-success-border: rgba(16, 185, 129, 0.35);
+      --status-success-dot: #10B981;
+
+      --status-active-bg: rgba(59, 130, 246, 0.15);
+      --status-active-text: #60A5FA;
+      --status-active-border: rgba(59, 130, 246, 0.35);
+      --status-active-dot: #3B82F6;
+
+      --status-warning-bg: rgba(245, 158, 11, 0.15);
+      --status-warning-text: #FBBF24;
+      --status-warning-border: rgba(245, 158, 11, 0.35);
+      --status-warning-dot: #F59E0B;
+
+      --status-error-bg: rgba(239, 68, 68, 0.15);
+      --status-error-text: #F87171;
+      --status-error-border: rgba(239, 68, 68, 0.35);
+      --status-error-dot: #EF4444;
+
+      --status-neutral-bg: rgba(148, 163, 184, 0.12);
+      --status-neutral-text: #CBD5E1;
+      --status-neutral-border: rgba(148, 163, 184, 0.25);
+      --status-neutral-dot: #94A3B8;
     }
 
     *, *::before, *::after {
@@ -55,11 +125,11 @@
       background-color: var(--pow-bg);
       color: var(--pow-text);
       font-family: var(--pow-font-body);
-      font-size: 16px;
-      line-height: 1.55;
+      font-size: 14px;
+      line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-      transition: background-color 150ms ease, color 150ms ease;
+      transition: background-color 140ms ease, color 140ms ease;
     }
 
     /* Top Navigation */
@@ -69,11 +139,12 @@
       z-index: 100;
       background: var(--pow-surface);
       border-bottom: var(--pow-border);
-      padding: 0.75rem 1.5rem;
+      padding: 0.65rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
+      backdrop-filter: blur(8px);
     }
 
     .nav-brand-group {
@@ -84,74 +155,109 @@
       color: var(--pow-text);
     }
 
-    .nav-logo-box {
-      width: 32px;
-      height: 32px;
-      background: var(--pow-accent);
-      color: #fff;
+    .brand-logo-img {
+      width: 28px;
+      height: 28px;
       border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-family: var(--pow-font-display);
+      object-fit: contain;
     }
 
     .nav-title {
       font-family: var(--pow-font-display);
       font-weight: 700;
-      font-size: 1.05rem;
+      font-size: 0.95rem;
+      letter-spacing: -0.01em;
     }
 
     .nav-tag-badge {
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--pow-well-bg);
+      color: var(--pow-accent);
       border: var(--pow-border);
       font-family: var(--pow-font-mono);
       font-size: 0.7rem;
-      font-weight: 600;
+      font-weight: 700;
       padding: 0.2rem 0.55rem;
       border-radius: 4px;
       text-transform: uppercase;
     }
 
+    .nav-command-pill {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: var(--pow-well-bg);
+      border: var(--pow-border);
+      border-radius: 6px;
+      padding: 0.3rem 0.45rem 0.3rem 0.75rem;
+      max-width: 440px;
+    }
+
+    .nav-cmd-code {
+      font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--pow-text);
+      white-space: nowrap;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .nav-cmd-code::-webkit-scrollbar { display: none; }
+
+    .nav-copy-btn {
+      background: var(--pow-surface);
+      color: var(--pow-text);
+      border: var(--pow-border);
+      border-radius: 4px;
+      padding: 0.25rem 0.6rem;
+      font-family: var(--pow-font-display);
+      font-size: 0.7rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 100ms ease;
+    }
+
+    .nav-copy-btn:hover {
+      background: var(--pow-surface-hover);
+    }
+
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
     }
 
     .pow-btn-sm {
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
-      padding: 0.45rem 0.85rem;
+      padding: 0.4rem 0.8rem;
       background: var(--pow-surface);
       color: var(--pow-text);
       border: var(--pow-border);
       border-radius: var(--pow-radius-btn);
       font-family: var(--pow-font-display);
-      font-size: 0.8rem;
+      font-size: 0.785rem;
       font-weight: 600;
       text-decoration: none;
       cursor: pointer;
-      transition: background 120ms ease, transform 90ms ease;
+      transition: background 100ms ease;
     }
 
     .pow-btn-sm:hover {
       background: var(--pow-surface-hover);
-      transform: translateY(-1px);
     }
 
     /* Hero Section (100svh safe viewport) */
     .pow-hero {
-      min-height: calc(100svh - 60px);
+      min-height: calc(100svh - 56px);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 3.5rem 1.25rem 2.5rem 1.25rem;
-      max-width: 1080px;
+      padding: 3rem 1.25rem 2.5rem 1.25rem;
+      max-width: 1100px;
       margin: 0 auto;
     }
 
@@ -162,10 +268,10 @@
       background: var(--pow-well-bg);
       color: var(--pow-accent);
       border: var(--pow-border);
-      border-radius: 999px;
-      padding: 0.35rem 0.95rem;
+      border-radius: 4px;
+      padding: 0.35rem 0.85rem;
       font-family: var(--pow-font-mono);
-      font-size: 0.785rem;
+      font-size: 0.75rem;
       font-weight: 700;
       text-transform: uppercase;
       margin-bottom: 1.5rem;
@@ -173,18 +279,18 @@
 
     .hero-title {
       font-family: var(--pow-font-display);
-      font-size: clamp(2rem, 5.5vw, 3.6rem);
+      font-size: clamp(2rem, 5vw, 3.6rem);
       font-weight: 800;
       line-height: 1.15;
       letter-spacing: -0.03em;
       margin-bottom: 1.25rem;
-      max-width: 920px;
+      max-width: 940px;
     }
 
     .hero-desc {
-      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
       color: var(--pow-text-muted);
-      max-width: 740px;
+      max-width: 780px;
       margin-bottom: 2rem;
       line-height: 1.6;
     }
@@ -196,12 +302,12 @@
       align-items: center;
       justify-content: center;
       gap: 0.65rem;
-      background: var(--pow-well-bg);
+      background: var(--pow-surface);
       border: var(--pow-border);
       border-radius: var(--pow-radius-btn);
       padding: 0.4rem 0.5rem 0.4rem 1.1rem;
+      box-shadow: var(--pow-shadow);
       max-width: 100%;
-      box-sizing: border-box;
       margin-bottom: 2rem;
     }
 
@@ -217,7 +323,7 @@
 
     .pow-code {
       font-family: var(--pow-font-mono);
-      font-size: clamp(0.72rem, 3.2vw, 0.875rem);
+      font-size: clamp(0.72rem, 3.2vw, 0.85rem);
       font-weight: 600;
       color: var(--pow-text);
       white-space: nowrap;
@@ -227,26 +333,24 @@
       user-select: all;
     }
 
-    .pow-code::-webkit-scrollbar {
-      display: none;
-    }
+    .pow-code::-webkit-scrollbar { display: none; }
 
     .pow-copy-btn {
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      background: var(--pow-surface);
+      background: var(--pow-well-bg);
       color: var(--pow-text);
       border: var(--pow-border);
-      border-radius: var(--pow-radius-btn);
-      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      padding: 0.35rem 0.75rem;
       font-family: var(--pow-font-display);
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 700;
       cursor: pointer;
       flex-shrink: 0;
       line-height: 1;
-      transition: background 120ms ease;
+      transition: background 100ms ease;
     }
 
     .pow-copy-btn:hover {
@@ -271,18 +375,23 @@
       padding: 0.75rem 1.5rem;
       font-family: var(--pow-font-display);
       font-weight: 700;
-      font-size: 0.925rem;
+      font-size: 0.9rem;
       border: var(--pow-border);
       border-radius: var(--pow-radius-btn);
       cursor: pointer;
-      transition: transform 100ms ease, background 120ms ease;
       text-decoration: none;
+      user-select: none;
+      transition: background 120ms ease;
     }
 
     .pow-btn-primary {
       background: var(--pow-accent);
-      color: #ffffff;
+      color: #FFFFFF;
       border-color: var(--pow-accent);
+    }
+
+    .pow-btn-primary:hover {
+      background: var(--pow-accent-hover);
     }
 
     .pow-btn-secondary {
@@ -290,8 +399,8 @@
       color: var(--pow-text);
     }
 
-    .pow-btn:hover {
-      transform: translateY(-2px);
+    .pow-btn-secondary:hover {
+      background: var(--pow-surface-hover);
     }
 
     /* 4-Stat Strip */
@@ -300,50 +409,53 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
       width: 100%;
-      max-width: 960px;
+      max-width: 980px;
     }
 
     .stat-box {
       background: var(--pow-surface);
       border: var(--pow-border);
-      border-radius: var(--pow-radius);
-      padding: 1rem 0.85rem;
-      text-align: center;
+      border-radius: var(--pow-radius-card);
+      padding: 1.15rem 1rem;
+      text-align: left;
       box-shadow: var(--pow-shadow);
+      font-variant-numeric: tabular-nums;
     }
 
     .stat-val {
-      font-family: var(--pow-font-display);
-      font-size: 1.5rem;
-      font-weight: 800;
+      font-family: var(--pow-font-mono);
+      font-size: 1.45rem;
+      font-weight: 700;
       line-height: 1.1;
       margin-bottom: 0.25rem;
       color: var(--pow-text);
     }
 
     .stat-label {
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
       color: var(--pow-text-muted);
       text-transform: uppercase;
       letter-spacing: 0.04em;
     }
 
-    /* Content Sections */
+    /* =========================================================
+       ENTERPRISE DASHBOARD COCKPIT (LIVE LAB)
+       ========================================================= */
     .pow-section {
-      max-width: 1080px;
+      max-width: 1200px;
       margin: 4.5rem auto;
       padding: 0 1.25rem;
     }
 
     .section-header {
-      margin-bottom: 2.25rem;
+      margin-bottom: 1.75rem;
     }
 
     .section-badge {
       display: inline-block;
       font-family: var(--pow-font-mono);
-      font-size: 0.75rem;
+      font-size: 0.725rem;
       font-weight: 700;
       text-transform: uppercase;
       padding: 0.25rem 0.65rem;
@@ -351,31 +463,537 @@
       color: var(--pow-accent);
       border: var(--pow-border);
       border-radius: 4px;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.65rem;
     }
 
     .section-title {
       font-family: var(--pow-font-display);
-      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
       font-weight: 800;
       letter-spacing: -0.02em;
       line-height: 1.2;
     }
 
     .section-desc {
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: var(--pow-text-muted);
-      max-width: 680px;
+      max-width: 760px;
       margin-top: 0.5rem;
       line-height: 1.6;
     }
 
-    /* Tabbed Installation Card */
+    /* Enterprise Cockpit Container */
+    .cockpit-container {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius-card);
+      box-shadow: var(--pow-shadow);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Operational Toolbar Ribbon */
+    .cockpit-ribbon {
+      background: var(--pow-well-bg);
+      border-bottom: var(--pow-border);
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .ribbon-left {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      flex: 1;
+      max-width: 620px;
+    }
+
+    .cockpit-search-wrap {
+      position: relative;
+      flex: 1;
+      min-width: 220px;
+    }
+
+    .cockpit-search-input {
+      width: 100%;
+      padding: 0.45rem 2.2rem 0.45rem 0.75rem;
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: 4px;
+      font-family: var(--pow-font-body);
+      font-size: 0.8rem;
+      color: var(--pow-text);
+      outline: none;
+      transition: border-color 100ms ease;
+    }
+
+    .cockpit-search-input:focus {
+      border-color: var(--pow-accent);
+    }
+
+    .search-kbd-hint {
+      position: absolute;
+      right: 6px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--pow-font-mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      background: var(--pow-well-bg);
+      color: var(--pow-text-muted);
+      border: var(--pow-border);
+      border-radius: 3px;
+      padding: 1px 4px;
+      pointer-events: none;
+    }
+
+    .cockpit-select {
+      padding: 0.45rem 0.75rem;
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: 4px;
+      font-family: var(--pow-font-display);
+      font-size: 0.785rem;
+      font-weight: 600;
+      color: var(--pow-text);
+      cursor: pointer;
+      outline: none;
+    }
+
+    .ribbon-right {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .ribbon-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 0.85rem;
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: 4px;
+      font-family: var(--pow-font-display);
+      font-size: 0.785rem;
+      font-weight: 600;
+      color: var(--pow-text);
+      cursor: pointer;
+      user-select: none;
+      transition: background 100ms ease;
+    }
+
+    .ribbon-btn:hover {
+      background: var(--pow-surface-hover);
+    }
+
+    .ribbon-btn.primary {
+      background: var(--pow-accent);
+      color: #FFFFFF;
+      border-color: var(--pow-accent);
+    }
+
+    .ribbon-btn.primary:hover {
+      background: var(--pow-accent-hover);
+    }
+
+    /* Metric HUD Cards */
+    .cockpit-hud-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-bottom: var(--pow-border);
+      background: var(--pow-surface);
+    }
+
+    .hud-cell {
+      padding: 1rem 1.25rem;
+      border-right: var(--pow-border);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .hud-cell:last-child {
+      border-right: none;
+    }
+
+    .hud-title-p {
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--pow-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.35rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .hud-metric-row {
+      display: flex;
+      align-items: baseline;
+      gap: 0.6rem;
+    }
+
+    .hud-number {
+      font-family: var(--pow-font-mono);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--pow-text);
+    }
+
+    .hud-delta-tag {
+      font-size: 0.72rem;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    .hud-delta-tag.good { color: #10B981; }
+    .hud-delta-tag.warning { color: #F59E0B; }
+
+    .hud-bar-track {
+      width: 100%;
+      height: 4px;
+      background: var(--pow-well-bg);
+      border-radius: 2px;
+      margin-top: 0.5rem;
+      overflow: hidden;
+    }
+
+    .hud-bar-fill {
+      height: 100%;
+      background: var(--pow-accent);
+      border-radius: 2px;
+    }
+
+    /* Data Table Architecture */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+    }
+
+    .cockpit-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.825rem;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .cockpit-table thead th {
+      background: var(--pow-well-bg);
+      color: var(--pow-text-muted);
+      font-family: var(--pow-font-display);
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 0.65rem 1rem;
+      border-bottom: var(--pow-border);
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .cockpit-table thead th.sortable {
+      cursor: pointer;
+    }
+
+    .cockpit-table thead th.sortable:hover {
+      color: var(--pow-text);
+    }
+
+    .cockpit-table thead th.numeric,
+    .cockpit-table tbody td.numeric {
+      text-align: right;
+    }
+
+    .cockpit-table tbody tr {
+      border-bottom: var(--pow-border);
+      transition: background 80ms ease;
+    }
+
+    .cockpit-table tbody tr:hover {
+      background: var(--pow-surface-hover);
+    }
+
+    .cockpit-table tbody tr.selected {
+      background: var(--pow-accent-subtle);
+    }
+
+    .cockpit-table tbody td {
+      padding: 0.75rem 1rem;
+      color: var(--pow-text);
+      white-space: nowrap;
+    }
+
+    .node-ident-cell {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .node-title-strong {
+      font-family: var(--pow-font-mono);
+      font-size: 0.825rem;
+      font-weight: 700;
+      color: var(--pow-text);
+    }
+
+    .node-sub-meta {
+      font-size: 0.72rem;
+      color: var(--pow-text-muted);
+    }
+
+    /* Semantic Status Badges */
+    .status-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.2rem 0.55rem;
+      border-radius: 4px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .status-badge-pill .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .status-badge-pill.healthy {
+      background: var(--status-success-bg);
+      color: var(--status-success-text);
+      border: 1px solid var(--status-success-border);
+    }
+    .status-badge-pill.healthy .status-dot { background: var(--status-success-dot); }
+
+    .status-badge-pill.active {
+      background: var(--status-active-bg);
+      color: var(--status-active-text);
+      border: 1px solid var(--status-active-border);
+    }
+    .status-badge-pill.active .status-dot { background: var(--status-active-dot); }
+
+    .status-badge-pill.degraded {
+      background: var(--status-warning-bg);
+      color: var(--status-warning-text);
+      border: 1px solid var(--status-warning-border);
+    }
+    .status-badge-pill.degraded .status-dot { background: var(--status-warning-dot); }
+
+    .status-badge-pill.failed {
+      background: var(--status-error-bg);
+      color: var(--status-error-text);
+      border: 1px solid var(--status-error-border);
+    }
+    .status-badge-pill.failed .status-dot { background: var(--status-error-dot); }
+
+    .status-badge-pill.syncing {
+      background: var(--status-neutral-bg);
+      color: var(--status-neutral-text);
+      border: 1px solid var(--status-neutral-border);
+    }
+    .status-badge-pill.syncing .status-dot { background: var(--status-neutral-dot); }
+
+    /* Micro Progress Bar */
+    .micro-prog-track {
+      width: 75px;
+      height: 5px;
+      background: var(--pow-well-bg);
+      border-radius: 3px;
+      overflow: hidden;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 0.45rem;
+    }
+
+    .micro-prog-fill {
+      height: 100%;
+      background: var(--pow-accent);
+      border-radius: 3px;
+    }
+
+    .action-btn-link {
+      color: var(--pow-accent);
+      font-weight: 700;
+      text-decoration: none;
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      cursor: pointer;
+      display: inline-block;
+      transition: background 90ms ease;
+    }
+
+    .action-btn-link:hover {
+      background: var(--pow-accent-subtle);
+    }
+
+    /* Table Footer & Pagination */
+    .cockpit-footer-bar {
+      padding: 0.65rem 1rem;
+      background: var(--pow-well-bg);
+      border-top: var(--pow-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      font-size: 0.785rem;
+      color: var(--pow-text-muted);
+      flex-wrap: wrap;
+    }
+
+    .pagination-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .page-btn {
+      padding: 0.3rem 0.65rem;
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: 4px;
+      font-family: var(--pow-font-display);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--pow-text);
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .page-btn.active {
+      background: var(--pow-accent);
+      color: #FFFFFF;
+      border-color: var(--pow-accent);
+    }
+
+    .page-btn:hover:not(.active) {
+      background: var(--pow-surface-hover);
+    }
+
+    /* Floating Batch Action Dock */
+    .floating-batch-dock {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--pow-surface);
+      color: var(--pow-text);
+      border: var(--pow-border-strong);
+      box-shadow: var(--pow-shadow-lg);
+      border-radius: 8px;
+      padding: 0.65rem 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      z-index: 1000;
+      transition: transform 160ms cubic-bezier(0.16, 1, 0.3, 1), opacity 160ms ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .floating-batch-dock.active {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Slide-Over Detail Drawer */
+    .cockpit-drawer-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      z-index: 1050;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 160ms ease;
+    }
+
+    .cockpit-drawer-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .cockpit-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 480px;
+      max-width: 90vw;
+      background: var(--pow-surface);
+      border-left: var(--pow-border);
+      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25);
+      z-index: 1060;
+      transform: translateX(100%);
+      transition: transform 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .cockpit-drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      padding: 1.15rem 1.5rem;
+      border-bottom: var(--pow-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--pow-well-bg);
+    }
+
+    .drawer-body {
+      padding: 1.5rem;
+      overflow-y: auto;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .drawer-close-btn {
+      background: transparent;
+      border: none;
+      font-size: 1.25rem;
+      color: var(--pow-text-muted);
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .drawer-close-btn:hover {
+      color: var(--pow-text);
+    }
+
+    .drawer-code-block {
+      background: var(--pow-well-bg);
+      border: var(--pow-border);
+      border-radius: 4px;
+      padding: 1rem;
+      font-family: var(--pow-font-mono);
+      font-size: 0.785rem;
+      line-height: 1.55;
+      color: var(--pow-text);
+      overflow-x: auto;
+    }
+
+    /* =========================================================
+       INSTALLATION GUIDE SECTION
+       ========================================================= */
     .pow-card {
       background: var(--pow-surface);
       border: var(--pow-border);
       box-shadow: var(--pow-shadow);
-      border-radius: var(--pow-radius);
+      border-radius: var(--pow-radius-card);
       overflow: hidden;
     }
 
@@ -387,9 +1005,7 @@
       scrollbar-width: none;
     }
 
-    .tab-header-strip::-webkit-scrollbar {
-      display: none;
-    }
+    .tab-header-strip::-webkit-scrollbar { display: none; }
 
     .tab-switch-btn {
       padding: 0.85rem 1.4rem;
@@ -397,12 +1013,12 @@
       border: none;
       border-right: var(--pow-border);
       font-family: var(--pow-font-display);
-      font-size: 0.85rem;
+      font-size: 0.825rem;
       font-weight: 700;
       color: var(--pow-text-muted);
       cursor: pointer;
       white-space: nowrap;
-      transition: background 120ms ease, color 120ms ease;
+      transition: background 100ms ease, color 100ms ease;
     }
 
     .tab-switch-btn:hover {
@@ -417,7 +1033,7 @@
     }
 
     .tab-body {
-      padding: 1.75rem;
+      padding: 1.5rem;
       display: none;
     }
 
@@ -427,30 +1043,30 @@
 
     .install-step-title {
       font-family: var(--pow-font-display);
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 700;
-      margin-bottom: 0.65rem;
+      margin-bottom: 0.5rem;
     }
 
     .install-step-desc {
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       color: var(--pow-text-muted);
-      margin-bottom: 1.25rem;
+      margin-bottom: 1.15rem;
     }
 
     /* Terminal Console Window */
     .pow-terminal {
-      background: #0d1117;
-      color: #f0f6fc;
+      background: #0B0F19;
+      color: #F0F6FC;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 8px;
+      border-radius: 6px;
       overflow: hidden;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.25rem;
     }
 
     .terminal-topbar {
-      background: #161b22;
-      padding: 0.65rem 1rem;
+      background: #111827;
+      padding: 0.6rem 1rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
       align-items: center;
@@ -469,21 +1085,21 @@
       border-radius: 50%;
     }
 
-    .dot.red { background: #ff5f56; }
-    .dot.yellow { background: #ffbd2e; }
-    .dot.green { background: #27c93f; }
+    .dot.red { background: #EF4444; }
+    .dot.yellow { background: #F59E0B; }
+    .dot.green { background: #10B981; }
 
     .terminal-label {
       font-family: var(--pow-font-mono);
-      font-size: 0.75rem;
-      color: #8b949e;
+      font-size: 0.72rem;
+      color: #8B949E;
       font-weight: 600;
     }
 
     .terminal-content {
       padding: 1.15rem;
       font-family: var(--pow-font-mono);
-      font-size: 0.85rem;
+      font-size: 0.825rem;
       line-height: 1.6;
       overflow-x: auto;
     }
@@ -492,12 +1108,10 @@
       display: flex;
       align-items: baseline;
       gap: 0.75rem;
-      margin-bottom: 0.45rem;
+      margin-bottom: 0.4rem;
     }
 
-    .terminal-line:last-child {
-      margin-bottom: 0;
-    }
+    .terminal-line:last-child { margin-bottom: 0; }
 
     .line-p {
       color: var(--pow-accent);
@@ -507,101 +1121,23 @@
     }
 
     .line-cmd {
-      color: #f0f6fc;
+      color: #F0F6FC;
       word-break: break-all;
     }
 
     .line-comment {
-      color: #8b949e;
+      color: #8B949E;
       font-style: italic;
     }
 
-    /* Bento Demo Specifics */
-    .bento-demo-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 16px;
-    }
-
-    .bento-tile {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius);
-      padding: 1.75rem;
-      box-shadow: var(--pow-shadow);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-
-    .bento-tag {
-      display: inline-block;
-      font-size: 0.725rem;
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      color: var(--pow-accent);
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-    }
-
-    /* Accordion / FAQ */
-    .pow-faq-item {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      box-shadow: var(--pow-shadow);
-      border-radius: var(--pow-radius);
-      margin-bottom: 1rem;
-      overflow: hidden;
-    }
-
-    .pow-faq-header {
-      padding: 1rem 1.25rem;
-      font-family: var(--pow-font-display);
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      user-select: none;
-      background: var(--pow-surface);
-      transition: background 120ms ease;
-    }
-
-    .pow-faq-header:hover {
-      background: var(--pow-surface-hover);
-    }
-
-    .faq-arrow {
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      transition: transform 180ms ease;
-    }
-
-    .pow-faq-item.open .faq-arrow {
-      transform: rotate(90deg);
-    }
-
-    .pow-faq-body {
-      padding: 0 1.25rem 1.25rem 1.25rem;
-      font-size: 0.875rem;
-      color: var(--pow-text-muted);
-      line-height: 1.6;
-      display: none;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 1rem;
-    }
-
-    .pow-faq-item.open .pow-faq-body {
-      display: block;
-    }
-
-    /* Token Specification Table */
+    /* =========================================================
+       TOKEN SPECIFICATION TABLE & FAQ
+       ========================================================= */
     .token-table-wrap {
       background: var(--pow-surface);
       border: var(--pow-border);
       box-shadow: var(--pow-shadow);
-      border-radius: var(--pow-radius);
+      border-radius: var(--pow-radius-card);
       overflow-x: auto;
     }
 
@@ -612,9 +1148,9 @@
     }
 
     .pow-table th, .pow-table td {
-      padding: 0.9rem 1.25rem;
+      padding: 0.85rem 1.25rem;
       border-bottom: var(--pow-border);
-      font-size: 0.85rem;
+      font-size: 0.825rem;
     }
 
     .pow-table th {
@@ -625,9 +1161,7 @@
       letter-spacing: 0.05em;
     }
 
-    .pow-table tr:last-child td {
-      border-bottom: none;
-    }
+    .pow-table tr:last-child td { border-bottom: none; }
 
     .token-code {
       font-family: var(--pow-font-mono);
@@ -635,7 +1169,59 @@
       color: var(--pow-accent);
     }
 
-    /* Footer (Balanced 2-column mobile architecture) */
+    /* FAQ Accordion */
+    .pow-faq-item {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      box-shadow: var(--pow-shadow);
+      border-radius: var(--pow-radius-card);
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+    }
+
+    .pow-faq-header {
+      padding: 1rem 1.25rem;
+      font-family: var(--pow-font-display);
+      font-size: 0.925rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      background: var(--pow-surface);
+      transition: background 100ms ease;
+    }
+
+    .pow-faq-header:hover {
+      background: var(--pow-surface-hover);
+    }
+
+    .faq-arrow {
+      font-family: var(--pow-font-mono);
+      font-weight: 700;
+      transition: transform 140ms ease;
+    }
+
+    .pow-faq-item.open .faq-arrow {
+      transform: rotate(90deg);
+    }
+
+    .pow-faq-body {
+      padding: 0 1.25rem 1.25rem 1.25rem;
+      font-size: 0.85rem;
+      color: var(--pow-text-muted);
+      line-height: 1.6;
+      display: none;
+      border-top: var(--pow-border);
+      padding-top: 0.85rem;
+    }
+
+    .pow-faq-item.open .pow-faq-body {
+      display: block;
+    }
+
+    /* Footer */
     .pow-footer {
       background: var(--pow-surface);
       border-top: var(--pow-border);
@@ -644,7 +1230,7 @@
     }
 
     .footer-inner {
-      max-width: 1080px;
+      max-width: 1100px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
@@ -654,13 +1240,13 @@
 
     .footer-brand h4 {
       font-family: var(--pow-font-display);
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 800;
       margin-bottom: 0.5rem;
     }
 
     .footer-brand p {
-      font-size: 0.85rem;
+      font-size: 0.825rem;
       color: var(--pow-text-muted);
       max-width: 380px;
       line-height: 1.6;
@@ -668,7 +1254,7 @@
 
     .footer-col h5 {
       font-family: var(--pow-font-display);
-      font-size: 0.8rem;
+      font-size: 0.785rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.06em;
@@ -676,27 +1262,18 @@
       color: var(--pow-text);
     }
 
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col ul li {
-      margin-bottom: 0.5rem;
-    }
-
+    .footer-col ul { list-style: none; }
+    .footer-col ul li { margin-bottom: 0.45rem; }
     .footer-col ul a {
       color: var(--pow-text-muted);
       text-decoration: none;
-      font-size: 0.85rem;
+      font-size: 0.825rem;
       transition: color 90ms ease;
     }
-
-    .footer-col ul a:hover {
-      color: var(--pow-accent);
-    }
+    .footer-col ul a:hover { color: var(--pow-accent); }
 
     .footer-bottom {
-      max-width: 1080px;
+      max-width: 1100px;
       margin: 0 auto;
       padding-top: 1.5rem;
       border-top: var(--pow-border);
@@ -704,7 +1281,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
-      font-size: 0.8rem;
+      font-size: 0.785rem;
       color: var(--pow-text-muted);
     }
 
@@ -713,23 +1290,22 @@
       position: fixed;
       bottom: 24px;
       right: 24px;
-      background: var(--pow-surface);
-      color: var(--pow-text);
-      border: var(--pow-border);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+      background: var(--pow-text);
+      color: var(--pow-bg);
       padding: 0.65rem 1.2rem;
-      border-radius: var(--pow-radius-btn);
+      border-radius: 6px;
       font-family: var(--pow-font-display);
-      font-size: 0.85rem;
+      font-size: 0.825rem;
       font-weight: 700;
       display: flex;
       align-items: center;
       gap: 0.5rem;
       opacity: 0;
       transform: translateY(10px);
-      transition: opacity 150ms ease, transform 150ms ease;
+      transition: opacity 140ms ease, transform 140ms ease;
       pointer-events: none;
-      z-index: 1000;
+      z-index: 2000;
+      box-shadow: var(--pow-shadow-lg);
     }
 
     .pow-toast.show {
@@ -737,80 +1313,52 @@
       transform: translateY(0);
     }
 
-    /* =========================================================
-       RESPONSIVE BREAKPOINTS (FLUID & COMPACT MOBILE)
-       ========================================================= */
-    @media (max-width: 768px) {
-      .pow-nav { padding: 0.65rem 1rem; }
-      .nav-title { font-size: 0.95rem; }
-      .nav-tag-badge { display: none; }
-      
-      .pow-hero { padding: 2.5rem 1rem 1.5rem 1rem; }
-      .hero-title { font-size: clamp(1.6rem, 5.5vw, 2.3rem); }
-      .hero-desc { font-size: 0.9rem; margin-bottom: 1.5rem; }
-
-      .hero-btn-group { flex-direction: column; width: 100%; gap: 0.65rem; }
-      .pow-btn { width: 100%; }
-
-      .pow-stat-strip { grid-template-columns: repeat(2, 1fr); gap: 0.65rem; }
-      .stat-val { font-size: 1.35rem; }
-
-      .bento-demo-grid { grid-template-columns: 1fr; }
-
-      .footer-inner {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.75rem 1.25rem;
-      }
-      .footer-brand {
-        grid-column: 1 / -1;
-        padding-bottom: 1rem;
-        border-bottom: var(--pow-border);
-      }
-      .footer-bottom {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 1rem;
-      }
+    /* Responsive Breakpoints */
+    @media (max-width: 960px) {
+      .cockpit-hud-strip { grid-template-columns: repeat(2, 1fr); }
+      .hud-cell:nth-child(2) { border-right: none; }
+      .nav-command-pill { display: none; }
     }
 
-    @media (max-width: 480px) {
-      .hero-title { font-size: 1.45rem; line-height: 1.18; }
-      .hero-desc { font-size: 0.825rem; }
-      .pow-stat-strip { grid-template-columns: 1fr 1fr; gap: 0.45rem; }
-      .stat-box { padding: 0.75rem 0.5rem; }
-      .stat-val { font-size: 1.2rem; }
-      .stat-label { font-size: 0.65rem; }
-
-      .section-title { font-size: 1.3rem; }
-      .section-desc { font-size: 0.825rem; }
-
-      .tab-body { padding: 1rem; }
-      .terminal-content { font-size: 0.75rem; padding: 0.85rem; }
-
-      .pow-command-pill {
-        gap: 0.4rem;
-        padding: 0.3rem 0.35rem 0.3rem 0.75rem;
-      }
-      .pow-copy-btn {
-        padding: 0.35rem 0.6rem;
-        font-size: 0.7rem;
-      }
+    @media (max-width: 768px) {
+      .pow-nav { padding: 0.65rem 1rem; }
+      .nav-tag-badge { display: none; }
+      .pow-hero { padding: 2.5rem 1rem 1.5rem 1rem; }
+      .hero-title { font-size: clamp(1.8rem, 6vw, 2.4rem); }
+      .pow-stat-strip { grid-template-columns: repeat(2, 1fr); }
+      .cockpit-hud-strip { grid-template-columns: 1fr; }
+      .hud-cell { border-right: none; border-bottom: var(--pow-border); }
+      .footer-inner { grid-template-columns: 1fr; gap: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation -->
+  <!-- Top Navigation with Integrated Quick-Install Pill -->
   <header class="pow-nav">
     <a href="index.html" class="nav-brand-group">
-      <div class="nav-logo-box">TE</div>
+      <img src="assets/logo.webp" alt="Taste Engine Logo" class="brand-logo-img">
       <strong class="nav-title">Taste Engine</strong>
-      <span class="nav-tag-badge">Enterprise / Data-first PoW</span>
+      <span class="nav-tag-badge">#03 ENTERPRISE</span>
     </a>
+
+    <!-- Aligned Single-Line Command Pill -->
+    <div class="nav-command-pill">
+      <span style="color: var(--pow-accent); font-family: var(--pow-font-mono); font-weight: 700;">$</span>
+      <code class="nav-cmd-code" id="navCmdText">npx skills add kennedys0/taste-engine --skill taste-style-enterprise</code>
+      <button class="nav-copy-btn" id="navCopyBtn" title="Copy command">Copy</button>
+    </div>
+
     <div class="nav-actions">
+      <a href="#playground" class="pow-btn-sm">
+        <span>Cockpit Lab</span>
+      </a>
+      <a href="#install" class="pow-btn-sm">
+        <span>Install Guide</span>
+      </a>
       <a href="index.html" class="pow-btn-sm" title="Back to main gallery">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        <span>All 10 Styles</span>
+        <span>All Styles</span>
       </a>
       <button class="pow-btn-sm" id="themeToggleBtn" aria-label="Toggle theme">
         <span id="themeLabel">☀️ LIGHT</span>
@@ -819,18 +1367,18 @@
   </header>
 
   <main>
-    <!-- Opening Hero Viewport -->
+    <!-- Opening Hero Viewport (100svh safe viewport) -->
     <section class="pow-hero">
       <div class="hero-sticker-badge">
-        <span>★ Proof of Work: Archetype #05</span>
+        <span>★ Proof of Work: Archetype #03</span>
       </div>
 
       <h1 class="hero-title">
-        High-Density Operational Cockpits & Keyboard Productivity
+        High-Density Operational Cockpit & Tabular Telemetry Architecture
       </h1>
 
       <p class="hero-desc">
-        Enterprise / Data-first provides information-dense operational cockpits, tabular data alignment, semantic status tokens, keyboard productivity shortcuts, and dependable layout rhythm. This entire page demonstrates the authentic design tokens, contrast coupling, and anti-slop rules of this style.
+        Enterprise data-first design prioritizes operational scanning speed, tabular figure alignment (tabular-nums), calibrated WCAG AA status badges, keyboard productivity, and reliable workflow architecture over decorative marketing clutter.
       </p>
 
       <!-- Single-Line Inline Command Pill ("Sejajarin") -->
@@ -844,43 +1392,473 @@
       </div>
 
       <div class="hero-btn-group">
-        <a href="#install" class="pow-btn pow-btn-primary">
-          <span>Installation Guide ↓</span>
+        <a href="#playground" class="pow-btn pow-btn-primary">
+          <span>Explore Live Dashboard ↓</span>
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 13l5 5 5-5M12 6v12"/></svg>
         </a>
-        <a href="#playground" class="pow-btn pow-btn-secondary">
-          <span>Explore Interactive UI →</span>
+        <a href="#install" class="pow-btn pow-btn-secondary">
+          <span>Installation Guide →</span>
         </a>
       </div>
 
       <!-- 4-Stat Strip -->
       <div class="pow-stat-strip">
         <div class="stat-box">
-          <div class="stat-val">36px</div>
-          <div class="stat-label">Compact Row Height</div>
+          <div class="stat-val">142,890</div>
+          <div class="stat-label">Global Edge Ops / sec</div>
         </div>
         <div class="stat-box">
-          <div class="stat-val">Tabular</div>
-          <div class="stat-label">Numeric Alignment</div>
+          <div class="stat-val">18.4ms</div>
+          <div class="stat-label">P99 Edge Latency</div>
         </div>
         <div class="stat-box">
-          <div class="stat-val">⌘K / Ctrl+K</div>
-          <div class="stat-label">Command Palette</div>
+          <div class="stat-val">1,420</div>
+          <div class="stat-label">Active Cluster Nodes</div>
         </div>
         <div class="stat-box">
-          <div class="stat-val">WCAG AA</div>
-          <div class="stat-label">Status Tokens</div>
+          <div class="stat-val">99.99%</div>
+          <div class="stat-label">Verified SLA Uptime</div>
         </div>
       </div>
     </section>
+
+    <!-- Interactive Component Playground (PoW): Enterprise Cockpit Dashboard -->
+    <section class="pow-section" id="playground">
+      <div class="section-header">
+        <span class="section-badge">Live Interactive PoW</span>
+        <h2 class="section-title">Enterprise Cluster Operations Cockpit</h2>
+        <p class="section-desc">
+          Test live operational filtering, batch selection, sortable tabular columns, and node detail drawers built strictly according to Taste Engine's enterprise fidelity rules.
+        </p>
+      </div>
+
+      <!-- Master Cockpit Chassis -->
+      <div class="cockpit-container">
+        
+        <!-- Top Operational Ribbon -->
+        <div class="cockpit-ribbon">
+          <div class="ribbon-left">
+            <div class="cockpit-search-wrap">
+              <input type="text" id="nodeSearchInput" class="cockpit-search-input" placeholder="Search nodes by ID, runtime, or region..." aria-label="Search nodes">
+              <span class="search-kbd-hint">⌘K</span>
+            </div>
+
+            <select id="statusFilterSelect" class="cockpit-select" aria-label="Filter by Status">
+              <option value="all">All Statuses (8)</option>
+              <option value="healthy">Healthy Only</option>
+              <option value="active">Active Only</option>
+              <option value="degraded">Degraded Only</option>
+              <option value="syncing">Syncing Only</option>
+            </select>
+
+            <select id="regionFilterSelect" class="cockpit-select" aria-label="Filter by Region">
+              <option value="all">All Regions</option>
+              <option value="us-east">US East</option>
+              <option value="eu-west">EU West</option>
+              <option value="ap-east">Asia Pacific</option>
+            </select>
+          </div>
+
+          <div class="ribbon-right">
+            <button class="ribbon-btn" onclick="exportCsvData()">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              <span>Export CSV</span>
+            </button>
+            <button class="ribbon-btn primary" onclick="showToast('Deploy modal: Provisioning new cluster node...')">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              <span>Deploy Node</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- HUD Metric Summary Strip -->
+        <div class="cockpit-hud-strip">
+          <div class="hud-cell">
+            <div class="hud-title-p">
+              <span>Cluster Ingestion</span>
+              <span class="hud-delta-tag good">↑ +4.2%</span>
+            </div>
+            <div class="hud-metric-row">
+              <span class="hud-number" id="hudThroughput">142,890</span>
+              <span style="font-size: 0.75rem; color: var(--pow-text-muted);">ops/s</span>
+            </div>
+            <div class="hud-bar-track">
+              <div class="hud-bar-fill" style="width: 78%;"></div>
+            </div>
+          </div>
+
+          <div class="hud-cell">
+            <div class="hud-title-p">
+              <span>P99 Route Latency</span>
+              <span class="hud-delta-tag good">↓ -1.2ms</span>
+            </div>
+            <div class="hud-metric-row">
+              <span class="hud-number">18.4</span>
+              <span style="font-size: 0.75rem; color: var(--pow-text-muted);">ms</span>
+            </div>
+            <div class="hud-bar-track">
+              <div class="hud-bar-fill" style="width: 32%; background: #10B981;"></div>
+            </div>
+          </div>
+
+          <div class="hud-cell">
+            <div class="hud-title-p">
+              <span>Memory Saturation</span>
+              <span class="hud-delta-tag warning">68.4%</span>
+            </div>
+            <div class="hud-metric-row">
+              <span class="hud-number">21.8</span>
+              <span style="font-size: 0.75rem; color: var(--pow-text-muted);">/ 32.0 GB</span>
+            </div>
+            <div class="hud-bar-track">
+              <div class="hud-bar-fill" style="width: 68%; background: #F59E0B;"></div>
+            </div>
+          </div>
+
+          <div class="hud-cell">
+            <div class="hud-title-p">
+              <span>Active Agent Tasks</span>
+              <span class="hud-delta-tag good">100% OK</span>
+            </div>
+            <div class="hud-metric-row">
+              <span class="hud-number">1,420</span>
+              <span style="font-size: 0.75rem; color: var(--pow-text-muted);">active</span>
+            </div>
+            <div class="hud-bar-track">
+              <div class="hud-bar-fill" style="width: 95%;"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- High-Density Telemetry Table -->
+        <div class="table-container">
+          <table class="cockpit-table" id="nodesTable">
+            <thead>
+              <tr>
+                <th style="width: 40px; text-align: center;">
+                  <input type="checkbox" id="selectAllCheckbox" aria-label="Select all nodes" onchange="toggleSelectAll(this)">
+                </th>
+                <th class="sortable" onclick="sortTable(1)">Node Identifier & Runtime ↕</th>
+                <th class="sortable" onclick="sortTable(2)">Region Zone ↕</th>
+                <th>Health Status</th>
+                <th class="numeric sortable" onclick="sortTable(4)">Throughput ↕</th>
+                <th>CPU / Memory Allocation</th>
+                <th class="numeric sortable" onclick="sortTable(6)">P99 Latency ↕</th>
+                <th style="text-align: right;">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="nodesTableBody">
+              <!-- Node 1 -->
+              <tr data-status="healthy" data-region="us-east" data-node="node-useast-01">
+                <td style="text-align: center;">
+                  <input type="checkbox" class="row-checkbox" onchange="handleRowCheck()">
+                </td>
+                <td>
+                  <div class="node-ident-cell">
+                    <strong class="node-title-strong">node-useast-01</strong>
+                    <span class="node-sub-meta">Google Antigravity 2.0 • AGY-Cluster</span>
+                  </div>
+                </td>
+                <td><span style="font-family: var(--pow-font-mono);">us-east-1a</span></td>
+                <td>
+                  <span class="status-badge-pill healthy">
+                    <span class="status-dot"></span>
+                    <span>Healthy</span>
+                  </span>
+                </td>
+                <td class="numeric" style="font-family: var(--pow-font-mono); font-weight: 700;">4,892 ops/s</td>
+                <td>
+                  <div class="micro-prog-track"><div class="micro-prog-fill" style="width: 42%;"></div></div>
+                  <span>42% • 1.4 GB</span>
+                </td>
+                <td class="numeric" style="font-family: var(--pow-font-mono);">14.2 ms</td>
+                <td style="text-align: right;">
+                  <button class="action-btn-link" onclick="openNodeDrawer('node-useast-01', 'Google Antigravity 2.0', 'us-east-1a', 'Healthy', '4,892 ops/s', '14.2 ms')">Inspect</button>
+                </td>
+              </tr>
+
+              <!-- Node 2 -->
+              <tr data-status="active" data-region="us-east" data-node="node-useast-02">
+                <td style="text-align: center;">
+                  <input type="checkbox" class="row-checkbox" onchange="handleRowCheck()">
+                </td>
+                <td>
+                  <div class="node-ident-cell">
+                    <strong class="node-title-strong">node-useast-02</strong>
+                    <span class="node-sub-meta">Claude Code Agent Runtime • Subagent Pool</span>
+                  </div>
+                </td>
+                <td><span style="font-family: var(--pow-font-mono);">us-east-1b</span></td>
+                <td>
+                  <span class="status-badge-pill active">
+                    <span class="status-dot"></span>
+                    <span>Active</span>
+                  </span>
+                </td>
+                <td class="numeric" style="font-family: var(--pow-font-mono); font-weight: 700;">3,410 ops/s</td>
+                <td>
+                  <div class="micro-prog-track"><div class="micro-prog-fill" style="width: 58%;"></div></div>
+                  <span>58% • 2.1 GB</span>
+                </td>
+                <td class="numeric" style="font-family: var(--pow-font-mono);">19.8 ms</td>
+                <td style="text-align: right;">
+                  <button class="action-btn-link" onclick="openNodeDrawer('node-useast-02', 'Claude Code Agent Runtime', 'us-east-1b', 'Active', '3,410 ops/s', '19.8 ms')">Inspect</button>
+                </td>
+              </tr>
+
+              <!-- Node 3 -->
+              <tr data-status="healthy" data-region="eu-west" data-node="node-euwest-01">
+                <td style="text-align: center;">
+                  <input type="checkbox" class="row-checkbox" onchange="handleRowCheck()">
+                </td>
+                <td>
+                  <div class="node-ident-cell">
+                    <strong class="node-title-strong">node-euwest-01</strong>
+                    <span class="node-sub-meta">OpenAI Codex Executor • Batch Worker</span>
+                  </div>
+                </td>
+                <td><span style="font-family: var(--pow-font-mono);">eu-west-1a</span></td>
+                <td>
+                  <span class="status-badge-pill healthy">
+                    <span class="status-dot"></span>
+                    <span>Healthy</span>
+                  </span>
+                </td>
+                <td class="numeric" style="font-family: var(--pow-font-mono); font-weight: 700;">2,940 ops/s</td>
+                <td>
+                  <div class="micro-prog-track"><div class="micro-prog-fill" style="width: 34%;"></div></div>
+                  <span>34% • 1.1 GB</span>
+                </td>
+                <td class="numeric" style="font-family: var(--pow-font-mono);">24.1 ms</td>
+                <td style="text-align: right;">
+                  <button class="action-btn-link" onclick="openNodeDrawer('node-euwest-01', 'OpenAI Codex Executor', 'eu-west-1a', 'Healthy', '2,940 ops/s', '24.1 ms')">Inspect</button>
+                </td>
+              </tr>
+
+              <!-- Node 4 -->
+              <tr data-status="degraded" data-region="eu-west" data-node="node-euwest-02">
+                <td style="text-align: center;">
+                  <input type="checkbox" class="row-checkbox" onchange="handleRowCheck()">
+                </td>
+                <td>
+                  <div class="node-ident-cell">
+                    <strong class="node-title-strong">node-euwest-02</strong>
+                    <span class="node-sub-meta">Telemetry Ingestion Proxy • High Load</span>
+                  </div>
+                </td>
+                <td><span style="font-family: var(--pow-font-mono);">eu-west-1b</span></td>
+                <td>
+                  <span class="status-badge-pill degraded">
+                    <span class="status-dot"></span>
+                    <span>Degraded</span>
+                  </span>
+                </td>
+                <td class="numeric" style="font-family: var(--pow-font-mono); font-weight: 700;">1,210 ops/s</td>
+                <td>
+                  <div class="micro-prog-track"><div class="micro-prog-fill" style="width: 88%; background: #F59E0B;"></div></div>
+                  <span style="color: #F59E0B; font-weight: 700;">88% • 3.8 GB</span>
+                </td>
+                <td class="numeric" style="font-family: var(--pow-font-mono); color: #F59E0B;">84.5 ms</td>
+                <td style="text-align: right;">
+                  <button class="action-btn-link" onclick="openNodeDrawer('node-euwest-02', 'Telemetry Ingestion Proxy', 'eu-west-1b', 'Degraded', '1,210 ops/s', '84.5 ms')">Inspect</button>
+                </td>
+              </tr>
+
+              <!-- Node 5 -->
+              <tr data-status="healthy" data-region="ap-east" data-node="node-apne-01">
+                <td style="text-align: center;">
+                  <input type="checkbox" class="row-checkbox" onchange="handleRowCheck()">
+                </td>
+                <td>
+                  <div class="node-ident-cell">
+                    <strong class="node-title-strong">node-apne-01</strong>
+                    <span class="node-sub-meta">Tokyo Edge Resolver • DNS Anycast</span>
+                  </div>
+                </td>
+                <td><span style="font-family: var(--pow-font-mono);">ap-northeast-1</span></td>
+                <td>
+                  <span class="status-badge-pill healthy">
+                    <span class="status-dot"></span>
+                    <span>Healthy</span>
+                  </span>
+                </td>
+                <td class="numeric" style="font-family: var(--pow-font-mono); font-weight: 700;">5,120 ops/s</td>
+                <td>
+                  <div class="micro-prog-track"><div class="micro-prog-fill" style="width: 46%;"></div></div>
+                  <span>46% • 1.6 GB</span>
+                </td>
+                <td class="numeric" style="font-family: var(--pow-font-mono);">18.0 ms</td>
+                <td style="text-align: right;">
+                  <button class="action-btn-link" onclick="openNodeDrawer('node-apne-01', 'Tokyo Edge Resolver', 'ap-northeast-1', 'Healthy', '5,120 ops/s', '18.0 ms')">Inspect</button>
+                </td>
+              </tr>
+
+              <!-- Node 6 -->
+              <tr data-status="active" data-region="ap-east" data-node="node-apsg-01">
+                <td style="text-align: center;">
+                  <input type="checkbox" class="row-checkbox" onchange="handleRowCheck()">
+                </td>
+                <td>
+                  <div class="node-ident-cell">
+                    <strong class="node-title-strong">node-apsg-01</strong>
+                    <span class="node-sub-meta">Singapore Edge Gateway • Low Latency</span>
+                  </div>
+                </td>
+                <td><span style="font-family: var(--pow-font-mono);">ap-southeast-1</span></td>
+                <td>
+                  <span class="status-badge-pill active">
+                    <span class="status-dot"></span>
+                    <span>Active</span>
+                  </span>
+                </td>
+                <td class="numeric" style="font-family: var(--pow-font-mono); font-weight: 700;">2,850 ops/s</td>
+                <td>
+                  <div class="micro-prog-track"><div class="micro-prog-fill" style="width: 51%;"></div></div>
+                  <span>51% • 1.9 GB</span>
+                </td>
+                <td class="numeric" style="font-family: var(--pow-font-mono);">22.4 ms</td>
+                <td style="text-align: right;">
+                  <button class="action-btn-link" onclick="openNodeDrawer('node-apsg-01', 'Singapore Edge Gateway', 'ap-southeast-1', 'Active', '2,850 ops/s', '22.4 ms')">Inspect</button>
+                </td>
+              </tr>
+
+              <!-- Node 7 -->
+              <tr data-status="healthy" data-region="us-east" data-node="node-uswest-01">
+                <td style="text-align: center;">
+                  <input type="checkbox" class="row-checkbox" onchange="handleRowCheck()">
+                </td>
+                <td>
+                  <div class="node-ident-cell">
+                    <strong class="node-title-strong">node-uswest-01</strong>
+                    <span class="node-sub-meta">Model Inference Sandbox • GPU Worker</span>
+                  </div>
+                </td>
+                <td><span style="font-family: var(--pow-font-mono);">us-west-2</span></td>
+                <td>
+                  <span class="status-badge-pill healthy">
+                    <span class="status-dot"></span>
+                    <span>Healthy</span>
+                  </span>
+                </td>
+                <td class="numeric" style="font-family: var(--pow-font-mono); font-weight: 700;">6,430 ops/s</td>
+                <td>
+                  <div class="micro-prog-track"><div class="micro-prog-fill" style="width: 69%;"></div></div>
+                  <span>69% • 5.2 GB</span>
+                </td>
+                <td class="numeric" style="font-family: var(--pow-font-mono);">15.6 ms</td>
+                <td style="text-align: right;">
+                  <button class="action-btn-link" onclick="openNodeDrawer('node-uswest-01', 'Model Inference Sandbox', 'us-west-2', 'Healthy', '6,430 ops/s', '15.6 ms')">Inspect</button>
+                </td>
+              </tr>
+
+              <!-- Node 8 -->
+              <tr data-status="syncing" data-region="us-east" data-node="node-uswest-02">
+                <td style="text-align: center;">
+                  <input type="checkbox" class="row-checkbox" onchange="handleRowCheck()">
+                </td>
+                <td>
+                  <div class="node-ident-cell">
+                    <strong class="node-title-strong">node-uswest-02</strong>
+                    <span class="node-sub-meta">Batch Evaluation Queue • Rebalancing</span>
+                  </div>
+                </td>
+                <td><span style="font-family: var(--pow-font-mono);">us-west-2</span></td>
+                <td>
+                  <span class="status-badge-pill syncing">
+                    <span class="status-dot"></span>
+                    <span>Syncing</span>
+                  </span>
+                </td>
+                <td class="numeric" style="font-family: var(--pow-font-mono); font-weight: 700;">840 ops/s</td>
+                <td>
+                  <div class="micro-prog-track"><div class="micro-prog-fill" style="width: 22%;"></div></div>
+                  <span>22% • 0.8 GB</span>
+                </td>
+                <td class="numeric" style="font-family: var(--pow-font-mono);">31.0 ms</td>
+                <td style="text-align: right;">
+                  <button class="action-btn-link" onclick="openNodeDrawer('node-uswest-02', 'Batch Evaluation Queue', 'us-west-2', 'Syncing', '840 ops/s', '31.0 ms')">Inspect</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Table Pagination Footer -->
+        <div class="cockpit-footer-bar">
+          <div>
+            <span>Showing <strong id="visibleRowCount">8</strong> of <strong>1,420</strong> cluster nodes</span>
+          </div>
+
+          <div class="pagination-controls">
+            <button class="page-btn" onclick="showToast('Navigated to Previous page')">« Prev</button>
+            <button class="page-btn active">1</button>
+            <button class="page-btn" onclick="showToast('Navigated to Page 2')">2</button>
+            <button class="page-btn" onclick="showToast('Navigated to Page 3')">3</button>
+            <span style="padding: 0 4px;">...</span>
+            <button class="page-btn" onclick="showToast('Navigated to Page 178')">178</button>
+            <button class="page-btn" onclick="showToast('Navigated to Next page')">Next »</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Floating Batch Actions Dock (Appears when rows selected) -->
+    <div class="floating-batch-dock" id="batchDock">
+      <strong id="batchCountText" style="font-family: var(--pow-font-mono); font-size: 0.85rem;">2 Nodes Selected</strong>
+      <div style="height: 18px; width: 1px; background: var(--pow-border-strong);"></div>
+      <button class="ribbon-btn" onclick="executeBatchAction('Restart')">Restart Nodes</button>
+      <button class="ribbon-btn" onclick="executeBatchAction('Drain Traffic')">Drain Traffic</button>
+      <button class="ribbon-btn primary" onclick="executeBatchAction('Export Metrics')">Export Telemetry</button>
+      <button class="action-btn-link" onclick="clearBatchSelection()" style="margin-left: 0.5rem;">Deselect All</button>
+    </div>
+
+    <!-- Slide-Over Node Detail Drawer -->
+    <div class="cockpit-drawer-backdrop" id="drawerBackdrop" onclick="closeNodeDrawer()"></div>
+    <div class="cockpit-drawer" id="nodeDrawer">
+      <div class="drawer-header">
+        <div>
+          <span style="font-size: 0.72rem; font-family: var(--pow-font-mono); color: var(--pow-accent); text-transform: uppercase;">Node Telemetry Inspector</span>
+          <h3 id="drawerNodeTitle" style="font-size: 1.1rem; font-weight: 800; font-family: var(--pow-font-mono);">node-useast-01</h3>
+        </div>
+        <button class="drawer-close-btn" onclick="closeNodeDrawer()" aria-label="Close Inspector">✕</button>
+      </div>
+
+      <div class="drawer-body">
+        <div>
+          <h4 style="font-size: 0.825rem; font-weight: 700; color: var(--pow-text-muted); text-transform: uppercase; margin-bottom: 0.5rem;">Live Configuration</h4>
+          <div class="drawer-code-block" id="drawerJsonConfig">
+{
+  "node_id": "node-useast-01",
+  "runtime": "Google Antigravity 2.0",
+  "zone": "us-east-1a",
+  "health": "Healthy",
+  "throughput_ops_sec": 4892,
+  "p99_latency_ms": 14.2,
+  "tls_handshake": "TLS_AES_256_GCM_SHA384",
+  "audit_verified": true
+}
+          </div>
+        </div>
+
+        <div>
+          <h4 style="font-size: 0.825rem; font-weight: 700; color: var(--pow-text-muted); text-transform: uppercase; margin-bottom: 0.5rem;">Operational Actions</h4>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+            <button class="ribbon-btn" onclick="showToast('Flushed telemetry cache for node')">Flush Cache</button>
+            <button class="ribbon-btn" onclick="showToast('Triggered diagnostic probe')">Diagnostic Probe</button>
+            <button class="ribbon-btn" style="color: #EF4444;" onclick="showToast('Node traffic cordon initiated')">Cordon Node</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Interactive Installation Guide Section -->
     <section class="pow-section" id="install">
       <div class="section-header">
         <span class="section-badge">How to Install</span>
-        <h2 class="section-title">Install Enterprise / Data-first or Full Engine</h2>
+        <h2 class="section-title">Install Enterprise Skill or Full Suite</h2>
         <p class="section-desc">
-          Choose whether you want this single standalone Enterprise / Data-first skill or the full 10-style automated Taste Engine suite for your AI coding agents.
+          Choose whether you want this standalone Enterprise Data-first skill or the complete 10-style automated Taste Engine suite for your AI coding agents.
         </p>
       </div>
 
@@ -894,9 +1872,9 @@
 
         <!-- Tab 1: Standalone Skill -->
         <div class="tab-body active" id="tab-standalone">
-          <h3 class="install-step-title">Option A: Install Dedicated Enterprise / Data-first Skill</h3>
+          <h3 class="install-step-title">Option A: Install Dedicated Enterprise Data-first Skill</h3>
           <p class="install-step-desc">
-            Installs only the Enterprise / Data-first style pack. Perfect if your project has already committed to this exact aesthetic and does not need a 10-style selector.
+            Installs only the Enterprise Data-first style pack. Perfect if your product is committed to high-density B2B operational cockpits.
           </p>
 
           <div class="pow-terminal">
@@ -911,7 +1889,7 @@
             </div>
             <div class="terminal-content" id="cmdStandaloneCli">
               <div class="terminal-line">
-                <span class="line-comment"># Install standalone Enterprise / Data-first pack via Agent Skills CLI</span>
+                <span class="line-comment"># Install standalone Enterprise pack via Agent Skills CLI</span>
               </div>
               <div class="terminal-line">
                 <span class="line-p">$</span>
@@ -979,7 +1957,7 @@
         <div class="tab-body" id="tab-tailwind">
           <h3 class="install-step-title">Option C: Tailwind CSS & shadcn/ui Preset</h3>
           <p class="install-step-desc">
-            Scaffold Enterprise / Data-first utility tokens directly into your React, Next.js, or Vite frontend stack.
+            Scaffold Enterprise Data-first utility tokens directly into your React, Next.js, or Vite frontend stack.
           </p>
 
           <div class="pow-terminal">
@@ -1009,7 +1987,7 @@
                 <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;extend: {</span>
               </div>
               <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors: { 'enterprise': '#1d4ed8' }</span>
+                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors: { 'enterprise': '#2563EB' }</span>
               </div>
               <div class="terminal-line">
                 <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;}</span>
@@ -1026,56 +2004,13 @@
       </div>
     </section>
 
-    <!-- Interactive Component Playground (PoW) -->
-    <section class="pow-section" id="playground">
-      <div class="section-header">
-        <span class="section-badge">Live Interactive PoW</span>
-        <h2 class="section-title">Enterprise / Data-first Component Lab</h2>
-        <p class="section-desc">
-          Test interactive components and layout structure built strictly according to Taste Engine's Enterprise / Data-first fidelity rules.
-        </p>
-      </div>
-
-      <div class="pow-card" style="padding: 2rem;">
-        
-        <div style="background: var(--pow-surface); border: var(--pow-border); border-radius: var(--pow-radius); overflow: hidden;">
-          <div style="padding: 0.75rem 1rem; border-bottom: var(--pow-border); display: flex; justify-content: space-between; align-items: center; background: var(--pow-well-bg);">
-            <strong style="font-size: 0.85rem; font-weight: 700;">LIVE AGENT RUNTIME PIPELINE</strong>
-            <span style="font-family: var(--pow-font-mono); font-size: 0.75rem; background: rgba(37,99,235,0.15); color: var(--pow-accent); padding: 2px 8px; border-radius: 4px; font-weight: 700;">⌘K SEARCH</span>
-          </div>
-          <table style="width: 100%; border-collapse: collapse; font-size: 0.825rem; font-family: var(--pow-font-body);">
-            <thead>
-              <tr style="border-bottom: var(--pow-border); text-align: left; color: var(--pow-text-muted); font-size: 0.75rem;">
-                <th style="padding: 0.65rem 1rem;">AGENT</th>
-                <th style="padding: 0.65rem 1rem;">STATUS</th>
-                <th style="padding: 0.65rem 1rem; text-align: right;">THROUGHPUT</th>
-              </tr>
-            </thead>
-            <tbody style="font-variant-numeric: tabular-nums;">
-              <tr style="border-bottom: var(--pow-border);">
-                <td style="padding: 0.65rem 1rem; font-weight: 600;">Google Antigravity</td>
-                <td style="padding: 0.65rem 1rem;"><span style="color: #10b981; font-weight: 700;">● Synchronized</span></td>
-                <td style="padding: 0.65rem 1rem; text-align: right; font-family: var(--pow-font-mono);">1,248 ops/s</td>
-              </tr>
-              <tr>
-                <td style="padding: 0.65rem 1rem; font-weight: 600;">Anthropic Claude Code</td>
-                <td style="padding: 0.65rem 1rem;"><span style="color: #10b981; font-weight: 700;">● Active</span></td>
-                <td style="padding: 0.65rem 1rem; text-align: right; font-family: var(--pow-font-mono);">984 ops/s</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
-      </div>
-    </section>
-
     <!-- Design Token Cheatsheet -->
     <section class="pow-section">
       <div class="section-header">
         <span class="section-badge">Tokens & Math</span>
-        <h2 class="section-title">Enterprise / Data-first Design Tokens</h2>
+        <h2 class="section-title">Enterprise Design Tokens</h2>
         <p class="section-desc">
-          Standardized CSS custom properties for instant copy-pasting into any stylesheet.
+          Calibrated tokens ensuring WCAG AA accessible contrast ratios across both light and dark operational cockpits.
         </p>
       </div>
 
@@ -1091,34 +2026,40 @@
           </thead>
           <tbody>
             <tr>
-              <td class="token-code">--taste-enterprise-bg</td>
-              <td>#f8fafc</td>
-              <td>#0f172a</td>
+              <td class="token-code">--taste-ent-bg</td>
+              <td>#F8FAFC</td>
+              <td>#0B0F19</td>
               <td>Canvas backdrop base</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-enterprise-surface</td>
-              <td>#ffffff</td>
-              <td>#1e293b</td>
-              <td>Card surface background</td>
+              <td class="token-code">--taste-ent-surface</td>
+              <td>#FFFFFF</td>
+              <td>#111827</td>
+              <td>Elevated cockpit & table surface</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-enterprise-text</td>
-              <td>#0f172a</td>
-              <td>#f8fafc</td>
-              <td>Primary text & icon color</td>
+              <td class="token-code">--taste-ent-ink</td>
+              <td>#0F172A</td>
+              <td>#F8FAFC</td>
+              <td>Primary text & high-contrast figures</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-enterprise-border</td>
-              <td>1px solid #e2e8f0</td>
-              <td>1px solid rgba(255, 255, 255, 0.12)</td>
-              <td>Structural stroke specification</td>
+              <td class="token-code">--taste-ent-border</td>
+              <td>1px solid #E2E8F0</td>
+              <td>1px solid rgba(255, 255, 255, 0.08)</td>
+              <td>Hairline table and divider strokes</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-enterprise-accent</td>
-              <td>#1d4ed8</td>
-              <td>#2563eb</td>
-              <td>Primary action accent</td>
+              <td class="token-code">--taste-ent-row-height</td>
+              <td>36px</td>
+              <td>36px</td>
+              <td>Information-dense tabular row standard</td>
+            </tr>
+            <tr>
+              <td class="token-code">--status-success</td>
+              <td>#065F46 on #ECFDF5</td>
+              <td>#34D399 on rgba(16,185,129,0.15)</td>
+              <td>Healthy node status (WCAG AA compliant)</td>
             </tr>
           </tbody>
         </table>
@@ -1130,41 +2071,44 @@
       <div class="section-header">
         <span class="section-badge">FAQ & Verification</span>
         <h2 class="section-title">Frequently Asked Questions</h2>
+        <p class="section-desc">
+          Architectural decisions, density rules, and anti-slop boundaries for enterprise operational software.
+        </p>
       </div>
 
       <div class="pow-faq-item open">
         <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>What makes Enterprise design different from SaaS landing pages?</span>
+          <span>What makes Enterprise Data-first distinct from consumer SaaS pages?</span>
           <span class="faq-arrow">▶</span>
         </div>
         <div class="pow-faq-body">
-          Enterprise prioritizes operational density, tabular numeric alignment, scannable data rows, and keyboard-first workflows over huge decorative hero art.
+          Enterprise software prioritizes information density, tabular numeric alignment (tabular-nums), scannable records, sticky table headers, keyboard shortcuts, and verified SLA telemetry over giant empty cards, decorative sparklines, and marketing slogans.
         </div>
       </div>
 
       <div class="pow-faq-item">
         <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>Are status badges accessible?</span>
+          <span>Why are tabular figures (tabular-nums) mandatory?</span>
           <span class="faq-arrow">▶</span>
         </div>
         <div class="pow-faq-body">
-          Yes, all status indicators combine colored semantic pills with visible text labels (e.g. ● Synchronized), complying with color-blindness accessibility standards.
+          Proportional numbers vary in width, causing columns of figures to wobble visually when values update. Tabular figures enforce uniform glyph widths, allowing operators to scan numerical deltas, timestamps, and memory allocations instantly.
         </div>
       </div>
 
       <div class="pow-faq-item">
         <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>Can I install just Enterprise style?</span>
+          <span>Can I install just the Enterprise style pack for my agents?</span>
           <span class="faq-arrow">▶</span>
         </div>
         <div class="pow-faq-body">
-          Yes, run `npx skills add kennedys0/taste-engine --skill taste-style-enterprise`.
+          Yes! Run <code>npx skills add kennedys0/taste-engine --skill taste-style-enterprise</code> to equip your AI agent with only this specific aesthetic pack, or install the full Taste Engine suite for multi-style auto-routing.
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Site Footer (2-column balanced mobile grid) -->
+  <!-- Site Footer -->
   <footer class="pow-footer">
     <div class="footer-inner">
       <div class="footer-brand">
@@ -1177,6 +2121,7 @@
         <h5>Aesthetic Archetypes</h5>
         <ul>
           <li><a href="bento.html">Bento Grid (PoW)</a></li>
+          <li><a href="brutalism.html">Brutalism (PoW)</a></li>
           <li><a href="neo-brutalism.html">Neo-Brutalism (PoW)</a></li>
           <li><a href="claymorphism.html">Claymorphism (PoW)</a></li>
           <li><a href="enterprise.html">Enterprise (PoW)</a></li>
@@ -1262,6 +2207,20 @@
       });
     }
 
+    // Nav Copy Button
+    const navCopyBtn = document.getElementById('navCopyBtn');
+    const navCmdText = document.getElementById('navCmdText');
+    if (navCopyBtn && navCmdText) {
+      navCopyBtn.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(navCmdText.textContent.trim());
+          showToast('Copied installation command!');
+        } catch (e) {
+          showToast('Command copied');
+        }
+      });
+    }
+
     // Tab Switcher
     const tabButtons = document.querySelectorAll('.tab-switch-btn');
     const tabBodies = document.querySelectorAll('.tab-body');
@@ -1291,15 +2250,196 @@
       }
     }
 
-    // Component Button Click Handler
-    function handleBtnClick(name) {
-      showToast(`Action: ${name}`);
-    }
-
     // FAQ Accordion Toggle
     function toggleFaq(header) {
       const item = header.parentElement;
       item.classList.toggle('open');
+    }
+
+    // Interactive Cockpit Table Search & Filter
+    const searchInput = document.getElementById('nodeSearchInput');
+    const statusFilter = document.getElementById('statusFilterSelect');
+    const regionFilter = document.getElementById('regionFilterSelect');
+    const tableBody = document.getElementById('nodesTableBody');
+    const visibleRowCountEl = document.getElementById('visibleRowCount');
+
+    function filterTable() {
+      const query = (searchInput.value || '').toLowerCase().trim();
+      const statusVal = statusFilter.value;
+      const regionVal = regionFilter.value;
+      const rows = tableBody.querySelectorAll('tr');
+      let visibleCount = 0;
+
+      rows.forEach(row => {
+        const rowStatus = row.getAttribute('data-status');
+        const rowRegion = row.getAttribute('data-region');
+        const rowText = row.innerText.toLowerCase();
+
+        const matchQuery = !query || rowText.includes(query);
+        const matchStatus = statusVal === 'all' || rowStatus === statusVal;
+        const matchRegion = regionVal === 'all' || rowRegion === regionVal;
+
+        if (matchQuery && matchStatus && matchRegion) {
+          row.style.display = '';
+          visibleCount++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+
+      if (visibleRowCountEl) {
+        visibleRowCountEl.textContent = visibleCount;
+      }
+    }
+
+    if (searchInput) searchInput.addEventListener('input', filterTable);
+    if (statusFilter) statusFilter.addEventListener('change', filterTable);
+    if (regionFilter) regionFilter.addEventListener('change', filterTable);
+
+    // Keyboard Shortcut (Cmd+K / Ctrl+K)
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        if (searchInput) searchInput.focus();
+      }
+    });
+
+    // Checkbox Row Selection & Floating Batch Dock
+    const batchDock = document.getElementById('batchDock');
+    const batchCountText = document.getElementById('batchCountText');
+    const selectAllCheckbox = document.getElementById('selectAllCheckbox');
+
+    function updateBatchDock() {
+      const checkedBoxes = tableBody.querySelectorAll('.row-checkbox:checked');
+      const count = checkedBoxes.length;
+
+      if (count > 0) {
+        batchCountText.textContent = `${count} Node${count > 1 ? 's' : ''} Selected`;
+        batchDock.classList.add('active');
+      } else {
+        batchDock.classList.remove('active');
+      }
+
+      // Highlight row selection
+      tableBody.querySelectorAll('tr').forEach(row => {
+        const cb = row.querySelector('.row-checkbox');
+        if (cb && cb.checked) {
+          row.classList.add('selected');
+        } else {
+          row.classList.remove('selected');
+        }
+      });
+    }
+
+    function handleRowCheck() {
+      updateBatchDock();
+    }
+
+    function toggleSelectAll(masterCheckbox) {
+      const isChecked = masterCheckbox.checked;
+      tableBody.querySelectorAll('.row-checkbox').forEach(cb => {
+        if (cb.closest('tr').style.display !== 'none') {
+          cb.checked = isChecked;
+        }
+      });
+      updateBatchDock();
+    }
+
+    function clearBatchSelection() {
+      if (selectAllCheckbox) selectAllCheckbox.checked = false;
+      tableBody.querySelectorAll('.row-checkbox').forEach(cb => cb.checked = false);
+      updateBatchDock();
+    }
+
+    function executeBatchAction(actionName) {
+      const count = tableBody.querySelectorAll('.row-checkbox:checked').length;
+      showToast(`Action executed: ${actionName} on ${count} nodes`);
+      clearBatchSelection();
+    }
+
+    // Sort Table Logic
+    let currentSortCol = -1;
+    let sortAsc = true;
+
+    function sortTable(colIdx) {
+      const rows = Array.from(tableBody.querySelectorAll('tr'));
+      if (currentSortCol === colIdx) {
+        sortAsc = !sortAsc;
+      } else {
+        currentSortCol = colIdx;
+        sortAsc = true;
+      }
+
+      rows.sort((a, b) => {
+        const aText = a.children[colIdx].innerText.trim();
+        const bText = b.children[colIdx].innerText.trim();
+
+        const aNum = parseFloat(aText.replace(/[^0-9.-]/g, ''));
+        const bNum = parseFloat(bText.replace(/[^0-9.-]/g, ''));
+
+        if (!isNaN(aNum) && !isNaN(bNum)) {
+          return sortAsc ? aNum - bNum : bNum - aNum;
+        }
+        return sortAsc ? aText.localeCompare(bText) : bText.localeCompare(aText);
+      });
+
+      rows.forEach(r => tableBody.appendChild(r));
+      showToast(`Sorted table by column`);
+    }
+
+    // Node Inspector Drawer
+    const nodeDrawer = document.getElementById('nodeDrawer');
+    const drawerBackdrop = document.getElementById('drawerBackdrop');
+    const drawerNodeTitle = document.getElementById('drawerNodeTitle');
+    const drawerJsonConfig = document.getElementById('drawerJsonConfig');
+
+    function openNodeDrawer(nodeId, runtime, region, health, throughput, latency) {
+      drawerNodeTitle.textContent = nodeId;
+      drawerJsonConfig.textContent = JSON.stringify({
+        node_id: nodeId,
+        runtime: runtime,
+        zone: region,
+        health: health,
+        throughput_ops_sec: throughput,
+        p99_latency_ms: latency,
+        tls_handshake: "TLS_AES_256_GCM_SHA384",
+        audit_verified: true,
+        inspected_at: new Date().toISOString()
+      }, null, 2);
+
+      nodeDrawer.classList.add('open');
+      drawerBackdrop.classList.add('open');
+    }
+
+    function closeNodeDrawer() {
+      nodeDrawer.classList.remove('open');
+      drawerBackdrop.classList.remove('open');
+    }
+
+    // Export CSV Utility
+    function exportCsvData() {
+      const rows = tableBody.querySelectorAll('tr');
+      let csv = 'Node ID,Runtime,Region,Status,Throughput,Latency\n';
+      rows.forEach(r => {
+        if (r.style.display !== 'none') {
+          const id = r.querySelector('.node-title-strong').innerText;
+          const sub = r.querySelector('.node-sub-meta').innerText;
+          const region = r.children[2].innerText;
+          const status = r.querySelector('.status-badge-pill span:last-child').innerText;
+          const throughput = r.children[4].innerText;
+          const latency = r.children[6].innerText;
+          csv += `"${id}","${sub}","${region}","${status}","${throughput}","${latency}"\n`;
+        }
+      });
+
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'cluster-nodes-telemetry.csv';
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast('Exported cluster-nodes-telemetry.csv');
     }
   </script>
 </body>

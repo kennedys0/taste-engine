@@ -22,8 +22,11 @@ A successful enterprise data-first implementation demonstrates **all** of the fo
 1. **Information-Dense Tabular Architecture:** Core records and entities are presented in structured, scannable data tables or compact master-detail lists with consistent row heights (32px–40px) and explicit column headers.
 2. **Tabular Numerals & Flush Alignment:** All numbers, financial amounts, metrics, and timestamps enforce `font-variant-numeric: tabular-nums`. Numerical columns align strictly flush-right; text columns align flush-left.
 3. **Semantic Status Tokens with Legible Contrast:** Status indicators (Healthy, Degraded, Failed, Pending) use calibrated semantic token pills with dark accessible text on soft tinted backgrounds (e.g. Success: `#ECFDF5` background with `#065F46` text, passing WCAG AA 4.5:1).
-4. **Productivity Affordances & Shortcuts:** Search bars feature keyboard trigger hints (`⌘K` or `/`), table headers feature sort indicators (`▲/▼`), and batch action bars appear upon record selection.
-5. **Truthful State Completeness:** Tables include real pagination bars (showing `Showing 1–25 of 1,420 items`), responsive horizontal scroll handling, and dedicated empty/loading/error states.
+4. **Productivity Affordances & Shortcuts:** Search bars feature keyboard trigger hints (`⌘K` or `/`), table headers feature sort indicators (`▲/▼`), and multi-select checkboxes trigger bulk workflows.
+5. **HUD Telemetry Summary Strips:** Compact operational metric headers pairing high-contrast tabular values with subtle progress or health ratios. Every KPI or meter must display an explicit operational denominator, time horizon, or threshold baseline (e.g. `84.2% (101/120 Nodes Active)`, `1.42M ops/sec`). Zero giant consumer vanity cards.
+6. **Floating Batch Action Dock:** Contextual bottom action bar triggered dynamically when 1 or more rows are selected via checkboxes (e.g. displaying selected count, bulk reboot, drain traffic, export subset, and deselect all affordances) allowing high-velocity batch interventions without losing filter context.
+7. **Slide-Over Detail Inspector Drawer:** Lateral drawer or master-detail split pane for deep telemetry inspection, node diagnostics, and raw JSON configurations without losing table scroll position or active search filters.
+8. **Truthful State Completeness:** Tables include real pagination bars (showing `Showing 1–25 of 1,420 items`), responsive horizontal scroll handling, and dedicated empty/loading/error states.
 
 **First-viewport test:** In a desktop screenshot, identify the dense data table, sortable headers, filter bar, and tabular numbers **without reading the page title**. If it looks like a consumer marketing page with large empty cards, rebuild it as a functional operational view.
 
@@ -73,10 +76,13 @@ Surfaces are clean, flat, and border-driven. Elevation shadows are reserved stri
 
 ## Component anatomy and interaction
 
-- **Data Table:** Sticky header row, zebra or hover row highlighting (`#F8FAFC`), flush-right numerical columns, flush-left text.
-- **Filter & Search Bar:** Integrated search input with `⌘K` badge, multi-select filter dropdowns, and date range picker.
-- **Semantic Status Badge:** Compact rounded pill with colored indicator dot and accessible text.
-- **Pagination Footer:** Current page range, items-per-page selector, and next/prev buttons.
+- **Data Table:** Sticky header row, zebra or hover row highlighting (`#F8FAFC` light / `#1F2430` dark), flush-right numerical columns with `font-variant-numeric: tabular-nums`, flush-left text, and multi-select row checkboxes.
+- **HUD Telemetry Strip:** Dense operational summary cards with micro progress gauges and baseline indicators.
+- **Filter & Search Bar:** Integrated search input with keyboard trigger badge (`⌘K`), multi-select filter dropdowns or chips, and instant export trigger (`Export CSV`).
+- **Floating Batch Action Dock:** Fixed or floating contextual bar at the bottom viewport when 1+ rows are checked.
+- **Slide-Over Inspector Drawer:** Master-detail slide-over panel displaying comprehensive node telemetry, network health, and raw JSON configurations.
+- **Semantic Status Badge:** Compact rounded pill with colored indicator dot and accessible contrast-calibrated text.
+- **Pagination Footer:** Current record range (`Showing 1–25 of 1,420 items`), items-per-page selector, and next/prev controls.
 
 ## Motion
 
@@ -117,7 +123,7 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 ## Style-specific quality gate
 
-- **Do:** Verify tabular numerals (`tabular-nums`) and right-alignment on numerical data; ensure semantic badges meet WCAG AA contrast in both light and dark modes; provide complete pagination and search filter bars; test sticky table headers; verify dark/light mode switching so all rows, borders, and text flip in synchronized pairs.
+- **Do:** Verify tabular numerals (`tabular-nums`) and right-alignment on numerical data; ensure semantic badges meet WCAG AA contrast in both light and dark modes; provide complete pagination, search filter bars, and instant data export affordances; test sticky table headers; verify HUD telemetry meters have explicit denominators or time horizons; verify floating batch action docks appear on row selection; verify slide-over inspector drawers load deep node telemetry; verify dark/light mode switching so all rows, borders, and text flip in synchronized pairs.
 - **Don't:** Do not replace data tables with consumer card grids; avoid unscaled decorative sparklines; do not invent fake metric numbers that have no backend counterpart; avoid theme contrast collisions such as dark green text on dark backgrounds or dark text on dark table rows.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
