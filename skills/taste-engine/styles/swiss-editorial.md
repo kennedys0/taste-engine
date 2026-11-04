@@ -10,8 +10,10 @@
 - **Works well for:** High-end design agencies, architectural publications, editorial portfolios, cultural magazines, annual reports, and luxury product narratives.
 - **Be careful with:** Fast-paced transactional operational tools where massive display typography slows down repetitive data entry.
 - **Reference directions:**
-  - *Classic Zurich International Style:* Crisp paper white background (`#FFFFFF` or `#F7F7F7`), stark jet black typography (`#111111`), 1px structural dividing rules, numbered indexes (`01`, `02`), and a single strike of Swiss Red (`#E3000F`).
-  - *Modern Editorial Klein Blue:* Ultra-clean monochrome canvas with International Klein Blue (`#002FA7`) as a high-precision focal accent on navigation and primary actions.
+  - *Classic Zurich International Style:* Crisp paper white background (`#FFFFFF` or `#F7F7F7`), stark jet black typography (`#111111`), 1px structural dividing rules, numbered indexes (`01`, `02`), and a single strike of Swiss Red (`#E3000F` light / `#EF4444` dark).
+  - *Modern Editorial Klein Blue:* Ultra-clean monochrome canvas with International Klein Blue (`#002FA7` light / `#3B82F6` dark) as a high-precision focal accent on navigation and primary actions.
+  - *Basel Forest Green:* Deep, disciplined Basel Forest Green (`#007A3D` light / `#10B981` dark) for architectural, environmental, or institutional publications.
+  - *Monochrome Obsidian / Paper Inversion:* Pure grayscale editorial canvas (`#111111` light / `#F5F5F5` dark) with zero chromatic hue, relying exclusively on structural weight and stark typographic value contrast.
 
 ## Swiss editorial fidelity gate — mandatory
 
@@ -51,7 +53,7 @@ Objective grotesk sans: Helvetica Neue, Neue Haas Grotesk, Arial, Inter, or syst
   - **Ink / Typography:** Bone-white display typography (`#F5F5F5`).
   - **Dividing Rules:** Translucent white hairline rule (`rgba(255, 255, 255, 0.20)` or `#2A2A2A`).
   - **Secondary Gray:** Stone gray (`#9CA3AF`).
-- **Singular Signal Accent:** Swiss Red (`#E3000F` light / `#EF4444` dark) or International Klein Blue (`#002FA7` light / `#3B82F6` dark).
+- **Singular Signal Accent:** Exactly one calibrated focal accent chosen from Zurich Signal Red (`#E3000F` / `#EF4444`), International Klein Blue (`#002FA7` / `#3B82F6`), Basel Forest Green (`#007A3D` / `#10B981`), or Monochrome Obsidian (`#111111` / `#F5F5F5`). Applied sparingly to active links, index tags, or primary CTAs.
 - **Theme Inversion Rule:** In swiss editorial, dark/light mode is an authoritative typographic polarity flip. In dark mode, canvas is `#0D0D0D` and typography is `#F5F5F5`. Primary buttons invert cleanly (light mode: solid black block with white text; dark mode: solid white block with black text). Black text on dark canvas or white text on white canvas is strictly prohibited.
 
 ## Layout and geometry
@@ -62,7 +64,7 @@ Corners are razor-sharp (`0px` border-radius by default, up to `2px` max); gener
 
 ## Surfaces, depth, texture
 
-Surfaces are completely flat, unornamented, and ink-sharp. Zero drop shadows, zero background gradients, zero blur. Depth is communicated purely through typographic scale, weight, and spatial juxtaposition.
+Surfaces are completely flat, single-plane, unornamented, and ink-sharp. Zero card-on-card nesting: avoid stacked card containers; structure editorial content directly using grid gutters, typography, and 1px hairline rules. Zero drop shadows (`box-shadow: none`), zero background gradients, zero blur. Depth is communicated purely through typographic scale, weight, and spatial juxtaposition.
 
 ## Component anatomy and interaction
 
@@ -97,6 +99,8 @@ Cultured, concise, and articulate. Examples: “Selected Works 2026”, “Index
 | `--taste-swiss-muted` | `#6b7280` | `#9ca3af` |
 | `--taste-swiss-rule` | `1px solid #111111` | `1px solid rgba(255, 255, 255, 0.20)` |
 | `--taste-swiss-radius` | `0px` | `0px` |
+| `--taste-swiss-shadow` | `none` | `none` |
+| `--taste-swiss-border` | `1px solid #111111` | `1px solid rgba(255, 255, 255, 0.20)` |
 | `--taste-swiss-font-heading` | `'Helvetica Neue', Inter, system-ui, sans-serif` | `'Helvetica Neue', Inter, system-ui, sans-serif` |
 | `--taste-swiss-font-body` | `'Helvetica Neue', Inter, system-ui, sans-serif` | `'Helvetica Neue', Inter, system-ui, sans-serif` |
 | `--taste-swiss-motion-duration` | `120ms` | `120ms` |
@@ -111,7 +115,7 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 ## Style-specific quality gate
 
 - **Do:** ensure circular elements (status dots, icon badges, round buttons) maintain strict 1:1 aspect ratio with `aspect-ratio: 1 / 1; flex-shrink: 0;` without squishing into ovals; verify responsive fidelity down to 320px viewport with zero horizontal scroll blowout; ensure mobile typography scales down proportionally to prevent bloated UI; verify header navigation collapses into an accessible hamburger menu on narrow screens (< 768px); Verify strict 12-column grid alignment; maintain dramatic headline-to-body scale ratio; ensure 1px hairline rules cleanly separate sections; keep accent color strictly singular; verify dark/light mode switching so typography, canvas, hairline rules, and primary actions flip cleanly without color collisions (minimum 4.5:1 contrast).
-- **Don't:** never let circular elements deform into ovals under flexbox compression; never force crowded horizontal navigation links on mobile headers (always use a hamburger menu); avoid bloated mobile font sizes that crowd small screens; never use emojis as UI icons or button prefixes (always use Lucide or clean vector SVGs with currentColor); Do not add drop shadows, rounded bubbles, or decorative gradients; do not clutter whitespace with meaningless badge chips; avoid low-contrast gray text on small labels; do not leave black typography on dark obsidian canvas.
+- **Don't:** never let circular elements deform into ovals under flexbox compression; never force crowded horizontal navigation links on mobile headers (always use a hamburger menu); avoid bloated mobile font sizes that crowd small screens; never use emojis as UI icons or button prefixes (always use Lucide or clean vector SVGs with currentColor); Do not add drop shadows (`box-shadow: none` strictly required), rounded bubbles, card-on-card container stacking, or decorative gradients; do not clutter whitespace with meaningless badge chips; avoid low-contrast gray text on small labels; do not leave black typography on dark obsidian canvas.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
