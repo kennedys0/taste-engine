@@ -86,6 +86,7 @@ Surfaces are clean, flat, and border-driven. Elevation shadows are reserved stri
 
 ## Component anatomy and interaction
 
+- **Iconography — zero emojis:** Emojis are strictly banned as interface icons, status indicators, or button prefixes across all UI elements. Use Lucide or clean vector SVGs (16px–24px) with consistent stroke weight (1.5px–2px) and currentColor.
 - **Data Table:** Sticky header row, zebra or hover row highlighting (`#F8FAFC` light / `#1F2430` dark), flush-right numerical columns with `font-variant-numeric: tabular-nums`, flush-left text, and multi-select row checkboxes.
 - **HUD Telemetry Strip:** Dense operational summary cards with micro progress gauges and baseline indicators.
 - **Filter & Search Bar:** Integrated search input with keyboard trigger badge (`⌘K`), multi-select filter dropdowns or chips, and instant export trigger (`Export CSV`).
@@ -134,7 +135,7 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 ## Style-specific quality gate
 
 - **Do:** Verify tabular numerals (`tabular-nums`) and right-alignment on numerical data; ensure semantic badges meet WCAG AA contrast in both light and dark modes; provide complete pagination, search filter bars, and instant data export affordances; test sticky table headers; verify HUD telemetry meters have explicit denominators or time horizons; verify floating batch action docks appear on row selection; verify slide-over inspector drawers load deep node telemetry; verify dark/light mode switching so all rows, borders, and text flip in synchronized pairs.
-- **Don't:** Do not replace data tables with consumer card grids; avoid unscaled decorative sparklines; do not invent fake metric numbers that have no backend counterpart; avoid theme contrast collisions such as dark green text on dark backgrounds or dark text on dark table rows.
+- **Don't:** never use emojis as UI icons or button prefixes (always use Lucide or clean vector SVGs with currentColor); Do not replace data tables with consumer card grids; avoid unscaled decorative sparklines; do not invent fake metric numbers that have no backend counterpart; avoid theme contrast collisions such as dark green text on dark backgrounds or dark text on dark table rows.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -144,7 +145,7 @@ Every element must earn its place. **Content before decoration. Do not decorate 
 
 Do not add decorative **card-inside-card** layers: a nested surface must represent a distinct interaction or information boundary. Avoid auto-generated 3-feature grids, 4-stat dashboards, fake hero claims, purposeless charts, badge/chip/icon spam, unrelated decorative art, and random loops merely to fill the viewport. Prefer grouping with typography, spacing, alignment and dividers. Equal peers need intentional visual balance.
 
-**Anti-slop copywriting:** no generic "Unlock your potential", "Experience the future", "Supercharge your workflow", "seamless" claims, or translated equivalents. Headings must communicate actual content, CTAs must name the action, and empty/error/success text must describe real states and next steps. Avoid fake urgency, made-up counts, vague AI hype, gratuitous emoji, and inaccessible all-caps walls. Adapt the wording to this style and the user's language without changing the truth.
+**Anti-slop copywriting & zero emojis:** no generic "Unlock your potential", "Experience the future", "Supercharge your workflow", "seamless" claims, or translated equivalents. Headings must communicate actual content, CTAs must name the action, and empty/error/success text must describe real states and next steps. Avoid fake urgency, made-up counts, vague AI hype, and inaccessible all-caps walls. Emojis are strictly forbidden as UI icons, button prefixes, or badges across all styles; interface elements must exclusively use clean vector SVGs from Lucide, Radix, Feather, or Heroicons with currentColor inheritance. Adapt the wording to this style and the user's language without changing the truth.
 
 **Theme and mode contrast integrity:** When a user requests dark mode or light mode (or builds a theme switcher), background and foreground colors MUST flip in synchronized pairs across all surfaces, text, borders, inputs, and semantic badges. Never leave black text on dark background, white text on white background, or unreadable low-contrast status pills. All states must meet WCAG AA contrast (minimum 4.5:1 for body/normal text, 3:1 for large headlines and interactive boundaries).
 
@@ -158,7 +159,7 @@ Do not add decorative **card-inside-card** layers: a nested surface must represe
 
 **Information density, not consumer card spam.**
 
-- **Reject:** Giant marketing cards replacing tables, decorative sparklines without scales, fake metric deltas (+24% with no time horizon), and half-baked dark mode where tables or badges keep blinding white backgrounds or unreadable dark text.
+- **Reject:** emojis used as UI icons or button stickers, Giant marketing cards replacing tables, decorative sparklines without scales, fake metric deltas (+24% with no time horizon), and half-baked dark mode where tables or badges keep blinding white backgrounds or unreadable dark text.
 - **Instead:** Build compact, structured tables with clean column alignment, explicit pagination, real filter controls, and calibrated dark/light theme support.
 - **Copy check:** Table headers and status tags must use precise operational terminology.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `enterprise`.

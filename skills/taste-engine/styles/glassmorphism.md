@@ -83,6 +83,7 @@ See `examples/glassmorphism/frosted-surfaces.css` in the full Taste Engine route
 
 ## Component anatomy and interaction
 
+- **Iconography — zero emojis:** Emojis are strictly banned as interface icons, status indicators, or button prefixes across all UI elements. Use Lucide or clean vector SVGs (16px–24px) with consistent stroke weight (1.5px–2px) and currentColor.
 - **Frosted Glass Pane/Pod:** Master translucent container with 16–24px corner radius, 1px translucent specular border, inset top sheen (`inset 0 1px 1px 0 rgba(255, 255, 255, 0.25)`), and smooth ambient drop shadow.
 - **Hero Window:** Opening viewport anchor placing brand headings and primary actions inside a visible, frosted glass composition with light filtering through from behind.
 - **Glass Controls & Sliders:** Frosted slider tracks with tactile thumb handles and interactive value tags.
@@ -131,7 +132,7 @@ For public portfolio/landing/homepages with a hero, use a **header + hero** firs
 ## Style-specific quality gate
 
 - **Do:** Verify translucent frosted surfaces filtering backdrop light; ensure 1px translucent borders and specular highlights define panel edges; ensure background gradients are non-clashing and paired with subtle tactile micro-textures; test accessibility fallback without `backdrop-filter`; verify dark/light mode switching so foreground text and glass panels flip cleanly without color collisions (WCAG AA 4.5:1).
-- **Don't:** Do not treat plain dark/light cards as glassmorphism; avoid whole-screen blur; avoid low-contrast text floating over noisy translucent areas; do not use discordant rainbow gradients that clash or overpower content; do not leave dark text when switching to smoked dark glass.
+- **Don't:** never use emojis as UI icons or button prefixes (always use Lucide or clean vector SVGs with currentColor); Do not treat plain dark/light cards as glassmorphism; avoid whole-screen blur; avoid low-contrast text floating over noisy translucent areas; do not use discordant rainbow gradients that clash or overpower content; do not leave dark text when switching to smoked dark glass.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -139,7 +140,7 @@ For public portfolio/landing/homepages with a hero, use a **header + hero** firs
 
 **Translucent depth, not blurry chaos.**
 
-- **Reject:** Completely opaque flat cards described as glass, clashing rainbow gradient blobs with no depth or texture, text placed over high-contrast translucent clutter with no solid underlay, and theme contrast collisions (such as black text on dark smoked glass).
+- **Reject:** emojis used as UI icons or button stickers, Completely opaque flat cards described as glass, clashing rainbow gradient blobs with no depth or texture, text placed over high-contrast translucent clutter with no solid underlay, and theme contrast collisions (such as black text on dark smoked glass).
 - **Instead:** Filter structured, purposeful, non-clashing ambient light through legible frosted panes with clear hierarchy, distinct nested glass depth planes, and solid readable content containers.
 - **Copy check:** Avoid clichés like "crystal clear" or "transparent future."
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `glassmorphism`.

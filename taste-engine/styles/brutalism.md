@@ -71,6 +71,7 @@ Surfaces are 100% flat, opaque, and structural. Zero shadows. Zero gradients. De
 
 ## Component anatomy and interaction
 
+- **Iconography — zero emojis:** Emojis are strictly banned as interface icons, status indicators, or button prefixes across all UI elements. Use Lucide or clean vector SVGs (16px–24px) with consistent stroke weight (1.5px–2px) and currentColor.
 - **Brutalist Button:** Heavy black border (`2px solid #000000`), white background, bold uppercase text; on hover/active, immediately inverts to solid black background and white text.
 - **Structural Panel:** Rectangular container with heavy top/bottom borders; dividers between internal sections.
 - **Metadata Tag:** Monospace tag enclosed in square brackets: `[DOC_REF: 4092]`.
@@ -120,7 +121,7 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 ## Style-specific quality gate
 
 - **Do:** Verify stark monochrome contrast; ensure 2–3px structural borders are solid; verify sharp 0px square corners; confirm single-viewport hero fit on desktop; enforce monumental condensed typography; verify controlled caution yellow (#ffde00) and signal red (#ff3b30) operational roles; verify dark/light mode polarity inversion so text and background never clash (no black-on-black or white-on-white text); verify cellular navigation without long code clutter; ensure hero voids are structured with 3-cell architectural spec grids; confirm circular stamp seal or technical metadata.
-- **Don't:** Do not add rounded corners, soft drop shadows, or smooth color gradients (strictly 0px radius); avoid arbitrary font size chaos; never use pill buttons; avoid oversized padding that breaks the single-viewport hero fit; avoid decorative filler badges or chatty marketing copy; do not leave black ink or borders when switching to dark canvas; never leave cavernous empty whitespace between hero headlines and buttons; do not place long command code strings inside the main navigation bar.
+- **Don't:** never use emojis as UI icons or button prefixes (always use Lucide or clean vector SVGs with currentColor); Do not add rounded corners, soft drop shadows, or smooth color gradients (strictly 0px radius); avoid arbitrary font size chaos; never use pill buttons; avoid oversized padding that breaks the single-viewport hero fit; avoid decorative filler badges or chatty marketing copy; do not leave black ink or borders when switching to dark canvas; never leave cavernous empty whitespace between hero headlines and buttons; do not place long command code strings inside the main navigation bar.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -128,7 +129,7 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 **Structural honesty, not aesthetic playfulness.**
 
-- **Reject:** Rounded pill shapes, pastel accents, decorative shadow blurs, arbitrary font chaos, playful sticker illustrations, generic template cards, and theme collisions (such as black text remaining on a dark brutalist canvas).
+- **Reject:** emojis used as UI icons or button stickers, Rounded pill shapes, pastel accents, decorative shadow blurs, arbitrary font chaos, playful sticker illustrations, generic template cards, and theme collisions (such as black text remaining on a dark brutalist canvas).
 - **Instead:** Expose layout grids with heavy structural borders, stark type hierarchy, immediate state flips, and unambiguous contrast.
 - **Copy check:** UI writing must be brief, direct, and functional without marketing jargon.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `brutalism`.

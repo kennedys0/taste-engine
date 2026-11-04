@@ -83,6 +83,7 @@ Surfaces must feel molded from physical matte clay:
 
 ## Component anatomy and interaction
 
+- **Iconography — zero emojis:** Emojis are strictly banned as interface icons, status indicators, or button prefixes across all UI elements. Use Lucide or clean vector SVGs (16px–24px) with consistent stroke weight (1.5px–2px) and currentColor.
 - **Primary Button ("Submit >"):** Saturated purple pill, white bold text, directional chevron, tactile compression on click.
 - **Secondary Button ("Go Back ↶"):** Light porcelain pill, dark ink text, return arrow icon, tactile compression on click.
 - **Circular Action Button:** 50% border-radius round button (e.g. pause `❚❚`), saturated clay, centered icon.
@@ -144,7 +145,7 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 ## Style-specific quality gate
 
 - **Do:** Ensure tactile dual inner shadows are visible; maintain consistent light direction (top-left to bottom-right); provide tactile active/press states; verify WCAG AA contrast on both primary and light clay; verify dark/light mode switching so text and surface colors adapt in coupled pairs (e.g. pale porcelain text on dark clay, dark ink text on light clay).
-- **Don't:** Do not treat simple rounded corners as clay; avoid balloon shadows, excessive glossy halos, unreadable light-on-light labels, ornamental badges, and dark/light mode collisions where dark text remains on dark clay.
+- **Don't:** never use emojis as UI icons or button prefixes (always use Lucide or clean vector SVGs with currentColor); Do not treat simple rounded corners as clay; avoid balloon shadows, excessive glossy halos, unreadable light-on-light labels, ornamental badges, and dark/light mode collisions where dark text remains on dark clay.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -152,7 +153,7 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 **Soft material, not toy inflation.**
 
-- **Reject:** Reject puffy balloon cards, donut shadow halos, glow borders, nested elevated shells, repeating decorative status pills, and dark/light theme collisions (such as leaving dark purple text on dark plum clay surfaces); make flat/raised/inset states distinct and consistent with one light direction.
+- **Reject:** emojis used as UI icons or button stickers, Reject puffy balloon cards, donut shadow halos, glow borders, nested elevated shells, repeating decorative status pills, and dark/light theme collisions (such as leaving dark purple text on dark plum clay surfaces); make flat/raised/inset states distinct and consistent with one light direction.
 - **Instead:** Use one owning sculpted panel with spacing/dividers for internal content; reserve inset wells for real controls or containment.
 - **Copy check:** Keep copy calm and concrete rather than cutesy AI encouragement.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `claymorphism`.

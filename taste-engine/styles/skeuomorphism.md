@@ -67,6 +67,7 @@ Component shapes strictly map to their physical metaphors: rotary dials, tactile
 
 ## Component anatomy and interaction
 
+- **Iconography — zero emojis:** Emojis are strictly banned as interface icons, status indicators, or button prefixes across all UI elements. Use Lucide or clean vector SVGs (16px–24px) with consistent stroke weight (1.5px–2px) and currentColor.
 - **Tactile Push-Button:** Machined aluminum finish, white engraved label, mechanical spring-back on release.
 - **Rocker / Toggle Switch:** Dual-state physical toggle with visible cast shadow on active side.
 - **Recessed LCD / Data Readout:** Sunken screen with monospace value, subtle raster grid, and high contrast.
@@ -116,7 +117,7 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 ## Style-specific quality gate
 
 - **Do:** Verify consistent top-down specular highlight across all controls; ensure mechanical press states depress smoothly; provide numerical readouts alongside dials/sliders; test keyboard focus; verify dark/light mode switching so chassis, bevel highlights, wells, and label typography adapt in coupled pairs.
-- **Don't:** Do not treat a plain dark theme as skeuomorphic; do not add non-functional decorative screws or fake analog needles that don't connect to real data; avoid unreadable low-contrast text on dark faceplates or white labels on silver light faceplates.
+- **Don't:** never use emojis as UI icons or button prefixes (always use Lucide or clean vector SVGs with currentColor); Do not treat a plain dark theme as skeuomorphic; do not add non-functional decorative screws or fake analog needles that don't connect to real data; avoid unreadable low-contrast text on dark faceplates or white labels on silver light faceplates.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -124,7 +125,7 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 **Physical precision, not decorative skeuo-noise.**
 
-- **Reject:** Disconnected dials that control nothing, decorative screw heads with no enclosure context, unreadable white text on brushed aluminum, and fake needles stuck at arbitrary angles.
+- **Reject:** emojis used as UI icons or button stickers, Disconnected dials that control nothing, decorative screw heads with no enclosure context, unreadable white text on brushed aluminum, and fake needles stuck at arbitrary angles.
 - **Instead:** Apply tactile depth to interactive controls that map directly to state, volume, balance, or user parameters.
 - **Copy check:** Labels should mimic industrial equipment (engraved, brief, functional).
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `skeuomorphism`.

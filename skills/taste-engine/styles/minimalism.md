@@ -64,6 +64,7 @@ Surfaces are quiet, flat, and matte. Minimal or zero box-shadows (`0 1px 3px rgb
 
 ## Component anatomy and interaction
 
+- **Iconography — zero emojis:** Emojis are strictly banned as interface icons, status indicators, or button prefixes across all UI elements. Use Lucide or clean vector SVGs (16px–24px) with consistent stroke weight (1.5px–2px) and currentColor.
 - **Primary Action (CTA):** Solid dark pill or rounded rectangle with white text, high contrast, and smooth hover transition.
 - **Secondary Action:** Unadorned text link or subtle outline button with hairline border.
 - **Form Input:** Clean input field with visible border, clear placeholder, and high-contrast focus ring (`outline: 2px solid #18181B; outline-offset: 2px;`).
@@ -107,7 +108,7 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 ## Style-specific quality gate
 
 - **Do:** Verify high text contrast (WCAG AA 4.5:1) in both light and dark modes; ensure interactive controls have clear hit targets and visible focus indicators; group content through spacing and hairline dividers; verify that mode switching flips canvas, ink, muted text, and borders in paired synchronization.
-- **Don't:** Do not treat washed-out gray text or missing labels as minimalism; avoid hiding core actions behind obscure icons; do not create vast empty voids that confuse navigation; avoid dark/light theme collisions where text remains dark on dark canvas.
+- **Don't:** never use emojis as UI icons or button prefixes (always use Lucide or clean vector SVGs with currentColor); Do not treat washed-out gray text or missing labels as minimalism; avoid hiding core actions behind obscure icons; do not create vast empty voids that confuse navigation; avoid dark/light theme collisions where text remains dark on dark canvas.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -115,7 +116,7 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 **Clarity through restraint, not lazy emptiness.**
 
-- **Reject:** Faint low-contrast gray text, unlabelled icon-only controls, ghost buttons that look disabled, empty viewports that communicate zero product information, and theme collisions where text is unreadable against the canvas.
+- **Reject:** emojis used as UI icons or button stickers, Faint low-contrast gray text, unlabelled icon-only controls, ghost buttons that look disabled, empty viewports that communicate zero product information, and theme collisions where text is unreadable against the canvas.
 - **Instead:** Combine ample breathing room with high-contrast type hierarchy, clear semantic actions, and robust dark/light theme support.
 - **Copy check:** Every word must serve a clear purpose; remove filler and hype copy.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `minimalism`.

@@ -17,7 +17,7 @@ Do **not** mark an expressive style feature as defective just because the audito
 
 - [ ] **Style fidelity:** the UI matches the *selected* style and approved project choices, not generic trends or an unrelated preference.
 - [ ] **Composition:** groups reflect data/task relationships; nested surfaces have distinct semantic ownership; equal peers feel balanced; intentional asymmetry is clear.
-- [ ] **Purpose:** each badge, icon, chart, gradient, hero, motion, and control serves content, interaction, or chosen style.
+- [ ] **Purpose & zero emojis:** each badge, icon, chart, gradient, hero, motion, and control serves content, interaction, or chosen style; zero emojis used as UI icons, button prefixes, or badges (only Lucide or clean vector SVGs with currentColor).
 - [ ] **Full-screen hero (if applicable):** header + hero respect one visible viewport; height uses a mobile-safe min-height strategy; no clipped title, CTA, safe area or keyboard focus; no fake decoration to fill space. See `hero-layout.md`.
 - [ ] **Content & truth:** no invented numbers, testimonials, logo strips, realtime statuses, urgency, placeholders masquerading as real users, or false successes.
 - [ ] **Copywriting:** headings say something; CTA predicts result; microcopy explains state/recovery; no generic motivational filler; locale is natural.

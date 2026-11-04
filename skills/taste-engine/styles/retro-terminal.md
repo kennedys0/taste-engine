@@ -75,6 +75,7 @@ Corners are sharp or minimal (`0px–4px`); 1px solid terminal panel borders; ti
 
 ## Component anatomy and interaction
 
+- **Iconography — zero emojis:** Emojis are strictly banned as interface icons, status indicators, or button prefixes across all UI elements. Use Lucide or clean vector SVGs (16px–24px) with consistent stroke weight (1.5px–2px) and currentColor.
 - **Command Line Prompt:** `user@system:~$ command --flag` with functional input and clear return results.
 - **Terminal Button / Action:** Outlined bracket button (`[ EXECUTE ]` or `[ CANCEL ]`) with hover color inversion (`background: currentColor; color: #000;`).
 - **Data Log Stream:** Tabular rows with timestamp, log level tag, and message.
@@ -120,7 +121,7 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 ## Style-specific quality gate
 
 - **Do:** Verify high text contrast against canvas (WCAG AA); ensure monospace alignment is preserved; provide click fallbacks for all keyboard shortcuts; test scanline readability; verify dark/light mode switching so phosphor colors invert to high-contrast dark ink on light grounds.
-- **Don't:** Do not treat a plain dark theme as retro-terminal; avoid illegible glitch animations; do not present fake non-interactive console prompts that confuse users; avoid light-mode theme collisions such as neon green or light amber text on parchment.
+- **Don't:** never use emojis as UI icons or button prefixes (always use Lucide or clean vector SVGs with currentColor); Do not treat a plain dark theme as retro-terminal; avoid illegible glitch animations; do not present fake non-interactive console prompts that confuse users; avoid light-mode theme collisions such as neon green or light amber text on parchment.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -128,7 +129,7 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 **Authentic CLI environment, not hacker wallpaper.**
 
-- **Reject:** Generic dark cards disguised as terminal, decorative non-functional console prompts, blinding scanline overlays, neon text on light paper backgrounds, and illegible matrix rain loops.
+- **Reject:** emojis used as UI icons or button stickers, Generic dark cards disguised as terminal, decorative non-functional console prompts, blinding scanline overlays, neon text on light paper backgrounds, and illegible matrix rain loops.
 - **Instead:** Provide real monospace hierarchy, working command lines or tabs, structured tabular log readouts, and calibrated dark/light contrast.
 - **Copy check:** Use precise technical commands and status descriptors.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `retro-terminal`.

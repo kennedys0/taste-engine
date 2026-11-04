@@ -64,6 +64,7 @@ Surfaces are completely flat, unornamented, and ink-sharp. Zero drop shadows, ze
 
 ## Component anatomy and interaction
 
+- **Iconography — zero emojis:** Emojis are strictly banned as interface icons, status indicators, or button prefixes across all UI elements. Use Lucide or clean vector SVGs (16px–24px) with consistent stroke weight (1.5px–2px) and currentColor.
 - **Editorial Primary CTA:** Crisp solid black block with white typography, or clean underlined text link with 2px stroke offset.
 - **Numbered Index Tag:** Small uppercase tag: `[ 01 / ARCHITECTURE ]`.
 - **Dividing Rule:** `border-top: 1px solid #111111; padding-top: 1.5rem; margin-top: 2rem;`.
@@ -108,7 +109,7 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 ## Style-specific quality gate
 
 - **Do:** Verify strict 12-column grid alignment; maintain dramatic headline-to-body scale ratio; ensure 1px hairline rules cleanly separate sections; keep accent color strictly singular; verify dark/light mode switching so typography, canvas, hairline rules, and primary actions flip cleanly without color collisions (minimum 4.5:1 contrast).
-- **Don't:** Do not add drop shadows, rounded bubbles, or decorative gradients; do not clutter whitespace with meaningless badge chips; avoid low-contrast gray text on small labels; do not leave black typography on dark obsidian canvas.
+- **Don't:** never use emojis as UI icons or button prefixes (always use Lucide or clean vector SVGs with currentColor); Do not add drop shadows, rounded bubbles, or decorative gradients; do not clutter whitespace with meaningless badge chips; avoid low-contrast gray text on small labels; do not leave black typography on dark obsidian canvas.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -116,7 +117,7 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 **Typographic authority, not generic minimalism.**
 
-- **Reject:** Weak headlines, decorative card wrappers around text, multiple competing accent colors, low-contrast small captions, and theme collisions (such as black typography remaining on a dark editorial canvas).
+- **Reject:** emojis used as UI icons or button stickers, Weak headlines, decorative card wrappers around text, multiple competing accent colors, low-contrast small captions, and theme collisions (such as black typography remaining on a dark editorial canvas).
 - **Instead:** Rely on scale contrast, precise column alignment, singular accent signal, and synchronized dark/light polarity inversion.
 - **Copy check:** Text must read like an editorial publication—articulate, structured, and intentional.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `swiss-editorial`.

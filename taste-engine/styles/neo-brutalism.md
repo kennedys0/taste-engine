@@ -69,6 +69,7 @@ Surfaces are clean, opaque, and solid:
 
 ## Component anatomy and interaction
 
+- **Iconography — zero emojis:** Emojis are strictly banned as interface icons, status indicators, or button prefixes across all UI elements. Use Lucide or clean vector SVGs (16px–24px) with consistent stroke weight (1.5px–2px) and currentColor.
 - **Primary Action (CTA):** Bold colored pill/rectangle with hard offset shadow, thick stroke, and tactile click depression.
 - **Secondary Action:** White or transparent fill with black border, inverted hover effect (`background: #121212; color: #FFFFFF;`).
 - **Form Controls:** Outlined input box with crisp label, distinct focus state with colored offset glow or deepened stroke.
@@ -117,7 +118,7 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 ## Style-specific quality gate
 
 - **Do:** Verify hard unblurred offset shadows; maintain 2–3px solid borders; test tactile press displacement; verify text contrast against saturated accents (black ink on yellow/cyan/mint); verify dark/light mode switching so borders, offset shadows, and ink invert properly and never disappear into dark grounds.
-- **Don't:** Do not add blur or spread to neo-brutalist shadows; avoid muted low-contrast pastels; do not place pure white text on yellow or mint buttons; do not leave black borders/shadows on dark canvas.
+- **Don't:** never use emojis as UI icons or button prefixes (always use Lucide or clean vector SVGs with currentColor); Do not add blur or spread to neo-brutalist shadows; avoid muted low-contrast pastels; do not place pure white text on yellow or mint buttons; do not leave black borders/shadows on dark canvas.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -125,7 +126,7 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 **Confident graphic pop, not messy chaos.**
 
-- **Reject:** Blurry shadows, gradient borders, cartoon sticker spam, illegible white text on bright yellow pills, and dark mode theme collisions where black borders disappear against dark canvas.
+- **Reject:** emojis used as UI icons or button stickers, Blurry shadows, gradient borders, cartoon sticker spam, illegible white text on bright yellow pills, and dark mode theme collisions where black borders disappear against dark canvas.
 - **Instead:** Pair crisp solid borders with grounded unblurred offset shadows, clear typographic hierarchy, and intentional theme adaptation.
 - **Copy check:** Punchy, human microcopy without hollow corporate slogans.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `neo-brutalism`.

@@ -81,6 +81,7 @@ CSS Grid: `grid-template-columns: repeat(3, 1fr)` or `repeat(4, 1fr)`; gaps: 16p
 
 ## Component anatomy and interaction
 
+- **Iconography — zero emojis:** Emojis are strictly banned as interface icons, status indicators, or button prefixes across all UI elements. Use Lucide or clean vector SVGs (16px–24px) with consistent stroke weight (1.5px–2px) and currentColor.
 1. **Hero Profile / Value Tile (2x2 or 2x1):** Avatar portrait with subtle border ring, bold two-tone headline ("Name is a Role currently doing Activity"), and status indicator.
 2. **Contact / CTA Tile (1x1 or 2x1):** Abstract wireframe vector icon (spring, wave, geometric), direct question ("Have a project in mind?"), and high-contrast full-pill button (`#FF5722`, `border-radius: 9999px`).
 3. **Capsule Links Strip (Full Width Row):** A continuous horizontal sequence of capsule pills (`[ github. ] [ dribbble. ] [ figma. ] [ x.com. ] [ linkedin. ]`) with clean hover feedback.
@@ -130,7 +131,7 @@ Direct, punchy, and informative. Examples: “Instant deployment”, “Zero con
 ## Style-specific quality gate
 
 - **Do:** Verify clear visual dominance of the hero tile; ensure every tile has a distinct internal layout; confirm single-viewport first-screen fit on desktop; ensure horizontal side-by-side capsule link alignment; verify non-pitch-black graphite slate (#13151b / #1e222b); check grid collapse on mobile; maintain consistent gap spacing; verify dark/light mode switching contrast: ensure canvas, tile surfaces, typography, and borders switch in coupled pairs and pass WCAG AA (at least 4.5:1).
-- **Don't:** Do not generate identical repeating 3-card or 4-card templates; avoid nested cards inside tiles; never stack capsule links vertically in a column; avoid oversized padding that breaks the 1-page viewport fit; do not use raw pitch black (#000000); avoid unreadable miniature charts or fake metric labels; do not allow theme collisions such as dark text on dark tiles, white text on white tiles, or invisible borders.
+- **Don't:** never use emojis as UI icons or button prefixes (always use Lucide or clean vector SVGs with currentColor); Do not generate identical repeating 3-card or 4-card templates; avoid nested cards inside tiles; never stack capsule links vertically in a column; avoid oversized padding that breaks the 1-page viewport fit; do not use raw pitch black (#000000); avoid unreadable miniature charts or fake metric labels; do not allow theme collisions such as dark text on dark tiles, white text on white tiles, or invisible borders.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -138,7 +139,7 @@ Direct, punchy, and informative. Examples: “Instant deployment”, “Zero con
 
 **Curated composition, not auto-generated card grids.**
 
-- **Reject:** Uniform grids of identical cards, nested cards within cards, vertically stacked capsule pills, raw pitch black (#000000) surfaces, fake metrics with no units, placeholder icons without clear meaning, empty tiles added solely to balance a CSS grid, and dark/light mode color collisions where text remains unreadable against the tile surface.
+- **Reject:** emojis used as UI icons or button stickers, Uniform grids of identical cards, nested cards within cards, vertically stacked capsule pills, raw pitch black (#000000) surfaces, fake metrics with no units, placeholder icons without clear meaning, empty tiles added solely to balance a CSS grid, and dark/light mode color collisions where text remains unreadable against the tile surface.
 - **Instead:** Design each tile around actual distinct features or user actions with asymmetric weights and scannable headings.
 - **Copy check:** Every tile heading must communicate real functional utility; avoid generic slogan templates.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `bento`.

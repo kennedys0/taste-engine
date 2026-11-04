@@ -93,6 +93,7 @@ See `examples/glassmorphism/frosted-surfaces.css` in the full Taste Engine route
 
 ## Component anatomy and interaction
 
+- **Iconography — zero emojis:** Emojis are strictly banned as interface icons, status indicators, or button prefixes across all UI elements. Use Lucide or clean vector SVGs (16px–24px) with consistent stroke weight (1.5px–2px) and currentColor.
 - **Frosted Glass Pane/Pod:** Master translucent container with 16–24px corner radius, 1px translucent specular border, inset top sheen (`inset 0 1px 1px 0 rgba(255, 255, 255, 0.25)`), and smooth ambient drop shadow.
 - **Hero Window:** Opening viewport anchor placing brand headings and primary actions inside a visible, frosted glass composition with light filtering through from behind.
 - **Glass Controls & Sliders:** Frosted slider tracks with tactile thumb handles and interactive value tags.
@@ -141,7 +142,7 @@ For public portfolio/landing/homepages with a hero, use a **header + hero** firs
 ## Style-specific quality gate
 
 - **Do:** Verify translucent frosted surfaces filtering backdrop light; ensure 1px translucent borders and specular highlights define panel edges; ensure background gradients are non-clashing and paired with subtle tactile micro-textures; test accessibility fallback without `backdrop-filter`; verify dark/light mode switching so foreground text and glass panels flip cleanly without color collisions (WCAG AA 4.5:1).
-- **Don't:** Do not treat plain dark/light cards as glassmorphism; avoid whole-screen blur; avoid low-contrast text floating over noisy translucent areas; do not use discordant rainbow gradients that clash or overpower content; do not leave dark text when switching to smoked dark glass.
+- **Don't:** never use emojis as UI icons or button prefixes (always use Lucide or clean vector SVGs with currentColor); Do not treat plain dark/light cards as glassmorphism; avoid whole-screen blur; avoid low-contrast text floating over noisy translucent areas; do not use discordant rainbow gradients that clash or overpower content; do not leave dark text when switching to smoked dark glass.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -151,7 +152,7 @@ Every element must earn its place. **Content before decoration. Do not decorate 
 
 Do not add decorative **card-inside-card** layers: a nested surface must represent a distinct interaction or information boundary. Avoid auto-generated 3-feature grids, 4-stat dashboards, fake hero claims, purposeless charts, badge/chip/icon spam, unrelated decorative art, and random loops merely to fill the viewport. Prefer grouping with typography, spacing, alignment and dividers. Equal peers need intentional visual balance.
 
-**Anti-slop copywriting:** no generic "Unlock your potential", "Experience the future", "Supercharge your workflow", "seamless" claims, or translated equivalents. Headings must communicate actual content, CTAs must name the action, and empty/error/success text must describe real states and next steps. Avoid fake urgency, made-up counts, vague AI hype, gratuitous emoji, and inaccessible all-caps walls. Adapt the wording to this style and the user's language without changing the truth.
+**Anti-slop copywriting & zero emojis:** no generic "Unlock your potential", "Experience the future", "Supercharge your workflow", "seamless" claims, or translated equivalents. Headings must communicate actual content, CTAs must name the action, and empty/error/success text must describe real states and next steps. Avoid fake urgency, made-up counts, vague AI hype, and inaccessible all-caps walls. Emojis are strictly forbidden as UI icons, button prefixes, or badges across all styles; interface elements must exclusively use clean vector SVGs from Lucide, Radix, Feather, or Heroicons with currentColor inheritance. Adapt the wording to this style and the user's language without changing the truth.
 
 **Theme and mode contrast integrity:** When a user requests dark mode or light mode (or builds a theme switcher), background and foreground colors MUST flip in synchronized pairs across all surfaces, text, borders, inputs, and semantic badges. Never leave black text on dark background, white text on white background, or unreadable low-contrast status pills. All states must meet WCAG AA contrast (minimum 4.5:1 for body/normal text, 3:1 for large headlines and interactive boundaries).
 
@@ -165,7 +166,7 @@ Do not add decorative **card-inside-card** layers: a nested surface must represe
 
 **Translucent depth, not blurry chaos.**
 
-- **Reject:** Completely opaque flat cards described as glass, clashing rainbow gradient blobs with no depth or texture, text placed over high-contrast translucent clutter with no solid underlay, and theme contrast collisions (such as black text on dark smoked glass).
+- **Reject:** emojis used as UI icons or button stickers, Completely opaque flat cards described as glass, clashing rainbow gradient blobs with no depth or texture, text placed over high-contrast translucent clutter with no solid underlay, and theme contrast collisions (such as black text on dark smoked glass).
 - **Instead:** Filter structured, purposeful, non-clashing ambient light through legible frosted panes with clear hierarchy, distinct nested glass depth planes, and solid readable content containers.
 - **Copy check:** Avoid clichés like "crystal clear" or "transparent future."
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `glassmorphism`.

@@ -48,7 +48,7 @@ Do not make the *better* examples into fixed product copy: they are only correct
 - **Success & status:** reflect confirmed application state only. Don't mark saved, paid, connected, secure, verified, online or complete before evidence exists.
 - **Marketing:** product-aware claim + demonstrable mechanism or result; if facts are missing, draft neutral language or mark copy for review. Never manufacture logos, testimonials or comparative metrics.
 - **Onboarding:** minimize introductory story; tell users what they'll do now, what data is needed, and why.
-- **Accessible copy:** no unexplained icon-only actions, ambiguous link text, all-caps paragraphs, emoji as the sole status cue, or unnecessary punctuation.
+- **Accessible copy & iconography:** Emojis are strictly banned across all UI components, buttons, and badges. Always use clean vector SVGs from Lucide, Radix, Feather, or Heroicons with semantic labels. No unexplained icon-only actions, ambiguous link text, all-caps paragraphs, or unnecessary punctuation.
 
 ## Voice adapts to styles (examples, not mandatory labels)
 
