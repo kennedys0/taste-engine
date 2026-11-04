@@ -34,6 +34,11 @@ A successful bento grid implementation demonstrates **all** of the following:
 3. **Unified Spatial Rhythm & Gutter Alignment:** Tile borders align strictly along a consistent CSS Grid (e.g. 3 or 4 columns) with uniform gutters (16px–24px) and matching corner curvature (20px–28px).
 4. **Deliberate Mobile Restructuring:** On mobile viewports, the multi-column bento collapses into a logical, content-prioritized single column without clipping contents or causing awkward horizontal overflows.
 5. **Legible Internal Hierarchy:** Each tile has a clear, succinct heading (18px–24px) and high-contrast content, avoiding walls of tiny text compressed into small boxes.
+6. **Strictly Horizontal Capsule Strip (No Vertical Pill Stacking):** Any ecosystem, social profile links, or quick-filter capsule strip spanning the grid MUST be laid out horizontally side-by-side (`grid-template-columns: repeat(N, 1fr)` or inline horizontal flex ribbon with horizontal scroll on mobile). Never stack capsule buttons vertically in a column or dropdown list.
+7. **Single-Viewport Hero Composition ("1-Page Fit"):** When used as the primary hero section, portfolio overview, or studio landing page, the complete Bento composition must calibrate its padding, aspect ratios, and card heights so that the entire set of complementary tiles fits comfortably within a single desktop viewport (`100svh` / `min-height: calc(100svh - header_height)`). Avoid oversized card padding or excessive vertical gaps that force the user to scroll before seeing the primary compartments.
+8. **Anti-Pitch-Black Rule:** Never use pure `#000000` for canvas or cards in dark mode. Pitch black creates harsh visual vibration, destroys depth perception, and accelerates eye fatigue. The canvas base must use refined dark graphite slate (`#13151B`), cards use elevated matte charcoal (`#1E222B`), and elevated pill capsules use deep charcoal (`#262B36`).
+9. **Two-Tone Typographic Contrast:** In narrative, profile, or value-statement tiles, never render whole paragraphs in monochromatic text. The primary hook or subject uses high-contrast crisp white (`#F4F4F7`, weight 700), while the sentence continuation or supporting role seamlessly continues in warm muted slate gray (`#8E95A5`, weight 400–500).
+10. **High-Impact Action Pill CTA:** The primary conversion action (email link, hire button, start project CTA) must use a warm Tangerine/Coral (`#FF5722`) button with full-pill radius (`border-radius: 9999px`) to create an immediate focal pull against the dark slate surfaces.
 
 **First-viewport test:** In a desktop screenshot, identify the dominant hero tile, the varied internal tile presentations, and the unified grid alignment **without reading the page title**. If all tiles look identical, redesign the grid hierarchy.
 
@@ -54,7 +59,7 @@ In narrative, profile, or value-statement tiles, do not render whole paragraphs 
 
 ## Color direction
 
-- **Dark Mode (Default Refined Matte Slate — Bukan Hitam Pekat):**
+- **Dark Mode (Default Refined Matte Slate — Non-Pitch-Black):**
   - **No Pitch Black Rule:** Never use `#000000` or raw black for canvas or card surfaces. Pitch black creates harsh unnatural contrast and flattens depth. Use refined dark graphite/charcoal slate.
   - **Canvas Base:** Soft dark graphite slate (`#13151B`).
   - **Tile Background:** Elevated matte charcoal (`#1E222B`).
@@ -110,7 +115,7 @@ Direct, punchy, and informative. Examples: “Instant deployment”, “Zero con
 
 ## Starter tokens (suggestions, not a complete theme)
 
-| Token | Dark mode default (Bukan Hitam Pekat) | Light mode default |
+| Token | Dark mode default (Refined Slate / Non-Pitch-Black) | Light mode default |
 | --- | --- | --- |
 | `--taste-bento-bg` | `#13151b` | `#f3f4f6` |
 | `--taste-bento-surface` | `#1e222b` | `#ffffff` |
@@ -134,8 +139,8 @@ Direct, punchy, and informative. Examples: “Instant deployment”, “Zero con
 
 ## Style-specific quality gate
 
-- **Do:** Verify clear visual dominance of the hero tile; ensure every tile has a distinct internal layout; check grid collapse on mobile; maintain consistent gap spacing; verify dark/light mode switching contrast: ensure canvas, tile surfaces, typography, and borders switch in coupled pairs and pass WCAG AA (at least 4.5:1).
-- **Don't:** Do not generate identical repeating 3-card or 4-card templates; avoid nested cards inside tiles; avoid unreadable miniature charts or fake metric labels; do not allow theme collisions such as dark text on dark tiles, white text on white tiles, or invisible borders.
+- **Do:** Verify clear visual dominance of the hero tile; ensure every tile has a distinct internal layout; confirm single-viewport first-screen fit on desktop; ensure horizontal side-by-side capsule link alignment; verify non-pitch-black graphite slate (#13151b / #1e222b); check grid collapse on mobile; maintain consistent gap spacing; verify dark/light mode switching contrast: ensure canvas, tile surfaces, typography, and borders switch in coupled pairs and pass WCAG AA (at least 4.5:1).
+- **Don't:** Do not generate identical repeating 3-card or 4-card templates; avoid nested cards inside tiles; never stack capsule links vertically in a column; avoid oversized padding that breaks the 1-page viewport fit; do not use raw pitch black (#000000); avoid unreadable miniature charts or fake metric labels; do not allow theme collisions such as dark text on dark tiles, white text on white tiles, or invisible borders.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -159,7 +164,7 @@ Do not add decorative **card-inside-card** layers: a nested surface must represe
 
 **Curated composition, not auto-generated card grids.**
 
-- **Reject:** Uniform grids of identical cards, nested cards within cards, fake metrics with no units, placeholder icons without clear meaning, empty tiles added solely to balance a CSS grid, and dark/light mode color collisions where text remains unreadable against the tile surface.
+- **Reject:** Uniform grids of identical cards, nested cards within cards, vertically stacked capsule pills, raw pitch black (#000000) surfaces, fake metrics with no units, placeholder icons without clear meaning, empty tiles added solely to balance a CSS grid, and dark/light mode color collisions where text remains unreadable against the tile surface.
 - **Instead:** Design each tile around actual distinct features or user actions with asymmetric weights and scannable headings.
 - **Copy check:** Every tile heading must communicate real functional utility; avoid generic slogan templates.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `bento`.

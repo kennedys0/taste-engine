@@ -1,8 +1,8 @@
 """
 Generate the overhauled, authentic 1-page Proof of Work (PoW) for Bento Grid (docs/bento.html).
 Features:
-- "paskan jadi 1 page": Complete Bento Grid fits into 1 desktop viewport (100svh)
-- Removed badges: "Available for select projects" & "ONLINE • taste-engine.dev"
+- Single-viewport fit: Complete Bento Grid fits into 1 desktop viewport (100svh)
+- Clean profile: Removed redundant badges ("Available for select projects" & "ONLINE • taste-engine.dev")
 - Name: fekojewan (FK avatar initials)
 - Email: mail@fekojewan.my.id (punchy #ff5722 pill button)
 - Location: Indonesia (live running WIB / GMT+7 clock)
@@ -27,7 +27,7 @@ HTML_CONTENT = """<!DOCTYPE html>
   <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     /* =========================================================
-       BENTO GRID DESIGN SYSTEM TOKENS (BUKAN HITAM PEKAT)
+       BENTO GRID DESIGN SYSTEM TOKENS (REFINED GRAPHITE SLATE)
        ========================================================= */
     :root {
       /* Clean Architectural Light */
@@ -52,7 +52,7 @@ HTML_CONTENT = """<!DOCTYPE html>
     }
 
     [data-theme="dark"] {
-      /* Refined Matte Graphite Slate — Bukan Hitam Pekat */
+      /* Refined Matte Graphite Slate — Non-Pitch-Black */
       --pow-bg: #13151b;
       --pow-surface: #1e222b;
       --pow-surface-elevated: #262b36;
@@ -113,18 +113,12 @@ HTML_CONTENT = """<!DOCTYPE html>
       color: var(--pow-text);
     }
 
-    .nav-logo-box {
-      width: 30px;
-      height: 30px;
-      background: var(--pow-accent-brand);
-      color: #fff;
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-family: var(--pow-font-display);
-      font-size: 0.95rem;
+    .brand-logo-img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+      border-radius: 6px;
+      display: block;
     }
 
     .nav-title {
@@ -225,7 +219,7 @@ HTML_CONTENT = """<!DOCTYPE html>
     }
 
     /* =========================================================
-       1-PAGE BENTO HERO VIEWPORT (PASKAN JADI 1 PAGE)
+       1-PAGE BENTO HERO VIEWPORT (SINGLE-VIEWPORT FIT)
        ========================================================= */
     .bento-hero-viewport {
       min-height: calc(100svh - 56px);
@@ -396,7 +390,7 @@ HTML_CONTENT = """<!DOCTYPE html>
       box-shadow: 0 6px 20px rgba(255, 87, 34, 0.45);
     }
 
-    /* Tile 3: Social Strip / Capsule Links (Full 12 cols, strictly horizontal / sejajar) */
+    /* Tile 3: Social Strip / Capsule Links (Full 12 cols, strictly horizontal side-by-side) */
     .bento-social-row {
       grid-column: span 12;
       display: grid;
@@ -995,12 +989,12 @@ HTML_CONTENT = """<!DOCTYPE html>
   <!-- Top Navigation with Integrated Quick-Install Pill -->
   <header class="pow-nav">
     <a href="index.html" class="nav-brand-group">
-      <div class="nav-logo-box">B</div>
+      <img src="assets/logo.webp" alt="Taste Engine Logo" class="brand-logo-img">
       <span class="nav-title">Taste Engine</span>
       <span class="nav-tag-badge">#01 BENTO</span>
     </a>
 
-    <!-- Single-Line Inline Command Pill ("Sejajarin") -->
+    <!-- Single-Line Inline Command Pill (Aligned) -->
     <div class="nav-command-pill">
       <span style="color: var(--pow-text-muted); font-family: var(--pow-font-mono); font-weight: 700;">$</span>
       <code class="nav-cmd-code" id="navCmdText">npx skills add kennedys0/taste-engine --skill taste-style-bento</code>
@@ -1019,7 +1013,7 @@ HTML_CONTENT = """<!DOCTYPE html>
 
   <main>
     <!-- =========================================================
-         1-PAGE BENTO HERO VIEWPORT (PASKAN JADI 1 PAGE)
+         1-PAGE BENTO HERO VIEWPORT (SINGLE-VIEWPORT FIT)
          ========================================================= -->
     <section class="bento-hero-viewport">
       
@@ -1069,7 +1063,7 @@ HTML_CONTENT = """<!DOCTYPE html>
           </div>
         </article>
 
-        <!-- Tile 3: Social & Ecosystem Capsule Strip (Full 12 cols, side-by-side horizontally / sejajar) -->
+        <!-- Tile 3: Social & Ecosystem Capsule Strip (Full 12 cols, side-by-side horizontally) -->
         <div class="bento-social-row">
           <button class="capsule-link-btn" onclick="handleBtnClick('Navigating to GitHub')">github.</button>
           <button class="capsule-link-btn" onclick="handleBtnClick('Navigating to Figma')">figma.</button>
@@ -1319,7 +1313,7 @@ HTML_CONTENT = """<!DOCTYPE html>
           <thead>
             <tr>
               <th>Token Name</th>
-              <th>Dark Mode (Bukan Hitam Pekat)</th>
+              <th>Dark Mode (Refined Slate / Non-Pitch-Black)</th>
               <th>Light Mode</th>
               <th>Role & Description</th>
             </tr>
@@ -1427,41 +1421,41 @@ HTML_CONTENT = """<!DOCTYPE html>
       <div class="faq-accordion">
         <div class="pow-faq-item">
           <div class="pow-faq-header" onclick="toggleFaq(this)">
-            <span>Mengapa Bento Grid Taste Engine menggunakan abu-abu graphite dan bukan hitam pekat?</span>
+            <span>Why does Taste Engine's Bento Grid use warm graphite slate instead of pitch black?</span>
             <span class="faq-arrow">+</span>
           </div>
           <div class="pow-faq-body">
-            Hitam murni (<code>#000000</code>) menciptakan kontras yang terlalu tajam dan merusak ilusi kedalaman spasial. Dengan menggunakan graphite slate hangat (<code>#13151B</code> untuk kanvas dan <code>#1E222B</code> untuk kartu), antarmuka terasa matte, mewah, mengurangi kelelahan mata, dan memungkinkan border hairline 1px (<code>rgba(255, 255, 255, 0.08)</code>) terlihat natural.
+            Pure pitch black (<code>#000000</code>) creates harsh visual vibration, destroys depth perception, and accelerates eye fatigue. By using refined matte graphite slate (<code>#13151b</code> for canvas base and <code>#1e222b</code> for card surfaces), the composition gains tactile depth and allows 1px hairline borders (<code>rgba(255, 255, 255, 0.08)</code>) to render softly and naturally.
           </div>
         </div>
 
         <div class="pow-faq-item">
           <div class="pow-faq-header" onclick="toggleFaq(this)">
-            <span>Apa itu aturan Two-Tone Typographic Contrast?</span>
+            <span>What is the Two-Tone Typographic Contrast rule?</span>
             <span class="faq-arrow">+</span>
           </div>
           <div class="pow-faq-body">
-            Dalam Bento Grid otentik, teks headline atau narasi tidak pernah dicetak dalam satu warna solid penuh. Kalimat pembuka atau subjek utama menggunakan putih kontras tinggi (<code>#F4F4F7</code> weight 700), sementara kalimat penjelas atau peran pendukung disambung dengan abu-abu hangat (<code>#8E95A5</code>). Ini menghasilkan hierarki baca instan tanpa kesan "tembok teks" (anti-slop).
+            In authentic Bento design, narrative and value statements avoid monochromatic text rendering. The primary hook or subject uses high-contrast crisp white (<code>#f4f4f7</code>, weight 700), while the sentence continuation or supporting role transitions seamlessly to warm muted slate (<code>#8e95a5</code>, weight 400–500). This provides immediate visual scanning hierarchy without creating an imposing wall of text.
           </div>
         </div>
 
         <div class="pow-faq-item">
           <div class="pow-faq-header" onclick="toggleFaq(this)">
-            <span>Bagaimana Bento Grid mencegah AI-slop kartu seragam?</span>
+            <span>How does Bento Grid prevent generic uniform card slop?</span>
             <span class="faq-arrow">+</span>
           </div>
           <div class="pow-faq-body">
-            Fidelity gate Taste Engine melarang keras grid seragam 3x2 dengan template kartu identik (ikon + judul + paragraf). Setiap kompartemen Bento harus memiliki anatomi internal yang berbeda: satu kartu adalah bio profil dengan avatar, kartu lain berupa tombol CTA pill kontak, kartu ketiga berisi strip capsule link, dan kartu lainnya menampilkan telemetri jam live.
+            Taste Engine's fidelity gate strictly rejects repetitive 3x2 uniform cards (the generic icon + heading + paragraph pattern). Every compartment in a Bento Grid must serve a distinct functional anatomy: a profile hero with avatar, a high-contrast pill CTA, a full-width horizontal capsule link strip, and live telemetry status monitors.
           </div>
         </div>
 
         <div class="pow-faq-item">
           <div class="pow-faq-header" onclick="toggleFaq(this)">
-            <span>Bisakah saya menginstal Bento Grid secara mandiri (standalone)?</span>
+            <span>Can I install Bento Grid as a standalone skill?</span>
             <span class="faq-arrow">+</span>
           </div>
           <div class="pow-faq-body">
-            Ya! Jalankan perintah <code>npx skills add kennedys0/taste-engine --skill taste-style-bento</code>. Skill ini hanya memuat aturan, token, dan resep Bento Grid sehingga menghemat kuota context token AI agent Anda.
+            Yes! Run <code>npx skills add kennedys0/taste-engine --skill taste-style-bento</code>. This installs only the Bento Grid tokens, CSS recipes, and fidelity gates, keeping your AI agent's context window lightweight and focused.
           </div>
         </div>
       </div>
@@ -1472,7 +1466,10 @@ HTML_CONTENT = """<!DOCTYPE html>
   <footer class="pow-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <h3>Taste Engine</h3>
+        <div style="display: flex; align-items: center; gap: 0.65rem; margin-bottom: 0.75rem;">
+          <img src="assets/logo.webp" alt="Taste Engine Logo" class="brand-logo-img">
+          <h3 style="margin: 0; font-family: var(--pow-font-display); font-size: 1.15rem;">Taste Engine</h3>
+        </div>
         <p>
           Frontend Design Intelligence & Aesthetic Archetypes for Autonomous AI Agents. Built strictly to eliminate generic AI-slop and ensure WCAG AA contrast coupling.
         </p>
