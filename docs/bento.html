@@ -591,44 +591,41 @@
       box-shadow: 0 8px 24px rgba(255, 87, 34, 0.45);
     }
 
-    /* Tile 3: Social Strip / Capsule Links (Full 12 cols) */
-    .card-capsule-strip {
+    /* Tile 3: Social Strip / Capsule Links (Full 12 cols, strictly horizontal / sejajar) */
+    .bento-social-row {
       grid-column: span 12;
-      padding: 0.85rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
       gap: 0.75rem;
-      overflow-x: auto;
-      scrollbar-width: none;
-    }
-
-    .card-capsule-strip::-webkit-scrollbar {
-      display: none;
+      width: 100%;
     }
 
     .capsule-link-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      background: var(--pow-surface-elevated);
+      justify-content: center;
+      background: var(--pow-surface);
       color: var(--pow-text-muted);
       border: var(--pow-border);
       border-radius: var(--pow-radius-pill);
-      padding: 0.45rem 1.15rem;
-      font-size: 0.825rem;
+      padding: 0.75rem 0.65rem;
+      font-size: 0.85rem;
       font-weight: 600;
       text-decoration: none;
       white-space: nowrap;
-      transition: all 120ms ease;
+      transition: all 140ms ease;
       cursor: pointer;
+      box-shadow: var(--pow-shadow);
+      width: 100%;
+      text-align: center;
     }
 
     .capsule-link-btn:hover {
       color: var(--pow-text);
       background: var(--pow-surface-hover);
       border-color: var(--pow-accent-cta);
-      transform: translateY(-1px);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
     }
 
     /* Tile 4: Location & Live Timezone (4 cols) */
@@ -1085,6 +1082,7 @@
       .card-contact-cta { grid-column: span 12; }
       .card-location-geo { grid-column: span 12; }
       .card-philosophy { grid-column: span 12; }
+      .bento-social-row { grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
       .telemetry-grid { grid-template-columns: 1fr; }
       .pow-stat-strip { grid-template-columns: repeat(2, 1fr); }
     }
@@ -1107,6 +1105,25 @@
         grid-column: 1 / -1;
         padding-bottom: 1rem;
         border-bottom: var(--pow-border);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .bento-social-row {
+        display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        scrollbar-width: none;
+        padding-bottom: 4px;
+        gap: 0.5rem;
+      }
+      .bento-social-row::-webkit-scrollbar {
+        display: none;
+      }
+      .capsule-link-btn {
+        flex: 0 0 auto;
+        width: auto;
+        padding: 0.5rem 1rem;
       }
     }
 
@@ -1275,8 +1292,8 @@
           </div>
         </article>
 
-        <!-- Tile 3: Social & Ecosystem Capsule Strip (Full 12 cols) -->
-        <article class="bento-card card-capsule-strip">
+        <!-- Tile 3: Social & Ecosystem Capsule Strip (Full 12 cols, side-by-side horizontally / sejajar) -->
+        <div class="bento-social-row">
           <button class="capsule-link-btn" onclick="handleBtnClick('Navigating to GitHub')">github.</button>
           <button class="capsule-link-btn" onclick="handleBtnClick('Navigating to Figma')">figma.</button>
           <button class="capsule-link-btn" onclick="handleBtnClick('Navigating to Dribbble')">dribbble.</button>
@@ -1284,7 +1301,7 @@
           <button class="capsule-link-btn" onclick="handleBtnClick('Navigating to X / Twitter')">x.com.</button>
           <button class="capsule-link-btn" onclick="handleBtnClick('Navigating to Unsplash')">unsplash.</button>
           <button class="capsule-link-btn" onclick="handleBtnClick('Navigating to LinkedIn')">linkedin.</button>
-        </article>
+        </div>
 
         <!-- Tile 4: Location & Live Timezone (4 cols) -->
         <article class="bento-card card-location-geo">
