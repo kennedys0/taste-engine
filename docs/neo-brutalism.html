@@ -1362,6 +1362,19 @@
       box-shadow: 4px 4px 0 var(--neo-shadow-color);
     }
 
+    .swatch-card.active {
+      border-color: var(--neo-coral) !important;
+      box-shadow: 4px 4px 0 var(--neo-coral) !important;
+      transform: translate(-1px, -1px);
+    }
+
+    .neo-sticker.active {
+      background: var(--neo-lime) !important;
+      color: #121212 !important;
+      box-shadow: 1px 1px 0 var(--neo-shadow-color) !important;
+      transform: scale(0.96) !important;
+    }
+
     .swatch-circle {
       width: 32px;
       height: 32px;
@@ -1930,7 +1943,7 @@
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
               1. Mechanical Press & Physics
             </span>
-            <span class="studio-panel-badge">130MS TACTILE</span>
+            <span class="studio-panel-badge" id="depthTierBadge">5PX CANONICAL</span>
           </div>
           <div class="studio-panel-body">
             <p class="panel-instruction">
@@ -2030,7 +2043,7 @@
 
             <!-- Morphing Live Preview Box -->
             <div class="calibrator-preview-area">
-              <div class="calibrator-target-box" id="calibratorBox" style="border: 2.5px solid var(--neo-border-color); box-shadow: 5px 5px 0 var(--neo-shadow-color); border-radius: 4px;">
+              <div class="calibrator-target-box" id="calibratorBox" onclick="testCalibratorClick()" title="Click to test component press" style="border: 2.5px solid var(--neo-border-color); box-shadow: 5px 5px 0 var(--neo-shadow-color); border-radius: 4px;">
                 NEO COMPONENT
               </div>
             </div>
@@ -2071,8 +2084,11 @@
                 </span>
 
                 <div class="neo-form-field">
-                  <label class="neo-label" for="labInput">Repository Target</label>
-                  <input type="text" id="labInput" class="neo-input" value="kennedys0/taste-engine">
+                  <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <label class="neo-label" for="labInput">Repository Target</label>
+                    <span class="control-val-badge" id="inputCharBadge">22 chars</span>
+                  </div>
+                  <input type="text" id="labInput" class="neo-input" value="kennedys0/taste-engine" oninput="updateInputCharCount(this)">
                 </div>
 
                 <div class="switch-row">
@@ -2103,7 +2119,7 @@
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
               4. Pop Palette & Contrast Matrix
             </span>
-            <span class="studio-panel-badge">WCAG AA 4.5:1+</span>
+            <span class="studio-panel-badge" id="activeAccentBadge">CANARY (#FFE600)</span>
           </div>
           <div class="studio-panel-body">
             <p class="panel-instruction">
@@ -2111,32 +2127,32 @@
             </p>
 
             <div class="palette-swatches-grid">
-              <div class="swatch-card" onclick="selectPaletteAccent('Canary Yellow', '#FFE600')">
+              <div class="swatch-card active" onclick="selectPaletteAccent('Canary Yellow', '#FFE600', this)">
                 <div class="swatch-circle" style="background: #FFE600;"></div>
                 <span class="swatch-name">Canary</span>
                 <span class="swatch-ratio">16.2:1 (AAA)</span>
               </div>
-              <div class="swatch-card" onclick="selectPaletteAccent('Vivid Cyan', '#00F0FF')">
+              <div class="swatch-card" onclick="selectPaletteAccent('Vivid Cyan', '#00F0FF', this)">
                 <div class="swatch-circle" style="background: #00F0FF;"></div>
                 <span class="swatch-name">Cyan</span>
                 <span class="swatch-ratio">14.8:1 (AAA)</span>
               </div>
-              <div class="swatch-card" onclick="selectPaletteAccent('Hot Coral', '#FF5757')">
+              <div class="swatch-card" onclick="selectPaletteAccent('Hot Coral', '#FF5757', this)">
                 <div class="swatch-circle" style="background: #FF5757;"></div>
                 <span class="swatch-name">Coral</span>
                 <span class="swatch-ratio">6.1:1 (AA)</span>
               </div>
-              <div class="swatch-card" onclick="selectPaletteAccent('Neon Lime', '#52FF00')">
+              <div class="swatch-card" onclick="selectPaletteAccent('Neon Lime', '#52FF00', this)">
                 <div class="swatch-circle" style="background: #52FF00;"></div>
                 <span class="swatch-name">Lime</span>
                 <span class="swatch-ratio">15.1:1 (AAA)</span>
               </div>
-              <div class="swatch-card" onclick="selectPaletteAccent('Pop Violet', '#B388FF')">
+              <div class="swatch-card" onclick="selectPaletteAccent('Pop Violet', '#B388FF', this)">
                 <div class="swatch-circle" style="background: #B388FF;"></div>
                 <span class="swatch-name">Violet</span>
                 <span class="swatch-ratio">8.4:1 (AAA)</span>
               </div>
-              <div class="swatch-card" onclick="selectPaletteAccent('Stark Slate', '#222227')">
+              <div class="swatch-card" onclick="selectPaletteAccent('Stark Slate', '#222227', this)">
                 <div class="swatch-circle" style="background: #222227; border-color: #FAFAFA;"></div>
                 <span class="swatch-name">Slate</span>
                 <span class="swatch-ratio">12.3:1 (AAA)</span>
@@ -2505,56 +2521,49 @@
   </div>
 
   <script>
-    // Theme Toggling with LocalStorage Persistence
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    const themeLabel = document.getElementById('themeLabel');
-    const htmlEl = document.documentElement;
+    // =========================================================
+    // NEO-BRUTALISM STUDIO LAB & INTERACTION SCRIPT
+    // =========================================================
+    
+    // Global State Variables (Declared at top to avoid TDZ)
+    let currentDepthOffset = 5;
+    let clickCount = 0;
+    let currentRadiusVal = 4;
+    let hapticSoundEnabled = true;
+    let toastTimeout = null;
+    let audioCtx = null;
 
-    function applyTheme(theme) {
-      htmlEl.setAttribute('data-theme', theme);
-      localStorage.setItem('taste-theme-pow', theme);
-      if (theme === 'dark') {
-        themeLabel.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>LIGHT';
-      } else {
-        themeLabel.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>DARK';
+    // Synthetic Mechanical Click Sound (Web Audio API)
+    function playMechanicalClick(freq = 650) {
+      if (!hapticSoundEnabled) return;
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(100, audioCtx.currentTime + 0.035);
+        gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.035);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + 0.035);
+      } catch (e) {
+        // AudioContext blocked or not supported - silently ignore
       }
-      updateCalibrator();
     }
-
-    const savedTheme = localStorage.getItem('taste-theme-pow') || 'dark';
-    applyTheme(savedTheme);
-
-    themeToggleBtn.addEventListener('click', () => {
-      const current = htmlEl.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      applyTheme(next);
-      showToast(`Switched to ${next.toUpperCase()} mode`);
-    });
-
-    // Mobile Navigation Drawer Controls
-    function openMobileNav() {
-      document.getElementById('mobileNavBackdrop').classList.add('open');
-      document.getElementById('mobileNavDrawer').classList.add('open');
-      document.getElementById('navHamburgerBtn').setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeMobileNav() {
-      document.getElementById('mobileNavBackdrop').classList.remove('open');
-      document.getElementById('mobileNavDrawer').classList.remove('open');
-      document.getElementById('navHamburgerBtn').setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeMobileNav();
-    });
 
     // Toast Notification Utility
-    let toastTimeout;
     function showToast(msg) {
       const toast = document.getElementById('neoToast');
       const toastMsg = document.getElementById('toastMsg');
+      if (!toast || !toastMsg) return;
       toastMsg.textContent = msg;
       toast.classList.add('show');
       clearTimeout(toastTimeout);
@@ -2563,101 +2572,7 @@
       }, 2200);
     }
 
-    // Hero Quick Copy Button
-    const heroCopyBtn = document.getElementById('heroCopyBtn');
-    const heroCmdText = document.getElementById('heroCmdText');
-    if (heroCopyBtn && heroCmdText) {
-      heroCopyBtn.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(heroCmdText.textContent.trim());
-          showToast('Copied installation command!');
-        } catch (e) {
-          showToast('Command copied');
-        }
-      });
-    }
-
-    // Tab Switcher
-    const tabButtons = document.querySelectorAll('.tab-switch-btn');
-    const tabBodies = document.querySelectorAll('.tab-body');
-
-    tabButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabButtons.forEach(b => b.classList.remove('active'));
-        tabBodies.forEach(b => b.classList.remove('active'));
-
-        btn.classList.add('active');
-        const targetId = btn.getAttribute('data-tab');
-        const targetBody = document.getElementById(targetId);
-        if (targetBody) targetBody.classList.add('active');
-      });
-    });
-
-    // Snippet Copier
-    async function copySnippet(elemId) {
-      const el = document.getElementById(elemId);
-      if (!el) return;
-      const text = el.innerText.trim();
-      try {
-        await navigator.clipboard.writeText(text);
-        showToast('Terminal snippet copied!');
-      } catch (e) {
-        showToast('Snippet copied');
-      }
-    }
-
-    // Generic Button Click Handler
-    function handleBtnClick(name) {
-      showToast(`Action: ${name}`);
-    }
-
-    // FAQ Accordion Toggle
-    function toggleFaq(header) {
-      const item = header.parentElement;
-      item.classList.toggle('open');
-    }
-
-    /* =========================================================
-       PLAYGROUND MODULE 1: MECHANICAL PRESS & TELEMETRY
-       ========================================================= */
-    let currentDepthOffset = 5;
-    let clickCount = 0;
-
-    function setDepthTier(offset, btn) {
-      currentDepthOffset = offset;
-      document.querySelectorAll('.depth-btn').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-      
-      const shadowValue = offset === 0 ? 'none' : `${offset}px ${offset}px 0 var(--neo-shadow-color)`;
-      document.documentElement.style.setProperty('--active-specimen-shadow', shadowValue);
-      showToast(`Elevation set to ${offset}px`);
-    }
-
-    function testButtonPress(name, colorHex, contrastRatio) {
-      clickCount++;
-      document.getElementById('telemetryClickCount').textContent = `${clickCount} clicks`;
-      
-      const now = new Date();
-      const timeStr = now.toTimeString().split(' ')[0] + '.' + String(now.getMilliseconds()).padStart(3, '0').slice(0, 2);
-      
-      document.getElementById('telemetryVector').textContent = `translate(2px, 2px) -> ${currentDepthOffset}px collapse`;
-      document.getElementById('telemetryLogText').textContent = `[${timeStr}] PRESS: ${name} (${colorHex}) | CONTRAST: ${contrastRatio} | PASS`;
-      
-      showToast(`Fired ${name} (${contrastRatio})`);
-    }
-
-    /* =========================================================
-       PLAYGROUND MODULE 2: LIVE CALIBRATOR
-       ========================================================= */
-    let currentRadiusVal = 4;
-
-    function setRadiusGeometry(radius, btn) {
-      currentRadiusVal = radius;
-      document.querySelectorAll('.radius-btn').forEach(b => b.classList.remove('active'));
-      if (btn) btn.classList.add('active');
-      updateCalibrator();
-    }
-
+    // Live Calibrator Controller
     function updateCalibrator() {
       const strokeSlider = document.getElementById('strokeSlider');
       const shadowSlider = document.getElementById('shadowSlider');
@@ -2671,10 +2586,10 @@
       const stroke = strokeSlider.value;
       const shadow = shadowSlider.value;
       
-      strokeValBadge.textContent = `${stroke}px`;
-      shadowValBadge.textContent = `${shadow}px`;
+      if (strokeValBadge) strokeValBadge.textContent = `${stroke}px`;
+      if (shadowValBadge) shadowValBadge.textContent = `${shadow}px`;
 
-      const isDark = htmlEl.getAttribute('data-theme') === 'dark';
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       const borderCol = isDark ? '#FAFAFA' : '#121212';
       const shadowCol = isDark ? '#FAFAFA' : '#121212';
       const radiusCss = currentRadiusVal === 999 ? '999px' : `${currentRadiusVal}px`;
@@ -2686,35 +2601,247 @@
       box.style.boxShadow = shadowCss;
       box.style.borderRadius = radiusCss;
 
-      cssOut.textContent = `border: ${stroke}px solid ${borderCol}; box-shadow: ${shadowCss}; border-radius: ${radiusCss};`;
+      if (cssOut) {
+        cssOut.textContent = `border: ${stroke}px solid ${borderCol}; box-shadow: ${shadowCss}; border-radius: ${radiusCss};`;
+      }
     }
 
-    /* =========================================================
-       PLAYGROUND MODULE 3: SWITCH & STICKER CONTROLS
-       ========================================================= */
+    // Theme Management
+    function applyTheme(theme) {
+      const htmlEl = document.documentElement;
+      const themeLabel = document.getElementById('themeLabel');
+      htmlEl.setAttribute('data-theme', theme);
+      try {
+        localStorage.setItem('taste-theme-pow', theme);
+      } catch (e) {}
+
+      if (themeLabel) {
+        if (theme === 'dark') {
+          themeLabel.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>LIGHT';
+        } else {
+          themeLabel.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>DARK';
+        }
+      }
+      updateCalibrator();
+    }
+
+    // Module 1: Depth Tier & Press Physics
+    function setDepthTier(offset, btn) {
+      currentDepthOffset = offset;
+      document.querySelectorAll('.depth-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      
+      const shadowValue = offset === 0 ? 'none' : `${offset}px ${offset}px 0 var(--neo-shadow-color)`;
+      document.documentElement.style.setProperty('--active-specimen-shadow', shadowValue);
+      
+      const depthBadge = document.getElementById('depthTierBadge');
+      if (depthBadge) depthBadge.textContent = `${offset}PX ELEVATION`;
+
+      const vectorEl = document.getElementById('telemetryVector');
+      if (vectorEl) {
+        vectorEl.textContent = offset === 0 ? 'FLAT (0px offset)' : `translate(2px, 2px) -> ${offset}px collapse`;
+      }
+
+      playMechanicalClick(480);
+      showToast(`Elevation set to ${offset}px`);
+    }
+
+    function testButtonPress(name, colorHex, contrastRatio) {
+      clickCount++;
+      const countEl = document.getElementById('telemetryClickCount');
+      if (countEl) countEl.textContent = `${clickCount} clicks`;
+      
+      const now = new Date();
+      const timeStr = now.toTimeString().split(' ')[0] + '.' + String(now.getMilliseconds()).padStart(3, '0').slice(0, 2);
+      
+      const vectorEl = document.getElementById('telemetryVector');
+      if (vectorEl) {
+        vectorEl.textContent = `translate(2px, 2px) -> ${currentDepthOffset}px collapse`;
+      }
+
+      const logEl = document.getElementById('telemetryLogText');
+      if (logEl) {
+        logEl.textContent = `[${timeStr}] PRESS: ${name} (${colorHex}) | CONTRAST: ${contrastRatio} | PASS`;
+      }
+
+      playMechanicalClick(620);
+      showToast(`Fired ${name} (${contrastRatio})`);
+    }
+
+    // Module 2: Calibrator Controls
+    function setRadiusGeometry(radius, btn) {
+      currentRadiusVal = radius;
+      document.querySelectorAll('.radius-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      playMechanicalClick(520);
+      updateCalibrator();
+      showToast(`Radius set to ${radius === 999 ? '999px (Pill)' : radius + 'px'}`);
+    }
+
+    function testCalibratorClick() {
+      playMechanicalClick(750);
+      showToast('Calibrated component clicked!');
+    }
+
+    // Module 3: Switch, Stickers, and Input
     function toggleSwitch(track) {
       track.classList.toggle('on');
-      const state = track.classList.contains('on') ? 'ENABLED' : 'DISABLED';
+      hapticSoundEnabled = track.classList.contains('on');
+      const state = hapticSoundEnabled ? 'ENABLED' : 'MUTED';
+      playMechanicalClick(hapticSoundEnabled ? 700 : 350);
       showToast(`Haptic sound: ${state}`);
     }
 
     function toggleSticker(sticker) {
       sticker.classList.toggle('active');
+      playMechanicalClick(560);
       showToast(`Sticker: ${sticker.textContent.trim()}`);
     }
 
-    /* =========================================================
-       PLAYGROUND MODULE 4: POP PALETTE ACCENT SWITCHER
-       ========================================================= */
-    function selectPaletteAccent(name, hex) {
+    function updateInputCharCount(input) {
+      const badge = document.getElementById('inputCharBadge');
+      if (badge) {
+        badge.textContent = `${input.value.length} chars`;
+      }
+    }
+
+    // Module 4: Pop Palette Switcher
+    function selectPaletteAccent(name, hex, card) {
+      document.querySelectorAll('.swatch-card').forEach(c => c.classList.remove('active'));
+      if (card) card.classList.add('active');
+      
       document.documentElement.style.setProperty('--neo-accent-active', hex);
+      document.documentElement.style.setProperty('--neo-yellow', hex);
+      
+      const activeBadge = document.getElementById('activeAccentBadge');
+      if (activeBadge) {
+        activeBadge.textContent = `${name.toUpperCase()} (${hex})`;
+      }
+
       const box = document.getElementById('calibratorBox');
       if (box) box.style.background = hex;
+
+      playMechanicalClick(680);
       showToast(`Active accent: ${name} (${hex})`);
     }
 
-    // Initialize calibrator on load
-    updateCalibrator();
+    // Mobile Navigation Drawer Controls
+    function openMobileNav() {
+      const backdrop = document.getElementById('mobileNavBackdrop');
+      const drawer = document.getElementById('mobileNavDrawer');
+      const hamburger = document.getElementById('navHamburgerBtn');
+      if (backdrop) backdrop.classList.add('open');
+      if (drawer) drawer.classList.add('open');
+      if (hamburger) hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+      playMechanicalClick(500);
+    }
+
+    function closeMobileNav() {
+      const backdrop = document.getElementById('mobileNavBackdrop');
+      const drawer = document.getElementById('mobileNavDrawer');
+      const hamburger = document.getElementById('navHamburgerBtn');
+      if (backdrop) backdrop.classList.remove('open');
+      if (drawer) drawer.classList.remove('open');
+      if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      playMechanicalClick(420);
+    }
+
+    // Snippet Copier
+    async function copySnippet(elemId) {
+      const el = document.getElementById(elemId);
+      if (!el) return;
+      const text = el.innerText.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+        playMechanicalClick(800);
+        showToast('Copied to clipboard!');
+      } catch (e) {
+        showToast('Copied');
+      }
+    }
+
+    // Generic Button Click Handler
+    function handleBtnClick(name) {
+      playMechanicalClick(600);
+      showToast(`Action: ${name}`);
+    }
+
+    // FAQ Accordion Toggle
+    function toggleFaq(header) {
+      const item = header.parentElement;
+      if (item) {
+        item.classList.toggle('open');
+        playMechanicalClick(item.classList.contains('open') ? 600 : 450);
+      }
+    }
+
+    // Safe Page Initialization
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Initialize Theme
+      let savedTheme = 'dark';
+      try {
+        savedTheme = localStorage.getItem('taste-theme-pow') || 'dark';
+      } catch (e) {}
+      applyTheme(savedTheme);
+
+      // 2. Bind Theme Toggle Button
+      const themeToggleBtn = document.getElementById('themeToggleBtn');
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+          const current = document.documentElement.getAttribute('data-theme');
+          const next = current === 'dark' ? 'light' : 'dark';
+          applyTheme(next);
+          playMechanicalClick(650);
+          showToast(`Switched to ${next.toUpperCase()} mode`);
+        });
+      }
+
+      // 3. Bind Keyboard Escape for Drawer
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMobileNav();
+      });
+
+      // 4. Bind Hero Copy Button
+      const heroCopyBtn = document.getElementById('heroCopyBtn');
+      const heroCmdText = document.getElementById('heroCmdText');
+      if (heroCopyBtn && heroCmdText) {
+        heroCopyBtn.addEventListener('click', async () => {
+          try {
+            await navigator.clipboard.writeText(heroCmdText.textContent.trim());
+            playMechanicalClick(820);
+            showToast('Copied installation command!');
+          } catch (e) {
+            showToast('Command copied');
+          }
+        });
+      }
+
+      // 5. Bind Tab Switchers
+      const tabButtons = document.querySelectorAll('.tab-switch-btn');
+      const tabBodies = document.querySelectorAll('.tab-body');
+      tabButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+          tabButtons.forEach(b => b.classList.remove('active'));
+          tabBodies.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          const targetId = btn.getAttribute('data-tab');
+          const targetBody = document.getElementById(targetId);
+          if (targetBody) targetBody.classList.add('active');
+          playMechanicalClick(520);
+        });
+      });
+
+      // 6. Bind Slider Input Listeners
+      const strokeSlider = document.getElementById('strokeSlider');
+      const shadowSlider = document.getElementById('shadowSlider');
+      if (strokeSlider) strokeSlider.addEventListener('input', updateCalibrator);
+      if (shadowSlider) shadowSlider.addEventListener('input', updateCalibrator);
+
+      // 7. Initial Calibrator Calculation
+      updateCalibrator();
+    });
   </script>
 </body>
 </html>
