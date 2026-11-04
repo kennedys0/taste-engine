@@ -354,6 +354,8 @@ new_html = f'''<!DOCTYPE html>
       font-family: var(--shell-font-mono);
       font-size: 0.85rem;
       user-select: none;
+      flex-shrink: 0;
+      line-height: 1;
     }}
 
     .quick-install-code {{
@@ -361,6 +363,8 @@ new_html = f'''<!DOCTYPE html>
       font-size: 0.85rem;
       color: var(--shell-text);
       user-select: all;
+      white-space: nowrap;
+      line-height: 1;
     }}
 
     .quick-copy-btn {{
@@ -377,6 +381,8 @@ new_html = f'''<!DOCTYPE html>
       cursor: pointer;
       box-shadow: var(--shell-shadow-sm);
       transition: background 120ms ease, border-color 120ms ease;
+      flex-shrink: 0;
+      line-height: 1;
     }}
 
     .quick-copy-btn:hover {{
@@ -1254,15 +1260,39 @@ new_html = f'''<!DOCTYPE html>
       .hero-subtitle {{ font-size: 0.925rem; line-height: 1.5; margin-bottom: 1.4rem; }}
 
       .hero-quick-install {{
-        border-radius: var(--shell-radius);
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 0.65rem 0.85rem;
-        gap: 0.45rem;
-        width: 100%;
+        display: inline-flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.3rem 0.35rem 0.3rem 0.85rem;
+        border-radius: var(--shell-radius-pill);
+        max-width: 100%;
+        box-sizing: border-box;
       }}
-      .quick-install-code {{ font-size: 0.785rem; word-break: break-all; }}
-      .quick-copy-btn {{ align-self: flex-end; padding: 0.35rem 0.75rem; font-size: 0.725rem; }}
+      .quick-install-prompt {{
+        font-size: 0.8rem;
+        flex-shrink: 0;
+        line-height: 1;
+      }}
+      .quick-install-code {{
+        font-size: clamp(0.68rem, 3.2vw, 0.785rem);
+        white-space: nowrap;
+        overflow-x: auto;
+        scrollbar-width: none;
+        line-height: 1;
+      }}
+      .quick-install-code::-webkit-scrollbar {{
+        display: none;
+      }}
+      .quick-copy-btn {{
+        align-self: center;
+        padding: 0.35rem 0.6rem;
+        font-size: 0.725rem;
+        flex-shrink: 0;
+        border-radius: var(--shell-radius-pill);
+        line-height: 1;
+      }}
 
       .hero-cta-group {{ flex-direction: column; width: 100%; gap: 0.65rem; margin-bottom: 2rem; }}
       .cta-primary-btn, .cta-secondary-btn {{ width: 100%; justify-content: center; padding: 0.7rem 1.25rem; font-size: 0.85rem; }}
@@ -1322,6 +1352,16 @@ new_html = f'''<!DOCTYPE html>
     @media (max-width: 480px) {{
       .hero-title {{ font-size: 1.4rem; line-height: 1.22; }}
       .hero-subtitle {{ font-size: 0.825rem; }}
+      .hero-quick-install {{
+        gap: 0.35rem;
+        padding: 0.25rem 0.3rem 0.25rem 0.65rem;
+      }}
+      .quick-install-code {{
+        font-size: clamp(0.625rem, 3.1vw, 0.725rem);
+      }}
+      .quick-copy-btn {{
+        padding: 0.3rem 0.45rem;
+      }}
       .hero-stats-strip {{ grid-template-columns: 1fr 1fr; gap: 0.45rem; }}
       .stat-card {{ padding: 0.75rem 0.5rem; }}
       .stat-num {{ font-size: 1.2rem; }}
