@@ -3,46 +3,79 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Glassmorphism Proof of Work & Installation Guide — Taste Engine</title>
-  <meta name="description" content="Dedicated Proof of Work and installation guide for Taste Engine's Glassmorphism aesthetic archetype. Experience authentic design tokens, zero AI-slop, and contrast safety.">
+  <title>Glassmorphism Proof of Work & Installation Guide - Taste Engine</title>
+  <meta name="description" content="Dedicated Proof of Work and installation guide for Taste Engine's Glassmorphism aesthetic archetype. Experience crystalline frosted depth, non-clashing textured gradients, and WCAG AA contrast safety.">
   <link rel="icon" type="image/webp" href="assets/logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
   <style>
     /* =========================================================
        GLASSMORPHISM DESIGN SYSTEM TOKENS
        ========================================================= */
     :root {
-      --pow-bg: #f0f6ff;
-      --pow-surface: rgba(255, 255, 255, 0.65);
-      --pow-surface-hover: rgba(255, 255, 255, 0.8);
-      --pow-well-bg: rgba(235, 243, 255, 0.5);
-      --pow-text: #0f172a;
+      --pow-bg: #F4F8FC;
+      --pow-surface: rgba(255, 255, 255, 0.58);
+      --pow-surface-hover: rgba(255, 255, 255, 0.75);
+      --pow-surface-active: rgba(255, 255, 255, 0.88);
+      --pow-well-bg: rgba(226, 237, 248, 0.5);
+      --pow-text: #0F172A;
       --pow-text-muted: #475569;
       --pow-border: 1px solid rgba(255, 255, 255, 0.75);
-      --pow-shadow: 0 18px 45px rgba(37, 99, 235, 0.12);
-      --pow-accent: #0284c7;
-      --pow-radius: 24px;
+      --pow-border-subtle: 1px solid rgba(255, 255, 255, 0.45);
+      --pow-specular: rgba(255, 255, 255, 0.95);
+      --pow-shadow: 0 20px 45px -15px rgba(15, 23, 42, 0.12), 0 8px 16px -8px rgba(15, 23, 42, 0.06);
+      --pow-shadow-lg: 0 25px 60px -15px rgba(15, 23, 42, 0.18), 0 12px 24px -10px rgba(15, 23, 42, 0.08);
+
+      --pow-accent: #0284C7;
+      --pow-accent-hover: #0369A1;
+      --pow-accent-glow: rgba(2, 132, 199, 0.25);
+      --pow-accent-subtle: rgba(2, 132, 199, 0.12);
+
+      --pow-glass-blur: 18px;
+      --pow-glass-sat: 155%;
+      --pow-radius: 20px;
+      --pow-radius-sm: 12px;
       --pow-radius-btn: 9999px;
 
       --pow-font-display: 'Space Grotesk', -apple-system, sans-serif;
       --pow-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --pow-font-mono: 'JetBrains Mono', monospace;
+
+      /* Non-clashing atmospheric light fields (Light Mode) */
+      --glow-c1: rgba(56, 189, 248, 0.28);
+      --glow-c2: rgba(129, 140, 248, 0.22);
+      --glow-c3: rgba(192, 132, 252, 0.18);
+      --pattern-dot: rgba(148, 163, 184, 0.18);
     }
 
     [data-theme="dark"] {
-      --pow-bg: #0b101d;
-      --pow-surface: rgba(30, 41, 68, 0.45);
-      --pow-surface-hover: rgba(40, 54, 88, 0.55);
-      --pow-well-bg: rgba(10, 16, 28, 0.5);
-      --pow-text: #f8fafc;
-      --pow-text-muted: #94a3b8;
-      --pow-border: 1px solid rgba(255, 255, 255, 0.18);
-      --pow-shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-      --pow-accent: #38bdf8;
-      --pow-radius: 24px;
-      --pow-radius-btn: 9999px;
+      --pow-bg: #070A12;
+      --pow-surface: rgba(15, 23, 42, 0.55);
+      --pow-surface-hover: rgba(30, 41, 68, 0.65);
+      --pow-surface-active: rgba(30, 41, 68, 0.85);
+      --pow-well-bg: rgba(11, 17, 32, 0.65);
+      --pow-text: #F8FAFC;
+      --pow-text-muted: #94A3B8;
+      --pow-border: 1px solid rgba(255, 255, 255, 0.16);
+      --pow-border-subtle: 1px solid rgba(255, 255, 255, 0.09);
+      --pow-specular: rgba(255, 255, 255, 0.32);
+      --pow-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.55), 0 10px 24px -10px rgba(0, 0, 0, 0.4);
+      --pow-shadow-lg: 0 35px 80px -20px rgba(0, 0, 0, 0.7), 0 16px 32px -12px rgba(0, 0, 0, 0.5);
+
+      --pow-accent: #38BDF8;
+      --pow-accent-hover: #7DD3FC;
+      --pow-accent-glow: rgba(56, 189, 248, 0.35);
+      --pow-accent-subtle: rgba(56, 189, 248, 0.15);
+
+      --pow-glass-blur: 20px;
+      --pow-glass-sat: 165%;
+
+      /* Non-clashing atmospheric light fields (Dark Mode) */
+      --glow-c1: rgba(14, 165, 233, 0.26);
+      --glow-c2: rgba(139, 92, 246, 0.28);
+      --glow-c3: rgba(16, 185, 129, 0.18);
+      --pattern-dot: rgba(255, 255, 255, 0.08);
     }
 
     *, *::before, *::after {
@@ -59,17 +92,39 @@
       line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
-      transition: background-color 150ms ease, color 150ms ease;
+      position: relative;
+      transition: background-color 200ms ease, color 200ms ease;
     }
 
-    /* Top Navigation */
+    /* Structured Ambient Textured Gradient Background */
+    .pow-canvas-backdrop {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background:
+        /* Fine micro-dot matrix texture */
+        radial-gradient(circle, var(--pattern-dot) 1px, transparent 1px) 0 0 / 28px 28px,
+        /* Controlled atmospheric light pools with natural falloff */
+        radial-gradient(ellipse 55% 50% at 18% 22%, var(--glow-c1) 0%, transparent 70%),
+        radial-gradient(ellipse 60% 55% at 82% 28%, var(--glow-c2) 0%, transparent 75%),
+        radial-gradient(ellipse 65% 60% at 50% 85%, var(--glow-c3) 0%, transparent 80%),
+        var(--pow-bg);
+      opacity: 0.95;
+      transition: background 300ms ease;
+    }
+
+    /* Top Sticky Navigation */
     .pow-nav {
       position: sticky;
       top: 0;
       z-index: 100;
       background: var(--pow-surface);
+      -webkit-backdrop-filter: blur(var(--pow-glass-blur)) saturate(var(--pow-glass-sat));
+      backdrop-filter: blur(var(--pow-glass-blur)) saturate(var(--pow-glass-sat));
       border-bottom: var(--pow-border);
-      padding: 0.75rem 1.5rem;
+      box-shadow: inset 0 -1px 0 var(--pow-specular), 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+      padding: 0.75rem 1.75rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -79,39 +134,56 @@
     .nav-brand-group {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.85rem;
       text-decoration: none;
       color: var(--pow-text);
     }
 
-    .nav-logo-box {
+    .nav-logo-img {
       width: 32px;
       height: 32px;
-      background: var(--pow-accent);
-      color: #fff;
-      border-radius: 6px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-family: var(--pow-font-display);
+      border-radius: 8px;
+      object-fit: contain;
+      box-shadow: 0 2px 8px var(--pow-accent-glow);
     }
 
     .nav-title {
       font-family: var(--pow-font-display);
       font-weight: 700;
-      font-size: 1.05rem;
+      font-size: 1.1rem;
+      letter-spacing: -0.02em;
     }
 
     .nav-tag-badge {
-      background: rgba(255, 255, 255, 0.1);
-      border: var(--pow-border);
+      background: var(--pow-accent-subtle);
+      border: 1px solid var(--pow-accent);
+      color: var(--pow-accent);
       font-family: var(--pow-font-mono);
       font-size: 0.7rem;
-      font-weight: 600;
+      font-weight: 700;
       padding: 0.2rem 0.55rem;
-      border-radius: 4px;
+      border-radius: 6px;
       text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .nav-link {
+      color: var(--pow-text-muted);
+      text-decoration: none;
+      font-family: var(--pow-font-display);
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: color 120ms ease;
+    }
+
+    .nav-link:hover {
+      color: var(--pow-text);
     }
 
     .nav-actions {
@@ -123,26 +195,36 @@
     .pow-btn-sm {
       display: inline-flex;
       align-items: center;
-      gap: 0.4rem;
-      padding: 0.45rem 0.85rem;
+      gap: 0.45rem;
+      padding: 0.45rem 0.95rem;
       background: var(--pow-surface);
+      -webkit-backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px);
       color: var(--pow-text);
       border: var(--pow-border);
+      box-shadow: inset 0 1px 0 var(--pow-specular);
       border-radius: var(--pow-radius-btn);
       font-family: var(--pow-font-display);
       font-size: 0.8rem;
       font-weight: 600;
       text-decoration: none;
       cursor: pointer;
-      transition: background 120ms ease, transform 90ms ease;
+      transition: background 140ms ease, transform 100ms ease, border-color 140ms ease;
     }
 
     .pow-btn-sm:hover {
       background: var(--pow-surface-hover);
+      border-color: var(--pow-accent);
       transform: translateY(-1px);
     }
 
-    /* Hero Section (100svh safe viewport) */
+    /* Main Container */
+    main {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Hero Section (One Full Viewport) */
     .pow-hero {
       min-height: calc(100svh - 60px);
       display: flex;
@@ -151,8 +233,36 @@
       justify-content: center;
       text-align: center;
       padding: 3.5rem 1.25rem 2.5rem 1.25rem;
-      max-width: 1080px;
+      max-width: 1120px;
       margin: 0 auto;
+    }
+
+    /* Floating Frosted Glass Hero Pod */
+    .hero-glass-pod {
+      position: relative;
+      background: var(--pow-surface);
+      -webkit-backdrop-filter: blur(var(--pow-glass-blur)) saturate(var(--pow-glass-sat));
+      backdrop-filter: blur(var(--pow-glass-blur)) saturate(var(--pow-glass-sat));
+      border: var(--pow-border);
+      border-radius: var(--pow-radius);
+      box-shadow: inset 0 1px 1px 0 var(--pow-specular), var(--pow-shadow-lg);
+      padding: 3.25rem 2.5rem;
+      width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 2rem;
+      overflow: hidden;
+    }
+
+    /* Specular Beveled Top Rim */
+    .hero-glass-pod::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--pow-specular), transparent);
+      pointer-events: none;
     }
 
     .hero-sticker-badge {
@@ -165,31 +275,34 @@
       border-radius: 999px;
       padding: 0.35rem 0.95rem;
       font-family: var(--pow-font-mono);
-      font-size: 0.785rem;
+      font-size: 0.775rem;
       font-weight: 700;
       text-transform: uppercase;
+      letter-spacing: 0.05em;
       margin-bottom: 1.5rem;
     }
 
     .hero-title {
       font-family: var(--pow-font-display);
-      font-size: clamp(2rem, 5.5vw, 3.6rem);
+      font-size: clamp(2rem, 5vw, 3.4rem);
       font-weight: 800;
       line-height: 1.15;
       letter-spacing: -0.03em;
       margin-bottom: 1.25rem;
-      max-width: 920px;
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .hero-desc {
-      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      font-size: clamp(0.95rem, 1.8vw, 1.15rem);
       color: var(--pow-text-muted);
       max-width: 740px;
-      margin-bottom: 2rem;
+      margin: 0 auto 2rem auto;
       line-height: 1.6;
     }
 
-    /* Single-Line Inline Command Pill ("Sejajarin") */
+    /* Single-Line Command Pill ("Sejajarin") */
     .pow-command-pill {
       display: inline-flex;
       flex-direction: row;
@@ -199,10 +312,11 @@
       background: var(--pow-well-bg);
       border: var(--pow-border);
       border-radius: var(--pow-radius-btn);
-      padding: 0.4rem 0.5rem 0.4rem 1.1rem;
+      padding: 0.4rem 0.5rem 0.4rem 1.15rem;
       max-width: 100%;
       box-sizing: border-box;
-      margin-bottom: 2rem;
+      margin-bottom: 2.25rem;
+      box-shadow: inset 0 1px 1px 0 rgba(0, 0, 0, 0.05);
     }
 
     .pow-prompt {
@@ -217,7 +331,7 @@
 
     .pow-code {
       font-family: var(--pow-font-mono);
-      font-size: clamp(0.72rem, 3.2vw, 0.875rem);
+      font-size: clamp(0.72rem, 3vw, 0.875rem);
       font-weight: 600;
       color: var(--pow-text);
       white-space: nowrap;
@@ -235,31 +349,33 @@
       display: inline-flex;
       align-items: center;
       gap: 0.35rem;
-      background: var(--pow-surface);
+      background: var(--pow-surface-hover);
       color: var(--pow-text);
       border: var(--pow-border);
       border-radius: var(--pow-radius-btn);
-      padding: 0.4rem 0.8rem;
+      padding: 0.45rem 0.9rem;
       font-family: var(--pow-font-display);
-      font-size: 0.75rem;
+      font-size: 0.775rem;
       font-weight: 700;
       cursor: pointer;
       flex-shrink: 0;
       line-height: 1;
-      transition: background 120ms ease;
+      box-shadow: inset 0 1px 0 var(--pow-specular);
+      transition: background 120ms ease, transform 90ms ease;
     }
 
     .pow-copy-btn:hover {
-      background: var(--pow-surface-hover);
+      background: var(--pow-surface-active);
+      transform: scale(1.02);
     }
 
-    /* Hero CTA Group */
+    /* Hero Buttons */
     .hero-btn-group {
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 1rem;
-      margin-bottom: 2.75rem;
+      margin-bottom: 2.5rem;
       flex-wrap: wrap;
     }
 
@@ -268,57 +384,76 @@
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
+      padding: 0.75rem 1.6rem;
       font-family: var(--pow-font-display);
       font-weight: 700;
       font-size: 0.925rem;
       border: var(--pow-border);
       border-radius: var(--pow-radius-btn);
       cursor: pointer;
-      transition: transform 100ms ease, background 120ms ease;
+      transition: transform 100ms ease, background 140ms ease, box-shadow 140ms ease;
       text-decoration: none;
     }
 
     .pow-btn-primary {
       background: var(--pow-accent);
-      color: #ffffff;
+      color: #FFFFFF;
       border-color: var(--pow-accent);
+      box-shadow: 0 4px 16px var(--pow-accent-glow);
+    }
+
+    .pow-btn-primary:hover {
+      background: var(--pow-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px var(--pow-accent-glow);
     }
 
     .pow-btn-secondary {
       background: var(--pow-surface);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
       color: var(--pow-text);
+      box-shadow: inset 0 1px 0 var(--pow-specular);
     }
 
-    .pow-btn:hover {
+    .pow-btn-secondary:hover {
+      background: var(--pow-surface-hover);
       transform: translateY(-2px);
     }
 
-    /* 4-Stat Strip */
+    /* 4-Stat Glass Summary Meter Strip */
     .pow-stat-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 1rem;
       width: 100%;
-      max-width: 960px;
     }
 
     .stat-box {
       background: var(--pow-surface);
+      -webkit-backdrop-filter: blur(var(--pow-glass-blur));
+      backdrop-filter: blur(var(--pow-glass-blur));
       border: var(--pow-border);
-      border-radius: var(--pow-radius);
-      padding: 1rem 0.85rem;
+      border-radius: var(--pow-radius-sm);
+      padding: 1.1rem 0.85rem;
       text-align: center;
-      box-shadow: var(--pow-shadow);
+      box-shadow: inset 0 1px 0 var(--pow-specular), var(--pow-shadow);
+      transition: transform 140ms ease, background 140ms ease;
+    }
+
+    .stat-box:hover {
+      transform: translateY(-2px);
+      background: var(--pow-surface-hover);
     }
 
     .stat-val {
       font-family: var(--pow-font-display);
-      font-size: 1.5rem;
+      font-size: 1.55rem;
       font-weight: 800;
       line-height: 1.1;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.35rem;
       color: var(--pow-text);
+      font-variant-numeric: tabular-nums;
     }
 
     .stat-label {
@@ -326,12 +461,12 @@
       font-weight: 600;
       color: var(--pow-text-muted);
       text-transform: uppercase;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.05em;
     }
 
     /* Content Sections */
     .pow-section {
-      max-width: 1080px;
+      max-width: 1120px;
       margin: 4.5rem auto;
       padding: 0 1.25rem;
     }
@@ -347,16 +482,17 @@
       font-weight: 700;
       text-transform: uppercase;
       padding: 0.25rem 0.65rem;
-      background: var(--pow-well-bg);
+      background: var(--pow-accent-subtle);
       color: var(--pow-accent);
-      border: var(--pow-border);
-      border-radius: 4px;
+      border: 1px solid var(--pow-accent);
+      border-radius: 6px;
       margin-bottom: 0.75rem;
+      letter-spacing: 0.05em;
     }
 
     .section-title {
       font-family: var(--pow-font-display);
-      font-size: clamp(1.6rem, 4vw, 2.3rem);
+      font-size: clamp(1.6rem, 3.5vw, 2.3rem);
       font-weight: 800;
       letter-spacing: -0.02em;
       line-height: 1.2;
@@ -365,20 +501,374 @@
     .section-desc {
       font-size: 1rem;
       color: var(--pow-text-muted);
-      max-width: 680px;
+      max-width: 720px;
       margin-top: 0.5rem;
       line-height: 1.6;
     }
 
-    /* Tabbed Installation Card */
+    /* Glass Container Card */
     .pow-card {
       background: var(--pow-surface);
+      -webkit-backdrop-filter: blur(var(--pow-glass-blur)) saturate(var(--pow-glass-sat));
+      backdrop-filter: blur(var(--pow-glass-blur)) saturate(var(--pow-glass-sat));
       border: var(--pow-border);
-      box-shadow: var(--pow-shadow);
+      box-shadow: inset 0 1px 0 var(--pow-specular), var(--pow-shadow);
       border-radius: var(--pow-radius);
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* =========================================================
+       INTERACTIVE GLASS STUDIO LAB SECTION
+       ========================================================= */
+    .lab-container {
+      display: grid;
+      grid-template-columns: 1fr 340px;
+      gap: 1.75rem;
+    }
+
+    @media (max-width: 960px) {
+      .lab-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* The Interactive Glass Stage */
+    .lab-stage {
+      position: relative;
+      border-radius: var(--pow-radius);
+      border: var(--pow-border);
+      padding: 2.25rem 2rem;
+      min-height: 480px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: background 300ms ease;
+    }
+
+    /* Atmospheric Stage Presets */
+    .stage-theme-aurora {
+      background:
+        radial-gradient(circle, var(--pattern-dot) 1.2px, transparent 1.2px) 0 0 / 24px 24px,
+        radial-gradient(circle at 15% 25%, rgba(14, 165, 233, 0.45) 0%, transparent 60%),
+        radial-gradient(circle at 85% 75%, rgba(16, 185, 129, 0.40) 0%, transparent 60%),
+        var(--pow-well-bg);
+    }
+
+    .stage-theme-violet {
+      background:
+        radial-gradient(circle, var(--pattern-dot) 1.2px, transparent 1.2px) 0 0 / 24px 24px,
+        radial-gradient(circle at 20% 30%, rgba(99, 102, 241, 0.45) 0%, transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(168, 85, 247, 0.40) 0%, transparent 60%),
+        var(--pow-well-bg);
+    }
+
+    .stage-theme-solaris {
+      background:
+        radial-gradient(circle, var(--pattern-dot) 1.2px, transparent 1.2px) 0 0 / 24px 24px,
+        radial-gradient(circle at 18% 22%, rgba(249, 115, 22, 0.40) 0%, transparent 60%),
+        radial-gradient(circle at 82% 78%, rgba(244, 63, 94, 0.35) 0%, transparent 60%),
+        var(--pow-well-bg);
+    }
+
+    .stage-theme-obsidian {
+      background:
+        radial-gradient(circle, var(--pattern-dot) 1.2px, transparent 1.2px) 0 0 / 24px 24px,
+        radial-gradient(circle at 25% 25%, rgba(30, 58, 138, 0.55) 0%, transparent 60%),
+        radial-gradient(circle at 75% 75%, rgba(15, 118, 110, 0.45) 0%, transparent 60%),
+        var(--pow-well-bg);
+    }
+
+    /* Ambient Audio Pod on Glass */
+    .glass-audio-pod {
+      position: relative;
+      background: var(--lab-surface, var(--pow-surface));
+      -webkit-backdrop-filter: blur(var(--lab-blur, 18px)) saturate(var(--lab-sat, 155%));
+      backdrop-filter: blur(var(--lab-blur, 18px)) saturate(var(--lab-sat, 155%));
+      border: var(--pow-border);
+      border-radius: var(--pow-radius);
+      box-shadow: inset 0 1px 1px 0 var(--pow-specular), 0 20px 45px -10px rgba(0, 0, 0, 0.25);
+      padding: 1.75rem;
+      max-width: 540px;
+      margin: 0 auto;
+      width: 100%;
+      z-index: 2;
+    }
+
+    .pod-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.25rem;
+    }
+
+    .pod-meta-group {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .pod-cover {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, var(--pow-accent), #8B5CF6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      box-shadow: 0 4px 12px var(--pow-accent-glow);
+    }
+
+    .pod-track-name {
+      font-family: var(--pow-font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .pod-artist {
+      font-size: 0.8rem;
+      color: var(--pow-text-muted);
+    }
+
+    .pod-badge-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      padding: 0.2rem 0.6rem;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.35);
+      color: #10B981;
+      border-radius: 999px;
+      font-family: var(--pow-font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+    }
+
+    .live-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #10B981;
+      animation: livePulse 1.8s infinite;
+    }
+
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.85); }
+    }
+
+    /* Equalizer Wave Bars */
+    .eq-wave-strip {
+      display: flex;
+      align-items: flex-end;
+      gap: 3px;
+      height: 32px;
+      margin-bottom: 1.25rem;
+      padding: 0 0.5rem;
+    }
+
+    .eq-bar {
+      flex: 1;
+      background: var(--pow-accent);
+      border-radius: 2px;
+      opacity: 0.85;
+      transition: height 120ms ease;
+    }
+
+    /* Scrub Bar */
+    .scrub-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .scrub-track {
+      flex: 1;
+      height: 6px;
+      background: var(--pow-well-bg);
+      border-radius: 999px;
+      position: relative;
+      cursor: pointer;
       overflow: hidden;
     }
 
+    .scrub-progress {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 48%;
+      background: var(--pow-accent);
+      border-radius: 999px;
+    }
+
+    .time-stamp {
+      font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
+      color: var(--pow-text-muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Playback Controls */
+    .playback-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ctrl-btn {
+      background: var(--pow-surface-hover);
+      border: var(--pow-border);
+      color: var(--pow-text);
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 0.9rem;
+      box-shadow: inset 0 1px 0 var(--pow-specular);
+      transition: transform 100ms ease, background 120ms ease;
+    }
+
+    .ctrl-btn:hover {
+      transform: scale(1.08);
+      background: var(--pow-surface-active);
+    }
+
+    .ctrl-btn-play {
+      width: 46px;
+      height: 46px;
+      background: var(--pow-accent);
+      color: #FFFFFF;
+      border-color: var(--pow-accent);
+      box-shadow: 0 4px 14px var(--pow-accent-glow);
+    }
+
+    .ctrl-btn-play:hover {
+      transform: scale(1.08);
+      background: var(--pow-accent-hover);
+    }
+
+    /* Lab Side Control Panel */
+    .lab-controls-panel {
+      background: var(--pow-surface);
+      -webkit-backdrop-filter: blur(var(--pow-glass-blur));
+      backdrop-filter: blur(var(--pow-glass-blur));
+      border: var(--pow-border);
+      border-radius: var(--pow-radius);
+      box-shadow: inset 0 1px 0 var(--pow-specular), var(--pow-shadow);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.35rem;
+    }
+
+    .control-block-title {
+      font-family: var(--pow-font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .control-badge-val {
+      font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
+      color: var(--pow-accent);
+    }
+
+    /* Preset Buttons Grid */
+    .preset-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.5rem;
+    }
+
+    .preset-btn {
+      padding: 0.6rem 0.5rem;
+      background: var(--pow-well-bg);
+      border: var(--pow-border);
+      color: var(--pow-text);
+      border-radius: 8px;
+      font-family: var(--pow-font-display);
+      font-size: 0.775rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: center;
+      transition: border-color 140ms ease, background 140ms ease;
+    }
+
+    .preset-btn.active {
+      border-color: var(--pow-accent);
+      background: var(--pow-accent-subtle);
+      color: var(--pow-accent);
+    }
+
+    /* Range Sliders */
+    .slider-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .slider-label-row {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--pow-text-muted);
+    }
+
+    .glass-range-input {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--pow-well-bg);
+      outline: none;
+      border: var(--pow-border-subtle);
+    }
+
+    .glass-range-input::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: var(--pow-accent);
+      cursor: pointer;
+      box-shadow: 0 2px 8px var(--pow-accent-glow);
+      transition: transform 90ms ease;
+    }
+
+    .glass-range-input::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+
+    /* Live Token Inspector Box */
+    .css-snippet-box {
+      background: #0D1117;
+      color: #E6EDF3;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 8px;
+      padding: 0.85rem;
+      font-family: var(--pow-font-mono);
+      font-size: 0.72rem;
+      line-height: 1.45;
+      overflow-x: auto;
+    }
+
+    /* =========================================================
+       TABBED INSTALLATION GUIDE SECTION
+       ========================================================= */
     .tab-header-strip {
       display: flex;
       background: var(--pow-well-bg);
@@ -417,7 +907,7 @@
     }
 
     .tab-body {
-      padding: 1.75rem;
+      padding: 2rem;
       display: none;
     }
 
@@ -436,20 +926,22 @@
       font-size: 0.9rem;
       color: var(--pow-text-muted);
       margin-bottom: 1.25rem;
+      line-height: 1.55;
     }
 
     /* Terminal Console Window */
     .pow-terminal {
-      background: #0d1117;
-      color: #f0f6fc;
+      background: #0D1117;
+      color: #F0F6FC;
       border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 8px;
+      border-radius: 10px;
       overflow: hidden;
       margin-bottom: 1.5rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
     }
 
     .terminal-topbar {
-      background: #161b22;
+      background: #161B22;
       padding: 0.65rem 1rem;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
       display: flex;
@@ -469,112 +961,126 @@
       border-radius: 50%;
     }
 
-    .dot.red { background: #ff5f56; }
-    .dot.yellow { background: #ffbd2e; }
-    .dot.green { background: #27c93f; }
+    .dot.red { background: #FF5F56; }
+    .dot.yellow { background: #FFBD2E; }
+    .dot.green { background: #27C93F; }
 
     .terminal-label {
       font-family: var(--pow-font-mono);
       font-size: 0.75rem;
-      color: #8b949e;
+      color: #8B949E;
       font-weight: 600;
     }
 
     .terminal-content {
-      padding: 1.15rem;
+      padding: 1.1rem;
       font-family: var(--pow-font-mono);
-      font-size: 0.85rem;
+      font-size: 0.825rem;
       line-height: 1.6;
       overflow-x: auto;
     }
 
     .terminal-line {
       display: flex;
-      align-items: baseline;
-      gap: 0.75rem;
-      margin-bottom: 0.45rem;
-    }
-
-    .terminal-line:last-child {
-      margin-bottom: 0;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-bottom: 0.35rem;
     }
 
     .line-p {
       color: var(--pow-accent);
-      font-weight: 700;
       user-select: none;
-      flex-shrink: 0;
-    }
-
-    .line-cmd {
-      color: #f0f6fc;
-      word-break: break-all;
+      font-weight: 700;
     }
 
     .line-comment {
-      color: #8b949e;
+      color: #8B949E;
       font-style: italic;
     }
 
-    /* Bento Demo Specifics */
-    .bento-demo-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr;
-      gap: 16px;
+    .line-cmd {
+      color: #E6EDF3;
+      user-select: all;
     }
 
-    .bento-tile {
-      background: var(--pow-surface);
-      border: var(--pow-border);
+    /* =========================================================
+       DESIGN TOKEN TABLE
+       ========================================================= */
+    .token-table-wrap {
+      overflow-x: auto;
       border-radius: var(--pow-radius);
-      padding: 1.75rem;
-      box-shadow: var(--pow-shadow);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      border: var(--pow-border);
+      box-shadow: inset 0 1px 0 var(--pow-specular), var(--pow-shadow);
+      background: var(--pow-surface);
+      -webkit-backdrop-filter: blur(var(--pow-glass-blur));
+      backdrop-filter: blur(var(--pow-glass-blur));
     }
 
-    .bento-tag {
-      display: inline-block;
-      font-size: 0.725rem;
-      font-family: var(--pow-font-mono);
+    .pow-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 0.875rem;
+    }
+
+    .pow-table th {
+      background: var(--pow-well-bg);
+      padding: 0.85rem 1.25rem;
+      font-family: var(--pow-font-display);
       font-weight: 700;
-      color: var(--pow-accent);
-      margin-bottom: 0.5rem;
+      font-size: 0.8rem;
       text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: var(--pow-border);
+      color: var(--pow-text-muted);
     }
 
-    /* Accordion / FAQ */
+    .pow-table td {
+      padding: 0.85rem 1.25rem;
+      border-bottom: var(--pow-border-subtle);
+    }
+
+    .token-code {
+      font-family: var(--pow-font-mono);
+      font-weight: 600;
+      color: var(--pow-accent);
+      user-select: all;
+      font-size: 0.8rem;
+    }
+
+    /* =========================================================
+       FAQ ACCORDION
+       ========================================================= */
     .pow-faq-item {
       background: var(--pow-surface);
+      -webkit-backdrop-filter: blur(var(--pow-glass-blur));
+      backdrop-filter: blur(var(--pow-glass-blur));
       border: var(--pow-border);
-      box-shadow: var(--pow-shadow);
-      border-radius: var(--pow-radius);
-      margin-bottom: 1rem;
+      box-shadow: inset 0 1px 0 var(--pow-specular);
+      border-radius: var(--pow-radius-sm);
+      margin-bottom: 0.85rem;
       overflow: hidden;
+      transition: background 140ms ease, border-color 140ms ease;
     }
 
-    .pow-faq-header {
-      padding: 1rem 1.25rem;
-      font-family: var(--pow-font-display);
-      font-size: 0.95rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      user-select: none;
-      background: var(--pow-surface);
-      transition: background 120ms ease;
-    }
-
-    .pow-faq-header:hover {
+    .pow-faq-item:hover {
       background: var(--pow-surface-hover);
     }
 
-    .faq-arrow {
-      font-family: var(--pow-font-mono);
+    .pow-faq-header {
+      padding: 1.15rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-family: var(--pow-font-display);
       font-weight: 700;
+      font-size: 1rem;
+    }
+
+    .faq-arrow {
+      font-size: 0.75rem;
+      color: var(--pow-accent);
       transition: transform 180ms ease;
     }
 
@@ -583,68 +1089,58 @@
     }
 
     .pow-faq-body {
-      padding: 0 1.25rem 1.25rem 1.25rem;
-      font-size: 0.875rem;
+      padding: 0 1.4rem 1.25rem 1.4rem;
+      font-size: 0.9rem;
       color: var(--pow-text-muted);
       line-height: 1.6;
       display: none;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      padding-top: 1rem;
     }
 
     .pow-faq-item.open .pow-faq-body {
       display: block;
     }
 
-    /* Token Specification Table */
-    .token-table-wrap {
+    /* Modal Sheet */
+    .glass-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.25rem;
+    }
+
+    .glass-modal-backdrop.open {
+      display: flex;
+    }
+
+    .glass-modal-card {
       background: var(--pow-surface);
+      -webkit-backdrop-filter: blur(24px) saturate(180%);
+      backdrop-filter: blur(24px) saturate(180%);
       border: var(--pow-border);
-      box-shadow: var(--pow-shadow);
       border-radius: var(--pow-radius);
-      overflow-x: auto;
-    }
-
-    .pow-table {
+      box-shadow: inset 0 1px 1px 0 var(--pow-specular), 0 35px 80px -15px rgba(0, 0, 0, 0.5);
+      max-width: 480px;
       width: 100%;
-      border-collapse: collapse;
-      text-align: left;
+      padding: 2rem;
+      position: relative;
     }
 
-    .pow-table th, .pow-table td {
-      padding: 0.9rem 1.25rem;
-      border-bottom: var(--pow-border);
-      font-size: 0.85rem;
-    }
-
-    .pow-table th {
-      background: var(--pow-well-bg);
-      font-family: var(--pow-font-display);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .pow-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .token-code {
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      color: var(--pow-accent);
-    }
-
-    /* Footer (Balanced 2-column mobile architecture) */
+    /* Footer */
     .pow-footer {
-      background: var(--pow-surface);
       border-top: var(--pow-border);
+      background: var(--pow-well-bg);
+      padding: 3.5rem 1.5rem 2rem 1.5rem;
       margin-top: 5rem;
-      padding: 3rem 1.25rem 2rem 1.25rem;
     }
 
     .footer-inner {
-      max-width: 1080px;
+      max-width: 1120px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
@@ -652,60 +1148,70 @@
       margin-bottom: 2.5rem;
     }
 
+    @media (max-width: 768px) {
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      .pow-stat-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
     .footer-brand h4 {
       font-family: var(--pow-font-display);
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 800;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.65rem;
     }
 
     .footer-brand p {
       font-size: 0.85rem;
       color: var(--pow-text-muted);
-      max-width: 380px;
-      line-height: 1.6;
+      line-height: 1.55;
+      max-width: 420px;
     }
 
     .footer-col h5 {
       font-family: var(--pow-font-display);
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.06em;
-      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+      margin-bottom: 0.85rem;
       color: var(--pow-text);
     }
 
     .footer-col ul {
       list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
     }
 
-    .footer-col ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    .footer-col ul a {
+    .footer-col a {
+      font-size: 0.85rem;
       color: var(--pow-text-muted);
       text-decoration: none;
-      font-size: 0.85rem;
-      transition: color 90ms ease;
+      transition: color 120ms ease;
     }
 
-    .footer-col ul a:hover {
+    .footer-col a:hover {
       color: var(--pow-accent);
     }
 
     .footer-bottom {
-      max-width: 1080px;
+      max-width: 1120px;
       margin: 0 auto;
+      border-top: var(--pow-border-subtle);
       padding-top: 1.5rem;
-      border-top: var(--pow-border);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
       font-size: 0.8rem;
       color: var(--pow-text-muted);
+      flex-wrap: wrap;
+      gap: 1rem;
     }
 
     /* Toast Notification */
@@ -713,163 +1219,238 @@
       position: fixed;
       bottom: 24px;
       right: 24px;
-      background: var(--pow-surface);
-      color: var(--pow-text);
-      border: var(--pow-border);
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
-      padding: 0.65rem 1.2rem;
-      border-radius: var(--pow-radius-btn);
-      font-family: var(--pow-font-display);
-      font-size: 0.85rem;
+      background: var(--pow-text);
+      color: var(--pow-bg);
+      font-family: var(--pow-font-mono);
+      font-size: 0.8rem;
       font-weight: 700;
-      display: flex;
+      padding: 0.65rem 1.25rem;
+      border-radius: var(--pow-radius-btn);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      z-index: 999;
+      display: none;
       align-items: center;
       gap: 0.5rem;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: opacity 150ms ease, transform 150ms ease;
-      pointer-events: none;
-      z-index: 1000;
     }
 
     .pow-toast.show {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* =========================================================
-       RESPONSIVE BREAKPOINTS (FLUID & COMPACT MOBILE)
-       ========================================================= */
-    @media (max-width: 768px) {
-      .pow-nav { padding: 0.65rem 1rem; }
-      .nav-title { font-size: 0.95rem; }
-      .nav-tag-badge { display: none; }
-      
-      .pow-hero { padding: 2.5rem 1rem 1.5rem 1rem; }
-      .hero-title { font-size: clamp(1.6rem, 5.5vw, 2.3rem); }
-      .hero-desc { font-size: 0.9rem; margin-bottom: 1.5rem; }
-
-      .hero-btn-group { flex-direction: column; width: 100%; gap: 0.65rem; }
-      .pow-btn { width: 100%; }
-
-      .pow-stat-strip { grid-template-columns: repeat(2, 1fr); gap: 0.65rem; }
-      .stat-val { font-size: 1.35rem; }
-
-      .bento-demo-grid { grid-template-columns: 1fr; }
-
-      .footer-inner {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1.75rem 1.25rem;
-      }
-      .footer-brand {
-        grid-column: 1 / -1;
-        padding-bottom: 1rem;
-        border-bottom: var(--pow-border);
-      }
-      .footer-bottom {
-        flex-direction: column-reverse;
-        text-align: center;
-        gap: 1rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .hero-title { font-size: 1.45rem; line-height: 1.18; }
-      .hero-desc { font-size: 0.825rem; }
-      .pow-stat-strip { grid-template-columns: 1fr 1fr; gap: 0.45rem; }
-      .stat-box { padding: 0.75rem 0.5rem; }
-      .stat-val { font-size: 1.2rem; }
-      .stat-label { font-size: 0.65rem; }
-
-      .section-title { font-size: 1.3rem; }
-      .section-desc { font-size: 0.825rem; }
-
-      .tab-body { padding: 1rem; }
-      .terminal-content { font-size: 0.75rem; padding: 0.85rem; }
-
-      .pow-command-pill {
-        gap: 0.4rem;
-        padding: 0.3rem 0.35rem 0.3rem 0.75rem;
-      }
-      .pow-copy-btn {
-        padding: 0.35rem 0.6rem;
-        font-size: 0.7rem;
-      }
+      display: flex;
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation -->
-  <header class="pow-nav">
+  <!-- Ambient Structured Textured Gradient Backdrop -->
+  <div class="pow-canvas-backdrop" id="canvasBackdrop"></div>
+
+  <!-- Top Sticky Navigation -->
+  <nav class="pow-nav">
     <a href="index.html" class="nav-brand-group">
-      <div class="nav-logo-box">TE</div>
-      <strong class="nav-title">Taste Engine</strong>
-      <span class="nav-tag-badge">Glassmorphism PoW</span>
+      <img src="assets/logo.webp" alt="Taste Engine Logo" class="nav-logo-img">
+      <span class="nav-title">Taste Engine</span>
+      <span class="nav-tag-badge">Glassmorphism</span>
     </a>
+
+    <div class="nav-links">
+      <a href="#playground" class="nav-link">Studio Lab</a>
+      <a href="#install" class="nav-link">Installation</a>
+      <a href="#tokens" class="nav-link">Tokens</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+    </div>
+
     <div class="nav-actions">
-      <a href="index.html" class="pow-btn-sm" title="Back to main gallery">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        <span>All 10 Styles</span>
+      <a href="index.html" class="pow-btn-sm">
+        <span>← All Styles</span>
       </a>
       <button class="pow-btn-sm" id="themeToggleBtn" aria-label="Toggle theme">
         <span id="themeLabel">☀️ LIGHT</span>
       </button>
     </div>
-  </header>
+  </nav>
 
   <main>
-    <!-- Opening Hero Viewport -->
+    <!-- Hero Section (One Full Viewport) -->
     <section class="pow-hero">
-      <div class="hero-sticker-badge">
-        <span>★ Proof of Work: Archetype #06</span>
+      <div class="hero-glass-pod">
+        <div class="hero-sticker-badge">
+          <span>✨ Aesthetic Archetype: Glassmorphism</span>
+        </div>
+
+        <h1 class="hero-title">
+          Crystalline Frosted Depth. Pure Anti-Slop Contrast.
+        </h1>
+
+        <p class="hero-desc">
+          Translucent, blur-diffused surfaces floating over structured, textured ambient gradients with WCAG AA verified typography and dual-rim specular edge refraction.
+        </p>
+
+        <!-- Single-Line Command Pill ("Sejajarin") -->
+        <div class="pow-command-pill">
+          <span class="pow-prompt">$</span>
+          <code class="pow-code" id="heroCmdText">npx skills add kennedys0/taste-engine --skill taste-style-glassmorphism</code>
+          <button class="pow-copy-btn" id="heroCopyBtn" aria-label="Copy command">
+            <span>Copy</span>
+          </button>
+        </div>
+
+        <!-- Hero Actions -->
+        <div class="hero-btn-group">
+          <a href="#playground" class="pow-btn pow-btn-primary">
+            <span>Open Studio Lab ↓</span>
+          </a>
+          <a href="#install" class="pow-btn pow-btn-secondary">
+            <span>Install Options</span>
+          </a>
+        </div>
+
+        <!-- 4-Stat Glass Summary Meter Strip -->
+        <div class="pow-stat-strip">
+          <div class="stat-box">
+            <div class="stat-val">18px</div>
+            <div class="stat-label">Frosted Diffusion</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val">155%</div>
+            <div class="stat-label">Refraction Saturation</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val">1px Dual-Rim</div>
+            <div class="stat-label">Specular Edge</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-val">WCAG AA</div>
+            <div class="stat-label">Contrast Safe</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Component Playground (PoW) -->
+    <section class="pow-section" id="playground">
+      <div class="section-header">
+        <span class="section-badge">Live Interactive PoW</span>
+        <h2 class="section-title">Atmospheric Glass Studio & Specimen Lab</h2>
+        <p class="section-desc">
+          Test interactive frosted components over structured background gradients. Switch harmonious color palettes, adjust diffusion math in real time, and inspect computed CSS tokens.
+        </p>
       </div>
 
-      <h1 class="hero-title">
-        Frosted Translucent Panes & Layered Light Filtering
-      </h1>
+      <div class="lab-container">
+        <!-- Interactive Stage Viewport -->
+        <div class="lab-stage stage-theme-aurora" id="labStage">
+          <!-- Ambient Audio Pod Component -->
+          <div class="glass-audio-pod" id="audioPod">
+            <div class="pod-top">
+              <div class="pod-meta-group">
+                <div class="pod-cover">🎧</div>
+                <div>
+                  <div class="pod-track-name">Crystalline Horizon</div>
+                  <div class="pod-artist">Ambient Echoes · 24-bit FLAC</div>
+                </div>
+              </div>
+              <div class="pod-badge-live">
+                <span class="live-dot"></span>
+                <span>DSP ACTIVE</span>
+              </div>
+            </div>
 
-      <p class="hero-desc">
-        Glassmorphism creates translucent depth using frosted glass panes, specular edge highlights, and purposeful background gradient light fields that explain material refraction. This entire page demonstrates the authentic design tokens, contrast coupling, and anti-slop rules of this style.
-      </p>
+            <!-- Equalizer Waveform -->
+            <div class="eq-wave-strip" id="eqWaveStrip">
+              <div class="eq-bar" style="height: 40%;"></div>
+              <div class="eq-bar" style="height: 70%;"></div>
+              <div class="eq-bar" style="height: 90%;"></div>
+              <div class="eq-bar" style="height: 50%;"></div>
+              <div class="eq-bar" style="height: 80%;"></div>
+              <div class="eq-bar" style="height: 60%;"></div>
+              <div class="eq-bar" style="height: 100%;"></div>
+              <div class="eq-bar" style="height: 75%;"></div>
+              <div class="eq-bar" style="height: 45%;"></div>
+              <div class="eq-bar" style="height: 85%;"></div>
+              <div class="eq-bar" style="height: 65%;"></div>
+              <div class="eq-bar" style="height: 35%;"></div>
+            </div>
 
-      <!-- Single-Line Inline Command Pill ("Sejajarin") -->
-      <div class="pow-command-pill">
-        <span class="pow-prompt">$</span>
-        <code class="pow-code" id="heroCmdText">npx skills add kennedys0/taste-style-glassmorphism</code>
-        <button class="pow-copy-btn" id="heroCopyBtn" aria-label="Copy command">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          <span>COPY</span>
-        </button>
-      </div>
+            <!-- Scrub Bar -->
+            <div class="scrub-container">
+              <span class="time-stamp" id="currentTime">02:14</span>
+              <div class="scrub-track" onclick="scrubTimeline(event)">
+                <div class="scrub-progress" id="scrubProgress"></div>
+              </div>
+              <span class="time-stamp">04:38</span>
+            </div>
 
-      <div class="hero-btn-group">
-        <a href="#install" class="pow-btn pow-btn-primary">
-          <span>Installation Guide ↓</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 13l5 5 5-5M12 6v12"/></svg>
-        </a>
-        <a href="#playground" class="pow-btn pow-btn-secondary">
-          <span>Explore Interactive UI →</span>
-        </a>
-      </div>
+            <!-- Controls -->
+            <div class="playback-controls">
+              <button class="ctrl-btn" onclick="prevTrack()" aria-label="Previous Track">⏮</button>
+              <button class="ctrl-btn ctrl-btn-play" id="playBtn" onclick="togglePlay()" aria-label="Play or Pause">⏸</button>
+              <button class="ctrl-btn" onclick="nextTrack()" aria-label="Next Track">⏭</button>
+              <button class="pow-btn-sm" onclick="openSpecimenModal()">Inspect Specimen</button>
+            </div>
+          </div>
 
-      <!-- 4-Stat Strip -->
-      <div class="pow-stat-strip">
-        <div class="stat-box">
-          <div class="stat-val">18px Blur</div>
-          <div class="stat-label">Frosted Diffusion</div>
+          <!-- Bottom Telemetry Pill inside Stage -->
+          <div style="display: flex; justify-content: space-between; align-items: center; z-index: 2;">
+            <div style="font-family: var(--pow-font-mono); font-size: 0.75rem; color: var(--pow-text-muted); background: var(--pow-well-bg); padding: 0.35rem 0.75rem; border-radius: 999px; border: var(--pow-border-subtle);">
+              Refracting: <span id="activePaletteLabel" style="color: var(--pow-accent); font-weight: 700;">Nordic Aurora (Cyan + Emerald)</span>
+            </div>
+            <div style="font-family: var(--pow-font-mono); font-size: 0.75rem; color: var(--pow-text-muted);">
+              Texture: Dot-Matrix (24px)
+            </div>
+          </div>
         </div>
-        <div class="stat-box">
-          <div class="stat-val">145%</div>
-          <div class="stat-label">Color Saturation</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-val">1px Light Edge</div>
-          <div class="stat-label">Specular Border</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-val">WCAG AA</div>
-          <div class="stat-label">Backdrop Gated</div>
+
+        <!-- Controls Side Panel -->
+        <div class="lab-controls-panel">
+          <div>
+            <div class="control-block-title">
+              <span>Backdrop Atmosphere</span>
+            </div>
+            <div class="preset-grid">
+              <button class="preset-btn active" onclick="setAtmosphere('aurora', 'Nordic Aurora (Cyan + Emerald)', this)">Aurora</button>
+              <button class="preset-btn" onclick="setAtmosphere('violet', 'Prism Violet (Indigo + Amethyst)', this)">Violet</button>
+              <button class="preset-btn" onclick="setAtmosphere('solaris', 'Solaris Dawn (Coral + Amber)', this)">Solaris</button>
+              <button class="preset-btn" onclick="setAtmosphere('obsidian', 'Deep Obsidian (Cobalt + Teal)', this)">Obsidian</button>
+            </div>
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-label-row">
+              <span>Frosted Blur</span>
+              <span class="control-badge-val" id="blurVal">18px</span>
+            </div>
+            <input type="range" min="4" max="36" value="18" class="glass-range-input" id="blurInput" oninput="updateGlassMath()">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-label-row">
+              <span>Refraction Saturation</span>
+              <span class="control-badge-val" id="satVal">155%</span>
+            </div>
+            <input type="range" min="100" max="200" value="155" class="glass-range-input" id="satInput" oninput="updateGlassMath()">
+          </div>
+
+          <div class="slider-group">
+            <div class="slider-label-row">
+              <span>Surface Alpha</span>
+              <span class="control-badge-val" id="alphaVal">0.55</span>
+            </div>
+            <input type="range" min="15" max="85" value="55" class="glass-range-input" id="alphaInput" oninput="updateGlassMath()">
+          </div>
+
+          <div>
+            <div class="control-block-title">
+              <span>Computed CSS Rule</span>
+              <button class="pow-btn-sm" onclick="copySnippet('cssSnippet')" style="padding: 0.2rem 0.5rem; font-size: 0.7rem;">Copy</button>
+            </div>
+            <div class="css-snippet-box" id="cssSnippet">
+              .frosted-glass-pane {<br>
+              &nbsp;&nbsp;background: rgba(15, 23, 42, 0.55);<br>
+              &nbsp;&nbsp;backdrop-filter: blur(18px) saturate(155%);<br>
+              &nbsp;&nbsp;border: 1px solid rgba(255, 255, 255, 0.16);<br>
+              &nbsp;&nbsp;box-shadow: inset 0 1px 1px rgba(255,255,255,0.32);<br>
+              }
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -877,10 +1458,10 @@
     <!-- Interactive Installation Guide Section -->
     <section class="pow-section" id="install">
       <div class="section-header">
-        <span class="section-badge">How to Install</span>
+        <span class="section-badge">Installation Architecture</span>
         <h2 class="section-title">Install Glassmorphism or Full Engine</h2>
         <p class="section-desc">
-          Choose whether you want this single standalone Glassmorphism skill or the full 10-style automated Taste Engine suite for your AI coding agents.
+          Choose whether you want this single standalone Glassmorphism style pack or the complete 10-style autonomous Taste Engine suite for your AI coding agents.
         </p>
       </div>
 
@@ -906,7 +1487,7 @@
                 <span class="dot yellow"></span>
                 <span class="dot green"></span>
               </div>
-              <span class="terminal-label">bash — universal agent skills cli</span>
+              <span class="terminal-label">bash — agent skills cli</span>
               <button class="pow-btn-sm" onclick="copySnippet('cmdStandaloneCli')">Copy</button>
             </div>
             <div class="terminal-content" id="cmdStandaloneCli">
@@ -1009,7 +1590,7 @@
                 <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;extend: {</span>
               </div>
               <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors: { 'glassmorphism': '#0284c7' }</span>
+                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors: { 'glassmorphism': '#0284C7' }</span>
               </div>
               <div class="terminal-line">
                 <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;}</span>
@@ -1026,36 +1607,13 @@
       </div>
     </section>
 
-    <!-- Interactive Component Playground (PoW) -->
-    <section class="pow-section" id="playground">
-      <div class="section-header">
-        <span class="section-badge">Live Interactive PoW</span>
-        <h2 class="section-title">Glassmorphism Component Lab</h2>
-        <p class="section-desc">
-          Test interactive components and layout structure built strictly according to Taste Engine's Glassmorphism fidelity rules.
-        </p>
-      </div>
-
-      <div class="pow-card" style="padding: 2rem;">
-        
-        <div style="position: relative; overflow: hidden; border-radius: var(--pow-radius); padding: 3rem 2rem; background: radial-gradient(ellipse at 20% 40%, rgba(56, 189, 248, 0.45), transparent 70%), radial-gradient(ellipse at 80% 60%, rgba(139, 92, 246, 0.45), transparent 70%), var(--pow-bg); border: var(--pow-border);">
-          <div style="background: var(--pow-surface); backdrop-filter: blur(18px) saturate(145%); -webkit-backdrop-filter: blur(18px) saturate(145%); border: var(--pow-border); border-radius: var(--pow-radius); padding: 2rem; box-shadow: var(--pow-shadow); max-width: 600px; margin: 0 auto; text-align: center;">
-            <h3 style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem;">Frosted Glass Pane</h3>
-            <p style="font-size: 0.875rem; color: var(--pow-text-muted); margin-bottom: 1.5rem;">Authentic glassmorphism filters local light fields beneath its frosted surface. Notice the subtle specular top rim.</p>
-            <button class="pow-btn pow-btn-primary" onclick="handleBtnClick('Glass Interaction')">Interact with Pane</button>
-          </div>
-        </div>
-        
-      </div>
-    </section>
-
     <!-- Design Token Cheatsheet -->
-    <section class="pow-section">
+    <section class="pow-section" id="tokens">
       <div class="section-header">
         <span class="section-badge">Tokens & Math</span>
         <h2 class="section-title">Glassmorphism Design Tokens</h2>
         <p class="section-desc">
-          Standardized CSS custom properties for instant copy-pasting into any stylesheet.
+          Standardized CSS custom properties with calibrated light & dark contrast pairs for instant copy-pasting.
         </p>
       </div>
 
@@ -1071,34 +1629,46 @@
           </thead>
           <tbody>
             <tr>
-              <td class="token-code">--taste-glassmorphism-bg</td>
-              <td>#f0f6ff</td>
-              <td>#0b101d</td>
-              <td>Canvas backdrop base</td>
+              <td class="token-code">--taste-glass-bg</td>
+              <td>#F4F8FC</td>
+              <td>#070A12</td>
+              <td>Canvas backdrop base tone</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-glassmorphism-surface</td>
-              <td>rgba(255, 255, 255, 0.65)</td>
-              <td>rgba(30, 41, 68, 0.45)</td>
-              <td>Card surface background</td>
+              <td class="token-code">--taste-glass-surface</td>
+              <td>rgba(255, 255, 255, 0.58)</td>
+              <td>rgba(15, 23, 42, 0.55)</td>
+              <td>Frosted glass surface tint</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-glassmorphism-text</td>
-              <td>#0f172a</td>
-              <td>#f8fafc</td>
-              <td>Primary text & icon color</td>
-            </tr>
-            <tr>
-              <td class="token-code">--taste-glassmorphism-border</td>
+              <td class="token-code">--taste-glass-border</td>
               <td>1px solid rgba(255, 255, 255, 0.75)</td>
-              <td>1px solid rgba(255, 255, 255, 0.18)</td>
-              <td>Structural stroke specification</td>
+              <td>1px solid rgba(255, 255, 255, 0.16)</td>
+              <td>Specular perimeter stroke</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-glassmorphism-accent</td>
-              <td>#0284c7</td>
-              <td>#38bdf8</td>
-              <td>Primary action accent</td>
+              <td class="token-code">--taste-glass-specular</td>
+              <td>rgba(255, 255, 255, 0.95)</td>
+              <td>rgba(255, 255, 255, 0.32)</td>
+              <td>Top/left beveled specular rim</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-glass-text</td>
+              <td>#0F172A</td>
+              <td>#F8FAFC</td>
+              <td>Primary ink (WCAG AA compliant)</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-glass-blur</td>
+              <td>18px</td>
+              <td>20px</td>
+              <td>Backdrop filter diffusion radius</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-glass-sat</td>
+              <td>155%</td>
+              <td>165%</td>
+              <td>Backdrop refraction saturation</td>
             </tr>
           </tbody>
         </table>
@@ -1106,7 +1676,7 @@
     </section>
 
     <!-- FAQ Accordion -->
-    <section class="pow-section">
+    <section class="pow-section" id="faq">
       <div class="section-header">
         <span class="section-badge">FAQ & Verification</span>
         <h2 class="section-title">Frequently Asked Questions</h2>
@@ -1114,37 +1684,66 @@
 
       <div class="pow-faq-item open">
         <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>Are gradients allowed in Glassmorphism?</span>
+          <span>Are background gradients permitted in Glassmorphism under Taste Engine anti-slop rules?</span>
           <span class="faq-arrow">▶</span>
         </div>
         <div class="pow-faq-body">
-          Yes! Glassmorphism has an explicit exception in Taste Engine anti-slop rules for static gradient light fields, because frosted translucency cannot be seen without light behind it.
+          Yes! Glassmorphism has an explicit exception in Taste Engine anti-slop rules for static gradient light fields and textured backdrops. Because frosted glass requires light and structure behind it to physically refract and demonstrate translucency, harmonious gradients are material-enabling backdrops rather than decorative slop.
         </div>
       </div>
 
       <div class="pow-faq-item">
         <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>What makes Glassmorphism fail the fidelity gate?</span>
+          <span>How does Taste Engine prevent ugly or clashing background gradients?</span>
           <span class="faq-arrow">▶</span>
         </div>
         <div class="pow-faq-body">
-          A flat solid card with a blur class where nothing is visible behind it fails. Authentic glass must visibly filter light and color.
+          Our architectural rules enforce strict chromatic harmony: palettes are restricted to monochromatic, analogous, or balanced complementary pairs with smooth gaussian falloff (no harsh 90s-style rainbow bands). In addition, backdrops incorporate fine tactile micro-texture (such as dot-matrix grids or subtle noise) so that the blur has crystalline grain to refract rather than flat banding.
         </div>
       </div>
 
       <div class="pow-faq-item">
         <div class="pow-faq-header" onclick="toggleFaq(this)">
-          <span>Can I install just Glassmorphism?</span>
+          <span>What makes a glassmorphism implementation fail the fidelity gate?</span>
           <span class="faq-arrow">▶</span>
         </div>
         <div class="pow-faq-body">
-          Yes, run `npx skills add kennedys0/taste-engine --skill taste-style-glassmorphism`.
+          A flat solid card with a blur class where nothing is visible behind it fails. Over-blurring an entire page, low-contrast text that disappears into background light pools, or leaving dark text when switching to smoked dark glass are direct fidelity fails.
+        </div>
+      </div>
+
+      <div class="pow-faq-item">
+        <div class="pow-faq-header" onclick="toggleFaq(this)">
+          <span>Can I install just the Glassmorphism pack without the other 9 styles?</span>
+          <span class="faq-arrow">▶</span>
+        </div>
+        <div class="pow-faq-body">
+          Yes! Run <code>npx skills add kennedys0/taste-engine --skill taste-style-glassmorphism</code> to install the standalone skill for your AI coding agent without loading the full 10-style selector.
         </div>
       </div>
     </section>
   </main>
 
-  <!-- Site Footer (2-column balanced mobile grid) -->
+  <!-- Modal Specimen Dialog -->
+  <div class="glass-modal-backdrop" id="specimenModal" onclick="closeSpecimenModal(event)">
+    <div class="glass-modal-card">
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem;">
+        <h3 style="font-family: var(--pow-font-display); font-size: 1.25rem; font-weight: 700;">Glass Specimen Inspector</h3>
+        <button class="pow-btn-sm" onclick="closeModalDirect()">✕</button>
+      </div>
+      <p style="font-size: 0.9rem; color: var(--pow-text-muted); margin-bottom: 1.5rem; line-height: 1.55;">
+        This modal floats with dual-layer backdrop blur and an elevated specular rim. Notice how the underlying stage elements remain softly visible while maintaining strict text legibility.
+      </p>
+      <div style="background: var(--pow-well-bg); padding: 1rem; border-radius: 8px; border: var(--pow-border-subtle); margin-bottom: 1.5rem; font-family: var(--pow-font-mono); font-size: 0.8rem;">
+        Status: WCAG AA Certified<br>
+        Contrast Ratio: 8.4:1 (Passes AAA)<br>
+        Diffusion: 24px Dual-Layer Blur
+      </div>
+      <button class="pow-btn pow-btn-primary" style="width: 100%;" onclick="closeModalDirect()">Close Inspector</button>
+    </div>
+  </div>
+
+  <!-- Site Footer -->
   <footer class="pow-footer">
     <div class="footer-inner">
       <div class="footer-brand">
@@ -1203,6 +1802,7 @@
       } else {
         themeLabel.textContent = '🌙 DARK';
       }
+      updateGlassMath();
     }
 
     const savedTheme = localStorage.getItem('taste-theme-pow-glassmorphism') || 'dark';
@@ -1265,21 +1865,121 @@
       const text = el.innerText.trim();
       try {
         await navigator.clipboard.writeText(text);
-        showToast('Terminal snippet copied!');
+        showToast('Code snippet copied!');
       } catch (e) {
         showToast('Snippet copied');
       }
-    }
-
-    // Component Button Click Handler
-    function handleBtnClick(name) {
-      showToast(`Action: ${name}`);
     }
 
     // FAQ Accordion Toggle
     function toggleFaq(header) {
       const item = header.parentElement;
       item.classList.toggle('open');
+    }
+
+    // =========================================================
+    // INTERACTIVE LAB LOGIC
+    // =========================================================
+    const labStage = document.getElementById('labStage');
+    const audioPod = document.getElementById('audioPod');
+    const activePaletteLabel = document.getElementById('activePaletteLabel');
+    const blurInput = document.getElementById('blurInput');
+    const satInput = document.getElementById('satInput');
+    const alphaInput = document.getElementById('alphaInput');
+    const blurVal = document.getElementById('blurVal');
+    const satVal = document.getElementById('satVal');
+    const alphaVal = document.getElementById('alphaVal');
+    const cssSnippet = document.getElementById('cssSnippet');
+
+    function setAtmosphere(theme, name, btn) {
+      labStage.className = `lab-stage stage-theme-${theme}`;
+      activePaletteLabel.textContent = name;
+      document.querySelectorAll('.preset-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      showToast(`Atmosphere: ${name}`);
+    }
+
+    function updateGlassMath() {
+      const b = blurInput.value;
+      const s = satInput.value;
+      const a = (alphaInput.value / 100).toFixed(2);
+
+      blurVal.textContent = `${b}px`;
+      satVal.textContent = `${s}%`;
+      alphaVal.textContent = a;
+
+      const isDark = htmlEl.getAttribute('data-theme') === 'dark';
+      const baseColor = isDark ? `rgba(15, 23, 42, ${a})` : `rgba(255, 255, 255, ${a})`;
+      const borderColor = isDark ? `rgba(255, 255, 255, 0.16)` : `rgba(255, 255, 255, 0.75)`;
+      const specularColor = isDark ? `rgba(255, 255, 255, 0.32)` : `rgba(255, 255, 255, 0.95)`;
+
+      audioPod.style.setProperty('--lab-surface', baseColor);
+      audioPod.style.setProperty('--lab-blur', `${b}px`);
+      audioPod.style.setProperty('--lab-sat', `${s}%`);
+
+      cssSnippet.innerHTML = `.frosted-glass-pane {<br>
+&nbsp;&nbsp;background: ${baseColor};<br>
+&nbsp;&nbsp;backdrop-filter: blur(${b}px) saturate(${s}%);<br>
+&nbsp;&nbsp;-webkit-backdrop-filter: blur(${b}px) saturate(${s}%);<br>
+&nbsp;&nbsp;border: 1px solid ${borderColor};<br>
+&nbsp;&nbsp;box-shadow: inset 0 1px 1px ${specularColor};<br>
+}`;
+    }
+
+    // Audio Pod Playback Demo
+    let isPlaying = true;
+    let animInterval;
+    const playBtn = document.getElementById('playBtn');
+    const scrubProgress = document.getElementById('scrubProgress');
+    const currentTime = document.getElementById('currentTime');
+
+    function togglePlay() {
+      isPlaying = !isPlaying;
+      playBtn.textContent = isPlaying ? '⏸' : '▶';
+      showToast(isPlaying ? 'Playback Resumed' : 'Playback Paused');
+    }
+
+    function prevTrack() {
+      showToast('Track: Crystalline Horizon (Previous)');
+    }
+
+    function nextTrack() {
+      showToast('Track: Aurora Borealis (Next)');
+    }
+
+    function scrubTimeline(e) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const pos = (e.clientX - rect.left) / rect.width;
+      scrubProgress.style.width = `${pos * 100}%`;
+      const totalSec = 278;
+      const cur = Math.floor(pos * totalSec);
+      const m = Math.floor(cur / 60);
+      const s = cur % 60;
+      currentTime.textContent = `0${m}:${s < 10 ? '0' : ''}${s}`;
+    }
+
+    // Animate Equalizer Bars
+    setInterval(() => {
+      if (isPlaying) {
+        document.querySelectorAll('.eq-bar').forEach(bar => {
+          const h = Math.floor(Math.random() * 75) + 20;
+          bar.style.height = `${h}%`;
+        });
+      }
+    }, 240);
+
+    // Modal Sheet Demo
+    const specimenModal = document.getElementById('specimenModal');
+    function openSpecimenModal() {
+      specimenModal.classList.add('open');
+    }
+    function closeModalDirect() {
+      specimenModal.classList.remove('open');
+    }
+    function closeSpecimenModal(e) {
+      if (e.target === specimenModal) {
+        closeModalDirect();
+      }
     }
   </script>
 </body>

@@ -17,11 +17,12 @@
 
 A successful prominent glass component demonstrates **all** of the following:
 
-1. **Background depth:** a meaningful differentiated backdrop *behind* the surface (soft light fields, controlled gradients, shapes, photography supplied for the project, or existing app content). Glass needs something to visibly filter. **Purposeful gradients and ambient color shapes are explicitly allowed by Taste Engine anti-slop for Glassmorphism** when they establish visible light passing through a pane. They are not inherently slop.
-2. **Translucency:** the panel lets some background chroma/luminance influence its appearance. Avoid completely opaque dark cards marketed as glass.
-3. **Frosting:** `backdrop-filter: blur(...)` (and `-webkit-backdrop-filter` if required) visibly softens background detail *within the pane*, while nearby exposed background stays clearer. A blurred background image on its own is not frosted glass.
-4. **Readable edge and depth:** soft bright hairline/highlight, slight interior sheen, rounded silhouette where appropriate, and restrained shadow or separation. Glass should have a perceptible boundary, not a flat gray slab.
-5. **Content clarity:** text, focus indicators, control states and actions remain legible across the real composited background and with fallback effects disabled.
+1. **Background depth & textured gradients:** A purposeful, differentiated backdrop *behind* the surface (soft light fields, controlled gradients, subtle noise/dot-matrix micro-textures, or existing app content). Glass needs something to visibly filter. **Purposeful gradients, ambient color shapes, and tactile background textures are explicitly allowed by Taste Engine anti-slop for Glassmorphism** when they establish visible light passing through a pane without jarring color collisions. They are not inherently slop.
+2. **Translucency & Refractive Saturation:** The panel lets background chroma and luminance influence its appearance (`rgba(...)` or `color-mix`), enhanced with `backdrop-filter: blur(16px–24px) saturate(140%–180%)`. Avoid completely opaque dark cards marketed as glass.
+3. **Beveled Specular Edge System:** Dual-layer edge illumination—a 1px perimeter border with high-transparency specular highlight (`rgba(255, 255, 255, 0.4–0.7)` on light, `rgba(255, 255, 255, 0.16–0.32)` on dark) combined with an inner specular sheen (`inset 0 1px 1px 0 rgba(255, 255, 255, 0.25)`). Glass must have a clean, physically grounded boundary, not look like a flat gray slab.
+4. **Anti-Clash Color Safety:** Ambient light sources must use restrained, natural gaussian falloff and non-clashing hues (monochromatic, analogous, or balanced complementary pairs). Primary text ink must never collide with background light pools—crisp deep slate on frosted light glass, and pure luminous porcelain on smoked dark glass (WCAG AA 4.5:1).
+5. **Elevated Glass Component Hierarchy:** Controls inside glass (switches, sliders, buttons, inputs) use slightly higher opacity or dedicated specular rims for instant affordance without nesting arbitrary decorative boxes.
+6. **Content clarity & fallbacks:** Text, focus rings (`:focus-visible`), and actions remain razor-sharp across the composited backdrop, with `@supports not` fallback to solid surfaces for browsers without `backdrop-filter`.
 
 **First-viewport test:** In a desktop screenshot, identify the prominent pane, the distinct backdrop behind it, the blurred/tinted look *inside* its boundary, and its edge highlight **without reading the page title**. If not possible, revise the material before adding more content.
 
@@ -31,7 +32,8 @@ A successful prominent glass component demonstrates **all** of the following:
 
 **Glassmorphism-specific override:** The universal anti-slop warning against *generic decorative gradients* MUST NOT be interpreted as a ban on gradients, mesh-like color fields, blurred color shapes, atmospheric lighting, or coherent background imagery here. These are valid **material-enabling backdrop layers**, even when decorative, because they make translucency, frosting, edges, and depth perceptible. This exemption is **not** permission for fabricated content or inaccessible/slow effects.
 
-- **Allowed backdrop treatments:** 1–3 coherent `radial-gradient()` light fields, a restrained multi-stop linear or mesh gradient, blurred colored ambient shapes using pseudo-elements, a brand-aligned illustration/photograph, or existing content behind a pane. Static CSS is often enough and needs no extra images or animation libraries.
+- **Allowed backdrop treatments:** 1–3 coherent `radial-gradient()` light fields, a restrained multi-stop linear or mesh gradient, blurred colored ambient shapes using pseudo-elements, paired with subtle tactile micro-textures (SVG grain or fine dot-matrix grids) that prevent flat banding. Static CSS is often enough and needs no extra images or animation libraries.
+- **Harmonious, non-clashing color rules:** Strictly avoid discordant rainbow gradients or clashing secondary hues. Restrict palettes to monochromatic or analogous harmonic groups (e.g. cyan/periwinkle/slate, or emerald/teal/obsidian) with gentle gaussian falloff.
 - **Light / milky example:** white/ice base with cool blue/lavender soft light fields behind a translucent white card; the pane visibly softens the color boundaries.
 - **Dark / smoked example:** dark ink base with controlled purple/cyan/teal light areas behind translucent slate panes; bright gradient fields must not obscure white body text.
 - **Composition requirement:** Place at least one light/color transition or recognizable backdrop element **behind and partly beyond the main glass pane** so the filtered-vs-unfiltered difference is visible; a uniform full-screen gradient with no local variation can still fail.
@@ -73,11 +75,13 @@ See `examples/glassmorphism/frosted-surfaces.css` in the full Taste Engine route
 
 ## Component anatomy and interaction
 
-- **Hero:** make the selected aesthetic obvious immediately. Place actual Taste Engine/project heading and CTAs *inside or overlapping a visible glass plane*, or present an equally convincing glass window composition. Provide meaningfully lit backdrop behind the pane.
-- **Header/nav:** a subtle frosted bar can overlap the backdrop, but keep contrast and focus visible. Avoid a flat opaque top bar visually disconnected from the page when demonstrating glass UI.
-- **Functional examples:** switch with real on/off state, selectable option, tab, modal, form, and a toast **only if genuinely triggered** or clearly marked as a static demo. Show focused, hovered, active, disabled and error conditions when applicable. Foreground control surfaces can be more opaque than parent glass for usability.
-- **Buttons:** can be solid accent surfaces for affordance; not every control must be transparent. A conventional button does not compensate for missing glass elsewhere.
-- **Content:** reserve strongly tinted or solid readable containers for long paragraphs, tables and forms; do not place paragraphs on noisy translucent images.
+- **Frosted Glass Pane/Pod:** Master translucent container with 16–24px corner radius, 1px translucent specular border, inset top sheen (`inset 0 1px 1px 0 rgba(255, 255, 255, 0.25)`), and smooth ambient drop shadow.
+- **Hero Window:** Opening viewport anchor placing brand headings and primary actions inside a visible, frosted glass composition with light filtering through from behind.
+- **Glass Controls & Sliders:** Frosted slider tracks with tactile thumb handles and interactive value tags.
+- **Segmented Pill Toggles:** Recessed well container with active frosted pill slider and smooth hover sheen.
+- **Telemetry / Audio Gauges:** High-contrast text values paired with soft equalizer bars or micro-gauges visible through the glass pane.
+- **Glass Buttons & Action Controls:** Crisp semi-opaque or solid accent surfaces ensuring high tactile affordance and clear `:focus-visible` focus rings.
+- **Content Surfaces:** Strongly tinted or solid readable containers for long paragraphs, forms, and data tables to preserve WCAG AA contrast.
 
 ## Motion
 
@@ -118,8 +122,8 @@ For public portfolio/landing/homepages with a hero, use a **header + hero** firs
 
 ## Style-specific quality gate
 
-- **Do:** Verify translucent frosted surfaces filtering backdrop light; ensure 1px translucent borders define panel edges; test accessibility fallback without `backdrop-filter`; verify dark/light mode switching so foreground text and glass panels flip cleanly without color collisions (WCAG AA 4.5:1).
-- **Don't:** Do not treat plain dark/light cards as glassmorphism; avoid whole-screen blur; avoid low-contrast text floating over noisy translucent areas; do not leave dark text when switching to smoked dark glass.
+- **Do:** Verify translucent frosted surfaces filtering backdrop light; ensure 1px translucent borders and specular highlights define panel edges; ensure background gradients are non-clashing and paired with subtle tactile micro-textures; test accessibility fallback without `backdrop-filter`; verify dark/light mode switching so foreground text and glass panels flip cleanly without color collisions (WCAG AA 4.5:1).
+- **Don't:** Do not treat plain dark/light cards as glassmorphism; avoid whole-screen blur; avoid low-contrast text floating over noisy translucent areas; do not use discordant rainbow gradients that clash or overpower content; do not leave dark text when switching to smoked dark glass.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -127,7 +131,7 @@ For public portfolio/landing/homepages with a hero, use a **header + hero** firs
 
 **Translucent depth, not blurry chaos.**
 
-- **Reject:** Completely opaque flat cards described as glass, arbitrary blob spam with no depth, text placed over high-contrast translucent clutter with no solid underlay, and theme contrast collisions (such as black text on dark smoked glass).
-- **Instead:** Filter structured, purposeful ambient light through legible frosted panes with clear hierarchy and solid readable content containers.
+- **Reject:** Completely opaque flat cards described as glass, clashing rainbow gradient blobs with no depth or texture, text placed over high-contrast translucent clutter with no solid underlay, and theme contrast collisions (such as black text on dark smoked glass).
+- **Instead:** Filter structured, purposeful, non-clashing ambient light through legible frosted panes with clear hierarchy and solid readable content containers.
 - **Copy check:** Avoid clichés like "crystal clear" or "transparent future."
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `glassmorphism`.
