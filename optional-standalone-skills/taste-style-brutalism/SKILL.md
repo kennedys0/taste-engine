@@ -34,6 +34,12 @@ A successful brutalist implementation demonstrates **all** of the following:
 3. **Hyper-Disciplined Alignment:** Despite its raw material honesty, alignment is razor-sharp. Columns, borders, and rows lock together seamlessly with zero erratic wandering.
 4. **Stark High-Contrast Palette:** Uncompromising black-on-white or black-on-concrete monochrome contrast meeting WCAG AAA (7:1+). Color is used only as an operational alert signal (pure red `#FF0000` or raw warning yellow `#FFD700`).
 5. **Immediate Interactive State Transitions:** Buttons and interactive elements flip instantly on `:hover` and `:active` (e.g. immediate color inversion from black-on-white to white-on-black) without delayed easing or artificial spring physics.
+6. **Exposed Blueprint Gridlines & Cellular Enclosure:** Every section, compartment, and functional module must be enclosed in solid structural borders (`2px–3px solid`), aligning flush without awkward gaps like an architectural blueprint or constructivist formwork.
+7. **Strict 0px Border Radii Mandate:** Absolute square corners everywhere (`border-radius: 0px`). Bubble corners, rounded buttons, and pill badges are strictly forbidden in architectural brutalism.
+8. **Monumental Heavyweight Condensed Typography:** Primary hero headlines must use heavyweight condensed grotesk typography (`Anton`, `Space Grotesk 900`, `Impact`, or heavy bold sans) with tight leading (0.88–1.05) and uppercase treatment.
+9. **Controlled Operational Signal Colors:** The foundation is uncompromising black and white / concrete paper. Saturated color is strictly limited to high-voltage Warning Yellow (`#FFDE00`) and Signal Red (`#FF3B30`), used for operational status cells, active project rows, and primary conversion CTAs.
+10. **Structured Architectural Indexing:** Compartments must feature explicit structural numbering (`01`, `02`, `03`, `04`), directional arrows (`↗`, `→`, `↓`), and technical metadata brackets.
+11. **Single-Viewport Hero Composition ("1-Page Fit"):** The opening desktop hero must assemble the brand headline, architectural coordinate cell, status ticker, and primary action within a single view (`100svh`) before expanding into the project matrix and documentation.
 
 **First-viewport test:** In a desktop screenshot, identify the exposed structural border grid, the flat unornamented planes, and the stark monochrome authority **without reading the page title**. If it contains rounded cards or soft shadows, strip away the decorative camouflage immediately.
 
@@ -101,7 +107,8 @@ Direct, unapologetic, and factual. Examples: “INDEX”, “DOWNLOAD SPECIFICAT
 | `--taste-brutal-surface` | `#ffffff` | `#121212` |
 | `--taste-brutal-border` | `2.5px solid #000000` | `2.5px solid #ffffff` |
 | `--taste-brutal-radius` | `0px` | `0px` |
-| `--taste-brutal-signal` | `#ff0000` | `#ff3333` |
+| `--taste-brutal-signal-yellow` | `#ffde00` | `#ffde00` |
+| `--taste-brutal-signal-red` | `#ff3b30` | `#ff3b30` |
 | `--taste-brutal-font-heading` | `'Arial Black', Arial, Helvetica, sans-serif` | `'Arial Black', Arial, Helvetica, sans-serif` |
 | `--taste-brutal-font-body` | `Arial, Helvetica, sans-serif` | `Arial, Helvetica, sans-serif` |
 | `--taste-brutal-font-mono` | `'IBM Plex Mono', monospace` | `'IBM Plex Mono', monospace` |
@@ -116,8 +123,8 @@ Tokens represent a **direction** and are not copy-paste guaranteed for every pal
 
 ## Style-specific quality gate
 
-- **Do:** Verify stark monochrome contrast; ensure 2–3px structural borders are solid; verify sharp 0px square corners; verify dark/light mode polarity inversion so text and background never clash (no black-on-black or white-on-white text); ensure signal accent remains strictly singular.
-- **Don't:** Do not add rounded corners, soft drop shadows, or smooth color gradients; avoid decorative filler badges or chatty marketing copy; do not leave black ink or borders when switching to dark canvas.
+- **Do:** Verify stark monochrome contrast; ensure 2–3px structural borders are solid; verify sharp 0px square corners; confirm single-viewport hero fit on desktop; enforce monumental condensed typography; verify controlled caution yellow (#ffde00) and signal red (#ff3b30) operational roles; verify dark/light mode polarity inversion so text and background never clash (no black-on-black or white-on-white text).
+- **Don't:** Do not add rounded corners, soft drop shadows, or smooth color gradients (strictly 0px radius); avoid arbitrary font size chaos; never use pill buttons; avoid oversized padding that breaks the single-viewport hero fit; avoid decorative filler badges or chatty marketing copy; do not leave black ink or borders when switching to dark canvas.
 - Confirm desktop and mobile consistency; visible keyboard focus (`:focus-visible`); loading, empty, disabled, error and success states; reduced-motion behavior (`prefers-reduced-motion`).
 - Do not inject style-specific assumptions into unrelated projects. When combining styles, explicitly name the primary style and the borrowed features.
 
@@ -141,7 +148,7 @@ Do not add decorative **card-inside-card** layers: a nested surface must represe
 
 **Structural honesty, not aesthetic playfulness.**
 
-- **Reject:** Rounded pill shapes, pastel accents, decorative shadow blurs, playful illustrations, generic template cards, and theme collisions (such as black text remaining on a dark brutalist canvas).
+- **Reject:** Rounded pill shapes, pastel accents, decorative shadow blurs, arbitrary font chaos, playful sticker illustrations, generic template cards, and theme collisions (such as black text remaining on a dark brutalist canvas).
 - **Instead:** Expose layout grids with heavy structural borders, stark type hierarchy, immediate state flips, and unambiguous contrast.
 - **Copy check:** UI writing must be brief, direct, and functional without marketing jargon.
 - **Audit:** Run universal anti-slop purpose, truth, nested-surface, copywriting, responsiveness, accessibility and motion checks **in addition** to this style's quality gate. Do not penalize deliberate, accessible features characteristic of `brutalism`.
