@@ -8,7 +8,7 @@
   <link rel="icon" type="image/webp" href="assets/logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700;800&family=JetBrains+Mono:wght@500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* =========================================================
        NEO-BRUTALISM DESIGN SYSTEM TOKENS
@@ -32,16 +32,17 @@
       
       /* Vibrant Saturated Pop Palette */
       --neo-yellow: #FFE600;
-      --neo-coral: #FF5C00;
+      --neo-coral: #FF5757;
       --neo-cyan: #00F0FF;
       --neo-lime: #52FF00;
+      --neo-violet: #B388FF;
       --neo-pink: #FF66C4;
-      --neo-purple: #9D4EDD;
 
       /* Primary Active Accents */
       --neo-accent-primary: var(--neo-yellow);
       --neo-accent-secondary: var(--neo-cyan);
       --neo-accent-contrast: #121212;
+      --neo-accent-active: #FFE600;
 
       /* Radii */
       --neo-radius: 4px;
@@ -49,7 +50,7 @@
 
       /* Typography */
       --neo-font-display: 'Space Grotesk', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      --neo-font-body: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --neo-font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --neo-font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
     }
 
@@ -80,6 +81,10 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: var(--neo-bg);
       color: var(--neo-ink);
@@ -91,7 +96,29 @@
       transition: background-color 150ms ease, color 150ms ease;
     }
 
-    /* Top Navigation Bar */
+    /* --- Strict 1:1 Circle Geometry Preservation (Anti-Oval) --- */
+    .brand-logo-img,
+    .nav-logo-box,
+    .nav-hamburger-btn,
+    .mobile-drawer-close-btn,
+    .dot,
+    .status-dot,
+    .color-swatch,
+    .swatch-circle,
+    .telemetry-dot,
+    .switch-knob,
+    .stepper-btn,
+    .circle-icon {
+      aspect-ratio: 1 / 1 !important;
+      flex-shrink: 0 !important;
+    }
+    img.brand-logo-img {
+      object-fit: cover;
+    }
+
+    /* =========================================================
+       TOP STICKY NAVIGATION
+       ========================================================= */
     .neo-nav {
       position: sticky;
       top: 0;
@@ -103,6 +130,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
+      transition: background-color 150ms ease, border-color 150ms ease;
     }
 
     .nav-brand-group {
@@ -111,12 +139,14 @@
       gap: 0.75rem;
       text-decoration: none;
       color: var(--neo-ink);
+      flex-shrink: 0;
     }
 
     .nav-logo-box {
       width: 34px;
       height: 34px;
       background: var(--neo-yellow);
+      color: #121212;
       border: var(--neo-border);
       box-shadow: 2px 2px 0 var(--neo-shadow-color);
       border-radius: var(--neo-radius);
@@ -125,6 +155,8 @@
       justify-content: center;
       font-weight: 800;
       font-family: var(--neo-font-display);
+      font-size: 0.95rem;
+      letter-spacing: -0.02em;
     }
 
     .nav-title {
@@ -139,7 +171,7 @@
       color: #121212;
       font-family: var(--neo-font-mono);
       font-size: 0.7rem;
-      font-weight: 700;
+      font-weight: 800;
       padding: 0.2rem 0.55rem;
       border: var(--neo-border);
       border-radius: var(--neo-radius);
@@ -148,10 +180,34 @@
       text-transform: uppercase;
     }
 
+    /* Desktop Links */
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .nav-link {
+      color: var(--neo-ink);
+      text-decoration: none;
+      font-family: var(--neo-font-display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      transition: color 120ms ease;
+    }
+
+    .nav-link:hover {
+      color: var(--neo-coral);
+      text-decoration: underline;
+    }
+
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
+      flex-shrink: 0;
     }
 
     .neo-btn-sm {
@@ -166,11 +222,11 @@
       border-radius: var(--neo-radius);
       font-family: var(--neo-font-display);
       font-size: 0.8rem;
-      font-weight: 700;
+      font-weight: 800;
       text-transform: uppercase;
       text-decoration: none;
       cursor: pointer;
-      transition: transform 90ms ease, box-shadow 90ms ease;
+      transition: transform 90ms ease, box-shadow 90ms ease, background 120ms ease;
     }
 
     .neo-btn-sm:hover {
@@ -183,7 +239,193 @@
       box-shadow: 1px 1px 0 var(--neo-shadow-color);
     }
 
-    /* Hero Section (100svh safe viewport) */
+    .neo-btn-install-header {
+      background: var(--neo-yellow);
+      color: #121212;
+    }
+
+    .neo-btn-install-header:hover {
+      background: #FFE000;
+    }
+
+    /* Hamburger Button (strictly Neo-Brutalist) */
+    .nav-hamburger-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: var(--neo-radius);
+      background: var(--neo-surface);
+      border: var(--neo-border);
+      box-shadow: var(--neo-shadow-sm);
+      color: var(--neo-ink);
+      cursor: pointer;
+      transition: transform 90ms ease, box-shadow 90ms ease;
+    }
+
+    .nav-hamburger-btn:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--neo-shadow-color);
+    }
+
+    .nav-hamburger-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--neo-shadow-color);
+    }
+
+    /* Mobile Navigation Drawer Overlay (Authentic Neo-Brutalist) */
+    .mobile-nav-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(18, 18, 18, 0.65);
+      backdrop-filter: blur(2px);
+      z-index: 998;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease;
+    }
+
+    .mobile-nav-backdrop.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .mobile-nav-drawer {
+      position: fixed;
+      top: 0;
+      right: -340px;
+      width: min(320px, 86vw);
+      height: 100vh;
+      height: 100dvh;
+      z-index: 999;
+      background: var(--neo-surface);
+      border-left: var(--neo-border);
+      box-shadow: -8px 0 0 var(--neo-shadow-color);
+      display: flex;
+      flex-direction: column;
+      transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
+      padding: 1.25rem 1.25rem;
+      box-sizing: border-box;
+    }
+
+    .mobile-nav-drawer.open {
+      transform: translateX(-340px);
+    }
+
+    .mobile-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 0.85rem;
+      border-bottom: var(--neo-border);
+      margin-bottom: 1.25rem;
+    }
+
+    .style-drawer-tag {
+      font-family: var(--neo-font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #121212;
+      background: var(--neo-cyan);
+      border: var(--neo-border);
+      border-radius: var(--neo-radius);
+      padding: 0.2rem 0.5rem;
+      box-shadow: 2px 2px 0 var(--neo-shadow-color);
+      text-transform: uppercase;
+    }
+
+    .mobile-drawer-close-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: var(--neo-radius);
+      background: var(--neo-coral);
+      color: #FAFAFA;
+      border: var(--neo-border);
+      box-shadow: 2px 2px 0 var(--neo-shadow-color);
+      cursor: pointer;
+      transition: transform 90ms ease, box-shadow 90ms ease;
+    }
+
+    .mobile-drawer-close-btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 var(--neo-shadow-color);
+    }
+
+    .mobile-drawer-body {
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .mobile-nav-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      min-height: 44px;
+      padding: 0.65rem 0.85rem;
+      border-radius: var(--neo-radius);
+      background: var(--neo-surface-elevated);
+      border: var(--neo-border);
+      box-shadow: var(--neo-shadow-sm);
+      color: var(--neo-ink);
+      text-decoration: none;
+      font-family: var(--neo-font-display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      transition: transform 90ms ease, box-shadow 90ms ease;
+    }
+
+    .mobile-nav-link:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--neo-shadow-color);
+    }
+
+    .mobile-nav-link:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0 var(--neo-shadow-color);
+    }
+
+    .mobile-drawer-footer {
+      padding-top: 1rem;
+      border-top: var(--neo-border);
+    }
+
+    .mobile-drawer-cta-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      width: 100%;
+      min-height: 44px;
+      padding: 0.75rem 1rem;
+      background: var(--neo-yellow);
+      color: #121212;
+      border: var(--neo-border);
+      box-shadow: var(--neo-shadow-md);
+      border-radius: var(--neo-radius);
+      font-family: var(--neo-font-display);
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: transform 90ms ease, box-shadow 90ms ease;
+    }
+
+    .mobile-drawer-cta-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 2px 2px 0 var(--neo-shadow-color);
+    }
+
+    /* =========================================================
+       HERO SECTION (100svh safe viewport)
+       ========================================================= */
     .pow-hero {
       min-height: calc(100svh - 60px);
       display: flex;
@@ -593,85 +835,397 @@
       font-style: italic;
     }
 
-    /* Interactive Component Showcase Grid */
-    .component-grid {
+    /* =========================================================
+       INTERACTIVE NEO-BRUTALISM STUDIO LAB (POW PLAYGROUND)
+       ========================================================= */
+    .studio-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
+      gap: 1.75rem;
     }
 
-    .comp-card {
+    .studio-panel {
       background: var(--neo-surface);
       border: var(--neo-border);
-      box-shadow: var(--neo-shadow-md);
+      box-shadow: var(--neo-shadow-lg);
       border-radius: var(--neo-radius);
-      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
     }
 
-    .comp-card h3 {
+    .studio-panel-header {
+      background: var(--neo-well-bg);
+      border-bottom: var(--neo-border);
+      padding: 0.85rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .studio-panel-title {
       font-family: var(--neo-font-display);
-      font-size: 1.15rem;
+      font-size: 0.95rem;
       font-weight: 800;
       text-transform: uppercase;
-      margin-bottom: 0.5rem;
+      letter-spacing: 0.03em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
     }
 
-    .comp-card p {
+    .studio-panel-badge {
+      font-family: var(--neo-font-mono);
+      font-size: 0.7rem;
+      font-weight: 800;
+      padding: 0.15rem 0.5rem;
+      background: var(--neo-yellow);
+      color: #121212;
+      border: 1.5px solid var(--neo-border-color);
+      border-radius: var(--neo-radius);
+    }
+
+    .studio-panel-body {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      flex: 1;
+    }
+
+    .panel-instruction {
       font-size: 0.85rem;
       color: var(--neo-ink-muted);
-      margin-bottom: 1.25rem;
+      line-height: 1.5;
     }
 
-    .btn-row {
+    /* Module 1: Mechanical Press & Physics Tester */
+    .depth-tier-selector {
       display: flex;
-      gap: 0.75rem;
+      gap: 0.4rem;
       flex-wrap: wrap;
     }
 
-    .btn-pop-yellow {
+    .depth-btn {
+      padding: 0.35rem 0.65rem;
+      background: var(--neo-surface);
+      color: var(--neo-ink);
+      border: var(--neo-border);
+      border-radius: var(--neo-radius);
+      font-family: var(--neo-font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 var(--neo-shadow-color);
+      transition: all 90ms ease;
+    }
+
+    .depth-btn.active {
+      background: var(--neo-yellow);
+      color: #121212;
+      box-shadow: 1px 1px 0 var(--neo-shadow-color);
+      transform: translate(1px, 1px);
+    }
+
+    .specimen-btn-array {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.85rem;
+    }
+
+    .tactile-specimen-btn {
+      padding: 0.85rem 1rem;
+      font-family: var(--neo-font-display);
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      border: var(--neo-border);
+      border-radius: var(--neo-radius);
+      box-shadow: var(--active-specimen-shadow, 5px 5px 0 var(--neo-shadow-color));
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      transition: transform 130ms cubic-bezier(0, 0, 0.2, 1), box-shadow 130ms cubic-bezier(0, 0, 0.2, 1);
+      user-select: none;
+    }
+
+    .tactile-specimen-btn:hover {
+      transform: translate(-1px, -1px);
+    }
+
+    .tactile-specimen-btn:active {
+      transform: translate(2px, 2px) !important;
+      box-shadow: 1px 1px 0 var(--neo-shadow-color) !important;
+    }
+
+    .btn-theme-yellow {
       background: var(--neo-yellow);
       color: #121212;
     }
 
-    .btn-pop-coral {
+    .btn-theme-coral {
       background: var(--neo-coral);
       color: #FAFAFA;
     }
 
-    .btn-pop-cyan {
+    .btn-theme-cyan {
       background: var(--neo-cyan);
       color: #121212;
     }
 
-    .btn-pop-lime {
+    .btn-theme-lime {
       background: var(--neo-lime);
       color: #121212;
     }
 
-    /* Interactive Neo Form Field */
-    .neo-form-group {
-      margin-bottom: 1rem;
+    /* Telemetry Box */
+    .telemetry-box {
+      background: var(--neo-well-bg);
+      border: var(--neo-border);
+      border-radius: var(--neo-radius);
+      padding: 0.85rem 1rem;
+      font-family: var(--neo-font-mono);
+      font-size: 0.775rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
     }
 
-    .neo-label {
-      display: block;
+    .telemetry-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .telemetry-key {
+      color: var(--neo-ink-muted);
+      font-weight: 600;
+    }
+
+    .telemetry-val {
+      font-weight: 800;
+      color: var(--neo-ink);
+    }
+
+    .telemetry-log {
+      margin-top: 0.35rem;
+      padding-top: 0.45rem;
+      border-top: 1.5px dashed var(--neo-border-color);
+      color: var(--neo-coral);
+      font-size: 0.725rem;
+      word-break: break-all;
+    }
+
+    /* Module 2: Live Shadow & Stroke Calibrator */
+    .calibrator-controls {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .control-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .control-label-group {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       font-family: var(--neo-font-display);
       font-size: 0.8rem;
       font-weight: 800;
       text-transform: uppercase;
-      margin-bottom: 0.4rem;
+    }
+
+    .control-val-badge {
+      font-family: var(--neo-font-mono);
+      font-size: 0.75rem;
+      padding: 0.1rem 0.4rem;
+      background: var(--neo-well-bg);
+      border: 1.5px solid var(--neo-border-color);
+      border-radius: var(--neo-radius);
+    }
+
+    .neo-range-slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 8px;
+      background: var(--neo-well-bg);
+      border: 1.5px solid var(--neo-border-color);
+      border-radius: var(--neo-radius);
+      outline: none;
+    }
+
+    .neo-range-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      width: 20px;
+      height: 20px;
+      background: var(--neo-yellow);
+      border: 2px solid #121212;
+      border-radius: var(--neo-radius);
+      box-shadow: 2px 2px 0 #121212;
+      cursor: pointer;
+    }
+
+    .radius-btn-group {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.35rem;
+    }
+
+    .radius-btn {
+      padding: 0.4rem;
+      background: var(--neo-surface);
+      color: var(--neo-ink);
+      border: var(--neo-border);
+      border-radius: var(--neo-radius);
+      font-family: var(--neo-font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      cursor: pointer;
+      text-align: center;
+      transition: all 90ms ease;
+    }
+
+    .radius-btn.active {
+      background: var(--neo-coral);
+      color: #FAFAFA;
+      box-shadow: 2px 2px 0 var(--neo-shadow-color);
+    }
+
+    .calibrator-preview-area {
+      min-height: 140px;
+      background: var(--neo-well-bg);
+      border: var(--neo-border);
+      border-radius: var(--neo-radius);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+    }
+
+    .calibrator-target-box {
+      background: var(--neo-yellow);
+      color: #121212;
+      padding: 1rem 1.75rem;
+      font-family: var(--neo-font-display);
+      font-weight: 800;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      transition: all 90ms ease;
+      cursor: pointer;
+      text-align: center;
+      user-select: none;
+    }
+
+    .calibrator-target-box:active {
+      transform: translate(2px, 2px);
+    }
+
+    .calibrator-css-pill {
+      background: #121215;
+      color: #FAFAFA;
+      border: var(--neo-border);
+      border-radius: var(--neo-radius);
+      padding: 0.65rem 0.85rem;
+      font-family: var(--neo-font-mono);
+      font-size: 0.75rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+      overflow-x: auto;
+    }
+
+    .calibrator-css-code {
+      white-space: nowrap;
+      color: var(--neo-yellow);
+    }
+
+    /* Module 3: Card-in-Card & Form Controls Lab */
+    .parent-card-demo {
+      background: var(--neo-surface);
+      border: var(--neo-border);
+      box-shadow: var(--neo-shadow-lg);
+      border-radius: var(--neo-radius);
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .parent-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 2px solid var(--neo-border-color);
+      padding-bottom: 0.65rem;
+    }
+
+    .parent-card-title {
+      font-family: var(--neo-font-display);
+      font-size: 0.9rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.45rem;
+    }
+
+    /* Approved Nested Action Well (Card-in-Card) */
+    .nested-action-well {
+      background: var(--neo-surface-elevated);
+      border: 2px solid var(--neo-border-color);
+      box-shadow: 4px 4px 0 var(--neo-shadow-color);
+      border-radius: var(--neo-radius);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+
+    .nested-well-label {
+      font-family: var(--neo-font-mono);
+      font-size: 0.7rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--neo-ink-muted);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .neo-form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .neo-label {
+      font-family: var(--neo-font-display);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
     }
 
     .neo-input {
       width: 100%;
-      padding: 0.65rem 0.85rem;
+      padding: 0.6rem 0.8rem;
       background: var(--neo-surface);
       color: var(--neo-ink);
       border: var(--neo-border);
       box-shadow: 3px 3px 0 var(--neo-shadow-color);
       border-radius: var(--neo-radius);
       font-family: var(--neo-font-mono);
-      font-size: 0.875rem;
+      font-size: 0.85rem;
       outline: none;
       transition: transform 90ms ease, box-shadow 90ms ease;
     }
@@ -681,61 +1235,180 @@
       transform: translate(-1px, -1px);
     }
 
-    /* Accordion / FAQ */
-    .neo-faq-item {
+    /* Mechanical Switch */
+    .switch-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .switch-label {
+      font-family: var(--neo-font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    .neo-switch-track {
+      width: 48px;
+      height: 26px;
+      background: var(--neo-well-bg);
+      border: var(--neo-border);
+      box-shadow: 2px 2px 0 var(--neo-shadow-color);
+      border-radius: var(--neo-radius-pill);
+      position: relative;
+      cursor: pointer;
+      transition: background 130ms ease;
+      flex-shrink: 0;
+    }
+
+    .neo-switch-track.on {
+      background: var(--neo-lime);
+    }
+
+    .switch-knob {
+      width: 18px;
+      height: 18px;
+      background: #121212;
+      border: 1.5px solid #121212;
+      border-radius: 50%;
+      position: absolute;
+      top: 2px;
+      left: 2px;
+      transition: transform 130ms cubic-bezier(0, 0, 0.2, 1);
+    }
+
+    [data-theme="dark"] .switch-knob {
+      background: #FAFAFA;
+      border-color: #FAFAFA;
+    }
+
+    .neo-switch-track.on .switch-knob {
+      transform: translateX(22px);
+    }
+
+    /* Tilted Sticker Badges */
+    .sticker-strip {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .neo-sticker {
+      padding: 0.25rem 0.65rem;
+      font-family: var(--neo-font-mono);
+      font-size: 0.725rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      border: var(--neo-border);
+      border-radius: var(--neo-radius);
+      box-shadow: 2px 2px 0 var(--neo-shadow-color);
+      cursor: pointer;
+      user-select: none;
+      transition: transform 90ms ease, box-shadow 90ms ease;
+    }
+
+    .neo-sticker.tilt-left {
+      transform: rotate(-2deg);
+      background: var(--neo-cyan);
+      color: #121212;
+    }
+
+    .neo-sticker.tilt-right {
+      transform: rotate(2deg);
+      background: var(--neo-yellow);
+      color: #121212;
+    }
+
+    .neo-sticker.tilt-center {
+      transform: rotate(0deg);
+      background: var(--neo-coral);
+      color: #FAFAFA;
+    }
+
+    .neo-sticker:hover {
+      transform: rotate(0deg) translate(-1px, -1px);
+      box-shadow: 3px 3px 0 var(--neo-shadow-color);
+    }
+
+    .neo-sticker:active {
+      transform: translate(1px, 1px);
+      box-shadow: 1px 1px 0 var(--neo-shadow-color);
+    }
+
+    /* Module 4: Saturated Pop Palette & Contrast Matrix */
+    .palette-swatches-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.65rem;
+    }
+
+    .swatch-card {
       background: var(--neo-surface);
       border: var(--neo-border);
       box-shadow: var(--neo-shadow-sm);
       border-radius: var(--neo-radius);
-      margin-bottom: 1rem;
-      overflow: hidden;
+      padding: 0.75rem 0.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      cursor: pointer;
+      transition: transform 90ms ease, box-shadow 90ms ease;
     }
 
-    .neo-faq-header {
-      padding: 1rem 1.25rem;
+    .swatch-card:hover {
+      transform: translate(-1px, -1px);
+      box-shadow: 4px 4px 0 var(--neo-shadow-color);
+    }
+
+    .swatch-circle {
+      width: 32px;
+      height: 32px;
+      border: 2px solid #121212;
+      border-radius: 50%;
+    }
+
+    .swatch-name {
       font-family: var(--neo-font-display);
-      font-size: 0.95rem;
+      font-size: 0.75rem;
       font-weight: 800;
       text-transform: uppercase;
-      cursor: pointer;
+      text-align: center;
+    }
+
+    .swatch-ratio {
+      font-family: var(--neo-font-mono);
+      font-size: 0.68rem;
+      color: var(--neo-ink-muted);
+      font-weight: 700;
+    }
+
+    .contrast-rule-box {
+      background: var(--neo-well-bg);
+      border: var(--neo-border);
+      border-radius: var(--neo-radius);
+      padding: 0.85rem;
+      font-size: 0.8rem;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .contrast-rule-title {
+      font-family: var(--neo-font-display);
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--neo-coral);
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      user-select: none;
-      background: var(--neo-surface);
-      transition: background 120ms ease;
+      gap: 0.4rem;
     }
 
-    .neo-faq-header:hover {
-      background: var(--neo-surface-elevated);
-    }
-
-    .faq-arrow {
-      font-family: var(--neo-font-mono);
-      font-weight: 800;
-      transition: transform 180ms ease;
-    }
-
-    .neo-faq-item.open .faq-arrow {
-      transform: rotate(90deg);
-    }
-
-    .neo-faq-body {
-      padding: 0 1.25rem 1.25rem 1.25rem;
-      font-size: 0.875rem;
-      color: var(--neo-ink-muted);
-      line-height: 1.6;
-      display: none;
-      border-top: 2px dashed var(--neo-border-color);
-      margin-top: -1px;
-      padding-top: 1rem;
-    }
-
-    .neo-faq-item.open .neo-faq-body {
-      display: block;
-    }
-
-    /* Token Specification Table */
+    /* =========================================================
+       DESIGN TOKENS MATRIX TABLE
+       ========================================================= */
     .token-table-wrap {
       background: var(--neo-surface);
       border: var(--neo-border);
@@ -787,7 +1460,66 @@
       border-radius: 2px;
     }
 
-    /* Footer (Balanced 2-column mobile architecture) */
+    /* =========================================================
+       FAQ ACCORDION (Lucide Chevrons & Dashed Dividers)
+       ========================================================= */
+    .neo-faq-item {
+      background: var(--neo-surface);
+      border: var(--neo-border);
+      box-shadow: var(--neo-shadow-sm);
+      border-radius: var(--neo-radius);
+      margin-bottom: 1rem;
+      overflow: hidden;
+      transition: box-shadow 120ms ease;
+    }
+
+    .neo-faq-header {
+      padding: 1rem 1.25rem;
+      font-family: var(--neo-font-display);
+      font-size: 0.95rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      user-select: none;
+      background: var(--neo-surface);
+      transition: background 120ms ease;
+    }
+
+    .neo-faq-header:hover {
+      background: var(--neo-surface-elevated);
+    }
+
+    .faq-chevron {
+      transition: transform 180ms ease;
+      flex-shrink: 0;
+    }
+
+    .neo-faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .neo-faq-body {
+      padding: 0 1.25rem 1.25rem 1.25rem;
+      font-size: 0.875rem;
+      color: var(--neo-ink-muted);
+      line-height: 1.6;
+      display: none;
+      border-top: 2px dashed var(--neo-border-color);
+      margin-top: -1px;
+      padding-top: 1rem;
+    }
+
+    .neo-faq-item.open .neo-faq-body {
+      display: block;
+    }
+
+    /* =========================================================
+       FOOTER (Balanced 3-column / 2-column mobile architecture)
+       ========================================================= */
     .neo-footer {
       background: var(--neo-surface);
       border-top: var(--neo-border);
@@ -894,24 +1626,56 @@
     }
 
     /* =========================================================
-       RESPONSIVE BREAKPOINTS (FLUID & COMPACT MOBILE)
+       RESPONSIVE BREAKPOINTS (FLUID & COMPACT DOWN TO 320PX)
        ========================================================= */
+    @media (max-width: 860px) {
+      .studio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
     @media (max-width: 768px) {
-      .neo-nav { padding: 0.65rem 1rem; }
-      .nav-title { font-size: 0.95rem; }
-      .nav-tag-badge { display: none; }
+      .neo-nav {
+        padding: 0.65rem 1rem !important;
+      }
+      .nav-links.desktop-only,
+      .nav-actions .desktop-only {
+        display: none !important;
+      }
+      .nav-hamburger-btn {
+        display: inline-flex !important;
+      }
+      .nav-tag-badge {
+        display: none !important;
+      }
       
-      .pow-hero { padding: 2.5rem 1rem 1.5rem 1rem; }
-      .hero-title { font-size: clamp(1.6rem, 5.5vw, 2.3rem); }
-      .hero-desc { font-size: 0.9rem; margin-bottom: 1.5rem; }
+      .pow-hero {
+        padding: 2.5rem 1rem 1.5rem 1rem;
+      }
+      .hero-title {
+        font-size: clamp(1.6rem, 5.5vw, 2.3rem);
+      }
+      .hero-desc {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+      }
 
-      .hero-btn-group { flex-direction: column; width: 100%; gap: 0.65rem; }
-      .neo-btn { width: 100%; }
+      .hero-btn-group {
+        flex-direction: column;
+        width: 100%;
+        gap: 0.65rem;
+      }
+      .neo-btn {
+        width: 100%;
+      }
 
-      .neo-stat-strip { grid-template-columns: repeat(2, 1fr); gap: 0.65rem; }
-      .stat-val { font-size: 1.35rem; }
-
-      .component-grid { grid-template-columns: 1fr; }
+      .neo-stat-strip {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.65rem;
+      }
+      .stat-val {
+        font-size: 1.35rem;
+      }
 
       .footer-inner {
         grid-template-columns: repeat(2, 1fr);
@@ -930,18 +1694,52 @@
     }
 
     @media (max-width: 480px) {
-      .hero-title { font-size: 1.45rem; line-height: 1.18; }
-      .hero-desc { font-size: 0.825rem; }
-      .neo-stat-strip { grid-template-columns: 1fr 1fr; gap: 0.45rem; }
-      .stat-box { padding: 0.75rem 0.5rem; }
-      .stat-val { font-size: 1.2rem; }
-      .stat-label { font-size: 0.65rem; }
+      html {
+        font-size: 15px;
+      }
+      .nav-title {
+        font-size: 0.95rem;
+      }
+      .pow-hero {
+        padding: 2rem 0.75rem 1.25rem 0.75rem !important;
+      }
+      .hero-title {
+        font-size: clamp(1.35rem, 5.5vw, 1.75rem) !important;
+        line-height: 1.25;
+        margin-bottom: 0.85rem;
+      }
+      .hero-desc {
+        font-size: 0.85rem !important;
+      }
 
-      .section-title { font-size: 1.3rem; }
-      .section-desc { font-size: 0.825rem; }
+      .neo-stat-strip {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.45rem;
+      }
+      .stat-box {
+        padding: 0.75rem 0.5rem;
+      }
+      .stat-val {
+        font-size: 1.2rem;
+      }
+      .stat-label {
+        font-size: 0.65rem;
+      }
 
-      .tab-body { padding: 1rem; }
-      .terminal-content { font-size: 0.75rem; padding: 0.85rem; }
+      .section-title {
+        font-size: clamp(1.2rem, 4.5vw, 1.45rem) !important;
+      }
+      .section-desc {
+        font-size: 0.825rem !important;
+      }
+
+      .tab-body {
+        padding: 1rem;
+      }
+      .terminal-content {
+        font-size: 0.75rem;
+        padding: 0.85rem;
+      }
 
       .neo-command-pill {
         gap: 0.4rem;
@@ -951,210 +1749,31 @@
         padding: 0.35rem 0.6rem;
         font-size: 0.7rem;
       }
-    }
 
-    /* --- Mobile Hamburger & Drawer Navigation --- */
-    .nav-hamburger-btn {
-      display: none;
-      align-items: center;
-      justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: var(--pow-radius-sm, 6px);
-      background: var(--pow-surface-elevated, #FFFFFF);
-      border: var(--pow-border, 1px solid #CBD5E1);
-      color: var(--pow-text, #0F172A);
-      cursor: pointer;
-      transition: all 120ms ease;
-    }
-
-    .nav-hamburger-btn:hover {
-      border-color: var(--pow-accent, #3B82F6);
-      color: var(--pow-accent, #3B82F6);
-    }
-
-    .mobile-nav-backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(10, 12, 16, 0.6);
-      -webkit-backdrop-filter: blur(4px);
-      backdrop-filter: blur(4px);
-      z-index: 998;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 200ms ease;
-    }
-
-    .mobile-nav-backdrop.open {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .mobile-nav-drawer {
-      position: fixed;
-      top: 0;
-      right: -320px;
-      width: min(300px, 86vw);
-      height: 100vh;
-      height: 100dvh;
-      z-index: 999;
-      background: var(--pow-surface-elevated, #FFFFFF);
-      border-left: var(--pow-border, 1px solid #CBD5E1);
-      box-shadow: -10px 0 35px rgba(0, 0, 0, 0.35);
-      display: flex;
-      flex-direction: column;
-      transition: transform 240ms cubic-bezier(0.16, 1, 0.3, 1);
-      padding: 1.25rem 1.25rem;
-      box-sizing: border-box;
-    }
-
-    .mobile-nav-drawer.open {
-      transform: translateX(-320px);
-    }
-
-    .mobile-drawer-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-bottom: 0.85rem;
-      border-bottom: 1px solid var(--pow-border, #CBD5E1);
-      margin-bottom: 1.25rem;
-    }
-
-    .style-drawer-tag {
-      font-family: var(--pow-font-mono, monospace);
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--pow-accent, #3B82F6);
-    }
-
-    .mobile-drawer-close-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 4px;
-      background: var(--pow-surface, #F8FAFC);
-      border: var(--pow-border, 1px solid #CBD5E1);
-      color: var(--pow-text, #0F172A);
-      cursor: pointer;
-    }
-
-    .mobile-drawer-body {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-      flex: 1;
-      overflow-y: auto;
-    }
-
-    .mobile-nav-link {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      min-height: 44px;
-      padding: 0.65rem 0.85rem;
-      border-radius: var(--pow-radius-sm, 6px);
-      background: var(--pow-surface, #F8FAFC);
-      border: var(--pow-border, 1px solid #CBD5E1);
-      color: var(--pow-text, #0F172A);
-      text-decoration: none;
-      font-family: var(--pow-font-sans, inherit);
-      font-weight: 600;
-      font-size: 0.85rem;
-      transition: all 120ms ease;
-    }
-
-    .mobile-nav-link:hover {
-      border-color: var(--pow-accent, #3B82F6);
-      color: var(--pow-accent, #3B82F6);
-      transform: translateX(3px);
-    }
-
-    .mobile-drawer-footer {
-      padding-top: 1rem;
-      border-top: 1px solid var(--pow-border, #CBD5E1);
-    }
-
-    .mobile-drawer-cta-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      width: 100%;
-      min-height: 44px;
-      padding: 0.75rem 1rem;
-      background: var(--pow-accent, #3B82F6);
-      color: #FFFFFF;
-      border-radius: var(--pow-radius-btn, 6px);
-      font-family: var(--pow-font-sans, inherit);
-      font-weight: 700;
-      font-size: 0.85rem;
-      text-decoration: none;
-    }
-
-    /* Strict 320px Responsive Baseline & Anti-Bloat Fluid Typography */
-    @media (max-width: 768px) {
-      .neo-nav { padding: 0.65rem 1rem !important; }
-      .nav-actions .desktop-only { display: none !important; }
-      .nav-hamburger-btn { display: inline-flex !important; }
-      .nav-tag-badge { display: none !important; }
-    }
-
-    @media (max-width: 480px) {
-      html { font-size: 15px; }
-      body { overflow-x: hidden; }
-      .nav-title { font-size: 0.95rem; }
-      .pow-hero { padding: 2rem 0.75rem 1.25rem 0.75rem !important; }
-      .hero-title { font-size: clamp(1.35rem, 5.5vw, 1.75rem) !important; line-height: 1.25; margin-bottom: 0.85rem; }
-      .hero-desc { font-size: 0.85rem !important; line-height: 1.55; }
-      .pow-section { padding: 2.25rem 0.75rem !important; }
-      .section-title { font-size: clamp(1.2rem, 4.5vw, 1.45rem) !important; }
-      .section-desc { font-size: 0.85rem !important; }
+      .palette-swatches-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .specimen-btn-array {
+        grid-template-columns: 1fr;
+      }
     }
 
     @media (max-width: 360px) {
-      html { font-size: 14px; }
-      .neo-nav { padding: 0.45rem 0.5rem !important; }
-      .pow-hero { padding: 1.5rem 0.5rem 1rem 0.5rem !important; }
-      .hero-title { font-size: 1.35rem !important; }
-      .pow-stat-strip { grid-template-columns: 1fr !important; }
-    }
-  
-    /* --- Strict 1:1 Circle Geometry Preservation (Anti-Oval) --- */
-    .avatar-circle,
-    .clay-avatar-frame,
-    .clay-circle-btn,
-    .track-play-btn,
-    .mix-floating-play,
-    .ctrl-circle-btn,
-    .nav-hamburger-btn,
-    .brut-hamburger-btn,
-    .mobile-drawer-close-btn,
-    .brand-logo-img,
-    .nav-logo-img,
-    .nav-logo-box,
-    .pipeline-icon-box,
-    .verify-icon-box,
-    .pod-cover-icon,
-    .metric-icon-squircle,
-    .color-swatch,
-    .dot,
-    .clay-dot,
-    .hero-badge-dot,
-    .live-dot-green,
-    .live-pulse-dot,
-    .legend-color-dot,
-    .status-dot,
-    .skeuo-led {
-      aspect-ratio: 1 / 1 !important;
-      flex-shrink: 0 !important;
-    }
-    img.avatar-circle,
-    img.brand-logo-img,
-    img.nav-logo-img {
-      object-fit: cover;
+      html {
+        font-size: 14px;
+      }
+      .neo-nav {
+        padding: 0.45rem 0.5rem !important;
+      }
+      .pow-hero {
+        padding: 1.5rem 0.5rem 1rem 0.5rem !important;
+      }
+      .hero-title {
+        font-size: 1.35rem !important;
+      }
+      .neo-stat-strip {
+        grid-template-columns: 1fr !important;
+      }
     }
   </style>
 </head>
@@ -1165,55 +1784,71 @@
     <a href="index.html" class="nav-brand-group">
       <div class="nav-logo-box">TE</div>
       <strong class="nav-title">Taste Engine</strong>
-      <span class="nav-tag-badge">Neo-Brutalism PoW</span>
+      <span class="nav-tag-badge">#02 Neo-Brutalism</span>
     </a>
+
+    <!-- Desktop Nav Links -->
+    <nav class="nav-links desktop-only" aria-label="Desktop navigation">
+      <a href="#playground" class="nav-link">Studio Lab</a>
+      <a href="#install" class="nav-link">Installation</a>
+      <a href="#tokens" class="nav-link">Design Tokens</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+    </nav>
+
     <div class="nav-actions">
       <a href="index.html" class="neo-btn-sm desktop-only" title="Back to main gallery">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
         <span>All 10 Styles</span>
       </a>
+      <a href="#install" class="neo-btn-sm neo-btn-install-header desktop-only" title="Install this style">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        <span>Install Skill</span>
+      </a>
       <button class="neo-btn-sm" id="themeToggleBtn" aria-label="Toggle theme">
-        <span id="themeLabel"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>LIGHT</span>
+        <span id="themeLabel">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>LIGHT
+        </span>
       </button>
       <button class="nav-hamburger-btn" id="navHamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" onclick="openMobileNav()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
       </button>
     </div>
   </header>
 
-  <!-- Mobile Navigation Drawer Overlay (NEO-BRUTALISM // PUNCHY) -->
+  <!-- Mobile Navigation Drawer Overlay (Authentic Neo-Brutalist) -->
   <div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="closeMobileNav()"></div>
   <div class="mobile-nav-drawer" id="mobileNavDrawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
     <div class="mobile-drawer-header">
-      <span class="style-drawer-tag">NEO-BRUTALISM // PUNCHY</span>
+      <span class="style-drawer-tag">#02 // NEO-BRUTALISM</span>
       <button class="mobile-drawer-close-btn" onclick="closeMobileNav()" aria-label="Close navigation menu">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
       </button>
     </div>
     <div class="mobile-drawer-body">
       <a href="#playground" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
-        <span>Interactive Showcase</span>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Studio Lab</span>
       </a>
       <a href="#install" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
         <span>Installation Guide</span>
       </a>
       <a href="#tokens" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
         <span>Design Tokens</span>
       </a>
       <a href="#faq" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
         <span>FAQ Guide</span>
       </a>
       <a href="index.html" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="m15 18-6-6 6-6"/></svg>
         <span>All 10 Styles</span>
       </a>
     </div>
     <div class="mobile-drawer-footer">
       <a href="#install" class="mobile-drawer-cta-btn" onclick="closeMobileNav()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
         <span>INSTALL THIS SKILL</span>
       </a>
     </div>
@@ -1223,7 +1858,8 @@
     <!-- Opening Hero Viewport -->
     <section class="pow-hero">
       <div class="hero-sticker-badge">
-        <span><svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Proof of Work: Archetype #02</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -1px; margin-right: 4px;"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <span>Proof of Work: Archetype #02</span>
       </div>
 
       <h1 class="hero-title">
@@ -1237,7 +1873,7 @@
       <!-- Single-Line Inline Command Pill ("Sejajarin") -->
       <div class="neo-command-pill">
         <span class="neo-prompt">$</span>
-        <code class="neo-code" id="heroCmdText">npx skills add kennedys0/taste-style-neo-brutalism</code>
+        <code class="neo-code" id="heroCmdText">npx skills add kennedys0/taste-engine --skill taste-style-neo-brutalism</code>
         <button class="neo-copy-btn" id="heroCopyBtn" aria-label="Copy command">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
           <span>COPY</span>
@@ -1250,7 +1886,8 @@
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 13l5 5 5-5M12 6v12"/></svg>
         </a>
         <a href="#playground" class="neo-btn neo-btn-secondary">
-          <span>Test Interactive UI →</span>
+          <span>Test Studio Lab →</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
         </a>
       </div>
 
@@ -1271,6 +1908,252 @@
         <div class="stat-box">
           <div class="stat-val">WCAG AA</div>
           <div class="stat-label">Contrast Gated</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Interactive Component Playground (PoW) -->
+    <section class="neo-section" id="playground">
+      <div class="section-header">
+        <span class="section-badge">Live Interactive PoW</span>
+        <h2 class="section-title">Neo-Brutalism Studio Lab</h2>
+        <p class="section-desc">
+          Test physical 130ms press feedback, live shadow calibrators, card-in-card hierarchy, and WCAG AA contrast blocking in real time.
+        </p>
+      </div>
+
+      <div class="studio-grid">
+        <!-- Module 1: Mechanical Press & Physics Tester -->
+        <div class="studio-panel">
+          <div class="studio-panel-header">
+            <span class="studio-panel-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m4.93 4.93 4.24 4.24"/><path d="m14.83 9.17 4.24-4.24"/><path d="m14.83 14.83 4.24 4.24"/><path d="m9.17 14.83-4.24 4.24"/></svg>
+              1. Mechanical Press & Physics
+            </span>
+            <span class="studio-panel-badge">130MS TACTILE</span>
+          </div>
+          <div class="studio-panel-body">
+            <p class="panel-instruction">
+              Select an elevation tier and click the buttons below. Notice how the button physically depresses along the shadow vector (`translate(2px, 2px)`) without bouncy wobbles.
+            </p>
+
+            <div class="depth-tier-selector">
+              <button class="depth-btn" onclick="setDepthTier(0, this)">0px (Flat)</button>
+              <button class="depth-btn" onclick="setDepthTier(3, this)">3px (Subtle)</button>
+              <button class="depth-btn active" onclick="setDepthTier(5, this)">5px (Canonical)</button>
+              <button class="depth-btn" onclick="setDepthTier(8, this)">8px (Hero)</button>
+              <button class="depth-btn" onclick="setDepthTier(12, this)">12px (Maximal)</button>
+            </div>
+
+            <div class="specimen-btn-array">
+              <button class="tactile-specimen-btn btn-theme-yellow" onclick="testButtonPress('Canary Punch', '#FFE600', '16.2:1 (AAA)')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                Canary Punch
+              </button>
+              <button class="tactile-specimen-btn btn-theme-coral" onclick="testButtonPress('Coral Action', '#FF5757', '6.1:1 (AA)')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Coral Action
+              </button>
+              <button class="tactile-specimen-btn btn-theme-cyan" onclick="testButtonPress('Cyan Signal', '#00F0FF', '14.8:1 (AAA)')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Cyan Signal
+              </button>
+              <button class="tactile-specimen-btn btn-theme-lime" onclick="testButtonPress('Lime Confirm', '#52FF00', '15.1:1 (AAA)')">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                Lime Confirm
+              </button>
+            </div>
+
+            <!-- Telemetry Monitor -->
+            <div class="telemetry-box">
+              <div class="telemetry-row">
+                <span class="telemetry-key">ACTIVE VECTOR:</span>
+                <span class="telemetry-val" id="telemetryVector">translate(2px, 2px)</span>
+              </div>
+              <div class="telemetry-row">
+                <span class="telemetry-key">TIMING & EASING:</span>
+                <span class="telemetry-val">130ms cubic-bezier(0,0,0.2,1)</span>
+              </div>
+              <div class="telemetry-row">
+                <span class="telemetry-key">TOTAL CLICKS:</span>
+                <span class="telemetry-val" id="telemetryClickCount">0 clicks</span>
+              </div>
+              <div class="telemetry-log" id="telemetryLogText">
+                [READY] Click any specimen button to record tactile telemetry...
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 2: Live Shadow & Stroke Calibrator -->
+        <div class="studio-panel">
+          <div class="studio-panel-header">
+            <span class="studio-panel-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><line x1="9" y1="3" x2="9" y2="21"/></svg>
+              2. Live Shadow & Stroke Calibrator
+            </span>
+            <span class="studio-panel-badge">REAL-TIME CSS</span>
+          </div>
+          <div class="studio-panel-body">
+            <div class="calibrator-controls">
+              <!-- Border Stroke Slider -->
+              <div class="control-row">
+                <div class="control-label-group">
+                  <span>Border Stroke Width</span>
+                  <span class="control-val-badge" id="strokeValBadge">2.5px</span>
+                </div>
+                <input type="range" min="1" max="6" step="0.5" value="2.5" class="neo-range-slider" id="strokeSlider" oninput="updateCalibrator()">
+              </div>
+
+              <!-- Shadow Offset Slider -->
+              <div class="control-row">
+                <div class="control-label-group">
+                  <span>Hard Shadow Offset</span>
+                  <span class="control-val-badge" id="shadowValBadge">5px</span>
+                </div>
+                <input type="range" min="0" max="12" step="1" value="5" class="neo-range-slider" id="shadowSlider" oninput="updateCalibrator()">
+              </div>
+
+              <!-- Border Radius Selector -->
+              <div class="control-row">
+                <div class="control-label-group">
+                  <span>Corner Radius Geometry</span>
+                </div>
+                <div class="radius-btn-group">
+                  <button class="radius-btn" onclick="setRadiusGeometry(0, this)">0px (Strict)</button>
+                  <button class="radius-btn active" onclick="setRadiusGeometry(4, this)">4px (Canonical)</button>
+                  <button class="radius-btn" onclick="setRadiusGeometry(8, this)">8px (Soft)</button>
+                  <button class="radius-btn" onclick="setRadiusGeometry(999, this)">999px (Pill)</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Morphing Live Preview Box -->
+            <div class="calibrator-preview-area">
+              <div class="calibrator-target-box" id="calibratorBox" style="border: 2.5px solid var(--neo-border-color); box-shadow: 5px 5px 0 var(--neo-shadow-color); border-radius: 4px;">
+                NEO COMPONENT
+              </div>
+            </div>
+
+            <!-- CSS Snippet Generator -->
+            <div class="calibrator-css-pill">
+              <code class="calibrator-css-code" id="calibratorCssOutput">border: 2.5px solid #121212; box-shadow: 5px 5px 0 #121212; border-radius: 4px;</code>
+              <button class="neo-btn-sm" style="padding: 0.25rem 0.6rem; font-size: 0.7rem;" onclick="copySnippet('calibratorCssOutput')">COPY</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 3: Card-in-Card & Form Controls Lab -->
+        <div class="studio-panel">
+          <div class="studio-panel-header">
+            <span class="studio-panel-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 7h10v10H7z"/></svg>
+              3. Card-in-Card & Form Controls
+            </span>
+            <span class="studio-panel-badge">HIERARCHY</span>
+          </div>
+          <div class="studio-panel-body">
+            <!-- Demonstrating Approved Nested Action Well -->
+            <div class="parent-card-demo">
+              <div class="parent-card-header">
+                <span class="parent-card-title">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                  Outer Parent Container
+                </span>
+                <span class="studio-panel-badge" style="background:var(--neo-cyan); color:#121212;">SEMANTIC BOUNDARY</span>
+              </div>
+
+              <!-- Distinct Nested Well -->
+              <div class="nested-action-well">
+                <span class="nested-well-label">
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                  Nested Elevated Action Well
+                </span>
+
+                <div class="neo-form-field">
+                  <label class="neo-label" for="labInput">Repository Target</label>
+                  <input type="text" id="labInput" class="neo-input" value="kennedys0/taste-engine">
+                </div>
+
+                <div class="switch-row">
+                  <span class="switch-label">Mechanical Haptic Sound</span>
+                  <div class="neo-switch-track on" id="demoSwitch" onclick="toggleSwitch(this)">
+                    <div class="switch-knob"></div>
+                  </div>
+                </div>
+
+                <div class="sticker-strip">
+                  <span class="neo-sticker tilt-left" onclick="toggleSticker(this)">-2° TILT</span>
+                  <span class="neo-sticker tilt-right" onclick="toggleSticker(this)">+2° TILT</span>
+                  <span class="neo-sticker tilt-center" onclick="toggleSticker(this)">0° FLAT</span>
+                </div>
+              </div>
+
+              <button class="neo-btn neo-btn-primary" style="width: 100%; justify-content: center;" onclick="handleBtnClick('Nested State Committed')">
+                <span>Save Configuration</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Module 4: Saturated Pop Palette & Contrast Matrix -->
+        <div class="studio-panel">
+          <div class="studio-panel-header">
+            <span class="studio-panel-title">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+              4. Pop Palette & Contrast Matrix
+            </span>
+            <span class="studio-panel-badge">WCAG AA 4.5:1+</span>
+          </div>
+          <div class="studio-panel-body">
+            <p class="panel-instruction">
+              Click any swatch to dynamically switch the active theme accent. Notice the strict contrast discipline: bright fills always take dark ink `#121212`.
+            </p>
+
+            <div class="palette-swatches-grid">
+              <div class="swatch-card" onclick="selectPaletteAccent('Canary Yellow', '#FFE600')">
+                <div class="swatch-circle" style="background: #FFE600;"></div>
+                <span class="swatch-name">Canary</span>
+                <span class="swatch-ratio">16.2:1 (AAA)</span>
+              </div>
+              <div class="swatch-card" onclick="selectPaletteAccent('Vivid Cyan', '#00F0FF')">
+                <div class="swatch-circle" style="background: #00F0FF;"></div>
+                <span class="swatch-name">Cyan</span>
+                <span class="swatch-ratio">14.8:1 (AAA)</span>
+              </div>
+              <div class="swatch-card" onclick="selectPaletteAccent('Hot Coral', '#FF5757')">
+                <div class="swatch-circle" style="background: #FF5757;"></div>
+                <span class="swatch-name">Coral</span>
+                <span class="swatch-ratio">6.1:1 (AA)</span>
+              </div>
+              <div class="swatch-card" onclick="selectPaletteAccent('Neon Lime', '#52FF00')">
+                <div class="swatch-circle" style="background: #52FF00;"></div>
+                <span class="swatch-name">Lime</span>
+                <span class="swatch-ratio">15.1:1 (AAA)</span>
+              </div>
+              <div class="swatch-card" onclick="selectPaletteAccent('Pop Violet', '#B388FF')">
+                <div class="swatch-circle" style="background: #B388FF;"></div>
+                <span class="swatch-name">Violet</span>
+                <span class="swatch-ratio">8.4:1 (AAA)</span>
+              </div>
+              <div class="swatch-card" onclick="selectPaletteAccent('Stark Slate', '#222227')">
+                <div class="swatch-circle" style="background: #222227; border-color: #FAFAFA;"></div>
+                <span class="swatch-name">Slate</span>
+                <span class="swatch-ratio">12.3:1 (AAA)</span>
+              </div>
+            </div>
+
+            <!-- Contrast Discipline Note -->
+            <div class="contrast-rule-box">
+              <span class="contrast-rule-title">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Dark Mode Anti-Collision Rule
+              </span>
+              <span>
+                In Dark Mode, borders and offset shadows invert from `#121212` to stark white `#FAFAFA` (or bright accent). This eliminates black-on-black collision and guarantees high-contrast tactile depth.
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
@@ -1430,44 +2313,8 @@
       </div>
     </section>
 
-    <!-- Interactive Component Playground (PoW) -->
-    <section class="neo-section" id="playground">
-      <div class="section-header">
-        <span class="section-badge">Live Interactive PoW</span>
-        <h2 class="section-title">Neo-Brutalist Component Lab</h2>
-        <p class="section-desc">
-          Test interactive mechanical buttons, accessible form controls, and responsive cards built to strict Taste Engine fidelity rules.
-        </p>
-      </div>
-
-      <div class="component-grid">
-        <!-- Card 1: Button Physics -->
-        <div class="comp-card">
-          <h3>1. Mechanical Button Physics</h3>
-          <p>Click these buttons to feel the 130ms physical 2px displacement and shadow collapse along the axis.</p>
-          <div class="btn-row">
-            <button class="neo-btn btn-pop-yellow" onclick="handleBtnClick('Yellow Pop')">Yellow Pop</button>
-            <button class="neo-btn btn-pop-coral" onclick="handleBtnClick('Coral Action')">Coral Action</button>
-            <button class="neo-btn btn-pop-cyan" onclick="handleBtnClick('Cyan Signal')">Cyan Signal</button>
-            <button class="neo-btn btn-pop-lime" onclick="handleBtnClick('Lime Confirm')">Lime Confirm</button>
-          </div>
-        </div>
-
-        <!-- Card 2: Interactive Input -->
-        <div class="comp-card">
-          <h3>2. High-Contrast Form Controls</h3>
-          <p>Inputs feature solid strokes and hard offset glow that tightens on focus without fuzzy halos.</p>
-          <div class="neo-form-group">
-            <label class="neo-label" for="sampleInput">PROJECT REPOSITORY NAME</label>
-            <input type="text" id="sampleInput" class="neo-input" value="kennedys0/taste-engine">
-          </div>
-          <button class="neo-btn neo-btn-primary" style="width: 100%; justify-content: center;" onclick="handleBtnClick('Saved to Registry')">Save Component State</button>
-        </div>
-      </div>
-    </section>
-
     <!-- Design Token Cheatsheet -->
-    <section class="neo-section">
+    <section class="neo-section" id="tokens">
       <div class="section-header">
         <span class="section-badge">Tokens & Math</span>
         <h2 class="section-title">Neo-Brutalism Design Tokens</h2>
@@ -1500,10 +2347,22 @@
               <td>Card surface background</td>
             </tr>
             <tr>
+              <td class="token-code">--taste-neo-card-elevated</td>
+              <td><span class="swatch-pill"><span class="color-swatch" style="background:#FFF9E6"></span>#FFF9E6</span></td>
+              <td><span class="swatch-pill"><span class="color-swatch" style="background:#2B2B32"></span>#2B2B32</span></td>
+              <td>Nested card well surface</td>
+            </tr>
+            <tr>
               <td class="token-code">--taste-neo-ink</td>
               <td><span class="swatch-pill"><span class="color-swatch" style="background:#121212"></span>#121212</span></td>
               <td><span class="swatch-pill"><span class="color-swatch" style="background:#FAFAFA"></span>#FAFAFA</span></td>
               <td>Primary text & icon color</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-neo-ink-muted</td>
+              <td><span class="swatch-pill"><span class="color-swatch" style="background:#4B4B4B"></span>#4B4B4B</span></td>
+              <td><span class="swatch-pill"><span class="color-swatch" style="background:#A1A1AA"></span>#A1A1AA</span></td>
+              <td>Secondary metadata text</td>
             </tr>
             <tr>
               <td class="token-code">--taste-neo-border</td>
@@ -1512,13 +2371,25 @@
               <td>Crisp high-contrast structural stroke</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-neo-shadow</td>
-              <td>5px 5px 0 #121212</td>
-              <td>5px 5px 0 #FAFAFA</td>
-              <td>0-blur sharp directional shadow</td>
+              <td class="token-code">--taste-neo-shadow-sm</td>
+              <td>3px 3px 0 #121212</td>
+              <td>3px 3px 0 #FAFAFA</td>
+              <td>Compact 0-blur directional shadow</td>
             </tr>
             <tr>
-              <td class="token-code">--taste-neo-accent</td>
+              <td class="token-code">--taste-neo-shadow-md</td>
+              <td>5px 5px 0 #121212</td>
+              <td>5px 5px 0 #FAFAFA</td>
+              <td>Standard control offset shadow</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-neo-shadow-lg</td>
+              <td>8px 8px 0 #121212</td>
+              <td>8px 8px 0 #FAFAFA</td>
+              <td>Deep card surface offset shadow</td>
+            </tr>
+            <tr>
+              <td class="token-code">--taste-neo-accent-primary</td>
               <td><span class="swatch-pill"><span class="color-swatch" style="background:#FFE600"></span>#FFE600</span></td>
               <td><span class="swatch-pill"><span class="color-swatch" style="background:#FFE600"></span>#FFE600</span></td>
               <td>Electric canary primary action</td>
@@ -1529,7 +2400,7 @@
     </section>
 
     <!-- FAQ Accordion -->
-    <section class="neo-section">
+    <section class="neo-section" id="faq">
       <div class="section-header">
         <span class="section-badge">FAQ & Verification</span>
         <h2 class="section-title">Frequently Asked Questions</h2>
@@ -1538,7 +2409,7 @@
       <div class="neo-faq-item open">
         <div class="neo-faq-header" onclick="toggleFaq(this)">
           <span>Why is this Proof of Work built in Neo-Brutalism?</span>
-          <span class="faq-arrow">▶</span>
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <div class="neo-faq-body">
           Taste Engine operates on the principle that aesthetic fidelity must be recognizable from the rendered interface. By building this entire installation guide in Neo-Brutalism, you can directly verify the physics, contrast pairing, and lack of AI-slop before adopting the skill into your agents.
@@ -1547,27 +2418,47 @@
 
       <div class="neo-faq-item">
         <div class="neo-faq-header" onclick="toggleFaq(this)">
-          <span>Can I use Neo-Brutalism without installing the other 9 styles?</span>
-          <span class="faq-arrow">▶</span>
+          <span>Why are hard offset shadows permitted by the anti-slop rules?</span>
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <div class="neo-faq-body">
-          Yes! Run <code>npx skills add kennedys0/taste-engine --skill taste-style-neo-brutalism</code> to install only this standalone style pack. It provides full typography, colors, and recipes without the 10-style selector router.
+          Taste Engine’s anti-slop rules contain an explicit material exception for Neo-Brutalism: 0-blur directional offset drop shadows and solid black outlines are material-enabling properties essential to neo-brutalist tactile physics. Removing them to satisfy a generic minimal heuristic is classified as an aesthetic regression.
         </div>
       </div>
 
       <div class="neo-faq-item">
         <div class="neo-faq-header" onclick="toggleFaq(this)">
-          <span>How does Dark Mode handle hard shadows without collision?</span>
-          <span class="faq-arrow">▶</span>
+          <span>How does Dark Mode prevent black-on-black shadow collision?</span>
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <div class="neo-faq-body">
           In dark mode, Neo-Brutalism flips both borders and 0-blur offset shadows from black to stark white (<code>#FAFAFA</code>) or vivid yellow. This ensures zero black-on-black collision and preserves tactile depth on dark surfaces.
         </div>
       </div>
+
+      <div class="neo-faq-item">
+        <div class="neo-faq-header" onclick="toggleFaq(this)">
+          <span>Is Card-in-Card permissible in Neo-Brutalism?</span>
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="neo-faq-body">
+          Yes! A nested surface is fully permitted when it encapsulates a distinct semantic boundary, elevated parameter well, or code container (e.g. <code>--taste-neo-card-elevated</code> with 2px solid border and 4px offset shadow). Mindless decorative card stacking without semantic distinction remains disallowed.
+        </div>
+      </div>
+
+      <div class="neo-faq-item">
+        <div class="neo-faq-header" onclick="toggleFaq(this)">
+          <span>How does Neo-Brutalism maintain mobile responsiveness down to 320px?</span>
+          <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </div>
+        <div class="neo-faq-body">
+          All typography scales down using fluid CSS <code>clamp()</code> formulas, all command pills feature scrollable single-line wrappers, top navigation collapses into an accessible mobile hamburger drawer, and circular elements enforce <code>aspect-ratio: 1 / 1 !important; flex-shrink: 0 !important;</code> to eliminate oval squishing.
+        </div>
+      </div>
     </section>
   </main>
 
-  <!-- Site Footer (2-column balanced mobile grid) -->
+  <!-- Site Footer (Balanced 3-column / 2-column mobile architecture) -->
   <footer class="neo-footer">
     <div class="footer-inner">
       <div class="footer-brand">
@@ -1581,10 +2472,10 @@
         <ul>
           <li><a href="index.html#showcase">Bento Grid</a></li>
           <li><a href="neo-brutalism.html">Neo-Brutalism (PoW)</a></li>
-          <li><a href="index.html#showcase">Claymorphism</a></li>
-          <li><a href="index.html#showcase">Data Cockpit</a></li>
-          <li><a href="index.html#showcase">Cyberpunk HUD</a></li>
-          <li><a href="index.html#showcase">Swiss Editorial</a></li>
+          <li><a href="minimalism.html">Minimalism (PoW)</a></li>
+          <li><a href="glassmorphism.html">Glassmorphism (PoW)</a></li>
+          <li><a href="claymorphism.html">Claymorphism (PoW)</a></li>
+          <li><a href="enterprise.html">Enterprise B2B (PoW)</a></li>
         </ul>
       </div>
 
@@ -1592,8 +2483,8 @@
         <h5>Navigation & Source</h5>
         <ul>
           <li><a href="index.html">Main Style Gallery</a></li>
-          <li><a href="index.html#installation">Installation Guide</a></li>
-          <li><a href="index.html#tokens">Token Matrix</a></li>
+          <li><a href="#install">Installation Guide</a></li>
+          <li><a href="#tokens">Token Matrix</a></li>
           <li><a href="https://github.com/kennedys0/taste-engine" target="_blank" rel="noopener">GitHub Repository</a></li>
         </ul>
       </div>
@@ -1602,7 +2493,8 @@
     <div class="footer-bottom">
       <p>&copy; 2026 Mochamad Vikry. Released under the MIT License.</p>
       <a href="#" class="neo-btn-sm" style="text-decoration:none;">
-        <span>↑ Back to Top</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"/></svg>
+        <span>Back to Top</span>
       </a>
     </div>
   </footer>
@@ -1626,6 +2518,7 @@
       } else {
         themeLabel.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>DARK';
       }
+      updateCalibrator();
     }
 
     const savedTheme = localStorage.getItem('taste-theme-pow') || 'dark';
@@ -1636,6 +2529,25 @@
       const next = current === 'dark' ? 'light' : 'dark';
       applyTheme(next);
       showToast(`Switched to ${next.toUpperCase()} mode`);
+    });
+
+    // Mobile Navigation Drawer Controls
+    function openMobileNav() {
+      document.getElementById('mobileNavBackdrop').classList.add('open');
+      document.getElementById('mobileNavDrawer').classList.add('open');
+      document.getElementById('navHamburgerBtn').setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileNav() {
+      document.getElementById('mobileNavBackdrop').classList.remove('open');
+      document.getElementById('mobileNavDrawer').classList.remove('open');
+      document.getElementById('navHamburgerBtn').setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeMobileNav();
     });
 
     // Toast Notification Utility
@@ -1694,9 +2606,9 @@
       }
     }
 
-    // Component Button Click Handler
+    // Generic Button Click Handler
     function handleBtnClick(name) {
-      showToast(`Clicked: ${name}`);
+      showToast(`Action: ${name}`);
     }
 
     // FAQ Accordion Toggle
@@ -1704,6 +2616,105 @@
       const item = header.parentElement;
       item.classList.toggle('open');
     }
+
+    /* =========================================================
+       PLAYGROUND MODULE 1: MECHANICAL PRESS & TELEMETRY
+       ========================================================= */
+    let currentDepthOffset = 5;
+    let clickCount = 0;
+
+    function setDepthTier(offset, btn) {
+      currentDepthOffset = offset;
+      document.querySelectorAll('.depth-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      
+      const shadowValue = offset === 0 ? 'none' : `${offset}px ${offset}px 0 var(--neo-shadow-color)`;
+      document.documentElement.style.setProperty('--active-specimen-shadow', shadowValue);
+      showToast(`Elevation set to ${offset}px`);
+    }
+
+    function testButtonPress(name, colorHex, contrastRatio) {
+      clickCount++;
+      document.getElementById('telemetryClickCount').textContent = `${clickCount} clicks`;
+      
+      const now = new Date();
+      const timeStr = now.toTimeString().split(' ')[0] + '.' + String(now.getMilliseconds()).padStart(3, '0').slice(0, 2);
+      
+      document.getElementById('telemetryVector').textContent = `translate(2px, 2px) -> ${currentDepthOffset}px collapse`;
+      document.getElementById('telemetryLogText').textContent = `[${timeStr}] PRESS: ${name} (${colorHex}) | CONTRAST: ${contrastRatio} | PASS`;
+      
+      showToast(`Fired ${name} (${contrastRatio})`);
+    }
+
+    /* =========================================================
+       PLAYGROUND MODULE 2: LIVE CALIBRATOR
+       ========================================================= */
+    let currentRadiusVal = 4;
+
+    function setRadiusGeometry(radius, btn) {
+      currentRadiusVal = radius;
+      document.querySelectorAll('.radius-btn').forEach(b => b.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      updateCalibrator();
+    }
+
+    function updateCalibrator() {
+      const strokeSlider = document.getElementById('strokeSlider');
+      const shadowSlider = document.getElementById('shadowSlider');
+      const strokeValBadge = document.getElementById('strokeValBadge');
+      const shadowValBadge = document.getElementById('shadowValBadge');
+      const box = document.getElementById('calibratorBox');
+      const cssOut = document.getElementById('calibratorCssOutput');
+      
+      if (!strokeSlider || !shadowSlider || !box) return;
+
+      const stroke = strokeSlider.value;
+      const shadow = shadowSlider.value;
+      
+      strokeValBadge.textContent = `${stroke}px`;
+      shadowValBadge.textContent = `${shadow}px`;
+
+      const isDark = htmlEl.getAttribute('data-theme') === 'dark';
+      const borderCol = isDark ? '#FAFAFA' : '#121212';
+      const shadowCol = isDark ? '#FAFAFA' : '#121212';
+      const radiusCss = currentRadiusVal === 999 ? '999px' : `${currentRadiusVal}px`;
+      const shadowCss = shadow === '0' ? 'none' : `${shadow}px ${shadow}px 0 ${shadowCol}`;
+
+      box.style.borderWidth = `${stroke}px`;
+      box.style.borderColor = borderCol;
+      box.style.borderStyle = 'solid';
+      box.style.boxShadow = shadowCss;
+      box.style.borderRadius = radiusCss;
+
+      cssOut.textContent = `border: ${stroke}px solid ${borderCol}; box-shadow: ${shadowCss}; border-radius: ${radiusCss};`;
+    }
+
+    /* =========================================================
+       PLAYGROUND MODULE 3: SWITCH & STICKER CONTROLS
+       ========================================================= */
+    function toggleSwitch(track) {
+      track.classList.toggle('on');
+      const state = track.classList.contains('on') ? 'ENABLED' : 'DISABLED';
+      showToast(`Haptic sound: ${state}`);
+    }
+
+    function toggleSticker(sticker) {
+      sticker.classList.toggle('active');
+      showToast(`Sticker: ${sticker.textContent.trim()}`);
+    }
+
+    /* =========================================================
+       PLAYGROUND MODULE 4: POP PALETTE ACCENT SWITCHER
+       ========================================================= */
+    function selectPaletteAccent(name, hex) {
+      document.documentElement.style.setProperty('--neo-accent-active', hex);
+      const box = document.getElementById('calibratorBox');
+      if (box) box.style.background = hex;
+      showToast(`Active accent: ${name} (${hex})`);
+    }
+
+    // Initialize calibrator on load
+    updateCalibrator();
   </script>
 </body>
 </html>

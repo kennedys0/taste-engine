@@ -77,6 +77,7 @@ Surfaces are clean, opaque, and solid:
 - **Buttons (Raised):** `background: var(--taste-neo-accent); border: 2.5px solid #121212; box-shadow: 4px 4px 0 #121212;`
 - **Buttons (Active/Pressed):** `transform: translate(2px, 2px); box-shadow: 2px 2px 0 #121212;`
 - **Cards & Panels:** `background: #FFFFFF; border: 2.5px solid #121212; box-shadow: 6px 6px 0 #121212;`
+- **Nested Cards / Action Wells (Card-in-Card):** Permissible when encapsulating a distinct semantic boundary, elevated parameter well, or code container (e.g. `background: var(--taste-neo-card-elevated, #FFF9E6); border: 2px solid #121212; box-shadow: 4px 4px 0 #121212;`). Mindless decorative nesting without purpose remains disallowed.
 - **Input Fields:** `background: #FFFFFF; border: 2.5px solid #121212; box-shadow: 3px 3px 0 #121212;` (tightens on focus).
 
 ## Component anatomy and interaction
@@ -86,7 +87,7 @@ Surfaces are clean, opaque, and solid:
 - **Secondary Action:** White or transparent fill with black border, inverted hover effect (`background: #121212; color: #FFFFFF;`).
 - **Form Controls:** Outlined input box with crisp label, distinct focus state with colored offset glow or deepened stroke.
 - **Status Badges / Tags:** High-contrast pill with 2px stroke, subtle 2px offset shadow, and short concrete label.
-- **Cards:** Crisp divider lines (`border-bottom: 2px solid #121212`) separating card header, body, and action footer.
+- **Cards & Nested Wells:** Crisp divider lines (`border-bottom: 2px solid #121212`) separating card header, body, and action footer. Nested wells provide distinct contrast boundaries for inner workflows.
 
 ## Motion
 
@@ -109,7 +110,9 @@ Energetic, plainspoken, and direct. Examples: “Start building”, “Get code�
 | --- | --- | --- |
 | `--taste-neo-bg` | `#fffdf7` | `#18181b` |
 | `--taste-neo-card-bg` | `#ffffff` | `#222227` |
+| `--taste-neo-card-elevated` | `#fff9e6` | `#2b2b32` |
 | `--taste-neo-ink` | `#121212` | `#fafafa` |
+| `--taste-neo-ink-muted` | `#4b4b4b` | `#a1a1aa` |
 | `--taste-neo-border` | `2.5px solid #121212` | `2.5px solid #fafafa` |
 | `--taste-neo-shadow-sm` | `3px 3px 0 #121212` | `3px 3px 0 #fafafa` |
 | `--taste-neo-shadow-md` | `5px 5px 0 #121212` | `5px 5px 0 #fafafa` |
