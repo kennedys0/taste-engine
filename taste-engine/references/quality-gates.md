@@ -23,6 +23,9 @@ Taste can vary; product quality should not.
 - Check narrow screens, tablet/intermediate widths, and desktop as relevant.
 - No clipped headings, overflowing actions, unusable tables, or arbitrary blank columns.
 - Keep layout rhythm, card/component alignment, and readable density coherent across breakpoints.
+- Scale typography and spacing down proportionally on mobile viewports (< 768px, < 480px) using `clamp()` or adaptive breakpoints to prevent bloated UI ("UI bengkak"). Terminal code must use `word-break: break-all` / `overflow-x: auto` without horizontal blowout.
+- Keep quick install pills, command-line snippets, and copy buttons inline in a single horizontal row ("sejajarin").
+- On mobile, organize footer navigation links into a balanced 2-column grid (`repeat(2, 1fr)`) with tactile thumb-friendly tap targets instead of endless 1-column link dumps.
 
 ### Public hero composition
 
