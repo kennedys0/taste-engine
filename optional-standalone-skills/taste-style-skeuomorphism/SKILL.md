@@ -20,6 +20,7 @@ Use this skill only after a user explicitly chooses  or a confirmed project conf
 - **Works well for:** Music production and synthesizer software, audio gear tools, specialized simulators, tactile dashboard widgets, creative digital instruments, and playful tactile experiences.
 - **Be careful with:** Dense transactional data tables or mobile enterprise forms where ornate physical hardware textures create visual clutter.
 - **Reference directions:**
+  - *Tactile Molded Surfaces / Dual-Shadow Hardware (as in mobile device widgets and hardware control consoles):* Seamless molded matte panels with dual opposite light physics: extruded controls with soft top-left white glow (-6px -6px 16px rgba(255, 255, 255, 0.95)) and bottom-right soft shadow (6px 6px 16px rgba(163, 177, 198, 0.6)), sunken wells with top-left inner shadow (inset 5px 5px 12px rgba(163, 177, 198, 0.65)) and bottom-right inner highlight (inset -5px -5px 12px rgba(255, 255, 255, 0.95)), vertical pill faders with sunken tracks, and active buttons sinking directly into the surface.
   - *Brushed Industrial Aluminum / Studio Hardware:* Machined silver or gunmetal chassis with radial metallic reflections, knurled dials, recessed indicator wells, and crisp mechanical toggle switches.
   - *Precision Matte Instrument:* Deep graphite / matte composite base with engraved white readout typography, LED jewel status indicators, and physical rocker switches.
 

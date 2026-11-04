@@ -14,105 +14,107 @@
        SKEUOMORPHISM TACTILE HARDWARE DESIGN TOKENS
        ========================================================= */
     :root {
-      /* Light Chassis: Machined Brushed Aluminum */
-      --skeuo-bg: #E2E6EA;
-      --skeuo-chassis-bg: linear-gradient(180deg, #F8FAFC 0%, #E9ECEF 45%, #DDE2E7 100%);
-      --skeuo-chassis-border: 1px solid rgba(0, 0, 0, 0.16);
-      --skeuo-chassis-highlight: inset 0 1.5px 0 rgba(255, 255, 255, 1), inset 0 -1.5px 0 rgba(0, 0, 0, 0.22);
-      --skeuo-chassis-shadow: 0 1px 2px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.10), 0 16px 36px -6px rgba(0, 0, 0, 0.16), 0 28px 64px -12px rgba(0, 0, 0, 0.12);
+      /* Soft Tactile Skeuomorphic Neumorphism (Ref Images 1, 2, 3) */
+      --skeuo-bg: #E0E5EC;
+      --skeuo-surface: #E0E5EC;
+      --skeuo-chassis-bg: #E0E5EC;
+      --skeuo-chassis-border: 1px solid rgba(255, 255, 255, 0.45);
+      --skeuo-chassis-highlight: inset 1px 1px 1.5px rgba(255, 255, 255, 0.95), inset -1px -1px 1.5px rgba(163, 177, 198, 0.3);
+      --skeuo-chassis-shadow: 10px 10px 24px rgba(163, 177, 198, 0.6), -10px -10px 24px rgba(255, 255, 255, 0.95);
 
-      --skeuo-surface: #F1F4F8;
-      --skeuo-surface-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.95), inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+      --skeuo-surface-bevel: inset 1px 1px 1px rgba(255, 255, 255, 0.9), inset -1px -1px 1px rgba(163, 177, 198, 0.2);
 
-      /* Recessed Instrument Well */
-      --skeuo-well-bg: #CFD5DE;
-      --skeuo-well-inset: inset 0 4px 10px rgba(0, 0, 0, 0.24), inset 0 1.5px 3px rgba(0, 0, 0, 0.35), inset 0 -1px 1px rgba(255, 255, 255, 0.6), 0 1.5px 0 rgba(255, 255, 255, 0.95);
+      /* Sunken Recessed Well (Clock & Pill Sliders in Ref Images) */
+      --skeuo-well-bg: #E0E5EC;
+      --skeuo-well-inset: inset 5px 5px 12px rgba(163, 177, 198, 0.65), inset -5px -5px 12px rgba(255, 255, 255, 0.95), 0 1px 0 rgba(255, 255, 255, 0.9);
 
       /* Typography & Engraved Labels */
       --skeuo-text: #1E2530;
-      --skeuo-text-muted: #526071;
-      --skeuo-text-engraved: inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      --skeuo-text-muted: #5A6679;
+      --skeuo-text-engraved: 1px 1px 1px rgba(255, 255, 255, 0.85);
 
-      /* Tactile Buttons */
-      --skeuo-btn-bg: linear-gradient(180deg, #FFFFFF 0%, #E5E9F0 100%);
-      --skeuo-btn-border: 1px solid rgba(0, 0, 0, 0.22);
-      --skeuo-btn-bevel: inset 0 1.5px 0 rgba(255, 255, 255, 1), inset 0 -1.5px 0 rgba(0, 0, 0, 0.28);
-      --skeuo-btn-shadow: 0 1px 2px rgba(0, 0, 0, 0.16), 0 3px 7px rgba(0, 0, 0, 0.12), 0 8px 18px rgba(0, 0, 0, 0.08);
+      /* Tactile Buttons & Widgets */
+      --skeuo-btn-bg: #E0E5EC;
+      --skeuo-btn-border: 1px solid rgba(255, 255, 255, 0.5);
+      --skeuo-btn-bevel: inset 1px 1px 1.5px rgba(255, 255, 255, 0.95), inset -1px -1px 1.5px rgba(163, 177, 198, 0.25);
+      --skeuo-btn-shadow: 6px 6px 14px rgba(163, 177, 198, 0.6), -6px -6px 14px rgba(255, 255, 255, 0.95);
+      --skeuo-btn-pressed: inset 4px 4px 9px rgba(163, 177, 198, 0.75), inset -4px -4px 9px rgba(255, 255, 255, 0.95);
 
-      --skeuo-accent: #C87A10;
-      --skeuo-accent-bg: linear-gradient(180deg, #E8901C 0%, #BF6D06 100%);
-      --skeuo-accent-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.65), inset 0 -1px 0 rgba(0, 0, 0, 0.4);
-      --skeuo-accent-shadow: 0 1px 2px rgba(200, 122, 16, 0.5), 0 4px 12px rgba(200, 122, 16, 0.35), 0 10px 24px rgba(200, 122, 16, 0.2);
+      --skeuo-accent: #10B981;
+      --skeuo-accent-bg: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      --skeuo-accent-bevel: inset 1px 1px 1px rgba(255, 255, 255, 0.5), inset -1px -1px 1px rgba(0, 0, 0, 0.2);
+      --skeuo-accent-shadow: 6px 6px 16px rgba(16, 185, 129, 0.35), -4px -4px 12px rgba(255, 255, 255, 0.8);
 
       /* Jewel Status LEDs */
-      --skeuo-led-green: #059669;
-      --skeuo-led-green-glow: 0 0 10px rgba(5, 150, 105, 0.65);
-      --skeuo-led-amber: #D97706;
-      --skeuo-led-amber-glow: 0 0 10px rgba(217, 119, 6, 0.65);
-      --skeuo-led-blue: #2563EB;
-      --skeuo-led-blue-glow: 0 0 10px rgba(37, 99, 235, 0.65);
-      --skeuo-led-red: #DC2626;
-      --skeuo-led-red-glow: 0 0 10px rgba(220, 38, 38, 0.65);
+      --skeuo-led-green: #10B981;
+      --skeuo-led-green-glow: 0 0 12px rgba(16, 185, 129, 0.75);
+      --skeuo-led-amber: #F59E0B;
+      --skeuo-led-amber-glow: 0 0 12px rgba(245, 158, 11, 0.75);
+      --skeuo-led-blue: #3B82F6;
+      --skeuo-led-blue-glow: 0 0 12px rgba(59, 130, 246, 0.75);
+      --skeuo-led-red: #EF4444;
+      --skeuo-led-red-glow: 0 0 12px rgba(239, 68, 68, 0.75);
 
-      /* LCD Screen */
-      --skeuo-lcd-bg: #1A231C;
-      --skeuo-lcd-text: #34D399;
-      --skeuo-lcd-border: 1px solid #102A18;
-      --skeuo-lcd-inset: inset 0 3px 8px rgba(0, 0, 0, 0.9), inset 0 1px 2px rgba(0, 0, 0, 0.95), 0 1.5px 0 rgba(255, 255, 255, 0.85);
+      /* LCD Screen (Sunken Display Bay) */
+      --skeuo-lcd-bg: #E0E5EC;
+      --skeuo-lcd-text: #059669;
+      --skeuo-lcd-border: 1px solid rgba(255, 255, 255, 0.45);
+      --skeuo-lcd-inset: inset 5px 5px 12px rgba(163, 177, 198, 0.7), inset -5px -5px 12px rgba(255, 255, 255, 0.95);
 
-      --skeuo-radius: 12px;
-      --skeuo-radius-btn: 7px;
+      --skeuo-radius: 16px;
+      --skeuo-radius-btn: 10px;
       --skeuo-font-display: 'Space Grotesk', -apple-system, sans-serif;
       --skeuo-font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
       --skeuo-font-mono: 'JetBrains Mono', monospace;
     }
 
     [data-theme="dark"] {
-      /* Dark Chassis: Anodized Gunmetal Studio Rack */
-      --skeuo-bg: #131518;
-      --skeuo-chassis-bg: linear-gradient(180deg, #323741 0%, #252932 45%, #1C1F26 100%);
-      --skeuo-chassis-border: 1px solid rgba(0, 0, 0, 0.85);
-      --skeuo-chassis-highlight: inset 0 1.5px 0 rgba(255, 255, 255, 0.32), inset 0 -1.5px 0 rgba(0, 0, 0, 0.9);
-      --skeuo-chassis-shadow: 0 2px 4px rgba(0, 0, 0, 0.7), 0 8px 24px rgba(0, 0, 0, 0.65), 0 24px 56px -8px rgba(0, 0, 0, 0.8), 0 40px 80px -16px rgba(0, 0, 0, 0.9);
+      /* Dark Tactile Gunmetal Slate (Dark Dual-Shadow) */
+      --skeuo-bg: #1A1D23;
+      --skeuo-surface: #1A1D23;
+      --skeuo-chassis-bg: #1A1D23;
+      --skeuo-chassis-border: 1px solid rgba(255, 255, 255, 0.06);
+      --skeuo-chassis-highlight: inset 1px 1px 1px rgba(255, 255, 255, 0.12), inset -1px -1px 1px rgba(0, 0, 0, 0.7);
+      --skeuo-chassis-shadow: 12px 12px 30px rgba(0, 0, 0, 0.8), -10px -10px 26px rgba(255, 255, 255, 0.04);
 
-      --skeuo-surface: #242831;
-      --skeuo-surface-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.22), inset 0 -1px 0 rgba(0, 0, 0, 0.7);
+      --skeuo-surface-bevel: inset 1px 1px 1px rgba(255, 255, 255, 0.1), inset -1px -1px 1px rgba(0, 0, 0, 0.6);
 
-      /* Recessed Instrument Well */
-      --skeuo-well-bg: #14161A;
-      --skeuo-well-inset: inset 0 5px 14px rgba(0, 0, 0, 0.92), inset 0 2px 4px rgba(0, 0, 0, 0.98), inset 0 -1px 2px rgba(255, 255, 255, 0.06), 0 1px 0 rgba(255, 255, 255, 0.16);
+      /* Sunken Recessed Well */
+      --skeuo-well-bg: #14171C;
+      --skeuo-well-inset: inset 6px 6px 16px rgba(0, 0, 0, 0.85), inset -4px -4px 10px rgba(255, 255, 255, 0.04), 0 1px 0 rgba(255, 255, 255, 0.06);
 
       /* Typography & Engraved Labels */
-      --skeuo-text: #F3F4F6;
-      --skeuo-text-muted: #9CA3AF;
-      --skeuo-text-engraved: inset 0 1px 0 rgba(0, 0, 0, 0.7);
+      --skeuo-text: #F1F4F9;
+      --skeuo-text-muted: #8E9AAB;
+      --skeuo-text-engraved: 1px 1px 1px rgba(0, 0, 0, 0.85);
 
       /* Tactile Buttons */
-      --skeuo-btn-bg: linear-gradient(180deg, #3A404E 0%, #262A34 100%);
-      --skeuo-btn-border: 1px solid rgba(0, 0, 0, 0.75);
-      --skeuo-btn-bevel: inset 0 1.5px 0 rgba(255, 255, 255, 0.42), inset 0 -1.5px 0 rgba(0, 0, 0, 0.75);
-      --skeuo-btn-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 4px 9px rgba(0, 0, 0, 0.6), 0 10px 22px rgba(0, 0, 0, 0.45);
+      --skeuo-btn-bg: #1E222A;
+      --skeuo-btn-border: 1px solid rgba(255, 255, 255, 0.06);
+      --skeuo-btn-bevel: inset 1px 1px 1px rgba(255, 255, 255, 0.16), inset -1px -1px 1px rgba(0, 0, 0, 0.6);
+      --skeuo-btn-shadow: 6px 6px 16px rgba(0, 0, 0, 0.75), -5px -5px 14px rgba(255, 255, 255, 0.04);
+      --skeuo-btn-pressed: inset 5px 5px 12px rgba(0, 0, 0, 0.92), inset -3px -3px 8px rgba(255, 255, 255, 0.05);
 
-      --skeuo-accent: #E59B24;
-      --skeuo-accent-bg: linear-gradient(180deg, #F5A934 0%, #B87210 100%);
-      --skeuo-accent-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.55), inset 0 -1px 0 rgba(0, 0, 0, 0.5);
-      --skeuo-accent-shadow: 0 1px 3px rgba(0, 0, 0, 0.8), 0 4px 14px rgba(229, 155, 36, 0.5), 0 12px 28px rgba(229, 155, 36, 0.25);
+      --skeuo-accent: #10B981;
+      --skeuo-accent-bg: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      --skeuo-accent-bevel: inset 1px 1px 1px rgba(255, 255, 255, 0.4), inset -1px -1px 1px rgba(0, 0, 0, 0.4);
+      --skeuo-accent-shadow: 6px 6px 18px rgba(0, 0, 0, 0.8), -3px -3px 10px rgba(16, 185, 129, 0.2);
 
       /* Jewel Status LEDs */
       --skeuo-led-green: #10B981;
-      --skeuo-led-green-glow: 0 0 12px rgba(16, 185, 129, 0.85);
-      --skeuo-led-amber: #FFAE00;
-      --skeuo-led-amber-glow: 0 0 12px rgba(255, 174, 0, 0.85);
+      --skeuo-led-green-glow: 0 0 12px rgba(16, 185, 129, 0.8);
+      --skeuo-led-amber: #F59E0B;
+      --skeuo-led-amber-glow: 0 0 12px rgba(245, 158, 11, 0.8);
       --skeuo-led-blue: #3B82F6;
-      --skeuo-led-blue-glow: 0 0 12px rgba(59, 130, 246, 0.85);
+      --skeuo-led-blue-glow: 0 0 12px rgba(59, 130, 246, 0.8);
       --skeuo-led-red: #EF4444;
-      --skeuo-led-red-glow: 0 0 12px rgba(239, 68, 68, 0.85);
+      --skeuo-led-red-glow: 0 0 12px rgba(239, 68, 68, 0.8);
 
       /* LCD Screen */
-      --skeuo-lcd-bg: #0C120E;
+      --skeuo-lcd-bg: #12151A;
       --skeuo-lcd-text: #10B981;
-      --skeuo-lcd-border: 1px solid #122818;
-      --skeuo-lcd-inset: inset 0 4px 10px rgba(0, 0, 0, 0.98), inset 0 1px 3px rgba(0, 0, 0, 1), 0 1px 0 rgba(255, 255, 255, 0.12);
+      --skeuo-lcd-border: 1px solid rgba(255, 255, 255, 0.05);
+      --skeuo-lcd-inset: inset 5px 5px 14px rgba(0, 0, 0, 0.9), inset -3px -3px 8px rgba(255, 255, 255, 0.04);
     }
 
     *, *::before, *::after {
@@ -144,6 +146,8 @@
     .vu-dot,
     .screw-head,
     .knob-housing,
+    .knob-step-btn,
+    .rocker-paddle,
     .dot {
       aspect-ratio: 1 / 1 !important;
       flex-shrink: 0 !important;
@@ -716,8 +720,8 @@
     .hardware-module {
       background: var(--skeuo-surface);
       border: var(--skeuo-chassis-border);
-      box-shadow: var(--skeuo-surface-bevel), 0 8px 24px rgba(0, 0, 0, 0.25);
-      border-radius: 10px;
+      box-shadow: var(--skeuo-chassis-shadow);
+      border-radius: var(--skeuo-radius);
       padding: 1.5rem;
       display: flex;
       flex-direction: column;
@@ -810,13 +814,13 @@
     }
 
     .knob-housing {
-      width: 78px;
-      height: 78px;
+      width: 82px;
+      height: 82px;
       aspect-ratio: 1 / 1 !important;
       flex-shrink: 0 !important;
-      background: radial-gradient(circle, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.2) 65%, transparent 100%);
-      box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.92), inset 0 1.5px 3px rgba(0, 0, 0, 0.98), 0 1px 0 rgba(255, 255, 255, 0.16);
       border-radius: 50% !important;
+      background: var(--skeuo-well-bg);
+      box-shadow: var(--skeuo-well-inset);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -825,15 +829,22 @@
     }
 
     .rotary-knob {
-      width: 66px;
-      height: 66px;
-      background: radial-gradient(circle at 35% 35%, #4A5260 0%, #292D36 60%, #1A1C22 100%);
-      border: 1px solid rgba(0, 0, 0, 0.8);
-      box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.55), inset 0 -3px 6px rgba(0, 0, 0, 0.9), 0 2px 4px rgba(0, 0, 0, 0.7), 0 6px 16px rgba(0, 0, 0, 0.55), 0 14px 28px rgba(0, 0, 0, 0.4);
+      width: 62px;
+      height: 62px;
+      aspect-ratio: 1 / 1 !important;
+      flex-shrink: 0 !important;
+      border-radius: 50% !important;
+      background: var(--skeuo-surface);
+      border: var(--skeuo-btn-border);
+      box-shadow: var(--skeuo-btn-shadow);
       cursor: grab;
       position: relative;
       transform: rotate(0deg);
-      transition: transform 60ms linear;
+      transition: transform 60ms linear, box-shadow 120ms ease;
+    }
+
+    .rotary-knob:active {
+      box-shadow: var(--skeuo-btn-pressed);
     }
 
     .knob-indicator-notch {
@@ -849,27 +860,37 @@
     }
 
     .knob-step-buttons {
-      display: flex;
-      gap: 0.4rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.25rem;
+      background: var(--skeuo-surface);
+      border: var(--skeuo-btn-border);
+      box-shadow: var(--skeuo-btn-shadow);
+      border-radius: 999px;
+      padding: 3px 6px;
     }
 
     .knob-step-btn {
-      width: 28px;
-      height: 28px;
-      background: var(--skeuo-btn-bg);
+      width: 26px;
+      height: 26px;
+      aspect-ratio: 1 / 1 !important;
+      flex-shrink: 0 !important;
+      background: transparent;
       color: var(--skeuo-text);
-      border: var(--skeuo-btn-border);
-      box-shadow: var(--skeuo-btn-bevel), var(--skeuo-btn-shadow);
-      border-radius: 4px;
+      border: none;
+      border-radius: 50%;
       font-weight: 800;
+      font-size: 0.85rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: box-shadow 90ms ease, transform 90ms ease;
     }
 
     .knob-step-btn:active {
-      transform: translateY(1.5px);
+      box-shadow: var(--skeuo-btn-pressed);
+      transform: translateY(1px);
     }
 
     /* Segmented VU Meter */
@@ -924,15 +945,22 @@
       align-items: center;
       justify-content: center;
       gap: 0.45rem;
-      padding: 0.75rem 0.5rem;
+      padding: 0.85rem 0.65rem;
       background: var(--skeuo-btn-bg);
       color: var(--skeuo-text);
       border: var(--skeuo-btn-border);
-      box-shadow: var(--skeuo-btn-bevel), var(--skeuo-btn-shadow);
-      border-radius: 6px;
+      box-shadow: var(--skeuo-btn-shadow);
+      border-radius: var(--skeuo-radius-btn);
       cursor: pointer;
       user-select: none;
-      transition: transform 90ms ease, box-shadow 90ms ease;
+      transition: transform 120ms ease, box-shadow 120ms ease, background 120ms ease;
+    }
+
+    .tactile-toggle-btn:active,
+    .tactile-toggle-btn.active {
+      background: var(--skeuo-well-bg);
+      box-shadow: var(--skeuo-btn-pressed) !important;
+      transform: translateY(1.5px);
     }
 
     .tactile-toggle-btn:active {
@@ -1000,12 +1028,12 @@
     }
 
     .rocker-housing {
-      width: 58px;
+      width: 60px;
       height: 32px;
-      background: #15181C;
-      border: 1px solid rgba(0, 0, 0, 0.8);
-      box-shadow: inset 0 4px 9px rgba(0, 0, 0, 0.98), inset 0 1px 2px rgba(0, 0, 0, 1), 0 1px 0 rgba(255, 255, 255, 0.16);
-      border-radius: 4px;
+      background: var(--skeuo-well-bg);
+      border: var(--skeuo-btn-border);
+      box-shadow: var(--skeuo-well-inset);
+      border-radius: 999px;
       padding: 3px;
       cursor: pointer;
       display: flex;
@@ -1013,19 +1041,21 @@
     }
 
     .rocker-paddle {
-      width: 25px;
-      height: 24px;
-      background: linear-gradient(180deg, #4A5160 0%, #2A2E38 100%);
-      border: 1px solid rgba(0, 0, 0, 0.5);
-      box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.65), inset 0 -1px 2px rgba(0, 0, 0, 0.7), -3px 3px 8px rgba(0, 0, 0, 0.75), 0 1px 2px rgba(0, 0, 0, 0.9);
-      border-radius: 3px;
-      transition: transform 140ms cubic-bezier(0.2, 0.8, 0.4, 1), background 140ms ease;
+      width: 26px;
+      height: 26px;
+      aspect-ratio: 1 / 1 !important;
+      flex-shrink: 0 !important;
+      background: var(--skeuo-surface);
+      border: var(--skeuo-btn-border);
+      box-shadow: var(--skeuo-btn-shadow);
+      border-radius: 50%;
+      transition: transform 160ms cubic-bezier(0.2, 0.8, 0.4, 1), background 160ms ease, box-shadow 160ms ease;
     }
 
     .rocker-housing.engaged .rocker-paddle {
-      transform: translateX(25px);
-      background: var(--skeuo-accent-bg);
-      box-shadow: inset 0 1.5px 0 rgba(255, 255, 255, 0.65), inset 0 -1px 2px rgba(0, 0, 0, 0.7), 3px 3px 8px rgba(0, 0, 0, 0.75), 0 1px 2px rgba(0, 0, 0, 0.9);
+      transform: translateX(28px);
+      background: var(--skeuo-accent);
+      box-shadow: 0 0 10px rgba(16, 185, 129, 0.6), var(--skeuo-btn-shadow);
     }
 
     .rocker-state-label {
@@ -1033,6 +1063,53 @@
       font-size: 0.785rem;
       font-weight: 700;
       color: var(--skeuo-text);
+    }
+
+    
+    /* Vertical Pill Fader Slider (Ref Image 1 & 2) */
+    .pill-fader-card {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      background: var(--skeuo-surface);
+      border: var(--skeuo-btn-border);
+      box-shadow: var(--skeuo-btn-shadow);
+      border-radius: var(--skeuo-radius-btn);
+      padding: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    .pill-fader-track {
+      width: 48px;
+      height: 120px;
+      background: var(--skeuo-well-bg);
+      box-shadow: var(--skeuo-well-inset);
+      border-radius: 999px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column-reverse;
+      padding: 4px;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+
+    .pill-fader-fill {
+      width: 100%;
+      height: 75%;
+      background: var(--skeuo-accent);
+      border-radius: 999px;
+      box-shadow: inset 1px 1px 2px rgba(255, 255, 255, 0.5), 0 -2px 6px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      padding-bottom: 8px;
+      color: #FFFFFF;
+      font-family: var(--skeuo-font-mono);
+      font-size: 0.725rem;
+      font-weight: 800;
+      transition: height 160ms ease;
     }
 
     /* Module 2: Hardware Finish & Bevel Calibrator */
@@ -2020,8 +2097,23 @@
                   </div>
                   <div class="knob-step-buttons">
                     <button class="knob-step-btn" onclick="stepGain(-1.5)" aria-label="Decrease gain">-</button>
-                    <span style="font-family: var(--skeuo-font-mono); font-size: 0.75rem; align-self: center;">GAIN</span>
+                    <span style="font-family: var(--skeuo-font-mono); font-size: 0.75rem; align-self: center; font-weight: 700;">GAIN</span>
                     <button class="knob-step-btn" onclick="stepGain(1.5)" aria-label="Increase gain">+</button>
+                  </div>
+                </div>
+
+                <!-- Vertical Pill Fader Slider (Ref Image 1 & 2) -->
+                <div style="display: flex; align-items: center; justify-content: center; gap: 1rem;">
+                  <div class="pill-fader-track" id="pillFaderTrack" onclick="toggleFaderLevel()" title="Click to adjust fader level">
+                    <div class="pill-fader-fill" id="pillFaderFill">
+                      <span id="pillFaderPercent">75%</span>
+                    </div>
+                  </div>
+                  <div style="display: flex; flex-direction: column; gap: 0.35rem; font-family: var(--skeuo-font-mono); font-size: 0.72rem; color: var(--skeuo-text-muted);">
+                    <div style="font-weight: 800; color: var(--skeuo-text); font-size: 0.8rem;">PILL FADER</div>
+                    <div>STATUS: <strong style="color: var(--skeuo-accent);">CALIBRATED</strong></div>
+                    <div>MODE: TACTILE DUAL</div>
+                    <div style="font-size: 0.68rem; margin-top: 0.2rem;">Ref: 23:15 Widget Style</div>
                   </div>
                 </div>
 
@@ -2094,16 +2186,16 @@
               <span class="module-tag" id="finishTag">GUNMETAL RACK</span>
             </div>
 
-            <!-- Finish Selection -->
+            <!-- Finish Selection (Ref Images 1, 2, 3) -->
             <div class="finish-selector-grid">
-              <button class="finish-option-btn active" id="btnFinishGunmetal" onclick="selectHardwareFinish('gunmetal')">
-                ANODIZED GUNMETAL
+              <button class="finish-option-btn" id="btnFinishGunmetal" onclick="selectHardwareFinish('gunmetal')">
+                DARK SLATE (#1A1D23)
               </button>
-              <button class="finish-option-btn" id="btnFinishSilver" onclick="selectHardwareFinish('silver')">
-                BRUSHED SILVER
+              <button class="finish-option-btn active" id="btnFinishSilver" onclick="selectHardwareFinish('silver')">
+                MOLDED GRAY (#E0E5EC)
               </button>
               <button class="finish-option-btn" id="btnFinishBronze" onclick="selectHardwareFinish('bronze')">
-                STUDIO BRONZE
+                WARM SAND (#D8D1C3)
               </button>
             </div>
 
@@ -2791,30 +2883,63 @@
       showToast(`Master Relay: ${masterRelayActive ? "ENGAGED" : "BYPASSED"}`);
     }
 
+    let faderLevel = 75;
+    function toggleFaderLevel() {
+      faderLevel = faderLevel === 75 ? 90 : (faderLevel === 90 ? 45 : 75);
+      const fill = document.getElementById('pillFaderFill');
+      const txt = document.getElementById('pillFaderPercent');
+      if (fill) fill.style.height = `${faderLevel}%`;
+      if (txt) txt.textContent = `${faderLevel}%`;
+      playAnalogTone(250 + faderLevel * 4);
+      showToast(`Pill Fader: ${faderLevel}% (Ref Image 1 & 2)`);
+    }
+
     // Module 2: Calibrator - Hardware Finish Selector
     function selectHardwareFinish(finish) {
       selectedFinish = finish;
-      document.querySelectorAll(".finish-option-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll('.finish-option-btn').forEach(b => b.classList.remove('active'));
       const activeBtn = document.getElementById(`btnFinish${finish.charAt(0).toUpperCase() + finish.slice(1)}`);
-      if (activeBtn) activeBtn.classList.add("active");
+      if (activeBtn) activeBtn.classList.add('active');
 
-      const finishTag = document.getElementById("finishTag");
-      if (finishTag) finishTag.textContent = `${finish.toUpperCase()} RACK`;
+      const finishTag = document.getElementById('finishTag');
+      if (finishTag) finishTag.textContent = `${finish.toUpperCase()} REF`;
 
       const htmlEl = document.documentElement;
-      if (finish === "silver") {
-        applyTheme("light");
+      if (finish === 'silver') {
+        applyTheme('light');
+        htmlEl.style.removeProperty('--skeuo-bg');
+        htmlEl.style.removeProperty('--skeuo-surface');
+        htmlEl.style.removeProperty('--skeuo-chassis-bg');
+        htmlEl.style.removeProperty('--skeuo-text');
+        htmlEl.style.removeProperty('--skeuo-accent');
+      } else if (finish === 'bronze') {
+        applyTheme('light');
+        // Warm Sand / Clay palette (Ref Image 2)
+        htmlEl.style.setProperty('--skeuo-bg', '#D8D1C3');
+        htmlEl.style.setProperty('--skeuo-surface', '#D8D1C3');
+        htmlEl.style.setProperty('--skeuo-chassis-bg', '#D8D1C3');
+        htmlEl.style.setProperty('--skeuo-well-bg', '#D8D1C3');
+        htmlEl.style.setProperty('--skeuo-btn-bg', '#D8D1C3');
+        htmlEl.style.setProperty('--skeuo-text', '#5C4434');
+        htmlEl.style.setProperty('--skeuo-text-muted', '#8A7363');
+        htmlEl.style.setProperty('--skeuo-accent', '#8A583A');
+        htmlEl.style.setProperty('--skeuo-chassis-shadow', '10px 10px 24px rgba(158, 148, 132, 0.65), -10px -10px 24px rgba(255, 255, 255, 0.95)');
+        htmlEl.style.setProperty('--skeuo-btn-shadow', '6px 6px 14px rgba(158, 148, 132, 0.6), -6px -6px 14px rgba(255, 255, 255, 0.95)');
+        htmlEl.style.setProperty('--skeuo-well-inset', 'inset 5px 5px 12px rgba(158, 148, 132, 0.7), inset -5px -5px 12px rgba(255, 255, 255, 0.95)');
       } else {
-        applyTheme("dark");
-        if (finish === "bronze") {
-          htmlEl.style.setProperty("--skeuo-chassis-bg", "linear-gradient(180deg, #382F28 0%, #28211B 50%, #1A1511 100%)");
-        } else {
-          htmlEl.style.removeProperty("--skeuo-chassis-bg");
-        }
+        applyTheme('dark');
+        htmlEl.style.removeProperty('--skeuo-bg');
+        htmlEl.style.removeProperty('--skeuo-surface');
+        htmlEl.style.removeProperty('--skeuo-chassis-bg');
+        htmlEl.style.removeProperty('--skeuo-well-bg');
+        htmlEl.style.removeProperty('--skeuo-btn-bg');
+        htmlEl.style.removeProperty('--skeuo-text');
+        htmlEl.style.removeProperty('--skeuo-text-muted');
+        htmlEl.style.removeProperty('--skeuo-accent');
       }
 
       playMechanicalSnap(640);
-      showToast(`Selected ${finish.toUpperCase()} finish`);
+      showToast(`Applied ${finish.toUpperCase()} Dual-Shadow Reference`);
       updateCalibrator();
     }
 
