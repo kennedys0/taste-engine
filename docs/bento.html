@@ -1137,6 +1137,41 @@
       .hero-title { font-size: 1.35rem !important; }
       .bento-card { padding: 0.85rem 0.65rem; }
     }
+  
+    /* --- Strict 1:1 Circle Geometry Preservation (Anti-Oval) --- */
+    .avatar-circle,
+    .clay-avatar-frame,
+    .clay-circle-btn,
+    .track-play-btn,
+    .mix-floating-play,
+    .ctrl-circle-btn,
+    .nav-hamburger-btn,
+    .brut-hamburger-btn,
+    .mobile-drawer-close-btn,
+    .brand-logo-img,
+    .nav-logo-img,
+    .nav-logo-box,
+    .pipeline-icon-box,
+    .verify-icon-box,
+    .pod-cover-icon,
+    .metric-icon-squircle,
+    .color-swatch,
+    .dot,
+    .clay-dot,
+    .hero-badge-dot,
+    .live-dot-green,
+    .live-pulse-dot,
+    .legend-color-dot,
+    .status-dot,
+    .skeuo-led {
+      aspect-ratio: 1 / 1 !important;
+      flex-shrink: 0 !important;
+    }
+    img.avatar-circle,
+    img.brand-logo-img,
+    img.nav-logo-img {
+      object-fit: cover;
+    }
   </style>
 </head>
 <body>

@@ -23,6 +23,7 @@ Do **not** mark an expressive style feature as defective just because the audito
 - [ ] **Copywriting:** headings say something; CTA predicts result; microcopy explains state/recovery; no generic motivational filler; locale is natural.
 - [ ] **Typography & controls:** coherent tokens, readable type hierarchy, working focus, labels, button shapes, and consistent component geometry.
 - [ ] **Responsive down to 320px & Mobile Header:** verified down to 320px viewport with zero horizontal scroll blowout; mobile typography scales down proportionally to prevent bloated UI; navigation header collapses comfortably into an accessible hamburger menu on narrow screens (< 768px).
+- [ ] **Strict circle geometry (anti-oval):** circular elements (avatars, status dots, icon badges, action buttons with `border-radius: 50%`) enforce `aspect-ratio: 1 / 1` and `flex-shrink: 0` so they never squish into ovals/ellipses under mobile flexbox compression.
 - [ ] **Motion:** purposeful and respects reduced motion; no idle bounce / glow loops unless explicitly justified as meaningful UI state.
 - [ ] **Functional integrity:** key actions work or are explicitly labeled unfinished; state transitions reflect real responses; empty/loading/error handling.
 - [ ] **Evidence:** only claim viewport checks, accessibility tests or end-to-end behavior actually performed. Note untested checks.
