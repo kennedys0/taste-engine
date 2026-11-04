@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { spawnSync, exec } from 'node:child_process';
 
 const VERSION = '0.10.8';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -19,7 +20,7 @@ const alias = {
   claude: 'claude-code', 'claude_code': 'claude-code'
 };
 function help() {
-  console.log(`Taste Engine ${VERSION}\n\nUsage:\n  taste-engine gallery                                                              Preview all 10 styles interactively in your browser\n  taste-engine preset                                                               List available Tailwind CSS & shadcn/ui presets\n  taste-engine init [dir]                                                           Scaffold Tailwind & shadcn presets into your project\n  taste-engine install --agent <antigravity|antigravity-cli|claude-code|codex|all> [--global|--project] [--cwd DIR]\n  taste-engine doctor [--agent <name|all>] [--global|--project] [--cwd DIR]\n  taste-engine version\n  taste-engine help\n\nDefaults: project install; --agent all.\nFor GitHub-managed updates, use the installed scripts/update.sh (Antigravity)\nor npx skills update for installs managed by the skills CLI.\n`);
+  console.log(`Taste Engine ${VERSION}\n\nUsage:\n  taste-engine -v | --version | version                             Check installed version\n  taste-engine update | -update                                     Update skill to the latest release\n  taste-engine gallery                                              Preview all 10 styles interactively in your browser\n  taste-engine preset                                               List available Tailwind CSS & shadcn/ui presets\n  taste-engine init [dir]                                           Scaffold Tailwind & shadcn presets into your project\n  taste-engine install --agent <antigravity|antigravity-cli|claude-code|codex|all> [--global|--project] [--cwd DIR]\n  taste-engine doctor [--agent <name|all>] [--global|--project] [--cwd DIR]\n  taste-engine help\n\nDefaults: project install; --agent all.\nFor GitHub-managed updates, use the installed scripts/update.sh (Antigravity)\nor npx skills update for installs managed by the skills CLI.\n`);
 }
 function parse(argv) {
   const options = { agent: 'all', scope: 'project', cwd: process.cwd() };
@@ -80,6 +81,12 @@ try {
   const [command='help', ...args]=process.argv.slice(2);
   if(command==='help' || command==='--help' || command==='-h') help();
   else if(command==='version' || command==='--version' || command==='-v') console.log(VERSION);
+  else if(command==='update' || command==='-update' || command==='--update') {
+    const updateScript = path.join(source, 'scripts', 'update.sh');
+    if (!fs.existsSync(updateScript)) throw new Error(`Update script not found at ${updateScript}`);
+    const res = spawnSync('bash', [updateScript, ...args], { stdio: 'inherit' });
+    process.exit(res.status ?? 0);
+  }
   else if(command==='gallery' || command==='preview') {
     const galleryPath = path.join(repoRoot, 'docs', 'index.html');
     if(!fs.existsSync(galleryPath)) throw new Error('Gallery not found at docs/index.html');

@@ -51,7 +51,7 @@ HELP
 
 valid_repo() { [[ "$1" =~ ^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$ ]]; }
 
-if [[ "${1:-}" == "update" ]]; then shift; fi
+if [[ "${1:-}" == "update" || "${1:-}" == "-update" || "${1:-}" == "--update" ]]; then shift; fi
 if [[ "${1:-}" == "version" || "${1:-}" == "--version" || "${1:-}" == "-v" ]]; then
   shift
   [[ $# -eq 0 ]] || fail 'version takes no arguments'
