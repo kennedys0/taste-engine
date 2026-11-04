@@ -1,16 +1,14 @@
 """
-Generate the overhauled, authentic Proof of Work (PoW) page for Bento Grid (docs/bento.html).
+Generate the overhauled, authentic 1-page Proof of Work (PoW) for Bento Grid (docs/bento.html).
 Features:
-- Non-pitch-black refined graphite canvas (#13151B)
-- Generous 28px tactile corner radius
-- Two-tone typographic contrast (crisp white + muted warm slate)
-- Punchy warm coral/tangerine CTA pill button (#FF5722)
-- Wireframe globe & spring vector geometry (Reference 1 & 3)
-- Live interactive clock (GMT-5) and capability filter pills
-- Horizontal capsule links strip
-- Tabbed installation guide with single-line inline command alignment
-- Dark / Light mode toggle with localStorage persistence
-- Toast feedback and zero external CDN runtime dependencies
+- "paskan jadi 1 page": Complete Bento Grid fits into 1 desktop viewport (100svh)
+- Removed badges: "Available for select projects" & "ONLINE • taste-engine.dev"
+- Name: fekojewan (FK avatar initials)
+- Email: mail@fekojewan.my.id (punchy #ff5722 pill button)
+- Location: Indonesia (live running WIB / GMT+7 clock)
+- Non-pitch-black graphite slate (#13151B) with 28px tactile radii
+- Horizontal capsule pills row (repeat(7, 1fr))
+- Tabbed installation guide, tokens cheatsheet, and FAQ below viewport
 """
 from pathlib import Path
 
@@ -22,7 +20,7 @@ HTML_CONTENT = """<!DOCTYPE html>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bento Grid Proof of Work & Installation Guide — Taste Engine</title>
-  <meta name="description" content="Dedicated Proof of Work and installation guide for Taste Engine's Bento Grid aesthetic archetype. Authentic asymmetric modular cards, non-pitch-black graphite surfaces, two-tone typography, and contrast safety.">
+  <meta name="description" content="Dedicated 1-page Proof of Work for Bento Grid aesthetic archetype. Authentic asymmetric modular cards, non-pitch-black graphite surfaces, two-tone typography, and contrast safety.">
   <link rel="icon" type="image/webp" href="assets/logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,7 +39,7 @@ HTML_CONTENT = """<!DOCTYPE html>
       --pow-text: #111827;
       --pow-text-muted: #6b7280;
       --pow-border: 1px solid rgba(0, 0, 0, 0.08);
-      --pow-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+      --pow-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
       --pow-accent-cta: #ff5722;
       --pow-accent-cta-hover: #f4511e;
       --pow-accent-brand: #7c3aed;
@@ -77,64 +75,69 @@ HTML_CONTENT = """<!DOCTYPE html>
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       background-color: var(--pow-bg);
       color: var(--pow-text);
       font-family: var(--pow-font-body);
-      font-size: 16px;
-      line-height: 1.55;
+      font-size: 15px;
+      line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
       transition: background-color 150ms ease, color 150ms ease;
     }
 
-    /* Top Navigation */
+    /* Top Navigation (Compact & Functional) */
     .pow-nav {
       position: sticky;
       top: 0;
       z-index: 100;
       background: var(--pow-surface);
       border-bottom: var(--pow-border);
-      padding: 0.75rem 1.5rem;
+      padding: 0.6rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 1rem;
+      height: 56px;
     }
 
     .nav-brand-group {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
       text-decoration: none;
       color: var(--pow-text);
     }
 
     .nav-logo-box {
-      width: 34px;
-      height: 34px;
+      width: 30px;
+      height: 30px;
       background: var(--pow-accent-brand);
       color: #fff;
-      border-radius: 10px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
       font-family: var(--pow-font-display);
-      font-size: 1.1rem;
+      font-size: 0.95rem;
     }
 
     .nav-title {
       font-family: var(--pow-font-display);
-      font-size: 1.05rem;
+      font-size: 0.975rem;
       font-weight: 700;
       letter-spacing: -0.02em;
     }
 
     .nav-tag-badge {
-      font-size: 0.725rem;
+      font-size: 0.7rem;
       font-weight: 600;
-      padding: 0.2rem 0.65rem;
+      padding: 0.15rem 0.55rem;
       border-radius: var(--pow-radius-pill);
       background: var(--pow-surface-elevated);
       color: var(--pow-accent-brand);
@@ -142,28 +145,60 @@ HTML_CONTENT = """<!DOCTYPE html>
       font-family: var(--pow-font-mono);
     }
 
+    .nav-command-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--pow-surface-elevated);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius-pill);
+      padding: 0.25rem 0.35rem 0.25rem 0.75rem;
+      font-size: 0.75rem;
+    }
+
+    .nav-cmd-code {
+      font-family: var(--pow-font-mono);
+      font-weight: 600;
+      color: var(--pow-text);
+    }
+
+    .nav-copy-btn {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      color: var(--pow-text);
+      border-radius: var(--pow-radius-pill);
+      padding: 0.2rem 0.55rem;
+      font-size: 0.675rem;
+      font-weight: 700;
+      cursor: pointer;
+      line-height: 1;
+      transition: all 120ms ease;
+    }
+
+    .nav-copy-btn:hover {
+      border-color: var(--pow-accent-cta);
+      color: var(--pow-accent-cta);
+    }
+
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.65rem;
     }
 
-    .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.825rem;
+    .nav-link-btn {
+      font-size: 0.785rem;
       font-weight: 600;
       color: var(--pow-text-muted);
       text-decoration: none;
-      padding: 0.4rem 0.85rem;
+      padding: 0.35rem 0.75rem;
       border-radius: var(--pow-radius-pill);
       border: var(--pow-border);
       background: var(--pow-surface);
       transition: all 120ms ease;
     }
 
-    .back-btn:hover {
+    .nav-link-btn:hover {
       color: var(--pow-text);
       background: var(--pow-surface-hover);
       border-color: var(--pow-text-muted);
@@ -173,14 +208,14 @@ HTML_CONTENT = """<!DOCTYPE html>
       background: var(--pow-surface);
       border: var(--pow-border);
       color: var(--pow-text);
-      padding: 0.4rem 0.85rem;
+      padding: 0.35rem 0.75rem;
       border-radius: var(--pow-radius-pill);
-      font-size: 0.825rem;
+      font-size: 0.785rem;
       font-weight: 600;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.4rem;
       transition: all 120ms ease;
     }
 
@@ -189,258 +224,25 @@ HTML_CONTENT = """<!DOCTYPE html>
       transform: translateY(-1px);
     }
 
-    /* Hero Section (100svh safe viewport) */
-    .pow-hero {
-      min-height: calc(100svh - 60px);
+    /* =========================================================
+       1-PAGE BENTO HERO VIEWPORT (PASKAN JADI 1 PAGE)
+       ========================================================= */
+    .bento-hero-viewport {
+      min-height: calc(100svh - 56px);
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 3.5rem 1.25rem 2.5rem 1.25rem;
-      max-width: 1080px;
+      align-items: center;
+      padding: 1rem 1.25rem;
+      max-width: 1100px;
       margin: 0 auto;
-    }
-
-    .hero-sticker-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      background: var(--pow-surface-elevated);
-      color: var(--pow-accent-brand);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius-pill);
-      padding: 0.35rem 0.95rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      font-family: var(--pow-font-mono);
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-title {
-      font-family: var(--pow-font-display);
-      font-size: clamp(2.1rem, 5vw, 3.4rem);
-      font-weight: 800;
-      letter-spacing: -0.035em;
-      line-height: 1.15;
-      margin-bottom: 1.25rem;
-      max-width: 900px;
-    }
-
-    .hero-title .highlight {
-      color: var(--pow-text);
-    }
-
-    .hero-title .muted-title {
-      color: var(--pow-text-muted);
-    }
-
-    .hero-desc {
-      font-size: clamp(0.95rem, 2vw, 1.15rem);
-      color: var(--pow-text-muted);
-      max-width: 760px;
-      margin-bottom: 2rem;
-      line-height: 1.6;
-    }
-
-    /* Single-Line Inline Command Pill ("Sejajarin") */
-    .pow-command-pill {
-      display: inline-flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      gap: 0.65rem;
-      background: var(--pow-surface-elevated);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius-pill);
-      padding: 0.4rem 0.5rem 0.4rem 1.1rem;
-      max-width: 100%;
       box-sizing: border-box;
-      margin-bottom: 2rem;
     }
 
-    .pow-prompt {
-      color: var(--pow-text-muted);
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      flex-shrink: 0;
-      line-height: 1;
-      font-size: 0.9rem;
-      user-select: none;
-    }
-
-    .pow-code {
-      font-family: var(--pow-font-mono);
-      font-size: clamp(0.72rem, 3.2vw, 0.875rem);
-      font-weight: 600;
-      color: var(--pow-text);
-      white-space: nowrap;
-      overflow-x: auto;
-      scrollbar-width: none;
-      line-height: 1;
-      user-select: all;
-    }
-
-    .pow-code::-webkit-scrollbar {
-      display: none;
-    }
-
-    .pow-copy-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      background: var(--pow-surface);
-      color: var(--pow-text);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius-pill);
-      padding: 0.35rem 0.85rem;
-      font-size: 0.75rem;
-      font-weight: 700;
-      cursor: pointer;
-      flex-shrink: 0;
-      line-height: 1;
-      transition: all 120ms ease;
-    }
-
-    .pow-copy-btn:hover {
-      background: var(--pow-surface-hover);
-      border-color: var(--pow-accent-brand);
-      color: var(--pow-accent-brand);
-    }
-
-    .hero-btn-group {
-      display: flex;
-      align-items: center;
-      gap: 0.85rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      margin-bottom: 2.75rem;
-    }
-
-    .pow-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.875rem;
-      font-weight: 700;
-      padding: 0.75rem 1.5rem;
-      border-radius: var(--pow-radius-pill);
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 140ms ease;
-    }
-
-    .pow-btn-cta {
-      background: var(--pow-accent-cta);
-      color: #ffffff;
-      border: none;
-      box-shadow: 0 4px 16px rgba(255, 87, 34, 0.35);
-    }
-
-    .pow-btn-cta:hover {
-      background: var(--pow-accent-cta-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(255, 87, 34, 0.45);
-    }
-
-    .pow-btn-secondary {
-      background: var(--pow-surface);
-      color: var(--pow-text);
-      border: var(--pow-border);
-    }
-
-    .pow-btn-secondary:hover {
-      background: var(--pow-surface-hover);
-      border-color: var(--pow-text-muted);
-      transform: translateY(-2px);
-    }
-
-    /* Key Specs Strip */
-    .pow-stat-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 1rem;
-      width: 100%;
-      max-width: 940px;
-    }
-
-    .stat-box {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      border-radius: 20px;
-      padding: 1.1rem 1rem;
-      text-align: center;
-      box-shadow: var(--pow-shadow);
-      transition: transform 140ms ease;
-    }
-
-    .stat-box:hover {
-      transform: translateY(-2px);
-    }
-
-    .stat-val {
-      font-family: var(--pow-font-display);
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--pow-text);
-      margin-bottom: 0.2rem;
-    }
-
-    .stat-label {
-      font-size: 0.75rem;
-      color: var(--pow-text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-weight: 600;
-    }
-
-    /* Content Sections */
-    .pow-section {
-      max-width: 1120px;
-      margin: 4.5rem auto;
-      padding: 0 1.5rem;
-    }
-
-    .section-header {
-      margin-bottom: 2.25rem;
-      text-align: left;
-    }
-
-    .section-badge {
-      display: inline-block;
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--pow-accent-cta);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      font-family: var(--pow-font-mono);
-      margin-bottom: 0.5rem;
-    }
-
-    .section-title {
-      font-family: var(--pow-font-display);
-      font-size: 1.85rem;
-      font-weight: 800;
-      letter-spacing: -0.025em;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-desc {
-      font-size: 0.95rem;
-      color: var(--pow-text-muted);
-      max-width: 680px;
-      line-height: 1.6;
-    }
-
-    /* =========================================================
-       AUTHENTIC BENTO GRID PLAYGROUND (REFERENCE 1, 2, 3)
-       ========================================================= */
     .bento-master-canvas {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      gap: 1.25rem;
+      gap: 0.85rem;
       width: 100%;
     }
 
@@ -448,85 +250,70 @@ HTML_CONTENT = """<!DOCTYPE html>
       background: var(--pow-surface);
       border: var(--pow-border);
       border-radius: var(--pow-radius);
-      padding: 2rem;
+      padding: 1.4rem 1.6rem;
       box-shadow: var(--pow-shadow);
       position: relative;
       overflow: hidden;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: transform 180ms ease, box-shadow 180ms ease;
+      transition: transform 160ms ease, box-shadow 160ms ease;
     }
 
     .bento-card:hover {
       transform: translateY(-2px);
-      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.32);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
     }
 
-    /* Tile 1: Profile & Hero Headline (7 cols) */
+    /* Tile 1: Profile & Two-Tone Headline (7 cols) */
     .card-profile-hero {
       grid-column: span 7;
-      min-height: 290px;
+      min-height: 200px;
     }
 
     .profile-top-bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 1.5rem;
+      margin-bottom: 0.85rem;
     }
 
     .avatar-wrapper {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
+      gap: 0.75rem;
     }
 
     .avatar-circle {
-      width: 52px;
-      height: 52px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: var(--pow-surface-elevated);
       border: 2px solid var(--pow-text-muted);
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow: hidden;
+      font-family: var(--pow-font-display);
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--pow-text);
+      letter-spacing: -0.02em;
     }
 
-    .avatar-circle svg {
-      width: 32px;
-      height: 32px;
-      fill: var(--pow-text);
-    }
-
-    .status-dot-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #10b981;
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      border-radius: var(--pow-radius-pill);
-      padding: 0.25rem 0.65rem;
-    }
-
-    .status-pulse {
-      width: 6px;
-      height: 6px;
-      background: #10b981;
-      border-radius: 50%;
+    .avatar-name {
+      font-family: var(--pow-font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--pow-text);
     }
 
     .bento-two-tone-headline {
       font-family: var(--pow-font-display);
-      font-size: clamp(1.45rem, 2.8vw, 1.85rem);
+      font-size: clamp(1.25rem, 2.2vw, 1.55rem);
       font-weight: 700;
       line-height: 1.25;
       letter-spacing: -0.02em;
-      margin-bottom: 1.25rem;
+      margin-bottom: 1rem;
     }
 
     .two-tone-lead {
@@ -541,14 +328,14 @@ HTML_CONTENT = """<!DOCTYPE html>
     .profile-bottom-tags {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
       flex-wrap: wrap;
     }
 
     .mini-capsule-tag {
-      font-size: 0.725rem;
+      font-size: 0.68rem;
       font-weight: 600;
-      padding: 0.25rem 0.75rem;
+      padding: 0.2rem 0.65rem;
       border-radius: var(--pow-radius-pill);
       background: var(--pow-surface-elevated);
       color: var(--pow-text-muted);
@@ -556,30 +343,30 @@ HTML_CONTENT = """<!DOCTYPE html>
       font-family: var(--pow-font-mono);
     }
 
-    /* Tile 2: Project Contact & CTA (5 cols) */
+    /* Tile 2: Contact & CTA Pill (5 cols) */
     .card-contact-cta {
       grid-column: span 5;
-      min-height: 290px;
-      background: var(--pow-surface);
+      min-height: 200px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
     }
 
     .spring-icon-box {
-      width: 48px;
-      height: 48px;
+      width: 38px;
+      height: 24px;
       display: flex;
       align-items: center;
       color: var(--pow-text);
+      margin-bottom: 0.5rem;
     }
 
     .contact-title {
       font-family: var(--pow-font-display);
-      font-size: 1.6rem;
+      font-size: 1.35rem;
       font-weight: 700;
       line-height: 1.2;
-      margin-bottom: 1.5rem;
+      margin-bottom: 1rem;
       color: var(--pow-text);
     }
 
@@ -587,26 +374,26 @@ HTML_CONTENT = """<!DOCTYPE html>
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 0.65rem;
+      gap: 0.55rem;
       width: 100%;
       background: var(--pow-accent-cta);
       color: #ffffff;
       border: none;
       border-radius: var(--pow-radius-pill);
-      padding: 0.95rem 1.5rem;
-      font-size: 1.05rem;
+      padding: 0.75rem 1.25rem;
+      font-size: 0.95rem;
       font-weight: 700;
       font-family: var(--pow-font-display);
       cursor: pointer;
       text-decoration: none;
-      box-shadow: 0 4px 16px rgba(255, 87, 34, 0.35);
+      box-shadow: 0 4px 14px rgba(255, 87, 34, 0.35);
       transition: all 140ms ease;
     }
 
     .bento-action-pill-btn:hover {
       background: var(--pow-accent-cta-hover);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(255, 87, 34, 0.45);
+      box-shadow: 0 6px 20px rgba(255, 87, 34, 0.45);
     }
 
     /* Tile 3: Social Strip / Capsule Links (Full 12 cols, strictly horizontal / sejajar) */
@@ -614,7 +401,7 @@ HTML_CONTENT = """<!DOCTYPE html>
       grid-column: span 12;
       display: grid;
       grid-template-columns: repeat(7, 1fr);
-      gap: 0.75rem;
+      gap: 0.65rem;
       width: 100%;
     }
 
@@ -626,8 +413,8 @@ HTML_CONTENT = """<!DOCTYPE html>
       color: var(--pow-text-muted);
       border: var(--pow-border);
       border-radius: var(--pow-radius-pill);
-      padding: 0.75rem 0.65rem;
-      font-size: 0.85rem;
+      padding: 0.6rem 0.5rem;
+      font-size: 0.825rem;
       font-weight: 600;
       text-decoration: none;
       white-space: nowrap;
@@ -643,32 +430,32 @@ HTML_CONTENT = """<!DOCTYPE html>
       background: var(--pow-surface-hover);
       border-color: var(--pow-accent-cta);
       transform: translateY(-2px);
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
     }
 
-    /* Tile 4: Location & Live Timezone (4 cols) */
+    /* Tile 4: Location & Live Indonesian Clock (4 cols) */
     .card-location-geo {
       grid-column: span 4;
-      min-height: 260px;
+      min-height: 180px;
     }
 
     .geo-icon-box {
       color: var(--pow-text);
-      margin-bottom: 1.25rem;
+      margin-bottom: 0.75rem;
     }
 
     .geo-title {
       font-family: var(--pow-font-display);
-      font-size: 1.35rem;
+      font-size: 1.25rem;
       font-weight: 700;
-      line-height: 1.25;
-      margin-bottom: 0.5rem;
+      line-height: 1.2;
+      margin-bottom: 0.35rem;
       color: var(--pow-text);
     }
 
     .geo-live-clock {
       font-family: var(--pow-font-mono);
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       font-weight: 600;
       color: var(--pow-text-muted);
     }
@@ -676,23 +463,23 @@ HTML_CONTENT = """<!DOCTYPE html>
     /* Tile 5: Philosophy & Principles (8 cols) */
     .card-philosophy {
       grid-column: span 8;
-      min-height: 260px;
+      min-height: 180px;
     }
 
     .card-eyebrow {
-      font-size: 0.725rem;
+      font-size: 0.675rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
       color: var(--pow-accent-brand);
       font-family: var(--pow-font-mono);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
 
     .philosophy-paragraph {
       font-family: var(--pow-font-display);
-      font-size: clamp(1.05rem, 2vw, 1.25rem);
-      line-height: 1.5;
+      font-size: clamp(0.95rem, 1.6vw, 1.1rem);
+      line-height: 1.45;
       letter-spacing: -0.015em;
     }
 
@@ -709,35 +496,34 @@ HTML_CONTENT = """<!DOCTYPE html>
     /* Tile 6: Capability & Telemetry Lab (12 cols) */
     .card-telemetry-lab {
       grid-column: span 12;
-      padding: 2.25rem;
-      background: var(--pow-surface);
+      padding: 1.15rem 1.6rem;
     }
 
     .telemetry-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5rem;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 1.25rem;
       align-items: center;
     }
 
     .telemetry-col h4 {
       font-family: var(--pow-font-display);
-      font-size: 1.1rem;
+      font-size: 0.95rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.25rem;
     }
 
     .telemetry-col p {
-      font-size: 0.85rem;
+      font-size: 0.775rem;
       color: var(--pow-text-muted);
-      line-height: 1.5;
+      line-height: 1.4;
     }
 
     .toggle-pills-wrap {
       display: flex;
       flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: 0.75rem;
+      gap: 0.4rem;
+      margin-top: 0.45rem;
     }
 
     .interactive-filter-pill {
@@ -745,8 +531,8 @@ HTML_CONTENT = """<!DOCTYPE html>
       color: var(--pow-text-muted);
       border: var(--pow-border);
       border-radius: var(--pow-radius-pill);
-      padding: 0.4rem 0.85rem;
-      font-size: 0.75rem;
+      padding: 0.25rem 0.65rem;
+      font-size: 0.7rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 120ms ease;
@@ -758,9 +544,63 @@ HTML_CONTENT = """<!DOCTYPE html>
       border-color: var(--pow-accent-brand);
     }
 
+    /* Secondary Anchor Jump Indicator */
+    .viewport-scroll-hint {
+      margin-top: 0.75rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.725rem;
+      color: var(--pow-text-muted);
+      text-decoration: none;
+      transition: color 120ms ease;
+    }
+
+    .viewport-scroll-hint:hover {
+      color: var(--pow-accent-cta);
+    }
+
     /* =========================================================
-       TABBED INSTALLATION GUIDE
+       SECONDARY DOCUMENTATION SECTIONS (INSTALL, TOKENS, FAQ)
        ========================================================= */
+    .pow-section {
+      max-width: 1100px;
+      margin: 4rem auto;
+      padding: 0 1.5rem;
+    }
+
+    .section-header {
+      margin-bottom: 1.75rem;
+      text-align: left;
+    }
+
+    .section-badge {
+      display: inline-block;
+      font-size: 0.725rem;
+      font-weight: 700;
+      color: var(--pow-accent-cta);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-family: var(--pow-font-mono);
+      margin-bottom: 0.35rem;
+    }
+
+    .section-title {
+      font-family: var(--pow-font-display);
+      font-size: 1.65rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.35rem;
+    }
+
+    .section-desc {
+      font-size: 0.9rem;
+      color: var(--pow-text-muted);
+      max-width: 680px;
+      line-height: 1.55;
+    }
+
+    /* Tabbed Installation */
     .install-tabs-wrap {
       background: var(--pow-surface);
       border: var(--pow-border);
@@ -777,8 +617,8 @@ HTML_CONTENT = """<!DOCTYPE html>
     }
 
     .tab-nav-btn {
-      padding: 0.95rem 1.5rem;
-      font-size: 0.875rem;
+      padding: 0.85rem 1.35rem;
+      font-size: 0.825rem;
       font-weight: 700;
       font-family: var(--pow-font-display);
       color: var(--pow-text-muted);
@@ -797,7 +637,7 @@ HTML_CONTENT = """<!DOCTYPE html>
     }
 
     .tab-body {
-      padding: 1.75rem;
+      padding: 1.5rem;
     }
 
     .tab-pane {
@@ -811,12 +651,12 @@ HTML_CONTENT = """<!DOCTYPE html>
     .terminal-box {
       background: var(--pow-well-bg);
       border: var(--pow-border);
-      border-radius: 18px;
+      border-radius: 16px;
       overflow: hidden;
     }
 
     .terminal-header {
-      padding: 0.65rem 1rem;
+      padding: 0.55rem 0.95rem;
       background: var(--pow-surface-elevated);
       border-bottom: var(--pow-border);
       display: flex;
@@ -826,19 +666,19 @@ HTML_CONTENT = """<!DOCTYPE html>
 
     .terminal-dots {
       display: flex;
-      gap: 6px;
+      gap: 5px;
     }
 
     .dot {
-      width: 10px;
-      height: 10px;
+      width: 9px;
+      height: 9px;
       border-radius: 50%;
       background: var(--pow-text-muted);
       opacity: 0.4;
     }
 
     .terminal-label {
-      font-size: 0.75rem;
+      font-size: 0.725rem;
       color: var(--pow-text-muted);
       font-family: var(--pow-font-mono);
     }
@@ -847,9 +687,9 @@ HTML_CONTENT = """<!DOCTYPE html>
       background: var(--pow-surface);
       border: var(--pow-border);
       color: var(--pow-text);
-      padding: 0.25rem 0.65rem;
+      padding: 0.2rem 0.6rem;
       border-radius: var(--pow-radius-pill);
-      font-size: 0.725rem;
+      font-size: 0.7rem;
       font-weight: 600;
       cursor: pointer;
       transition: all 120ms ease;
@@ -861,9 +701,9 @@ HTML_CONTENT = """<!DOCTYPE html>
     }
 
     .terminal-content {
-      padding: 1.25rem;
+      padding: 1.15rem;
       font-family: var(--pow-font-mono);
-      font-size: 0.85rem;
+      font-size: 0.825rem;
       line-height: 1.6;
       overflow-x: auto;
     }
@@ -871,8 +711,8 @@ HTML_CONTENT = """<!DOCTYPE html>
     .terminal-line {
       display: flex;
       align-items: baseline;
-      gap: 0.75rem;
-      margin-bottom: 0.45rem;
+      gap: 0.65rem;
+      margin-bottom: 0.35rem;
     }
 
     .terminal-line:last-child {
@@ -908,11 +748,11 @@ HTML_CONTENT = """<!DOCTYPE html>
       width: 100%;
       border-collapse: collapse;
       text-align: left;
-      font-size: 0.875rem;
+      font-size: 0.85rem;
     }
 
     .pow-table th {
-      padding: 1rem 1.25rem;
+      padding: 0.85rem 1.15rem;
       background: var(--pow-well-bg);
       border-bottom: var(--pow-border);
       font-family: var(--pow-font-display);
@@ -921,7 +761,7 @@ HTML_CONTENT = """<!DOCTYPE html>
     }
 
     .pow-table td {
-      padding: 1rem 1.25rem;
+      padding: 0.85rem 1.15rem;
       border-bottom: var(--pow-border);
       color: var(--pow-text-muted);
     }
@@ -932,7 +772,7 @@ HTML_CONTENT = """<!DOCTYPE html>
 
     .token-code {
       font-family: var(--pow-font-mono);
-      font-size: 0.8rem;
+      font-size: 0.785rem;
       color: var(--pow-accent-brand);
       font-weight: 600;
     }
@@ -940,12 +780,12 @@ HTML_CONTENT = """<!DOCTYPE html>
     .color-swatch-box {
       display: inline-flex;
       align-items: center;
-      gap: 0.5rem;
+      gap: 0.45rem;
     }
 
     .color-swatch {
-      width: 16px;
-      height: 16px;
+      width: 15px;
+      height: 15px;
       border-radius: 4px;
       border: 1px solid rgba(255, 255, 255, 0.15);
       flex-shrink: 0;
@@ -955,26 +795,26 @@ HTML_CONTENT = """<!DOCTYPE html>
     .faq-accordion {
       display: flex;
       flex-direction: column;
-      gap: 0.85rem;
+      gap: 0.75rem;
     }
 
     .pow-faq-item {
       background: var(--pow-surface);
       border: var(--pow-border);
-      border-radius: 20px;
+      border-radius: 18px;
       overflow: hidden;
       box-shadow: var(--pow-shadow);
     }
 
     .pow-faq-header {
-      padding: 1.15rem 1.5rem;
+      padding: 1rem 1.35rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: space-between;
       font-family: var(--pow-font-display);
       font-weight: 700;
-      font-size: 1rem;
+      font-size: 0.95rem;
       user-select: none;
     }
 
@@ -984,10 +824,10 @@ HTML_CONTENT = """<!DOCTYPE html>
     }
 
     .pow-faq-body {
-      padding: 0 1.5rem 1.25rem 1.5rem;
-      font-size: 0.9rem;
+      padding: 0 1.35rem 1.15rem 1.35rem;
+      font-size: 0.85rem;
       color: var(--pow-text-muted);
-      line-height: 1.6;
+      line-height: 1.55;
       display: none;
     }
 
@@ -1003,29 +843,29 @@ HTML_CONTENT = """<!DOCTYPE html>
     .pow-footer {
       border-top: var(--pow-border);
       background: var(--pow-surface);
-      padding: 3.5rem 1.5rem 2.5rem 1.5rem;
-      margin-top: 5rem;
+      padding: 3rem 1.5rem 2rem 1.5rem;
+      margin-top: 4.5rem;
     }
 
     .footer-inner {
-      max-width: 1120px;
+      max-width: 1100px;
       margin: 0 auto;
       display: grid;
       grid-template-columns: 2fr 1fr 1fr;
       gap: 2.5rem;
-      padding-bottom: 2.5rem;
+      padding-bottom: 2rem;
       border-bottom: var(--pow-border);
     }
 
     .footer-brand h3 {
       font-family: var(--pow-font-display);
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       font-weight: 700;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.45rem;
     }
 
     .footer-brand p {
-      font-size: 0.85rem;
+      font-size: 0.825rem;
       color: var(--pow-text-muted);
       max-width: 380px;
       line-height: 1.5;
@@ -1033,11 +873,11 @@ HTML_CONTENT = """<!DOCTYPE html>
 
     .footer-col h4 {
       font-family: var(--pow-font-display);
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
       color: var(--pow-text);
     }
 
@@ -1045,11 +885,11 @@ HTML_CONTENT = """<!DOCTYPE html>
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.5rem;
+      gap: 0.45rem;
     }
 
     .footer-col a {
-      font-size: 0.825rem;
+      font-size: 0.8rem;
       color: var(--pow-text-muted);
       text-decoration: none;
       transition: color 120ms ease;
@@ -1060,12 +900,12 @@ HTML_CONTENT = """<!DOCTYPE html>
     }
 
     .footer-bottom {
-      max-width: 1120px;
-      margin: 2rem auto 0 auto;
+      max-width: 1100px;
+      margin: 1.75rem auto 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.8rem;
+      font-size: 0.785rem;
       color: var(--pow-text-muted);
     }
 
@@ -1076,9 +916,9 @@ HTML_CONTENT = """<!DOCTYPE html>
       right: 24px;
       background: var(--pow-text);
       color: var(--pow-bg);
-      padding: 0.75rem 1.25rem;
+      padding: 0.65rem 1.15rem;
       border-radius: var(--pow-radius-pill);
-      font-size: 0.825rem;
+      font-size: 0.8rem;
       font-weight: 700;
       font-family: var(--pow-font-display);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
@@ -1096,32 +936,27 @@ HTML_CONTENT = """<!DOCTYPE html>
 
     /* Responsive Breakpoints */
     @media (max-width: 900px) {
+      .bento-hero-viewport { min-height: auto; padding: 2rem 1rem; }
       .card-profile-hero { grid-column: span 12; }
       .card-contact-cta { grid-column: span 12; }
       .card-location-geo { grid-column: span 12; }
       .card-philosophy { grid-column: span 12; }
       .bento-social-row { grid-template-columns: repeat(4, 1fr); gap: 0.5rem; }
       .telemetry-grid { grid-template-columns: 1fr; }
-      .pow-stat-strip { grid-template-columns: repeat(2, 1fr); }
+      .nav-command-pill { display: none; }
     }
 
     @media (max-width: 768px) {
       .pow-nav { padding: 0.65rem 1rem; }
-      .nav-title { font-size: 0.95rem; }
+      .nav-title { font-size: 0.9rem; }
       .nav-tag-badge { display: none; }
-      .pow-hero { padding: 2.5rem 1rem 1.5rem 1rem; }
-      .hero-title { font-size: clamp(1.6rem, 5.5vw, 2.3rem); }
-      .hero-desc { font-size: 0.9rem; margin-bottom: 1.5rem; }
-      .hero-btn-group { flex-direction: column; width: 100%; gap: 0.65rem; }
-      .pow-btn { width: 100%; justify-content: center; }
-
       .footer-inner {
         grid-template-columns: repeat(2, 1fr);
-        gap: 1.75rem 1.25rem;
+        gap: 1.5rem 1rem;
       }
       .footer-brand {
         grid-column: 1 / -1;
-        padding-bottom: 1rem;
+        padding-bottom: 0.75rem;
         border-bottom: var(--pow-border);
       }
     }
@@ -1133,7 +968,7 @@ HTML_CONTENT = """<!DOCTYPE html>
         overflow-x: auto;
         scrollbar-width: none;
         padding-bottom: 4px;
-        gap: 0.5rem;
+        gap: 0.45rem;
       }
       .bento-social-row::-webkit-scrollbar {
         display: none;
@@ -1141,34 +976,23 @@ HTML_CONTENT = """<!DOCTYPE html>
       .capsule-link-btn {
         flex: 0 0 auto;
         width: auto;
-        padding: 0.5rem 1rem;
+        padding: 0.45rem 0.85rem;
       }
     }
 
     @media (max-width: 480px) {
-      .bento-card { padding: 1.35rem 1.15rem; }
-      .bento-action-pill-btn { font-size: 0.95rem; padding: 0.85rem 1.15rem; }
-      .pow-command-pill {
-        gap: 0.4rem;
-        padding: 0.3rem 0.35rem 0.3rem 0.75rem;
-      }
-      .pow-copy-btn {
-        padding: 0.35rem 0.6rem;
-        font-size: 0.7rem;
-      }
-      .stat-box { padding: 0.75rem 0.5rem; }
-      .stat-val { font-size: 1.2rem; }
-      .stat-label { font-size: 0.65rem; }
-      .section-title { font-size: 1.3rem; }
-      .tab-body { padding: 1rem; }
-      .terminal-content { font-size: 0.75rem; padding: 0.85rem; }
-      .footer-bottom { flex-direction: column; gap: 0.75rem; text-align: center; }
+      .bento-card { padding: 1.15rem 1rem; border-radius: 20px; }
+      .bento-action-pill-btn { font-size: 0.875rem; padding: 0.7rem 1rem; }
+      .section-title { font-size: 1.25rem; }
+      .tab-body { padding: 0.85rem; }
+      .terminal-content { font-size: 0.725rem; padding: 0.75rem; }
+      .footer-bottom { flex-direction: column; gap: 0.65rem; text-align: center; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Navigation -->
+  <!-- Top Navigation with Integrated Quick-Install Pill -->
   <header class="pow-nav">
     <a href="index.html" class="nav-brand-group">
       <div class="nav-logo-box">B</div>
@@ -1176,108 +1000,43 @@ HTML_CONTENT = """<!DOCTYPE html>
       <span class="nav-tag-badge">#01 BENTO</span>
     </a>
 
+    <!-- Single-Line Inline Command Pill ("Sejajarin") -->
+    <div class="nav-command-pill">
+      <span style="color: var(--pow-text-muted); font-family: var(--pow-font-mono); font-weight: 700;">$</span>
+      <code class="nav-cmd-code" id="navCmdText">npx skills add kennedys0/taste-engine --skill taste-style-bento</code>
+      <button class="nav-copy-btn" id="navCopyBtn" title="Copy command">Copy</button>
+    </div>
+
     <div class="nav-actions">
-      <a href="index.html" class="back-btn">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-        <span>All 10 Styles</span>
-      </a>
+      <a href="#install" class="nav-link-btn">Install Guide</a>
+      <a href="index.html" class="nav-link-btn">All Styles</a>
       <button class="theme-toggle-btn" id="themeToggleBtn" aria-label="Toggle theme">
-        <svg class="sun-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
         <span>Theme</span>
       </button>
     </div>
   </header>
 
   <main>
-    <!-- Opening Hero Viewport -->
-    <section class="pow-hero">
-      <div class="hero-sticker-badge">
-        <span>Proof of Work: Archetype #01</span>
-      </div>
-
-      <h1 class="hero-title">
-        <span class="highlight">Asymmetric Modular Cards</span><br>
-        <span class="muted-title">& Tactile Spatial Hierarchy</span>
-      </h1>
-
-      <p class="hero-desc">
-        Modern digital product portfolios and hardware showcases organize complex information into curated, compartmentalized trays. Generous 28px corners, non-pitch-black graphite canvas, two-tone typography, and high-impact CTA pills.
-      </p>
-
-      <!-- Single-Line Inline Command Pill ("Sejajarin") -->
-      <div class="pow-command-pill">
-        <span class="pow-prompt">$</span>
-        <code class="pow-code" id="heroCmdText">npx skills add kennedys0/taste-engine --skill taste-style-bento</code>
-        <button class="pow-copy-btn" id="heroCopyBtn" aria-label="Copy command">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          <span>COPY</span>
-        </button>
-      </div>
-
-      <div class="hero-btn-group">
-        <a href="#playground" class="pow-btn pow-btn-cta">
-          <span>Explore Live Bento UI</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 13l5 5 5-5M12 6v12"/></svg>
-        </a>
-        <a href="#install" class="pow-btn pow-btn-secondary">
-          <span>Installation Guide</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-      </div>
-
-      <!-- Key Specs Strip -->
-      <div class="pow-stat-strip">
-        <div class="stat-box">
-          <div class="stat-val" style="color: var(--pow-accent-cta);">#13151B</div>
-          <div class="stat-label">Bukan Hitam Pekat</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-val">28px</div>
-          <div class="stat-label">Tactile Radius</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-val">4.8 : 1</div>
-          <div class="stat-label">WCAG AA Contrast</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-val">Two-Tone</div>
-          <div class="stat-label">Typographic Hook</div>
-        </div>
-      </div>
-    </section>
-
     <!-- =========================================================
-         INTERACTIVE COMPONENT PLAYGROUND (REFERENCE 1, 2, 3)
+         1-PAGE BENTO HERO VIEWPORT (PASKAN JADI 1 PAGE)
          ========================================================= -->
-    <section class="pow-section" id="playground">
-      <div class="section-header">
-        <span class="section-badge">Live Interactive PoW</span>
-        <h2 class="section-title">Bento Grid Component Lab</h2>
-        <p class="section-desc">
-          Directly demonstrating the design anatomy from top digital designer portfolios and creative studio showcases. Click any pill or action button for live interaction.
-        </p>
-      </div>
-
+    <section class="bento-hero-viewport">
+      
       <div class="bento-master-canvas">
         
-        <!-- Tile 1: Profile & Value Prop (7 cols) -->
+        <!-- Tile 1: Profile & Value Prop (7 cols) - fekojewan (No badge) -->
         <article class="bento-card card-profile-hero">
           <div class="profile-top-bar">
             <div class="avatar-wrapper">
-              <div class="avatar-circle">
-                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
-              </div>
-              <div style="font-size: 0.85rem; font-weight: 700;">Alex Chen</div>
-            </div>
-            <div class="status-dot-badge">
-              <span class="status-pulse"></span>
-              <span>Available for select projects</span>
+              <div class="avatar-circle">FK</div>
+              <div class="avatar-name">fekojewan</div>
             </div>
           </div>
 
           <div class="bento-two-tone-headline">
-            <span class="two-tone-lead">alex chen is a digital systems architect</span>
-            <span class="two-tone-sub">currently designing autonomous agent runtimes at acme.</span>
+            <span class="two-tone-lead">fekojewan is a digital systems architect</span>
+            <span class="two-tone-sub">currently engineering autonomous agent runtimes.</span>
           </div>
 
           <div class="profile-bottom-tags">
@@ -1288,11 +1047,11 @@ HTML_CONTENT = """<!DOCTYPE html>
           </div>
         </article>
 
-        <!-- Tile 2: Contact & High-Impact CTA (5 cols) -->
+        <!-- Tile 2: Contact & CTA Pill (5 cols) - mail@fekojewan.my.id -->
         <article class="bento-card card-contact-cta">
           <div class="spring-icon-box">
             <!-- Wireframe spring vector icon -->
-            <svg width="44" height="28" viewBox="0 0 54 28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+            <svg width="40" height="24" viewBox="0 0 54 28" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
               <path d="M4 14C4 6 12 2 18 2C26 2 26 26 34 26C42 26 42 2 50 2"/>
               <ellipse cx="14" cy="14" rx="6" ry="11"/>
               <ellipse cx="22" cy="14" rx="6" ry="11"/>
@@ -1303,10 +1062,10 @@ HTML_CONTENT = """<!DOCTYPE html>
 
           <div>
             <h3 class="contact-title">Have a project<br>in mind?</h3>
-            <button class="bento-action-pill-btn" onclick="handleBtnClick('Email Copied: hey@alexchen.dev')">
-              <span>hey@alexchen.dev</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-            </button>
+            <a href="mailto:mail@fekojewan.my.id" class="bento-action-pill-btn" onclick="handleBtnClick('Email: mail@fekojewan.my.id')">
+              <span>mail@fekojewan.my.id</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+            </a>
           </div>
         </article>
 
@@ -1321,11 +1080,11 @@ HTML_CONTENT = """<!DOCTYPE html>
           <button class="capsule-link-btn" onclick="handleBtnClick('Navigating to LinkedIn')">linkedin.</button>
         </div>
 
-        <!-- Tile 4: Location & Live Timezone (4 cols) -->
+        <!-- Tile 4: Location & Live Indonesian Timezone (4 cols) - Indonesia (WIB) -->
         <article class="bento-card card-location-geo">
           <div class="geo-icon-box">
             <!-- Wireframe Globe Vector -->
-            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
               <circle cx="12" cy="12" r="10"/>
               <ellipse cx="12" cy="12" rx="4.5" ry="10"/>
               <line x1="2" y1="12" x2="22" y2="12"/>
@@ -1333,8 +1092,8 @@ HTML_CONTENT = """<!DOCTYPE html>
           </div>
 
           <div>
-            <h4 class="geo-title">Based in<br>Brooklyn, New York</h4>
-            <div class="geo-live-clock" id="liveClockDisplay">GMT-5 • 14:32:08 EST</div>
+            <h4 class="geo-title">Based in<br>Indonesia</h4>
+            <div class="geo-live-clock" id="liveClockDisplay">WIB • GMT+7 • 16:30:00</div>
           </div>
         </article>
 
@@ -1345,21 +1104,17 @@ HTML_CONTENT = """<!DOCTYPE html>
             <span class="lead-text">As a digital systems designer, I specialize in creating resilient interfaces with mathematical token hierarchy.</span>
             <span class="sub-text"> I believe that exceptional design starts with common values, honest contrast pairing, strict spatial rhythm, zero fake metrics, and deep respect for your audience.</span>
           </p>
-          <div style="margin-top: 1.25rem;">
+          <div style="margin-top: 0.65rem;">
             <span class="mini-capsule-tag" style="color: var(--pow-accent-cta); border-color: rgba(255,87,34,0.3);">Rule: No Uniform 3x2 Generic Grid</span>
           </div>
         </article>
 
-        <!-- Tile 6: Capability & Live Telemetry Lab (12 cols) -->
+        <!-- Tile 6: Capability & Telemetry Lab (12 cols) - (No online badge) -->
         <article class="bento-card card-telemetry-lab">
           <div class="telemetry-grid">
             <div class="telemetry-col">
-              <div class="status-dot-badge" style="margin-bottom: 0.75rem;">
-                <span class="status-pulse"></span>
-                <span>ONLINE • taste-engine.dev</span>
-              </div>
               <h4>Modular Architecture</h4>
-              <p>Test live capability filtering. Bento tiles must reflect distinct functional purposes rather than repeating duplicate card patterns.</p>
+              <p>Test live capability filtering. Bento tiles reflect distinct functional purposes rather than repeating duplicate card patterns.</p>
               <div class="toggle-pills-wrap">
                 <button class="interactive-filter-pill active" onclick="toggleCapability(this, 'Design Tokens')">Design Tokens</button>
                 <button class="interactive-filter-pill" onclick="toggleCapability(this, '3D Systems')">3D Modeling</button>
@@ -1369,24 +1124,24 @@ HTML_CONTENT = """<!DOCTYPE html>
             </div>
 
             <div class="telemetry-col" style="text-align: center; border-left: var(--pow-border); border-right: var(--pow-border); padding: 0 1rem;">
-              <div style="font-family: var(--pow-font-display); font-size: 2.75rem; font-weight: 800; line-height: 1; color: var(--pow-text); margin-bottom: 0.25rem;">
-                42<span style="font-size: 1.5rem; color: var(--pow-accent-cta);">ms</span>
+              <div style="font-family: var(--pow-font-display); font-size: 2.25rem; font-weight: 800; line-height: 1; color: var(--pow-text); margin-bottom: 0.2rem;">
+                42<span style="font-size: 1.35rem; color: var(--pow-accent-cta);">ms</span>
               </div>
-              <div style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--pow-text-muted);">
+              <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--pow-text-muted);">
                 Global Edge Latency
               </div>
-              <div style="font-size: 0.75rem; color: #10b981; margin-top: 0.4rem; font-weight: 600;">
+              <div style="font-size: 0.725rem; color: #10b981; margin-top: 0.25rem; font-weight: 600;">
                 ● Zero Cold Start
               </div>
             </div>
 
             <div class="telemetry-col" style="padding-left: 0.5rem;">
-              <div style="color: #f59e0b; font-size: 1.15rem; margin-bottom: 0.35rem;">
+              <div style="color: #f59e0b; font-size: 1.05rem; margin-bottom: 0.2rem;">
                 ★ ★ ★ ★ ★
               </div>
               <h4>Production Proven</h4>
-              <p>+1,456 developer installations across Google Antigravity, Claude Code, and OpenAI Codex runtimes.</p>
-              <div style="margin-top: 0.85rem;">
+              <p>+1,456 developer installations across Google Antigravity, Claude Code, and Codex runtimes.</p>
+              <div style="margin-top: 0.5rem;">
                 <span class="mini-capsule-tag" style="background: rgba(139, 92, 246, 0.15); color: var(--pow-accent-brand); border-color: rgba(139, 92, 246, 0.3);">v0.10.6 Synchronized</span>
               </div>
             </div>
@@ -1394,6 +1149,12 @@ HTML_CONTENT = """<!DOCTYPE html>
         </article>
 
       </div>
+
+      <!-- Quick Jump Down Indicator -->
+      <a href="#install" class="viewport-scroll-hint">
+        <span>Installation Guide & Tokens Below</span>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 13l5 5 5-5M12 6v12"/></svg>
+      </a>
     </section>
 
     <!-- =========================================================
@@ -1779,11 +1540,11 @@ HTML_CONTENT = """<!DOCTYPE html>
       }, 2200);
     }
 
-    // Hero Command Copy
-    const heroCopyBtn = document.getElementById('heroCopyBtn');
-    if (heroCopyBtn) {
-      heroCopyBtn.addEventListener('click', () => {
-        const text = document.getElementById('heroCmdText').textContent.trim();
+    // Nav Command Copy
+    const navCopyBtn = document.getElementById('navCopyBtn');
+    if (navCopyBtn) {
+      navCopyBtn.addEventListener('click', () => {
+        const text = document.getElementById('navCmdText').textContent.trim();
         navigator.clipboard.writeText(text).then(() => {
           showToast('Copied: ' + text);
         });
@@ -1827,18 +1588,18 @@ HTML_CONTENT = """<!DOCTYPE html>
       item.classList.toggle('open');
     }
 
-    // Live Clock Update (GMT-5 EST)
+    // Live Clock Update (WIB / GMT+7 - Western Indonesian Time)
     function updateLiveClock() {
       const clockEl = document.getElementById('liveClockDisplay');
       if (!clockEl) return;
       const now = new Date();
-      // UTC-5 offset
-      const utcTime = now.getTime() + (now.getTimezoneOffset() * 60000);
-      const estTime = new Date(utcTime - (3600000 * 5));
-      const hours = String(estTime.getHours()).padStart(2, '0');
-      const minutes = String(estTime.getMinutes()).padStart(2, '0');
-      const seconds = String(estTime.getSeconds()).padStart(2, '0');
-      clockEl.textContent = `GMT-5 • ${hours}:${minutes}:${seconds} EST`;
+      // UTC + 7 hours for WIB (Jakarta / Indonesia)
+      const utc = now.getTime() + (now.getTimezoneOffset() * 60000);
+      const wibTime = new Date(utc + (3600000 * 7));
+      const hours = String(wibTime.getHours()).padStart(2, '0');
+      const minutes = String(wibTime.getMinutes()).padStart(2, '0');
+      const seconds = String(wibTime.getSeconds()).padStart(2, '0');
+      clockEl.textContent = `WIB • GMT+7 • ${hours}:${minutes}:${seconds}`;
     }
     setInterval(updateLiveClock, 1000);
     updateLiveClock();
@@ -1849,4 +1610,3 @@ HTML_CONTENT = """<!DOCTYPE html>
 
 OUT_FILE.write_text(HTML_CONTENT, encoding="utf-8")
 print(f"PASS: successfully generated {OUT_FILE} ({len(HTML_CONTENT)} bytes)")
-
