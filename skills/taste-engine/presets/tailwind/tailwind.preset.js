@@ -1,5 +1,5 @@
 /**
- * Taste Engine — Tailwind CSS Preset (v0.10.6)
+ * Taste Engine — Tailwind CSS Preset (v0.10.7)
  * Comprehensive theme extension for 10 curated frontend aesthetic archetypes.
  *
  * Usage in tailwind.config.js:

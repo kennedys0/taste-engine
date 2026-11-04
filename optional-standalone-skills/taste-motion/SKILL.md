@@ -3,7 +3,7 @@ name: taste-motion
 description: Optional Anime.js v4 micro-interaction guidance for existing or user-chosen web UI. Use on requests to add, improve, or audit purposeful frontend motion, button feedback, menus, or transitions. Do not impose a new style or install animation dependencies unless justified. Preserve keyboard, reduced-motion, and project design system.
 license: MIT
 metadata:
-  version: "0.10.6"
+  version: "0.10.7"
 ---
 
 # Taste Motion — opt-in motion companion

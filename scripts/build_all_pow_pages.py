@@ -396,7 +396,7 @@ STYLES = [
         "playground_html": """
         <div style="background: var(--pow-well-bg); border: var(--pow-border); box-shadow: var(--pow-shadow); padding: 1.5rem; font-family: var(--pow-font-mono); font-size: 0.85rem; line-height: 1.8;">
           <div style="color: var(--pow-text-muted); border-bottom: 1px dashed var(--pow-accent); padding-bottom: 0.5rem; margin-bottom: 1rem;">
-            SYS://TASTE-ENGINE/CONSOLE v0.10.6 -- READY
+            SYS://TASTE-ENGINE/CONSOLE v0.10.7 -- READY
           </div>
           <div><span style="color: #ff5c00;">[STATUS]</span> INITIALIZING STYLE PACKS... [OK]</div>
           <div><span style="color: var(--pow-accent);">[PASS]</span> PHOSPHOR RASTER MATRIX LOCKED</div>

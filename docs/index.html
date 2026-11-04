@@ -2000,56 +2000,71 @@
     }
 
     /* =========================================================
-       STYLE 9: SKEUOMORPHISM
+       STYLE 9: SKEUOMORPHISM (TACTILE HARDWARE UNIBODY)
        ========================================================= */
     .skeuo-wrapper {
-      --taste-skeuo-chassis: linear-gradient(180deg, #323741 0%, #262a32 100%);
-      --taste-skeuo-border: 1px solid rgba(0, 0, 0, 0.8);
-      --taste-skeuo-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.25);
-      --taste-skeuo-text: #f3f4f6;
-      --taste-skeuo-btn-bg: linear-gradient(180deg, #3c424f 0%, #2a2e37 100%);
-      --taste-skeuo-btn-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.40), inset 0 -1px 0 rgba(0, 0, 0, 0.50);
-      --taste-skeuo-btn-shadow: 0 4px 8px rgba(0, 0, 0, 0.50), 0 1px 2px rgba(0, 0, 0, 0.40);
-      --taste-skeuo-well: inset 0 3px 6px rgba(0, 0, 0, 0.70), 0 1px 0 rgba(255, 255, 255, 0.12);
-      font-family: 'Inter', var(--shell-font);
+      --taste-skeuo-chassis: #1a1d23;
+      --taste-skeuo-border: 1px solid rgba(255, 255, 255, 0.08);
+      --taste-skeuo-highlight: inset 1px 1px 1px rgba(255, 255, 255, 0.12), inset -1px -1px 1px rgba(0, 0, 0, 0.7);
+      --taste-skeuo-text: #f1f4f9;
+      --taste-skeuo-well-bg: #14171c;
+      --taste-skeuo-well-inset: inset 4px 4px 10px rgba(0, 0, 0, 0.8), inset -3px -3px 8px rgba(255, 255, 255, 0.04);
+      --taste-skeuo-btn-bg: #1e222a;
+      --taste-skeuo-btn-border: 1px solid rgba(255, 255, 255, 0.06);
+      --taste-skeuo-btn-bevel: inset 1px 1px 1px rgba(255, 255, 255, 0.18), inset -1px -1px 1px rgba(0, 0, 0, 0.6);
+      --taste-skeuo-btn-shadow: 5px 5px 12px rgba(0, 0, 0, 0.75), -4px -4px 10px rgba(255, 255, 255, 0.04);
+      font-family: 'Space Grotesk', 'Inter', var(--shell-font);
       background: var(--taste-skeuo-chassis);
       border: var(--taste-skeuo-border);
       box-shadow: var(--taste-skeuo-highlight);
       color: var(--taste-skeuo-text);
       padding: 1.75rem;
-      border-radius: 14px;
+      border-radius: 16px;
     }
     [data-theme="light"] .skeuo-wrapper {
-      --taste-skeuo-chassis: linear-gradient(180deg, #f5f7fa 0%, #e4e7eb 100%);
-      --taste-skeuo-border: 1px solid rgba(0, 0, 0, 0.15);
-      --taste-skeuo-highlight: inset 0 1px 0 rgba(255, 255, 255, 0.90);
-      --taste-skeuo-text: #1f2937;
-      --taste-skeuo-btn-bg: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%);
-      --taste-skeuo-btn-bevel: inset 0 1px 0 rgba(255, 255, 255, 0.80), inset 0 -1px 0 rgba(0, 0, 0, 0.20);
-      --taste-skeuo-btn-shadow: 0 4px 8px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.08);
-      --taste-skeuo-well: inset 0 3px 6px rgba(0, 0, 0, 0.18), 0 1px 0 rgba(255, 255, 255, 0.80);
+      --taste-skeuo-chassis: #e0e5ec;
+      --taste-skeuo-border: 1px solid rgba(255, 255, 255, 0.6);
+      --taste-skeuo-highlight: inset 1px 1px 1.5px rgba(255, 255, 255, 0.95), inset -1px -1px 1.5px rgba(163, 177, 198, 0.3);
+      --taste-skeuo-text: #1e2530;
+      --taste-skeuo-well-bg: #d8dde4;
+      --taste-skeuo-well-inset: inset 4px 4px 9px rgba(163, 177, 198, 0.7), inset -4px -4px 9px rgba(255, 255, 255, 0.95);
+      --taste-skeuo-btn-bg: #e0e5ec;
+      --taste-skeuo-btn-border: 1px solid rgba(255, 255, 255, 0.5);
+      --taste-skeuo-btn-bevel: inset 1px 1px 1.5px rgba(255, 255, 255, 0.95), inset -1px -1px 1.5px rgba(163, 177, 198, 0.25);
+      --taste-skeuo-btn-shadow: 5px 5px 12px rgba(163, 177, 198, 0.6), -5px -5px 12px rgba(255, 255, 255, 0.95);
+    }
+    .skeuo-well-box {
+      background: var(--taste-skeuo-well-bg);
+      box-shadow: var(--taste-skeuo-well-inset);
+      border-radius: 8px;
     }
     .skeuo-btn {
       background: var(--taste-skeuo-btn-bg);
       color: var(--taste-skeuo-text);
-      border: 1px solid rgba(0, 0, 0, 0.35);
-      border-radius: 8px;
+      border: var(--taste-skeuo-btn-border);
+      border-radius: 999px;
       box-shadow: var(--taste-skeuo-btn-bevel), var(--taste-skeuo-btn-shadow);
-      padding: 10px 22px;
+      padding: 9px 20px;
       font-weight: 700;
       font-size: 0.85rem;
       cursor: pointer;
       text-transform: uppercase;
       letter-spacing: 0.05em;
+      transition: transform 90ms ease, box-shadow 90ms ease;
     }
     .skeuo-btn:active {
-      transform: translateY(1px);
-      box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.6);
+      transform: translateY(1.5px);
+      box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.85);
+    }
+    [data-theme="light"] .skeuo-btn:active {
+      box-shadow: inset 4px 4px 9px rgba(163, 177, 198, 0.85);
     }
     .skeuo-led {
       display: inline-block;
       width: 10px;
       height: 10px;
+      aspect-ratio: 1 / 1;
+      flex-shrink: 0;
       border-radius: 50%;
       background: #10b981;
       box-shadow: 0 0 10px #10b981;
@@ -2066,12 +2081,13 @@
       --taste-swiss-rule: 1px solid rgba(255, 255, 255, 0.20);
       --taste-swiss-btn-bg: #f5f5f5;
       --taste-swiss-btn-text: #111111;
-      --taste-swiss-accent: #ef4444;
+      --taste-swiss-accent: #ff3b30;
       font-family: 'Helvetica Neue', 'Inter', sans-serif;
       background-color: var(--taste-swiss-bg);
       color: var(--taste-swiss-ink);
       padding: 1.75rem;
       border-radius: 0px;
+      box-shadow: none !important;
     }
     [data-theme="light"] .swiss-wrapper {
       --taste-swiss-bg: #ffffff;
@@ -2321,7 +2337,7 @@
       <a href="#" class="brand-title">
         <img src="assets/logo.webp" alt="Taste Engine Logo" class="brand-logo-img">
         <span>Taste Engine</span>
-        <span class="brand-badge">v0.10.6</span>
+        <span class="brand-badge">v0.10.7</span>
       </a>
     </div>
     
@@ -2473,11 +2489,11 @@
       <button class="filter-chip" data-filter="bento">Bento Grid</button>
       <button class="filter-chip" data-filter="brutalism">Brutalism</button>
       <button class="filter-chip" data-filter="claymorphism">Claymorphism</button>
-      <button class="filter-chip" data-filter="cockpit">Data Cockpit</button>
-      <button class="filter-chip" data-filter="cyberpunk">Cyberpunk</button>
+      <button class="filter-chip" data-filter="enterprise">Enterprise</button>
       <button class="filter-chip" data-filter="glassmorphism">Glassmorphism</button>
-      <button class="filter-chip" data-filter="minimalist">Minimalist</button>
-      <button class="filter-chip" data-filter="retro">Retro Terminal</button>
+      <button class="filter-chip" data-filter="minimalism">Minimalism</button>
+      <button class="filter-chip" data-filter="neo-brutalism">Neo-Brutalism</button>
+      <button class="filter-chip" data-filter="retro-terminal">Retro Terminal</button>
       <button class="filter-chip" data-filter="skeuomorphism">Skeuomorphism</button>
       <button class="filter-chip" data-filter="swiss-editorial">Swiss Editorial</button>
     </nav>
@@ -2730,7 +2746,7 @@
       </div>
       <div class="showcase-body">
         <div class="term-wrapper">
-          <div style="font-size: 0.75rem; margin-bottom: 0.5rem;">[TASTE_OS v0.10.5 / SYS_READY]</div>
+          <div style="font-size: 0.75rem; margin-bottom: 0.5rem;">[TASTE_OS v0.10.7 / SYS_READY]</div>
           <p style="font-size: 0.85rem;">&gt; Core diagnostic: ALL SYSTEMS NOMINAL.<br>&gt; Memory heap: 640K OK.</p>
           <div class="term-prompt">
             <span>user@system:~$</span>
@@ -2747,11 +2763,11 @@
       <div class="showcase-header">
         <div class="showcase-title-group">
           <h2>Skeuomorphism</h2>
-          <span class="showcase-signature">Top-down specular bevel, metallic gradient, jewel LED</span>
+          <span class="showcase-signature">Tactile hardware unibody, dual opposite light physics, extruded controls</span>
         </div>
         <div class="showcase-actions">
           <a href="skeuomorphism.html" class="pow-link-btn">PoW Guide &rarr;</a>
-          <button class="copy-token-btn" data-tokens="--taste-skeuo-chassis: linear-gradient(180deg, #323741 0%, #262a32 100%); --taste-skeuo-btn-bevel: inset 0 1px 0 rgba(255,255,255,0.40); --taste-skeuo-text: #f3f4f6;">Copy Tokens</button>
+          <button class="copy-token-btn" data-tokens="--taste-skeuo-chassis-dark: #1a1d23; --taste-skeuo-chassis-light: #e0e5ec; --taste-skeuo-surface-extruded: -6px -6px 16px rgba(255,255,255,0.95), 6px 6px 16px rgba(163,177,198,0.6); --taste-skeuo-well-inset: inset 5px 5px 12px rgba(163,177,198,0.65), inset -5px -5px 12px rgba(255,255,255,0.95);">Copy Tokens</button>
         </div>
       </div>
       <div class="showcase-body">
@@ -2760,8 +2776,16 @@
             <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;">Analog Rack Console</span>
             <span style="display: flex; align-items: center; font-size: 0.75rem; font-weight: 600;"><span class="skeuo-led"></span>PWR ACTIVE</span>
           </div>
-          <p style="font-size: 0.825rem; opacity: 0.85; margin-bottom: 1.25rem;">Tactile hardware faceplate with mechanical press travel and recessed wells.</p>
-          <button class="skeuo-btn">Engage Relay</button>
+          <div class="skeuo-well-box" style="margin-bottom: 1rem; padding: 0.75rem 1rem;">
+            <div style="display: flex; justify-content: space-between; align-items: center; font-family: monospace; font-size: 0.75rem;">
+              <span>GAIN: +12.4 dB</span>
+              <span style="color: #10b981; font-weight: 700;">STATUS: NOMINAL</span>
+            </div>
+          </div>
+          <div style="display: flex; gap: 0.65rem; align-items: center; justify-content: space-between;">
+            <button class="skeuo-btn">Engage Relay</button>
+            <span style="font-size: 0.725rem; opacity: 0.8; font-weight: 600;">Single-plane tactile unibody</span>
+          </div>
         </div>
       </div>
     </article>
@@ -2775,16 +2799,22 @@
         </div>
         <div class="showcase-actions">
           <a href="swiss-editorial.html" class="pow-link-btn">PoW Guide &rarr;</a>
-          <button class="copy-token-btn" data-tokens="--taste-swiss-bg: #0d0d0d; --taste-swiss-ink: #f5f5f5; --taste-swiss-rule: 1px solid rgba(255,255,255,0.20); --taste-swiss-accent: #ef4444;">Copy Tokens</button>
+          <button class="copy-token-btn" data-tokens="--taste-swiss-bg: #0d0d0d; --taste-swiss-ink: #f5f5f5; --taste-swiss-rule: 1px solid rgba(255,255,255,0.20); --taste-swiss-accent: #ff3b30; --taste-swiss-shadow: none;">Copy Tokens</button>
         </div>
       </div>
       <div class="showcase-body">
         <div class="swiss-wrapper">
-          <span class="swiss-index">[ 01 / ARCHITECTURE ]</span>
+          <div style="display: flex; justify-content: space-between; align-items: baseline;">
+            <span class="swiss-index">[ 01 / ARCHITECTURE ]</span>
+            <span style="font-size: 0.75rem; font-family: monospace; letter-spacing: 0.05em; color: var(--taste-swiss-muted);">12-COL ASYMMETRIC</span>
+          </div>
           <h3 class="swiss-headline">TYPOGRAPHIC SCALE.</h3>
           <hr class="swiss-rule">
           <p style="font-size: 0.85rem; line-height: 1.5; color: var(--taste-swiss-muted); margin-bottom: 1.25rem;">Strict 12-column rhythm with authoritative grotesque typography and singular Swiss red signal accent.</p>
-          <button class="swiss-btn">Read Overview</button>
+          <div style="display: flex; justify-content: space-between; align-items: center;">
+            <button class="swiss-btn">Read Overview</button>
+            <span style="font-size: 0.75rem; font-weight: 700; color: var(--taste-swiss-accent); letter-spacing: 0.05em;">ZURICH_1957 ↗</span>
+          </div>
         </div>
       </div>
     </article>
@@ -3080,8 +3110,8 @@ npx skills list</code></pre>
               <span>Copy</span>
             </button>
           </div>
-          <pre class="terminal-body"><code id="cmd-standalone"># Install only the Cyberpunk HUD style:
-npx skills add kennedys0/taste-style-cyberpunk-hud
+          <pre class="terminal-body"><code id="cmd-standalone"># Install only the Enterprise Data Cockpit style:
+npx skills add kennedys0/taste-style-enterprise
 
 # Install only the Neo-Brutalism style:
 npx skills add kennedys0/taste-style-neo-brutalism
@@ -3090,7 +3120,10 @@ npx skills add kennedys0/taste-style-neo-brutalism
 npx skills add kennedys0/taste-style-claymorphism
 
 # Install only the Swiss / Editorial style:
-npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
+npx skills add kennedys0/taste-style-swiss-editorial
+
+# Install only the Skeuomorphism style:
+npx skills add kennedys0/taste-style-skeuomorphism</code></pre>
           <div class="panel-footer-note">
             <svg class="icon-stroke" width="15" height="15" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
             <div><strong>Save Context Tokens:</strong> If your project strictly targets one design language, use standalone packages to minimize context consumption.</div>
@@ -3134,7 +3167,7 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
           <div class="faq-answer">
             <div class="faq-answer-inner">
               <p>By default, AI coding agents generate uniform, repetitive frontend designs (often termed <em>AI-slop</em>): ungrounded floating cards, low-contrast text, purposeless blur effects, and generic blue-purple gradients.</p>
-              <p><strong>Taste Engine</strong> is an intelligence skill pack that equips AI agents with 10 distinctive aesthetic archetypes (Bento, Brutalism, Claymorphism, Cockpit, Cyberpunk, Glassmorphism, Minimalism, Retro Terminal, Skeuomorphism, Swiss Editorial) backed by strict quality gates to produce production-grade frontend code.</p>
+              <p><strong>Taste Engine</strong> is an intelligence skill pack that equips AI agents with 10 distinctive aesthetic archetypes (Bento Grid, Brutalism, Claymorphism, Enterprise, Glassmorphism, Minimalism, Neo-Brutalism, Retro Terminal, Skeuomorphism, Swiss Editorial) backed by strict quality gates to produce production-grade frontend code.</p>
             </div>
           </div>
         </div>
@@ -3191,7 +3224,7 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
             <div class="faq-answer-inner">
               <p><strong>Yes.</strong> Taste Engine provides 10 independent standalone skills in the <code>optional-standalone-skills/</code> directory. You can install each style individually using:</p>
               <code>npx skills add kennedys0/taste-style-[style-name]</code>
-              <p style="margin-top:0.5rem;">For example: <code>npx skills add kennedys0/taste-style-cyberpunk-hud</code>. This minimizes token usage if your project only requires a single aesthetic.</p>
+              <p style="margin-top:0.5rem;">For example: <code>npx skills add kennedys0/taste-style-enterprise</code> or <code>npx skills add kennedys0/taste-style-swiss-editorial</code>. This minimizes token usage if your project only requires a single aesthetic.</p>
             </div>
           </div>
         </div>
@@ -3218,7 +3251,7 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
           </button>
           <div class="faq-answer">
             <div class="faq-answer-inner">
-              <p>Yes. You can override CSS custom properties in your stylesheets (for example, overriding <code>--taste-cyber-accent: #00ffcc;</code>).</p>
+              <p>Yes. You can override CSS custom properties in your stylesheets (for example, overriding <code>--taste-neo-accent: #ffe600;</code> or <code>--taste-bento-accent-cta: #ff5722;</code>).</p>
               <p>To contribute a new aesthetic pack, add a markdown specification in <code>taste-engine/styles/</code> and validate it with our test runner: <code>python taste-engine/scripts/validate-pack.py</code>.</p>
             </div>
           </div>
@@ -3230,7 +3263,7 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
 
   <!-- =========================================================
        SECTION 5: DESIGN TOKEN CHEATSHEET
-       ========================================================= */
+       ========================================================= -->
   <section id="tokens" class="content-section">
     <div class="section-header">
       <span class="section-eyebrow">Design Tokens</span>
@@ -3328,7 +3361,7 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
         <div class="brand-group">
           <img src="assets/logo.webp" alt="Taste Engine Logo" class="brand-logo-img">
           <strong style="font-size: 1.05rem; font-weight: 700;">Taste Engine</strong>
-          <span class="brand-badge">v0.10.6</span>
+          <span class="brand-badge">v0.10.7</span>
         </div>
         <p class="footer-tagline">Open-source frontend design intelligence pack for AI coding agents. Elevate design fidelity, eliminate AI-slop, and enforce contrast safety.</p>
         <p class="footer-credit">Created by <a href="https://github.com/kennedys0" target="_blank" rel="noopener">Mochamad Vikry (@kennedys0)</a></p>
@@ -3390,7 +3423,37 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
 
   <script>
     // =========================================================
-    // 1. THEME TOGGLE LOGIC
+    // MOBILE NAVIGATION DRAWER CONTROLS
+    // =========================================================
+    function openMobileNav() {
+      const backdrop = document.getElementById('mobileNavBackdrop');
+      const drawer = document.getElementById('mobileNavDrawer');
+      const hamburger = document.getElementById('navHamburgerBtn');
+      if (backdrop) backdrop.classList.add('open');
+      if (drawer) drawer.classList.add('open');
+      if (hamburger) hamburger.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileNav() {
+      const backdrop = document.getElementById('mobileNavBackdrop');
+      const drawer = document.getElementById('mobileNavDrawer');
+      const hamburger = document.getElementById('navHamburgerBtn');
+      if (backdrop) backdrop.classList.remove('open');
+      if (drawer) drawer.classList.remove('open');
+      if (hamburger) hamburger.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    // Close drawer on Escape key
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeMobileNav();
+      }
+    });
+
+    // =========================================================
+    // 1. THEME TOGGLE LOGIC WITH LOCALSTORAGE PERSISTENCE
     // =========================================================
     const html = document.documentElement;
     const themeBtn = document.getElementById('themeToggle');
@@ -3410,7 +3473,18 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
         themeIcon.innerHTML = sunSvg;
         themeLabel.textContent = 'Light Mode';
       }
+      try {
+        localStorage.setItem('taste-theme-main', theme);
+      } catch (e) {}
     }
+
+    // Initialize theme preference from localStorage
+    try {
+      const savedTheme = localStorage.getItem('taste-theme-main');
+      if (savedTheme === 'light' || savedTheme === 'dark') {
+        updateThemeUI(savedTheme);
+      }
+    } catch (e) {}
 
     themeBtn.addEventListener('click', () => {
       const current = html.getAttribute('data-theme') || 'dark';

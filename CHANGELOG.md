@@ -2,6 +2,22 @@
 
 All notable changes to Taste Engine are documented here. Release tags use semantic versioning.
 
+## [0.10.7] - 2026-11-04
+
+### Added
+
+- **Full Suite Proof-of-Work (PoW) Showcase Gallery:** Shipped dedicated interactive specimen studio labs for all 10 curated style archetypes (`bento.html`, `brutalism.html`, `claymorphism.html`, `enterprise.html`, `glassmorphism.html`, `minimalism.html`, `neo-brutalism.html`, `retro-terminal.html`, `skeuomorphism.html`, `swiss-editorial.html`).
+- **Interactive Specimen Studios & Token Synthesizers:** Equipped showcase pages with interactive diagnostic controls: Swiss 12-column typographic scale synthesizer, authentic phosphor CRT raster calibrator, analog hardware gain dial and tactile instrument deck, mechanical 2px offset displacement switches, and live token inspectors.
+- **Theme Preference Persistence:** Integrated `localStorage` persistence (`taste-theme-main`) across the central showcase portal and PoW pages, maintaining user Dark/Light theme selection across browser sessions.
+- **Accessible Mobile Navigation Drawer:** Implemented responsive overlay drawer navigation (`openMobileNav`, `closeMobileNav`, `Escape` key listeners) across all 10 showcase pages and the root portal.
+
+### Improved
+
+- **Single-Plane Tactile Faceplate Physics:** Codified strict unibody faceplate architecture for Skeuomorphism and Swiss Editorial, eliminating nested card-on-card stacking and aligning dual-shadow neumorphic lighting (-6px -6px 16px white highlight / 6px 6px 16px shadow) with recessed sunken telemetry wells.
+- **Showcase Gallery Bugfixes & Token Alignment:** Resolved unclosed Section 5 HTML comment in `docs/index.html` restoring full Design Token cheatsheet visibility, synchronized all 10 style filter chips (`enterprise`, `neo-brutalism`, `minimalism`, `retro-terminal`), and updated standalone skill commands to match verified `optional-standalone-skills/` packages.
+- **Responsive 320px Baseline & Anti-Oval Geometry:** Enforced universal responsive scaling down to 320px viewport baseline without horizontal overflow, alongside strict 1:1 circle geometry (`aspect-ratio: 1 / 1; flex-shrink: 0;`).
+- **Universal Anti-Slop Iconography Gate:** Codified strict prohibition against cartoon emojis across all skill guides, mandating high-contrast Lucide or inline SVG vectors with consistent stroke metrics.
+
 ## [0.10.6] - 2026-11-04
 
 ### Added
