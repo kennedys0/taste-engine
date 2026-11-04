@@ -1230,7 +1230,8 @@ new_html = f'''<!DOCTYPE html>
     }}
 
     /* =========================================================
-       RESPONSIVE BREAKPOINTS (TESTED FOR ZERO OVERFLOW)
+       RESPONSIVE BREAKPOINTS (FLUID & COMPACT MOBILE TYPOGRAPHY)
+       Scales down typography, padding, and layout to prevent bloating
        ========================================================= */
     @media (max-width: 1024px) {{
       .pipeline-grid {{ grid-template-columns: repeat(2, 1fr); }}
@@ -1240,30 +1241,108 @@ new_html = f'''<!DOCTYPE html>
     }}
 
     @media (max-width: 768px) {{
-      .top-nav {{ padding: 0.75rem 1rem; }}
+      .top-nav {{ padding: 0.65rem 1rem; }}
       .nav-links {{ display: none; }}
+      .brand-title {{ font-size: 0.95rem; }}
+      .brand-logo-img {{ width: 24px; height: 24px; }}
+      .brand-badge {{ font-size: 0.65rem; padding: 1px 6px; }}
+      .theme-toggle-btn, .gh-btn {{ padding: 0.35rem 0.75rem; font-size: 0.75rem; }}
+
+      .hero-banner {{ margin: 2rem auto 1.5rem auto; padding: 0 1rem; }}
+      .hero-badge-pill {{ font-size: 0.725rem; padding: 0.3rem 0.75rem; margin-bottom: 1.15rem; }}
+      .hero-title {{ font-size: clamp(1.65rem, 5.5vw, 2.35rem); letter-spacing: -0.025em; line-height: 1.2; margin-bottom: 0.75rem; }}
+      .hero-subtitle {{ font-size: 0.925rem; line-height: 1.5; margin-bottom: 1.4rem; }}
+
       .hero-quick-install {{
         border-radius: var(--shell-radius);
         flex-direction: column;
         align-items: flex-start;
-        padding: 0.75rem;
+        padding: 0.65rem 0.85rem;
+        gap: 0.45rem;
         width: 100%;
       }}
-      .quick-copy-btn {{ align-self: flex-end; }}
-      .hero-cta-group {{ flex-direction: column; width: 100%; }}
-      .cta-primary-btn, .cta-secondary-btn {{ width: 100%; justify-content: center; }}
-      .cli-verify-card {{ flex-direction: column; align-items: flex-start; }}
-      .footer-inner {{ grid-template-columns: 1fr; gap: 2rem; }}
-      .install-tabs {{ grid-template-columns: repeat(2, 1fr); }}
+      .quick-install-code {{ font-size: 0.785rem; word-break: break-all; }}
+      .quick-copy-btn {{ align-self: flex-end; padding: 0.35rem 0.75rem; font-size: 0.725rem; }}
+
+      .hero-cta-group {{ flex-direction: column; width: 100%; gap: 0.65rem; margin-bottom: 2rem; }}
+      .cta-primary-btn, .cta-secondary-btn {{ width: 100%; justify-content: center; padding: 0.7rem 1.25rem; font-size: 0.85rem; }}
+
+      .hero-stats-strip {{ gap: 0.65rem; }}
+      .stat-card {{ padding: 0.85rem 0.65rem; }}
+      .stat-num {{ font-size: 1.35rem; }}
+      .stat-desc {{ font-size: 0.75rem; }}
+
+      .content-section {{ margin: 3rem auto; padding: 0 1rem; }}
+      .section-header {{ margin-bottom: 2rem; }}
+      .section-eyebrow {{ font-size: 0.7rem; }}
+      .section-title {{ font-size: 1.5rem; letter-spacing: -0.02em; }}
+      .section-desc {{ font-size: 0.875rem; line-height: 1.5; }}
+
+      .filter-bar {{ gap: 0.4rem; margin-bottom: 1.75rem; }}
+      .filter-chip {{ padding: 0.35rem 0.8rem; font-size: 0.775rem; }}
+
+      .showcase-header {{ padding: 0.9rem 1.1rem; }}
+      .showcase-title-group h2 {{ font-size: 1.05rem; }}
+      .showcase-signature {{ font-size: 0.75rem; }}
+      .showcase-body {{ padding: 1.15rem; }}
+      .swiss-headline {{ font-size: 1.35rem; line-height: 1.2; }}
+
+      .pipeline-card {{ padding: 1.35rem 1.1rem; }}
+      .pipeline-icon-box {{ width: 38px; height: 38px; font-size: 1.1rem; margin-bottom: 0.9rem; }}
+      .pipeline-card h3 {{ font-size: 1rem; }}
+      .pipeline-card p {{ font-size: 0.825rem; line-height: 1.5; }}
+      .pipeline-features li {{ font-size: 0.75rem; }}
+
+      .install-tabs {{ grid-template-columns: repeat(2, 1fr); gap: 0.35rem; }}
+      .install-tab-btn {{ padding: 0.5rem 0.65rem; font-size: 0.75rem; }}
+      .panel-header {{ padding: 0.65rem 0.95rem; }}
+      .window-title {{ font-size: 0.75rem; }}
+      .copy-cmd-btn {{ padding: 0.28rem 0.65rem; font-size: 0.725rem; }}
+      .terminal-body {{ font-size: 0.775rem; padding: 1rem; line-height: 1.6; }}
+      .panel-footer-note {{ padding: 0.85rem 1rem; font-size: 0.785rem; }}
+      .cli-verify-card {{ flex-direction: column; align-items: flex-start; padding: 1.1rem; gap: 0.85rem; }}
+      .verify-icon-box {{ width: 38px; height: 38px; }}
+      .verify-text h4 {{ font-size: 0.9rem; }}
+      .verify-text p {{ font-size: 0.8rem; }}
+      .inline-code {{ font-size: 0.75rem; }}
+
+      .faq-question {{ padding: 1rem 1.15rem; font-size: 0.9rem; }}
+      .faq-answer-inner {{ padding: 0 1.15rem 1rem 1.15rem; font-size: 0.835rem; }}
+
+      .token-table th, .token-table td {{ padding: 0.8rem 1rem; font-size: 0.8rem; }}
+      .boilerplate-header {{ padding: 0.75rem 1rem; font-size: 0.785rem; }}
+
+      .footer-inner {{ grid-template-columns: 1fr; gap: 1.75rem; }}
+      .site-footer {{ margin-top: 3.5rem; padding: 3rem 1rem 1.5rem 1rem; }}
+      .footer-tagline {{ font-size: 0.825rem; }}
+      .footer-col h4 {{ font-size: 0.785rem; margin-bottom: 0.85rem; }}
+      .footer-col ul a {{ font-size: 0.8rem; }}
     }}
 
     @media (max-width: 480px) {{
-      .hero-stats-strip {{ grid-template-columns: 1fr; }}
+      .hero-title {{ font-size: 1.4rem; line-height: 1.22; }}
+      .hero-subtitle {{ font-size: 0.825rem; }}
+      .hero-stats-strip {{ grid-template-columns: 1fr 1fr; gap: 0.45rem; }}
+      .stat-card {{ padding: 0.75rem 0.5rem; }}
+      .stat-num {{ font-size: 1.2rem; }}
+      .stat-desc {{ font-size: 0.7rem; }}
+
+      .section-title {{ font-size: 1.25rem; }}
+      .section-desc {{ font-size: 0.8125rem; }}
+
       .pipeline-grid {{ grid-template-columns: 1fr; }}
       .install-tabs {{ grid-template-columns: 1fr; }}
-      .panel-header {{ flex-direction: column; align-items: flex-start; gap: 0.5rem; }}
+      .panel-header {{ flex-direction: column; align-items: flex-start; gap: 0.45rem; }}
       .copy-cmd-btn {{ align-self: flex-end; }}
-      .footer-bottom {{ flex-direction: column; text-align: center; gap: 0.75rem; }}
+      .terminal-body {{ font-size: 0.725rem; padding: 0.85rem; }}
+
+      .showcase-header {{ flex-direction: column; align-items: flex-start; gap: 0.5rem; }}
+      .copy-token-btn {{ align-self: flex-start; }}
+
+      .faq-question {{ font-size: 0.85rem; padding: 0.85rem 0.95rem; }}
+      .faq-answer-inner {{ font-size: 0.8rem; padding: 0 0.95rem 0.85rem 0.95rem; }}
+
+      .footer-bottom {{ flex-direction: column; text-align: center; gap: 0.65rem; font-size: 0.75rem; }}
     }}
 
     /* Toast Notification */
