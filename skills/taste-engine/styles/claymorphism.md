@@ -28,6 +28,9 @@ A successful claymorphism implementation demonstrates **all** of the following:
 6. **Multi-Surface Clay Composition Architecture:** Complex layouts (workspaces, dashboards, creative tools) must balance a saturated or pastel clay accent dock/panel (e.g. sidebar navigation with plush active white porcelain pills) with clean light porcelain card surfaces. This establishes visual hierarchy without burying the entire viewport in uniform monochrome candy.
 7. **3D Cylindrical Bar & Donut Visualizations:** When data or charts are present, render metrics using tactile 3D rounded cylinders (pill-capped vertical bars with dual inner shadows inside recessed tracking grooves) or plump, segmented clay donut rings. Never use razor-thin 1px wireframe charts that conflict with the pliable clay physics.
 8. **Plump Squircle Metric Compartments:** Metric cards must structure data with dedicated squircle icon bays (`12px–16px` border-radius with dual inner shadows and pastel color coding), prominent bold numeric typography, and soft tinted pill delta tags (`9999px` radius).
+9. **Sunken Well Track & Extruded Pill Segmented Controls (Tabs / Filters):** Tab headers, segmented mode selectors, and filter strips must never be flat text with 1px border lines. They must use a continuous sunken well channel (`border-radius: 9999px; box-shadow: var(--taste-clay-inner-well);`) containing tactile pill buttons, where the active option is physically extruded outward as a raised 3D clay pill with dual inner highlights and soft ambient drop shadow.
+10. **Pillow & Well Disclosure Architecture (Accordions / FAQs):** Expandable panels, disclosure widgets, and accordion items must pair a raised tactile clay pillow trigger (`24px–28px` radius) with an interior recessed sunken well channel (`18px–22px` radius) for the revealed body. The toggle indicator is a circular 3D clay sphere/button inside a sunken well bay that rotates smoothly upon opening.
+11. **Sculpted Console & Code Pod Architecture:** Monospace code blocks, terminal previews, or telemetry boxes must not be rendered as flat black developer rectangles. They must be sculpted matte clay console pods (`24px–28px` radius) with recessed volumetric inset shadows (`inset 3px 4px 8px`), subtle relief borders, tactile 3D pastel control dots, and tactile clay pill action buttons.
 
 **First-viewport test:** In a desktop screenshot, identify the raised sculpted buttons, the dual inner highlights/shadows, and the recessed input wells **without reading the page title**. If they appear flat or merely rounded, revise the shadow tokens before adding more content.
 
@@ -87,8 +90,12 @@ Surfaces must feel molded from physical matte clay:
 - **Checkbox:** Squircle container with dual inner shadow and vibrant purple checkmark (`✓`).
 - **Input Field:** Sunken well with left icon, legible placeholder, and white relief rim border.
 - **Cellular / Pill Navigation Bar:** Full-width header or sidebar dock divided into plush rounded pill bays (`9999px`), with the active route elevated as an extruded porcelain clay pill with soft dual inner shadows.
+- **Sunken Well Tab Track:** Continuous pill-shaped inset channel (`border-radius: 9999px`) hosting tactile clay tabs, with the active route physically extruded outward as a raised 3D clay pill.
+- **Tactile Clay Pillow Accordion:** Raised clay trigger capsule (`24px–28px` radius) paired with a circular 3D toggle sphere and an interior recessed sunken well channel for the revealed text.
+- **Sculpted Console Pod:** Deep matte clay enclosure (`24px–28px` radius) with recessed inset shadows, 3D pastel window dots, and tactile copy pill.
 - **3D Cylindrical Bar Chart:** Recessed sunken well tracks with vertical rounded 3D pill cylinders inside, featuring dual inner highlight and form shadow.
 - **Tactile Segmented Donut Chart:** Plump, rounded circular arc segments with tactile drop shadow and soft pastel color coding.
+- **3D Clay Color Pebble:** Squircle/pill-shaped swatch button demonstrating physical color with dual specular and form shadows.
 
 ## Motion
 
