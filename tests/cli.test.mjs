@@ -9,7 +9,7 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const cli=path.join(root,'bin','taste-engine.mjs');
 function run(args, env={}) { return spawnSync(process.execPath,[cli,...args],{encoding:'utf8',env:{...process.env,...env}}); }
 test('prints version and rejects unknown agents',()=>{
- assert.equal(run(['version']).stdout.trim(),'0.10.5');
+ assert.equal(run(['version']).stdout.trim(),'0.10.6');
  assert.notEqual(run(['install','--agent','unknown']).status,0);
 });
 test('installs project skill for Antigravity and Codex',()=>{
@@ -25,11 +25,11 @@ test('installs project skill for Antigravity and Codex',()=>{
 test('global Antigravity IDE uses official location and backups previous installs',()=>{
  const home=fs.mkdtempSync(path.join(os.tmpdir(),'taste-home-'));
  try {
-  let r=run(['install','--agent','antigravity','--global'],{HOME:home});
+  let r=run(['install','--agent','antigravity','--global'],{HOME:home,USERPROFILE:home});
   assert.equal(r.status,0,r.stderr);
   let folder=path.join(home,'.gemini/config/skills/taste-engine');
   assert.equal(fs.existsSync(path.join(folder,'SKILL.md')),true);
-  r=run(['install','--agent','antigravity','--global'],{HOME:home});
+  r=run(['install','--agent','antigravity','--global'],{HOME:home,USERPROFILE:home});
   assert.equal(r.status,0,r.stderr);
   assert.equal(fs.readdirSync(path.dirname(folder)).some(x=>x.startsWith('taste-engine.backup-')),true);
  } finally {fs.rmSync(home,{recursive:true,force:true});}

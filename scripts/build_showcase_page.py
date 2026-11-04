@@ -1524,7 +1524,7 @@ new_html = f'''<!DOCTYPE html>
       <a href="#" class="brand-title">
         <img src="assets/logo.webp" alt="Taste Engine Logo" class="brand-logo-img">
         <span>Taste Engine</span>
-        <span class="brand-badge">v0.10.5</span>
+        <span class="brand-badge">v0.10.6</span>
       </a>
     </div>
     
@@ -2180,7 +2180,7 @@ npx skills add kennedys0/taste-style-swiss-editorial</code></pre>
         <div class="brand-group">
           <img src="assets/logo.webp" alt="Taste Engine Logo" class="brand-logo-img">
           <strong style="font-size: 1.05rem; font-weight: 700;">Taste Engine</strong>
-          <span class="brand-badge">v0.10.5</span>
+          <span class="brand-badge">v0.10.6</span>
         </div>
         <p class="footer-tagline">Open-source frontend design intelligence pack for AI coding agents. Elevate design fidelity, eliminate AI-slop, and enforce contrast safety.</p>
         <p class="footer-credit">Created by <a href="https://github.com/kennedys0" target="_blank" rel="noopener">Mochamad Vikry (@kennedys0)</a></p>

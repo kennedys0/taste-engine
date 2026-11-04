@@ -2,6 +2,16 @@
 
 All notable changes to Taste Engine are documented here. Release tags use semantic versioning.
 
+## [0.10.6] - 2026-11-04
+
+### Added
+
+- **Codex Dark Slate-Grey Palette:** Transitioned showcase gallery and core skill dark mode specifications from pitch-black (`#000000`) to warm neutral dark slate-grey (canvas `#212328`, surfaces `#2b2e36`, elevated `#343842`, recessed wells `#1a1c21`, borders `rgba(255, 255, 255, 0.12)`) inspired by OpenAI Codex and ChatGPT developer interfaces, reducing eye strain and improving surface contrast hierarchy.
+- **Mobile Fluid Typography & Anti-Bloat:** Implemented responsive typography clamping and scaling rules across hero titles, section headings, card paddings, and badges on mobile viewports (< 768px and < 480px) to prevent oversized, inflated layouts ("UI bengkak").
+- **Single-Line Inline Command Alignment:** Enforced horizontal single-row alignment (`display: inline-flex; flex-direction: row; align-items: center; justify-content: center;`) with `line-height: 1; flex-shrink: 0;` for quick install pills, terminal snippets, and copy buttons across desktop, tablet, and mobile.
+- **Balanced Mobile Footer Architecture:** Re-architected mobile footer into a balanced 2-column navigation grid (`repeat(2, 1fr)`), full-width brand identity header, tactile thumb-friendly "Back to top" pill button, and valid HTML copyright entities (`&copy;`).
+- **Strict Anti-Slop Protections:** Codified explicit bans in `SKILL.md` and `references/anti-slop.md` against rainbow text gradients (`background-clip: text`), cartoon emojis as functional icons (enforcing crisp inline SVGs), and fabricated space-filling dashboard widgets (weather/spectrum/telemetry).
+
 ## [0.10.5] - 2026-11-03
 
 ### Added
