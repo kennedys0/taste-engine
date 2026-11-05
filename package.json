@@ -5,7 +5,6 @@
   "type": "module",
   "bin": {"taste-engine": "./bin/taste-engine.mjs"},
   "exports": {
-    ".": "./bin/taste-engine.mjs",
     "./presets/*": "./taste-engine/presets/*"
   },
   "scripts": {

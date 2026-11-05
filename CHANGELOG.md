@@ -12,6 +12,7 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 - **Bash 3.2 Compatibility in Updater:** Replaced Bash 4-specific lowercase expansions (`${var,,}`) with portable `tr` and guarded empty array expansion `${AUTH_HEADER[@]+"${AUTH_HEADER[@]}"}` under `set -u` in `update.sh`, ensuring compatibility with macOS default Bash 3.2. Added `shasum -a 256` fallback for `sha256sum`, resolved ShellCheck warnings, and documented real system prerequisites.
 - **Markdown Table & Frontmatter Formatting:** Removed abnormal blank lines separating table rows in `README.md` and `SKILL.md`, cleaned up YAML frontmatter and code fence padding, and added automated validation checks in `validate-pack.py`.
 - **Style Probe Negation & Clause Boundaries:** Updated `style_probe.py` to respect clause boundaries (punctuation `,;.:!?` and conjunctions `but`, `and`, `tapi`, `namun`, `melainkan`), prevent cross-clause negation leakage, treat `not only` as non-negating, and support expanded negation/aversion vocabularies (`hate`, `dislike`, `don't want`, `do not want`, `benci`, `gak mau`, `nggak mau`, `ga mau`, `tidak mau`).
+- **Package & CLI Hygiene:** Removed root `"."` export from `package.json` `exports` and added main-module execution guard in `bin/taste-engine.mjs` to prevent CLI execution when imported. Added overwrite guard and `--force` flag to `taste-engine init`. Updated `assertSource(dir)` to validate the staged directory in `install()`.
 
 ## [0.10.10] - 2026-11-05
 

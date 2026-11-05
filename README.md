@@ -143,10 +143,11 @@ taste-engine preset
 
 taste-engine init
 
-# Scaffold into a custom directory or preview with dry-run
+# Scaffold into a custom directory, preview with dry-run, or force overwrite
 
 taste-engine init ./src --dry-run
 taste-engine --init ./src
+taste-engine init --force
 ```
 
 In your `tailwind.config.js`:

@@ -4,7 +4,7 @@ import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { fileURLToPath } from 'node:url';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const cli=path.join(root,'bin','taste-engine.mjs');
 const pkg=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8'));
@@ -131,6 +131,13 @@ test('prints presets list and inits presets into target folder with init and --i
   assert.equal(fs.existsSync(path.join(dir,'taste-presets','tailwind','tailwind.preset.js')),true);
   assert.equal(fs.existsSync(path.join(dir,'taste-presets','shadcn','shadcn-themes.css')),true);
 
+  let initFail=run(['init',dir]);
+  assert.notEqual(initFail.status,0);
+  assert.equal(initFail.stderr.includes('already exists'),true);
+
+  let initForce=run(['init',dir,'--force']);
+  assert.equal(initForce.status,0,initForce.stderr);
+
   const subDir=path.join(dir,'sub');
   let initFlagRes=run(['--init',subDir]);
   assert.equal(initFlagRes.status,0,initFlagRes.stderr);
@@ -187,4 +194,11 @@ test('npm pack includes docs/index.html and CLI avoids shell interpolation',()=>
 
  const cliContent=fs.readFileSync(cli,'utf8');
  assert.equal(cliContent.includes('exec('),false);
+});
+test('importing CLI produces no stdout and package exports no dot',()=>{
+ const cliUrl=pathToFileURL(cli).href;
+ const imp=spawnSync(process.execPath,['--input-type=module','-e',`import '${cliUrl}';`],{encoding:'utf8'});
+ assert.equal(imp.status,0,imp.stderr);
+ assert.equal(imp.stdout.trim(),'');
+ assert.equal(pkg.exports['.'],undefined);
 });
