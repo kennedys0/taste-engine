@@ -52,3 +52,4 @@
   - **Recessed Wells:** `#1a1c21`
   - **Borders & Dividers:** `rgba(255, 255, 255, 0.12)`
 - **Override:** Style packs with signature dark palettes (e.g., Brutalism `#000000`, Swiss Editorial `#0D0D0D`, Retro-Terminal CRT dark, or OLED pure black) take precedence.
+

@@ -2,7 +2,7 @@
 
 All notable changes to Taste Engine are documented here. Release tags use semantic versioning.
 
-## [Unreleased]
+## [0.10.11] - 2026-11-05
 
 ### Fixed
 
