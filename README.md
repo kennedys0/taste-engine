@@ -10,6 +10,12 @@ A portable, open-source Agent Skill for building distinctive, accessible fronten
   <img src="./assets/banner.webp" alt="Taste Engine — Design systems for AI agents, routed by taste" width="100%" />
 </p>
 
+<p align="center">
+  <video src="./assets/intro.mp4" controls="controls" width="100%">
+    <a href="./assets/intro.mp4">Watch Intro Video</a>
+  </video>
+</p>
+
 [![License: MIT](https://img.shields.io/badge/license-MIT-111111.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/version-0.10.11-4F46E5.svg)](CHANGELOG.md)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-111111.svg)](https://agentskills.io/)
