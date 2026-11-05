@@ -98,7 +98,17 @@ test('global Antigravity IDE uses official location and backups previous install
   assert.equal(fs.existsSync(path.join(folder,'SKILL.md')),true);
   r=run(['install','--agent','antigravity','--global'],{HOME:home,USERPROFILE:home});
   assert.equal(r.status,0,r.stderr);
-  assert.equal(fs.readdirSync(path.dirname(folder)).some(x=>x.startsWith('taste-engine.backup-')),true);
+  const skillsDir=path.dirname(folder);
+  assert.deepEqual(fs.readdirSync(skillsDir),['taste-engine']);
+  const backupDir=path.join(path.dirname(skillsDir),'.taste-engine-backups');
+  assert.equal(fs.existsSync(backupDir),true);
+  assert.equal(fs.readdirSync(backupDir).some(x=>x.startsWith('taste-engine-')),true);
+  let matching=0;
+  for(const entry of fs.readdirSync(skillsDir)) {
+    const skill=path.join(skillsDir,entry,'SKILL.md');
+    if(fs.existsSync(skill) && fs.readFileSync(skill,'utf8').includes('name: taste-engine')) matching++;
+  }
+  assert.equal(matching,1);
  } finally {fs.rmSync(home,{recursive:true,force:true});}
 });
 test('prints presets list and inits presets into target folder with init and --init',()=>{

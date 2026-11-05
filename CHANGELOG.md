@@ -2,6 +2,12 @@
 
 All notable changes to Taste Engine are documented here. Release tags use semantic versioning.
 
+## [Unreleased]
+
+### Fixed
+
+- **CLI Install Backups:** Moved installation backups outside the agent's skills directory into `<parent-of-skills-dir>/.taste-engine-backups/` to prevent agents from discovering duplicate skills with the same name.
+
 ## [0.10.10] - 2026-11-05
 
 ### Fixed

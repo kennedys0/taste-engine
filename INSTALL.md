@@ -54,7 +54,7 @@ Supported agent selectors:
 | `copilot` | `~/.github/skills/taste-engine` | `.github/skills/taste-engine` |
 | `all` | All global locations (shared paths deduplicated) | All applicable project locations |
 
-The installer defaults to `--project` in your current directory. Specify `--global` for use across all projects or `--cwd /path/to/project` to target another project. Existing Taste Engine installations are backed up before replacement. Other installed skills are never overwritten.
+The installer defaults to `--project` in your current directory. Specify `--global` for use across all projects or `--cwd /path/to/project` to target another project. Existing Taste Engine installations are backed up to `<parent-of-skills-dir>/.taste-engine-backups/taste-engine-<timestamp>` before replacement (kept outside the skills directory so agents do not discover duplicate skills). Other installed skills are never overwritten.
 
 ```bash
 node bin/taste-engine.mjs install --agent all --project

@@ -89,8 +89,10 @@ function install(dest, dryRun = false) {
       // Never silently replace an unrelated directory.
       if(!fs.existsSync(path.join(dest,'SKILL.md')) || !fs.readFileSync(path.join(dest,'SKILL.md'),'utf8').includes('name: taste-engine'))
         throw new Error(`Existing folder is not a Taste Engine skill: ${dest}`);
-      backup=`${dest}.backup-${new Date().toISOString().replace(/[:.]/g,'-')}`;
-      fs.renameSync(dest,backup);
+      const backupDir = path.join(path.dirname(parent), '.taste-engine-backups');
+      fs.mkdirSync(backupDir, { recursive: true });
+      backup = path.join(backupDir, `taste-engine-${new Date().toISOString().replace(/[:.]/g, '-')}`);
+      fs.renameSync(dest, backup);
     }
     try { fs.renameSync(staged,dest); }
     catch(err) { if(backup && fs.existsSync(backup)) fs.renameSync(backup,dest); throw err; }
