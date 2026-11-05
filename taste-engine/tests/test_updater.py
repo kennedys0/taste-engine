@@ -82,4 +82,9 @@ with tempfile.TemporaryDirectory(prefix="taste-engine-update-test-") as tmp:
     assert "not newer" in p.stdout
     assert len(list((base / ".taste-engine-backups").iterdir())) == 1
 
+    # Verify digest warning and SHA256SUMS fallback presence in updater script
+    updater_src = UPDATER.read_text(encoding="utf-8")
+    assert "WARNING: Download could not be verified against an expected SHA256 digest." in updater_src
+    assert "SHA256SUMS" in updater_src
+
 print("PASS: updater dry-run, hash check, ZIP path safety, automatic rollback, backup, upgrade, idempotence")

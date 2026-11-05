@@ -9,15 +9,19 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.4.0
         with:
           python-version: '3.11'
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4.2.0
         with:
           node-version: '22'
       - name: Verify tag, build release archive
         run: python3 scripts/build-release.py --verify-tag "$GITHUB_REF_NAME"
+      - name: Generate SHA256SUMS
+        run: |
+          cd dist
+          sha256sum "taste-engine-${GITHUB_REF_NAME}.zip" > SHA256SUMS
       - name: Validate discovery mirror
         run: python3 scripts/sync-agent-skills.py --check
       - name: Validate skill packs
@@ -31,8 +35,7 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           if gh release view "$GITHUB_REF_NAME" >/dev/null 2>&1; then
-            echo "Release $GITHUB_REF_NAME already exists. Uploading asset..."
-            gh release upload "$GITHUB_REF_NAME" "dist/taste-engine-${GITHUB_REF_NAME}.zip" --clobber
-          else
-            gh release create "$GITHUB_REF_NAME" "dist/taste-engine-${GITHUB_REF_NAME}.zip" --verify-tag --generate-notes --title "Taste Engine ${GITHUB_REF_NAME}"
+            echo "ERROR: Release $GITHUB_REF_NAME already exists. Aborting to prevent silent overwrite."
+            exit 1
           fi
+          gh release create "$GITHUB_REF_NAME" "dist/taste-engine-${GITHUB_REF_NAME}.zip" "dist/SHA256SUMS" --verify-tag --generate-notes --title "Taste Engine ${GITHUB_REF_NAME}"

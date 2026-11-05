@@ -189,6 +189,28 @@ PY
     DOWNLOAD_URL="https://github.com/$REPO/releases/download/$TAG_NAME/taste-engine-$TAG_NAME.zip"
     RELEASE_SHA=""
   fi
+  if [[ -z "$RELEASE_SHA" ]]; then
+    RELEASE_TAG="${TAG:-}"
+    if [[ -z "$RELEASE_TAG" && -f "$WORK/release.json" ]]; then
+      RELEASE_TAG="$(python3 -c "import json,sys; print(json.load(open(sys.argv[1],encoding='utf-8')).get('tag_name',''))" "$WORK/release.json" 2>/dev/null || true)"
+    fi
+    if [[ -z "$RELEASE_TAG" && -n "${TAG_NAME:-}" ]]; then
+      RELEASE_TAG="$TAG_NAME"
+    fi
+    if [[ -n "$RELEASE_TAG" ]]; then
+      SHA256_URL="https://github.com/$REPO/releases/download/$RELEASE_TAG/SHA256SUMS"
+      if curl -fsSL --connect-timeout 12 --max-time 30 -H 'User-Agent: taste-engine-updater' "$SHA256_URL" -o "$WORK/SHA256SUMS" 2>/dev/null; then
+        while read -r sha filename || [[ -n "$sha" ]]; do
+          if [[ "$filename" == "taste-engine-$RELEASE_TAG.zip" || "$filename" == *"taste-engine-$RELEASE_TAG.zip"* ]]; then
+            if [[ "$sha" =~ ^[0-9a-fA-F]{64}$ ]]; then
+              RELEASE_SHA="sha256:$sha"
+              break
+            fi
+          fi
+        done < "$WORK/SHA256SUMS"
+      fi
+    fi
+  fi
   ZIP_PATH="$WORK/release.zip"
   curl -fsSL --retry 2 --connect-timeout 12 --max-time 180 \
     -H 'User-Agent: taste-engine-updater' "$DOWNLOAD_URL" -o "$ZIP_PATH" \
@@ -197,7 +219,7 @@ PY
     EXPECTED_SHA="${RELEASE_SHA#sha256:}"
     EXPECTED_SHA="$(printf '%s' "$EXPECTED_SHA" | tr '[:upper:]' '[:lower:]')"
   fi
-  [[ -n "$EXPECTED_SHA" ]] || info 'Note: release supplied no SHA-256 digest; using TLS + ZIP and pack validation.'
+  [[ -n "$EXPECTED_SHA" ]] || info 'WARNING: Download could not be verified against an expected SHA256 digest.'
 fi
 [[ -f "$ZIP_PATH" ]] || fail "ZIP not found: $ZIP_PATH"
 if [[ -n "$EXPECTED_SHA" ]]; then
