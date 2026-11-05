@@ -11,7 +11,11 @@ import unicodedata
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-NEGATIONS = {'no', 'not', 'without', 'avoid', 'exclude', 'jangan', 'tanpa', 'bukan', 'hindari', 'kecuali'}
+NEGATIONS = {
+    'no', 'not', 'without', 'avoid', 'exclude', 'jangan', 'tanpa', 'bukan', 'hindari', 'kecuali',
+    'hate', 'dislike', 'benci',
+    '_neg_dont_want_', '_neg_do_not_want_', '_neg_gak_mau_', '_neg_nggak_mau_', '_neg_ga_mau_', '_neg_tidak_mau_'
+}
 
 
 def normalize(value):
@@ -24,8 +28,26 @@ def candidates(prompt, registry):
     # A space-separated normalization permits hyphen/case variation; input stays unmodified.
     # Split camel-case first, before casefold, so NeoBrutalism can match neo brutalism.
     prompt = re.sub(r'(?<=[a-z])(?=[A-Z])', ' ', prompt)
-    phrase = normalize(prompt)
-    words = phrase.split()
+    prompt = unicodedata.normalize('NFKC', prompt).casefold()
+
+    # Treat 'not only' and Indonesian equivalents as non-negating
+    prompt = re.sub(r'\bnot\s+only\b', ' _not_only_ ', prompt)
+    prompt = re.sub(r'\bbukan\s+hanya\b', ' _not_only_ ', prompt)
+    prompt = re.sub(r'\btidak\s+hanya\b', ' _not_only_ ', prompt)
+    prompt = re.sub(r'\bbukan\s+cuma\b', ' _not_only_ ', prompt)
+
+    # Multi-word negation phrases
+    prompt = re.sub(r"\bdo(?:n['’]?t| not)\s+want\b", ' _neg_dont_want_ ', prompt)
+    prompt = re.sub(r'\b(gak|nggak|ga|tidak)\s+mau\b', ' _neg_tidak_mau_ ', prompt)
+
+    # Clause boundaries: punctuation and conjunctions
+    prompt = re.sub(r'[,;.:!?]+', ' _clause_boundary_ ', prompt)
+    prompt = re.sub(r'\b(but|tapi|tetapi|namun|and|dan|melainkan)\b', ' _clause_boundary_ ', prompt)
+
+    # Clean other symbols but preserve boundary and negation tokens
+    prompt = re.sub(r'[^a-z0-9_]+', ' ', prompt)
+    words = prompt.split()
+
     hits = []
     for style in registry['styles']:
         names = [style['id'], style['label']] + style.get('aliases', [])
@@ -35,7 +57,12 @@ def candidates(prompt, registry):
             if not nwords: continue
             for i in range(len(words) - len(nwords) + 1):
                 if words[i:i+len(nwords)] != nwords: continue
-                before = words[max(0, i-3):i]
+                # Look for negation within the current clause before the style match
+                before = []
+                for k in range(i - 1, max(-1, i - 6), -1):
+                    if words[k] == '_clause_boundary_':
+                        break
+                    before.append(words[k])
                 negative = any(w in NEGATIONS for w in before)
                 hits.append({'style':style['id'],'start':i,'end':i+len(nwords),'length':len(nwords),'negative':negative,'alias':raw})
     hits.sort(key=lambda h:(-h['length'], h['start']))
