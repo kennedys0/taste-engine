@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { spawnSync, exec } from 'node:child_process';
+import { spawnSync, spawn } from 'node:child_process';
 
 const VERSION = '0.10.10';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
@@ -130,11 +130,18 @@ function main() {
     const galleryPath = path.join(repoRoot, 'docs', 'index.html');
     if(!fs.existsSync(galleryPath)) throw new Error('Gallery not found at docs/index.html');
     console.log(`Taste Engine: opening interactive style gallery (${galleryPath})`);
-    const openCmd = process.platform === 'win32' ? `start "" "${galleryPath}"` :
-                    process.platform === 'darwin' ? `open "${galleryPath}"` : `xdg-open "${galleryPath}"`;
-    exec(openCmd, (err) => {
-      if(err) console.log(`You can open the gallery manually in your browser:\n  file://${galleryPath}`);
+    let child;
+    if (process.platform === 'win32') {
+      child = spawn('cmd', ['/c', 'start', '', galleryPath], { detached: true, stdio: 'ignore' });
+    } else if (process.platform === 'darwin') {
+      child = spawn('open', [galleryPath], { detached: true, stdio: 'ignore' });
+    } else {
+      child = spawn('xdg-open', [galleryPath], { detached: true, stdio: 'ignore' });
+    }
+    child.on('error', () => {
+      console.log(`You can open the gallery manually in your browser:\n  file://${galleryPath}`);
     });
+    child.unref();
     return;
   }
   if(command==='preset' || command==='presets' || command==='--preset' || command==='--presets') {

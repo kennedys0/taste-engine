@@ -155,3 +155,13 @@ test('forwards -update, update and --update to the updater script',()=>{
  assert.equal(r3.status,0,r3.stderr);
  assert.equal(r3.stdout.includes('Taste Engine - safe updater'),true);
 });
+test('npm pack includes docs/index.html and CLI avoids shell interpolation',()=>{
+ const pack=spawnSync('npm',['pack','--dry-run','--json'],{cwd:root,encoding:'utf8',shell:true});
+ assert.equal(pack.status,0,pack.stderr);
+ const data=JSON.parse(pack.stdout);
+ const files=data[0].files.map(f=>f.path);
+ assert.equal(files.includes('docs/index.html'),true);
+
+ const cliContent=fs.readFileSync(cli,'utf8');
+ assert.equal(cliContent.includes('exec('),false);
+});

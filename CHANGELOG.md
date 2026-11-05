@@ -7,6 +7,7 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 ### Fixed
 
 - **CLI Install Backups:** Moved installation backups outside the agent's skills directory into `<parent-of-skills-dir>/.taste-engine-backups/` to prevent agents from discovering duplicate skills with the same name.
+- **Gallery Command & npm Packaging:** Included `docs/` in `package.json` `files` so `taste-engine gallery` is available in npm-installed packages, and replaced shell-interpolated `exec()` with argument-array `spawn()` with detached option and error handling.
 
 ## [0.10.10] - 2026-11-05
 
