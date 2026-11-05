@@ -134,3 +134,11 @@
   }
 }
 
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .taste-swiss-btn {
+    transition: none !important;
+  }
+}
+
+

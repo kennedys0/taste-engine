@@ -100,6 +100,13 @@
   }
 }
 
+/* Focus accessibility */
+.taste-bento-tile:focus-visible,
+.taste-bento-tile :is(a, button, input, select, textarea):focus-visible {
+  outline: 2px solid var(--taste-bento-accent);
+  outline-offset: 2px;
+}
+
 /* Accessibility */
 @media (prefers-reduced-motion: reduce) {
   .taste-bento-tile {

@@ -53,6 +53,15 @@ clay_css_source = (root / 'examples/claymorphism/sculpted-surfaces.css').read_te
 for phrase in ['--taste-clay-inner-primary', '--taste-clay-inner-light', '--taste-clay-inner-well', 'inset', 'prefers-reduced-motion', ':focus-visible']:
     if phrase not in clay_css_source:
         errors.append(f'clay recipe missing {phrase}')
+for css_file in sorted((root / 'examples').glob('*/*.css')):
+    css_text = css_file.read_text(encoding='utf-8')
+    rel_path = css_file.relative_to(root).as_posix()
+    if 'transition:' in css_text or 'animation:' in css_text:
+        if 'prefers-reduced-motion' not in css_text:
+            errors.append(f'{rel_path}: uses transition/animation but lacks prefers-reduced-motion')
+    if re.search(r'(?:^|[,\s>+~])(?:button|a|input|select|textarea|\[role=["\']?button["\']?)(?:[:\s{,\.#]|$)', css_text, re.MULTILINE):
+        if ':focus-visible' not in css_text:
+            errors.append(f'{rel_path}: styles interactive elements but lacks :focus-visible')
 ids=set()
 for style in registry.get('styles', []):
     id=style.get('id', '')
