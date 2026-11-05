@@ -11,8 +11,12 @@ A portable, open-source Agent Skill for building distinctive, accessible fronten
 </p>
 
 <p align="center">
-  <video src="./assets/intro.mp4" controls="controls" width="100%">
-    <a href="./assets/intro.mp4">Watch Intro Video</a>
+  <video src="./assets/intro.mp4" poster="./assets/intro-poster.webp" controls="controls" width="100%">
+    <a href="./assets/intro.mp4">
+      <img src="./assets/intro-poster.webp" alt="Watch Taste Engine Walkthrough Video" width="100%" />
+      <br />
+      ▶ <b>Watch Intro Video Walkthrough (1 min)</b>
+    </a>
   </video>
 </p>
 
