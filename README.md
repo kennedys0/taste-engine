@@ -50,9 +50,7 @@ The chosen style must be unmistakable in the finished UI. Every style pack in Ta
 
 - **Brutalism:** Raw structural scaffolding, square corners, stark monochrome contrast, and immediate state flips. [Read pack](taste-engine/styles/brutalism.md) · [CSS recipe](taste-engine/examples/brutalism/raw-surfaces.css)
 
-- **Minimalism:** Active intentional negative space, mathematical type calibration, and hairline dividers. [Read pack](taste-engine/styles/minimalism.md) · [CSS recipe](taste-engine/examples/minimalism/clean-surfaces.css)
-
-- **Enterprise:** Information-dense data tables, tabular figures (`tabular-nums`), semantic status tokens, and keyboard shortcuts (`⌘K`). [Read pack](taste-engine/styles/enterprise.md) · [CSS recipe](taste-engine/examples/enterprise/data-cockpit.css)
+- **Minimalism & Data Cockpit:** Active intentional negative space, mathematical type calibration, hairline dividers, scannable tabular figures (`tabular-nums`), and high-density operational data cockpits (`⌘K`, floating docks, lateral inspectors). [Read pack](taste-engine/styles/minimalism.md) · [CSS recipe](taste-engine/examples/minimalism/clean-surfaces.css) · [Data cockpit recipe](taste-engine/examples/enterprise/data-cockpit.css)
 
 ## Why Taste Engine?
 

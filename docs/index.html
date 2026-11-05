@@ -2350,7 +2350,7 @@
       <a href="#" class="brand-title">
         <img src="assets/logo.webp" alt="Taste Engine Logo" class="brand-logo-img">
         <span>Taste Engine</span>
-        <span class="brand-badge">v0.10.11</span>
+        <span class="brand-badge">v0.11.0</span>
       </a>
     </div>
     
@@ -2719,7 +2719,7 @@
       </div>
       <div class="showcase-body">
         <div class="term-wrapper">
-          <div style="font-size: 0.75rem; margin-bottom: 0.5rem;">[TASTE_OS v0.10.11 / SYS_READY]</div>
+          <div style="font-size: 0.75rem; margin-bottom: 0.5rem;">[TASTE_OS v0.11.0 / SYS_READY]</div>
           <p style="font-size: 0.85rem;">&gt; Core diagnostic: ALL SYSTEMS NOMINAL.<br>&gt; Memory heap: 640K OK.</p>
           <div class="term-prompt">
             <span>user@system:~$</span>
@@ -3112,20 +3112,23 @@ npx skills list</code></pre>
               <span>Copy</span>
             </button>
           </div>
-          <pre class="terminal-body"><code id="cmd-standalone"># Install only the Enterprise Data Cockpit style:
-npx skills add kennedys0/taste-style-enterprise
+          <pre class="terminal-body"><code id="cmd-standalone"># Install only the Minimalism & Data Cockpit style:
+npx skills add kennedys0/taste-engine --skill taste-style-minimalism
+
+# Install only the Retro Pixel style:
+npx skills add kennedys0/taste-engine --skill taste-style-retro-pixel
 
 # Install only the Neo-Brutalism style:
-npx skills add kennedys0/taste-style-neo-brutalism
+npx skills add kennedys0/taste-engine --skill taste-style-neo-brutalism
 
 # Install only the Claymorphism style:
-npx skills add kennedys0/taste-style-claymorphism
+npx skills add kennedys0/taste-engine --skill taste-style-claymorphism
 
 # Install only the Swiss / Editorial style:
-npx skills add kennedys0/taste-style-swiss-editorial
+npx skills add kennedys0/taste-engine --skill taste-style-swiss-editorial
 
 # Install only the Skeuomorphism style:
-npx skills add kennedys0/taste-style-skeuomorphism</code></pre>
+npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism</code></pre>
           <div class="panel-footer-note">
             <svg class="icon-stroke" width="15" height="15" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
             <div><strong>Save Context Tokens:</strong> If your project strictly targets one design language, use standalone packages to minimize context consumption.</div>
@@ -3226,7 +3229,7 @@ npx skills add kennedys0/taste-style-skeuomorphism</code></pre>
             <div class="faq-answer-inner">
               <p><strong>Yes.</strong> Taste Engine provides 10 independent standalone skills in the <code>optional-standalone-skills/</code> directory. You can install each style individually using:</p>
               <code>npx skills add kennedys0/taste-style-[style-name]</code>
-              <p style="margin-top:0.5rem;">For example: <code>npx skills add kennedys0/taste-style-enterprise</code> or <code>npx skills add kennedys0/taste-style-swiss-editorial</code>. This minimizes token usage if your project only requires a single aesthetic.</p>
+              <p style="margin-top:0.5rem;">For example: <code>npx skills add kennedys0/taste-engine --skill taste-style-minimalism</code> or <code>npx skills add kennedys0/taste-engine --skill taste-style-swiss-editorial</code>. This minimizes token usage if your project only requires a single aesthetic.</p>
             </div>
           </div>
         </div>
@@ -3363,7 +3366,7 @@ npx skills add kennedys0/taste-style-skeuomorphism</code></pre>
         <div class="brand-group">
           <img src="assets/logo.webp" alt="Taste Engine Logo" class="brand-logo-img">
           <strong style="font-size: 1.05rem; font-weight: 700;">Taste Engine</strong>
-          <span class="brand-badge">v0.10.11</span>
+          <span class="brand-badge">v0.11.0</span>
         </div>
         <p class="footer-tagline">Open-source frontend design intelligence pack for AI coding agents. Elevate design fidelity, eliminate AI-slop, and enforce contrast safety.</p>
         <p class="footer-credit">Created by <a href="https://github.com/kennedys0" target="_blank" rel="noopener">Mochamad Vikry (@kennedys0)</a></p>

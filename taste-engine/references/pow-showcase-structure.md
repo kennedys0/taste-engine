@@ -111,3 +111,4 @@ Showcase pages should align with these standard CSS classes:
 | `.pow-studio` | Live demo workspace | Centered, `max-width: 100%; overflow-x: auto;` |
 | `.tabbed-terminal-card` | Installation terminal | 3 tabs, header dots, header copy button, agent matrix footer |
 | `.pow-footer` | Showcase footer | Responsive auto-fit grid, 10 canonical style links |
+

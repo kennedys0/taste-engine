@@ -65,6 +65,16 @@ class TestPoWShowcaseStructure(unittest.TestCase):
         self.assertIn('switchInstallTab', content)
         self.assertIn('agent-support-strip', content)
 
+    def test_retro_pixel_pow_satisfies_contract(self):
+        if not self.pixel_doc_path.is_file():
+            self.skipTest("docs/retro-pixel.html not present")
+        content = self.pixel_doc_path.read_text(encoding='utf-8')
+        self.assertIn('tabbed-terminal-card', content)
+        self.assertIn('terminal-tab-bar', content)
+        self.assertIn('terminal-copy-btn', content)
+        self.assertIn('switchInstallTab', content)
+        self.assertIn('agent-support-strip', content)
+
     def test_canonical_10_styles_in_footer(self):
         content = self.template_path.read_text(encoding='utf-8')
         expected_styles = [
@@ -85,3 +95,4 @@ class TestPoWShowcaseStructure(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+

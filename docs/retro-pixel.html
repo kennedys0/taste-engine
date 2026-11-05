@@ -1414,36 +1414,201 @@
     }
 
     /* =========================================================
-       INSTALLATION GUIDANCE & CARDS
+       INSTALLATION GUIDANCE & RETRO TERMINAL MATRIX
        ========================================================= */
-    .install-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .install-card {
+    .tabbed-terminal-card {
       background: var(--pixel-window);
       border: var(--pixel-border);
       box-shadow:
         inset 2px 2px 0px var(--pixel-bevel-light),
         inset -2px -2px 0px var(--pixel-bevel-dark),
         var(--pixel-shadow);
-      padding: 1.5rem;
+      border-radius: 0px;
+      overflow: hidden;
     }
 
-    .install-card h4 {
+    .terminal-tab-bar {
+      display: flex;
+      background: var(--pixel-well-bg);
+      border-bottom: var(--pixel-border);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .install-tab-btn {
+      padding: 0.85rem 1.35rem;
+      background: transparent;
+      border: none;
+      border-bottom: 3px solid transparent;
+      color: var(--pixel-text-muted);
       font-family: var(--pixel-font-display);
-      font-size: 1.1rem;
-      color: var(--pixel-orange);
-      margin-bottom: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 100ms steps(1);
     }
 
-    .install-card p {
+    .install-tab-btn:hover {
+      color: var(--pixel-text);
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .install-tab-btn.active {
+      color: var(--pixel-orange);
+      background: var(--pixel-window);
+      border-bottom-color: var(--pixel-orange);
+    }
+
+    .install-tab-pane {
+      display: none;
+      padding: 1.75rem;
+    }
+
+    .install-tab-pane.active {
+      display: block;
+    }
+
+    .tab-pane-meta {
+      margin-bottom: 1.25rem;
+    }
+
+    .tab-pane-title {
+      font-family: var(--pixel-font-display);
+      font-size: 1.15rem;
+      color: var(--pixel-orange);
+      margin-bottom: 0.35rem;
+    }
+
+    .tab-pane-desc {
       font-size: 0.85rem;
       color: var(--pixel-text-muted);
-      margin-bottom: 1rem;
-      line-height: 1.5;
+      line-height: 1.55;
+    }
+
+    .code-terminal-box {
+      background: var(--pixel-well-bg);
+      border: var(--pixel-border);
+      box-shadow: inset 2px 2px 0px var(--pixel-bevel-dark), inset -2px -2px 0px var(--pixel-bevel-light);
+      overflow: hidden;
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.6rem 0.85rem;
+      background: var(--pixel-header-bg);
+      color: #FFFFFF;
+      border-bottom: var(--pixel-border);
+      font-family: var(--pixel-font-mono);
+      font-size: 0.75rem;
+    }
+
+    .terminal-dots {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .terminal-dots .dot-btn {
+      width: 14px;
+      height: 14px;
+      background: #FFFFFF;
+      border: 1px solid #000;
+      font-size: 9px;
+      font-family: var(--pixel-font-mono);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      line-height: 1;
+      color: #000;
+      font-weight: bold;
+    }
+
+    .terminal-label {
+      font-family: var(--pixel-font-mono);
+      font-size: 0.75rem;
+      color: #FFF;
+      letter-spacing: 0.05em;
+    }
+
+    .terminal-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--pixel-orange);
+      border: 2px solid #000;
+      box-shadow: inset 1px 1px 0px #FFF8, inset -1px -1px 0px #000, 1px 1px 0px #000;
+      padding: 4px 10px;
+      font-family: var(--pixel-font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #000;
+      cursor: pointer;
+    }
+
+    .terminal-copy-btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: inset 1px 1px 0px #000;
+    }
+
+    .terminal-body {
+      padding: 1.25rem;
+      font-family: var(--pixel-font-mono);
+      font-size: 0.85rem;
+      line-height: 1.7;
+      color: var(--pixel-teal);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .terminal-line {
+      display: flex;
+      align-items: baseline;
+      gap: 0.65rem;
+      white-space: nowrap;
+    }
+
+    .line-comment {
+      color: var(--pixel-text-muted);
+    }
+
+    .line-p {
+      color: var(--pixel-orange);
+      font-weight: 700;
+      user-select: none;
+    }
+
+    .line-cmd {
+      color: var(--pixel-teal);
+    }
+
+    .agent-support-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 0.75rem;
+      padding: 0.85rem 1.5rem;
+      background: var(--pixel-well-bg);
+      border-top: var(--pixel-border);
+      font-family: var(--pixel-font-mono);
+      font-size: 0.725rem;
+    }
+
+    .agent-support-strip .support-label {
+      font-weight: 700;
+      color: var(--pixel-text-muted);
+    }
+
+    .agent-tag {
+      padding: 2px 7px;
+      background: var(--pixel-window);
+      border: 1px solid var(--pixel-text);
+      box-shadow: 1px 1px 0px var(--pixel-text);
+      color: var(--pixel-text);
+      font-family: var(--pixel-font-display);
+      font-size: 0.7rem;
     }
 
     .code-box {
@@ -2970,40 +3135,127 @@
     <section id="install">
       <div class="section-header">
         <div>
-          <h2 class="section-title">INSTALLATION & AGENT INTEGRATION</h2>
-          <p class="section-subtitle">Official Agent Skills workflow & CLI commands for developer agents</p>
+          <h2 class="section-title">INSTALLATION &amp; AGENT INTEGRATION</h2>
+          <p class="section-subtitle">Official Agent Skills workflow &amp; CLI commands for developer agents</p>
         </div>
         <span class="pixel-badge pixel-badge-success">SUPPORTED CLI</span>
       </div>
 
-      <div class="install-grid">
-        <div class="install-card">
-          <h4>Agent Skills CLI</h4>
-          <p>Install portable skill directly for Claude Code, Codex, Cursor, or Antigravity:</p>
-          <div class="code-box">
-            <code>npx skills add kennedys0/taste-engine --skill taste-engine</code>
-            <button class="copy-pill-btn"
-              onclick="copySnippet('npx skills add kennedys0/taste-engine --skill taste-engine')">Copy</button>
+      <div class="tabbed-terminal-card">
+        <!-- Tab Navigation Bar -->
+        <div class="terminal-tab-bar" role="tablist">
+          <button class="install-tab-btn active" role="tab" aria-selected="true" data-install-tab="tab-standalone" onclick="switchInstallTab('tab-standalone')">
+            <span>01: STANDALONE SKILL</span>
+          </button>
+          <button class="install-tab-btn" role="tab" aria-selected="false" data-install-tab="tab-global" onclick="switchInstallTab('tab-global')">
+            <span>02: FULL TASTE ENGINE</span>
+          </button>
+          <button class="install-tab-btn" role="tab" aria-selected="false" data-install-tab="tab-presets" onclick="switchInstallTab('tab-presets')">
+            <span>03: TAILWIND &amp; SHADCN PRESETS</span>
+          </button>
+        </div>
+
+        <!-- Tab 1: Standalone Skill -->
+        <div class="install-tab-pane active" id="tab-standalone">
+          <div class="tab-pane-meta">
+            <h3 class="tab-pane-title">OPTION A // DEDICATED RETRO-PIXEL SKILL</h3>
+            <p class="tab-pane-desc">Installs only the standalone 8-bit &amp; 16-bit Retro Pixel style pack. Recommended when your project has committed to this aesthetic and does not need multi-style dynamic routing.</p>
+          </div>
+
+          <div class="code-terminal-box">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot-btn">_</span>
+                <span class="dot-btn">□</span>
+                <span class="dot-btn">×</span>
+              </div>
+              <span class="terminal-label">BASH // AGENT_SKILLS.EXE</span>
+              <button class="terminal-copy-btn" onclick="copySnippet('npx skills add kennedys0/taste-engine --skill taste-style-retro-pixel')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <span>COPY COMMAND</span>
+              </button>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line"><span class="line-comment"># Install portable Retro-Pixel skill via universal Agent Skills CLI:</span></div>
+              <div class="terminal-line"><span class="line-p">$</span><span class="line-cmd">npx skills add kennedys0/taste-engine --skill taste-style-retro-pixel</span></div>
+              <div class="terminal-line" style="margin-top: 0.5rem;"><span class="line-comment"># Or copy directly into your Google Antigravity IDE global skills:</span></div>
+              <div class="terminal-line"><span class="line-p">$</span><span class="line-cmd">git clone https://github.com/kennedys0/taste-engine.git &amp;&amp; cp -r taste-engine/optional-standalone-skills/taste-style-retro-pixel ~/.gemini/config/skills/</span></div>
+            </div>
           </div>
         </div>
 
-        <div class="install-card">
-          <h4>Native Node.js CLI</h4>
-          <p>Clone and install with zero external runtime dependencies (Node 20+):</p>
-          <div class="code-box">
-            <code>node bin/taste-engine.mjs install --agent all --project</code>
-            <button class="copy-pill-btn"
-              onclick="copySnippet('node bin/taste-engine.mjs install --agent all --project')">Copy</button>
+        <!-- Tab 2: Full Engine -->
+        <div class="install-tab-pane" id="tab-global">
+          <div class="tab-pane-meta">
+            <h3 class="tab-pane-title">OPTION B // FULL TASTE ENGINE (ALL 10 STYLES + ROUTER + SEO)</h3>
+            <p class="tab-pane-desc">Equips your AI agent with the full 10-style autonomous design intelligence, dynamic router, preflight interview, anti-slop audits, and conditional SEO.</p>
+          </div>
+
+          <div class="code-terminal-box">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot-btn">_</span>
+                <span class="dot-btn">□</span>
+                <span class="dot-btn">×</span>
+              </div>
+              <span class="terminal-label">BASH // MULTI_AGENT_INSTALL.BAT</span>
+              <button class="terminal-copy-btn" onclick="copySnippet('node bin/taste-engine.mjs install --agent all --project')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <span>COPY COMMAND</span>
+              </button>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line"><span class="line-comment"># Universal Agent Skills CLI (Claude Code, Cursor, Codex, Antigravity):</span></div>
+              <div class="terminal-line"><span class="line-p">$</span><span class="line-cmd">npx skills add kennedys0/taste-engine --skill taste-engine</span></div>
+              <div class="terminal-line" style="margin-top: 0.5rem;"><span class="line-comment"># Or run native zero-dependency CLI installer for all project agents:</span></div>
+              <div class="terminal-line"><span class="line-p">$</span><span class="line-cmd">node bin/taste-engine.mjs install --agent all --project</span></div>
+              <div class="terminal-line" style="margin-top: 0.5rem;"><span class="line-comment"># Or install globally for Google Antigravity IDE / CLI (agy):</span></div>
+              <div class="terminal-line"><span class="line-p">$</span><span class="line-cmd">node bin/taste-engine.mjs install --agent antigravity --global</span></div>
+            </div>
           </div>
         </div>
 
-        <div class="install-card">
-          <h4>Tailwind & shadcn Scaffolding</h4>
-          <p>Scaffold official presets and component layers into your repository:</p>
-          <div class="code-box">
-            <code>taste-engine init</code>
-            <button class="copy-pill-btn" onclick="copySnippet('taste-engine init')">Copy</button>
+        <!-- Tab 3: Presets -->
+        <div class="install-tab-pane" id="tab-presets">
+          <div class="tab-pane-meta">
+            <h3 class="tab-pane-title">OPTION C // TAILWIND CSS &amp; SHADCN/UI PRESETS</h3>
+            <p class="tab-pane-desc">Scaffold official Retro Pixel color tokens, stepped shadow variables, and component presets directly into your frontend repository.</p>
           </div>
+
+          <div class="code-terminal-box">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot-btn">_</span>
+                <span class="dot-btn">□</span>
+                <span class="dot-btn">×</span>
+              </div>
+              <span class="terminal-label">BASH // SCAFFOLD_PRESET.CMD</span>
+              <button class="terminal-copy-btn" onclick="copySnippet('taste-engine init')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <span>COPY COMMAND</span>
+              </button>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line"><span class="line-comment"># Scaffold presets directly into your repository:</span></div>
+              <div class="terminal-line"><span class="line-p">$</span><span class="line-cmd">taste-engine init</span></div>
+              <div class="terminal-line" style="margin-top: 0.5rem;"><span class="line-comment">// Or import directly into tailwind.config.js:</span></div>
+              <div class="terminal-line"><span class="line-cmd">module.exports = {</span></div>
+              <div class="terminal-line"><span class="line-cmd">&nbsp;&nbsp;presets: [require('@kennedys0/taste-engine/presets/tailwind/tailwind.preset.js')],</span></div>
+              <div class="terminal-line"><span class="line-cmd">};</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Agent Support Strip -->
+        <div class="agent-support-strip">
+          <span class="support-label">SUPPORTED AGENTS:</span>
+          <span class="agent-tag">Antigravity (IDE &amp; CLI)</span>
+          <span class="agent-tag">Claude Code</span>
+          <span class="agent-tag">Cursor</span>
+          <span class="agent-tag">Codex</span>
+          <span class="agent-tag">Windsurf</span>
+          <span class="agent-tag">Cline</span>
+          <span class="agent-tag">GitHub Copilot</span>
         </div>
       </div>
     </section>
@@ -3160,6 +3412,17 @@
         showToast('Command copied to clipboard!');
       }).catch(() => {
         showToast('Clipboard access not permitted');
+      });
+    }
+
+    function switchInstallTab(tabId) {
+      document.querySelectorAll('.install-tab-btn').forEach(btn => {
+        const isActive = btn.getAttribute('data-install-tab') === tabId;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+      document.querySelectorAll('.install-tab-pane').forEach(pane => {
+        pane.classList.toggle('active', pane.id === tabId);
       });
     }
 

@@ -33,7 +33,7 @@ cd taste-engine
 node bin/taste-engine.mjs install --agent antigravity --global
 ```
 
-To preview all 11 styles interactively in your browser with synchronized Dark & Light mode contrast:
+To preview all 10 styles interactively in your browser with synchronized Dark & Light mode contrast:
 
 ```bash
 node bin/taste-engine.mjs gallery
