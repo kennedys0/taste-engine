@@ -19,14 +19,14 @@ class EngineeringRoutingTests(unittest.TestCase):
         self.assertIn('WITHOUT asking again', self.skill)
         self.assertIn('preflight first',self.router)
     def test_native_not_web(self):
-        self.assertIn('SEO/canonical/sitemap and Anime.js-on-DOM do not apply', (ROOT/'references/native-mobile.md').read_text())
+        self.assertIn('SEO/canonical/sitemap and Anime.js-on-DOM do not apply', (ROOT/'references/native-mobile.md').read_text(encoding='utf-8'))
     def test_motion_not_duplicate(self):
-        self.assertIn('Never duplicate animations', (ROOT/'references/view-transitions.md').read_text())
+        self.assertIn('Never duplicate animations', (ROOT/'references/view-transitions.md').read_text(encoding='utf-8'))
     def test_user_style_wins(self):
         self.assertIn('Explicit chosen visual style',self.router)
     def test_external_routing_not_deployment(self):
         self.assertIn("Don't deploy automatically",self.router)
     def test_research_provenance(self):
-        self.assertIn('has not copied their text or code',(ROOT/'references/vercel-research.md').read_text())
+        self.assertIn('has not copied their text or code',(ROOT/'references/vercel-research.md').read_text(encoding='utf-8'))
 
 if __name__=='__main__':unittest.main()

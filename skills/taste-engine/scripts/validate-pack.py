@@ -99,7 +99,7 @@ for style in registry.get('styles', []):
                 errors.append(f'{id}: standalone missing {section}')
 # Anime.js v4 is optional; motion guidance is cross-style and present in every pack.
 try:
-    motion = json.loads((root / 'styles/motion-profiles.json').read_text())['styles']
+    motion = json.loads((root / 'styles/motion-profiles.json').read_text(encoding='utf-8'))['styles']
     if set(motion) != ids: errors.append('motion profile IDs do not match styles')
 except Exception as exc:
     errors.append(f'invalid motion profiles: {exc}')

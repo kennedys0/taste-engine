@@ -168,6 +168,10 @@ test('update --agent claude-code --global targets .claude/skills/taste-engine',{
   const installRes=run(['install','--agent','claude-code','--global'],{HOME:home,USERPROFILE:home});
   assert.equal(installRes.status,0,installRes.stderr);
   const fixtureZip=path.join(root,'dist',`taste-engine-v${pkg.version}.zip`);
+  if (!fs.existsSync(fixtureZip)) {
+    const py = process.platform === 'win32' ? 'python' : 'python3';
+    spawnSync(py, [path.join(root, 'scripts', 'build-release.py')], { stdio: 'ignore' });
+  }
   const updateRes=run(['update','--agent','claude-code','--global','--zip',fixtureZip,'--dry-run'],{HOME:home,USERPROFILE:home});
   assert.equal(updateRes.status,0,updateRes.stderr);
   const output=updateRes.stdout+updateRes.stderr;

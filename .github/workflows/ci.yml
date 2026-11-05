@@ -39,13 +39,13 @@ jobs:
       - name: Validate skill packs
         run: python taste-engine/scripts/validate-pack.py
       - name: Run Python tests
-        run: python -m unittest discover -s taste-engine/tests -p 'test_*.py'
+        run: python -m unittest discover -s taste-engine/tests -p "test_*.py"
         env:
           PYTHONUTF8: '1'
-      - name: Run CLI tests
-        run: node --test tests/cli.test.mjs
       - name: Build release ZIP
         run: python scripts/build-release.py
       - name: Verify archive integrity
         if: matrix.os == 'ubuntu-latest'
         run: unzip -t dist/taste-engine-v*.zip | tail -1
+      - name: Run CLI tests
+        run: node --test tests/cli.test.mjs

@@ -8,7 +8,7 @@ root=Path(__file__).resolve().parents[1]
 spec=importlib.util.spec_from_file_location('style_probe',root/'scripts'/'style_probe.py')
 mod=importlib.util.module_from_spec(spec)
 spec.loader.exec_module(mod)
-registry=json.loads((root/'styles'/'registry.json').read_text())
+registry=json.loads((root/'styles'/'registry.json').read_text(encoding='utf-8'))
 scenarios=[
  ('Buat website portfolio bertema skeumorphsm','skeuomorphism',[],'ready'),
  ('Buat website portfolio tema Skeuomorphism','skeuomorphism',[],'ready'),
