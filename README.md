@@ -55,7 +55,6 @@ Most AI-generated interfaces look familiar because the agent chooses a visual di
 Requires Node.js and access to GitHub. The repository exposes a standard `skills/taste-engine/SKILL.md` package, so the portable [`skills` CLI](https://github.com/vercel-labs/skills) can discover and install it.
 
 ```bash
-
 # Interactive: select an agent and installation scope
 
 npx skills add kennedys0/taste-engine --skill taste-engine
@@ -75,7 +74,6 @@ npx skills add kennedys0/taste-engine --skill taste-engine -a antigravity -g -y
 # Install for the Antigravity CLI
 
 npx skills add kennedys0/taste-engine --skill taste-engine -a antigravity-cli -g -y
-
 ```
 
 **Antigravity IDE note:** The `skills` CLI may install to a backward-compatible Antigravity path. For the exact current Antigravity IDE global location (`~/.gemini/config/skills/`), use the native installer below. See [the official Antigravity locations](https://antigravity.google/docs/skills).
@@ -85,7 +83,6 @@ npx skills add kennedys0/taste-engine --skill taste-engine -a antigravity-cli -g
 Clone the repository and run the bundled Node.js CLI (Node 20+):
 
 ```bash
-
 git clone https://github.com/kennedys0/taste-engine.git
 
 cd taste-engine
@@ -109,7 +106,6 @@ node bin/taste-engine.mjs doctor --agent antigravity --global
 # Uninstall an installation
 
 node bin/taste-engine.mjs uninstall --agent antigravity --global
-
 ```
 
 The installer supports `antigravity`, `antigravity-cli` (alias `agy`), `claude-code` (alias `claude`), `codex`, `cursor`, `cline`, `roo-code` (alias `roo`), `windsurf`, `copilot`, or `all`. It supports `--dry-run`, backs up an existing Taste Engine directory to `.taste-engine-backups/` outside the skills folder before replacing it, and refuses to overwrite or delete an unrelated skill directory. See [INSTALL.md](INSTALL.md) for paths and update options.
@@ -139,7 +135,6 @@ npm link
 Taste Engine includes official **Tailwind CSS presets** and **shadcn/ui theme variable overrides** across all 10 archetypes:
 
 ```bash
-
 # Preview available presets (alias: taste-engine --preset)
 
 taste-engine preset
@@ -152,13 +147,11 @@ taste-engine init
 
 taste-engine init ./src --dry-run
 taste-engine --init ./src
-
 ```
 
 In your `tailwind.config.js`:
 
 ```javascript
-
 module.exports = {
 
   presets: [require('./taste-presets/tailwind/tailwind.preset.js')],
@@ -166,7 +159,6 @@ module.exports = {
   content: ['./src/**/*.{js,ts,jsx,tsx}'],
 
 };
-
 ```
 
 Read the [Tailwind CSS & shadcn/ui Integration Guide](taste-engine/references/tailwind-shadcn.md) for full component recipes (`.taste-clay-card`, `.taste-neo-btn`, etc.).
@@ -174,17 +166,11 @@ Read the [Tailwind CSS & shadcn/ui Integration Guide](taste-engine/references/ta
 ## How it works
 
 | Your request | Taste Engine behavior |
-
 | --- | --- |
-
 | “Build a portfolio website.” | Ask one question: which visual style? Pause before writing UI code. |
-
 | “Build a skeuomorphic portfolio.” | Load the Skeuomorphism pack and implement immediately. |
-
 | “Build a glassmorphism landing page in Next.js.” | Load Glassmorphism, web quality checks, React performance, and public SEO. |
-
 | “Fix the mobile navbar in this project.” | Preserve the existing design system; do not repeat the style question. |
-
 | “Audit the SEO of my website.” | Run the SEO guidance only; do not introduce a style picker. |
 
 The agent's host controls automatic skill discovery. Taste Engine provides a precise `name`/`description` trigger, but does not claim guaranteed invocation across all agents or IDE versions.
@@ -200,27 +186,16 @@ The agent's host controls automatic skill discovery. Taste Engine provides a pre
 ## Style library
 
 | Style | Visual character | Companion recipe |
-
 | --- | --- | --- |
-
 | **Claymorphism** | Sculpted, tactile surfaces, dual inner-shadow volumetric depth, and soft dimensional presence | [`examples/claymorphism/`](taste-engine/examples/claymorphism/sculpted-surfaces.css) |
-
 | **Glassmorphism** | Controlled translucency, layered frosting, and readable glass planes | [`examples/glassmorphism/`](taste-engine/examples/glassmorphism/frosted-surfaces.css) |
-
 | **Brutalism** | Direct typography, raw structural scaffolding, intentionally hard edges, and monochrome contrast | [`examples/brutalism/`](taste-engine/examples/brutalism/raw-surfaces.css) |
-
 | **Neo-brutalism** | Playful contrast, 2.5px solid black borders, hard unblurred offset shadows, and press displacement | [`examples/neo-brutalism/`](taste-engine/examples/neo-brutalism/pop-surfaces.css) |
-
 | **Minimalism** | Purposeful restraint, active intentional negative space, and mathematical type hierarchy | [`examples/minimalism/`](taste-engine/examples/minimalism/clean-surfaces.css) |
-
 | **Swiss / Editorial** | Typographic rhythm, 12-column grids, dramatic scale contrast, and structural hairline rules | [`examples/swiss-editorial/`](taste-engine/examples/swiss-editorial/grid-typography.css) |
-
 | **Bento** | Asymmetric modular layout, strict visual weight hierarchy, and diverse internal tile compositions | [`examples/bento/`](taste-engine/examples/bento/modular-grid.css) |
-
 | **Skeuomorphism** | Physical metaphors, top-down specular bevels, multi-stop metallic reflections, and tactile hardware controls | [`examples/skeuomorphism/`](taste-engine/examples/skeuomorphism/tactile-controls.css) |
-
 | **Retro Terminal** | Console-inspired phosphor glow, static scanlines, ASCII frames, and monospace CLI prompts | [`examples/retro-terminal/`](taste-engine/examples/retro-terminal/crt-console.css) |
-
 | **Enterprise / Data-first** | Information-dense cockpits, tabular figures (`tabular-nums`), semantic status tokens, and keyboard shortcuts | [`examples/enterprise/`](taste-engine/examples/enterprise/data-cockpit.css) |
 
 A `custom` design direction is always allowed. Styles do not dictate page sections: the product's goals, content, and audience determine the page anatomy.
@@ -246,7 +221,6 @@ Read the [core skill](taste-engine/SKILL.md), [quality gates](taste-engine/refer
 ## Repository structure
 
 ```text
-
 .
 
 ├── taste-engine/             # Canonical skill, references, styles, validation
@@ -272,7 +246,6 @@ Read the [core skill](taste-engine/SKILL.md), [quality gates](taste-engine/refer
 ├── scripts/                 # Mirror sync, release build
 
 └── .github/workflows/       # Validation and versioned releases
-
 ```
 
 The canonical source is `taste-engine/`. Contributors should edit that directory, then run `python3 scripts/sync-agent-skills.py` to regenerate the discovery mirror.
@@ -280,7 +253,6 @@ The canonical source is `taste-engine/`. Contributors should edit that directory
 ## Development and verification
 
 ```bash
-
 python3 scripts/sync-agent-skills.py --check
 
 python3 taste-engine/scripts/validate-pack.py
@@ -290,7 +262,6 @@ python3 -m unittest discover -s taste-engine/tests -p 'test_*.py'
 node --test tests/cli.test.mjs
 
 python3 scripts/build-release.py
-
 ```
 
 The tests verify file structure, routing data, and helper scripts. They are **not a substitute for browser testing** or an empirical guarantee that a coding agent will obey every instruction.
@@ -300,19 +271,15 @@ The tests verify file structure, routing data, and helper scripts. They are **no
 For installs managed by the [`skills` CLI](https://github.com/vercel-labs/skills):
 
 ```bash
-
 npx skills check
 
 npx skills update -g
-
 ```
 
 For the bundled Antigravity updater, once an official GitHub Release exists:
 
 ```bash
-
 bash ~/.gemini/config/skills/taste-engine/scripts/update.sh --repo kennedys0/taste-engine
-
 ```
 
 Releases are built from tags and include an updater-compatible ZIP. See [INSTALL.md](INSTALL.md) and [CHANGELOG.md](CHANGELOG.md).
@@ -326,4 +293,3 @@ Issues, new style proposals, accessibility improvements, translations of optiona
 Original implementation, with documented research from [Anti-Slop Design](https://github.com/Ferousco-dev/anti-slop-design), [Hallmark](https://github.com/Nutlope/hallmark), [Anti-AI-Slop Writing](https://github.com/jalaalrd/anti-ai-slop-writing), [Anti-Slop](https://github.com/miqdadbadjuber/anti-slop), [Anti-Slop Structural Engine](https://github.com/AgriciDaniel/anti-slop), [Taste Skill](https://github.com/tasteskill/tasteskill), and [Vercel Agent Skills](https://github.com/vercel-labs/agent-skills). This project is independent of those repositories and does not claim endorsement. See [research notes](taste-engine/references/research-notes.md).
 
 **License:** [MIT](LICENSE). © 2026 Taste Engine contributors.
-

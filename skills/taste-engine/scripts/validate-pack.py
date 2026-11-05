@@ -108,6 +108,16 @@ if standalone_bundle_present:
 main=(root/'SKILL.md').read_text(encoding='utf-8')
 if not main.startswith('---\n') or 'name: taste-engine' not in main:
     errors.append('root SKILL.md missing valid-looking YAML frontmatter')
+fm_parts = main.split('---', 2)
+if len(fm_parts) >= 3:
+    fm_body = fm_parts[1].strip()
+    if any(line.strip() == '' for line in fm_body.splitlines()):
+        errors.append('SKILL.md frontmatter contains blank lines')
+for md_path in [root / 'SKILL.md', project_root / 'README.md']:
+    if md_path.is_file():
+        md_text = md_path.read_text(encoding='utf-8')
+        if re.search(r'(?m)^\s*\|[^\n]*\n[ \t]*\n\s*\|', md_text):
+            errors.append(f'{md_path.name}: blank line between table rows')
 for filename in required_references[:3]:
     if Path(filename).name not in main:
         errors.append(f'root SKILL.md lacks anti-slop reference: {filename}')

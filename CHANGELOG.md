@@ -10,6 +10,7 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 - **Gallery Command & npm Packaging:** Included `docs/` in `package.json` `files` so `taste-engine gallery` is available in npm-installed packages, and replaced shell-interpolated `exec()` with argument-array `spawn()` with detached option and error handling.
 - **CLI Update & Doctor Parity:** Added `--agent`, `--global|--project`, and `--cwd` options to `taste-engine update` to route updates to specific agent installations (or all existing installations via `--agent all`). Enhanced `taste-engine doctor` to report installed skill versions, corrected README/INSTALL guidance to reference the Node CLI rather than `update.sh` for global shortcuts, and clarified CLI version vs installed version reporting.
 - **Bash 3.2 Compatibility in Updater:** Replaced Bash 4-specific lowercase expansions (`${var,,}`) with portable `tr` and guarded empty array expansion `${AUTH_HEADER[@]+"${AUTH_HEADER[@]}"}` under `set -u` in `update.sh`, ensuring compatibility with macOS default Bash 3.2. Added `shasum -a 256` fallback for `sha256sum`, resolved ShellCheck warnings, and documented real system prerequisites.
+- **Markdown Table & Frontmatter Formatting:** Removed abnormal blank lines separating table rows in `README.md` and `SKILL.md`, cleaned up YAML frontmatter and code fence padding, and added automated validation checks in `validate-pack.py`.
 
 ## [0.10.10] - 2026-11-05
 
@@ -40,11 +41,7 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 ## [0.10.8] - 2026-11-04
 
-
-
 ### Added
-
-
 
 - **The Five Structural Tests (Verifiable Artifacts):** Codified mechanical structural procedures across UI, copywriting, and code inspired by [AgriciDaniel/anti-slop](https://github.com/AgriciDaniel/anti-slop):
 
@@ -80,11 +77,7 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
   - Ban on assertion-free tests and coverage padding.
 
-
-
 ### Improved
-
-
 
 - **Cadence, Syntax, and Punctuation Discipline:** Integrated writing constraints from [jalaalrd/anti-ai-slop-writing](https://github.com/jalaalrd/anti-ai-slop-writing):
 
@@ -102,15 +95,9 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 - **Research Notes Alignment:** Documented external inspiration and originality notes for `jalaalrd/anti-ai-slop-writing`, `miqdadbadjuber/anti-slop`, and `AgriciDaniel/anti-slop` in `references/research-notes.md`.
 
-
-
 ## [0.10.7] - 2026-11-04
 
-
-
 ### Added
-
-
 
 - **Full Suite Proof-of-Work (PoW) Showcase Gallery:** Shipped dedicated interactive specimen studio labs for all 10 curated style archetypes (`bento.html`, `brutalism.html`, `claymorphism.html`, `enterprise.html`, `glassmorphism.html`, `minimalism.html`, `neo-brutalism.html`, `retro-terminal.html`, `skeuomorphism.html`, `swiss-editorial.html`).
 
@@ -120,11 +107,7 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 - **Accessible Mobile Navigation Drawer:** Implemented responsive overlay drawer navigation (`openMobileNav`, `closeMobileNav`, `Escape` key listeners) across all 10 showcase pages and the root portal.
 
-
-
 ### Improved
-
-
 
 - **Single-Plane Tactile Faceplate Physics:** Codified strict unibody faceplate architecture for Skeuomorphism and Swiss Editorial, eliminating nested card-on-card stacking and aligning dual-shadow neumorphic lighting (-6px -6px 16px white highlight / 6px 6px 16px shadow) with recessed sunken telemetry wells.
 
@@ -134,15 +117,9 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 - **Universal Anti-Slop Iconography Gate:** Codified strict prohibition against cartoon emojis across all skill guides, mandating high-contrast Lucide or inline SVG vectors with consistent stroke metrics.
 
-
-
 ## [0.10.6] - 2026-11-04
 
-
-
 ### Added
-
-
 
 - **Codex Dark Slate-Grey Palette:** Transitioned showcase gallery and core skill dark mode specifications from pitch-black (`#000000`) to warm neutral dark slate-grey (canvas `#212328`, surfaces `#2b2e36`, elevated `#343842`, recessed wells `#1a1c21`, borders `rgba(255, 255, 255, 0.12)`) inspired by OpenAI Codex and ChatGPT developer interfaces, reducing eye strain and improving surface contrast hierarchy.
 
@@ -154,15 +131,9 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 - **Strict Anti-Slop Protections:** Codified explicit bans in `SKILL.md` and `references/anti-slop.md` against rainbow text gradients (`background-clip: text`), cartoon emojis as functional icons (enforcing crisp inline SVGs), and fabricated space-filling dashboard widgets (weather/spectrum/telemetry).
 
-
-
 ## [0.10.5] - 2026-11-03
 
-
-
 ### Added
-
-
 
 - **Tailwind CSS & shadcn/ui Presets:** Added official theme presets for Tailwind CSS (v3 & v4) and theme variable overrides for shadcn/ui in `presets/` with companion `taste-components.css` and integration guide (`references/tailwind-shadcn.md`).
 
@@ -176,11 +147,7 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 - **Interactive Architecture & Installation Guides:** Integrated multi-agent tabbed installation instructions (Antigravity IDE, CLI, Claude Code, Codex), interactive FAQ accordions, pipeline architecture flows, and token quick-reference cheatsheets into the showcase.
 
-
-
 ### Improved
-
-
 
 - **Tactile Neumorphic Dark Mode Alignment:** Aligned dark mode theme tokens with tactile soft clay and neumorphic specifications: matte charcoal surfaces (`#15171c`), sunken relief wells (`#121317`), specular bevels, and radiant neon violet/cyan gradients.
 
@@ -188,15 +155,9 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 - **Release Workflow Idempotency:** Hardened GitHub Actions release workflow (`.github/workflows/release.yml`) to automatically inspect existing releases and perform seamless asset re-uploading without tag conflicts.
 
-
-
 ## [0.10.3] - 2026-11-03
 
-
-
 ### Improved
-
-
 
 - **Full Suite Material & Aesthetic Fidelity Upgrade:** All 10 style packs now enforce mandatory first-viewport fidelity gates, anti-slop material exemptions, complete token architectures, and production-ready CSS recipes:
 
@@ -224,15 +185,9 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 - **Validation & Test Suites:** Added automated fidelity unit tests (`test_clay_fidelity.py`, `test_glass_fidelity.py`) and visual acceptance guidelines (`claymorphism-visual.md`, `glassmorphism-visual.md`). All 31 test suites pass cleanly.
 
-
-
 ## [0.10.2] - 2026-11-03
 
-
-
 ### Refined
-
-
 
 - Explicit Glassmorphism exemption from anti-slop's default gradient caution: purposeful radial, linear, mesh, or ambient color backgrounds are a legitimate part of glass material fidelity.
 
@@ -242,15 +197,9 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 - Updated portable router, standalone Glassmorphism skill, validator and release package.
 
-
-
 ## [0.10.1] - 2026-11-03
 
-
-
 ### Improved
-
-
 
 - Strengthened Glassmorphism as a **visible frosted material**, not a dark theme or a blur class: mandatory first-viewport material fidelity gate, composited contrast and responsive checks.
 
@@ -258,15 +207,9 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 - Updated standalone glass style skill, registry aliases, validator, and router; preserved style-neutral routing and the existing SEO/motion/anti-slop system.
 
-
-
 ## [0.10.0] - 2026-11-02
 
-
-
 ### Added
-
-
 
 - Portable `skills/taste-engine/` discovery package for the Agent Skills CLI (`npx skills add`).
 
@@ -276,29 +219,17 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 - GitHub-centered English README, installation guide, contributor guidance, and maintainer publishing instructions.
 
-
-
 ### Changed
-
-
 
 - Replaced Indonesian user-facing instructions and UI copy examples with English-language equivalents. Multilingual recognition remains supported in alias probing and test fixtures.
 
 - Updated the default Bash updater source to `kennedys0/taste-engine`; a published Release is still required for automatic downloads.
 
-
-
 ### Notes
-
-
 
 - This release is source and packaging work; agent auto-invocation and rendered UI must still be tested in real hosts/browsers.
 
-
-
 ## [0.9.1] — 2026-11-02
-
-
 
 - Added safe standalone `update.sh` for offline ZIP and GitHub Releases updates (only after configuring a real repo).
 
@@ -310,11 +241,7 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 - Added script updater acceptance tests.
 
-
-
 ## [0.9.0] — 2026-11-02
-
-
 
 - Added a framework-aware engineering router and original universal web quality gate informed by public Vercel Agent Skills.
 
@@ -326,14 +253,7 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 - Added engineering routing acceptance scenarios and deterministic validation checks.
 
-
-
-
-
-
 ## [0.8.0] — Full-screen hero, style-aware, responsive-safe
-
-
 
 - New contextual full-screen hero contract for public portfolios, landing pages, and homepages that have a hero. First-screen geometry includes the nav.
 
@@ -343,13 +263,7 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 - Browser QA checklist, 15 acceptance scenarios and static policy tests; no hero introduced into private dashboards or explicit compact/no-hero requests.
 
-
-
-
-
 ## [0.7.0] — Optional Anime.js v4 motion engine adapter
-
-
 
 - Added a cross-style, on-demand motion guidance module that does not automatically install dependencies.
 
@@ -361,11 +275,7 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 - Preserved no-style-question policy for existing-design refinements, SEO routing, and anti-slop gates.
 
-
-
 ## [0.6.0] — Automatic SEO companion, cross-style
-
-
 
 - Bundled `references/seo.md` and framework recipes. Public websites load SEO after visual style resolution; SEO-only asks skip style picker. Private sites are not indexed by implication.
 
@@ -377,13 +287,7 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 - Preserved all existing ten aesthetics, auto-invocation and standalone style packs.
 
-
-
-
-
 ## [0.5.0] — Automatic skill discovery + explicit-style fast path
-
-
 
 - Improved `SKILL.md` discovery description with natural frontend prompts in Indonesian and English.
 
@@ -397,13 +301,7 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 - No change to anti-slop constitution, per-style visual defaults, or the 10 style packs.
 
-
-
-
-
 ## [0.4.0] — 2026-11-02
-
-
 
 - Researched four GitHub repositories: Ferousco-dev/anti-slop-design, Nutlope/hallmark, jalaalrd/anti-ai-slop-writing and tasteskill/tasteskill.
 
@@ -423,11 +321,6 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 - Preserved v0.3 router's mandatory style selection before new UI implementation.
 
-
-
 ## [0.3.0] — 2026-11-01
 
-
-
 - Universal anti-slop constitution, copywriting and style-specific audits.
-
