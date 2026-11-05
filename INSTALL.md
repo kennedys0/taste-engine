@@ -91,7 +91,7 @@ bash ~/.gemini/config/skills/taste-engine/scripts/update.sh
 bash ~/.gemini/config/skills/taste-engine/scripts/update.sh --zip ./taste-engine-v0.10.10.zip
 ```
 
-The Bash updater requires Bash, Python 3, curl (for GitHub downloads), and standard Linux command-line tools. It checks archive contents, validates a staged installation, backs up the previous version, and restores it if activation fails. Never run arbitrary installer scripts from untrusted forks.
+The Bash updater requires Bash (3.2+), Python 3, curl (for GitHub downloads), and `sha256sum` (or `shasum` on macOS), along with standard POSIX command-line utilities (`awk`, `cat`, `chmod`, `cp`, `date`, `dirname`, `mkdir`, `mktemp`, `mv`, `rm`, `tr`). It checks archive contents, validates a staged installation, backs up the previous version, and restores it if activation fails. Never run arbitrary installer scripts from untrusted forks.
 
 ## Validate the installed skill
 

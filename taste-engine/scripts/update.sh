@@ -3,7 +3,6 @@
 # Sources: a trusted local ZIP, or a GitHub Release ZIP from an explicitly selected repo.
 set -Eeuo pipefail
 
-PROGRAM="taste-engine"
 DEFAULT_TARGET="${HOME}/.gemini/config/skills/taste-engine"
 TARGET="${TASTE_ENGINE_TARGET:-$DEFAULT_TARGET}"
 CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}/taste-engine"
@@ -77,7 +76,7 @@ while [[ $# -gt 0 ]]; do
         --zip) ZIP_PATH="$2";;
         --repo) REPO="$2";;
         --tag) TAG="$2";;
-        --sha256) EXPECTED_SHA="${2,,}";;
+        --sha256) EXPECTED_SHA="$(printf '%s' "$2" | tr '[:upper:]' '[:lower:]')";;
         --target) TARGET="$2";;
         --set-repo) SET_REPO="$2";;
       esac
@@ -115,7 +114,13 @@ fi
 [[ -z "$EXPECTED_SHA" || "$EXPECTED_SHA" =~ ^[0-9a-f]{64}$ ]] || fail 'Invalid SHA-256 hex string'
 [[ -n "$ZIP_PATH" || -n "$REPO" ]] || { usage; fail 'No update source: pass --zip or configure a GitHub repo with --set-repo'; }
 command -v python3 >/dev/null 2>&1 || fail 'Python 3 is required'
-command -v sha256sum >/dev/null 2>&1 || fail 'sha256sum is required'
+if command -v sha256sum >/dev/null 2>&1; then
+  sha256_cmd() { sha256sum "$1" | awk '{print $1}'; }
+elif command -v shasum >/dev/null 2>&1; then
+  sha256_cmd() { shasum -a 256 "$1" | awk '{print $1}'; }
+else
+  fail 'sha256sum or shasum is required'
+fi
 
 # The swap and backups reside on the same filesystem as the installed skill.
 mkdir -p "$PARENT"
@@ -150,7 +155,7 @@ if [[ -n "$REPO" && -z "$ZIP_PATH" ]]; then
   fi
 
   API_SUCCESS=0
-  if curl -fsSL "${AUTH_HEADER[@]}" --connect-timeout 12 --max-time 45 \
+  if curl -fsSL ${AUTH_HEADER[@]+"${AUTH_HEADER[@]}"} --connect-timeout 12 --max-time 45 \
     -H 'Accept: application/vnd.github+json' \
     -H 'User-Agent: taste-engine-updater' "$API" -o "$WORK/release.json" 2>/dev/null; then
     API_SUCCESS=1
@@ -190,13 +195,13 @@ PY
     || fail 'Failed to download release ZIP'
   if [[ -z "$EXPECTED_SHA" && "$RELEASE_SHA" =~ ^sha256:[0-9a-fA-F]{64}$ ]]; then
     EXPECTED_SHA="${RELEASE_SHA#sha256:}"
-    EXPECTED_SHA="${EXPECTED_SHA,,}"
+    EXPECTED_SHA="$(printf '%s' "$EXPECTED_SHA" | tr '[:upper:]' '[:lower:]')"
   fi
   [[ -n "$EXPECTED_SHA" ]] || info 'Note: release supplied no SHA-256 digest; using TLS + ZIP and pack validation.'
 fi
 [[ -f "$ZIP_PATH" ]] || fail "ZIP not found: $ZIP_PATH"
 if [[ -n "$EXPECTED_SHA" ]]; then
-  ACTUAL_SHA="$(sha256sum "$ZIP_PATH" | awk '{print $1}')"
+  ACTUAL_SHA="$(sha256_cmd "$ZIP_PATH")"
   [[ "$ACTUAL_SHA" == "$EXPECTED_SHA" ]] || fail 'SHA-256 mismatch; refusing update'
   info 'SHA-256 verification passed.'
 fi
