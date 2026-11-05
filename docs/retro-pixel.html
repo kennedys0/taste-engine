@@ -1,27 +1,33 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Retro Pixel Proof of Work & Studio Guide — Taste Engine</title>
-  <meta name="description" content="Dedicated Proof of Work and design system studio for Taste Engine's Retro Pixel aesthetic archetype. 8-bit & 16-bit computing, desktop window chrome, stepped pixel bevels, and zero AI-slop.">
+  <meta name="description"
+    content="Dedicated Proof of Work and design system studio for Taste Engine's Retro Pixel aesthetic archetype. 8-bit & 16-bit computing, desktop window chrome, stepped pixel bevels, and zero AI-slop.">
   <meta name="theme-color" content="#10102B">
   <link rel="canonical" href="https://kennedys0.github.io/taste-engine/retro-pixel.html">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://kennedys0.github.io/taste-engine/retro-pixel.html">
   <meta property="og:title" content="Retro Pixel Proof of Work & Studio Guide — Taste Engine">
-  <meta property="og:description" content="Dedicated Proof of Work and design system studio for Taste Engine's Retro Pixel aesthetic archetype. 8-bit & 16-bit computing, desktop window chrome, stepped pixel bevels, and zero AI-slop.">
+  <meta property="og:description"
+    content="Dedicated Proof of Work and design system studio for Taste Engine's Retro Pixel aesthetic archetype. 8-bit & 16-bit computing, desktop window chrome, stepped pixel bevels, and zero AI-slop.">
   <meta property="og:image" content="https://kennedys0.github.io/taste-engine/assets/banner.webp">
   <meta property="og:site_name" content="Taste Engine">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://kennedys0.github.io/taste-engine/retro-pixel.html">
   <meta name="twitter:title" content="Retro Pixel Proof of Work & Studio Guide — Taste Engine">
-  <meta name="twitter:description" content="Dedicated Proof of Work and design system studio for Taste Engine's Retro Pixel aesthetic archetype. 8-bit & 16-bit computing, desktop window chrome, stepped pixel bevels, and zero AI-slop.">
+  <meta name="twitter:description"
+    content="Dedicated Proof of Work and design system studio for Taste Engine's Retro Pixel aesthetic archetype. 8-bit & 16-bit computing, desktop window chrome, stepped pixel bevels, and zero AI-slop.">
   <meta name="twitter:image" content="https://kennedys0.github.io/taste-engine/assets/banner.webp">
   <link rel="icon" type="image/webp" href="assets/logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Pixelify+Sans:wght@500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Pixelify+Sans:wght@500;600;700&family=Press+Start+2P&display=swap"
+    rel="stylesheet">
   <style>
     /* =========================================================
        RETRO PIXEL DESIGN SYSTEM TOKENS
@@ -116,7 +122,9 @@
     }
 
     /* Base Reset & Typography */
-    *, *::before, *::after {
+    *,
+    *::before,
+    *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
@@ -142,7 +150,10 @@
     }
 
     /* Pixel Art Image Rendering */
-    .pixel-art, img.pixel-art, canvas.pixel-art, svg.pixel-art {
+    .pixel-art,
+    img.pixel-art,
+    canvas.pixel-art,
+    svg.pixel-art {
       image-rendering: pixelated;
       image-rendering: -moz-crisp-edges;
       image-rendering: crisp-edges;
@@ -340,10 +351,6 @@
       box-shadow: inset 1px 1px 0px var(--pixel-bevel-light), inset -1px -1px 0px var(--pixel-bevel-dark);
       aspect-ratio: 1 / 1;
       flex-shrink: 0;
-    }
-      cursor: pointer;
-      font-size: 1.25rem;
-      box-shadow: inset 1px 1px 0px var(--pixel-bevel-light), inset -1px -1px 0px var(--pixel-bevel-dark);
     }
 
     /* Mobile Drawer */
@@ -1092,10 +1099,25 @@
       box-shadow: inset 1px 1px 0px var(--pixel-bevel-light), inset -1px -1px 0px var(--pixel-bevel-dark);
     }
 
-    .pixel-badge-success { background: var(--pixel-success); color: #000; }
-    .pixel-badge-warning { background: var(--pixel-warning); color: #000; }
-    .pixel-badge-error   { background: var(--pixel-error); color: #fff; }
-    .pixel-badge-info    { background: var(--pixel-teal); color: #000; }
+    .pixel-badge-success {
+      background: var(--pixel-success);
+      color: #000;
+    }
+
+    .pixel-badge-warning {
+      background: var(--pixel-warning);
+      color: #000;
+    }
+
+    .pixel-badge-error {
+      background: var(--pixel-error);
+      color: #fff;
+    }
+
+    .pixel-badge-info {
+      background: var(--pixel-teal);
+      color: #000;
+    }
 
     /* Progress bar */
     .pixel-progress-track {
@@ -1109,13 +1131,11 @@
 
     .pixel-progress-fill {
       height: 100%;
-      background: repeating-linear-gradient(
-        90deg,
-        var(--pixel-teal) 0px,
-        var(--pixel-teal) 8px,
-        var(--pixel-window-header) 8px,
-        var(--pixel-window-header) 10px
-      );
+      background: repeating-linear-gradient(90deg,
+          var(--pixel-teal) 0px,
+          var(--pixel-teal) 8px,
+          var(--pixel-window-header) 8px,
+          var(--pixel-window-header) 10px);
       width: 68%;
     }
 
@@ -1498,18 +1518,25 @@
     }
 
     @keyframes toastSlide {
-      from { transform: translateY(20px); opacity: 0; }
-      to { transform: translateY(0); opacity: 1; }
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
     }
 
     /* =========================================================
-       FOOTER
+       FOOTER (Compact Multi-Column Architecture)
        ========================================================= */
     .pixel-footer {
       border-top: var(--pixel-border);
       background: var(--pixel-surface);
-      padding: 2.5rem 1rem 1.5rem 1rem;
-      margin-top: 4rem;
+      padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+      margin-top: 3.5rem;
     }
 
     .footer-inner {
@@ -1519,45 +1546,84 @@
 
     .footer-grid {
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1fr;
+      grid-template-columns: 1.2fr 1.6fr 1fr;
       gap: 2rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.75rem;
+      align-items: start;
     }
 
     .footer-brand-title {
       font-family: var(--pixel-font-display);
-      font-size: 1.25rem;
+      font-size: 1rem;
       color: var(--pixel-orange);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.04em;
     }
 
     .footer-brand-desc {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--pixel-text-muted);
-      line-height: 1.6;
-      max-width: 380px;
+      line-height: 1.5;
+      max-width: 340px;
+    }
+
+    .footer-brand-credit {
+      margin-top: 0.5rem;
+      font-size: 0.775rem;
+      color: var(--pixel-text-muted);
+    }
+
+    .footer-author-link {
+      color: var(--pixel-teal);
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .footer-author-link:hover {
+      text-decoration: underline;
     }
 
     .footer-col-title {
       font-family: var(--pixel-font-display);
-      font-size: 0.9rem;
+      font-size: 0.75rem;
       color: var(--pixel-text);
       margin-bottom: 0.75rem;
       letter-spacing: 0.05em;
+    }
+
+    .footer-archetypes-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.35rem 1rem;
+      padding: 0;
+      margin: 0;
     }
 
     .footer-links-list {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
+      gap: 0.35rem;
+      padding: 0;
+      margin: 0;
     }
 
     .footer-link {
       font-family: var(--pixel-font-mono);
-      font-size: 0.8rem;
+      font-size: 0.775rem;
       color: var(--pixel-text-muted);
       text-decoration: none;
+      transition: color 100ms steps(2);
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .footer-link.active-link {
+      color: var(--pixel-orange);
+      font-weight: 700;
     }
 
     .footer-link:hover {
@@ -1565,13 +1631,13 @@
     }
 
     .footer-bottom-row {
-      border-top: 1px solid var(--pixel-border-color);
+      border-top: 1px dashed var(--pixel-border-color);
       padding-top: 1rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
       flex-wrap: wrap;
-      gap: 1rem;
+      gap: 0.75rem;
       font-family: var(--pixel-font-mono);
       font-size: 0.75rem;
       color: var(--pixel-text-dim);
@@ -1585,11 +1651,20 @@
         grid-template-columns: 1fr;
         padding: 1.5rem;
       }
+
       .paint-demo-grid {
         grid-template-columns: 1fr;
       }
+
       .footer-grid {
         grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+
+      .footer-brand-col {
+        grid-column: 1 / -1;
+        padding-bottom: 1rem;
+        border-bottom: 1px dashed var(--pixel-border-color);
       }
     }
 
@@ -1597,12 +1672,15 @@
       .desktop-only {
         display: none !important;
       }
+
       .mobile-only {
         display: inline-flex !important;
       }
+
       .nav-links-desktop {
         display: none !important;
       }
+
       .nav-hamburger-btn {
         display: inline-flex !important;
       }
@@ -1612,31 +1690,38 @@
         padding: 0.5rem 0.75rem !important;
         gap: 0.5rem;
       }
+
       .nav-brand-group {
         gap: 6px;
       }
+
       .nav-brand-icon {
         width: 28px !important;
         height: 28px !important;
         font-size: 11px !important;
       }
+
       .nav-title {
         font-size: 0.85rem !important;
         letter-spacing: 0;
       }
+
       .nav-badge {
         font-size: 0.6rem !important;
         padding: 2px 4px !important;
       }
+
       .nav-actions {
         gap: 0.5rem;
       }
+
       .nav-btn {
         height: 38px !important;
         min-height: 38px !important;
         padding: 0 10px !important;
         font-size: 0.75rem !important;
       }
+
       .theme-toggle-btn {
         width: 38px !important;
         height: 38px !important;
@@ -1646,6 +1731,7 @@
         aspect-ratio: 1 / 1 !important;
         flex-shrink: 0 !important;
       }
+
       .nav-hamburger-btn {
         width: 38px !important;
         height: 38px !important;
@@ -1656,36 +1742,40 @@
         aspect-ratio: 1 / 1 !important;
         flex-shrink: 0 !important;
       }
-        font-size: 1.15rem !important;
-      }
 
       /* Hero Section Fluid Typography */
       .pixel-hero {
         padding: 1rem 0;
         min-height: auto;
       }
+
       .hero-window-header {
         font-size: 0.7rem !important;
         padding: 6px 10px !important;
       }
+
       .hero-window-body {
         padding: 1.25rem 0.85rem !important;
         gap: 1.25rem;
       }
+
       .hero-title {
         font-size: clamp(1.25rem, 5vw, 1.85rem) !important;
         line-height: 1.25 !important;
         margin-bottom: 0.75rem !important;
       }
+
       .hero-description {
         font-size: 0.925rem !important;
         line-height: 1.5 !important;
         margin-bottom: 1rem !important;
       }
+
       .hero-command-pill {
         font-size: 0.75rem !important;
         padding: 5px 8px !important;
       }
+
       .computer-artwork-img,
       .computer-artwork-svg {
         max-width: 260px;
@@ -1695,10 +1785,12 @@
       .section-header {
         margin: 2.25rem 0 1rem 0 !important;
       }
+
       .section-title {
         font-size: 1.25rem !important;
         line-height: 1.3 !important;
       }
+
       .section-subtitle {
         font-size: 0.8rem !important;
       }
@@ -1708,71 +1800,88 @@
         padding: 0.75rem 0.5rem !important;
         min-height: auto !important;
       }
+
       .desktop-status-bar {
         font-size: 0.7rem !important;
         margin-bottom: 0.5rem !important;
       }
+
       .retro-window {
         margin-bottom: 1rem !important;
       }
+
       .window-header {
         padding: 6px 8px !important;
       }
+
       .window-title {
         font-size: 0.7rem !important;
       }
+
       .window-control-btn {
         width: 22px !important;
         height: 22px !important;
         font-size: 11px !important;
       }
+
       .window-body {
         padding: 0.75rem 0.5rem !important;
       }
+
       .paint-demo-grid {
         grid-template-columns: 1fr !important;
         gap: 0.75rem !important;
       }
+
       .paint-tools-panel {
         padding: 0.75rem 0.5rem !important;
       }
+
       .paint-tools-title {
         font-size: 0.75rem !important;
         margin-bottom: 0.5rem !important;
       }
+
       .paint-tools-buttons {
         display: grid !important;
         grid-template-columns: repeat(3, 1fr) !important;
         gap: 4px !important;
       }
+
       .paint-tool-btn {
         font-size: 0.65rem !important;
         padding: 6px 4px !important;
         justify-content: center !important;
       }
+
       .paint-swatches-title {
         font-size: 0.7rem !important;
         margin-top: 0.75rem !important;
         margin-bottom: 0.35rem !important;
       }
+
       .paint-swatches {
         grid-template-columns: repeat(8, 1fr) !important;
         gap: 4px !important;
       }
+
       .color-swatch-btn {
         width: 100% !important;
         max-width: 32px;
         height: auto;
         aspect-ratio: 1 / 1;
       }
+
       .paint-canvas-wrapper {
         padding: 0.75rem 0.5rem !important;
         width: 100% !important;
         box-sizing: border-box !important;
       }
+
       .paint-instructions {
         font-size: 0.7rem !important;
       }
+
       .pixel-canvas-grid {
         width: 100% !important;
         max-width: 240px !important;
@@ -1780,6 +1889,7 @@
         height: auto !important;
         margin: 0 auto !important;
       }
+
       .paint-status {
         font-size: 0.65rem !important;
       }
@@ -1788,12 +1898,15 @@
       .lab-card {
         padding: 1rem 0.75rem !important;
       }
+
       .lab-card-title {
         font-size: 0.75rem !important;
       }
+
       .btn-row {
         gap: 0.5rem !important;
       }
+
       .pixel-btn {
         font-size: 0.75rem !important;
         padding: 8px 10px !important;
@@ -1803,13 +1916,56 @@
       .portfolio-grid {
         grid-template-columns: 1fr !important;
       }
+
       .metrics-grid {
         grid-template-columns: 1fr 1fr !important;
       }
 
-      /* Footer */
+      /* Footer Mobile Compaction */
+      .pixel-footer {
+        padding: 1.75rem 0.85rem 1rem 0.85rem !important;
+        margin-top: 2.5rem !important;
+      }
+
       .footer-grid {
         grid-template-columns: 1fr !important;
+        gap: 1.25rem !important;
+        margin-bottom: 1.25rem !important;
+      }
+
+      .footer-brand-col {
+        grid-column: 1 / -1 !important;
+        padding-bottom: 0.85rem !important;
+        border-bottom: 1px dashed var(--pixel-border-color) !important;
+      }
+
+      .footer-archetypes-col {
+        grid-column: 1 / -1 !important;
+      }
+
+      .footer-archetypes-list {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.35rem 0.75rem !important;
+      }
+
+      .footer-resources-col {
+        grid-column: 1 / -1 !important;
+        padding-top: 0.85rem !important;
+        border-top: 1px dashed var(--pixel-border-color) !important;
+      }
+
+      .footer-links-list {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.35rem 0.75rem !important;
+      }
+
+      .footer-bottom-row {
+        flex-direction: column-reverse !important;
+        text-align: center !important;
+        gap: 0.5rem !important;
+        padding-top: 0.75rem !important;
       }
     }
 
@@ -1817,6 +1973,7 @@
       body {
         overflow-x: hidden;
       }
+
       .page-container {
         padding: 0.75rem 0.35rem 3rem 0.35rem !important;
       }
@@ -1825,9 +1982,11 @@
       .pixel-nav {
         padding: 0.4rem 0.5rem !important;
       }
+
       .nav-title {
         font-size: 0.8rem !important;
       }
+
       .nav-badge {
         font-size: 0.55rem !important;
         padding: 1px 3px !important;
@@ -1837,20 +1996,25 @@
       .hero-window-body {
         padding: 1rem 0.5rem !important;
       }
+
       .hero-title {
         font-size: clamp(1.1rem, 5vw, 1.4rem) !important;
         line-height: 1.3 !important;
       }
+
       .hero-badge-pill {
         font-size: 0.65rem !important;
         padding: 3px 6px !important;
       }
+
       .hero-actions {
         flex-direction: column !important;
       }
+
       .hero-actions .pixel-btn {
         width: 100% !important;
       }
+
       .computer-artwork-img,
       .computer-artwork-svg {
         max-width: 210px !important;
@@ -1860,21 +2024,27 @@
       .interactive-desktop-zone {
         padding: 0.4rem 0.25rem !important;
       }
+
       .window-body {
         padding: 0.5rem 0.25rem !important;
       }
+
       .paint-tools-panel {
         padding: 0.5rem 0.35rem !important;
       }
+
       .paint-canvas-wrapper {
         padding: 0.5rem 0.25rem !important;
       }
+
       .pixel-canvas-grid {
         max-width: 200px !important;
       }
+
       .window-title {
         font-size: 0.65rem !important;
       }
+
       .window-control-btn {
         width: 20px !important;
         height: 20px !important;
@@ -1885,28 +2055,49 @@
       .section-title {
         font-size: 1.05rem !important;
       }
+
       .section-subtitle {
         font-size: 0.75rem !important;
       }
+
       .lab-grid {
         grid-template-columns: 1fr !important;
         gap: 0.75rem !important;
       }
+
       .metrics-grid {
         grid-template-columns: 1fr !important;
       }
+
       .auth-card {
         padding: 1rem 0.65rem !important;
       }
+
       .auth-card-title {
         font-size: 0.8rem !important;
       }
+
       .modal-content {
         padding: 1rem 0.65rem !important;
         width: calc(100vw - 20px) !important;
       }
+
       .toast {
         width: calc(100vw - 24px) !important;
+        font-size: 0.75rem !important;
+      }
+
+      /* Footer Narrow */
+      .footer-archetypes-list {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.25rem 0.5rem !important;
+      }
+
+      .footer-link {
+        font-size: 0.72rem !important;
+      }
+
+      .footer-brand-desc {
         font-size: 0.75rem !important;
       }
     }
@@ -1915,9 +2106,11 @@
       .nav-badge {
         display: none !important;
       }
+
       .nav-title {
         font-size: 0.75rem !important;
       }
+
       .pixel-canvas-grid {
         max-width: 180px !important;
       }
@@ -1925,10 +2118,14 @@
 
     /* Reduced Motion */
     @media (prefers-reduced-motion: reduce) {
-      *, *::before, *::after {
+
+      *,
+      *::before,
+      *::after {
         animation-duration: 0ms !important;
         transition-duration: 0ms !important;
       }
+
       .pixel-btn:active,
       .nav-btn:active,
       .window-control-btn:active {
@@ -1937,6 +2134,7 @@
     }
   </style>
 </head>
+
 <body>
 
   <!-- STICKY TOP NAVIGATION -->
@@ -1961,13 +2159,19 @@
     <div class="nav-actions">
       <a href="index.html" class="nav-btn nav-btn-gallery desktop-only" title="View all 11 style archetypes">
         <span class="btn-icon-box" aria-hidden="true">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="square">
+            <path d="M19 12H5M12 19l-7-7 7-7" />
+          </svg>
         </span>
         <span>All Styles</span>
       </a>
       <button class="nav-btn theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Dark and Light Mode">
         <span class="btn-icon-box" id="theme-icon" aria-hidden="true">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+            stroke-linecap="square">
+            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+          </svg>
         </span>
         <span id="theme-text" class="desktop-only">Dark</span>
       </button>
@@ -1979,11 +2183,14 @@
   <div class="mobile-drawer-overlay" id="drawer-overlay"></div>
   <aside class="mobile-nav-drawer" id="mobile-drawer" aria-label="Mobile Navigation Menu">
     <div class="drawer-header">
-      <span style="font-family: var(--pixel-font-display); font-weight: bold; color: var(--pixel-orange); font-size: 0.85rem;">MENU // NAV</span>
+      <span
+        style="font-family: var(--pixel-font-display); font-weight: bold; color: var(--pixel-orange); font-size: 0.85rem;">MENU
+        // NAV</span>
       <button class="mobile-drawer-close-btn" id="drawer-close-btn" aria-label="Close Navigation Menu">✕</button>
     </div>
     <div style="margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: var(--pixel-border);">
-      <a href="index.html" class="pixel-btn pixel-btn-primary" style="width: 100%; justify-content: center; text-decoration: none; font-size: 0.8rem; padding: 10px 12px; font-weight: bold;">
+      <a href="index.html" class="pixel-btn pixel-btn-primary"
+        style="width: 100%; justify-content: center; text-decoration: none; font-size: 0.8rem; padding: 10px 12px; font-weight: bold;">
         <span>← ALL 11 STYLES GALLERY</span>
       </a>
     </div>
@@ -2021,7 +2228,8 @@
         <div class="hero-window-body">
           <div class="hero-text-col">
             <div class="hero-badge-pill">
-              <span class="status-dot dot" style="width: 8px; height: 8px; background: var(--pixel-teal); display: inline-block;"></span>
+              <span class="status-dot dot"
+                style="width: 8px; height: 8px; background: var(--pixel-teal); display: inline-block;"></span>
               <span>11TH FIRST-CLASS AESTHETIC // TASTE ENGINE</span>
             </div>
 
@@ -2030,7 +2238,8 @@
             </h1>
 
             <p class="hero-description">
-              A crafted nostalgic aesthetic uniting late-1980s personal computing, 8-bit & 16-bit pixel illustrations, classic desktop window chrome, stepped pixel bevels, and modern WCAG AA accessibility.
+              A crafted nostalgic aesthetic uniting late-1980s personal computing, 8-bit & 16-bit pixel illustrations,
+              classic desktop window chrome, stepped pixel bevels, and modern WCAG AA accessibility.
             </p>
 
             <div class="hero-actions">
@@ -2047,7 +2256,8 @@
           </div>
 
           <div class="hero-artwork-col">
-            <img src="assets/computer.webp" alt="Retro Pixel Computer Workstation" class="computer-artwork-img pixel-art" width="400" height="400" loading="eager" decoding="async">
+            <img src="assets/computer.webp" alt="Retro Pixel Computer Workstation"
+              class="computer-artwork-img pixel-art" width="400" height="400" loading="eager" decoding="async">
           </div>
         </div>
       </div>
@@ -2070,7 +2280,9 @@
             <span class="pixel-badge pixel-badge-success">REQUIRED</span>
           </div>
           <p style="font-size: 0.875rem; line-height: 1.6; margin-bottom: 0.75rem;">
-            Graphics adhere to integer alignment without accidental blur. Raster pixel art uses <code>image-rendering: pixelated</code>. Smooth photographic blur and arbitrary vector curves without pixel logic fail this gate.
+            Graphics adhere to integer alignment without accidental blur. Raster pixel art uses
+            <code>image-rendering: pixelated</code>. Smooth photographic blur and arbitrary vector curves without pixel
+            logic fail this gate.
           </p>
           <div class="code-box">
             <code>image-rendering: pixelated;</code>
@@ -2083,7 +2295,8 @@
             <span class="pixel-badge pixel-badge-success">REQUIRED</span>
           </div>
           <p style="font-size: 0.875rem; line-height: 1.6; margin-bottom: 0.75rem;">
-            Panels feature classic desktop title bars in desktop purple (<code>#5B438E</code>), stepped bevel shadows (2px inset highlight + 2px inset dark), and square corners (<code>border-radius: 0px</code>).
+            Panels feature classic desktop title bars in desktop purple (<code>#5B438E</code>), stepped bevel shadows
+            (2px inset highlight + 2px inset dark), and square corners (<code>border-radius: 0px</code>).
           </p>
           <div class="code-box">
             <code>box-shadow: inset 2px 2px 0 #fff3, ...</code>
@@ -2096,7 +2309,9 @@
             <span class="pixel-badge pixel-badge-success">REQUIRED</span>
           </div>
           <p style="font-size: 0.875rem; line-height: 1.6; margin-bottom: 0.75rem;">
-            Buttons physically displace along the integer grid on active click (<code>transform: translate(2px, 2px)</code>) with instant shadow collapse, providing immediate physical confirmation.
+            Buttons physically displace along the integer grid on active click
+            (<code>transform: translate(2px, 2px)</code>) with instant shadow collapse, providing immediate physical
+            confirmation.
           </p>
           <div class="code-box">
             <code>transform: translate(2px, 2px);</code>
@@ -2110,7 +2325,8 @@
       <div class="section-header">
         <div>
           <h2 class="section-title">INTERACTIVE WINDOW STUDIO</h2>
-          <p class="section-subtitle">Fully functional classic desktop window with draggable/toggleable controls & pixel paint</p>
+          <p class="section-subtitle">Fully functional classic desktop window with draggable/toggleable controls & pixel
+            paint</p>
         </div>
         <span class="pixel-badge pixel-badge-warning">INTERACTIVE DEMO</span>
       </div>
@@ -2127,14 +2343,18 @@
         <article class="retro-window" id="demo-window" role="region" aria-label="Interactive Studio Window">
           <div class="window-header">
             <div class="window-title">
-              <span style="display: inline-block; width: 10px; height: 10px; background: var(--pixel-orange); aspect-ratio: 1 / 1; flex-shrink: 0;"></span>
+              <span
+                style="display: inline-block; width: 10px; height: 10px; background: var(--pixel-orange); aspect-ratio: 1 / 1; flex-shrink: 0;"></span>
               <span class="desktop-only">PIXEL_WORKSHOP.EXE — [16x16 SPRITE CANVAS]</span>
               <span class="mobile-only">PIXEL_WORKSHOP.EXE</span>
             </div>
             <div class="window-controls">
-              <button class="window-control-btn" id="win-btn-min" aria-label="Minimize Window" title="Minimize Window">_</button>
-              <button class="window-control-btn" id="win-btn-max" aria-label="Maximize Window" title="Maximize Window">□</button>
-              <button class="window-control-btn" id="win-btn-close" aria-label="Close Window" title="Close Window">×</button>
+              <button class="window-control-btn" id="win-btn-min" aria-label="Minimize Window"
+                title="Minimize Window">_</button>
+              <button class="window-control-btn" id="win-btn-max" aria-label="Maximize Window"
+                title="Maximize Window">□</button>
+              <button class="window-control-btn" id="win-btn-close" aria-label="Close Window"
+                title="Close Window">×</button>
             </div>
           </div>
 
@@ -2160,14 +2380,22 @@
                   COLOR SWATCHES
                 </div>
                 <div class="paint-swatches">
-                  <button class="color-swatch-btn active" data-color="#F27D36" style="background: #F27D36;" title="Arcade Orange"></button>
-                  <button class="color-swatch-btn" data-color="#2CA7A3" style="background: #2CA7A3;" title="Retro Teal"></button>
-                  <button class="color-swatch-btn" data-color="#5B438E" style="background: #5B438E;" title="Desktop Purple"></button>
-                  <button class="color-swatch-btn" data-color="#F2DFB5" style="background: #F2DFB5;" title="Vintage Cream"></button>
-                  <button class="color-swatch-btn" data-color="#2BB673" style="background: #2BB673;" title="Pixel Green"></button>
-                  <button class="color-swatch-btn" data-color="#E03E3E" style="background: #E03E3E;" title="Pixel Red"></button>
-                  <button class="color-swatch-btn" data-color="#FFFFFF" style="background: #FFFFFF;" title="White"></button>
-                  <button class="color-swatch-btn" data-color="#10102B" style="background: #10102B;" title="Midnight Dark"></button>
+                  <button class="color-swatch-btn active" data-color="#F27D36" style="background: #F27D36;"
+                    title="Arcade Orange"></button>
+                  <button class="color-swatch-btn" data-color="#2CA7A3" style="background: #2CA7A3;"
+                    title="Retro Teal"></button>
+                  <button class="color-swatch-btn" data-color="#5B438E" style="background: #5B438E;"
+                    title="Desktop Purple"></button>
+                  <button class="color-swatch-btn" data-color="#F2DFB5" style="background: #F2DFB5;"
+                    title="Vintage Cream"></button>
+                  <button class="color-swatch-btn" data-color="#2BB673" style="background: #2BB673;"
+                    title="Pixel Green"></button>
+                  <button class="color-swatch-btn" data-color="#E03E3E" style="background: #E03E3E;"
+                    title="Pixel Red"></button>
+                  <button class="color-swatch-btn" data-color="#FFFFFF" style="background: #FFFFFF;"
+                    title="White"></button>
+                  <button class="color-swatch-btn" data-color="#10102B" style="background: #10102B;"
+                    title="Midnight Dark"></button>
                 </div>
               </div>
 
@@ -2209,11 +2437,14 @@
             Click and hold to test the 2px stepped depression and shadow collapse:
           </p>
           <div class="btn-row">
-            <button class="pixel-btn pixel-btn-primary" onclick="showToast('Primary Action Confirmed!')">Primary Action</button>
-            <button class="pixel-btn pixel-btn-secondary" onclick="showToast('Secondary Action Executed')">Secondary</button>
+            <button class="pixel-btn pixel-btn-primary" onclick="showToast('Primary Action Confirmed!')">Primary
+              Action</button>
+            <button class="pixel-btn pixel-btn-secondary"
+              onclick="showToast('Secondary Action Executed')">Secondary</button>
           </div>
           <div class="btn-row">
-            <button class="pixel-btn pixel-btn-destructive" onclick="showToast('Warning: Destructive Event', 'error')">Destructive</button>
+            <button class="pixel-btn pixel-btn-destructive"
+              onclick="showToast('Warning: Destructive Event', 'error')">Destructive</button>
             <button class="pixel-btn pixel-btn-disabled" disabled>Disabled State</button>
           </div>
           <div style="margin-top: 0.5rem;">
@@ -2229,7 +2460,8 @@
           </div>
           <div class="form-group">
             <label class="form-label" for="lab-project-name">Project Handle</label>
-            <input type="text" class="pixel-input" id="lab-project-name" placeholder="arcade-protocol-v1" value="pixel-warrior">
+            <input type="text" class="pixel-input" id="lab-project-name" placeholder="arcade-protocol-v1"
+              value="pixel-warrior">
           </div>
           <div class="form-group">
             <label class="form-label" for="lab-resolution-select">Target Graphics Resolution</label>
@@ -2275,7 +2507,8 @@
 
           <div class="pixel-tab-content active" id="tab-tokens">
             <p style="font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">
-              Primary palette: Midnight <code>#10102B</code>, Arcade Orange <code>#F27D36</code>, Retro Teal <code>#2CA7A3</code>, Purple <code>#5B438E</code>, Cream <code>#F2DFB5</code>.
+              Primary palette: Midnight <code>#10102B</code>, Arcade Orange <code>#F27D36</code>, Retro Teal
+              <code>#2CA7A3</code>, Purple <code>#5B438E</code>, Cream <code>#F2DFB5</code>.
             </p>
             <div class="badge-wrap">
               <span class="pixel-badge pixel-badge-success">● ONLINE</span>
@@ -2287,7 +2520,8 @@
 
           <div class="pixel-tab-content" id="tab-geometry">
             <p style="font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">
-              Strict 4px/8px coordinate snapping. Zero border-radius on cards and windows. Circular elements enforce <code>aspect-ratio: 1 / 1</code>.
+              Strict 4px/8px coordinate snapping. Zero border-radius on cards and windows. Circular elements enforce
+              <code>aspect-ratio: 1 / 1</code>.
             </p>
             <div class="pixel-progress-track">
               <div class="pixel-progress-fill"></div>
@@ -2296,7 +2530,8 @@
 
           <div class="pixel-tab-content" id="tab-a11y">
             <p style="font-size: 0.85rem; line-height: 1.5;">
-              WCAG AA contrast verified. Dual theme tokens flip background/foreground in tandem. Keyboard focus ring: 2px solid orange with 2px offset.
+              WCAG AA contrast verified. Dual theme tokens flip background/foreground in tandem. Keyboard focus ring:
+              2px solid orange with 2px offset.
             </p>
           </div>
         </div>
@@ -2325,22 +2560,26 @@
         <article class="project-card" data-category="games">
           <div class="project-preview-box">
             <svg class="pixel-art" width="160" height="120" viewBox="0 0 160 120" fill="none">
-              <rect x="20" y="20" width="120" height="80" fill="#22224A" stroke="#080816" stroke-width="2"/>
-              <rect x="40" y="40" width="24" height="24" fill="#F27D36"/>
-              <rect x="70" y="60" width="30" height="14" fill="#2CA7A3"/>
-              <rect x="110" y="35" width="16" height="16" fill="#F2DFB5"/>
+              <rect x="20" y="20" width="120" height="80" fill="#22224A" stroke="#080816" stroke-width="2" />
+              <rect x="40" y="40" width="24" height="24" fill="#F27D36" />
+              <rect x="70" y="60" width="30" height="14" fill="#2CA7A3" />
+              <rect x="110" y="35" width="16" height="16" fill="#F2DFB5" />
             </svg>
           </div>
           <div class="project-body">
             <div>
               <div class="project-meta-row">
                 <span class="pixel-badge pixel-badge-info">GAMES</span>
-                <span style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted);">v1.4.0</span>
+                <span
+                  style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted);">v1.4.0</span>
               </div>
               <h3 class="project-title">Cyber Rogue 16-bit</h3>
-              <p class="project-desc">A turn-based roguelike dungeon crawler built with deterministic tile grids and authentic EGA pixel art assets.</p>
+              <p class="project-desc">A turn-based roguelike dungeon crawler built with deterministic tile grids and
+                authentic EGA pixel art assets.</p>
             </div>
-            <button class="pixel-btn pixel-btn-primary" onclick="openProjectModal('Cyber Rogue 16-bit', 'Roguelike game engine rendered on integer coordinate canvas with zero subpixel blurring. Built using pure CSS stepped bevels and modular window chrome.')">Inspect Spec ↗</button>
+            <button class="pixel-btn pixel-btn-primary"
+              onclick="openProjectModal('Cyber Rogue 16-bit', 'Roguelike game engine rendered on integer coordinate canvas with zero subpixel blurring. Built using pure CSS stepped bevels and modular window chrome.')">Inspect
+              Spec ↗</button>
           </div>
         </article>
 
@@ -2348,22 +2587,27 @@
         <article class="project-card" data-category="tools">
           <div class="project-preview-box">
             <svg class="pixel-art" width="160" height="120" viewBox="0 0 160 120" fill="none">
-              <rect x="30" y="25" width="100" height="70" fill="#1B1B3A" stroke="#080816" stroke-width="2"/>
-              <rect x="35" y="30" width="90" height="10" fill="#5B438E"/>
-              <rect x="40" y="50" width="40" height="8" fill="#2CA7A3"/>
-              <rect x="40" y="64" width="60" height="8" fill="#F27D36"/>
+              <rect x="30" y="25" width="100" height="70" fill="#1B1B3A" stroke="#080816" stroke-width="2" />
+              <rect x="35" y="30" width="90" height="10" fill="#5B438E" />
+              <rect x="40" y="50" width="40" height="8" fill="#2CA7A3" />
+              <rect x="40" y="64" width="60" height="8" fill="#F27D36" />
             </svg>
           </div>
           <div class="project-body">
             <div>
               <div class="project-meta-row">
                 <span class="pixel-badge pixel-badge-warning">TOOLS</span>
-                <span style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted);">OPEN SOURCE</span>
+                <span
+                  style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted);">OPEN
+                  SOURCE</span>
               </div>
               <h3 class="project-title">SpriteForge CLI</h3>
-              <p class="project-desc">Terminal and GUI sprite packager that converts SVG vector assets into integer-aligned raster sheets.</p>
+              <p class="project-desc">Terminal and GUI sprite packager that converts SVG vector assets into
+                integer-aligned raster sheets.</p>
             </div>
-            <button class="pixel-btn pixel-btn-primary" onclick="openProjectModal('SpriteForge CLI', 'High-performance sprite slicing utility ensuring integer coordinate adherence and zero interpolation fuzz for web-based games.')">Inspect Spec ↗</button>
+            <button class="pixel-btn pixel-btn-primary"
+              onclick="openProjectModal('SpriteForge CLI', 'High-performance sprite slicing utility ensuring integer coordinate adherence and zero interpolation fuzz for web-based games.')">Inspect
+              Spec ↗</button>
           </div>
         </article>
 
@@ -2371,21 +2615,26 @@
         <article class="project-card" data-category="ui">
           <div class="project-preview-box">
             <svg class="pixel-art" width="160" height="120" viewBox="0 0 160 120" fill="none">
-              <rect x="25" y="20" width="110" height="80" fill="#E4DECE" stroke="#080816" stroke-width="2"/>
-              <rect x="30" y="25" width="100" height="12" fill="#493475"/>
-              <rect x="40" y="50" width="80" height="30" fill="#ded6c4" stroke="#080816" stroke-width="1"/>
+              <rect x="25" y="20" width="110" height="80" fill="#E4DECE" stroke="#080816" stroke-width="2" />
+              <rect x="30" y="25" width="100" height="12" fill="#493475" />
+              <rect x="40" y="50" width="80" height="30" fill="#ded6c4" stroke="#080816" stroke-width="1" />
             </svg>
           </div>
           <div class="project-body">
             <div>
               <div class="project-meta-row">
                 <span class="pixel-badge pixel-badge-success">UI SYSTEM</span>
-                <span style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted);">DESIGN SYSTEM</span>
+                <span
+                  style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted);">DESIGN
+                  SYSTEM</span>
               </div>
               <h3 class="project-title">Arcade UI Tokens</h3>
-              <p class="project-desc">Standardized Tailwind CSS theme extension providing coupled light/dark tokens for retro computer applications.</p>
+              <p class="project-desc">Standardized Tailwind CSS theme extension providing coupled light/dark tokens for
+                retro computer applications.</p>
             </div>
-            <button class="pixel-btn pixel-btn-primary" onclick="openProjectModal('Arcade UI Tokens', 'Tailwind preset and shadcn/ui variables defining stepped bevels, pixel borders, and midnight/parchment color pairings.')">Inspect Spec ↗</button>
+            <button class="pixel-btn pixel-btn-primary"
+              onclick="openProjectModal('Arcade UI Tokens', 'Tailwind preset and shadcn/ui variables defining stepped bevels, pixel borders, and midnight/parchment color pairings.')">Inspect
+              Spec ↗</button>
           </div>
         </article>
 
@@ -2393,21 +2642,26 @@
         <article class="project-card" data-category="games">
           <div class="project-preview-box">
             <svg class="pixel-art" width="160" height="120" viewBox="0 0 160 120" fill="none">
-              <rect x="30" y="30" width="100" height="60" fill="#10102B" stroke="#2CA7A3" stroke-width="2"/>
-              <circle cx="80" cy="60" r="14" fill="#F27D36"/>
-              <rect x="50" y="58" width="60" height="4" fill="#FFFFFF"/>
+              <rect x="30" y="30" width="100" height="60" fill="#10102B" stroke="#2CA7A3" stroke-width="2" />
+              <circle cx="80" cy="60" r="14" fill="#F27D36" />
+              <rect x="50" y="58" width="60" height="4" fill="#FFFFFF" />
             </svg>
           </div>
           <div class="project-body">
             <div>
               <div class="project-meta-row">
                 <span class="pixel-badge pixel-badge-info">GAMES</span>
-                <span style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted);">WEBGL / 2D</span>
+                <span
+                  style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted);">WEBGL
+                  / 2D</span>
               </div>
               <h3 class="project-title">Pixel Orbit</h3>
-              <p class="project-desc">Physics puzzle simulation built with low-resolution ray tracing metaphors and chiptune audio generators.</p>
+              <p class="project-desc">Physics puzzle simulation built with low-resolution ray tracing metaphors and
+                chiptune audio generators.</p>
             </div>
-            <button class="pixel-btn pixel-btn-primary" onclick="openProjectModal('Pixel Orbit', 'Real-time gravity simulator operating strictly within 320x240 virtual canvas boundaries and scaling responsively.')">Inspect Spec ↗</button>
+            <button class="pixel-btn pixel-btn-primary"
+              onclick="openProjectModal('Pixel Orbit', 'Real-time gravity simulator operating strictly within 320x240 virtual canvas boundaries and scaling responsively.')">Inspect
+              Spec ↗</button>
           </div>
         </article>
 
@@ -2415,20 +2669,25 @@
         <article class="project-card" data-category="tools">
           <div class="project-preview-box">
             <svg class="pixel-art" width="160" height="120" viewBox="0 0 160 120" fill="none">
-              <rect x="25" y="25" width="110" height="70" fill="#0D0D22" stroke="#080816" stroke-width="2"/>
-              <path d="M35 45 H125 M35 60 H125 M35 75 H125" stroke="#9999C2" stroke-width="2" stroke-dasharray="4 4"/>
+              <rect x="25" y="25" width="110" height="70" fill="#0D0D22" stroke="#080816" stroke-width="2" />
+              <path d="M35 45 H125 M35 60 H125 M35 75 H125" stroke="#9999C2" stroke-width="2" stroke-dasharray="4 4" />
             </svg>
           </div>
           <div class="project-body">
             <div>
               <div class="project-meta-row">
                 <span class="pixel-badge pixel-badge-warning">TOOLS</span>
-                <span style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted);">DEV TOOL</span>
+                <span
+                  style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted);">DEV
+                  TOOL</span>
               </div>
               <h3 class="project-title">Hex Editor 86</h3>
-              <p class="project-desc">In-browser binary inspection tool supporting classic ASCII columns and stepped window split panels.</p>
+              <p class="project-desc">In-browser binary inspection tool supporting classic ASCII columns and stepped
+                window split panels.</p>
             </div>
-            <button class="pixel-btn pixel-btn-primary" onclick="openProjectModal('Hex Editor 86', 'High-performance binary inspector featuring monospace tabular alignment and memory byte highlights.')">Inspect Spec ↗</button>
+            <button class="pixel-btn pixel-btn-primary"
+              onclick="openProjectModal('Hex Editor 86', 'High-performance binary inspector featuring monospace tabular alignment and memory byte highlights.')">Inspect
+              Spec ↗</button>
           </div>
         </article>
 
@@ -2436,22 +2695,27 @@
         <article class="project-card" data-category="ui">
           <div class="project-preview-box">
             <svg class="pixel-art" width="160" height="120" viewBox="0 0 160 120" fill="none">
-              <rect x="30" y="20" width="100" height="80" fill="#22224A" stroke="#080816" stroke-width="2"/>
-              <rect x="40" y="35" width="80" height="12" fill="#F27D36"/>
-              <rect x="40" y="55" width="80" height="12" fill="#2CA7A3"/>
-              <rect x="40" y="75" width="80" height="12" fill="#5B438E"/>
+              <rect x="30" y="20" width="100" height="80" fill="#22224A" stroke="#080816" stroke-width="2" />
+              <rect x="40" y="35" width="80" height="12" fill="#F27D36" />
+              <rect x="40" y="55" width="80" height="12" fill="#2CA7A3" />
+              <rect x="40" y="75" width="80" height="12" fill="#5B438E" />
             </svg>
           </div>
           <div class="project-body">
             <div>
               <div class="project-meta-row">
                 <span class="pixel-badge pixel-badge-success">UI SYSTEM</span>
-                <span style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted);">COMPONENT LIB</span>
+                <span
+                  style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted);">COMPONENT
+                  LIB</span>
               </div>
               <h3 class="project-title">RetroKit Vue/React</h3>
-              <p class="project-desc">Accessible UI component library rendering classic Windows 95/Amiga styled widgets across React and Vue.</p>
+              <p class="project-desc">Accessible UI component library rendering classic Windows 95/Amiga styled widgets
+                across React and Vue.</p>
             </div>
-            <button class="pixel-btn pixel-btn-primary" onclick="openProjectModal('RetroKit Vue/React', 'Framework-agnostic headless primitives styled with Taste Engine Retro Pixel CSS tokens.')">Inspect Spec ↗</button>
+            <button class="pixel-btn pixel-btn-primary"
+              onclick="openProjectModal('RetroKit Vue/React', 'Framework-agnostic headless primitives styled with Taste Engine Retro Pixel CSS tokens.')">Inspect
+              Spec ↗</button>
           </div>
         </article>
       </div>
@@ -2490,13 +2754,15 @@
             <form id="auth-form" onsubmit="handleAuthSubmit(event)">
               <div class="form-group">
                 <label class="form-label" for="auth-email">User Identity / Email</label>
-                <input type="email" class="pixel-input" id="auth-email" placeholder="pilot@arcade.local" required value="retro.user@system.local">
+                <input type="email" class="pixel-input" id="auth-email" placeholder="pilot@arcade.local" required
+                  value="retro.user@system.local">
               </div>
 
               <div class="form-group" id="pwd-form-group">
                 <label class="form-label" for="auth-password">Security Access Key</label>
                 <div class="password-input-group">
-                  <input type="password" class="pixel-input" id="auth-password" placeholder="••••••••••••" required value="secret16bit">
+                  <input type="password" class="pixel-input" id="auth-password" placeholder="••••••••••••" required
+                    value="secret16bit">
                   <button type="button" class="toggle-pwd-btn" id="toggle-pwd-btn">Show</button>
                 </div>
               </div>
@@ -2506,7 +2772,9 @@
                   <input type="checkbox" class="pixel-checkbox" checked>
                   <span style="font-size: 0.8rem;">Remember Terminal</span>
                 </label>
-                <a href="#auth-demo" style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-teal);">Forgot Access Key?</a>
+                <a href="#auth-demo"
+                  style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-teal);">Forgot
+                  Access Key?</a>
               </div>
 
               <button type="submit" class="pixel-btn pixel-btn-primary" style="width: 100%; padding: 10px;">
@@ -2544,7 +2812,8 @@
           <div class="dashboard-toolbar">
             <div class="search-input-wrap">
               <label for="dash-search" class="form-label" style="margin: 0; white-space: nowrap;">Filter Tasks:</label>
-              <input type="text" class="pixel-input" id="dash-search" placeholder="Type to filter (e.g. kern, render, audio)...">
+              <input type="text" class="pixel-input" id="dash-search"
+                placeholder="Type to filter (e.g. kern, render, audio)...">
             </div>
             <div style="display: flex; gap: 8px;">
               <button class="pixel-btn" id="refresh-dash-btn">↺ Refresh (Simulated)</button>
@@ -2571,7 +2840,8 @@
                   <td>14.2 MB</td>
                   <td>1.8%</td>
                   <td><span class="pixel-badge pixel-badge-success">ACTIVE</span></td>
-                  <td><button class="pixel-btn" style="padding: 2px 6px; font-size: 0.7rem;" onclick="showToast('Kernel PID 1001 is protected')">Hold</button></td>
+                  <td><button class="pixel-btn" style="padding: 2px 6px; font-size: 0.7rem;"
+                      onclick="showToast('Kernel PID 1001 is protected')">Hold</button></td>
                 </tr>
                 <tr>
                   <td>1024</td>
@@ -2579,7 +2849,8 @@
                   <td>42.8 MB</td>
                   <td>12.4%</td>
                   <td><span class="pixel-badge pixel-badge-success">ACTIVE</span></td>
-                  <td><button class="pixel-btn pixel-btn-destructive" style="padding: 2px 6px; font-size: 0.7rem;" onclick="terminateRow(this)">Kill</button></td>
+                  <td><button class="pixel-btn pixel-btn-destructive" style="padding: 2px 6px; font-size: 0.7rem;"
+                      onclick="terminateRow(this)">Kill</button></td>
                 </tr>
                 <tr>
                   <td>1048</td>
@@ -2587,7 +2858,8 @@
                   <td>8.6 MB</td>
                   <td>3.1%</td>
                   <td><span class="pixel-badge pixel-badge-info">STANDBY</span></td>
-                  <td><button class="pixel-btn pixel-btn-destructive" style="padding: 2px 6px; font-size: 0.7rem;" onclick="terminateRow(this)">Kill</button></td>
+                  <td><button class="pixel-btn pixel-btn-destructive" style="padding: 2px 6px; font-size: 0.7rem;"
+                      onclick="terminateRow(this)">Kill</button></td>
                 </tr>
                 <tr>
                   <td>1089</td>
@@ -2595,7 +2867,8 @@
                   <td>22.1 MB</td>
                   <td>8.7%</td>
                   <td><span class="pixel-badge pixel-badge-warning">THROTTLED</span></td>
-                  <td><button class="pixel-btn pixel-btn-destructive" style="padding: 2px 6px; font-size: 0.7rem;" onclick="terminateRow(this)">Kill</button></td>
+                  <td><button class="pixel-btn pixel-btn-destructive" style="padding: 2px 6px; font-size: 0.7rem;"
+                      onclick="terminateRow(this)">Kill</button></td>
                 </tr>
                 <tr>
                   <td>1112</td>
@@ -2603,12 +2876,14 @@
                   <td>5.4 MB</td>
                   <td>0.4%</td>
                   <td><span class="pixel-badge pixel-badge-success">ACTIVE</span></td>
-                  <td><button class="pixel-btn pixel-btn-destructive" style="padding: 2px 6px; font-size: 0.7rem;" onclick="terminateRow(this)">Kill</button></td>
+                  <td><button class="pixel-btn pixel-btn-destructive" style="padding: 2px 6px; font-size: 0.7rem;"
+                      onclick="terminateRow(this)">Kill</button></td>
                 </tr>
               </tbody>
             </table>
           </div>
-          <div style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted); margin-top: 0.75rem; display: flex; justify-content: space-between;">
+          <div
+            style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted); margin-top: 0.75rem; display: flex; justify-content: space-between;">
             <span id="task-count-label">5 tasks listed</span>
             <span>Allocated Memory: 93.1 MB / 640 KB Base Conventional OK</span>
           </div>
@@ -2633,7 +2908,11 @@
             <span class="faq-icon">▶</span>
           </button>
           <div class="faq-content">
-            <strong>Retro Terminal</strong> models CRT developer developer consoles, green/amber phosphor radiation, static scanline overlays, bracketed ASCII frames, and command prompt workflows. <strong>Retro Pixel</strong> models classic graphical operating systems (Windows 95 / Amiga / System 7), integer pixel illustrations, desktop purple window headers, arcade orange/teal accents, and stepped 3D pixel bevels. They are never aliased together.
+            <strong>Retro Terminal</strong> models CRT developer developer consoles, green/amber phosphor radiation,
+            static scanline overlays, bracketed ASCII frames, and command prompt workflows. <strong>Retro Pixel</strong>
+            models classic graphical operating systems (Windows 95 / Amiga / System 7), integer pixel illustrations,
+            desktop purple window headers, arcade orange/teal accents, and stepped 3D pixel bevels. They are never
+            aliased together.
           </div>
         </div>
 
@@ -2643,7 +2922,9 @@
             <span class="faq-icon">▶</span>
           </button>
           <div class="faq-content">
-            Never. The style enforces a paired typography rule: chunky pixel display fonts are strictly reserved for headlines, badges, and window headers. All multi-line paragraphs, tables, inputs, and explanatory text use highly legible humanist sans-serif (Inter) or clean monospace (JetBrains Mono).
+            Never. The style enforces a paired typography rule: chunky pixel display fonts are strictly reserved for
+            headlines, badges, and window headers. All multi-line paragraphs, tables, inputs, and explanatory text use
+            highly legible humanist sans-serif (Inter) or clean monospace (JetBrains Mono).
           </div>
         </div>
 
@@ -2653,7 +2934,10 @@
             <span class="faq-icon">▶</span>
           </button>
           <div class="faq-content">
-            Dark mode uses a midnight navy canvas (<code>#10102B</code>) with desktop purple headers and vintage cream text. Light mode uses vintage cream/parchment (<code>#F2DFB5</code>) with warm beige window panels and midnight ink text. In both modes, tokens flip in synchronized pairs to guarantee WCAG AA contrast with zero color collision.
+            Dark mode uses a midnight navy canvas (<code>#10102B</code>) with desktop purple headers and vintage cream
+            text. Light mode uses vintage cream/parchment (<code>#F2DFB5</code>) with warm beige window panels and
+            midnight ink text. In both modes, tokens flip in synchronized pairs to guarantee WCAG AA contrast with zero
+            color collision.
           </div>
         </div>
 
@@ -2663,7 +2947,10 @@
             <span class="faq-icon">▶</span>
           </button>
           <div class="faq-content">
-            Taste Engine v0.11.0 includes official Tailwind tokens (<code>colors.taste.pixel-*</code>, <code>boxShadow.pixel-*</code>) in <code>presets/tailwind/tailwind.preset.js</code> and ready-to-use classes in <code>presets/tailwind/taste-components.css</code>, plus shadcn/ui theme variable overrides in <code>presets/shadcn/shadcn-themes.css</code>.
+            Taste Engine v0.11.0 includes official Tailwind tokens (<code>colors.taste.pixel-*</code>,
+            <code>boxShadow.pixel-*</code>) in <code>presets/tailwind/tailwind.preset.js</code> and ready-to-use classes
+            in <code>presets/tailwind/taste-components.css</code>, plus shadcn/ui theme variable overrides in
+            <code>presets/shadcn/shadcn-themes.css</code>.
           </div>
         </div>
       </div>
@@ -2685,7 +2972,8 @@
           <p>Install portable skill directly for Claude Code, Codex, Cursor, or Antigravity:</p>
           <div class="code-box">
             <code>npx skills add kennedys0/taste-engine --skill taste-engine</code>
-            <button class="copy-pill-btn" onclick="copySnippet('npx skills add kennedys0/taste-engine --skill taste-engine')">Copy</button>
+            <button class="copy-pill-btn"
+              onclick="copySnippet('npx skills add kennedys0/taste-engine --skill taste-engine')">Copy</button>
           </div>
         </div>
 
@@ -2694,7 +2982,8 @@
           <p>Clone and install with zero external runtime dependencies (Node 20+):</p>
           <div class="code-box">
             <code>node bin/taste-engine.mjs install --agent all --project</code>
-            <button class="copy-pill-btn" onclick="copySnippet('node bin/taste-engine.mjs install --agent all --project')">Copy</button>
+            <button class="copy-pill-btn"
+              onclick="copySnippet('node bin/taste-engine.mjs install --agent all --project')">Copy</button>
           </div>
         </div>
 
@@ -2712,15 +3001,19 @@
   </main>
 
   <!-- DETAIL MODAL DIALOG -->
-  <div class="pixel-modal-backdrop" id="project-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="pixel-modal-backdrop" id="project-modal-backdrop" role="dialog" aria-modal="true"
+    aria-labelledby="modal-title">
     <div class="pixel-modal">
       <div class="window-header">
         <span id="modal-title">[SPEC_INSPECTOR // PROJECT_DETAILS.EXE]</span>
         <button class="window-control-btn" id="modal-close-btn" aria-label="Close dialog">×</button>
       </div>
       <div class="window-body">
-        <h3 id="modal-heading" style="font-family: var(--pixel-font-display); font-size: 1.25rem; color: var(--pixel-orange); margin-bottom: 0.75rem;"></h3>
-        <p id="modal-body-text" style="font-size: 0.9rem; line-height: 1.6; color: var(--pixel-text); margin-bottom: 1.5rem;"></p>
+        <h3 id="modal-heading"
+          style="font-family: var(--pixel-font-display); font-size: 1.25rem; color: var(--pixel-orange); margin-bottom: 0.75rem;">
+        </h3>
+        <p id="modal-body-text"
+          style="font-size: 0.9rem; line-height: 1.6; color: var(--pixel-text); margin-bottom: 1.5rem;"></p>
         <div style="display: flex; justify-content: flex-end; gap: 8px;">
           <button class="pixel-btn pixel-btn-primary" id="modal-ok-btn">Acknowledge ↵</button>
         </div>
@@ -2731,21 +3024,26 @@
   <!-- TOAST NOTIFICATION CONTAINER -->
   <div class="pixel-toast-container" id="toast-container" aria-live="polite"></div>
 
-  <!-- MOBILE-SAFE FOOTER -->
+  <!-- COMPACT MULTI-COLUMN FOOTER -->
   <footer class="pixel-footer">
     <div class="footer-inner">
       <div class="footer-grid">
-        <div>
+        <div class="footer-brand-col">
           <div class="footer-brand-title">TASTE ENGINE // v0.11.0</div>
           <p class="footer-brand-desc">
-            The style-agnostic design system skill for AI agents. Elevating web interfaces with user-selected visual tastes, anti-slop audits, conditional SEO, and purposeful motion.
+            The style-agnostic design system skill for AI agents. Elevating web interfaces with user-selected visual
+            tastes, anti-slop audits, conditional SEO, and purposeful motion.
+          </p>
+          <p class="footer-brand-credit">
+            Created by <a href="https://github.com/kennedys0" target="_blank" rel="noopener"
+              class="footer-author-link">Mochamad Vikry (@kennedys0)</a>
           </p>
         </div>
 
-        <div>
-          <div class="footer-col-title">STYLE ARCHETYPES</div>
-          <ul class="footer-links-list">
-            <li><a href="retro-pixel.html" class="footer-link">● Retro Pixel (Current Studio)</a></li>
+        <div class="footer-archetypes-col">
+          <div class="footer-col-title">STYLE ARCHETYPES (11)</div>
+          <ul class="footer-archetypes-list">
+            <li><a href="retro-pixel.html" class="footer-link active-link">● Retro Pixel (PoW)</a></li>
             <li><a href="retro-terminal.html" class="footer-link">Retro Terminal (PoW)</a></li>
             <li><a href="neo-brutalism.html" class="footer-link">Neo-Brutalism (PoW)</a></li>
             <li><a href="claymorphism.html" class="footer-link">Claymorphism (PoW)</a></li>
@@ -2759,20 +3057,22 @@
           </ul>
         </div>
 
-        <div>
+        <div class="footer-resources-col">
           <div class="footer-col-title">RESOURCES & SPEC</div>
           <ul class="footer-links-list">
-            <li><a href="index.html" class="footer-link">Interactive Style Gallery</a></li>
-            <li><a href="https://github.com/kennedys0/taste-engine" class="footer-link" target="_blank" rel="noopener">GitHub Repository ↗</a></li>
-            <li><a href="https://github.com/kennedys0/taste-engine/blob/main/CHANGELOG.md" class="footer-link" target="_blank" rel="noopener">Changelog & Releases ↗</a></li>
+            <li><a href="index.html" class="footer-link">Main Style Gallery</a></li>
+            <li><a href="https://github.com/kennedys0/taste-engine" class="footer-link" target="_blank"
+                rel="noopener">GitHub Repository ↗</a></li>
+            <li><a href="https://github.com/kennedys0/taste-engine/blob/main/CHANGELOG.md" class="footer-link"
+                target="_blank" rel="noopener">Changelog & Releases ↗</a></li>
             <li><a href="#hero" class="footer-link" style="color: var(--pixel-orange);">Back to Top ↑</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom-row">
-        <span>Taste Engine open-source project under MIT License.</span>
-        <span>Built with integer pixel fidelity & anti-slop verification.</span>
+        <span>&copy; 2026 Mochamad Vikry &bull; Released under MIT License</span>
+        <span>Built with integer pixel fidelity &amp; anti-slop verification.</span>
       </div>
     </div>
   </footer>
@@ -3155,5 +3455,5 @@
     });
   </script>
 </body>
-</html>
 
+</html>
