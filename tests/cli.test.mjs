@@ -142,7 +142,7 @@ test('prints presets list and inits presets into target folder with init and --i
   assert.equal(fs.existsSync(path.join(cwdDir,'taste-presets','tailwind','tailwind.preset.js')),true);
  } finally {fs.rmSync(dir,{recursive:true,force:true});}
 });
-test('forwards -update, update and --update to the updater script',()=>{
+test('forwards -update, update and --update to the updater script',{skip:process.platform==='win32'},()=>{
  const r1=run(['-update','--help']);
  assert.equal(r1.status,0,r1.stderr);
  assert.equal(r1.stdout.includes('Taste Engine - safe updater'),true);
@@ -154,6 +154,29 @@ test('forwards -update, update and --update to the updater script',()=>{
  const r3=run(['--update','--help']);
  assert.equal(r3.status,0,r3.stderr);
  assert.equal(r3.stdout.includes('Taste Engine - safe updater'),true);
+});
+test('update --agent claude-code --global targets .claude/skills/taste-engine',{skip:process.platform==='win32'},()=>{
+ const home=fs.mkdtempSync(path.join(os.tmpdir(),'taste-update-home-'));
+ try {
+  const installRes=run(['install','--agent','claude-code','--global'],{HOME:home,USERPROFILE:home});
+  assert.equal(installRes.status,0,installRes.stderr);
+  const fixtureZip=path.join(root,'dist',`taste-engine-v${pkg.version}.zip`);
+  const updateRes=run(['update','--agent','claude-code','--global','--zip',fixtureZip,'--dry-run'],{HOME:home,USERPROFILE:home});
+  assert.equal(updateRes.status,0,updateRes.stderr);
+  const output=updateRes.stdout+updateRes.stderr;
+  assert.equal(output.includes('.claude/skills/taste-engine')||output.includes('.claude\\skills\\taste-engine'),true);
+  assert.equal(output.includes('not installed'),false);
+ } finally {fs.rmSync(home,{recursive:true,force:true});}
+});
+test('doctor output contains installed version',()=>{
+ const home=fs.mkdtempSync(path.join(os.tmpdir(),'taste-doc-home-'));
+ try {
+  const installRes=run(['install','--agent','antigravity','--global'],{HOME:home,USERPROFILE:home});
+  assert.equal(installRes.status,0,installRes.stderr);
+  const docRes=run(['doctor','--agent','antigravity','--global'],{HOME:home,USERPROFILE:home});
+  assert.equal(docRes.status,0,docRes.stderr);
+  assert.equal(docRes.stdout.includes(`(v${pkg.version})`),true);
+ } finally {fs.rmSync(home,{recursive:true,force:true});}
 });
 test('npm pack includes docs/index.html and CLI avoids shell interpolation',()=>{
  const pack=spawnSync('npm',['pack','--dry-run','--json'],{cwd:root,encoding:'utf8',shell:true});

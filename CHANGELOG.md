@@ -8,6 +8,7 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 - **CLI Install Backups:** Moved installation backups outside the agent's skills directory into `<parent-of-skills-dir>/.taste-engine-backups/` to prevent agents from discovering duplicate skills with the same name.
 - **Gallery Command & npm Packaging:** Included `docs/` in `package.json` `files` so `taste-engine gallery` is available in npm-installed packages, and replaced shell-interpolated `exec()` with argument-array `spawn()` with detached option and error handling.
+- **CLI Update & Doctor Parity:** Added `--agent`, `--global|--project`, and `--cwd` options to `taste-engine update` to route updates to specific agent installations (or all existing installations via `--agent all`). Enhanced `taste-engine doctor` to report installed skill versions, corrected README/INSTALL guidance to reference the Node CLI rather than `update.sh` for global shortcuts, and clarified CLI version vs installed version reporting.
 
 ## [0.10.10] - 2026-11-05
 

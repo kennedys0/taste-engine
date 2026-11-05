@@ -29,7 +29,7 @@ const alias = {
   'github-copilot': 'copilot', 'github_copilot': 'copilot',
 };
 function help() {
-  console.log(`Taste Engine ${VERSION}\n\nUsage:\n  taste-engine -v | --version | version                             Check installed version\n  taste-engine update | -update                                     Update skill to the latest release\n  taste-engine gallery | --gallery                                  Preview all 10 styles interactively in your browser\n  taste-engine preset | --preset                                    List available Tailwind CSS & shadcn/ui presets\n  taste-engine init | --init [dir] [--dry-run]                      Scaffold Tailwind & shadcn presets into your project\n  taste-engine install --agent <name|all> [--global|--project] [--cwd DIR] [--dry-run]\n  taste-engine uninstall --agent <name|all> [--global|--project] [--cwd DIR] [--dry-run]\n  taste-engine doctor [--agent <name|all>] [--global|--project] [--cwd DIR]\n  taste-engine help\n\nSupported agents:\n  antigravity, antigravity-cli (agy), claude-code (claude), codex,\n  cursor, cline, roo-code (roo), windsurf, copilot, all\n\nDefaults: project install; --agent all.\nFor GitHub-managed updates, use the installed scripts/update.sh (Antigravity)\nor npx skills update for installs managed by the skills CLI.\n`);
+  console.log(`Taste Engine ${VERSION}\n\nUsage:\n  taste-engine -v | --version | version                             Check CLI version\n  taste-engine update [--agent <name|all>] [--global|--project]     Update skill to the latest release\n  taste-engine gallery | --gallery                                  Preview all 10 styles interactively in your browser\n  taste-engine preset | --preset                                    List available Tailwind CSS & shadcn/ui presets\n  taste-engine init | --init [dir] [--dry-run]                      Scaffold Tailwind & shadcn presets into your project\n  taste-engine install --agent <name|all> [--global|--project] [--cwd DIR] [--dry-run]\n  taste-engine uninstall --agent <name|all> [--global|--project] [--cwd DIR] [--dry-run]\n  taste-engine doctor [--agent <name|all>] [--global|--project] [--cwd DIR]\n  taste-engine help\n\nSupported agents:\n  antigravity, antigravity-cli (agy), claude-code (claude), codex,\n  cursor, cline, roo-code (roo), windsurf, copilot, all\n\nDefaults: project install; --agent all.\nFor GitHub-managed updates, use taste-engine update or update.sh.\n`);
 }
 function parse(argv) {
   const options = { agent: 'all', scope: 'project', cwd: process.cwd(), dryRun: false };
@@ -122,8 +122,68 @@ function main() {
   if(command==='update' || command==='-update' || command==='--update') {
     const updateScript = path.join(source, 'scripts', 'update.sh');
     if (!fs.existsSync(updateScript)) throw new Error(`Update script not found at ${updateScript}`);
-    const res = spawnSync('bash', [updateScript, ...args], { stdio: 'inherit' });
-    process.exit(res.status ?? 0);
+
+    const targetArgv = [];
+    const updaterArgs = [];
+    let hasAgent = false;
+    for(let i = 0; i < args.length; i++) {
+      const a = args[i];
+      if(a === '--agent' || a === '-a') {
+        hasAgent = true;
+        if(i + 1 >= args.length || args[i + 1].startsWith('-')) throw new Error('Missing --agent value');
+        targetArgv.push('--agent', args[++i]);
+      } else if(a === '--global' || a === '-g') {
+        targetArgv.push('--global');
+      } else if(a === '--project' || a === '-p') {
+        targetArgv.push('--project');
+      } else if(a === '--cwd') {
+        if(i + 1 >= args.length || args[i + 1].startsWith('-')) throw new Error('Missing --cwd value');
+        targetArgv.push('--cwd', args[++i]);
+      } else {
+        updaterArgs.push(a);
+      }
+    }
+
+    const runUpdater = (targetPath, extraArgs) => {
+      let bashCmd = 'bash';
+      if(process.platform === 'win32') {
+        const gitBash = 'C:\\Program Files\\Git\\bin\\bash.exe';
+        if(fs.existsSync(gitBash)) bashCmd = gitBash;
+      }
+      const fullArgs = targetPath ? ['--target', targetPath, ...extraArgs] : extraArgs;
+      const res = spawnSync(bashCmd, [updateScript, ...fullArgs], { stdio: 'inherit' });
+      return res.status ?? 0;
+    };
+
+    if(hasAgent) {
+      const o = parse(targetArgv);
+      let targetList = targets(o);
+      if(o.agent === 'all') {
+        targetList = targetList.filter(t => fs.existsSync(t));
+        if(targetList.length === 0) {
+          console.log('No existing Taste Engine installations found to update.');
+          return;
+        }
+      }
+      for(const t of targetList) {
+        console.log(`Updating target: ${t}`);
+        const code = runUpdater(t, updaterArgs);
+        if(code !== 0) process.exit(code);
+      }
+      return;
+    }
+
+    if(updaterArgs.includes('--help') || updaterArgs.includes('-h')) {
+      const code = runUpdater(null, updaterArgs);
+      process.exit(code);
+    }
+    const hasExplicitTarget = updaterArgs.includes('--target');
+    const defaultTarget = hasExplicitTarget ? null : path.join(os.homedir(), agents.antigravity.global, 'taste-engine');
+    if(!hasExplicitTarget) {
+      console.log(`Updating target: ${defaultTarget}`);
+    }
+    const code = runUpdater(defaultTarget, updaterArgs);
+    process.exit(code);
   }
   if(command==='gallery' || command==='preview' || command==='--gallery' || command==='--preview') {
     if(args.includes('--help') || args.includes('-h')) { help(); return; }
@@ -184,8 +244,14 @@ function main() {
       else {
         const skill=path.join(dest,'SKILL.md');
         const ok=fs.existsSync(skill) && fs.readFileSync(skill,'utf8').includes('name: taste-engine');
-        console.log(`${ok?'OK':'MISSING'} ${dest}`);
-        if(!ok) process.exitCode=1;
+        if(ok) {
+          const vMatch=fs.readFileSync(skill,'utf8').match(/version:\s*"?([^"\r\n]+)"?/);
+          const vStr=vMatch?` (v${vMatch[1]})`:'';
+          console.log(`OK ${dest}${vStr}`);
+        } else {
+          console.log(`MISSING ${dest}`);
+          process.exitCode=1;
+        }
       }
     }
     return;

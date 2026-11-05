@@ -65,11 +65,14 @@ node bin/taste-engine.mjs version
 
 ## Updating
 
-**Using the global `taste-engine` shortcut:**
+**Using the global `taste-engine` shortcut (symlink to `bin/taste-engine.mjs` or `npm link`):**
 
 ```bash
-taste-engine -v        # Check version
-taste-engine -update   # Download and apply latest GitHub Release
+taste-engine -v                                        # Check CLI version
+taste-engine doctor --agent all                        # Check installed skill versions
+taste-engine update                                    # Update default Antigravity installation
+taste-engine update --agent claude-code --global       # Update Claude Code installation
+taste-engine update --agent all --global               # Update all existing global installations
 ```
 
 **If installed with `npx skills add`:** use its managed update commands:

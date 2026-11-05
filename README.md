@@ -116,16 +116,21 @@ The installer supports `antigravity`, `antigravity-cli` (alias `agy`), `claude-c
 
 ### Enable global `taste-engine` CLI command
 
-To run `taste-engine -v` and `taste-engine -update` anywhere in your terminal:
+To run `taste-engine` anywhere in your terminal, create a symlink to the Node CLI or use `npm link`:
 
 ```bash
+# Option 1: Symlink the Node CLI
 mkdir -p ~/.local/bin
-ln -sf ~/.gemini/config/skills/taste-engine/scripts/update.sh ~/.local/bin/taste-engine
+ln -sf /path/to/taste-engine/bin/taste-engine.mjs ~/.local/bin/taste-engine
 chmod +x ~/.local/bin/taste-engine
+
+# Option 2: npm link from repository root
+npm link
 ```
 
-- `taste-engine -v` — check current installed version.
-- `taste-engine -update` — automatically download and apply the latest release from GitHub.
+- `taste-engine -v` — check CLI version (use `taste-engine doctor` to inspect installed skill versions).
+- `taste-engine update` — automatically download and apply the latest release from GitHub.
+- `taste-engine update --agent <name|all> [--global|--project]` — update a specific agent or all installed targets (e.g. `taste-engine update --agent claude-code --global`).
 
 > **Publication status:** installation commands work after the source files in this repository are published. The presence of a GitHub repository alone does not imply a working skill package or a release asset.
 
