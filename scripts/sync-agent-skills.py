@@ -23,8 +23,13 @@ if args.check:
  if s!=d:
   delta=sorted({*s,*d}- {p for p in s.keys() & d.keys() if s[p]==d[p]})
   raise SystemExit('ERROR: skills/ mirror differs from canonical skill: '+', '.join(delta[:10]))
- print(f'PASS: skills/taste-engine mirror synchronized ({len(s)} files)')
+ root_sh=ROOT/'update.sh'
+ canon_sh=SRC/'scripts'/'update.sh'
+ if not root_sh.is_file() or root_sh.read_bytes()!=canon_sh.read_bytes():
+  raise SystemExit('ERROR: root update.sh differs from canonical taste-engine/scripts/update.sh')
+ print(f'PASS: skills/taste-engine mirror synchronized ({len(s)} files) and update.sh byte-identical')
 else:
  if DST.exists(): shutil.rmtree(DST)
  shutil.copytree(SRC,DST,ignore=IGNORE)
- print('PASS: synchronized skills/taste-engine')
+ shutil.copy2(SRC/'scripts'/'update.sh', ROOT/'update.sh')
+ print('PASS: synchronized skills/taste-engine and root update.sh')
