@@ -68,7 +68,7 @@ Color alone is not Glassmorphism. Never default to neon purple/cyan for every br
 ## Layout and geometry
 
 - **Strict 1:1 circle geometry (anti-oval):** Any circular UI element (status indicator dots, avatars, circular buttons with `border-radius: 50%`) must enforce `aspect-ratio: 1 / 1; flex-shrink: 0;` to prevent them from squishing into distorted ovals when viewport shrinks down to 320px.
-- **Responsive 320px baseline & fluid typography:** All layouts must scale gracefully down to 320px width without horizontal blowout. Typography and paddings must scale down proportionally (hero titles clamp to 1.35rem–1.65rem, section headings to 1.2rem–1.45rem, code to 0.725rem–0.785rem) to prevent bloated interfaces ("UI bengkak"). Top navigation headers must collapse links behind an accessible hamburger menu on narrow mobile screens (< 768px) rather than crowding the header.
+- **Responsive baseline:** Adhere to the [responsive baseline](../references/responsive-baseline.md) for 320px minimum viewport safety, fluid mobile typography defaults, and small-viewport navigation patterns.
 - Use a purposeful foreground/background composition: ambient backdrop → primary glass surfaces → elevated child glass controls and crisp content. Layered glass cards (card inside card) are explicitly encouraged when establishing functional interaction boundaries.
 - Use consistent corners (commonly 16–28 px for larger panes) and spacing. Avoid an entirely empty oversized first viewport just to reach 100svh.
 - On responsive screens, panes should stack cleanly, preserve readable padding, and avoid clipped blur or overflow. Header, hero content, and controls must fit or expand naturally.

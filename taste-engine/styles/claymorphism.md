@@ -69,7 +69,7 @@ Choose a cohesive pastel-and-saturated palette:
 ## Layout and geometry
 
 - **Strict 1:1 circle geometry (anti-oval):** Any circular UI element (status indicator dots, avatars, circular buttons with `border-radius: 50%`) must enforce `aspect-ratio: 1 / 1; flex-shrink: 0;` to prevent them from squishing into distorted ovals when viewport shrinks down to 320px.
-- **Responsive 320px baseline & fluid typography:** All layouts must scale gracefully down to 320px width without horizontal blowout. Typography and paddings must scale down proportionally (hero titles clamp to 1.35rem–1.65rem, section headings to 1.2rem–1.45rem, code to 0.725rem–0.785rem) to prevent bloated interfaces ("UI bengkak"). Top navigation headers must collapse links behind an accessible hamburger menu on narrow mobile screens (< 768px) rather than crowding the header.
+- **Responsive baseline:** Adhere to the [responsive baseline](../references/responsive-baseline.md) for 320px minimum viewport safety, fluid mobile typography defaults, and small-viewport navigation patterns.
 Radius 24–32 px cards, 20–26 px buttons, 9999px full pills or circles, 14–16 px squircle badges and checkboxes. Maintain consistent 8 px rhythm and comfortable gutters. Avoid random circles that have no semantic interaction.
 
 ## Surfaces, depth, texture

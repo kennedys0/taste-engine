@@ -59,7 +59,7 @@ Pure, neutral UI sans: Inter, Source Sans 3, SF Pro, or system sans paired with 
 ## Layout and geometry
 
 - **Strict 1:1 circle geometry (anti-oval):** Any circular UI element (status indicator dots, avatars, circular buttons with `border-radius: 50%`) must enforce `aspect-ratio: 1 / 1; flex-shrink: 0;` to prevent them from squishing into distorted ovals when viewport shrinks down to 320px.
-- **Responsive 320px baseline & fluid typography:** All layouts must scale gracefully down to 320px width without horizontal blowout. Typography and paddings must scale down proportionally (hero titles clamp to 1.35rem–1.65rem, section headings to 1.2rem–1.45rem, code to 0.725rem–0.785rem) to prevent bloated interfaces ("UI bengkak"). Top navigation headers must collapse links behind an accessible hamburger menu on narrow mobile screens (< 768px) rather than crowding the header.
+- **Responsive baseline:** Adhere to the [responsive baseline](../references/responsive-baseline.md) for 320px minimum viewport safety, fluid mobile typography defaults, and small-viewport navigation patterns.
 Consistent 4px/8px spacing grid; gentle, unified corner radii (`6px–8px`); subtle hairline borders where structural separation is necessary. Negative space groups related information naturally.
 
 ## Surfaces, depth, texture
@@ -70,7 +70,6 @@ Surfaces are quiet, flat, and matte. Minimal or zero box-shadows (`0 1px 3px rgb
 
 - **Iconography — zero emojis:** Emojis are strictly banned as interface icons, status indicators, or button prefixes across all UI elements. Use Lucide or clean vector SVGs (16px–24px) with consistent stroke weight (1.5px–2px) and currentColor.
 - **Hairline Navigation Header:** Fixed or sticky top bar with subtle hairline dividing stroke (`1px solid rgba(0, 0, 0, 0.08)`), brand mark, horizontal link row on desktop, and a dedicated high-contrast installation CTA. On mobile viewports (< 768px), links collapse into an accessible hamburger button with 44px+ tap target drawer.
-- **Single-Line Inline Command Pill ("Sejajarin"):** Monospace command snippet bar (`$ npx skills add kennedys0/taste-engine --skill taste-style-minimalism`) aligned in a single horizontal row with `line-height: 1; flex-shrink: 0;` and a one-click copy button.
 - **Primary Action (CTA):** Solid dark pill or rounded rectangle (`border-radius: 6px`) with high contrast fill, distinct hover state, and zero visual blur noise.
 - **Secondary Action:** Unadorned text link or subtle outline button with hairline border (`1px solid var(--pow-border)`).
 - **Restrained Form Input:** Clean input field with visible hairline border, clear placeholder, and high-contrast focus ring (`outline: 2px solid var(--pow-accent); outline-offset: 2px;`).

@@ -39,7 +39,7 @@ A successful swiss-editorial implementation demonstrates **all** of the followin
 
 ## Typography and typewriting
 
-Objective grotesk sans: Helvetica Neue, Neue Haas Grotesk, Arial, Inter, or system sans. Headlines: 48–72 px desktop (weight 700–800, `letter-spacing: -0.03em`); subheadings: 24–32 px; body: 16–18 px (line-height 1.55–1.65); index numerals and captions: 12–14 px uppercase (`letter-spacing: 0.08em`).
+Objective grotesk sans: Helvetica Neue, Neue Haas Grotesk, Arial, Inter, or system sans. Headlines: clamp(2rem, 6vw, 4.5rem) (32px mobile up to 72px desktop, weight 700–800, `letter-spacing: -0.03em`); subheadings: 24–32 px; body: 16–18 px (line-height 1.55–1.65); index numerals and captions: 12–14 px uppercase (`letter-spacing: 0.08em`).
 
 ## Color direction
 
@@ -59,7 +59,7 @@ Objective grotesk sans: Helvetica Neue, Neue Haas Grotesk, Arial, Inter, or syst
 ## Layout and geometry
 
 - **Strict 1:1 circle geometry (anti-oval):** Any circular UI element (status indicator dots, avatars, circular buttons with `border-radius: 50%`) must enforce `aspect-ratio: 1 / 1; flex-shrink: 0;` to prevent them from squishing into distorted ovals when viewport shrinks down to 320px.
-- **Responsive 320px baseline & fluid typography:** All layouts must scale gracefully down to 320px width without horizontal blowout. Typography and paddings must scale down proportionally (hero titles clamp to 1.35rem–1.65rem, section headings to 1.2rem–1.45rem, code to 0.725rem–0.785rem) to prevent bloated interfaces ("UI bengkak"). Top navigation headers must collapse links behind an accessible hamburger menu on narrow mobile screens (< 768px) rather than crowding the header.
+- **Responsive baseline:** Adhere to the [responsive baseline](../references/responsive-baseline.md) for 320px minimum viewport safety, fluid mobile typography defaults, and small-viewport navigation patterns.
 Corners are razor-sharp (`0px` border-radius by default, up to `2px` max); generous outer margins; strict 12-column grid alignment. Structural 1px horizontal rules frame content blocks.
 
 ## Surfaces, depth, texture

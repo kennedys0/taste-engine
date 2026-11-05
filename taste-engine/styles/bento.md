@@ -72,7 +72,7 @@ In narrative, profile, or value-statement tiles, do not render whole paragraphs 
 ## Layout and geometry
 
 - **Strict 1:1 circle geometry (anti-oval):** Any circular UI element (status indicator dots, avatars, circular buttons with `border-radius: 50%`) must enforce `aspect-ratio: 1 / 1; flex-shrink: 0;` to prevent them from squishing into distorted ovals when viewport shrinks down to 320px.
-- **Responsive 320px baseline & fluid typography:** All layouts must scale gracefully down to 320px width without horizontal blowout. Typography and paddings must scale down proportionally (hero titles clamp to 1.35rem–1.65rem, section headings to 1.2rem–1.45rem, code to 0.725rem–0.785rem) to prevent bloated interfaces ("UI bengkak"). Top navigation headers must collapse links behind an accessible hamburger menu on narrow mobile screens (< 768px) rather than crowding the header.
+- **Responsive baseline:** Adhere to the [responsive baseline](../references/responsive-baseline.md) for 320px minimum viewport safety, fluid mobile typography defaults, and small-viewport navigation patterns.
 CSS Grid: `grid-template-columns: repeat(3, 1fr)` or `repeat(4, 1fr)`; gaps: 16px–24px. Card radii: 24px–28px. All tile borders must align flush along horizontal and vertical grid tracks. Generous corner rounding (`24px–28px`) is essential for the soft, tactile bento compartmentalization.
 
 ## Surfaces, depth, texture

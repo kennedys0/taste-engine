@@ -1,6 +1,6 @@
 ---
 name: taste-engine
-description: Automatically routes visual UI work to a user-chosen aesthetic and applies SEO readiness to public-facing websites. Use whenever a user asks to build, create, design, or redesign a website, portfolio, landing page, dashboard, web app, mobile app, UI/UX screen, frontend, or component, or add/refine micro-interactions or full-screen hero sections (including Indonesian prompts such as "build a portfolio website"). Before writing UI code, ask ONE style question and stop if no visual style or approved project design system is specified. If the prompt already names an aesthetic such as skeuomorphism/skeumorphsm, claymorphism, glassmorphism, brutalism, neo-brutalism, minimalism, bento, or editorial, load its bundled style pack immediately and proceed WITHOUT asking again. Preserve established styles for minor fixes; for SEO-only tasks, load the SEO module without a visual style question; skip unrelated non-visual work.
+description: Automatically routes visual UI work to a user-chosen aesthetic and applies SEO readiness to public-facing websites. Use whenever a user asks to build, create, design, or redesign a website, portfolio, landing page, dashboard, web app, mobile app, UI/UX screen, frontend, or component, or add/refine micro-interactions or full-screen hero sections (including Indonesian prompts such as "build a portfolio website"). Before writing UI code, ask ONE style question and stop if no visual style or approved project design system is specified. If the prompt already names an aesthetic such as skeuomorphism, claymorphism, glassmorphism, brutalism, neo-brutalism, minimalism, bento, or editorial, load its bundled style pack immediately and proceed WITHOUT asking again. Preserve established styles for minor fixes; for SEO-only tasks, load the SEO module without a visual style question; skip unrelated non-visual work.
 license: MIT
 metadata:
   version: "0.10.10"
@@ -145,17 +145,9 @@ Detailed routing, blends, and conflict rules: [style router](references/style-ro
 
 3. **Build project Design DNA:** type families + fallback, type scale, font weights, writing tone, palette roles, density, spacing, radius, border, elevation, layout grid, component anatomy, states, navigation, motion and reduced-motion rules. See [translation](references/translation.md).
 
-   - **Dark & light mode pair coupling:** when dark or light mode is requested, ensure paired design tokens for canvas, cards, text, borders, inputs, and semantic status pills flip in tandem so background and foreground colors never collide (zero black-on-black or white-on-white text). In dark mode, unless the chosen style pack specifically dictates otherwise (e.g., Brutalism's intentional `#000000` high-contrast canvas or Retro-Terminal's CRT phosphor dark), avoid harsh pitch-black canvas by default; prefer warm neutral dark slate-grey (Codex / OpenAI aesthetic: canvas `#212328`, surfaces `#2b2e36`, elevated `#343842`, recessed wells `#1a1c21`, borders `rgba(255, 255, 255, 0.12)`) for lower eye strain, balanced contrast, and rich surface hierarchy.
+   - **Dark & light mode pair coupling:** when dark or light mode is requested, ensure paired design tokens for canvas, cards, text, borders, inputs, and semantic status pills flip in tandem so background and foreground colors never collide (zero black-on-black or white-on-white text). In dark mode, unless the chosen style pack specifically dictates otherwise (e.g., Brutalism's intentional `#000000` high-contrast canvas or Retro-Terminal's CRT phosphor dark), use the warm dark slate fallback defined in [Responsive Baseline](references/responsive-baseline.md).
 
-   - **Strict 320px baseline & mobile anti-bloat typography:** all layouts must function smoothly down to 320px minimum viewport width with zero horizontal scroll blowout. Scale typography, paddings, and card geometry down proportionally (`clamp()` or mobile queries) to prevent oversized, inflated interfaces ("UI bengkak"): hero titles clamp to `1.35rem`–`1.65rem`, section titles to `1.2rem`–`1.45rem`, body to `0.85rem`–`0.95rem`, and code snippets to `0.725rem`–`0.785rem` with `word-break: break-all` / `overflow-x: auto`.
-
-   - **Header mobile navigation & hamburger menu:** in top navigation bars, never crowd or force horizontal link rows onto narrow screens. On viewports < 768px, collapse navigation links behind an accessible **Hamburger Menu** (using a Lucide `Menu` SVG icon) that opens a mobile sheet or dropdown drawer with comfortable 44px+ touch tap targets, rather than cramming buttons into the header.
-
-   - **Strict circle geometry (anti-oval):** all circular UI elements (avatars, status indicator dots, circular buttons, icon badges with `border-radius: 50%`) must enforce `aspect-ratio: 1 / 1; flex-shrink: 0;` so they never deform into ovals under mobile flexbox compression.
-
-   - **Single-line inline alignment ("sejajarin"):** keep quick install pills, command-line snippets, and search/copy bars strictly inline in a single horizontal row (`display: inline-flex; flex-direction: row; align-items: center; justify-content: center;`) with `line-height: 1; flex-shrink: 0;` across mobile and desktop. Never break prompt `$`, command text, and copy button into vertical stacked rows.
-
-   - **Mobile footer architecture:** avoid endless 1-column link dumps that inflate vertical scroll on mobile. Organize navigation links into a balanced 2-column grid (`repeat(2, 1fr)`), span brand identity across full-width with a subtle border divider, and provide tactile, thumb-friendly tap targets (pill buttons like 'Back to top').
+   - **Responsive baseline & layout safety:** follow [Responsive Baseline](references/responsive-baseline.md) for universal 320px viewport safety, fluid mobile typography defaults, small-viewport navigation patterns, circular geometry (`aspect-ratio: 1 / 1; flex-shrink: 0;`), inline command pills, and balanced mobile footers. Style packs may override typography and layout scales to honor their signature aesthetics.
 
 4. **Resolve precedence:** technical/safety/accessibility constraints → explicit current request → confirmed project brand → selected pack → contextual conventions. User overrides are allowed; record which dimensions differ from the pack.
 
@@ -173,7 +165,7 @@ Detailed routing, blends, and conflict rules: [style router](references/style-ro
 
    - **Zero rainbow text gradients** (`-webkit-background-clip: text` on headings) unless explicitly mandated by authentic retro/cyberpunk themes.
 
-   - **Zero emojis across all UI:** Emojis are strictly banned as interface icons, button prefixes, bullet points, status indicators, or decorative stickers across all styles. Always use crisp, scalable vector icons from Lucide, Radix, Feather, or Heroicons with consistent stroke weight (1.5px–2px) and currentColor inheritance.
+   - **Vector iconography over emoji (REFLEX):** Prefer crisp, scalable vector icons from Lucide, Radix, Feather, or Heroicons with consistent stroke weight (1.5px–2px) and currentColor inheritance as primary UI icons. Reserve emojis for deliberate user content, expressive badges, or playful genre themes.
 
    - **Zero fake widgets** (fabricated weather displays, audio spectrum equalizers, simulated live telemetry, or fake counters) invented merely to fill empty space.
 
