@@ -1,0 +1,3159 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Retro Pixel Proof of Work & Studio Guide — Taste Engine</title>
+  <meta name="description" content="Dedicated Proof of Work and design system studio for Taste Engine's Retro Pixel aesthetic archetype. 8-bit & 16-bit computing, desktop window chrome, stepped pixel bevels, and zero AI-slop.">
+  <meta name="theme-color" content="#10102B">
+  <link rel="canonical" href="https://kennedys0.github.io/taste-engine/retro-pixel.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kennedys0.github.io/taste-engine/retro-pixel.html">
+  <meta property="og:title" content="Retro Pixel Proof of Work & Studio Guide — Taste Engine">
+  <meta property="og:description" content="Dedicated Proof of Work and design system studio for Taste Engine's Retro Pixel aesthetic archetype. 8-bit & 16-bit computing, desktop window chrome, stepped pixel bevels, and zero AI-slop.">
+  <meta property="og:image" content="https://kennedys0.github.io/taste-engine/assets/banner.webp">
+  <meta property="og:site_name" content="Taste Engine">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://kennedys0.github.io/taste-engine/retro-pixel.html">
+  <meta name="twitter:title" content="Retro Pixel Proof of Work & Studio Guide — Taste Engine">
+  <meta name="twitter:description" content="Dedicated Proof of Work and design system studio for Taste Engine's Retro Pixel aesthetic archetype. 8-bit & 16-bit computing, desktop window chrome, stepped pixel bevels, and zero AI-slop.">
+  <meta name="twitter:image" content="https://kennedys0.github.io/taste-engine/assets/banner.webp">
+  <link rel="icon" type="image/webp" href="assets/logo.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Pixelify+Sans:wght@500;600;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    /* =========================================================
+       RETRO PIXEL DESIGN SYSTEM TOKENS
+       Authentic 8-bit/16-bit GUI, midnight grid canvas,
+       desktop purple title bars, arcade orange/teal accents,
+       and stepped 3D pixel bevels.
+       ========================================================= */
+    :root {
+      /* Dark Theme (Midnight Arcade Grid) */
+      --pixel-bg: #10102b;
+      --pixel-surface: #1b1b3a;
+      --pixel-surface-elevated: #25254f;
+      --pixel-window: #22224a;
+      --pixel-window-header: #5b438e;
+      --pixel-well-bg: #0d0d22;
+
+      --pixel-teal: #2ca7a3;
+      --pixel-teal-rgb: 44, 167, 163;
+      --pixel-orange: #f27d36;
+      --pixel-orange-rgb: 242, 125, 54;
+      --pixel-purple: #5b438e;
+      --pixel-cream: #f2dfb5;
+
+      --pixel-text: #f2dfb5;
+      --pixel-text-muted: #9999c2;
+      --pixel-text-dim: #6c6c99;
+      --pixel-text-heading: #f27d36;
+
+      --pixel-border-color: #080816;
+      --pixel-border: 2px solid var(--pixel-border-color);
+      --pixel-border-thin: 1px solid var(--pixel-border-color);
+      --pixel-bevel-light: rgba(255, 255, 255, 0.35);
+      --pixel-bevel-dark: #000000;
+
+      --pixel-shadow: 4px 4px 0px #000000;
+      --pixel-shadow-sm: 2px 2px 0px #000000;
+      --pixel-shadow-lg: 6px 6px 0px #000000;
+
+      --pixel-grid-color: rgba(44, 167, 163, 0.08);
+
+      --pixel-font-display: 'Pixelify Sans', 'Press Start 2P', monospace;
+      --pixel-font-arcade: 'Press Start 2P', monospace;
+      --pixel-font-body: 'Inter', system-ui, -apple-system, sans-serif;
+      --pixel-font-mono: 'JetBrains Mono', monospace;
+      --pixel-radius: 0px;
+      --pixel-motion-duration: 90ms;
+
+      /* Semantic status tokens */
+      --pixel-success: #2bb673;
+      --pixel-warning: #e69b00;
+      --pixel-error: #e03e3e;
+      --pixel-info: #2ca7a3;
+    }
+
+    [data-theme="light"] {
+      /* Light Theme (Vintage Parchment Workstation) */
+      --pixel-bg: #f2dfb5;
+      --pixel-surface: #e4dece;
+      --pixel-surface-elevated: #ece6d8;
+      --pixel-window: #d8d2c2;
+      --pixel-window-header: #493475;
+      --pixel-well-bg: #ded6c4;
+
+      --pixel-teal: #166b68;
+      --pixel-teal-rgb: 22, 107, 104;
+      --pixel-orange: #c85718;
+      --pixel-orange-rgb: 200, 87, 24;
+      --pixel-purple: #493475;
+      --pixel-cream: #10102b;
+
+      --pixel-text: #10102b;
+      --pixel-text-muted: #5a554a;
+      --pixel-text-dim: #7f796d;
+      --pixel-text-heading: #c85718;
+
+      --pixel-border-color: #1c1b24;
+      --pixel-border: 2px solid var(--pixel-border-color);
+      --pixel-border-thin: 1px solid var(--pixel-border-color);
+      --pixel-bevel-light: #ffffff;
+      --pixel-bevel-dark: #1c1b24;
+
+      --pixel-shadow: 4px 4px 0px #1c1b24;
+      --pixel-shadow-sm: 2px 2px 0px #1c1b24;
+      --pixel-shadow-lg: 6px 6px 0px #1c1b24;
+
+      --pixel-grid-color: rgba(16, 16, 43, 0.06);
+
+      --pixel-success: #047857;
+      --pixel-warning: #b45309;
+      --pixel-error: #b91c1c;
+      --pixel-info: #166b68;
+    }
+
+    /* Base Reset & Typography */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--pixel-bg);
+      background-image:
+        linear-gradient(var(--pixel-grid-color) 1px, transparent 1px),
+        linear-gradient(90deg, var(--pixel-grid-color) 1px, transparent 1px);
+      background-size: 24px 24px;
+      color: var(--pixel-text);
+      font-family: var(--pixel-font-body);
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background-color 140ms ease, color 140ms ease;
+    }
+
+    /* Pixel Art Image Rendering */
+    .pixel-art, img.pixel-art, canvas.pixel-art, svg.pixel-art {
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+    }
+
+    /* Strict 1:1 Circle Geometry (Anti-Oval) */
+    .brand-logo-img,
+    .nav-hamburger-btn,
+    .mobile-drawer-close-btn,
+    .dot,
+    .status-dot,
+    .swatch-circle,
+    .circle-icon {
+      aspect-ratio: 1 / 1 !important;
+      flex-shrink: 0 !important;
+    }
+
+    /* Visible Focus Outline */
+    :focus-visible {
+      outline: 2px solid var(--pixel-orange);
+      outline-offset: 2px;
+    }
+
+    /* =========================================================
+       STICKY TOP NAVIGATION
+       ========================================================= */
+    .pixel-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--pixel-surface);
+      border-bottom: var(--pixel-border);
+      padding: 0.65rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      box-shadow: var(--pixel-shadow-sm);
+    }
+
+    .nav-brand-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--pixel-text);
+      flex-shrink: 0;
+    }
+
+    .nav-brand-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--pixel-window-header);
+      border: 2px solid var(--pixel-border-color);
+      box-shadow: inset 1px 1px 0px var(--pixel-bevel-light), inset -1px -1px 0px var(--pixel-bevel-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-family: var(--pixel-font-display);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .nav-title {
+      font-family: var(--pixel-font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--pixel-text);
+    }
+
+    .nav-badge {
+      font-family: var(--pixel-font-display);
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      background: var(--pixel-orange);
+      color: #10102b;
+      border: 1px solid var(--pixel-border-color);
+      font-weight: bold;
+      letter-spacing: 0.05em;
+    }
+
+    [data-theme="light"] .nav-badge {
+      color: #ffffff;
+    }
+
+    .nav-links-desktop {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      list-style: none;
+    }
+
+    .nav-link {
+      font-family: var(--pixel-font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--pixel-text);
+      text-decoration: none;
+      padding: 4px 8px;
+      border: 1px solid transparent;
+      transition: all var(--pixel-motion-duration) steps(2);
+    }
+
+    .nav-link:hover {
+      background: var(--pixel-window-header);
+      color: #ffffff;
+      border-color: var(--pixel-border-color);
+    }
+
+    .desktop-only {
+      display: inline-flex !important;
+    }
+
+    .mobile-only {
+      display: none !important;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .nav-btn {
+      font-family: var(--pixel-font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      height: 36px;
+      min-height: 36px;
+      padding: 0 14px;
+      box-sizing: border-box;
+      line-height: 1;
+      background: var(--pixel-surface);
+      color: var(--pixel-text);
+      border: var(--pixel-border);
+      box-shadow: inset 1px 1px 0px var(--pixel-bevel-light), inset -1px -1px 0px var(--pixel-bevel-dark), var(--pixel-shadow-sm);
+      cursor: pointer;
+      user-select: none;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      vertical-align: middle;
+      white-space: nowrap;
+    }
+
+    .nav-btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: inset 1px 1px 0px var(--pixel-bevel-dark), inset -1px -1px 0px var(--pixel-bevel-light);
+    }
+
+    .btn-icon-box {
+      width: 14px;
+      height: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .btn-icon-box svg {
+      width: 14px;
+      height: 14px;
+      display: block;
+    }
+
+    .nav-btn-gallery {
+      background: var(--pixel-teal);
+      color: #10102b;
+    }
+
+    [data-theme="light"] .nav-btn-gallery {
+      color: #ffffff;
+    }
+
+    .nav-hamburger-btn {
+      display: none;
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      min-height: 36px;
+      box-sizing: border-box;
+      background: var(--pixel-surface);
+      border: var(--pixel-border);
+      color: var(--pixel-text);
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      font-size: 1.15rem;
+      line-height: 1;
+      box-shadow: inset 1px 1px 0px var(--pixel-bevel-light), inset -1px -1px 0px var(--pixel-bevel-dark);
+      aspect-ratio: 1 / 1;
+      flex-shrink: 0;
+    }
+      cursor: pointer;
+      font-size: 1.25rem;
+      box-shadow: inset 1px 1px 0px var(--pixel-bevel-light), inset -1px -1px 0px var(--pixel-bevel-dark);
+    }
+
+    /* Mobile Drawer */
+    .mobile-drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 200;
+      display: none;
+      backdrop-filter: blur(2px);
+    }
+
+    .mobile-drawer-overlay.open {
+      display: block;
+    }
+
+    .mobile-nav-drawer {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(320px, 85vw);
+      background: var(--pixel-surface);
+      border-left: var(--pixel-border);
+      box-shadow: -4px 0px 0px #000000;
+      z-index: 210;
+      display: flex;
+      flex-direction: column;
+      transform: translateX(100%);
+      transition: transform 180ms ease-out;
+      padding: 1.25rem;
+    }
+
+    .mobile-nav-drawer.open {
+      transform: translateX(0);
+    }
+
+    .drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: var(--pixel-border);
+      padding-bottom: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .mobile-drawer-close-btn {
+      width: 44px;
+      height: 44px;
+      background: var(--pixel-window-header);
+      color: #ffffff;
+      border: var(--pixel-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .drawer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      list-style: none;
+    }
+
+    .drawer-link {
+      display: block;
+      padding: 10px 14px;
+      font-family: var(--pixel-font-display);
+      font-size: 0.95rem;
+      color: var(--pixel-text);
+      text-decoration: none;
+      border: 1px solid var(--pixel-border-color);
+      background: var(--pixel-window);
+    }
+
+    .drawer-link:hover {
+      background: var(--pixel-orange);
+      color: #10102b;
+    }
+
+    /* =========================================================
+       PAGE WRAPPER & CONTAINER
+       ========================================================= */
+    .page-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.5rem 1rem 4rem 1rem;
+    }
+
+    /* =========================================================
+       HERO COMPOSITION (FULL FIRST VIEWPORT)
+       ========================================================= */
+    .pixel-hero {
+      min-height: calc(100svh - 68px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 2rem 0;
+      position: relative;
+    }
+
+    .hero-window-wrapper {
+      background: var(--pixel-window);
+      border: var(--pixel-border);
+      box-shadow:
+        inset 2px 2px 0px var(--pixel-bevel-light),
+        inset -2px -2px 0px var(--pixel-bevel-dark),
+        var(--pixel-shadow-lg);
+      overflow: hidden;
+    }
+
+    .hero-window-header {
+      background: var(--pixel-window-header);
+      color: #ffffff;
+      padding: 8px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: var(--pixel-border);
+      font-family: var(--pixel-font-display);
+      font-size: 0.85rem;
+      font-weight: bold;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-window-body {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .hero-badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--pixel-well-bg);
+      border: var(--pixel-border);
+      padding: 4px 10px;
+      font-family: var(--pixel-font-mono);
+      font-size: 0.75rem;
+      color: var(--pixel-teal);
+      margin-bottom: 1rem;
+      box-shadow: inset 1px 1px 0px var(--pixel-bevel-dark), inset -1px -1px 0px var(--pixel-bevel-light);
+    }
+
+    .hero-title {
+      font-family: var(--pixel-font-display);
+      font-size: clamp(2rem, 5vw, 3.75rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--pixel-orange);
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+      text-shadow: 2px 2px 0px #000000;
+    }
+
+    .hero-title span {
+      color: var(--pixel-teal);
+    }
+
+    .hero-description {
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--pixel-text);
+      margin-bottom: 1.5rem;
+      max-width: 580px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-artwork-col {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .computer-artwork-img,
+    .computer-artwork-svg {
+      width: 100%;
+      max-width: 380px;
+      height: auto;
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
+      filter: drop-shadow(4px 4px 0px #000);
+      image-rendering: pixelated;
+      image-rendering: -moz-crisp-edges;
+      image-rendering: crisp-edges;
+    }
+
+    /* Single-line install command pill */
+    .hero-command-pill {
+      display: inline-flex;
+      align-items: center;
+      background: var(--pixel-well-bg);
+      border: var(--pixel-border);
+      box-shadow: inset 2px 2px 0px var(--pixel-bevel-dark), inset -2px -2px 0px var(--pixel-bevel-light);
+      padding: 6px 12px;
+      font-family: var(--pixel-font-mono);
+      font-size: 0.8rem;
+      color: var(--pixel-teal);
+      gap: 10px;
+      max-width: 100%;
+      overflow-x: auto;
+    }
+
+    .copy-pill-btn {
+      background: var(--pixel-orange);
+      color: #10102b;
+      border: 1px solid var(--pixel-border-color);
+      font-family: var(--pixel-font-display);
+      font-size: 0.7rem;
+      font-weight: bold;
+      padding: 3px 8px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    [data-theme="light"] .copy-pill-btn {
+      color: #ffffff;
+    }
+
+    /* =========================================================
+       SECTION TITLES & HEADINGS
+       ========================================================= */
+    .section-header {
+      margin: 3.5rem 0 1.5rem 0;
+      border-bottom: var(--pixel-border);
+      padding-bottom: 0.75rem;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .section-title {
+      font-family: var(--pixel-font-display);
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--pixel-text-heading);
+      letter-spacing: 0.04em;
+    }
+
+    .section-subtitle {
+      font-family: var(--pixel-font-mono);
+      font-size: 0.85rem;
+      color: var(--pixel-text-muted);
+    }
+
+    /* =========================================================
+       RETRO WINDOW COMPONENTS
+       ========================================================= */
+    .retro-window {
+      background: var(--pixel-window);
+      border: var(--pixel-border);
+      box-shadow:
+        inset 2px 2px 0px var(--pixel-bevel-light),
+        inset -2px -2px 0px var(--pixel-bevel-dark),
+        var(--pixel-shadow);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+    }
+
+    .window-header {
+      background: var(--pixel-window-header);
+      color: #ffffff;
+      padding: 6px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: var(--pixel-border);
+      font-family: var(--pixel-font-display);
+      font-size: 0.85rem;
+      font-weight: bold;
+      user-select: none;
+    }
+
+    .window-title {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .window-controls {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      flex-shrink: 0;
+    }
+
+    .window-control-btn {
+      width: 20px;
+      height: 20px;
+      background: var(--pixel-surface);
+      color: var(--pixel-text);
+      border: 1px solid var(--pixel-border-color);
+      box-shadow: inset 1px 1px 0px var(--pixel-bevel-light), inset -1px -1px 0px var(--pixel-bevel-dark);
+      font-family: monospace;
+      font-size: 11px;
+      font-weight: bold;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0;
+    }
+
+    .window-control-btn:active {
+      transform: translate(1px, 1px);
+      box-shadow: inset 1px 1px 0px var(--pixel-bevel-dark), inset -1px -1px 0px var(--pixel-bevel-light);
+    }
+
+    .window-body {
+      padding: 1.5rem;
+    }
+
+    /* =========================================================
+       INTERACTIVE WINDOW DEMONSTRATION
+       ========================================================= */
+    .interactive-desktop-zone {
+      background: var(--pixel-well-bg);
+      border: var(--pixel-border);
+      box-shadow: inset 2px 2px 0px var(--pixel-bevel-dark), inset -2px -2px 0px var(--pixel-bevel-light);
+      padding: 1.5rem;
+      min-height: 380px;
+      position: relative;
+    }
+
+    .desktop-status-bar {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-family: var(--pixel-font-mono);
+      font-size: 0.75rem;
+      color: var(--pixel-text-muted);
+    }
+
+    .restore-window-pill {
+      display: none;
+      align-items: center;
+      gap: 8px;
+      background: var(--pixel-orange);
+      color: #10102b;
+      font-family: var(--pixel-font-display);
+      font-size: 0.8rem;
+      font-weight: bold;
+      padding: 6px 14px;
+      border: var(--pixel-border);
+      box-shadow: var(--pixel-shadow-sm);
+      cursor: pointer;
+    }
+
+    [data-theme="light"] .restore-window-pill {
+      color: #ffffff;
+    }
+
+    .restore-window-pill.visible {
+      display: inline-flex;
+    }
+
+    .paint-demo-grid {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 1.5rem;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .paint-tools-panel {
+      background: var(--pixel-surface);
+      border: var(--pixel-border);
+      padding: 1rem;
+      box-shadow: inset 1px 1px 0px var(--pixel-bevel-light), inset -1px -1px 0px var(--pixel-bevel-dark);
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    .paint-tools-title {
+      font-family: var(--pixel-font-display);
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 0.75rem;
+      color: var(--pixel-orange);
+    }
+
+    .paint-tools-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .paint-tool-btn {
+      width: 100%;
+      justify-content: flex-start;
+      gap: 6px;
+    }
+
+    .paint-swatches-title {
+      font-family: var(--pixel-font-display);
+      font-size: 0.8rem;
+      font-weight: bold;
+      margin-top: 1rem;
+      margin-bottom: 0.4rem;
+      color: var(--pixel-teal);
+    }
+
+    .paint-swatches {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+    }
+
+    .color-swatch-btn {
+      width: 28px;
+      height: 28px;
+      aspect-ratio: 1 / 1;
+      border: 1px solid #000;
+      cursor: pointer;
+      box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.4), inset -1px -1px 0px #000;
+      flex-shrink: 0;
+    }
+
+    .color-swatch-btn.active {
+      border: 2px solid #ffffff;
+      outline: 1px solid #000;
+    }
+
+    .paint-canvas-wrapper {
+      background: #000000;
+      border: var(--pixel-border);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 2px 2px 0px #000, inset -2px -2px 0px rgba(255, 255, 255, 0.2);
+      box-sizing: border-box;
+      width: 100%;
+      max-width: 100%;
+      overflow: hidden;
+    }
+
+    .paint-instructions {
+      font-family: var(--pixel-font-mono);
+      font-size: 0.75rem;
+      color: var(--pixel-teal);
+      margin-bottom: 0.5rem;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    .pixel-canvas-grid {
+      display: grid;
+      grid-template-columns: repeat(16, 1fr);
+      grid-template-rows: repeat(16, 1fr);
+      width: 100%;
+      max-width: 256px;
+      aspect-ratio: 1 / 1;
+      height: auto;
+      margin: 0 auto;
+      background: #10102b;
+      border: 2px solid #333366;
+      cursor: crosshair;
+      touch-action: none;
+      box-sizing: border-box;
+    }
+
+    .pixel-cell {
+      background: transparent;
+      border: 0.5px solid rgba(255, 255, 255, 0.05);
+      aspect-ratio: 1 / 1;
+    }
+
+    .paint-status {
+      font-family: var(--pixel-font-mono);
+      font-size: 0.7rem;
+      color: var(--pixel-text-muted);
+      margin-top: 0.75rem;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      max-width: 100%;
+    }
+
+    /* =========================================================
+       COMPONENT LABORATORY
+       ========================================================= */
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .lab-card {
+      background: var(--pixel-window);
+      border: var(--pixel-border);
+      box-shadow:
+        inset 2px 2px 0px var(--pixel-bevel-light),
+        inset -2px -2px 0px var(--pixel-bevel-dark),
+        var(--pixel-shadow-sm);
+      padding: 1.25rem;
+    }
+
+    .lab-card-title {
+      font-family: var(--pixel-font-display);
+      font-size: 1.05rem;
+      color: var(--pixel-orange);
+      margin-bottom: 1rem;
+      border-bottom: var(--pixel-border);
+      padding-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Buttons */
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+
+    .pixel-btn {
+      font-family: var(--pixel-font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 8px 16px;
+      background: var(--pixel-surface);
+      color: var(--pixel-text);
+      border: var(--pixel-border);
+      box-shadow:
+        inset 2px 2px 0px var(--pixel-bevel-light),
+        inset -2px -2px 0px var(--pixel-bevel-dark),
+        var(--pixel-shadow-sm);
+      cursor: pointer;
+      user-select: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      transition: transform var(--pixel-motion-duration) steps(2);
+    }
+
+    .pixel-btn:hover {
+      filter: brightness(1.1);
+    }
+
+    .pixel-btn:active {
+      transform: translate(2px, 2px);
+      box-shadow:
+        inset 2px 2px 0px var(--pixel-bevel-dark),
+        inset -2px -2px 0px var(--pixel-bevel-light);
+    }
+
+    .pixel-btn-primary {
+      background: var(--pixel-orange);
+      color: #10102b;
+    }
+
+    [data-theme="light"] .pixel-btn-primary {
+      color: #ffffff;
+    }
+
+    .pixel-btn-secondary {
+      background: var(--pixel-teal);
+      color: #10102b;
+    }
+
+    [data-theme="light"] .pixel-btn-secondary {
+      color: #ffffff;
+    }
+
+    .pixel-btn-destructive {
+      background: var(--pixel-error);
+      color: #ffffff;
+    }
+
+    .pixel-btn-disabled,
+    .pixel-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      transform: none !important;
+      box-shadow: inset 1px 1px 0px var(--pixel-bevel-light), inset -1px -1px 0px var(--pixel-bevel-dark) !important;
+    }
+
+    /* Form Inputs */
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-label {
+      display: block;
+      font-family: var(--pixel-font-mono);
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: var(--pixel-text);
+    }
+
+    .pixel-input,
+    .pixel-select {
+      width: 100%;
+      background: var(--pixel-well-bg);
+      color: var(--pixel-text);
+      border: var(--pixel-border);
+      box-shadow: inset 2px 2px 0px var(--pixel-bevel-dark), inset -2px -2px 0px var(--pixel-bevel-light);
+      padding: 8px 10px;
+      font-family: var(--pixel-font-body);
+      font-size: 0.9rem;
+      outline: none;
+    }
+
+    .pixel-input:focus,
+    .pixel-select:focus {
+      border-color: var(--pixel-teal);
+      box-shadow:
+        inset 2px 2px 0px var(--pixel-bevel-dark),
+        inset -2px -2px 0px var(--pixel-teal),
+        0 0 0 2px var(--pixel-teal);
+    }
+
+    .checkbox-row,
+    .radio-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 0.5rem;
+    }
+
+    .control-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--pixel-font-mono);
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .pixel-checkbox,
+    .pixel-radio {
+      appearance: none;
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      background: var(--pixel-well-bg);
+      border: var(--pixel-border);
+      box-shadow: inset 2px 2px 0px var(--pixel-bevel-dark), inset -2px -2px 0px var(--pixel-bevel-light);
+      cursor: pointer;
+      display: inline-grid;
+      place-content: center;
+      flex-shrink: 0;
+    }
+
+    .pixel-checkbox:checked::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: var(--pixel-teal);
+      box-shadow: 1px 1px 0px #000;
+    }
+
+    .pixel-radio:checked::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      background: var(--pixel-orange);
+    }
+
+    /* Tabs Component */
+    .pixel-tabs {
+      display: flex;
+      gap: 4px;
+      border-bottom: var(--pixel-border);
+      margin-bottom: 1rem;
+    }
+
+    .pixel-tab-btn {
+      background: var(--pixel-surface);
+      color: var(--pixel-text-muted);
+      border: var(--pixel-border);
+      border-bottom: none;
+      padding: 6px 12px;
+      font-family: var(--pixel-font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: inset 1px 1px 0px var(--pixel-bevel-light), inset -1px 0px 0px var(--pixel-bevel-dark);
+    }
+
+    .pixel-tab-btn.active {
+      background: var(--pixel-window);
+      color: var(--pixel-text);
+      transform: translateY(2px);
+      padding-bottom: 8px;
+    }
+
+    .pixel-tab-content {
+      display: none;
+      padding: 0.5rem 0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .pixel-tab-content.active {
+      display: block;
+    }
+
+    /* Badges */
+    .badge-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 0.5rem;
+    }
+
+    .pixel-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: var(--pixel-font-display);
+      font-size: 0.7rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border: 1px solid var(--pixel-border-color);
+      box-shadow: inset 1px 1px 0px var(--pixel-bevel-light), inset -1px -1px 0px var(--pixel-bevel-dark);
+    }
+
+    .pixel-badge-success { background: var(--pixel-success); color: #000; }
+    .pixel-badge-warning { background: var(--pixel-warning); color: #000; }
+    .pixel-badge-error   { background: var(--pixel-error); color: #fff; }
+    .pixel-badge-info    { background: var(--pixel-teal); color: #000; }
+
+    /* Progress bar */
+    .pixel-progress-track {
+      background: var(--pixel-well-bg);
+      border: var(--pixel-border);
+      box-shadow: inset 2px 2px 0px var(--pixel-bevel-dark), inset -2px -2px 0px var(--pixel-bevel-light);
+      height: 20px;
+      padding: 2px;
+      margin-top: 0.5rem;
+    }
+
+    .pixel-progress-fill {
+      height: 100%;
+      background: repeating-linear-gradient(
+        90deg,
+        var(--pixel-teal) 0px,
+        var(--pixel-teal) 8px,
+        var(--pixel-window-header) 8px,
+        var(--pixel-window-header) 10px
+      );
+      width: 68%;
+    }
+
+    /* =========================================================
+       PORTFOLIO / PROJECT GALLERY
+       ========================================================= */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .filter-btn {
+      font-family: var(--pixel-font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 14px;
+      background: var(--pixel-surface);
+      color: var(--pixel-text);
+      border: var(--pixel-border);
+      box-shadow: inset 1px 1px 0px var(--pixel-bevel-light), inset -1px -1px 0px var(--pixel-bevel-dark);
+      cursor: pointer;
+    }
+
+    .filter-btn.active {
+      background: var(--pixel-orange);
+      color: #10102b;
+    }
+
+    [data-theme="light"] .filter-btn.active {
+      color: #ffffff;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .project-card {
+      background: var(--pixel-window);
+      border: var(--pixel-border);
+      box-shadow:
+        inset 2px 2px 0px var(--pixel-bevel-light),
+        inset -2px -2px 0px var(--pixel-bevel-dark),
+        var(--pixel-shadow);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      transition: transform var(--pixel-motion-duration) steps(2);
+    }
+
+    .project-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .project-preview-box {
+      height: 180px;
+      background: var(--pixel-well-bg);
+      border-bottom: var(--pixel-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-body {
+      padding: 1.25rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1 1 auto;
+      justify-content: space-between;
+    }
+
+    .project-meta-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-title {
+      font-family: var(--pixel-font-display);
+      font-size: 1.15rem;
+      color: var(--pixel-orange);
+      margin-bottom: 0.5rem;
+    }
+
+    .project-desc {
+      font-size: 0.875rem;
+      color: var(--pixel-text);
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+
+    /* =========================================================
+       AUTHENTICATION DEMONSTRATION
+       ========================================================= */
+    .auth-container {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    .demo-notice-bar {
+      background: var(--pixel-well-bg);
+      border: 1px dashed var(--pixel-orange);
+      padding: 6px 12px;
+      font-family: var(--pixel-font-mono);
+      font-size: 0.75rem;
+      color: var(--pixel-orange);
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .password-input-group {
+      position: relative;
+      display: flex;
+    }
+
+    .toggle-pwd-btn {
+      position: absolute;
+      right: 4px;
+      top: 4px;
+      bottom: 4px;
+      background: var(--pixel-surface);
+      border: 1px solid var(--pixel-border-color);
+      color: var(--pixel-text);
+      font-family: var(--pixel-font-mono);
+      font-size: 0.7rem;
+      padding: 0 8px;
+      cursor: pointer;
+    }
+
+    .auth-feedback-banner {
+      display: none;
+      padding: 10px;
+      border: var(--pixel-border);
+      font-family: var(--pixel-font-mono);
+      font-size: 0.8rem;
+      margin-top: 1rem;
+    }
+
+    .auth-feedback-banner.success {
+      display: block;
+      background: var(--pixel-success);
+      color: #000;
+    }
+
+    .auth-feedback-banner.error {
+      display: block;
+      background: var(--pixel-error);
+      color: #fff;
+    }
+
+    /* =========================================================
+       DASHBOARD DEMONSTRATION
+       ========================================================= */
+    .dashboard-toolbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .search-input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1 1 240px;
+    }
+
+    .dash-table-wrapper {
+      background: var(--pixel-well-bg);
+      border: var(--pixel-border);
+      box-shadow: inset 2px 2px 0px var(--pixel-bevel-dark), inset -2px -2px 0px var(--pixel-bevel-light);
+      overflow-x: auto;
+    }
+
+    .pixel-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: var(--pixel-font-mono);
+      font-size: 0.85rem;
+      text-align: left;
+    }
+
+    .pixel-table th {
+      background: var(--pixel-window-header);
+      color: #ffffff;
+      padding: 8px 12px;
+      font-family: var(--pixel-font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      border-bottom: var(--pixel-border);
+      white-space: nowrap;
+    }
+
+    .pixel-table td {
+      padding: 8px 12px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      color: var(--pixel-text);
+      white-space: nowrap;
+    }
+
+    [data-theme="light"] .pixel-table td {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .pixel-table tr:hover td {
+      background: rgba(44, 167, 163, 0.12);
+    }
+
+    /* =========================================================
+       FAQ ACCORDION
+       ========================================================= */
+    .faq-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .faq-item {
+      background: var(--pixel-window);
+      border: var(--pixel-border);
+      box-shadow:
+        inset 1px 1px 0px var(--pixel-bevel-light),
+        inset -1px -1px 0px var(--pixel-bevel-dark),
+        var(--pixel-shadow-sm);
+    }
+
+    .faq-trigger {
+      width: 100%;
+      padding: 12px 16px;
+      background: transparent;
+      border: none;
+      color: var(--pixel-text);
+      font-family: var(--pixel-font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+    }
+
+    .faq-icon {
+      font-family: monospace;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: var(--pixel-orange);
+      transition: transform var(--pixel-motion-duration) steps(2);
+    }
+
+    .faq-content {
+      display: none;
+      padding: 0 16px 16px 16px;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--pixel-text);
+      border-top: 1px dashed var(--pixel-border-color);
+      margin-top: 4px;
+      padding-top: 10px;
+    }
+
+    .faq-item.open .faq-content {
+      display: block;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(90deg);
+    }
+
+    /* =========================================================
+       INSTALLATION GUIDANCE & CARDS
+       ========================================================= */
+    .install-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .install-card {
+      background: var(--pixel-window);
+      border: var(--pixel-border);
+      box-shadow:
+        inset 2px 2px 0px var(--pixel-bevel-light),
+        inset -2px -2px 0px var(--pixel-bevel-dark),
+        var(--pixel-shadow);
+      padding: 1.5rem;
+    }
+
+    .install-card h4 {
+      font-family: var(--pixel-font-display);
+      font-size: 1.1rem;
+      color: var(--pixel-orange);
+      margin-bottom: 0.5rem;
+    }
+
+    .install-card p {
+      font-size: 0.85rem;
+      color: var(--pixel-text-muted);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .code-box {
+      background: var(--pixel-well-bg);
+      border: var(--pixel-border);
+      box-shadow: inset 1px 1px 0px var(--pixel-bevel-dark), inset -1px -1px 0px var(--pixel-bevel-light);
+      padding: 10px;
+      font-family: var(--pixel-font-mono);
+      font-size: 0.8rem;
+      color: var(--pixel-teal);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      overflow-x: auto;
+    }
+
+    /* =========================================================
+       MODAL & TOAST DIALOGS
+       ========================================================= */
+    .pixel-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.80);
+      z-index: 300;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    .pixel-modal-backdrop.open {
+      display: flex;
+    }
+
+    .pixel-modal {
+      width: min(520px, 95vw);
+      background: var(--pixel-window);
+      border: var(--pixel-border);
+      box-shadow:
+        inset 2px 2px 0px var(--pixel-bevel-light),
+        inset -2px -2px 0px var(--pixel-bevel-dark),
+        var(--pixel-shadow-lg);
+      overflow: hidden;
+    }
+
+    /* Toast Notification */
+    .pixel-toast-container {
+      position: fixed;
+      bottom: 1.5rem;
+      right: 1.5rem;
+      z-index: 400;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      pointer-events: none;
+    }
+
+    .pixel-toast {
+      pointer-events: auto;
+      background: var(--pixel-window-header);
+      color: #ffffff;
+      border: var(--pixel-border);
+      box-shadow: var(--pixel-shadow);
+      padding: 10px 16px;
+      font-family: var(--pixel-font-display);
+      font-size: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      animation: toastSlide 150ms steps(3);
+    }
+
+    @keyframes toastSlide {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* =========================================================
+       FOOTER
+       ========================================================= */
+    .pixel-footer {
+      border-top: var(--pixel-border);
+      background: var(--pixel-surface);
+      padding: 2.5rem 1rem 1.5rem 1rem;
+      margin-top: 4rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand-title {
+      font-family: var(--pixel-font-display);
+      font-size: 1.25rem;
+      color: var(--pixel-orange);
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-brand-desc {
+      font-size: 0.85rem;
+      color: var(--pixel-text-muted);
+      line-height: 1.6;
+      max-width: 380px;
+    }
+
+    .footer-col-title {
+      font-family: var(--pixel-font-display);
+      font-size: 0.9rem;
+      color: var(--pixel-text);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.05em;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .footer-link {
+      font-family: var(--pixel-font-mono);
+      font-size: 0.8rem;
+      color: var(--pixel-text-muted);
+      text-decoration: none;
+    }
+
+    .footer-link:hover {
+      color: var(--pixel-teal);
+    }
+
+    .footer-bottom-row {
+      border-top: 1px solid var(--pixel-border-color);
+      padding-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-family: var(--pixel-font-mono);
+      font-size: 0.75rem;
+      color: var(--pixel-text-dim);
+    }
+
+    /* =========================================================
+       RESPONSIVE BREAKPOINTS (320px BASELINE & FLUID TYPOGRAPHY)
+       ========================================================= */
+    @media (max-width: 900px) {
+      .hero-window-body {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+      }
+      .paint-demo-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .desktop-only {
+        display: none !important;
+      }
+      .mobile-only {
+        display: inline-flex !important;
+      }
+      .nav-links-desktop {
+        display: none !important;
+      }
+      .nav-hamburger-btn {
+        display: inline-flex !important;
+      }
+
+      /* Sticky Top Navigation on Mobile */
+      .pixel-nav {
+        padding: 0.5rem 0.75rem !important;
+        gap: 0.5rem;
+      }
+      .nav-brand-group {
+        gap: 6px;
+      }
+      .nav-brand-icon {
+        width: 28px !important;
+        height: 28px !important;
+        font-size: 11px !important;
+      }
+      .nav-title {
+        font-size: 0.85rem !important;
+        letter-spacing: 0;
+      }
+      .nav-badge {
+        font-size: 0.6rem !important;
+        padding: 2px 4px !important;
+      }
+      .nav-actions {
+        gap: 0.5rem;
+      }
+      .nav-btn {
+        height: 38px !important;
+        min-height: 38px !important;
+        padding: 0 10px !important;
+        font-size: 0.75rem !important;
+      }
+      .theme-toggle-btn {
+        width: 38px !important;
+        height: 38px !important;
+        min-width: 38px !important;
+        padding: 0 !important;
+        justify-content: center !important;
+        aspect-ratio: 1 / 1 !important;
+        flex-shrink: 0 !important;
+      }
+      .nav-hamburger-btn {
+        width: 38px !important;
+        height: 38px !important;
+        min-width: 38px !important;
+        padding: 0 !important;
+        font-size: 1.15rem !important;
+        display: inline-flex !important;
+        aspect-ratio: 1 / 1 !important;
+        flex-shrink: 0 !important;
+      }
+        font-size: 1.15rem !important;
+      }
+
+      /* Hero Section Fluid Typography */
+      .pixel-hero {
+        padding: 1rem 0;
+        min-height: auto;
+      }
+      .hero-window-header {
+        font-size: 0.7rem !important;
+        padding: 6px 10px !important;
+      }
+      .hero-window-body {
+        padding: 1.25rem 0.85rem !important;
+        gap: 1.25rem;
+      }
+      .hero-title {
+        font-size: clamp(1.25rem, 5vw, 1.85rem) !important;
+        line-height: 1.25 !important;
+        margin-bottom: 0.75rem !important;
+      }
+      .hero-description {
+        font-size: 0.925rem !important;
+        line-height: 1.5 !important;
+        margin-bottom: 1rem !important;
+      }
+      .hero-command-pill {
+        font-size: 0.75rem !important;
+        padding: 5px 8px !important;
+      }
+      .computer-artwork-img,
+      .computer-artwork-svg {
+        max-width: 260px;
+      }
+
+      /* Section Typography */
+      .section-header {
+        margin: 2.25rem 0 1rem 0 !important;
+      }
+      .section-title {
+        font-size: 1.25rem !important;
+        line-height: 1.3 !important;
+      }
+      .section-subtitle {
+        font-size: 0.8rem !important;
+      }
+
+      /* Interactive Window Studio on Mobile */
+      .interactive-desktop-zone {
+        padding: 0.75rem 0.5rem !important;
+        min-height: auto !important;
+      }
+      .desktop-status-bar {
+        font-size: 0.7rem !important;
+        margin-bottom: 0.5rem !important;
+      }
+      .retro-window {
+        margin-bottom: 1rem !important;
+      }
+      .window-header {
+        padding: 6px 8px !important;
+      }
+      .window-title {
+        font-size: 0.7rem !important;
+      }
+      .window-control-btn {
+        width: 22px !important;
+        height: 22px !important;
+        font-size: 11px !important;
+      }
+      .window-body {
+        padding: 0.75rem 0.5rem !important;
+      }
+      .paint-demo-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+      }
+      .paint-tools-panel {
+        padding: 0.75rem 0.5rem !important;
+      }
+      .paint-tools-title {
+        font-size: 0.75rem !important;
+        margin-bottom: 0.5rem !important;
+      }
+      .paint-tools-buttons {
+        display: grid !important;
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 4px !important;
+      }
+      .paint-tool-btn {
+        font-size: 0.65rem !important;
+        padding: 6px 4px !important;
+        justify-content: center !important;
+      }
+      .paint-swatches-title {
+        font-size: 0.7rem !important;
+        margin-top: 0.75rem !important;
+        margin-bottom: 0.35rem !important;
+      }
+      .paint-swatches {
+        grid-template-columns: repeat(8, 1fr) !important;
+        gap: 4px !important;
+      }
+      .color-swatch-btn {
+        width: 100% !important;
+        max-width: 32px;
+        height: auto;
+        aspect-ratio: 1 / 1;
+      }
+      .paint-canvas-wrapper {
+        padding: 0.75rem 0.5rem !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+      }
+      .paint-instructions {
+        font-size: 0.7rem !important;
+      }
+      .pixel-canvas-grid {
+        width: 100% !important;
+        max-width: 240px !important;
+        aspect-ratio: 1 / 1 !important;
+        height: auto !important;
+        margin: 0 auto !important;
+      }
+      .paint-status {
+        font-size: 0.65rem !important;
+      }
+
+      /* Cards & Component Lab */
+      .lab-card {
+        padding: 1rem 0.75rem !important;
+      }
+      .lab-card-title {
+        font-size: 0.75rem !important;
+      }
+      .btn-row {
+        gap: 0.5rem !important;
+      }
+      .pixel-btn {
+        font-size: 0.75rem !important;
+        padding: 8px 10px !important;
+      }
+
+      /* Portfolio & Metrics */
+      .portfolio-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .metrics-grid {
+        grid-template-columns: 1fr 1fr !important;
+      }
+
+      /* Footer */
+      .footer-grid {
+        grid-template-columns: 1fr !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body {
+        overflow-x: hidden;
+      }
+      .page-container {
+        padding: 0.75rem 0.35rem 3rem 0.35rem !important;
+      }
+
+      /* Nav Narrow */
+      .pixel-nav {
+        padding: 0.4rem 0.5rem !important;
+      }
+      .nav-title {
+        font-size: 0.8rem !important;
+      }
+      .nav-badge {
+        font-size: 0.55rem !important;
+        padding: 1px 3px !important;
+      }
+
+      /* Hero Narrow */
+      .hero-window-body {
+        padding: 1rem 0.5rem !important;
+      }
+      .hero-title {
+        font-size: clamp(1.1rem, 5vw, 1.4rem) !important;
+        line-height: 1.3 !important;
+      }
+      .hero-badge-pill {
+        font-size: 0.65rem !important;
+        padding: 3px 6px !important;
+      }
+      .hero-actions {
+        flex-direction: column !important;
+      }
+      .hero-actions .pixel-btn {
+        width: 100% !important;
+      }
+      .computer-artwork-img,
+      .computer-artwork-svg {
+        max-width: 210px !important;
+      }
+
+      /* Window Studio Narrow */
+      .interactive-desktop-zone {
+        padding: 0.4rem 0.25rem !important;
+      }
+      .window-body {
+        padding: 0.5rem 0.25rem !important;
+      }
+      .paint-tools-panel {
+        padding: 0.5rem 0.35rem !important;
+      }
+      .paint-canvas-wrapper {
+        padding: 0.5rem 0.25rem !important;
+      }
+      .pixel-canvas-grid {
+        max-width: 200px !important;
+      }
+      .window-title {
+        font-size: 0.65rem !important;
+      }
+      .window-control-btn {
+        width: 20px !important;
+        height: 20px !important;
+        font-size: 10px !important;
+      }
+
+      /* Section & Lab Narrow */
+      .section-title {
+        font-size: 1.05rem !important;
+      }
+      .section-subtitle {
+        font-size: 0.75rem !important;
+      }
+      .lab-grid {
+        grid-template-columns: 1fr !important;
+        gap: 0.75rem !important;
+      }
+      .metrics-grid {
+        grid-template-columns: 1fr !important;
+      }
+      .auth-card {
+        padding: 1rem 0.65rem !important;
+      }
+      .auth-card-title {
+        font-size: 0.8rem !important;
+      }
+      .modal-content {
+        padding: 1rem 0.65rem !important;
+        width: calc(100vw - 20px) !important;
+      }
+      .toast {
+        width: calc(100vw - 24px) !important;
+        font-size: 0.75rem !important;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .nav-badge {
+        display: none !important;
+      }
+      .nav-title {
+        font-size: 0.75rem !important;
+      }
+      .pixel-canvas-grid {
+        max-width: 180px !important;
+      }
+    }
+
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0ms !important;
+        transition-duration: 0ms !important;
+      }
+      .pixel-btn:active,
+      .nav-btn:active,
+      .window-control-btn:active {
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- STICKY TOP NAVIGATION -->
+  <nav class="pixel-nav" aria-label="Main Navigation">
+    <a href="index.html" class="nav-brand-group">
+      <div class="nav-brand-icon">Px</div>
+      <span class="nav-title">TASTE ENGINE</span>
+      <span class="nav-badge">v0.11.0</span>
+    </a>
+
+    <ul class="nav-links-desktop">
+      <li><a href="#fidelity" class="nav-link">Fidelity Gate</a></li>
+      <li><a href="#desktop-window" class="nav-link">Window Studio</a></li>
+      <li><a href="#component-lab" class="nav-link">Component Lab</a></li>
+      <li><a href="#portfolio" class="nav-link">Portfolio</a></li>
+      <li><a href="#auth-demo" class="nav-link">Auth Demo</a></li>
+      <li><a href="#dashboard" class="nav-link">Dashboard</a></li>
+      <li><a href="#faq" class="nav-link">FAQ</a></li>
+      <li><a href="#install" class="nav-link">Install</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="index.html" class="nav-btn nav-btn-gallery desktop-only" title="View all 11 style archetypes">
+        <span class="btn-icon-box" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+        </span>
+        <span>All Styles</span>
+      </a>
+      <button class="nav-btn theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Dark and Light Mode">
+        <span class="btn-icon-box" id="theme-icon" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </span>
+        <span id="theme-text" class="desktop-only">Dark</span>
+      </button>
+      <button class="nav-hamburger-btn" id="hamburger-btn" aria-label="Open Navigation Menu">☰</button>
+    </div>
+  </nav>
+
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-drawer-overlay" id="drawer-overlay"></div>
+  <aside class="mobile-nav-drawer" id="mobile-drawer" aria-label="Mobile Navigation Menu">
+    <div class="drawer-header">
+      <span style="font-family: var(--pixel-font-display); font-weight: bold; color: var(--pixel-orange); font-size: 0.85rem;">MENU // NAV</span>
+      <button class="mobile-drawer-close-btn" id="drawer-close-btn" aria-label="Close Navigation Menu">✕</button>
+    </div>
+    <div style="margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: var(--pixel-border);">
+      <a href="index.html" class="pixel-btn pixel-btn-primary" style="width: 100%; justify-content: center; text-decoration: none; font-size: 0.8rem; padding: 10px 12px; font-weight: bold;">
+        <span>← ALL 11 STYLES GALLERY</span>
+      </a>
+    </div>
+    <ul class="drawer-links">
+      <li><a href="#fidelity" class="drawer-link">Fidelity Gate</a></li>
+      <li><a href="#desktop-window" class="drawer-link">Desktop Window</a></li>
+      <li><a href="#component-lab" class="drawer-link">Component Lab</a></li>
+      <li><a href="#portfolio" class="drawer-link">Portfolio Projects</a></li>
+      <li><a href="#auth-demo" class="drawer-link">Auth Demonstration</a></li>
+      <li><a href="#dashboard" class="drawer-link">System Dashboard</a></li>
+      <li><a href="#faq" class="drawer-link">FAQ</a></li>
+      <li><a href="#install" class="drawer-link">Installation Guide</a></li>
+      <li><a href="index.html" class="drawer-link" style="color: var(--pixel-teal);">← Back to Style Gallery</a></li>
+    </ul>
+  </aside>
+
+  <!-- MAIN CONTENT CONTAINER -->
+  <main class="page-container">
+
+    <!-- HERO SECTION -->
+    <section class="pixel-hero" id="hero">
+      <div class="hero-window-wrapper">
+        <div class="hero-window-header">
+          <div style="display: flex; align-items: center; gap: 8px; min-width: 0; overflow: hidden;">
+            <span class="desktop-only">[TASTE_OS // RETRO_PIXEL_STUDIO.EXE]</span>
+            <span class="mobile-only">[RETRO_PIXEL_STUDIO.EXE]</span>
+          </div>
+          <div class="window-controls">
+            <span class="window-control-btn" title="Minimize">_</span>
+            <span class="window-control-btn" title="Maximize">□</span>
+            <span class="window-control-btn" title="Close">×</span>
+          </div>
+        </div>
+
+        <div class="hero-window-body">
+          <div class="hero-text-col">
+            <div class="hero-badge-pill">
+              <span class="status-dot dot" style="width: 8px; height: 8px; background: var(--pixel-teal); display: inline-block;"></span>
+              <span>11TH FIRST-CLASS AESTHETIC // TASTE ENGINE</span>
+            </div>
+
+            <h1 class="hero-title">
+              RETRO <span>PIXEL</span><br>DESIGN SYSTEM.
+            </h1>
+
+            <p class="hero-description">
+              A crafted nostalgic aesthetic uniting late-1980s personal computing, 8-bit & 16-bit pixel illustrations, classic desktop window chrome, stepped pixel bevels, and modern WCAG AA accessibility.
+            </p>
+
+            <div class="hero-actions">
+              <a href="#desktop-window" class="pixel-btn pixel-btn-primary">Launch Desktop Studio</a>
+              <a href="#component-lab" class="pixel-btn pixel-btn-secondary">Explore Components</a>
+              <button class="pixel-btn" id="hero-copy-tokens-btn">Copy Tokens</button>
+            </div>
+
+            <div class="hero-command-pill">
+              <span style="color: var(--pixel-orange); font-weight: bold;">$</span>
+              <span>npx skills add kennedys0/taste-engine --skill taste-engine</span>
+              <button class="copy-pill-btn" id="hero-copy-cmd-btn">Copy</button>
+            </div>
+          </div>
+
+          <div class="hero-artwork-col">
+            <img src="assets/computer.webp" alt="Retro Pixel Computer Workstation" class="computer-artwork-img pixel-art" width="400" height="400" loading="eager" decoding="async">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MATERIAL FIDELITY GATE SECTION -->
+    <section id="fidelity">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">MATERIAL FIDELITY GATE</h2>
+          <p class="section-subtitle">Non-negotiable screenshot-level criteria for authentic Retro Pixel interfaces</p>
+        </div>
+        <span class="pixel-badge pixel-badge-info">SCREENSHOT GATE</span>
+      </div>
+
+      <div class="lab-grid">
+        <div class="lab-card">
+          <div class="lab-card-title">
+            <span>1. INTEGER PIXEL PRECISION</span>
+            <span class="pixel-badge pixel-badge-success">REQUIRED</span>
+          </div>
+          <p style="font-size: 0.875rem; line-height: 1.6; margin-bottom: 0.75rem;">
+            Graphics adhere to integer alignment without accidental blur. Raster pixel art uses <code>image-rendering: pixelated</code>. Smooth photographic blur and arbitrary vector curves without pixel logic fail this gate.
+          </p>
+          <div class="code-box">
+            <code>image-rendering: pixelated;</code>
+          </div>
+        </div>
+
+        <div class="lab-card">
+          <div class="lab-card-title">
+            <span>2. RETRO WINDOW SURFACES</span>
+            <span class="pixel-badge pixel-badge-success">REQUIRED</span>
+          </div>
+          <p style="font-size: 0.875rem; line-height: 1.6; margin-bottom: 0.75rem;">
+            Panels feature classic desktop title bars in desktop purple (<code>#5B438E</code>), stepped bevel shadows (2px inset highlight + 2px inset dark), and square corners (<code>border-radius: 0px</code>).
+          </p>
+          <div class="code-box">
+            <code>box-shadow: inset 2px 2px 0 #fff3, ...</code>
+          </div>
+        </div>
+
+        <div class="lab-card">
+          <div class="lab-card-title">
+            <span>3. TACTILE STEPPED FEEDBACK</span>
+            <span class="pixel-badge pixel-badge-success">REQUIRED</span>
+          </div>
+          <p style="font-size: 0.875rem; line-height: 1.6; margin-bottom: 0.75rem;">
+            Buttons physically displace along the integer grid on active click (<code>transform: translate(2px, 2px)</code>) with instant shadow collapse, providing immediate physical confirmation.
+          </p>
+          <div class="code-box">
+            <code>transform: translate(2px, 2px);</code>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE WINDOW STUDIO -->
+    <section id="desktop-window">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">INTERACTIVE WINDOW STUDIO</h2>
+          <p class="section-subtitle">Fully functional classic desktop window with draggable/toggleable controls & pixel paint</p>
+        </div>
+        <span class="pixel-badge pixel-badge-warning">INTERACTIVE DEMO</span>
+      </div>
+
+      <div class="interactive-desktop-zone" id="desktop-zone">
+        <div class="desktop-status-bar">
+          <span>DESKTOP WORKSPACE // DISK 1 OF 1 READY</span>
+          <button class="restore-window-pill" id="restore-window-btn">
+            <span>↩ Restore Studio Window</span>
+          </button>
+        </div>
+
+        <!-- Working Retro Window Component -->
+        <article class="retro-window" id="demo-window" role="region" aria-label="Interactive Studio Window">
+          <div class="window-header">
+            <div class="window-title">
+              <span style="display: inline-block; width: 10px; height: 10px; background: var(--pixel-orange); aspect-ratio: 1 / 1; flex-shrink: 0;"></span>
+              <span class="desktop-only">PIXEL_WORKSHOP.EXE — [16x16 SPRITE CANVAS]</span>
+              <span class="mobile-only">PIXEL_WORKSHOP.EXE</span>
+            </div>
+            <div class="window-controls">
+              <button class="window-control-btn" id="win-btn-min" aria-label="Minimize Window" title="Minimize Window">_</button>
+              <button class="window-control-btn" id="win-btn-max" aria-label="Maximize Window" title="Maximize Window">□</button>
+              <button class="window-control-btn" id="win-btn-close" aria-label="Close Window" title="Close Window">×</button>
+            </div>
+          </div>
+
+          <div class="window-body" id="demo-window-body">
+            <div class="paint-demo-grid">
+              <div class="paint-tools-panel">
+                <div class="paint-tools-title">
+                  TOOLS PALETTE
+                </div>
+                <div class="paint-tools-buttons">
+                  <button class="pixel-btn pixel-btn-primary paint-tool-btn" id="tool-draw-btn">
+                    <span>✎</span> <span>Pencil</span>
+                  </button>
+                  <button class="pixel-btn paint-tool-btn" id="tool-erase-btn">
+                    <span>⌧</span> <span>Eraser</span>
+                  </button>
+                  <button class="pixel-btn pixel-btn-destructive paint-tool-btn" id="tool-clear-btn">
+                    <span>🗑</span> <span>Clear</span>
+                  </button>
+                </div>
+
+                <div class="paint-swatches-title">
+                  COLOR SWATCHES
+                </div>
+                <div class="paint-swatches">
+                  <button class="color-swatch-btn active" data-color="#F27D36" style="background: #F27D36;" title="Arcade Orange"></button>
+                  <button class="color-swatch-btn" data-color="#2CA7A3" style="background: #2CA7A3;" title="Retro Teal"></button>
+                  <button class="color-swatch-btn" data-color="#5B438E" style="background: #5B438E;" title="Desktop Purple"></button>
+                  <button class="color-swatch-btn" data-color="#F2DFB5" style="background: #F2DFB5;" title="Vintage Cream"></button>
+                  <button class="color-swatch-btn" data-color="#2BB673" style="background: #2BB673;" title="Pixel Green"></button>
+                  <button class="color-swatch-btn" data-color="#E03E3E" style="background: #E03E3E;" title="Pixel Red"></button>
+                  <button class="color-swatch-btn" data-color="#FFFFFF" style="background: #FFFFFF;" title="White"></button>
+                  <button class="color-swatch-btn" data-color="#10102B" style="background: #10102B;" title="Midnight Dark"></button>
+                </div>
+              </div>
+
+              <div class="paint-canvas-wrapper">
+                <div class="paint-instructions">
+                  CLICK OR DRAG TO PAINT PIXELS
+                </div>
+                <div class="pixel-canvas-grid pixel-art" id="pixel-canvas">
+                  <!-- 16x16 grid generated via JS -->
+                </div>
+                <div class="paint-status" id="canvas-status">
+                  Active Tool: Pencil | Color: #F27D36
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- COMPONENT LABORATORY -->
+    <section id="component-lab">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">COMPONENT LABORATORY</h2>
+          <p class="section-subtitle">Production-ready retro controls with accessible states and zero AI-slop</p>
+        </div>
+        <span class="pixel-badge pixel-badge-success">INTERACTIVE CONTROLS</span>
+      </div>
+
+      <div class="lab-grid">
+        <!-- Buttons & Actions -->
+        <div class="lab-card">
+          <div class="lab-card-title">
+            <span>BUTTON VARIANTS & DISPLACEMENT</span>
+            <span class="pixel-badge pixel-badge-info">TACTILE</span>
+          </div>
+          <p style="font-size: 0.85rem; margin-bottom: 1rem; color: var(--pixel-text);">
+            Click and hold to test the 2px stepped depression and shadow collapse:
+          </p>
+          <div class="btn-row">
+            <button class="pixel-btn pixel-btn-primary" onclick="showToast('Primary Action Confirmed!')">Primary Action</button>
+            <button class="pixel-btn pixel-btn-secondary" onclick="showToast('Secondary Action Executed')">Secondary</button>
+          </div>
+          <div class="btn-row">
+            <button class="pixel-btn pixel-btn-destructive" onclick="showToast('Warning: Destructive Event', 'error')">Destructive</button>
+            <button class="pixel-btn pixel-btn-disabled" disabled>Disabled State</button>
+          </div>
+          <div style="margin-top: 0.5rem;">
+            <button class="pixel-btn" id="open-modal-demo-btn" style="width: 100%;">Open Modal Dialog Demo ↗</button>
+          </div>
+        </div>
+
+        <!-- Form Controls -->
+        <div class="lab-card">
+          <div class="lab-card-title">
+            <span>INPUTS & FORM ANATOMY</span>
+            <span class="pixel-badge pixel-badge-warning">FORM</span>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lab-project-name">Project Handle</label>
+            <input type="text" class="pixel-input" id="lab-project-name" placeholder="arcade-protocol-v1" value="pixel-warrior">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="lab-resolution-select">Target Graphics Resolution</label>
+            <select class="pixel-select" id="lab-resolution-select">
+              <option value="16">16-bit Desktop (320x240 EGA/VGA)</option>
+              <option value="8">8-bit Console (256x240 NES)</option>
+              <option value="arcade">Arcade Raster (384x224 NeoGeo)</option>
+            </select>
+          </div>
+          <div class="checkbox-row">
+            <label class="control-label">
+              <input type="checkbox" class="pixel-checkbox" checked>
+              <span>Scanlines</span>
+            </label>
+            <label class="control-label">
+              <input type="checkbox" class="pixel-checkbox" checked>
+              <span>Dither Grid</span>
+            </label>
+          </div>
+          <div class="radio-row">
+            <label class="control-label">
+              <input type="radio" name="lab-audio" class="pixel-radio" checked>
+              <span>Mono Chiptune</span>
+            </label>
+            <label class="control-label">
+              <input type="radio" name="lab-audio" class="pixel-radio">
+              <span>Stereo FM</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Tabs & Status Indicators -->
+        <div class="lab-card">
+          <div class="lab-card-title">
+            <span>TABS & STATUS BADGES</span>
+            <span class="pixel-badge pixel-badge-info">META</span>
+          </div>
+          <div class="pixel-tabs" role="tablist">
+            <button class="pixel-tab-btn active" data-tab="tab-tokens" role="tab" aria-selected="true">Tokens</button>
+            <button class="pixel-tab-btn" data-tab="tab-geometry" role="tab" aria-selected="false">Geometry</button>
+            <button class="pixel-tab-btn" data-tab="tab-a11y" role="tab" aria-selected="false">A11y QA</button>
+          </div>
+
+          <div class="pixel-tab-content active" id="tab-tokens">
+            <p style="font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">
+              Primary palette: Midnight <code>#10102B</code>, Arcade Orange <code>#F27D36</code>, Retro Teal <code>#2CA7A3</code>, Purple <code>#5B438E</code>, Cream <code>#F2DFB5</code>.
+            </p>
+            <div class="badge-wrap">
+              <span class="pixel-badge pixel-badge-success">● ONLINE</span>
+              <span class="pixel-badge pixel-badge-warning">▲ CAUTION</span>
+              <span class="pixel-badge pixel-badge-error">✕ CRITICAL</span>
+              <span class="pixel-badge pixel-badge-info">◆ 16-BIT</span>
+            </div>
+          </div>
+
+          <div class="pixel-tab-content" id="tab-geometry">
+            <p style="font-size: 0.85rem; line-height: 1.5; margin-bottom: 0.5rem;">
+              Strict 4px/8px coordinate snapping. Zero border-radius on cards and windows. Circular elements enforce <code>aspect-ratio: 1 / 1</code>.
+            </p>
+            <div class="pixel-progress-track">
+              <div class="pixel-progress-fill"></div>
+            </div>
+          </div>
+
+          <div class="pixel-tab-content" id="tab-a11y">
+            <p style="font-size: 0.85rem; line-height: 1.5;">
+              WCAG AA contrast verified. Dual theme tokens flip background/foreground in tandem. Keyboard focus ring: 2px solid orange with 2px offset.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO / PROJECT GALLERY -->
+    <section id="portfolio">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">PORTFOLIO DEMONSTRATION</h2>
+          <p class="section-subtitle">Real-world showcase cards with category filtering and modal details</p>
+        </div>
+        <span class="pixel-badge pixel-badge-info">HONEST CONTENT</span>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-btn active" data-filter="all">All Projects (6)</button>
+        <button class="filter-btn" data-filter="games">Games & Demos (2)</button>
+        <button class="filter-btn" data-filter="tools">Developer Tools (2)</button>
+        <button class="filter-btn" data-filter="ui">UI Systems (2)</button>
+      </div>
+
+      <div class="portfolio-grid" id="portfolio-container">
+        <!-- Project 1 -->
+        <article class="project-card" data-category="games">
+          <div class="project-preview-box">
+            <svg class="pixel-art" width="160" height="120" viewBox="0 0 160 120" fill="none">
+              <rect x="20" y="20" width="120" height="80" fill="#22224A" stroke="#080816" stroke-width="2"/>
+              <rect x="40" y="40" width="24" height="24" fill="#F27D36"/>
+              <rect x="70" y="60" width="30" height="14" fill="#2CA7A3"/>
+              <rect x="110" y="35" width="16" height="16" fill="#F2DFB5"/>
+            </svg>
+          </div>
+          <div class="project-body">
+            <div>
+              <div class="project-meta-row">
+                <span class="pixel-badge pixel-badge-info">GAMES</span>
+                <span style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted);">v1.4.0</span>
+              </div>
+              <h3 class="project-title">Cyber Rogue 16-bit</h3>
+              <p class="project-desc">A turn-based roguelike dungeon crawler built with deterministic tile grids and authentic EGA pixel art assets.</p>
+            </div>
+            <button class="pixel-btn pixel-btn-primary" onclick="openProjectModal('Cyber Rogue 16-bit', 'Roguelike game engine rendered on integer coordinate canvas with zero subpixel blurring. Built using pure CSS stepped bevels and modular window chrome.')">Inspect Spec ↗</button>
+          </div>
+        </article>
+
+        <!-- Project 2 -->
+        <article class="project-card" data-category="tools">
+          <div class="project-preview-box">
+            <svg class="pixel-art" width="160" height="120" viewBox="0 0 160 120" fill="none">
+              <rect x="30" y="25" width="100" height="70" fill="#1B1B3A" stroke="#080816" stroke-width="2"/>
+              <rect x="35" y="30" width="90" height="10" fill="#5B438E"/>
+              <rect x="40" y="50" width="40" height="8" fill="#2CA7A3"/>
+              <rect x="40" y="64" width="60" height="8" fill="#F27D36"/>
+            </svg>
+          </div>
+          <div class="project-body">
+            <div>
+              <div class="project-meta-row">
+                <span class="pixel-badge pixel-badge-warning">TOOLS</span>
+                <span style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted);">OPEN SOURCE</span>
+              </div>
+              <h3 class="project-title">SpriteForge CLI</h3>
+              <p class="project-desc">Terminal and GUI sprite packager that converts SVG vector assets into integer-aligned raster sheets.</p>
+            </div>
+            <button class="pixel-btn pixel-btn-primary" onclick="openProjectModal('SpriteForge CLI', 'High-performance sprite slicing utility ensuring integer coordinate adherence and zero interpolation fuzz for web-based games.')">Inspect Spec ↗</button>
+          </div>
+        </article>
+
+        <!-- Project 3 -->
+        <article class="project-card" data-category="ui">
+          <div class="project-preview-box">
+            <svg class="pixel-art" width="160" height="120" viewBox="0 0 160 120" fill="none">
+              <rect x="25" y="20" width="110" height="80" fill="#E4DECE" stroke="#080816" stroke-width="2"/>
+              <rect x="30" y="25" width="100" height="12" fill="#493475"/>
+              <rect x="40" y="50" width="80" height="30" fill="#ded6c4" stroke="#080816" stroke-width="1"/>
+            </svg>
+          </div>
+          <div class="project-body">
+            <div>
+              <div class="project-meta-row">
+                <span class="pixel-badge pixel-badge-success">UI SYSTEM</span>
+                <span style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted);">DESIGN SYSTEM</span>
+              </div>
+              <h3 class="project-title">Arcade UI Tokens</h3>
+              <p class="project-desc">Standardized Tailwind CSS theme extension providing coupled light/dark tokens for retro computer applications.</p>
+            </div>
+            <button class="pixel-btn pixel-btn-primary" onclick="openProjectModal('Arcade UI Tokens', 'Tailwind preset and shadcn/ui variables defining stepped bevels, pixel borders, and midnight/parchment color pairings.')">Inspect Spec ↗</button>
+          </div>
+        </article>
+
+        <!-- Project 4 -->
+        <article class="project-card" data-category="games">
+          <div class="project-preview-box">
+            <svg class="pixel-art" width="160" height="120" viewBox="0 0 160 120" fill="none">
+              <rect x="30" y="30" width="100" height="60" fill="#10102B" stroke="#2CA7A3" stroke-width="2"/>
+              <circle cx="80" cy="60" r="14" fill="#F27D36"/>
+              <rect x="50" y="58" width="60" height="4" fill="#FFFFFF"/>
+            </svg>
+          </div>
+          <div class="project-body">
+            <div>
+              <div class="project-meta-row">
+                <span class="pixel-badge pixel-badge-info">GAMES</span>
+                <span style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted);">WEBGL / 2D</span>
+              </div>
+              <h3 class="project-title">Pixel Orbit</h3>
+              <p class="project-desc">Physics puzzle simulation built with low-resolution ray tracing metaphors and chiptune audio generators.</p>
+            </div>
+            <button class="pixel-btn pixel-btn-primary" onclick="openProjectModal('Pixel Orbit', 'Real-time gravity simulator operating strictly within 320x240 virtual canvas boundaries and scaling responsively.')">Inspect Spec ↗</button>
+          </div>
+        </article>
+
+        <!-- Project 5 -->
+        <article class="project-card" data-category="tools">
+          <div class="project-preview-box">
+            <svg class="pixel-art" width="160" height="120" viewBox="0 0 160 120" fill="none">
+              <rect x="25" y="25" width="110" height="70" fill="#0D0D22" stroke="#080816" stroke-width="2"/>
+              <path d="M35 45 H125 M35 60 H125 M35 75 H125" stroke="#9999C2" stroke-width="2" stroke-dasharray="4 4"/>
+            </svg>
+          </div>
+          <div class="project-body">
+            <div>
+              <div class="project-meta-row">
+                <span class="pixel-badge pixel-badge-warning">TOOLS</span>
+                <span style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted);">DEV TOOL</span>
+              </div>
+              <h3 class="project-title">Hex Editor 86</h3>
+              <p class="project-desc">In-browser binary inspection tool supporting classic ASCII columns and stepped window split panels.</p>
+            </div>
+            <button class="pixel-btn pixel-btn-primary" onclick="openProjectModal('Hex Editor 86', 'High-performance binary inspector featuring monospace tabular alignment and memory byte highlights.')">Inspect Spec ↗</button>
+          </div>
+        </article>
+
+        <!-- Project 6 -->
+        <article class="project-card" data-category="ui">
+          <div class="project-preview-box">
+            <svg class="pixel-art" width="160" height="120" viewBox="0 0 160 120" fill="none">
+              <rect x="30" y="20" width="100" height="80" fill="#22224A" stroke="#080816" stroke-width="2"/>
+              <rect x="40" y="35" width="80" height="12" fill="#F27D36"/>
+              <rect x="40" y="55" width="80" height="12" fill="#2CA7A3"/>
+              <rect x="40" y="75" width="80" height="12" fill="#5B438E"/>
+            </svg>
+          </div>
+          <div class="project-body">
+            <div>
+              <div class="project-meta-row">
+                <span class="pixel-badge pixel-badge-success">UI SYSTEM</span>
+                <span style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted);">COMPONENT LIB</span>
+              </div>
+              <h3 class="project-title">RetroKit Vue/React</h3>
+              <p class="project-desc">Accessible UI component library rendering classic Windows 95/Amiga styled widgets across React and Vue.</p>
+            </div>
+            <button class="pixel-btn pixel-btn-primary" onclick="openProjectModal('RetroKit Vue/React', 'Framework-agnostic headless primitives styled with Taste Engine Retro Pixel CSS tokens.')">Inspect Spec ↗</button>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- AUTHENTICATION DEMONSTRATION -->
+    <section id="auth-demo">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">AUTHENTICATION DEMONSTRATION</h2>
+          <p class="section-subtitle">Deterministic local simulation of retro system logon and validation</p>
+        </div>
+        <span class="pixel-badge pixel-badge-warning">LOCAL DEMO</span>
+      </div>
+
+      <div class="auth-container">
+        <div class="retro-window">
+          <div class="window-header">
+            <span>[SECURITY // SYSTEM_LOGON.SYS]</span>
+            <span class="window-controls">
+              <span class="window-control-btn">×</span>
+            </span>
+          </div>
+
+          <div class="window-body">
+            <div class="demo-notice-bar">
+              ⚠ LOCAL SIMULATION ONLY — NO PRODUCTION CREDENTIALS TRANSMITTED
+            </div>
+
+            <div class="pixel-tabs" role="tablist">
+              <button class="pixel-tab-btn active" id="auth-tab-signin">Sign In</button>
+              <button class="pixel-tab-btn" id="auth-tab-signup">Register</button>
+              <button class="pixel-tab-btn" id="auth-tab-reset">Reset Key</button>
+            </div>
+
+            <form id="auth-form" onsubmit="handleAuthSubmit(event)">
+              <div class="form-group">
+                <label class="form-label" for="auth-email">User Identity / Email</label>
+                <input type="email" class="pixel-input" id="auth-email" placeholder="pilot@arcade.local" required value="retro.user@system.local">
+              </div>
+
+              <div class="form-group" id="pwd-form-group">
+                <label class="form-label" for="auth-password">Security Access Key</label>
+                <div class="password-input-group">
+                  <input type="password" class="pixel-input" id="auth-password" placeholder="••••••••••••" required value="secret16bit">
+                  <button type="button" class="toggle-pwd-btn" id="toggle-pwd-btn">Show</button>
+                </div>
+              </div>
+
+              <div class="form-group" style="display: flex; justify-content: space-between; align-items: center;">
+                <label class="control-label">
+                  <input type="checkbox" class="pixel-checkbox" checked>
+                  <span style="font-size: 0.8rem;">Remember Terminal</span>
+                </label>
+                <a href="#auth-demo" style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-teal);">Forgot Access Key?</a>
+              </div>
+
+              <button type="submit" class="pixel-btn pixel-btn-primary" style="width: 100%; padding: 10px;">
+                Authenticate User ↵
+              </button>
+            </form>
+
+            <div class="auth-feedback-banner" id="auth-feedback"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DASHBOARD DEMONSTRATION -->
+    <section id="dashboard">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">SYSTEM DASHBOARD</h2>
+          <p class="section-subtitle">Information-dense process monitor with live search and tabular data</p>
+        </div>
+        <span class="pixel-badge pixel-badge-success">TELEMETRY</span>
+      </div>
+
+      <div class="retro-window">
+        <div class="window-header">
+          <span>[PROCESS_MONITOR // TASK_MANAGER.EXE]</span>
+          <div class="window-controls">
+            <span class="window-control-btn">_</span>
+            <span class="window-control-btn">□</span>
+            <span class="window-control-btn">×</span>
+          </div>
+        </div>
+
+        <div class="window-body">
+          <div class="dashboard-toolbar">
+            <div class="search-input-wrap">
+              <label for="dash-search" class="form-label" style="margin: 0; white-space: nowrap;">Filter Tasks:</label>
+              <input type="text" class="pixel-input" id="dash-search" placeholder="Type to filter (e.g. kern, render, audio)...">
+            </div>
+            <div style="display: flex; gap: 8px;">
+              <button class="pixel-btn" id="refresh-dash-btn">↺ Refresh (Simulated)</button>
+              <button class="pixel-btn pixel-btn-secondary" id="spawn-task-btn">+ Spawn Task</button>
+            </div>
+          </div>
+
+          <div class="dash-table-wrapper">
+            <table class="pixel-table" aria-label="System Process Monitor">
+              <thead>
+                <tr>
+                  <th>PID</th>
+                  <th>PROCESS NAME</th>
+                  <th>MEMORY</th>
+                  <th>CPU %</th>
+                  <th>STATUS</th>
+                  <th>ACTION</th>
+                </tr>
+              </thead>
+              <tbody id="dash-table-body">
+                <tr>
+                  <td>1001</td>
+                  <td>pixel-kernel.sys</td>
+                  <td>14.2 MB</td>
+                  <td>1.8%</td>
+                  <td><span class="pixel-badge pixel-badge-success">ACTIVE</span></td>
+                  <td><button class="pixel-btn" style="padding: 2px 6px; font-size: 0.7rem;" onclick="showToast('Kernel PID 1001 is protected')">Hold</button></td>
+                </tr>
+                <tr>
+                  <td>1024</td>
+                  <td>render-raster.exe</td>
+                  <td>42.8 MB</td>
+                  <td>12.4%</td>
+                  <td><span class="pixel-badge pixel-badge-success">ACTIVE</span></td>
+                  <td><button class="pixel-btn pixel-btn-destructive" style="padding: 2px 6px; font-size: 0.7rem;" onclick="terminateRow(this)">Kill</button></td>
+                </tr>
+                <tr>
+                  <td>1048</td>
+                  <td>chiptune-synth.drv</td>
+                  <td>8.6 MB</td>
+                  <td>3.1%</td>
+                  <td><span class="pixel-badge pixel-badge-info">STANDBY</span></td>
+                  <td><button class="pixel-btn pixel-btn-destructive" style="padding: 2px 6px; font-size: 0.7rem;" onclick="terminateRow(this)">Kill</button></td>
+                </tr>
+                <tr>
+                  <td>1089</td>
+                  <td>dither-stream.dpl</td>
+                  <td>22.1 MB</td>
+                  <td>8.7%</td>
+                  <td><span class="pixel-badge pixel-badge-warning">THROTTLED</span></td>
+                  <td><button class="pixel-btn pixel-btn-destructive" style="padding: 2px 6px; font-size: 0.7rem;" onclick="terminateRow(this)">Kill</button></td>
+                </tr>
+                <tr>
+                  <td>1112</td>
+                  <td>net-floppy-link.vxd</td>
+                  <td>5.4 MB</td>
+                  <td>0.4%</td>
+                  <td><span class="pixel-badge pixel-badge-success">ACTIVE</span></td>
+                  <td><button class="pixel-btn pixel-btn-destructive" style="padding: 2px 6px; font-size: 0.7rem;" onclick="terminateRow(this)">Kill</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="font-family: var(--pixel-font-mono); font-size: 0.75rem; color: var(--pixel-text-muted); margin-top: 0.75rem; display: flex; justify-content: space-between;">
+            <span id="task-count-label">5 tasks listed</span>
+            <span>Allocated Memory: 93.1 MB / 640 KB Base Conventional OK</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ ACCORDION -->
+    <section id="faq">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">FREQUENTLY ASKED QUESTIONS</h2>
+          <p class="section-subtitle">Engineering architecture, fidelity gates, and usability answers</p>
+        </div>
+        <span class="pixel-badge pixel-badge-info">DOCUMENTATION</span>
+      </div>
+
+      <div class="faq-wrapper">
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>How is Retro Pixel distinct from Retro Terminal?</span>
+            <span class="faq-icon">▶</span>
+          </button>
+          <div class="faq-content">
+            <strong>Retro Terminal</strong> models CRT developer developer consoles, green/amber phosphor radiation, static scanline overlays, bracketed ASCII frames, and command prompt workflows. <strong>Retro Pixel</strong> models classic graphical operating systems (Windows 95 / Amiga / System 7), integer pixel illustrations, desktop purple window headers, arcade orange/teal accents, and stepped 3D pixel bevels. They are never aliased together.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>Does Retro Pixel compromise body text legibility?</span>
+            <span class="faq-icon">▶</span>
+          </button>
+          <div class="faq-content">
+            Never. The style enforces a paired typography rule: chunky pixel display fonts are strictly reserved for headlines, badges, and window headers. All multi-line paragraphs, tables, inputs, and explanatory text use highly legible humanist sans-serif (Inter) or clean monospace (JetBrains Mono).
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>How does dark and light theme coupling work?</span>
+            <span class="faq-icon">▶</span>
+          </button>
+          <div class="faq-content">
+            Dark mode uses a midnight navy canvas (<code>#10102B</code>) with desktop purple headers and vintage cream text. Light mode uses vintage cream/parchment (<code>#F2DFB5</code>) with warm beige window panels and midnight ink text. In both modes, tokens flip in synchronized pairs to guarantee WCAG AA contrast with zero color collision.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-trigger" aria-expanded="false">
+            <span>How is Retro Pixel supported in Tailwind CSS and shadcn/ui?</span>
+            <span class="faq-icon">▶</span>
+          </button>
+          <div class="faq-content">
+            Taste Engine v0.11.0 includes official Tailwind tokens (<code>colors.taste.pixel-*</code>, <code>boxShadow.pixel-*</code>) in <code>presets/tailwind/tailwind.preset.js</code> and ready-to-use classes in <code>presets/tailwind/taste-components.css</code>, plus shadcn/ui theme variable overrides in <code>presets/shadcn/shadcn-themes.css</code>.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTALLATION & AGENT SKILLS GUIDANCE -->
+    <section id="install">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">INSTALLATION & AGENT INTEGRATION</h2>
+          <p class="section-subtitle">Official Agent Skills workflow & CLI commands for developer agents</p>
+        </div>
+        <span class="pixel-badge pixel-badge-success">SUPPORTED CLI</span>
+      </div>
+
+      <div class="install-grid">
+        <div class="install-card">
+          <h4>Agent Skills CLI</h4>
+          <p>Install portable skill directly for Claude Code, Codex, Cursor, or Antigravity:</p>
+          <div class="code-box">
+            <code>npx skills add kennedys0/taste-engine --skill taste-engine</code>
+            <button class="copy-pill-btn" onclick="copySnippet('npx skills add kennedys0/taste-engine --skill taste-engine')">Copy</button>
+          </div>
+        </div>
+
+        <div class="install-card">
+          <h4>Native Node.js CLI</h4>
+          <p>Clone and install with zero external runtime dependencies (Node 20+):</p>
+          <div class="code-box">
+            <code>node bin/taste-engine.mjs install --agent all --project</code>
+            <button class="copy-pill-btn" onclick="copySnippet('node bin/taste-engine.mjs install --agent all --project')">Copy</button>
+          </div>
+        </div>
+
+        <div class="install-card">
+          <h4>Tailwind & shadcn Scaffolding</h4>
+          <p>Scaffold official presets and component layers into your repository:</p>
+          <div class="code-box">
+            <code>taste-engine init</code>
+            <button class="copy-pill-btn" onclick="copySnippet('taste-engine init')">Copy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- DETAIL MODAL DIALOG -->
+  <div class="pixel-modal-backdrop" id="project-modal-backdrop" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="pixel-modal">
+      <div class="window-header">
+        <span id="modal-title">[SPEC_INSPECTOR // PROJECT_DETAILS.EXE]</span>
+        <button class="window-control-btn" id="modal-close-btn" aria-label="Close dialog">×</button>
+      </div>
+      <div class="window-body">
+        <h3 id="modal-heading" style="font-family: var(--pixel-font-display); font-size: 1.25rem; color: var(--pixel-orange); margin-bottom: 0.75rem;"></h3>
+        <p id="modal-body-text" style="font-size: 0.9rem; line-height: 1.6; color: var(--pixel-text); margin-bottom: 1.5rem;"></p>
+        <div style="display: flex; justify-content: flex-end; gap: 8px;">
+          <button class="pixel-btn pixel-btn-primary" id="modal-ok-btn">Acknowledge ↵</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="pixel-toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- MOBILE-SAFE FOOTER -->
+  <footer class="pixel-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand-title">TASTE ENGINE // v0.11.0</div>
+          <p class="footer-brand-desc">
+            The style-agnostic design system skill for AI agents. Elevating web interfaces with user-selected visual tastes, anti-slop audits, conditional SEO, and purposeful motion.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-col-title">STYLE ARCHETYPES</div>
+          <ul class="footer-links-list">
+            <li><a href="retro-pixel.html" class="footer-link">● Retro Pixel (Current Studio)</a></li>
+            <li><a href="retro-terminal.html" class="footer-link">Retro Terminal (PoW)</a></li>
+            <li><a href="neo-brutalism.html" class="footer-link">Neo-Brutalism (PoW)</a></li>
+            <li><a href="claymorphism.html" class="footer-link">Claymorphism (PoW)</a></li>
+            <li><a href="glassmorphism.html" class="footer-link">Glassmorphism (PoW)</a></li>
+            <li><a href="bento.html" class="footer-link">Bento Grid (PoW)</a></li>
+            <li><a href="skeuomorphism.html" class="footer-link">Skeuomorphism (PoW)</a></li>
+            <li><a href="swiss-editorial.html" class="footer-link">Swiss / Editorial (PoW)</a></li>
+            <li><a href="brutalism.html" class="footer-link">Brutalism (PoW)</a></li>
+            <li><a href="minimalism.html" class="footer-link">Minimalism (PoW)</a></li>
+            <li><a href="enterprise.html" class="footer-link">Enterprise (PoW)</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">RESOURCES & SPEC</div>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-link">Interactive Style Gallery</a></li>
+            <li><a href="https://github.com/kennedys0/taste-engine" class="footer-link" target="_blank" rel="noopener">GitHub Repository ↗</a></li>
+            <li><a href="https://github.com/kennedys0/taste-engine/blob/main/CHANGELOG.md" class="footer-link" target="_blank" rel="noopener">Changelog & Releases ↗</a></li>
+            <li><a href="#hero" class="footer-link" style="color: var(--pixel-orange);">Back to Top ↑</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <span>Taste Engine open-source project under MIT License.</span>
+        <span>Built with integer pixel fidelity & anti-slop verification.</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- CLIENT-SIDE SCRIPT CONTROLLER -->
+  <script>
+    // Theme Switcher Controller
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeText = document.getElementById('theme-text');
+
+    const moonSvg = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
+    const sunSvg = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>';
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      if (theme === 'light') {
+        themeIcon.innerHTML = sunSvg;
+        themeText.textContent = 'Light';
+      } else {
+        themeIcon.innerHTML = moonSvg;
+        themeText.textContent = 'Dark';
+      }
+      localStorage.setItem('taste-pixel-theme', theme);
+    }
+
+    const savedTheme = localStorage.getItem('taste-pixel-theme') || 'dark';
+    applyTheme(savedTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+      showToast(`Theme switched to ${current === 'dark' ? 'Light Workstation' : 'Midnight Arcade'}`);
+    });
+
+    // Mobile Hamburger Navigation Drawer
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const drawerOverlay = document.getElementById('drawer-overlay');
+    const drawerCloseBtn = document.getElementById('drawer-close-btn');
+
+    function openDrawer() {
+      mobileDrawer.classList.add('open');
+      drawerOverlay.classList.add('open');
+    }
+    function closeDrawer() {
+      mobileDrawer.classList.remove('open');
+      drawerOverlay.classList.remove('open');
+    }
+
+    hamburgerBtn.addEventListener('click', openDrawer);
+    drawerCloseBtn.addEventListener('click', closeDrawer);
+    drawerOverlay.addEventListener('click', closeDrawer);
+    document.querySelectorAll('.drawer-link').forEach(link => {
+      link.addEventListener('click', closeDrawer);
+    });
+
+    // Toast Notification System
+    function showToast(message, type = 'info') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = 'pixel-toast';
+      if (type === 'error') toast.style.backgroundColor = 'var(--pixel-error)';
+      toast.innerHTML = `<span>[SYS]</span> <span>${message}</span>`;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(10px)';
+        setTimeout(() => toast.remove(), 200);
+      }, 2600);
+    }
+
+    // Snippet Copier
+    function copySnippet(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Command copied to clipboard!');
+      }).catch(() => {
+        showToast('Clipboard access not permitted');
+      });
+    }
+
+    document.getElementById('hero-copy-cmd-btn').addEventListener('click', () => {
+      copySnippet('npx skills add kennedys0/taste-engine --skill taste-engine');
+    });
+
+    document.getElementById('hero-copy-tokens-btn').addEventListener('click', () => {
+      const tokens = `--taste-pixel-bg: #10102b;\n--taste-pixel-orange: #f27d36;\n--taste-pixel-teal: #2ca7a3;\n--taste-pixel-purple: #5b438e;\n--taste-pixel-cream: #f2dfb5;\n--taste-pixel-border: 2px solid #080816;`;
+      copySnippet(tokens);
+    });
+
+    // Interactive Window Actions (Minimize, Maximize, Close, Restore)
+    const demoWindow = document.getElementById('demo-window');
+    const demoWindowBody = document.getElementById('demo-window-body');
+    const winBtnMin = document.getElementById('win-btn-min');
+    const winBtnMax = document.getElementById('win-btn-max');
+    const winBtnClose = document.getElementById('win-btn-close');
+    const restoreWindowBtn = document.getElementById('restore-window-btn');
+
+    let isMinimized = false;
+    let isMaximized = false;
+
+    winBtnMin.addEventListener('click', () => {
+      isMinimized = !isMinimized;
+      demoWindowBody.style.display = isMinimized ? 'none' : 'block';
+      showToast(isMinimized ? 'Window body minimized' : 'Window body restored');
+    });
+
+    winBtnMax.addEventListener('click', () => {
+      isMaximized = !isMaximized;
+      if (isMaximized) {
+        demoWindow.style.maxWidth = '100%';
+        demoWindow.style.margin = '0 0 1.5rem 0';
+      } else {
+        demoWindow.style.maxWidth = '';
+        demoWindow.style.margin = '';
+      }
+      showToast(isMaximized ? 'Window maximized' : 'Window restored to normal size');
+    });
+
+    winBtnClose.addEventListener('click', () => {
+      demoWindow.style.display = 'none';
+      restoreWindowBtn.classList.add('visible');
+      showToast('Studio window closed. Use restore button to reopen.');
+    });
+
+    restoreWindowBtn.addEventListener('click', () => {
+      demoWindow.style.display = '';
+      restoreWindowBtn.classList.remove('visible');
+      demoWindowBody.style.display = 'block';
+      isMinimized = false;
+      showToast('Studio window reopened');
+    });
+
+    // Interactive Pixel Paint Canvas (16x16 Grid)
+    const canvas = document.getElementById('pixel-canvas');
+    let currentColor = '#F27D36';
+    let currentTool = 'draw';
+    let isMouseDown = false;
+
+    for (let i = 0; i < 256; i++) {
+      const cell = document.createElement('div');
+      cell.className = 'pixel-cell';
+      cell.addEventListener('mousedown', () => {
+        paintCell(cell);
+      });
+      cell.addEventListener('mouseenter', () => {
+        if (isMouseDown) paintCell(cell);
+      });
+      canvas.appendChild(cell);
+    }
+
+    window.addEventListener('mousedown', () => { isMouseDown = true; });
+    window.addEventListener('mouseup', () => { isMouseDown = false; });
+
+    function getCellFromTouch(touch) {
+      const el = document.elementFromPoint(touch.clientX, touch.clientY);
+      if (el && el.classList.contains('pixel-cell')) return el;
+      return null;
+    }
+
+    canvas.addEventListener('touchstart', (e) => {
+      const touch = e.touches[0];
+      const cell = getCellFromTouch(touch);
+      if (cell) {
+        paintCell(cell);
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    canvas.addEventListener('touchmove', (e) => {
+      const touch = e.touches[0];
+      const cell = getCellFromTouch(touch);
+      if (cell) {
+        paintCell(cell);
+        e.preventDefault();
+      }
+    }, { passive: false });
+
+    function paintCell(cell) {
+      if (currentTool === 'draw') {
+        cell.style.backgroundColor = currentColor;
+      } else if (currentTool === 'erase') {
+        cell.style.backgroundColor = 'transparent';
+      }
+    }
+
+    document.querySelectorAll('.color-swatch-btn').forEach(swatch => {
+      swatch.addEventListener('click', () => {
+        document.querySelectorAll('.color-swatch-btn').forEach(s => s.classList.remove('active'));
+        swatch.classList.add('active');
+        currentColor = swatch.getAttribute('data-color');
+        currentTool = 'draw';
+        document.getElementById('canvas-status').textContent = `Active Tool: Pencil | Color: ${currentColor}`;
+      });
+    });
+
+    document.getElementById('tool-draw-btn').addEventListener('click', () => {
+      currentTool = 'draw';
+      document.getElementById('canvas-status').textContent = `Active Tool: Pencil | Color: ${currentColor}`;
+      showToast('Pencil tool selected');
+    });
+
+    document.getElementById('tool-erase-btn').addEventListener('click', () => {
+      currentTool = 'erase';
+      document.getElementById('canvas-status').textContent = `Active Tool: Eraser`;
+      showToast('Eraser tool selected');
+    });
+
+    document.getElementById('tool-clear-btn').addEventListener('click', () => {
+      document.querySelectorAll('.pixel-cell').forEach(cell => {
+        cell.style.backgroundColor = 'transparent';
+      });
+      showToast('Canvas cleared');
+    });
+
+    // Tabs Controller in Component Lab
+    document.querySelectorAll('.pixel-tab-btn').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetId = tab.getAttribute('data-tab');
+        if (!targetId) return;
+        const parent = tab.parentElement;
+        parent.querySelectorAll('.pixel-tab-btn').forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+
+        const card = parent.parentElement;
+        card.querySelectorAll('.pixel-tab-content').forEach(c => c.classList.remove('active'));
+        const target = document.getElementById(targetId);
+        if (target) target.classList.add('active');
+      });
+    });
+
+    // Project Gallery Filtering
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.getAttribute('data-filter');
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach(card => {
+          if (filter === 'all' || card.getAttribute('data-category') === filter) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Project Detail Modal Dialog
+    const modalBackdrop = document.getElementById('project-modal-backdrop');
+    const modalHeading = document.getElementById('modal-heading');
+    const modalBodyText = document.getElementById('modal-body-text');
+    const modalCloseBtn = document.getElementById('modal-close-btn');
+    const modalOkBtn = document.getElementById('modal-ok-btn');
+
+    function openProjectModal(title, description) {
+      modalHeading.textContent = title;
+      modalBodyText.textContent = description;
+      modalBackdrop.classList.add('open');
+      modalOkBtn.focus();
+    }
+
+    function closeModal() {
+      modalBackdrop.classList.remove('open');
+    }
+
+    modalCloseBtn.addEventListener('click', closeModal);
+    modalOkBtn.addEventListener('click', closeModal);
+    modalBackdrop.addEventListener('click', (e) => {
+      if (e.target === modalBackdrop) closeModal();
+    });
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modalBackdrop.classList.contains('open')) closeModal();
+    });
+
+    document.getElementById('open-modal-demo-btn').addEventListener('click', () => {
+      openProjectModal('Dialog Window Demo', 'Classic modal dialog rendered with stepped 3D border bevels, keyboard trap, and accessible Escape dismissal.');
+    });
+
+    // Authentication Form Controller
+    const authFeedback = document.getElementById('auth-feedback');
+    const authPasswordInput = document.getElementById('auth-password');
+    const togglePwdBtn = document.getElementById('toggle-pwd-btn');
+    let pwdVisible = false;
+
+    togglePwdBtn.addEventListener('click', () => {
+      pwdVisible = !pwdVisible;
+      authPasswordInput.type = pwdVisible ? 'text' : 'password';
+      togglePwdBtn.textContent = pwdVisible ? 'Hide' : 'Show';
+    });
+
+    function handleAuthSubmit(event) {
+      event.preventDefault();
+      const email = document.getElementById('auth-email').value.trim();
+      const pwd = authPasswordInput.value;
+
+      if (!email || !pwd) {
+        authFeedback.className = 'auth-feedback-banner error';
+        authFeedback.textContent = 'Error: Identity and Access Key must not be empty.';
+        return;
+      }
+
+      authFeedback.className = 'auth-feedback-banner success';
+      authFeedback.textContent = `[ACCESS_GRANTED] Welcome user: ${email}. Simulated session active.`;
+      showToast('Authentication succeeded (Local Demo State)');
+    }
+
+    // Dashboard Live Search Filtering
+    const dashSearch = document.getElementById('dash-search');
+    const tableBody = document.getElementById('dash-table-body');
+    const taskCountLabel = document.getElementById('task-count-label');
+
+    dashSearch.addEventListener('input', () => {
+      const term = dashSearch.value.toLowerCase().trim();
+      const rows = tableBody.querySelectorAll('tr');
+      let visible = 0;
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        if (text.includes(term)) {
+          row.style.display = '';
+          visible++;
+        } else {
+          row.style.display = 'none';
+        }
+      });
+      taskCountLabel.textContent = `${visible} task(s) visible`;
+    });
+
+    function terminateRow(btn) {
+      const row = btn.closest('tr');
+      if (row) {
+        const pid = row.cells[0].textContent;
+        row.remove();
+        showToast(`Process PID ${pid} terminated`);
+        const rows = tableBody.querySelectorAll('tr');
+        taskCountLabel.textContent = `${rows.length} task(s) visible`;
+      }
+    }
+
+    document.getElementById('refresh-dash-btn').addEventListener('click', () => {
+      showToast('Telemetry refreshed (All channels nominal)');
+    });
+
+    document.getElementById('spawn-task-btn').addEventListener('click', () => {
+      const randomPid = Math.floor(1200 + Math.random() * 800);
+      const newRow = document.createElement('tr');
+      newRow.innerHTML = `
+        <td>${randomPid}</td>
+        <td>worker-sub_${randomPid}.exe</td>
+        <td>18.4 MB</td>
+        <td>4.2%</td>
+        <td><span class="pixel-badge pixel-badge-info">ACTIVE</span></td>
+        <td><button class="pixel-btn pixel-btn-destructive" style="padding: 2px 6px; font-size: 0.7rem;" onclick="terminateRow(this)">Kill</button></td>
+      `;
+      tableBody.appendChild(newRow);
+      showToast(`Spawned worker task PID ${randomPid}`);
+      const rows = tableBody.querySelectorAll('tr');
+      taskCountLabel.textContent = `${rows.length} task(s) visible`;
+    });
+
+    // FAQ Accordion Controller
+    document.querySelectorAll('.faq-trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const item = trigger.parentElement;
+        const isOpen = item.classList.contains('open');
+        // Close siblings for clean accordion behavior
+        document.querySelectorAll('.faq-item').forEach(i => {
+          i.classList.remove('open');
+          i.querySelector('.faq-trigger').setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          item.classList.add('open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
+

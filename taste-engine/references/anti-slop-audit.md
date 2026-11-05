@@ -6,6 +6,43 @@ See [quality-tiers.md](quality-tiers.md): `FLOOR` is an integrity defect, `REFLE
 
 ---
 
+## Vibecoded Red Flags — fast scanner (run before structural tests)
+
+Scan for these patterns immediately on load. Each flag is a trigger for the Three-Layer Review below — not a conviction by itself.
+
+- [ ] **Purple/blue mesh gradient as default background** — flag unless glassmorphism or cyberpunk is the confirmed style
+- [ ] **Neon glow exceeding `box-shadow` blur > 20px** on non-terminal, non-retro UI elements
+- [ ] **Emoji used as functional icon, bullet point, status indicator, or decorative sticker** — replace with Lucide/Radix SVG
+- [ ] **Uniform card spam** — every card identical in size, structure, and visual weight (failed Deletion Test candidate)
+- [ ] **Inconsistent spacing units** — mixing `px`, `rem`, and arbitrary Tailwind values without a declared token system
+- [ ] **Copy with ≥ 3 exclamation marks, ≥ 2 em-dashes, or ≥ 1 "In today's fast-paced world"** variant
+- [ ] **Hero section > 100vh** without explicit product justification in the brief
+- [ ] **Font stack not loaded** — fallback renders visibly as system default serif or sans
+- [ ] **Rainbow text gradient** (`-webkit-background-clip: text`) on headings outside retro/cyberpunk themes
+- [ ] **Fake widgets** — fabricated weather, audio spectrum, simulated live telemetry, or animated counters with no real data
+
+Each flagged item proceeds to Layer 0 / Layer 1 below before it becomes a reported finding.
+
+---
+
+## 9-Pass Audit Order
+
+Run passes sequentially. A pass may surface findings at any severity tier; complete all passes before writing the report.
+
+| Pass | Surface | Key checks |
+|------|---------|------------|
+| **1 — Spacing** | UI | Token consistency, rhythm, padding scale, 320px baseline, circle geometry |
+| **2 — Color** | UI | Contrast (WCAG AA 4.5:1), dark/light mode collision, palette intent vs. selected style |
+| **3 — Icons** | UI | Vector SVG only, consistent stroke weight (1.5px–2px), no emoji, meaningful state changes |
+| **4 — Copy** | Content | Parataxis, banned vocabulary, claim truthfulness (Inversion + Attribution tests) |
+| **5 — Typography** | UI + Content | Scale, burstiness, tabular-nums for data, font loading, mobile clamp values |
+| **6 — Layout** | UI | 320px baseline, hamburger nav, hero height, single-line command pills, footer grid |
+| **7 — Details** | UI | Border-radius consistency, focus rings, hover/active states, shadow intentionality |
+| **8 — Visuals** | UI | Gradient intent (style-authentic vs. default soup), texture authenticity, no fake widgets |
+| **9 — Motion** | UI | `prefers-reduced-motion` support, no idle/decorative loops, state-driven transitions only |
+
+---
+
 ## Core Audit Axioms
 
 1. **Reports defects, never reports authorship:** Never guess whether an AI or a human generated the output. Audit whether there is a verifiable defect in substance, usability, code integrity, or truthfulness.

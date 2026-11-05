@@ -23,7 +23,8 @@ class MotionContracts(unittest.TestCase):
             self.assertIn(part, src)
         self.assertNotIn("anime({", src)
     def test_standalone_copies_reference(self):
-        standalone = ROOT.parent / "optional-standalone-skills/taste-motion"
+        bundle = ROOT.parent if (ROOT.parent / "optional-standalone-skills").is_dir() else ROOT.parents[1]
+        standalone = bundle / "optional-standalone-skills/taste-motion"
         self.assertEqual((ROOT / "references/motion-engine.md").read_bytes(),(standalone / "references/motion-engine.md").read_bytes())
         self.assertEqual((ROOT / "examples/react/anime-v4-press.jsx").read_bytes(),(standalone / "examples/react/anime-v4-press.jsx").read_bytes())
 

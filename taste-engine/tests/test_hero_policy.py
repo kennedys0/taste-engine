@@ -4,7 +4,7 @@ import json
 import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
-BUNDLE = ROOT.parent
+BUNDLE = ROOT.parent if (ROOT.parent / 'optional-standalone-skills').is_dir() else ROOT.parents[1]
 
 class HeroPolicyTest(unittest.TestCase):
     def test_global_contract(self):
@@ -21,7 +21,7 @@ class HeroPolicyTest(unittest.TestCase):
 
     def test_every_pack_and_standalone(self):
         registry = json.loads((ROOT / 'styles/registry.json').read_text(encoding='utf-8'))
-        self.assertEqual(len(registry['styles']), 10)
+        self.assertEqual(len(registry['styles']), 11)
         for style in registry['styles']:
             id = style['id']
             text = (ROOT / 'styles' / (id+'.md')).read_text(encoding='utf-8')

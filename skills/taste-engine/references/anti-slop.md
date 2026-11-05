@@ -27,6 +27,7 @@ A heuristic must **never** erase a defining feature of the chosen style:
 - **Neo-brutalism:** Hard 0-blur offset shadows (`4px 4px 0 #121212`), solid 2px–3px black borders, and mechanical press displacement are explicitly exempt from generic shadow cautions.
 - **Skeuomorphism:** Multi-stop metallic reflection gradients, 1px specular bevel highlights, recessed display wells, and physical travel are explicitly exempt from anti-gradient/texture cautions when tied to real controls.
 - **Retro-Terminal:** Subtle raster scanlines, phosphor glow (`0 0 6px`), bracketed ASCII frames, and active command prompt lines are explicitly exempt from texture cautions.
+- **Retro-Pixel:** Authentic pixel illustrations, stepped pixel borders, hard-edged 0-blur drop shadows, subtle background grid patterns, classic desktop title bars, window controls, and integer-scaled pixel art are explicitly exempt from texture and ornament cautions when purposeful and usable.
 - **Bento Grid:** Asymmetric multi-span tiles (`span 2`) and diverse internal tile compositions are explicitly encouraged over repetitive card templates.
 - **Swiss / Editorial:** Dramatic display scale contrast (48px–72px headlines), numbered section markers (`01`), structural hairline rules, and active negative space are explicitly permitted.
 - **Brutalism:** Exposed 2px–3px structural scaffolding borders, raw monochrome contrast, and immediate state flips are celebrated as honest architecture.
@@ -34,6 +35,25 @@ A heuristic must **never** erase a defining feature of the chosen style:
 - **Enterprise:** High-density data tables, tabular figures (`tabular-nums`), filter toolbars, keyboard shortcuts, and semantic status pills are essential operational tools.
 
 Audit whether each style expression is *intentional, truthful, and usable*, not whether it matches a generic minimal UI.
+
+---
+
+## Vibecoded Red Flags — immediate fast scanner
+
+Before running structural tests, scan for these AI-default visual and copy patterns. A flag is a **trigger**, not a verdict — each proceeds to the Three-Layer Verification below.
+
+| # | Signal | Action |
+|---|--------|--------|
+| 1 | Purple/blue mesh gradient as background default | Flag unless glassmorphism or confirmed cyberpunk/retro style |
+| 2 | Neon `box-shadow` blur > 20px on non-terminal elements | Flag for Deletion Test |
+| 3 | Emoji as functional icon, bullet, status indicator, or decorative sticker | Replace with Lucide/Radix SVG — no structural test needed, direct fix |
+| 4 | Every card identical in size, structure, and visual weight (uniform card spam) | Flag for Deletion Test |
+| 5 | Spacing units inconsistent (mixed `px`, `rem`, arbitrary Tailwind values) | Flag; check for declared token system |
+| 6 | Copy contains ≥ 3 exclamation marks, ≥ 2 em-dashes, or any "In today's fast-paced world" variant | Direct fix — no structural test needed |
+| 7 | Hero section > 100vh without documented product justification | Flag for Deletion Test |
+| 8 | Font stack not loaded; fallback renders visibly as system serif/sans | Direct fix |
+| 9 | Rainbow text gradient (`-webkit-background-clip: text`) outside retro/cyberpunk themes | Flag for style-authentic check |
+| 10 | Fake widgets (fabricated weather, audio spectrum, simulated telemetry, animated fake counters) | Direct removal — FLOOR violation |
 
 ---
 
@@ -105,7 +125,7 @@ Every structural check is mechanical and produces a named artifact you can inspe
 | Pills, badges and chips everywhere | Noise and false importance | Plain labels, sections, simple metadata | Status/category/filter has real data and useful interaction |
 | Icons for each heading or action | Visual repetition and ambiguous meaning | Semantic icons only where recognition improves | Brand-specific iconography has clear purpose |
 | Decorative charts, mini-sparklines, timelines | Makes meaningless data look authoritative | Real charts only, or explanatory text/empty state | Data exists and visual encoding aids a decision |
-| Glossy effects, blobs, gradients, glow by default | Covers weak hierarchy with trend styling | Design purposeful material, spacing and type first | **Glassmorphism explicitly permits ambient/mesh/radial gradients to reveal frosted material; Claymorphism explicitly permits dual inner-shadow volumetric depth and recessed wells; other styles may use them when integral and readable (Neo-brutalism hard offset shadows, Skeuomorphism metallic reflections/bevels, Retro-Terminal scanlines/glow, Bento asymmetric tiles, Swiss scale contrast, Brutalism scaffolding, Enterprise tabular density)** |
+| Glossy effects, blobs, gradients, glow by default | Covers weak hierarchy with trend styling | Design purposeful material, spacing and type first | **Glassmorphism explicitly permits ambient/mesh/radial gradients to reveal frosted material; Claymorphism explicitly permits dual inner-shadow volumetric depth and recessed wells; other styles may use them when integral and readable (Neo-brutalism hard offset shadows, Skeuomorphism metallic reflections/bevels, Retro-Terminal scanlines/glow, Retro-Pixel stepped borders/pixel art/grid, Bento asymmetric tiles, Swiss scale contrast, Brutalism scaffolding, Enterprise tabular density)** |
 | Fake terminals, fake code, status LEDs | Implies features/state that do not exist | Genuine console behavior or honest static illustration | Clearly labeled decorative art that cannot be mistaken for live UI |
 | Breaking inline command pills into vertical columns | Stacking `$`, code snippet, and copy button into 3 rows wastes space and looks broken | Keep single-line inline horizontal row (`flex-direction: row; align-items: center; justify-content: center;`) with `line-height: 1; flex-shrink: 0;` and fluid font size | Terminal is a multi-line script editor with deliberate multi-step script blocks |
 | Giant oversized mobile headings and inflated components ("UI bengkak") | Desktop font sizes and huge paddings cause mobile UI to feel bloated, crowded, and unreadable down to 320px | Fluid responsive typography (`clamp()`) scaling headings down proportionally (hero ~1.35rem, sections ~1.2rem, code ~0.725rem) | Deliberate poster typography in Swiss/Brutalism styles when explicitly tested for zero overflow |

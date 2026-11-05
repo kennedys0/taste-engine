@@ -2,6 +2,23 @@
 
 All notable changes to Taste Engine are documented here. Release tags use semantic versioning.
 
+## [0.11.0] - 2026-11-05
+
+### Added
+
+- **Retro Pixel Style Pack (Eleventh Aesthetic Archetype):** Added canonical `styles/retro-pixel.md` capturing nostalgic 8-bit and 16-bit personal computing culture with integer-aligned pixel art, classic desktop window chrome, stepped pixel bevels, arcade orange (`#F27D36`) and retro teal (`#2CA7A3`) accents, desktop purple title bars (`#5B438E`), and vintage cream (`#F2DFB5`) surfaces.
+- **Retro Pixel Material Fidelity Gate:** Codified mandatory screenshot-level acceptance gate requiring recognizable vintage graphical UI anatomy, integer pixel precision with `image-rendering: pixelated`, stepped 3D button press displacement (`translate(2px, 2px)`), desktop window frames with working actions, and readable humanist body copy.
+- **Explicit Retro Pixel Exceptions in Anti-Slop:** Formalized exemptions for purposeful pixel art, stepped bevel borders, 0-blur hard shadows, background grid patterns, dither textures, desktop title bars, and window control ornaments in `references/anti-slop.md`.
+- **Production CSS Recipe:** Added `examples/retro-pixel/pixel-surfaces.css` featuring semantic tokens, dark (Midnight Arcade Grid) and light (Vintage Parchment Workstation) theme variants, raised desktop windows, title bars, inset wells, pixel buttons, inputs, tabs, checkboxes, status badges, `:focus-visible` focus rings, and `prefers-reduced-motion` compliance.
+- **Eleventh Interactive Proof-of-Work Studio:** Created `docs/retro-pixel.html` equipped with an expressive hero composition, `assets/computer.webp` workstation illustration, full component laboratory (buttons, inputs, selects, checkboxes, radios, tabs, modals, toasts), interactive desktop window demonstration with close/reopen behaviors and responsive 16×16 sprite paint canvas with touch drawing support, portfolio project gallery with category filters and detail modals, deterministic local authentication demo (sign in, sign up, password reset), dashboard with live search and tabular data, functional accordion FAQ, theme toggle with paired token inversion, and complete SEO metadata.
+- **Style Registry & Router Integration:** Registered `retro-pixel` in `styles/registry.json` with comprehensive alias mapping (`retro pixel`, `pixel art`, `8-bit ui`, `16-bit ui`, `retro desktop`, `pixel website`, etc.) and clause-bounded negation testing ensuring zero collision with `retro-terminal` or `neo-brutalism`.
+- **Tailwind CSS & shadcn/ui Presets:** Extended `presets/tailwind/tailwind.preset.js`, `presets/tailwind/taste-components.css`, and `presets/shadcn/shadcn-themes.css` with Retro Pixel colors, shadows, borders, radii, and component utility classes.
+- **Automated & Visual Test Coverage:** Added `tests/retro-pixel-visual.md` for manual visual and responsive verification down to 320px, and `tests/test_retro_pixel_fidelity.py` covering material requirements, CSS token presence, and anti-slop exceptions.
+- **Optional Standalone Skill:** Created `optional-standalone-skills/taste-style-retro-pixel/SKILL.md` synchronized with canonical style guidance and self-contained anti-slop quality tiers.
+- **CLI & Gallery Expansion:** Updated `bin/taste-engine.mjs` and `docs/index.html` to reflect 11 aesthetic systems, adding the Retro Pixel showcase card, interactive filter chip, and footer links across all archetype pages.
+- **Paired Navigation Button Uniformity ("ukuran tombol sejajar dan seragam"):** Codified FLOOR requirements in `references/web-interface-quality.md`, `references/responsive-baseline.md`, and `styles/retro-pixel.md` requiring paired links (`<a>`) and buttons (`<button>`) to declare identical explicit heights (36px desktop / 38px mobile square), line-heights, box-model properties, and 14×14px SVG icon containment boxes.
+- **Mobile Fluid Typography & Studio Anti-Clipping:** Codified mobile display typography clamp rules (`clamp(1.1rem, 5vw, 1.4rem)`) and fluid container bounds preventing mobile layout blowout down to 320px viewports.
+
 ## [0.10.11] - 2026-11-05
 
 ### Fixed

@@ -1,6 +1,6 @@
 /**
- * Taste Engine — Tailwind CSS Preset (v0.10.11)
- * Comprehensive theme extension for 10 curated frontend aesthetic archetypes.
+ * Taste Engine — Tailwind CSS Preset (v0.11.0)
+ * Comprehensive theme extension for 11 curated frontend aesthetic archetypes.
  *
  * Usage in tailwind.config.js / tailwind.config.mjs:
  *   // ESM (Next.js / Vite / Nuxt):
@@ -76,6 +76,17 @@ const tastePreset = {
           'ent-border': 'var(--taste-ent-border, #334155)',
           'ent-blue': 'var(--taste-ent-blue, #2563eb)',
           'ent-emerald': 'var(--taste-ent-emerald, #059669)',
+
+          // Retro Pixel: nostalgic 8-bit / 16-bit personal computing
+          'pixel-bg': 'var(--taste-pixel-bg, #10102b)',
+          'pixel-surface': 'var(--taste-pixel-surface, #1b1b3a)',
+          'pixel-window': 'var(--taste-pixel-window, #22224a)',
+          'pixel-header': 'var(--taste-pixel-window-header, #5b438e)',
+          'pixel-well': 'var(--taste-pixel-well-bg, #0d0d22)',
+          'pixel-teal': 'var(--taste-pixel-teal, #2ca7a3)',
+          'pixel-orange': 'var(--taste-pixel-orange, #f27d36)',
+          'pixel-purple': 'var(--taste-pixel-purple, #5b438e)',
+          'pixel-cream': 'var(--taste-pixel-cream, #f2dfb5)',
         },
       },
       boxShadow: {
@@ -108,6 +119,12 @@ const tastePreset = {
 
         // Bento: subtle layered elevation
         'bento-card': '0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 24px -4px rgba(0, 0, 0, 0.45)',
+
+        // Retro Pixel: stepped bevels and integer offset shadows
+        'pixel-btn': 'inset 2px 2px 0px rgba(255, 255, 255, 0.35), inset -2px -2px 0px #000, 2px 2px 0px #000',
+        'pixel-btn-active': 'inset 2px 2px 0px #000, inset -2px -2px 0px rgba(255, 255, 255, 0.35)',
+        'pixel-window': 'inset 2px 2px 0px rgba(255, 255, 255, 0.35), inset -2px -2px 0px #000, 4px 4px 0px #000',
+        'pixel-well': 'inset 2px 2px 0px #000, inset -2px -2px 0px rgba(255, 255, 255, 0.25)',
       },
       borderRadius: {
         'clay-sm': '1rem',
@@ -117,15 +134,18 @@ const tastePreset = {
         'neo': '0.375rem',
         'brutal': '0px',
         'bento': '1.75rem',
+        'pixel': '0px',
       },
       borderWidth: {
         'neo': '2.5px',
         'brutal': '2.5px',
+        'pixel': '2px',
         'hairline': '1px',
       },
       fontFamily: {
         term: ['"JetBrains Mono"', '"Courier New"', 'monospace'],
         swiss: ['"Space Grotesk"', 'Inter', 'Helvetica', 'Arial', 'sans-serif'],
+        pixel: ['"Pixelify Sans"', '"Press Start 2P"', 'monospace'],
       },
     },
   },

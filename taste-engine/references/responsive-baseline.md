@@ -23,6 +23,7 @@
   - Use an accessible trigger button with `aria-expanded` and an SVG menu icon (such as Lucide `Menu`).
   - Mobile sheets or dropdown panels must provide comfortable tap targets (>= 44px) and clear dismiss options.
   - **Override:** Style packs and application designs may choose tabbed bottom bars, persistent icon rails, or compact inline headers when appropriate for the product pattern.
+- **FLOOR (Paired Navigation Button Uniformity):** All paired action buttons in navigation headers (e.g., Gallery link and Theme Toggle) must declare strictly identical height (e.g. `height: 36px`), `box-sizing: border-box`, `padding`, `line-height: 1`, and `vertical-align: middle;`. Never leave one control taller than another due to disparate tag defaults (`<a>` vs `<button>`) or unconstrained emoji font heights. On narrow viewports (< 768px), icon-only buttons (such as Theme Toggles and Hamburger Menus) must collapse to identical square touch targets (e.g., 38×38px) with centered SVG icons.
 
 ## 4. Strict Circular Geometry (Anti-Oval)
 

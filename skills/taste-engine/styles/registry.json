@@ -158,6 +158,31 @@
         "enterprise design",
         "professional data ui"
       ]
+    },
+    {
+      "id": "retro-pixel",
+      "label": "Retro Pixel",
+      "description": "Nostalgic 8-bit and 16-bit computing culture with integer-aligned pixel art, classic desktop window chrome, stepped pixel borders, and arcade accents.",
+      "path": "styles/retro-pixel.md",
+      "recommended_for": "Gaming platforms, retro portfolios, creative developer tools, interactive web apps, and indie products.",
+      "aliases": [
+        "retro pixel",
+        "retro pixels",
+        "pixel art",
+        "pixel art ui",
+        "pixel website",
+        "pixel ui",
+        "8-bit ui",
+        "16-bit ui",
+        "retro desktop",
+        "retro pixel aesthetic",
+        "pixel interface",
+        "pixelated ui",
+        "pixelated",
+        "pixel",
+        "8-bit",
+        "16-bit"
+      ]
     }
   ]
 }

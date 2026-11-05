@@ -92,6 +92,15 @@
         "opacity"
       ],
       "avoid": "staggering tables, moving metrics, and loading delays"
+    },
+    "retro-pixel": {
+      "interaction": "Short stepped button press (2px displacement) and crisp window toggle; no bouncy springs or continuous glitch loops.",
+      "duration_ms": 90,
+      "allowed": [
+        "translate",
+        "opacity"
+      ],
+      "avoid": "bounce, overshoot, continuous glitch animations, CRT distortion loops"
     }
   }
 }

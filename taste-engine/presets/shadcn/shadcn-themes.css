@@ -283,3 +283,55 @@
   --ring: 221 83% 53%;
   --radius: 0.375rem;
 }
+
+/* =========================================================
+   9. RETRO-PIXEL (16-bit Desktop & Arcade Accents)
+   Midnight canvas, desktop purple, arcade orange, 0px radius
+   ========================================================= */
+[data-theme="retro-pixel"],
+.theme-retro-pixel {
+  --background: 42 69% 83%;         /* #f2dfb5 vintage cream */
+  --foreground: 240 46% 12%;        /* #10102b midnight ink */
+  --card: 39 24% 80%;               /* #d8d2c2 beige window */
+  --card-foreground: 240 46% 12%;
+  --popover: 39 24% 80%;
+  --popover-foreground: 240 46% 12%;
+  --primary: 23 88% 44%;           /* #c85718 arcade rust */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 178 66% 25%;         /* #166b68 retro teal dark */
+  --secondary-foreground: 0 0% 100%;
+  --muted: 39 20% 75%;
+  --muted-foreground: 45 10% 32%;
+  --accent: 259 38% 33%;           /* #493475 desktop purple */
+  --accent-foreground: 0 0% 100%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 240 46% 12%;
+  --input: 240 46% 12%;
+  --ring: 23 88% 44%;
+  --radius: 0px;                    /* sharp pixel radius */
+}
+
+.dark[data-theme="retro-pixel"],
+.dark .theme-retro-pixel {
+  --background: 240 46% 12%;        /* #10102b midnight canvas */
+  --foreground: 42 69% 83%;         /* #f2dfb5 vintage cream */
+  --card: 240 37% 21%;              /* #22224a indigo window */
+  --card-foreground: 42 69% 83%;
+  --popover: 240 37% 21%;
+  --popover-foreground: 42 69% 83%;
+  --primary: 23 88% 58%;           /* #f27d36 arcade orange */
+  --primary-foreground: 240 46% 12%;
+  --secondary: 178 58% 41%;         /* #2ca7a3 retro teal */
+  --secondary-foreground: 240 46% 12%;
+  --muted: 240 30% 17%;
+  --muted-foreground: 240 25% 68%;
+  --accent: 259 36% 41%;           /* #5b438e desktop purple */
+  --accent-foreground: 42 69% 83%;
+  --destructive: 0 75% 56%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 240 48% 6%;
+  --input: 240 48% 6%;
+  --ring: 23 88% 58%;
+  --radius: 0px;
+}

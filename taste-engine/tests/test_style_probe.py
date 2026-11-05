@@ -33,6 +33,13 @@ scenarios=[
  ('tidak mau retro-terminal dan benci glassmorphism, pilih swiss editorial','swiss-editorial',['retro-terminal','glassmorphism'],'ready'),
  ('tanpa glassmorphism, buat dengan neo brutalism','neo-brutalism',['glassmorphism'],'ready'),
  ('hindari skeuomorphism melainkan bento','bento',['skeuomorphism'],'ready'),
+ ('Build a Retro Pixel portfolio','retro-pixel',[],'ready'),
+ ('Create a pixel art landing page','retro-pixel',[],'ready'),
+ ('Build a retro terminal','retro-terminal',[],'ready'),
+ ('I want neo-brutalism, not pixel art','neo-brutalism',['retro-pixel'],'ready'),
+ ('Do not use retro pixel design',None,['retro-pixel'],'needs-selection'),
+ ('Buat web portfolio retro pixel','retro-pixel',[],'ready'),
+ ('Buat website 8-bit ui','retro-pixel',[],'ready'),
 ]
 for prompt,expected,excluded,status in scenarios:
     result=mod.candidates(prompt,registry)

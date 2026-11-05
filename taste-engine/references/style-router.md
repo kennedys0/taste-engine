@@ -38,6 +38,7 @@ Don't merge entire files blindly. Create a component-level decision table, e.g. 
 | "bento grid" | `bento` |
 | "realistic physical controls" / "skeumorphsm" / "skeumorphism" / "skeuomorphic" | `skeuomorphism` |
 | "terminal" / "CLI aesthetic" | `retro-terminal` |
+| "retro pixel" / "pixel art" / "8-bit ui" / "retro desktop" | `retro-pixel` (distinct from `retro-terminal`) |
 | "enterprise dashboard" / "dense B2B" | `enterprise` **only if user intends an aesthetic**, otherwise consider it a product type, not style consent |
 | "modern" / "beautiful" | Ambiguous; offer choices |
 | "I have a screenshot" | Ask which parts matter if unclear; don't equate entire screenshot with approval |

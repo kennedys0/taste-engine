@@ -203,4 +203,47 @@
   .taste-ent-badge {
     @apply inline-flex items-center text-[11px] font-medium px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20;
   }
+
+  /* =========================================================
+     10. RETRO-PIXEL (Desktop window chrome & stepped bevels)
+     ========================================================= */
+  .taste-pixel-window {
+    @apply bg-taste-pixel-window border-2 border-black rounded-none p-0 overflow-hidden;
+    box-shadow: inset 2px 2px 0px rgba(255, 255, 255, 0.35),
+                inset -2px -2px 0px #000,
+                4px 4px 0px #000;
+  }
+
+  .taste-pixel-window-header {
+    @apply bg-taste-pixel-header text-white px-3 py-1.5 flex items-center justify-between border-b-2 border-black font-pixel text-xs tracking-wider select-none;
+  }
+
+  .taste-pixel-btn {
+    @apply inline-flex items-center justify-center font-pixel text-xs font-bold px-4 py-2 bg-taste-pixel-orange text-black border-2 border-black rounded-none transition-transform duration-75 cursor-pointer select-none leading-none;
+    box-shadow: inset 2px 2px 0px rgba(255, 255, 255, 0.4),
+                inset -2px -2px 0px #000,
+                2px 2px 0px #000;
+  }
+
+  .taste-pixel-btn-sm {
+    @apply h-9 min-h-[36px] px-3 text-[11px] leading-none;
+  }
+
+  .taste-pixel-btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: inset 2px 2px 0px #000,
+                inset -2px -2px 0px rgba(255, 255, 255, 0.3);
+  }
+
+  .taste-pixel-well {
+    @apply bg-taste-pixel-well border-2 border-black rounded-none p-4;
+    box-shadow: inset 2px 2px 0px #000,
+                inset -2px -2px 0px rgba(255, 255, 255, 0.2);
+  }
+
+  .taste-pixel-badge {
+    @apply inline-flex items-center font-pixel text-[10px] uppercase tracking-wider px-2 py-0.5 border border-black bg-taste-pixel-teal text-black;
+    box-shadow: inset 1px 1px 0px rgba(255, 255, 255, 0.4),
+                inset -1px -1px 0px #000;
+  }
 }

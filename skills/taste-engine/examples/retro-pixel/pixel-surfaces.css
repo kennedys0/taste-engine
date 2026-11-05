@@ -1,0 +1,497 @@
+/* Taste Engine Retro-Pixel — Reference CSS. Adapt to the project.
+   Authentic 1980s/1990s computing aesthetics feature midnight blue canvas,
+   desktop purple window headers, vintage cream panels, arcade orange & teal accents,
+   stepped pixel bevels, and crisp integer-aligned interactions. */
+
+:root {
+  /* =========================================================
+     DARK MODE TOKENS (Midnight Arcade Grid)
+     ========================================================= */
+  --taste-pixel-bg: #10102b;
+  --taste-pixel-surface: #1b1b3a;
+  --taste-pixel-window: #22224a;
+  --taste-pixel-window-header: #5b438e;
+  --taste-pixel-well-bg: #0d0d22;
+
+  --taste-pixel-teal: #2ca7a3;
+  --taste-pixel-orange: #f27d36;
+  --taste-pixel-purple: #5b438e;
+  --taste-pixel-cream: #f2dfb5;
+
+  --taste-pixel-text: #f2dfb5;
+  --taste-pixel-text-muted: #9999c2;
+  --taste-pixel-text-heading: #f27d36;
+
+  --taste-pixel-border-color: #080816;
+  --taste-pixel-border: 2px solid var(--taste-pixel-border-color);
+  --taste-pixel-bevel-light: rgba(255, 255, 255, 0.35);
+  --taste-pixel-bevel-dark: #000000;
+
+  --taste-pixel-shadow: 4px 4px 0px #000000;
+  --taste-pixel-shadow-sm: 2px 2px 0px #000000;
+
+  --taste-pixel-grid-color: rgba(44, 167, 163, 0.08);
+
+  --taste-pixel-radius: 0px;
+  --taste-pixel-font-display: 'Pixelify Sans', 'Press Start 2P', 'Courier New', monospace;
+  --taste-pixel-font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --taste-pixel-motion-duration: 90ms;
+
+  /* Semantic status tokens */
+  --taste-pixel-success: #2bb673;
+  --taste-pixel-warning: #e69b00;
+  --taste-pixel-error: #e03e3e;
+  --taste-pixel-info: #2ca7a3;
+}
+
+[data-theme="light"], .taste-pixel-scene[data-theme="light"] {
+  /* =========================================================
+     LIGHT MODE TOKENS (Vintage Parchment Workstation)
+     ========================================================= */
+  --taste-pixel-bg: #f2dfb5;
+  --taste-pixel-surface: #e4dece;
+  --taste-pixel-window: #d8d2c2;
+  --taste-pixel-window-header: #493475;
+  --taste-pixel-well-bg: #ded6c4;
+
+  --taste-pixel-teal: #166b68;
+  --taste-pixel-orange: #c85718;
+  --taste-pixel-purple: #493475;
+  --taste-pixel-cream: #10102b;
+
+  --taste-pixel-text: #10102b;
+  --taste-pixel-text-muted: #5a554a;
+  --taste-pixel-text-heading: #c85718;
+
+  --taste-pixel-border-color: #1c1b24;
+  --taste-pixel-border: 2px solid var(--taste-pixel-border-color);
+  --taste-pixel-bevel-light: #ffffff;
+  --taste-pixel-bevel-dark: #1c1b24;
+
+  --taste-pixel-shadow: 4px 4px 0px #1c1b24;
+  --taste-pixel-shadow-sm: 2px 2px 0px #1c1b24;
+
+  --taste-pixel-grid-color: rgba(16, 16, 43, 0.06);
+
+  --taste-pixel-success: #047857;
+  --taste-pixel-warning: #b45309;
+  --taste-pixel-error: #b91c1c;
+  --taste-pixel-info: #166b68;
+}
+
+/* =========================================================
+   SCENE & GRID BACKGROUND
+   ========================================================= */
+.taste-pixel-scene {
+  background-color: var(--taste-pixel-bg);
+  background-image:
+    linear-gradient(var(--taste-pixel-grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--taste-pixel-grid-color) 1px, transparent 1px);
+  background-size: 24px 24px;
+  color: var(--taste-pixel-text);
+  font-family: var(--taste-pixel-font-body);
+  min-height: 100vh;
+  padding: 1.5rem;
+  box-sizing: border-box;
+}
+
+/* Image Rendering Utility for Pixel Art */
+.taste-pixel-art,
+img.taste-pixel-art,
+canvas.taste-pixel-art {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+/* =========================================================
+   RETRO DESKTOP WINDOW
+   ========================================================= */
+.taste-pixel-window {
+  background-color: var(--taste-pixel-window);
+  border: var(--taste-pixel-border);
+  box-shadow:
+    inset 2px 2px 0px var(--taste-pixel-bevel-light),
+    inset -2px -2px 0px var(--taste-pixel-bevel-dark),
+    var(--taste-pixel-shadow);
+  border-radius: var(--taste-pixel-radius);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.taste-pixel-window-header {
+  background-color: var(--taste-pixel-window-header);
+  color: #ffffff;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: var(--taste-pixel-border);
+  user-select: none;
+  font-family: var(--taste-pixel-font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.taste-pixel-window-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.taste-pixel-window-controls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.taste-pixel-window-btn {
+  width: 18px;
+  height: 18px;
+  background-color: var(--taste-pixel-window);
+  color: var(--taste-pixel-text);
+  border: 1px solid var(--taste-pixel-border-color);
+  box-shadow:
+    inset 1px 1px 0px var(--taste-pixel-bevel-light),
+    inset -1px -1px 0px var(--taste-pixel-bevel-dark);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-family: monospace;
+  font-weight: bold;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+}
+
+.taste-pixel-window-btn:active {
+  box-shadow:
+    inset 1px 1px 0px var(--taste-pixel-bevel-dark),
+    inset -1px -1px 0px var(--taste-pixel-bevel-light);
+  transform: translate(1px, 1px);
+}
+
+.taste-pixel-window-body {
+  padding: 1.25rem;
+  line-height: 1.6;
+  flex: 1 1 auto;
+}
+
+.taste-pixel-window-status {
+  background-color: var(--taste-pixel-well-bg);
+  border-top: var(--taste-pixel-border);
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  color: var(--taste-pixel-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: monospace;
+}
+
+/* =========================================================
+   SUNKEN INSET WELL & CARDS
+   ========================================================= */
+.taste-pixel-well {
+  background-color: var(--taste-pixel-well-bg);
+  border: var(--taste-pixel-border);
+  box-shadow:
+    inset 2px 2px 0px var(--taste-pixel-bevel-dark),
+    inset -2px -2px 0px var(--taste-pixel-bevel-light);
+  padding: 1rem;
+  border-radius: var(--taste-pixel-radius);
+}
+
+.taste-pixel-panel {
+  background-color: var(--taste-pixel-surface);
+  border: var(--taste-pixel-border);
+  box-shadow:
+    inset 2px 2px 0px var(--taste-pixel-bevel-light),
+    inset -2px -2px 0px var(--taste-pixel-bevel-dark),
+    var(--taste-pixel-shadow-sm);
+  padding: 1rem;
+  border-radius: var(--taste-pixel-radius);
+}
+
+/* =========================================================
+   PIXEL BUTTONS
+   ========================================================= */
+.taste-pixel-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--taste-pixel-font-display);
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border: var(--taste-pixel-border);
+  border-radius: var(--taste-pixel-radius);
+  background-color: var(--taste-pixel-surface);
+  color: var(--taste-pixel-text);
+  box-sizing: border-box;
+  line-height: 1;
+  vertical-align: middle;
+  white-space: nowrap;
+  box-shadow:
+    inset 2px 2px 0px var(--taste-pixel-bevel-light),
+    inset -2px -2px 0px var(--taste-pixel-bevel-dark),
+    var(--taste-pixel-shadow-sm);
+  cursor: pointer;
+  user-select: none;
+  text-decoration: none;
+  transition: transform var(--taste-pixel-motion-duration) steps(2);
+}
+
+.taste-pixel-btn-sm {
+  height: 36px;
+  min-height: 36px;
+  padding: 0 12px;
+  font-size: 0.75rem;
+}
+
+.taste-pixel-btn:hover {
+  filter: brightness(1.1);
+}
+
+.taste-pixel-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow:
+    inset 2px 2px 0px var(--taste-pixel-bevel-dark),
+    inset -2px -2px 0px var(--taste-pixel-bevel-light);
+}
+
+.taste-pixel-btn-primary {
+  background-color: var(--taste-pixel-orange);
+  color: #10102b;
+}
+
+[data-theme="light"] .taste-pixel-btn-primary {
+  color: #ffffff;
+}
+
+.taste-pixel-btn-secondary {
+  background-color: var(--taste-pixel-teal);
+  color: #10102b;
+}
+
+[data-theme="light"] .taste-pixel-btn-secondary {
+  color: #ffffff;
+}
+
+.taste-pixel-btn-destructive {
+  background-color: var(--taste-pixel-error);
+  color: #ffffff;
+}
+
+.taste-pixel-btn:disabled,
+.taste-pixel-btn[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow:
+    inset 1px 1px 0px var(--taste-pixel-bevel-light),
+    inset -1px -1px 0px var(--taste-pixel-bevel-dark) !important;
+}
+
+/* =========================================================
+   FORM INPUTS
+   ========================================================= */
+.taste-pixel-input,
+.taste-pixel-select {
+  background-color: var(--taste-pixel-well-bg);
+  color: var(--taste-pixel-text);
+  border: var(--taste-pixel-border);
+  box-shadow:
+    inset 2px 2px 0px var(--taste-pixel-bevel-dark),
+    inset -2px -2px 0px var(--taste-pixel-bevel-light);
+  padding: 8px 12px;
+  font-family: var(--taste-pixel-font-body);
+  font-size: 0.9rem;
+  border-radius: var(--taste-pixel-radius);
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.taste-pixel-input:focus,
+.taste-pixel-select:focus {
+  border-color: var(--taste-pixel-teal);
+  box-shadow:
+    inset 2px 2px 0px var(--taste-pixel-bevel-dark),
+    inset -2px -2px 0px var(--taste-pixel-teal),
+    0 0 0 2px var(--taste-pixel-teal);
+}
+
+/* Accessible Keyboard Focus Ring */
+:focus-visible {
+  outline: 2px solid var(--taste-pixel-orange);
+  outline-offset: 2px;
+}
+
+/* Checkbox & Radio */
+.taste-pixel-checkbox,
+.taste-pixel-radio {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background-color: var(--taste-pixel-well-bg);
+  border: var(--taste-pixel-border);
+  box-shadow:
+    inset 2px 2px 0px var(--taste-pixel-bevel-dark),
+    inset -2px -2px 0px var(--taste-pixel-bevel-light);
+  cursor: pointer;
+  display: inline-grid;
+  place-content: center;
+  vertical-align: middle;
+  margin: 0 8px 0 0;
+}
+
+.taste-pixel-checkbox:checked::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: var(--taste-pixel-teal);
+  box-shadow: 1px 1px 0px #000;
+}
+
+.taste-pixel-radio {
+  border-radius: 0px;
+}
+
+.taste-pixel-radio:checked::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: var(--taste-pixel-orange);
+}
+
+/* =========================================================
+   PIXEL TABS
+   ========================================================= */
+.taste-pixel-tabs {
+  display: flex;
+  gap: 4px;
+  border-bottom: var(--taste-pixel-border);
+  margin-bottom: -2px;
+  padding-left: 8px;
+}
+
+.taste-pixel-tab {
+  background-color: var(--taste-pixel-surface);
+  color: var(--taste-pixel-text-muted);
+  border: var(--taste-pixel-border);
+  border-bottom: none;
+  padding: 6px 14px;
+  font-family: var(--taste-pixel-font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow:
+    inset 2px 2px 0px var(--taste-pixel-bevel-light),
+    inset -2px 0px 0px var(--taste-pixel-bevel-dark);
+}
+
+.taste-pixel-tab.active,
+.taste-pixel-tab[aria-selected="true"] {
+  background-color: var(--taste-pixel-window);
+  color: var(--taste-pixel-text);
+  transform: translateY(2px);
+  padding-bottom: 8px;
+}
+
+/* =========================================================
+   STATUS BADGES
+   ========================================================= */
+.taste-pixel-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--taste-pixel-font-display);
+  font-size: 0.7rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border: 1px solid var(--taste-pixel-border-color);
+  box-shadow:
+    inset 1px 1px 0px var(--taste-pixel-bevel-light),
+    inset -1px -1px 0px var(--taste-pixel-bevel-dark);
+}
+
+.taste-pixel-badge-success { background-color: var(--taste-pixel-success); color: #000; }
+.taste-pixel-badge-warning { background-color: var(--taste-pixel-warning); color: #000; }
+.taste-pixel-badge-error   { background-color: var(--taste-pixel-error); color: #fff; }
+.taste-pixel-badge-info    { background-color: var(--taste-pixel-teal); color: #000; }
+
+/* =========================================================
+   RESPONSIVE BASELINE & FLUID TYPOGRAPHY
+   ========================================================= */
+@media (max-width: 768px) {
+  .taste-pixel-scene {
+    padding: 0.75rem 0.5rem;
+  }
+  .taste-pixel-window {
+    margin-bottom: 1rem;
+  }
+  .taste-pixel-window-header {
+    font-size: 0.75rem;
+    padding: 4px 8px;
+    gap: 6px;
+  }
+  .taste-pixel-window-body {
+    padding: 0.85rem 0.65rem;
+  }
+  .taste-pixel-btn {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .taste-pixel-scene {
+    padding: 0.5rem 0.25rem;
+  }
+  .taste-pixel-window-header {
+    font-size: 0.65rem;
+    padding: 4px 6px;
+  }
+  .taste-pixel-window-body {
+    padding: 0.75rem 0.5rem;
+  }
+  .taste-pixel-window-btn {
+    width: 20px;
+    height: 20px;
+    font-size: 10px;
+  }
+  .taste-pixel-btn {
+    font-size: 0.7rem;
+    padding: 6px 10px;
+  }
+  .taste-pixel-badge {
+    font-size: 0.625rem;
+    padding: 1px 6px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .taste-pixel-btn,
+  .taste-pixel-window-btn,
+  * {
+    transition-duration: 0ms !important;
+    animation-duration: 0ms !important;
+  }
+  .taste-pixel-btn:active,
+  .taste-pixel-window-btn:active {
+    transform: none !important;
+  }
+}
+

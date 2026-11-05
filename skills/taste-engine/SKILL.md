@@ -1,9 +1,9 @@
 ---
 name: taste-engine
-description: Automatically routes visual UI work to a user-chosen aesthetic and applies SEO readiness to public-facing websites. Use whenever a user asks to build, create, design, or redesign a website, portfolio, landing page, dashboard, web app, mobile app, UI/UX screen, frontend, or component, or add/refine micro-interactions or full-screen hero sections (including Indonesian prompts such as "build a portfolio website"). Before writing UI code, ask ONE style question and stop if no visual style or approved project design system is specified. If the prompt already names an aesthetic such as skeuomorphism, claymorphism, glassmorphism, brutalism, neo-brutalism, minimalism, bento, or editorial, load its bundled style pack immediately and proceed WITHOUT asking again. Preserve established styles for minor fixes; for SEO-only tasks, load the SEO module without a visual style question; skip unrelated non-visual work.
+description: Automatically routes visual UI work to a user-chosen aesthetic and applies SEO readiness to public-facing websites. Use whenever a user asks to build, create, design, or redesign a website, portfolio, landing page, dashboard, web app, mobile app, UI/UX screen, frontend, or component, or add/refine micro-interactions or full-screen hero sections (including Indonesian prompts such as "build a portfolio website"). Before writing UI code, ask ONE style question and stop if no visual style or approved project design system is specified. If the prompt already names an aesthetic such as skeuomorphism, claymorphism, glassmorphism, brutalism, neo-brutalism, minimalism, bento, retro-pixel, or editorial, load its bundled style pack immediately and proceed WITHOUT asking again. Preserve established styles for minor fixes; for SEO-only tasks, load the SEO module without a visual style question; skip unrelated non-visual work.
 license: MIT
 metadata:
-  version: "0.10.11"
+  version: "0.11.0"
 ---
 
 # Taste Engine — style router
@@ -118,6 +118,7 @@ Read `styles/registry.json` when matching IDs, **aliases, common misspellings**,
 | `skeuomorphism` | Physical control metaphor | [style pack](styles/skeuomorphism.md) |
 | `retro-terminal` | Console aesthetic | [style pack](styles/retro-terminal.md) |
 | `enterprise` | Workflow/data first | [style pack](styles/enterprise.md) |
+| `retro-pixel` | 8-bit/16-bit arcade desktop | [style pack](styles/retro-pixel.md) |
 
 **Custom is first-class:** if the chosen aesthetic is not in the registry, gather a short reference or constraints, then create a provisional project-specific style definition using the same dimensions. Never mislabel the style as a pack not present. Do not require external internet access to choose.
 
@@ -139,9 +140,11 @@ Detailed routing, blends, and conflict rules: [style router](references/style-ro
 
 1. **Extract requirements:** product, audience, device, framework, existing brand, explicit likes/dislikes, accessibility, performance.
 
+   **Domain pre-flight (mandatory before resolving visual direction):** Before selecting or applying a style pack, state the product domain and primary audience in one sentence — e.g., *"A project management tool for indie developers"* or *"A personal finance tracker for non-technical users."* The design direction must follow from this domain statement, not from the agent's default palette. If domain and audience cannot be derived from context, include this in the style question — combine into one question, never a separate interview step.
+
 2. **Load selected pack only** (plus shared references as needed). Do not blend random rules from unselected packs.
 
-   - **Style ≠ anatomy:** derive product flow and page content from real user goals, while the selected pack determines visual material. Before coding, define a one-sentence, product-grounded visual thesis. Follow [Decision System](references/decision-system.md).
+   - **Style ≠ anatomy:** derive product flow and page content from real user goals, while the selected pack determines visual material. Before coding, define a one-sentence, product-grounded visual thesis that names domain + audience + aesthetic intention. Follow [Decision System](references/decision-system.md).
 
 3. **Build project Design DNA:** type families + fallback, type scale, font weights, writing tone, palette roles, density, spacing, radius, border, elevation, layout grid, component anatomy, states, navigation, motion and reduced-motion rules. See [translation](references/translation.md).
 
@@ -215,6 +218,7 @@ Read `references/anti-slop.md`, `references/anti-slop-copywriting.md`, and `refe
 | `Tambahkan micro-interaction pada tombol di UI existing` | Preserve existing style; use CSS first, optional Anime.js v4 only if justified; no re-selection |
 | `Build a brutalist landing page with a full-screen hero` | Load brutalism + full-screen hero contract + public SEO; hero fills first viewport with real content, no extra style question |
 | `Build a Skeuomorphism portfolio with button animation` | Load Skeuomorphism + conditional SEO + motion module; no style question |
+| `Build a Retro Pixel portfolio` | Load `styles/retro-pixel.md` directly; build (not retro-terminal); **no style prompt** |
 
 ## Interaction examples
 

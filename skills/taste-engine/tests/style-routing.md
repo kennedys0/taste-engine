@@ -16,6 +16,10 @@ Each case must be tested in an agent that can pause between turns; a pure file v
 | "Surprise me / your choice" | May choose provisional style and disclose | Chosen pack | No claim of user preference |
 | Project config `primary_style: minimalism` and `user_confirmed: true` | No question | minimalism | User can override with current request |
 | Existing config brutalism; user explicitly requests glassmorphism redesign | No question; override config for this request | glassmorphism | Do not silently overwrite config |
+| "Build a Retro Pixel portfolio" | No redundant question | retro-pixel | No retro-terminal CRT scanlines |
+| "Create a pixel art landing page" | No redundant question | retro-pixel | Pixel artwork, desktop window chrome |
+| "I want neo-brutalism, not pixel art" | Resolve neo-brutalism; exclude pixel art | neo-brutalism | High-contrast black borders, hard offset shadows |
+| "Do not use retro pixel design" | Negative constraint only; exclude retro-pixel | None yet | Ask style question without retro-pixel |
 
 ## Style pack cross-acceptance
 
@@ -23,5 +27,6 @@ Each case must be tested in an agent that can pause between turns; a pure file v
 - Fonts are recommendations with fallbacks, never required remote downloads.
 - Body text contrast, focus state, responsive layout, empty/error/disabled states and reduced-motion rules are present.
 - `brutalism` and `neo-brutalism` never collapse into the same style. The former uses raw flat grid and no decorative offset comic shadow; the latter allows playful palette and hard offset shadow.
+- `retro-terminal` and `retro-pixel` never collapse into the same style. The former uses CRT scanlines, phosphor luminescence, and CLI consoles; the latter uses 8-bit/16-bit pixel illustrations, desktop window chrome, and stepped pixel borders.
 - Style is applied across all pages and components in scope; avoid unrequested style leaking across projects.
 - Project overrides win over style pack guidance, after non-negotiable usability/accessibility requirements.
