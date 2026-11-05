@@ -112,12 +112,11 @@ Read `styles/registry.json` when matching IDs, **aliases, common misspellings**,
 | `glassmorphism` | Translucent layered | [style pack](styles/glassmorphism.md) |
 | `brutalism` | Raw structured | [style pack](styles/brutalism.md) |
 | `neo-brutalism` | Playful bold | [style pack](styles/neo-brutalism.md) |
-| `minimalism` | Restrained clarity | [style pack](styles/minimalism.md) |
+| `minimalism` | Restrained clarity & data cockpits | [style pack](styles/minimalism.md) |
 | `swiss-editorial` | Typographic grid | [style pack](styles/swiss-editorial.md) |
 | `bento` | Modular tiles | [style pack](styles/bento.md) |
 | `skeuomorphism` | Physical control metaphor | [style pack](styles/skeuomorphism.md) |
 | `retro-terminal` | Console aesthetic | [style pack](styles/retro-terminal.md) |
-| `enterprise` | Workflow/data first | [style pack](styles/enterprise.md) |
 | `retro-pixel` | 8-bit/16-bit arcade desktop | [style pack](styles/retro-pixel.md) |
 
 **Custom is first-class:** if the chosen aesthetic is not in the registry, gather a short reference or constraints, then create a provisional project-specific style definition using the same dimensions. Never mislabel the style as a pack not present. Do not require external internet access to choose.

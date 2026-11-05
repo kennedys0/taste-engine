@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Minimalism Proof of Work & Installation Guide — Taste Engine</title>
-  <meta name="description" content="Dedicated Proof of Work and interactive installation guide for Taste Engine's Minimalism aesthetic archetype. Purposeful restraint, mathematical negative space, and zero AI-slop.">
-  <meta name="theme-color" content="#212328">
+  <title>Minimalism & Enterprise Data-First Proof of Work — Taste Engine</title>
+  <meta name="description" content="Dedicated Proof of Work and interactive studio lab for Taste Engine's Minimalism & Enterprise Data-first archetype. Purposeful restraint, hairline data cockpits, and contrast safety.">
+  <meta name="theme-color" content="#121214">
   <link rel="canonical" href="https://kennedys0.github.io/taste-engine/minimalism.html">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://kennedys0.github.io/taste-engine/minimalism.html">
-  <meta property="og:title" content="Minimalism Proof of Work & Installation Guide — Taste Engine">
-  <meta property="og:description" content="Dedicated Proof of Work and interactive installation guide for Taste Engine's Minimalism aesthetic archetype. Purposeful restraint, mathematical negative space, and zero AI-slop.">
+  <meta property="og:title" content="Minimalism & Enterprise Data-First Proof of Work — Taste Engine">
+  <meta property="og:description" content="Dedicated Proof of Work and interactive studio lab for Taste Engine's Minimalism & Enterprise Data-first archetype. Purposeful restraint, hairline data cockpits, and contrast safety.">
   <meta property="og:image" content="https://kennedys0.github.io/taste-engine/assets/banner.webp">
   <meta property="og:site_name" content="Taste Engine">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://kennedys0.github.io/taste-engine/minimalism.html">
-  <meta name="twitter:title" content="Minimalism Proof of Work & Installation Guide — Taste Engine">
-  <meta name="twitter:description" content="Dedicated Proof of Work and interactive installation guide for Taste Engine's Minimalism aesthetic archetype. Purposeful restraint, mathematical negative space, and zero AI-slop.">
+  <meta name="twitter:title" content="Minimalism & Enterprise Data-First Proof of Work — Taste Engine">
+  <meta name="twitter:description" content="Dedicated Proof of Work and interactive studio lab for Taste Engine's Minimalism & Enterprise Data-first archetype. Purposeful restraint, hairline data cockpits, and contrast safety.">
   <meta name="twitter:image" content="https://kennedys0.github.io/taste-engine/assets/banner.webp">
   <link rel="icon" type="image/webp" href="assets/logo.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,63 +24,108 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     /* =========================================================
-       MINIMALISM DESIGN SYSTEM TOKENS (TASTE ENGINE #07)
+       MINIMALISM & ENTERPRISE DESIGN SYSTEM TOKENS (TASTE ENGINE #07)
        Signature: Purposeful restraint, active intentional negative
-       space, mathematical typographic calibration & zero AI-slop.
+       space, mathematical typography, hairline architecture, and
+       high-density operational data cockpits.
        ========================================================= */
     :root {
-      --pow-bg: #FAFAF9;
-      --pow-surface: #FFFFFF;
-      --pow-surface-elevated: #FFFFFF;
-      --pow-surface-hover: #F4F4F5;
-      --pow-well-bg: #F5F5F7;
-      --pow-text: #18181B;
-      --pow-text-muted: #52525B;
-      --pow-text-faint: #71717A;
-      --pow-border: 1px solid rgba(0, 0, 0, 0.08);
-      --pow-border-strong: 1px solid rgba(0, 0, 0, 0.16);
-      --pow-hairline: 1px solid rgba(0, 0, 0, 0.06);
-      --pow-shadow: none;
-      --pow-accent: #18181B;
-      --pow-accent-hover: #27272A;
-      --pow-accent-subtle: rgba(24, 24, 27, 0.05);
-      --pow-accent-color: #2563EB;
-      --pow-accent-color-subtle: rgba(37, 99, 235, 0.08);
-      --pow-status-green: #16A34A;
-      --pow-status-green-bg: rgba(22, 163, 74, 0.1);
-      --pow-radius: 6px;
-      --pow-radius-sm: 4px;
-      --pow-radius-btn: 6px;
-      --pow-radius-pill: 9999px;
+      --min-bg: #FAFAF9;
+      --min-surface: #FFFFFF;
+      --min-surface-elevated: #FFFFFF;
+      --min-surface-hover: #F4F4F5;
+      --min-well-bg: #F5F5F7;
+      --min-text: #18181B;
+      --min-text-muted: #52525B;
+      --min-text-faint: #71717A;
+      --min-border-color: rgba(0, 0, 0, 0.08);
+      --min-border: 1px solid var(--min-border-color);
+      --min-border-strong: 1px solid rgba(0, 0, 0, 0.16);
+      --min-hairline: 1px solid rgba(0, 0, 0, 0.06);
+      --min-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+      --min-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+      
+      --min-accent: #18181B;
+      --min-accent-hover: #27272A;
+      --min-accent-subtle: rgba(24, 24, 27, 0.05);
+      --min-blue: #2563EB;
+      --min-blue-hover: #1D4ED8;
+      --min-blue-subtle: rgba(37, 99, 235, 0.08);
 
-      --pow-font-display: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --pow-font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      --pow-font-mono: 'JetBrains Mono', monospace;
+      --min-radius: 6px;
+      --min-radius-sm: 4px;
+      --min-radius-btn: 6px;
+      --min-radius-pill: 9999px;
 
-      --lab-spacing-density: 16px;
-      --lab-font-scale: 1;
+      /* Semantic Operational Tokens (WCAG AA Calibrated) */
+      --status-success-bg: #ECFDF5;
+      --status-success-text: #065F46;
+      --status-success-border: #A7F3D0;
+      --status-success-dot: #10B981;
+
+      --status-warning-bg: #FEF3C7;
+      --status-warning-text: #92400E;
+      --status-warning-border: #FDE68A;
+      --status-warning-dot: #F59E0B;
+
+      --status-error-bg: #FEE2E2;
+      --status-error-text: #991B1B;
+      --status-error-border: #FECACA;
+      --status-error-dot: #EF4444;
+
+      --status-neutral-bg: #F3F4F6;
+      --status-neutral-text: #374151;
+      --status-neutral-border: #E5E7EB;
+      --status-neutral-dot: #9CA3AF;
+
+      --min-font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --min-font-mono: 'JetBrains Mono', monospace;
+
+      --cockpit-row-height: 38px;
     }
 
     [data-theme="dark"] {
-      --pow-bg: #121214;
-      --pow-surface: #18181B;
-      --pow-surface-elevated: #1F1F23;
-      --pow-surface-hover: #27272A;
-      --pow-well-bg: #0D0D0E;
-      --pow-text: #F4F4F5;
-      --pow-text-muted: #A1A1AA;
-      --pow-text-faint: #71717A;
-      --pow-border: 1px solid rgba(255, 255, 255, 0.09);
-      --pow-border-strong: 1px solid rgba(255, 255, 255, 0.18);
-      --pow-hairline: 1px solid rgba(255, 255, 255, 0.06);
-      --pow-shadow: none;
-      --pow-accent: #F4F4F5;
-      --pow-accent-hover: #FFFFFF;
-      --pow-accent-subtle: rgba(244, 244, 245, 0.08);
-      --pow-accent-color: #3B82F6;
-      --pow-accent-color-subtle: rgba(59, 130, 246, 0.12);
-      --pow-status-green: #22C55E;
-      --pow-status-green-bg: rgba(34, 197, 94, 0.12);
+      --min-bg: #0F1117;
+      --min-surface: #161922;
+      --min-surface-elevated: #1F2430;
+      --min-surface-hover: #262B38;
+      --min-well-bg: #0A0C10;
+      --min-text: #F8FAFC;
+      --min-text-muted: #94A3B8;
+      --min-text-faint: #64748B;
+      --min-border-color: rgba(255, 255, 255, 0.09);
+      --min-border: 1px solid var(--min-border-color);
+      --min-border-strong: 1px solid rgba(255, 255, 255, 0.18);
+      --min-hairline: 1px solid rgba(255, 255, 255, 0.06);
+      --min-shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+      --min-shadow-md: 0 6px 18px rgba(0, 0, 0, 0.5);
+
+      --min-accent: #F4F4F5;
+      --min-accent-hover: #FFFFFF;
+      --min-accent-subtle: rgba(244, 244, 245, 0.08);
+      --min-blue: #3B82F6;
+      --min-blue-hover: #60A5FA;
+      --min-blue-subtle: rgba(59, 130, 246, 0.15);
+
+      --status-success-bg: rgba(16, 185, 129, 0.15);
+      --status-success-text: #34D399;
+      --status-success-border: rgba(16, 185, 129, 0.35);
+      --status-success-dot: #10B981;
+
+      --status-warning-bg: rgba(245, 158, 11, 0.15);
+      --status-warning-text: #FBBF24;
+      --status-warning-border: rgba(245, 158, 11, 0.35);
+      --status-warning-dot: #F59E0B;
+
+      --status-error-bg: rgba(239, 68, 68, 0.15);
+      --status-error-text: #F87171;
+      --status-error-border: rgba(239, 68, 68, 0.35);
+      --status-error-dot: #EF4444;
+
+      --status-neutral-bg: rgba(156, 163, 175, 0.12);
+      --status-neutral-text: #9CA3AF;
+      --status-neutral-border: rgba(156, 163, 175, 0.25);
+      --status-neutral-dot: #94A3B8;
     }
 
     *, *::before, *::after {
@@ -91,789 +136,922 @@
 
     html {
       scroll-behavior: smooth;
+      font-size: 15px;
     }
 
     body {
-      background-color: var(--pow-bg);
-      color: var(--pow-text);
-      font-family: var(--pow-font-body);
-      font-size: 15px;
-      line-height: 1.6;
+      background-color: var(--min-bg);
+      color: var(--min-text);
+      font-family: var(--min-font-sans);
+      line-height: 1.55;
       -webkit-font-smoothing: antialiased;
       -moz-osx-font-smoothing: grayscale;
+      transition: background-color 140ms ease-out, color 140ms ease-out;
       overflow-x: hidden;
-      transition: background-color 140ms ease, color 140ms ease;
     }
 
-    /* --- Strict 1:1 Circle Geometry Preservation (Anti-Oval) --- */
-    .brand-logo-img,
-    .nav-hamburger-btn,
-    .mobile-drawer-close-btn,
-    .dot,
-    .status-dot,
-    .circle-icon,
-    .stepper-btn,
-    .switch-knob {
-      aspect-ratio: 1 / 1 !important;
-      flex-shrink: 0 !important;
+    /* Tabular figures for telemetry & numbers */
+    .tabular-num {
+      font-family: var(--min-font-mono);
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum";
     }
-    img.brand-logo-img {
-      object-fit: cover;
+
+    /* Container constraints */
+    .page-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 1.25rem 1.5rem 4rem 1.5rem;
     }
 
     /* =========================================================
-       TOP STICKY NAVIGATION
+       1. STICKY TOP NAVIGATION BAR (Symmetric 36px Controls)
        ========================================================= */
     .pow-nav {
       position: sticky;
       top: 0;
       z-index: 100;
-      background: var(--pow-bg);
-      border-bottom: var(--pow-border);
-      padding: 0.75rem 2rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
-      transition: background-color 140ms ease, border-color 140ms ease;
+      padding: 0.65rem 1.5rem;
+      background: var(--min-surface);
+      border-bottom: var(--min-border);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
     }
 
     .nav-brand-group {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 10px;
       text-decoration: none;
-      color: var(--pow-text);
+      color: var(--min-text);
+    }
+
+    .nav-brand-icon {
+      width: 30px;
+      height: 30px;
+      background: var(--min-text);
+      color: var(--min-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 12px;
+      border-radius: var(--min-radius-sm);
+      letter-spacing: -0.04em;
+      aspect-ratio: 1 / 1;
       flex-shrink: 0;
     }
 
-    .brand-logo-img {
-      width: 28px;
-      height: 28px;
-      border-radius: 6px;
-    }
-
     .nav-title {
-      font-family: var(--pow-font-display);
       font-weight: 700;
-      font-size: 1.05rem;
-      letter-spacing: -0.015em;
+      font-size: 0.95rem;
+      letter-spacing: -0.02em;
     }
 
-    .nav-tag-badge {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      color: var(--pow-text-muted);
-      font-family: var(--pow-font-mono);
-      font-size: 0.68rem;
+    .nav-badge {
+      font-family: var(--min-font-mono);
+      font-size: 0.65rem;
       font-weight: 600;
-      padding: 0.2rem 0.55rem;
-      border-radius: var(--pow-radius-sm);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      padding: 2px 6px;
+      background: var(--min-blue-subtle);
+      color: var(--min-blue);
+      border: 1px solid var(--min-border-color);
+      border-radius: var(--min-radius-pill);
+      letter-spacing: 0.02em;
     }
 
-    .nav-links {
+    .nav-links-desktop {
       display: flex;
       align-items: center;
-      gap: 1.75rem;
+      gap: 1.5rem;
+      list-style: none;
     }
 
     .nav-link {
-      color: var(--pow-text-muted);
+      color: var(--min-text-muted);
       text-decoration: none;
-      font-family: var(--pow-font-display);
       font-size: 0.85rem;
       font-weight: 500;
       transition: color 120ms ease;
     }
 
     .nav-link:hover {
-      color: var(--pow-text);
+      color: var(--min-text);
     }
 
     .nav-actions {
       display: flex;
       align-items: center;
-      gap: 0.65rem;
-      flex-shrink: 0;
+      gap: 8px;
     }
 
-    .pow-btn-sm {
+    /* Paired Symmetric Action Buttons */
+    .nav-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
-      padding: 0.45rem 0.85rem;
-      background: var(--pow-surface);
-      color: var(--pow-text);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius-btn);
-      font-family: var(--pow-font-display);
+      justify-content: center;
+      gap: 6px;
+      height: 36px;
+      min-height: 36px;
+      padding: 0 14px;
+      font-family: var(--min-font-sans);
       font-size: 0.8rem;
       font-weight: 600;
+      line-height: 1;
       text-decoration: none;
+      border-radius: var(--min-radius-btn);
+      border: var(--min-border);
+      background: var(--min-surface);
+      color: var(--min-text);
       cursor: pointer;
-      transition: background-color 120ms ease, border-color 120ms ease, color 120ms ease;
+      box-sizing: border-box;
+      transition: background-color 120ms ease, border-color 120ms ease;
+      user-select: none;
     }
 
-    .pow-btn-sm:hover {
-      background: var(--pow-surface-hover);
-      border-color: var(--pow-border-strong);
+    .nav-btn:hover {
+      background: var(--min-surface-hover);
+      border-color: var(--min-border-strong);
     }
 
-    .pow-btn-install-header {
-      background: var(--pow-accent);
-      color: var(--pow-bg);
-      border-color: var(--pow-accent);
+    .nav-btn:focus-visible {
+      outline: 2px solid var(--min-blue);
+      outline-offset: 2px;
     }
 
-    .pow-btn-install-header:hover {
-      background: var(--pow-accent-hover);
-      color: var(--pow-bg);
+    .nav-btn-primary {
+      background: var(--min-text);
+      color: var(--min-bg);
+      border: 1px solid var(--min-text);
+    }
+
+    .nav-btn-primary:hover {
+      background: var(--min-accent-hover);
+      color: var(--min-bg);
+    }
+
+    .btn-icon-box {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+      aspect-ratio: 1 / 1;
     }
 
     .nav-hamburger-btn {
       display: none;
       align-items: center;
       justify-content: center;
-      width: 36px;
-      height: 36px;
-      border-radius: var(--pow-radius-btn);
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      color: var(--pow-text);
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      padding: 0;
+      border: var(--min-border);
+      border-radius: var(--min-radius-btn);
+      background: var(--min-surface);
+      color: var(--min-text);
+      font-size: 1.15rem;
       cursor: pointer;
-      transition: all 120ms ease;
+      aspect-ratio: 1 / 1;
+      flex-shrink: 0;
     }
 
-    .nav-hamburger-btn:hover {
-      border-color: var(--pow-text);
-    }
-
-    /* Mobile Navigation Drawer Overlay */
-    .mobile-nav-backdrop {
+    /* =========================================================
+       MOBILE NAVIGATION DRAWER
+       ========================================================= */
+    .mobile-drawer-overlay {
       position: fixed;
       inset: 0;
-      background: rgba(18, 18, 20, 0.5);
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
       z-index: 998;
       opacity: 0;
-      pointer-events: none;
-      transition: opacity 180ms ease;
+      visibility: hidden;
+      transition: opacity 160ms ease, visibility 160ms ease;
     }
 
-    .mobile-nav-backdrop.open {
+    .mobile-drawer-overlay.open {
       opacity: 1;
-      pointer-events: auto;
+      visibility: visible;
     }
 
     .mobile-nav-drawer {
       position: fixed;
       top: 0;
-      right: -320px;
-      width: min(300px, 86vw);
-      height: 100vh;
-      height: 100dvh;
+      right: 0;
+      bottom: 0;
+      width: 290px;
+      max-width: 85vw;
+      background: var(--min-surface);
+      border-left: var(--min-border);
       z-index: 999;
-      background: var(--pow-bg);
-      border-left: var(--pow-border-strong);
-      box-shadow: -10px 0 30px rgba(0, 0, 0, 0.25);
+      transform: translateX(100%);
+      transition: transform 180ms ease;
       display: flex;
       flex-direction: column;
-      transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1);
-      padding: 1.25rem 1.25rem;
-      box-sizing: border-box;
+      padding: 1.25rem;
+      box-shadow: -8px 0 24px rgba(0, 0, 0, 0.15);
     }
 
     .mobile-nav-drawer.open {
-      transform: translateX(-320px);
+      transform: translateX(0);
     }
 
-    .mobile-drawer-header {
+    .drawer-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding-bottom: 0.85rem;
-      border-bottom: var(--pow-border);
+      padding-bottom: 1rem;
+      border-bottom: var(--min-border);
       margin-bottom: 1.25rem;
     }
 
-    .style-drawer-tag {
-      font-family: var(--pow-font-mono);
-      font-size: 0.75rem;
-      font-weight: 700;
-      color: var(--pow-text);
-      letter-spacing: 0.05em;
-    }
-
-    .mobile-drawer-close-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+    .drawer-close-btn {
       width: 32px;
       height: 32px;
-      border-radius: var(--pow-radius-sm);
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      color: var(--pow-text);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: none;
+      border: var(--min-border);
+      border-radius: var(--min-radius-sm);
+      color: var(--min-text);
+      font-size: 14px;
       cursor: pointer;
     }
 
-    .mobile-drawer-body {
+    .drawer-links {
+      list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.4rem;
-      flex: 1;
-      overflow-y: auto;
-    }
-
-    .mobile-nav-link {
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      min-height: 44px;
-      padding: 0.65rem 0.85rem;
-      border-radius: var(--pow-radius-sm);
-      color: var(--pow-text);
-      text-decoration: none;
-      font-family: var(--pow-font-display);
-      font-weight: 600;
-      font-size: 0.875rem;
-      border: 1px solid transparent;
-      transition: all 120ms ease;
-    }
-
-    .mobile-nav-link:hover {
-      background: var(--pow-surface-hover);
-      border-color: var(--pow-border);
-      color: var(--pow-text);
-    }
-
-    .mobile-drawer-footer {
-      padding-top: 1rem;
-      border-top: var(--pow-border);
-    }
-
-    .mobile-drawer-cta-btn {
-      display: flex;
-      align-items: center;
-      justify-content: center;
       gap: 0.5rem;
-      width: 100%;
-      min-height: 44px;
-      padding: 0.75rem 1rem;
-      background: var(--pow-accent);
-      color: var(--pow-bg);
-      border-radius: var(--pow-radius-btn);
-      font-family: var(--pow-font-display);
-      font-weight: 700;
-      font-size: 0.85rem;
+    }
+
+    .drawer-link {
+      display: block;
+      padding: 0.65rem 0.75rem;
+      color: var(--min-text);
       text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      border-radius: var(--min-radius-sm);
+      transition: background-color 100ms ease;
+    }
+
+    .drawer-link:hover {
+      background: var(--min-surface-hover);
     }
 
     /* =========================================================
-       HERO VIEWPORT (CALIBRATED ONE-VIEWPORT COMPOSITION)
+       2. HERO VIEWPORT (Purposeful Restraint & Cockpit Lead)
        ========================================================= */
-    .pow-hero {
-      min-height: calc(100svh - 60px);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 3.5rem 1.5rem 2.5rem 1.5rem;
-      position: relative;
+    .min-hero {
+      margin: 2rem 0 3.5rem 0;
+      border: var(--min-border);
+      border-radius: var(--min-radius);
+      background: var(--min-surface);
+      overflow: hidden;
+      box-shadow: var(--min-shadow-sm);
     }
 
-    .hero-sticker-badge {
+    .hero-header-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1.25rem;
+      background: var(--min-surface);
+      border-bottom: var(--min-border);
+      font-family: var(--min-font-mono);
+      font-size: 0.75rem;
+      color: var(--min-text-muted);
+      letter-spacing: 0.02em;
+    }
+
+    .window-dots {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .window-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--min-border-color);
+      aspect-ratio: 1 / 1;
+      flex-shrink: 0;
+    }
+
+    .hero-content {
+      padding: 2.75rem 2rem 2.25rem 2rem;
+    }
+
+    .hero-eyebrow-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .hero-pill {
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
-      padding: 0.3rem 0.75rem;
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      color: var(--pow-text-muted);
-      font-family: var(--pow-font-mono);
-      font-size: 0.75rem;
+      gap: 6px;
+      padding: 3px 10px;
+      background: var(--min-surface-hover);
+      border: var(--min-border);
+      border-radius: var(--min-radius-pill);
+      font-family: var(--min-font-mono);
+      font-size: 0.725rem;
       font-weight: 600;
-      border-radius: var(--pow-radius-pill);
-      margin-bottom: 1.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      color: var(--min-text);
     }
 
     .hero-title {
-      font-family: var(--pow-font-display);
-      font-size: clamp(2rem, 5vw, 3.25rem);
-      font-weight: 700;
+      font-size: clamp(1.6rem, 4vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.035em;
       line-height: 1.15;
-      letter-spacing: -0.03em;
-      max-width: 820px;
-      margin-bottom: 1.25rem;
-      color: var(--pow-text);
+      color: var(--min-text);
+      margin-bottom: 1rem;
+      max-width: 960px;
     }
 
-    .hero-desc {
+    .hero-subtitle {
       font-size: 1.05rem;
-      color: var(--pow-text-muted);
-      max-width: 620px;
-      line-height: 1.65;
-      margin-bottom: 2rem;
-      font-weight: 400;
-    }
-
-    /* Single-Line Command Pill ("Sejajarin") */
-    .pow-command-pill {
-      display: inline-flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      gap: 0.65rem;
-      padding: 0.4rem 0.5rem 0.4rem 1rem;
-      background: var(--pow-surface);
-      border: var(--pow-border-strong);
-      border-radius: var(--pow-radius-pill);
-      max-width: 100%;
+      color: var(--min-text-muted);
+      line-height: 1.6;
+      max-width: 820px;
       margin-bottom: 1.75rem;
     }
 
-    .pow-prompt {
-      color: var(--pow-text-muted);
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      font-size: 0.85rem;
-      flex-shrink: 0;
-      line-height: 1;
-    }
-
-    .pow-code {
-      font-family: var(--pow-font-mono);
-      font-size: 0.8rem;
-      color: var(--pow-text);
-      white-space: nowrap;
-      overflow-x: auto;
-      scrollbar-width: none;
-      line-height: 1;
-    }
-
-    .pow-code::-webkit-scrollbar {
-      display: none;
-    }
-
-    .pow-copy-btn {
+    .hero-command-box {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      padding: 0.35rem 0.75rem;
-      background: var(--pow-accent);
-      color: var(--pow-bg);
+      gap: 12px;
+      background: var(--min-well-bg);
+      border: var(--min-border);
+      padding: 6px 6px 6px 14px;
+      border-radius: var(--min-radius);
+      font-family: var(--min-font-mono);
+      font-size: 0.8rem;
+      color: var(--min-text);
+      margin-bottom: 1.75rem;
+      max-width: 100%;
+      overflow-x: auto;
+    }
+
+    .copy-pill-btn {
+      background: var(--min-text);
+      color: var(--min-bg);
       border: none;
-      border-radius: var(--pow-radius-pill);
-      font-family: var(--pow-font-mono);
-      font-size: 0.72rem;
-      font-weight: 700;
+      padding: 5px 12px;
+      font-family: var(--min-font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: var(--min-radius-sm);
       cursor: pointer;
-      flex-shrink: 0;
-      transition: background-color 120ms ease, opacity 120ms ease;
+      transition: opacity 120ms ease;
+      white-space: nowrap;
     }
 
-    .pow-copy-btn:hover {
-      background: var(--pow-accent-hover);
+    .copy-pill-btn:hover {
+      opacity: 0.88;
     }
 
-    .hero-btn-group {
+    .hero-actions {
       display: flex;
       align-items: center;
-      gap: 0.85rem;
-      margin-bottom: 3.5rem;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
     }
 
-    .pow-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      padding: 0.65rem 1.35rem;
-      border-radius: var(--pow-radius-btn);
-      font-family: var(--pow-font-display);
-      font-size: 0.875rem;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      transition: all 120ms ease;
-    }
-
-    .pow-btn-primary {
-      background: var(--pow-accent);
-      color: var(--pow-bg);
-      border: 1px solid var(--pow-accent);
-    }
-
-    .pow-btn-primary:hover {
-      background: var(--pow-accent-hover);
-    }
-
-    .pow-btn-secondary {
-      background: var(--pow-surface);
-      color: var(--pow-text);
-      border: var(--pow-border);
-    }
-
-    .pow-btn-secondary:hover {
-      background: var(--pow-surface-hover);
-      border-color: var(--pow-border-strong);
-    }
-
-    /* 4-Stat Mathematical Grid */
-    .pow-stat-strip {
+    /* Telemetry HUD Summary Strip */
+    .telemetry-strip {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 1px;
-      background: var(--pow-border);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius);
-      overflow: hidden;
-      max-width: 860px;
-      width: 100%;
+      border-top: var(--min-border);
+      background: var(--min-surface);
     }
 
-    .stat-box {
-      background: var(--pow-bg);
-      padding: 1.25rem 1rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.3rem;
-      transition: background-color 140ms ease;
+    .telemetry-cell {
+      padding: 1.25rem 1.5rem;
+      border-right: var(--min-border);
     }
 
-    .stat-val {
-      font-family: var(--pow-font-display);
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: var(--pow-text);
-      letter-spacing: -0.015em;
+    .telemetry-cell:last-child {
+      border-right: none;
     }
 
-    .stat-label {
+    .telemetry-label {
       font-size: 0.75rem;
-      color: var(--pow-text-muted);
-      font-family: var(--pow-font-mono);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      font-weight: 500;
+      color: var(--min-text-muted);
+      margin-bottom: 0.35rem;
+    }
+
+    .telemetry-val {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--min-text);
+      letter-spacing: -0.02em;
+    }
+
+    .telemetry-meta {
+      font-size: 0.725rem;
+      color: var(--min-text-faint);
+      margin-top: 2px;
     }
 
     /* =========================================================
-       SECTION CONTAINERS
+       3. INTERACTIVE OPERATIONAL DATA COCKPIT (STUDIO LAB)
        ========================================================= */
-    .pow-section {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding: 4.5rem 1.5rem;
-      border-top: var(--pow-border);
-    }
-
-    .section-header {
-      margin-bottom: 2.5rem;
-    }
-
-    .section-badge {
-      display: inline-block;
-      font-family: var(--pow-font-mono);
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--pow-accent-color);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 0.5rem;
-    }
-
-    .section-title {
-      font-family: var(--pow-font-display);
-      font-size: clamp(1.5rem, 3.5vw, 2.15rem);
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      margin-bottom: 0.65rem;
-      color: var(--pow-text);
-    }
-
-    .section-desc {
-      font-size: 0.95rem;
-      color: var(--pow-text-muted);
-      max-width: 640px;
-      line-height: 1.6;
-    }
-
-    /* =========================================================
-       INTERACTIVE MINIMALISM STUDIO LAB (#playground)
-       A masterclass in Dieter Rams / Vignelli purposeful restraint
-       ========================================================= */
-    .lab-container {
-      border: var(--pow-border);
-      border-radius: var(--pow-radius);
-      background: var(--pow-surface);
+    .cockpit-studio {
+      margin-bottom: 4rem;
+      border: var(--min-border);
+      border-radius: var(--min-radius);
+      background: var(--min-surface);
       overflow: hidden;
+      box-shadow: var(--min-shadow-sm);
     }
 
-    .lab-toolbar {
+    .cockpit-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: var(--min-border);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.85rem 1.25rem;
-      border-bottom: var(--pow-border);
-      background: var(--pow-well-bg);
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .cockpit-title-group h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.25rem;
+    }
+
+    .cockpit-title-group p {
+      font-size: 0.825rem;
+      color: var(--min-text-muted);
+    }
+
+    /* Toolbar: Filters, Search, Density Toggle */
+    .cockpit-toolbar {
+      padding: 0.85rem 1.5rem;
+      background: var(--min-well-bg);
+      border-bottom: var(--min-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       gap: 1rem;
       flex-wrap: wrap;
     }
 
-    .lab-toolbar-left {
+    .toolbar-left {
       display: flex;
       align-items: center;
-      gap: 0.75rem;
+      gap: 0.5rem;
+      flex-wrap: wrap;
     }
 
-    .lab-tag {
-      font-family: var(--pow-font-mono);
-      font-size: 0.72rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--pow-text);
-    }
-
-    .lab-segmented-group {
-      display: inline-flex;
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius-sm);
-      padding: 2px;
-      gap: 2px;
-    }
-
-    .lab-seg-btn {
-      border: none;
-      background: transparent;
-      padding: 0.3rem 0.7rem;
-      font-family: var(--pow-font-mono);
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--pow-text-muted);
-      border-radius: 3px;
+    .filter-tab-btn {
+      background: var(--min-surface);
+      border: var(--min-border);
+      color: var(--min-text-muted);
+      padding: 5px 12px;
+      font-size: 0.775rem;
+      font-weight: 500;
+      border-radius: var(--min-radius-sm);
       cursor: pointer;
       transition: all 120ms ease;
     }
 
-    .lab-seg-btn.active {
-      background: var(--pow-accent);
-      color: var(--pow-bg);
+    .filter-tab-btn.active {
+      background: var(--min-text);
+      color: var(--min-bg);
+      border-color: var(--min-text);
+      font-weight: 600;
     }
 
-    .lab-canvas-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1px;
-      background: var(--pow-border);
-    }
-
-    .lab-card {
-      background: var(--pow-surface);
-      padding: var(--lab-spacing-density);
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      transition: padding 150ms ease;
-    }
-
-    .lab-card-full {
-      grid-column: 1 / -1;
-    }
-
-    .lab-card-title-row {
+    .toolbar-right {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      border-bottom: var(--pow-hairline);
-      padding-bottom: 0.75rem;
+      gap: 0.75rem;
+      flex-wrap: wrap;
     }
 
-    .lab-card-title {
-      font-family: var(--pow-font-display);
-      font-size: 0.95rem;
-      font-weight: 700;
-      color: var(--pow-text);
-    }
-
-    .lab-card-caption {
-      font-family: var(--pow-font-mono);
-      font-size: 0.72rem;
-      color: var(--pow-text-faint);
-    }
-
-    /* Typographic Hierarchy Specimen */
-    .type-specimen-stack {
+    .search-box-wrapper {
+      position: relative;
       display: flex;
-      flex-direction: column;
-      gap: 0.85rem;
+      align-items: center;
     }
 
-    .type-row {
-      display: grid;
-      grid-template-columns: 90px 1fr;
-      align-items: baseline;
-      gap: 1rem;
+    .cockpit-search-input {
+      background: var(--min-surface);
+      border: var(--min-border);
+      border-radius: var(--min-radius-sm);
+      padding: 6px 36px 6px 10px;
+      font-family: var(--min-font-sans);
+      font-size: 0.8rem;
+      color: var(--min-text);
+      width: 220px;
+      outline: none;
+      transition: border-color 120ms ease;
     }
 
-    .type-meta {
-      font-family: var(--pow-font-mono);
-      font-size: 0.7rem;
-      color: var(--pow-text-faint);
+    .cockpit-search-input:focus {
+      border-color: var(--min-blue);
     }
 
-    .type-sample-display {
-      font-family: var(--pow-font-display);
-      font-size: calc(1.75rem * var(--lab-font-scale));
-      font-weight: 700;
-      letter-spacing: -0.025em;
-      line-height: 1.2;
-      color: var(--pow-text);
+    .search-kbd-hint {
+      position: absolute;
+      right: 6px;
+      background: var(--min-well-bg);
+      border: var(--min-border);
+      padding: 2px 5px;
+      font-family: var(--min-font-mono);
+      font-size: 0.65rem;
+      color: var(--min-text-muted);
+      border-radius: 3px;
+      pointer-events: none;
     }
 
-    .type-sample-heading {
-      font-family: var(--pow-font-display);
-      font-size: calc(1.2rem * var(--lab-font-scale));
+    .density-toggle-group {
+      display: flex;
+      background: var(--min-surface);
+      border: var(--min-border);
+      border-radius: var(--min-radius-sm);
+      padding: 2px;
+    }
+
+    .density-btn {
+      background: none;
+      border: none;
+      padding: 4px 8px;
+      font-size: 0.725rem;
       font-weight: 600;
-      letter-spacing: -0.015em;
-      color: var(--pow-text);
+      color: var(--min-text-muted);
+      cursor: pointer;
+      border-radius: 3px;
     }
 
-    .type-sample-body {
-      font-family: var(--pow-font-body);
-      font-size: calc(0.925rem * var(--lab-font-scale));
-      line-height: 1.6;
-      color: var(--pow-text-muted);
+    .density-btn.active {
+      background: var(--min-well-bg);
+      color: var(--min-text);
     }
 
-    .type-sample-caption {
-      font-family: var(--pow-font-mono);
-      font-size: calc(0.75rem * var(--lab-font-scale));
-      color: var(--pow-text-faint);
+    /* Data Table Architecture */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
     }
 
-    /* Hairline Data Matrix */
-    .data-matrix-table {
+    .cockpit-table {
       width: 100%;
       border-collapse: collapse;
+      text-align: left;
       font-size: 0.825rem;
     }
 
-    .data-matrix-table th {
-      text-align: left;
-      font-family: var(--pow-font-mono);
-      font-size: 0.7rem;
+    .cockpit-table th {
+      background: var(--min-surface);
+      color: var(--min-text-muted);
+      font-size: 0.725rem;
       font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--pow-text-faint);
-      padding: 0.5rem 0.75rem;
-      border-bottom: var(--pow-hairline);
+      letter-spacing: 0.04em;
+      padding: 9px 14px;
+      border-bottom: var(--min-border);
+      white-space: nowrap;
+      user-select: none;
     }
 
-    .data-matrix-table td {
-      padding: 0.75rem 0.75rem;
-      border-bottom: var(--pow-hairline);
-      color: var(--pow-text);
+    .cockpit-table td {
+      padding: 10px 14px;
+      border-bottom: var(--min-border);
+      color: var(--min-text);
+      white-space: nowrap;
+      transition: background-color 80ms ease;
     }
 
-    .data-matrix-table tr:hover td {
-      background: var(--pow-surface-hover);
+    .cockpit-table tbody tr:hover td {
+      background: var(--min-surface-hover);
     }
 
+    .cockpit-table tbody tr.row-selected td {
+      background: var(--min-blue-subtle);
+    }
+
+    .cockpit-table th.col-num,
+    .cockpit-table td.col-num {
+      text-align: right;
+    }
+
+    .col-checkbox {
+      width: 32px;
+      text-align: center;
+    }
+
+    .cell-service-name {
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* Semantic Status Tokens (Contrast Safe) */
     .status-pill {
       display: inline-flex;
       align-items: center;
-      gap: 0.35rem;
-      font-family: var(--pow-font-mono);
-      font-size: 0.7rem;
+      gap: 6px;
+      padding: 2px 8px;
+      border-radius: var(--min-radius-pill);
+      font-size: 0.725rem;
       font-weight: 600;
-      padding: 0.15rem 0.5rem;
-      border-radius: var(--pow-radius-pill);
-      background: var(--pow-well-bg);
-      color: var(--pow-text-muted);
+      line-height: 1.3;
+      border: 1px solid transparent;
     }
 
-    .status-pill.active {
-      background: var(--pow-status-green-bg);
-      color: var(--pow-status-green);
+    .status-pill-success {
+      background: var(--status-success-bg);
+      color: var(--status-success-text);
+      border-color: var(--status-success-border);
+    }
+
+    .status-pill-warning {
+      background: var(--status-warning-bg);
+      color: var(--status-warning-text);
+      border-color: var(--status-warning-border);
+    }
+
+    .status-pill-error {
+      background: var(--status-error-bg);
+      color: var(--status-error-text);
+      border-color: var(--status-error-border);
     }
 
     .status-dot {
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: currentColor;
+      aspect-ratio: 1 / 1;
+      flex-shrink: 0;
     }
 
-    /* Minimal Controls Matrix */
-    .controls-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.25rem;
+    .status-pill-success .status-dot { background: var(--status-success-dot); }
+    .status-pill-warning .status-dot { background: var(--status-warning-dot); }
+    .status-pill-error .status-dot { background: var(--status-error-dot); }
+
+    .action-btn-xs {
+      background: none;
+      border: var(--min-border);
+      border-radius: var(--min-radius-sm);
+      padding: 3px 8px;
+      font-size: 0.725rem;
+      font-weight: 600;
+      color: var(--min-text);
+      cursor: pointer;
+      transition: background-color 100ms ease;
     }
 
-    .control-item {
+    .action-btn-xs:hover {
+      background: var(--min-surface-hover);
+      border-color: var(--min-border-strong);
+    }
+
+    /* Table Footer */
+    .cockpit-table-footer {
+      padding: 0.75rem 1.5rem;
       display: flex;
-      flex-direction: column;
-      gap: 0.4rem;
+      align-items: center;
+      justify-content: space-between;
+      border-top: var(--min-border);
+      font-size: 0.775rem;
+      color: var(--min-text-muted);
+      background: var(--min-surface);
+      flex-wrap: wrap;
+      gap: 0.5rem;
     }
 
-    .control-label {
+    /* Floating Batch Action Dock */
+    .batch-dock {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: var(--min-surface);
+      border: var(--min-border-strong);
+      box-shadow: var(--min-shadow-md);
+      padding: 8px 16px;
+      border-radius: var(--min-radius);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 90;
+      transition: transform 180ms ease, opacity 180ms ease;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .batch-dock.visible {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .batch-count {
+      font-weight: 700;
+      font-size: 0.8rem;
+      color: var(--min-text);
+    }
+
+    /* =========================================================
+       4. COMPONENT ANATOMY & TOKEN MATRIX LAB
+       ========================================================= */
+    .component-lab {
+      margin-bottom: 4rem;
+    }
+
+    .section-heading-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 1.45rem;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.35rem;
+    }
+
+    .section-desc {
+      font-size: 0.9rem;
+      color: var(--min-text-muted);
+    }
+
+    .lab-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+
+    .lab-card {
+      background: var(--min-surface);
+      border: var(--min-border);
+      border-radius: var(--min-radius);
+      padding: 1.5rem;
+      box-shadow: var(--min-shadow-sm);
+    }
+
+    .lab-card-title {
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.25rem;
+    }
+
+    .lab-card-subtitle {
+      font-size: 0.775rem;
+      color: var(--min-text-muted);
+      margin-bottom: 1.25rem;
+    }
+
+    /* Buttons Row */
+    .btn-sample-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .sample-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      font-size: 0.825rem;
+      font-weight: 600;
+      border-radius: var(--min-radius-btn);
+      cursor: pointer;
+      transition: all 120ms ease;
+      line-height: 1;
+    }
+
+    .sample-btn-primary {
+      background: var(--min-text);
+      color: var(--min-bg);
+      border: 1px solid var(--min-text);
+    }
+
+    .sample-btn-primary:hover {
+      opacity: 0.9;
+    }
+
+    .sample-btn-secondary {
+      background: var(--min-surface);
+      color: var(--min-text);
+      border: var(--min-border);
+    }
+
+    .sample-btn-secondary:hover {
+      background: var(--min-surface-hover);
+      border-color: var(--min-border-strong);
+    }
+
+    .sample-btn-blue {
+      background: var(--min-blue);
+      color: #FFFFFF;
+      border: 1px solid var(--min-blue);
+    }
+
+    .sample-btn-blue:hover {
+      background: var(--min-blue-hover);
+    }
+
+    .sample-btn-ghost {
+      background: none;
+      color: var(--min-text-muted);
+      border: 1px solid transparent;
+    }
+
+    .sample-btn-ghost:hover {
+      color: var(--min-text);
+      background: var(--min-surface-hover);
+    }
+
+    /* Form Fields */
+    .input-field-group {
+      margin-bottom: 1rem;
+    }
+
+    .field-label {
+      display: block;
       font-size: 0.75rem;
       font-weight: 600;
-      color: var(--pow-text-muted);
-      font-family: var(--pow-font-display);
+      margin-bottom: 0.35rem;
+      color: var(--min-text);
     }
 
-    .minimal-input {
+    .min-input {
       width: 100%;
-      padding: 0.55rem 0.75rem;
-      background: var(--pow-bg);
-      border: var(--pow-border-strong);
-      border-radius: var(--pow-radius-sm);
-      color: var(--pow-text);
-      font-family: var(--pow-font-body);
+      background: var(--min-well-bg);
+      border: var(--min-border);
+      border-radius: var(--min-radius-sm);
+      padding: 8px 12px;
+      font-family: inherit;
       font-size: 0.85rem;
+      color: var(--min-text);
       outline: none;
       transition: border-color 120ms ease;
     }
 
-    .minimal-input:focus {
-      border-color: var(--pow-accent);
-      box-shadow: 0 0 0 1px var(--pow-accent);
+    .min-input:focus {
+      border-color: var(--min-blue);
+      background: var(--min-surface);
     }
 
-    .minimal-switch-row {
+    /* Switch & Segmented */
+    .controls-sample-row {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0.55rem 0.75rem;
-      background: var(--pow-well-bg);
-      border-radius: var(--pow-radius-sm);
+      padding: 0.75rem 0;
+      border-top: var(--min-hairline);
     }
 
-    .switch-track {
+    .toggle-switch-wrapper {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: pointer;
+      user-select: none;
+    }
+
+    .toggle-track {
       width: 38px;
       height: 22px;
-      background: var(--pow-border-strong);
-      border-radius: 12px;
+      background: var(--min-border-color);
+      border-radius: var(--min-radius-pill);
       position: relative;
-      cursor: pointer;
       transition: background-color 140ms ease;
+      flex-shrink: 0;
     }
 
-    .switch-track.on {
-      background: var(--pow-accent);
+    .toggle-track.active {
+      background: var(--min-blue);
     }
 
-    .switch-knob {
+    .toggle-thumb {
       width: 16px;
       height: 16px;
       background: #FFFFFF;
@@ -882,1223 +1060,1365 @@
       top: 3px;
       left: 3px;
       transition: transform 140ms ease;
-    }
-
-    .switch-track.on .switch-knob {
-      transform: translateX(16px);
-      background: var(--pow-bg);
-    }
-
-    .stepper-row {
-      display: inline-flex;
-      align-items: center;
-      border: var(--pow-border-strong);
-      border-radius: var(--pow-radius-sm);
-      overflow: hidden;
-    }
-
-    .stepper-btn {
-      width: 32px;
-      height: 32px;
-      background: var(--pow-bg);
-      border: none;
-      color: var(--pow-text);
-      font-family: var(--pow-font-mono);
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background-color 100ms ease;
-    }
-
-    .stepper-btn:hover {
-      background: var(--pow-surface-hover);
-    }
-
-    .stepper-val {
-      padding: 0 0.85rem;
-      font-family: var(--pow-font-mono);
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--pow-text);
-    }
-
-    /* =========================================================
-       INSTALLATION SECTION (#install)
-       ========================================================= */
-    .tab-header-strip {
-      display: flex;
-      gap: 0;
-      border-bottom: var(--pow-border);
-      background: var(--pow-well-bg);
-      overflow-x: auto;
-    }
-
-    .tab-switch-btn {
-      padding: 0.75rem 1.25rem;
-      background: transparent;
-      border: none;
-      border-bottom: 2px solid transparent;
-      color: var(--pow-text-muted);
-      font-family: var(--pow-font-mono);
-      font-size: 0.8rem;
-      font-weight: 600;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: all 120ms ease;
-    }
-
-    .tab-switch-btn.active {
-      color: var(--pow-text);
-      border-bottom-color: var(--pow-accent);
-      background: var(--pow-surface);
-    }
-
-    .pow-card {
-      background: var(--pow-surface);
-      border: var(--pow-border);
-      border-radius: var(--pow-radius);
-      overflow: hidden;
-    }
-
-    .tab-body {
-      display: none;
-      padding: 2rem;
-    }
-
-    .tab-body.active {
-      display: block;
-    }
-
-    .install-step-title {
-      font-family: var(--pow-font-display);
-      font-size: 1.15rem;
-      font-weight: 700;
-      margin-bottom: 0.5rem;
-      color: var(--pow-text);
-    }
-
-    .install-step-desc {
-      font-size: 0.9rem;
-      color: var(--pow-text-muted);
-      line-height: 1.55;
-      margin-bottom: 1.5rem;
-    }
-
-    .pow-terminal {
-      background: var(--pow-well-bg);
-      border: var(--pow-border-strong);
-      border-radius: var(--pow-radius);
-      overflow: hidden;
-    }
-
-    .terminal-topbar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.55rem 0.85rem;
-      border-bottom: var(--pow-border);
-      background: var(--pow-surface);
-    }
-
-    .terminal-dots {
-      display: flex;
-      gap: 0.35rem;
-    }
-
-    .dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-    }
-
-    .dot.red { background: #EF4444; }
-    .dot.yellow { background: #EAB308; }
-    .dot.green { background: #22C55E; }
-
-    .terminal-label {
-      font-family: var(--pow-font-mono);
-      font-size: 0.72rem;
-      color: var(--pow-text-faint);
-    }
-
-    .terminal-content {
-      padding: 1.25rem 1.25rem;
-      font-family: var(--pow-font-mono);
-      font-size: 0.8rem;
-      line-height: 1.7;
-      overflow-x: auto;
-    }
-
-    .terminal-line {
-      display: flex;
-      gap: 0.65rem;
-      align-items: baseline;
-    }
-
-    .line-comment {
-      color: var(--pow-text-faint);
-    }
-
-    .line-p {
-      color: var(--pow-accent-color);
-      font-weight: 700;
-      user-select: none;
-    }
-
-    .line-cmd {
-      color: var(--pow-text);
-    }
-
-    /* =========================================================
-       DESIGN TOKENS TABLE (#tokens)
-       ========================================================= */
-    .token-table-wrap {
-      border: var(--pow-border);
-      border-radius: var(--pow-radius);
-      background: var(--pow-surface);
-      overflow-x: auto;
-    }
-
-    .pow-table {
-      width: 100%;
-      border-collapse: collapse;
-      text-align: left;
-      font-size: 0.85rem;
-    }
-
-    .pow-table th {
-      padding: 0.85rem 1rem;
-      font-family: var(--pow-font-mono);
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--pow-text-faint);
-      border-bottom: var(--pow-border);
-      background: var(--pow-well-bg);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .pow-table td {
-      padding: 0.85rem 1rem;
-      border-bottom: var(--pow-hairline);
-      color: var(--pow-text);
-    }
-
-    .pow-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .token-code {
-      font-family: var(--pow-font-mono);
-      font-size: 0.78rem;
-      color: var(--pow-accent-color);
-      font-weight: 600;
-    }
-
-    /* =========================================================
-       FAQ ACCORDION (#faq)
-       ========================================================= */
-    .faq-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.65rem;
-    }
-
-    .pow-faq-item {
-      border: var(--pow-border);
-      border-radius: var(--pow-radius);
-      background: var(--pow-surface);
-      overflow: hidden;
-      transition: border-color 120ms ease;
-    }
-
-    .pow-faq-item:hover {
-      border-color: var(--pow-border-strong);
-    }
-
-    .pow-faq-header {
-      padding: 1rem 1.25rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.95rem;
-      color: var(--pow-text);
-      user-select: none;
-    }
-
-    .faq-chevron {
-      color: var(--pow-text-muted);
-      transition: transform 180ms ease;
+      aspect-ratio: 1 / 1;
       flex-shrink: 0;
     }
 
-    .pow-faq-item.open .faq-chevron {
-      transform: rotate(180deg);
-      color: var(--pow-text);
+    .toggle-track.active .toggle-thumb {
+      transform: translateX(16px);
     }
 
-    .pow-faq-body {
-      display: none;
-      padding: 0 1.25rem 1.25rem 1.25rem;
-      font-size: 0.9rem;
-      color: var(--pow-text-muted);
-      line-height: 1.6;
-      border-top: var(--pow-hairline);
-      padding-top: 0.85rem;
+    /* Token Matrix Grid */
+    .token-matrix-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.775rem;
     }
 
-    .pow-faq-item.open .pow-faq-body {
-      display: block;
+    .token-matrix-table th {
+      text-align: left;
+      padding: 6px 8px;
+      border-bottom: var(--min-border);
+      color: var(--min-text-muted);
+      font-size: 0.7rem;
+    }
+
+    .token-matrix-table td {
+      padding: 7px 8px;
+      border-bottom: var(--min-hairline);
+      color: var(--min-text);
+      font-family: var(--min-font-mono);
+    }
+
+    .color-preview-box {
+      display: inline-block;
+      width: 12px;
+      height: 12px;
+      border-radius: 2px;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+      margin-right: 6px;
+      vertical-align: middle;
+      aspect-ratio: 1 / 1;
+      flex-shrink: 0;
     }
 
     /* =========================================================
-       SITE FOOTER (BALANCED 2-COLUMN MOBILE GRID)
+       5. ARCHITECTURAL CASE STUDIES (PRODUCTION PATTERNS)
        ========================================================= */
-    .pow-footer {
-      border-top: var(--pow-border);
-      background: var(--pow-bg);
-      padding: 4rem 1.5rem 2rem 1.5rem;
+    .architectures-section {
+      margin-bottom: 4rem;
     }
 
-    .footer-inner {
-      max-width: 1040px;
-      margin: 0 auto;
+    .archetypes-grid {
       display: grid;
-      grid-template-columns: 2fr 1fr 1fr;
-      gap: 3rem;
-      margin-bottom: 3rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
     }
 
-    .footer-brand h4 {
-      font-family: var(--pow-font-display);
-      font-size: 1.15rem;
-      font-weight: 700;
+    .archetype-card {
+      background: var(--min-surface);
+      border: var(--min-border);
+      border-radius: var(--min-radius);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      box-shadow: var(--min-shadow-sm);
+    }
+
+    .archetype-tag {
+      font-family: var(--min-font-mono);
+      font-size: 0.675rem;
+      font-weight: 600;
+      color: var(--min-blue);
       margin-bottom: 0.5rem;
-      color: var(--pow-text);
-    }
-
-    .footer-brand p {
-      font-size: 0.875rem;
-      color: var(--pow-text-muted);
-      line-height: 1.6;
-      max-width: 420px;
-    }
-
-    .footer-col h5 {
-      font-family: var(--pow-font-mono);
-      font-size: 0.72rem;
-      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 1rem;
-      color: var(--pow-text);
+      letter-spacing: 0.04em;
     }
 
-    .footer-col ul {
+    .archetype-card h4 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+    }
+
+    .archetype-card p {
+      font-size: 0.825rem;
+      color: var(--min-text-muted);
+      line-height: 1.55;
+      margin-bottom: 1.25rem;
+    }
+
+    .archetype-features {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.55rem;
+      gap: 0.35rem;
+      font-size: 0.775rem;
+      color: var(--min-text);
+      margin-bottom: 1.5rem;
     }
 
-    .footer-col a {
-      color: var(--pow-text-muted);
-      text-decoration: none;
-      font-size: 0.85rem;
-      transition: color 120ms ease;
-    }
-
-    .footer-col a:hover {
-      color: var(--pow-text);
-    }
-
-    .footer-bottom {
-      max-width: 1040px;
-      margin: 0 auto;
-      padding-top: 1.75rem;
-      border-top: var(--pow-border);
+    .archetype-features li {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-      font-size: 0.8rem;
-      color: var(--pow-text-faint);
+      gap: 6px;
     }
 
-    /* Toast Notification */
-    .pow-toast {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: var(--pow-accent);
-      color: var(--pow-bg);
-      padding: 0.65rem 1.15rem;
-      border-radius: var(--pow-radius-btn);
-      font-family: var(--pow-font-mono);
-      font-size: 0.78rem;
-      font-weight: 700;
-      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(10px);
-      transition: opacity 160ms ease, transform 160ms ease;
-      z-index: 1000;
-    }
-
-    .pow-toast.show {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
+    .archetype-features li::before {
+      content: "—";
+      color: var(--min-text-faint);
     }
 
     /* =========================================================
-       RESPONSIVE 320PX BASELINE & FLUID TYPOGRAPHY (ANTI-BLOAT)
+       6. INSTALLATION & AGENT SKILLS GUIDANCE
        ========================================================= */
-    @media (max-width: 860px) {
-      .pow-nav { padding: 0.75rem 1.25rem; }
-      .nav-links { display: none !important; }
-      .nav-actions .desktop-only { display: none !important; }
-      .nav-hamburger-btn { display: inline-flex !important; }
-      .lab-canvas-grid { grid-template-columns: 1fr; }
-      .footer-inner { grid-template-columns: 1fr 1fr; gap: 2rem; }
-      .footer-brand { grid-column: 1 / -1; }
+    .install-section {
+      margin-bottom: 4rem;
     }
 
-    @media (max-width: 640px) {
-      .pow-stat-strip { grid-template-columns: repeat(2, 1fr); }
-      .controls-grid { grid-template-columns: 1fr; }
-      .type-row { grid-template-columns: 1fr; gap: 0.25rem; }
-      .hero-btn-group { flex-direction: column; width: 100%; gap: 0.5rem; }
-      .pow-btn { width: 100%; }
-      .tab-header-strip { overflow-x: auto; -webkit-overflow-scrolling: touch; }
-      .tab-body { padding: 1.25rem; }
+    .install-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .install-card {
+      background: var(--min-surface);
+      border: var(--min-border);
+      border-radius: var(--min-radius);
+      padding: 1.5rem;
+      box-shadow: var(--min-shadow-sm);
+    }
+
+    .install-card h4 {
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.35rem;
+    }
+
+    .install-card p {
+      font-size: 0.8rem;
+      color: var(--min-text-muted);
+      margin-bottom: 1rem;
+      line-height: 1.5;
+    }
+
+    .code-box-wrapper {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--min-well-bg);
+      border: var(--min-border);
+      border-radius: var(--min-radius-sm);
+      padding: 6px 8px 6px 12px;
+      font-family: var(--min-font-mono);
+      font-size: 0.75rem;
+      color: var(--min-text);
+      overflow-x: auto;
+    }
+
+    .code-box-wrapper code {
+      white-space: nowrap;
+    }
+
+    /* =========================================================
+       7. DETAIL MODAL DIALOG & TOAST NOTIFICATION
+       ========================================================= */
+    .min-modal-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(4px);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 160ms ease, visibility 160ms ease;
+    }
+
+    .min-modal-backdrop.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .min-modal {
+      background: var(--min-surface);
+      border: var(--min-border);
+      border-radius: var(--min-radius);
+      width: 540px;
+      max-width: 100%;
+      box-shadow: var(--min-shadow-md);
+      overflow: hidden;
+    }
+
+    .modal-header {
+      padding: 1rem 1.25rem;
+      border-bottom: var(--min-border);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .modal-close-btn {
+      background: none;
+      border: none;
+      font-size: 1.25rem;
+      color: var(--min-text-muted);
+      cursor: pointer;
+      line-height: 1;
+    }
+
+    .modal-body {
+      padding: 1.25rem;
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: var(--min-text-muted);
+    }
+
+    .modal-telemetry-box {
+      background: var(--min-well-bg);
+      border: var(--min-border);
+      border-radius: var(--min-radius-sm);
+      padding: 10px 12px;
+      font-family: var(--min-font-mono);
+      font-size: 0.775rem;
+      color: var(--min-text);
+      margin-top: 1rem;
+      max-height: 160px;
+      overflow-y: auto;
+    }
+
+    .modal-footer {
+      padding: 0.85rem 1.25rem;
+      border-top: var(--min-border);
+      background: var(--min-well-bg);
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+    }
+
+    /* Toast Notification */
+    .toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 1001;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      pointer-events: none;
+    }
+
+    .toast-msg {
+      background: var(--min-surface);
+      border: var(--min-border-strong);
+      box-shadow: var(--min-shadow-md);
+      padding: 10px 16px;
+      border-radius: var(--min-radius);
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--min-text);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      animation: toastSlide 140ms ease-out;
+      pointer-events: auto;
+    }
+
+    @keyframes toastSlide {
+      from { transform: translateY(16px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* =========================================================
+       8. COMPACT MULTI-COLUMN FOOTER (10 STYLES ARCHITECTURE)
+       ========================================================= */
+    .pow-footer {
+      border-top: var(--min-border);
+      background: var(--min-surface);
+      padding: 2.75rem 1.5rem 1.5rem 1.5rem;
+      margin-top: 4rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1.6fr 1fr;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      align-items: start;
+    }
+
+    .footer-brand-title {
+      font-size: 1rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.5rem;
+      color: var(--min-text);
+    }
+
+    .footer-brand-desc {
+      font-size: 0.8rem;
+      color: var(--min-text-muted);
+      line-height: 1.55;
+      max-width: 340px;
+    }
+
+    .footer-brand-credit {
+      margin-top: 0.5rem;
+      font-size: 0.775rem;
+      color: var(--min-text-muted);
+    }
+
+    .footer-author-link {
+      color: var(--min-blue);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .footer-author-link:hover {
+      text-decoration: underline;
+    }
+
+    .footer-col-title {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--min-text);
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-archetypes-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.35rem 1rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-link {
+      font-family: var(--min-font-mono);
+      font-size: 0.775rem;
+      color: var(--min-text-muted);
+      text-decoration: none;
+      transition: color 100ms ease;
+      display: inline-block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .footer-link.active-link {
+      color: var(--min-blue);
+      font-weight: 700;
+    }
+
+    .footer-link:hover {
+      color: var(--min-text);
+    }
+
+    .footer-bottom-row {
+      border-top: 1px dashed var(--min-border-color);
+      padding-top: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-family: var(--min-font-mono);
+      font-size: 0.75rem;
+      color: var(--min-text-faint);
+    }
+
+    /* =========================================================
+       9. RESPONSIVE MEDIA QUERIES (DOWN TO 320px BASELINE)
+       ========================================================= */
+    @media (max-width: 900px) {
+      .telemetry-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .telemetry-cell:nth-child(2) {
+        border-right: none;
+      }
+      .telemetry-cell:nth-child(1),
+      .telemetry-cell:nth-child(2) {
+        border-bottom: var(--min-border);
+      }
+      .lab-grid {
+        grid-template-columns: 1fr;
+      }
+      .archetypes-grid {
+        grid-template-columns: 1fr;
+      }
+      .install-cards-grid {
+        grid-template-columns: 1fr;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+      }
+      .footer-brand-col {
+        grid-column: 1 / -1;
+        padding-bottom: 1rem;
+        border-bottom: 1px dashed var(--min-border-color);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .desktop-only {
+        display: none !important;
+      }
+      .nav-links-desktop {
+        display: none !important;
+      }
+      .nav-hamburger-btn {
+        display: inline-flex !important;
+      }
+
+      /* Top navigation mobile padding */
+      .pow-nav {
+        padding: 0.5rem 0.85rem;
+      }
+      .nav-brand-icon {
+        width: 28px;
+        height: 28px;
+        font-size: 11px;
+      }
+      .nav-title {
+        font-size: 0.85rem;
+      }
+      .nav-btn {
+        height: 38px !important;
+        min-height: 38px !important;
+      }
+      .theme-toggle-btn {
+        width: 38px !important;
+        height: 38px !important;
+        min-width: 38px !important;
+        padding: 0 !important;
+        justify-content: center !important;
+        aspect-ratio: 1 / 1 !important;
+        flex-shrink: 0 !important;
+      }
+
+      /* Hero Fluid */
+      .hero-content {
+        padding: 1.5rem 1rem;
+      }
+      .hero-title {
+        font-size: clamp(1.35rem, 5vw, 1.85rem);
+      }
+      .hero-subtitle {
+        font-size: 0.9rem;
+      }
+
+      /* Cockpit Toolbar Stack */
+      .cockpit-header {
+        padding: 1rem;
+      }
+      .cockpit-toolbar {
+        padding: 0.75rem 1rem;
+      }
+      .cockpit-search-input {
+        width: 100%;
+      }
+      .toolbar-right {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      /* Footer Mobile */
+      .pow-footer {
+        padding: 1.75rem 1rem 1rem 1rem !important;
+        margin-top: 2.5rem !important;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr !important;
+        gap: 1.25rem !important;
+      }
+      .footer-archetypes-col {
+        grid-column: 1 / -1 !important;
+      }
+      .footer-archetypes-list {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.35rem 0.75rem !important;
+      }
+      .footer-resources-col {
+        grid-column: 1 / -1 !important;
+        padding-top: 0.85rem !important;
+        border-top: 1px dashed var(--min-border-color) !important;
+      }
+      .footer-links-list {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: 0.35rem 0.75rem !important;
+      }
+      .footer-bottom-row {
+        flex-direction: column-reverse !important;
+        text-align: center !important;
+        gap: 0.5rem !important;
+      }
     }
 
     @media (max-width: 480px) {
-      html { font-size: 15px; }
-      body { overflow-x: hidden; }
-      .pow-nav { padding: 0.5rem 0.75rem !important; }
-      .nav-title { font-size: 0.95rem; }
-      .brand-logo-img { width: 26px; height: 26px; }
-      .nav-tag-badge { display: none; }
-      .pow-hero { padding: 2rem 0.75rem 1.5rem 0.75rem !important; }
-      .hero-title { font-size: clamp(1.35rem, 5.5vw, 1.75rem) !important; line-height: 1.25; margin-bottom: 0.85rem; }
-      .hero-desc { font-size: 0.85rem !important; line-height: 1.55; margin-bottom: 1.25rem; }
-      .hero-sticker-badge { font-size: 0.72rem; padding: 0.25rem 0.65rem; margin-bottom: 1rem; }
-      .pow-command-pill { max-width: 100%; padding: 0.35rem 0.65rem; font-size: 0.72rem; }
-      .pow-code { font-size: 0.72rem; }
-      .pow-section { padding: 2.25rem 0.75rem !important; }
-      .section-title { font-size: clamp(1.2rem, 4.5vw, 1.45rem) !important; }
-      .section-desc { font-size: 0.85rem !important; }
-      .stat-val { font-size: 1.05rem; }
-      .footer-inner { grid-template-columns: 1fr; gap: 1.5rem; }
-      .footer-bottom { flex-direction: column; text-align: center; }
+      .page-container {
+        padding: 0.75rem 0.5rem 3rem 0.5rem !important;
+      }
+      .telemetry-strip {
+        grid-template-columns: 1fr;
+      }
+      .telemetry-cell {
+        border-right: none !important;
+        border-bottom: var(--min-border);
+      }
+      .telemetry-cell:last-child {
+        border-bottom: none;
+      }
+      .hero-actions {
+        flex-direction: column;
+      }
+      .hero-actions .sample-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .batch-dock {
+        width: calc(100vw - 32px);
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
     }
 
-    @media (max-width: 360px) {
-      html { font-size: 14px; }
-      .pow-nav { padding: 0.45rem 0.5rem !important; }
-      .pow-hero { padding: 1.5rem 0.5rem 1rem 0.5rem !important; }
-      .hero-title { font-size: 1.35rem !important; }
-      .pow-stat-strip { grid-template-columns: 1fr !important; }
-      .pow-command-pill { padding: 0.3rem 0.5rem; }
-      .pow-code { font-size: 0.68rem; }
+    /* Reduced Motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0ms !important;
+        transition-duration: 0ms !important;
+      }
+      .batch-dock, .min-modal-backdrop, .toast-msg {
+        transition: none !important;
+      }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Sticky Navigation -->
+  <!-- STICKY TOP NAVIGATION -->
   <header class="pow-nav">
-    <a href="index.html" class="nav-brand-group">
-      <img src="assets/logo.webp" alt="Taste Engine Logo" class="brand-logo-img">
-      <strong class="nav-title">Taste Engine</strong>
-      <span class="nav-tag-badge">#07 MINIMALISM</span>
+    <a href="index.html" class="nav-brand-group" title="Back to Style Gallery">
+      <div class="nav-brand-icon">Mn</div>
+      <span class="nav-title">TASTE ENGINE</span>
+      <span class="nav-badge">v0.11.0</span>
     </a>
 
-    <!-- Desktop Navigation Links -->
-    <nav class="nav-links" aria-label="Header Navigation">
-      <a href="#playground" class="nav-link">Specimen Lab</a>
-      <a href="#install" class="nav-link">Installation</a>
-      <a href="#tokens" class="nav-link">Tokens</a>
-      <a href="#faq" class="nav-link">FAQ</a>
-    </nav>
+    <ul class="nav-links-desktop">
+      <li><a href="#overview" class="nav-link">Overview</a></li>
+      <li><a href="#cockpit" class="nav-link">Studio Cockpit</a></li>
+      <li><a href="#components" class="nav-link">Components</a></li>
+      <li><a href="#architectures" class="nav-link">Architectures</a></li>
+      <li><a href="#install" class="nav-link">Installation</a></li>
+    </ul>
 
     <div class="nav-actions">
-      <a href="index.html" class="pow-btn-sm desktop-only" title="Back to main gallery">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      <a href="index.html" class="nav-btn desktop-only" title="View all 10 style archetypes">
+        <span class="btn-icon-box" aria-hidden="true">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square">
+            <path d="M19 12H5M12 19l-7-7 7-7"/>
+          </svg>
+        </span>
         <span>All 10 Styles</span>
       </a>
-      <a href="#install" class="pow-btn-sm pow-btn-install-header desktop-only">
-        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg>
-        <span>Install Skill</span>
-      </a>
-      <button class="pow-btn-sm" id="themeToggleBtn" aria-label="Toggle theme">
-        <span id="themeLabel"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>LIGHT</span>
+
+      <button class="nav-btn theme-toggle-btn" id="theme-toggle-btn" aria-label="Toggle Dark and Light Mode">
+        <span class="btn-icon-box" id="theme-icon" aria-hidden="true">
+          <!-- Icon injected by JS -->
+        </span>
+        <span id="theme-text" class="desktop-only">Dark</span>
       </button>
-      <button class="nav-hamburger-btn" id="navHamburgerBtn" aria-label="Open navigation menu" aria-expanded="false" onclick="openMobileNav()">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-      </button>
+
+      <button class="nav-hamburger-btn" id="hamburger-btn" aria-label="Open Navigation Menu">☰</button>
     </div>
   </header>
 
-  <!-- Mobile Navigation Drawer Overlay (MINIMALISM // ESSENTIAL) -->
-  <div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="closeMobileNav()"></div>
-  <div class="mobile-nav-drawer" id="mobileNavDrawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
-    <div class="mobile-drawer-header">
-      <span class="style-drawer-tag">MINIMALISM // RESTRAINT</span>
-      <button class="mobile-drawer-close-btn" onclick="closeMobileNav()" aria-label="Close navigation menu">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
-      </button>
+  <!-- MOBILE NAVIGATION DRAWER -->
+  <div class="mobile-drawer-overlay" id="drawer-overlay"></div>
+  <aside class="mobile-nav-drawer" id="mobile-drawer" aria-label="Mobile Navigation Menu">
+    <div class="drawer-header">
+      <span style="font-weight: 700; font-size: 0.9rem;">MINIMALISM // MENU</span>
+      <button class="drawer-close-btn" id="drawer-close-btn" aria-label="Close Navigation Menu">✕</button>
     </div>
-    <div class="mobile-drawer-body">
-      <a href="#playground" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20"/></svg>
-        <span>Specimen Studio Lab</span>
-      </a>
-      <a href="#install" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-        <span>Installation Guide</span>
-      </a>
-      <a href="#tokens" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
-        <span>Design Tokens</span>
-      </a>
-      <a href="#faq" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" x2="12.01" y1="17" y2="17"/></svg>
-        <span>FAQ Guide</span>
-      </a>
-      <a href="index.html" class="mobile-nav-link" onclick="closeMobileNav()">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
-        <span>All 10 Styles Gallery</span>
+    <div style="margin-bottom: 1rem; padding-bottom: 0.75rem; border-bottom: var(--min-border);">
+      <a href="index.html" class="sample-btn sample-btn-primary" style="width: 100%; justify-content: center; text-decoration: none; font-size: 0.8rem;">
+        <span>← ALL 10 STYLES GALLERY</span>
       </a>
     </div>
-    <div class="mobile-drawer-footer">
-      <a href="#install" class="mobile-drawer-cta-btn" onclick="closeMobileNav()">
-        <span>INSTALL MINIMALISM SKILL</span>
-      </a>
-    </div>
-  </div>
+    <ul class="drawer-links">
+      <li><a href="#overview" class="drawer-link" onclick="closeDrawer()">Overview & Telemetry</a></li>
+      <li><a href="#cockpit" class="drawer-link" onclick="closeDrawer()">Operational Studio Cockpit</a></li>
+      <li><a href="#components" class="drawer-link" onclick="closeDrawer()">Component Lab</a></li>
+      <li><a href="#architectures" class="drawer-link" onclick="closeDrawer()">Production Architectures</a></li>
+      <li><a href="#install" class="drawer-link" onclick="closeDrawer()">Agent Installation</a></li>
+    </ul>
+  </aside>
 
-  <main>
-    <!-- Opening Hero Viewport (100svh safe viewport) -->
-    <section class="pow-hero">
-      <div class="hero-sticker-badge">
-        <svg xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M7 5H3"/><path d="M19 17v4"/><path d="M21 19h-4"/></svg>
-        <span>Aesthetic Archetype #07: Minimalism</span>
+  <main class="page-container">
+
+    <!-- HERO VIEWPORT -->
+    <section class="min-hero" id="overview">
+      <div class="hero-header-bar">
+        <span>TASTE_ENGINE // ARCHETYPE #07: MINIMALISM & DATA COCKPITS</span>
+        <div class="window-dots">
+          <div class="window-dot"></div>
+          <div class="window-dot"></div>
+          <div class="window-dot"></div>
+        </div>
       </div>
 
-      <h1 class="hero-title">
-        Purposeful Restraint, Mathematical Spacing & Effortless Clarity
-      </h1>
+      <div class="hero-content">
+        <div class="hero-eyebrow-row">
+          <span class="hero-pill">
+            <span class="status-dot" style="background: var(--status-success-dot);"></span>
+            CANONICAL AESTHETIC SYSTEM
+          </span>
+          <span class="hero-pill">ZERO AI-SLOP VERIFIED</span>
+          <span class="hero-pill">WCAG AA CONTRAST COUPLED</span>
+        </div>
 
-      <p class="hero-desc">
-        Eliminates cosmetic noise to achieve effortless scanning through active negative space, mathematical type calibration, and razor-sharp hairline dividers.
-      </p>
+        <h1 class="hero-title">PURPOSEFUL RESTRAINT MEETS OPERATIONAL DATA DENSITY.</h1>
 
-      <!-- Single-Line Inline Command Pill ("Sejajarin") -->
-      <div class="pow-command-pill">
-        <span class="pow-prompt">$</span>
-        <code class="pow-code" id="heroCmdText">npx skills add kennedys0/taste-engine --skill taste-style-minimalism</code>
-        <button class="pow-copy-btn" id="heroCopyBtn" aria-label="Copy command">
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-          <span>COPY</span>
+        <p class="hero-subtitle">
+          The seamless fusion of Dieter Rams intentional negative space and modern high-density cloud cockpits (Linear, Stripe, Vercel). Eliminates nested card clutter and decorative slop in favor of hairline divider rules, scannable tabular numbers, and instant keyboard productivity.
+        </p>
+
+        <div class="hero-command-box">
+          <code>npx skills add kennedys0/taste-engine --skill taste-style-minimalism</code>
+          <button class="copy-pill-btn" onclick="copySnippet('npx skills add kennedys0/taste-engine --skill taste-style-minimalism')">Copy</button>
+        </div>
+
+        <div class="hero-actions">
+          <a href="#cockpit" class="sample-btn sample-btn-primary">Open Live Studio Cockpit ↵</a>
+          <a href="#components" class="sample-btn sample-btn-secondary">Explore Components & Tokens</a>
+        </div>
+      </div>
+
+      <!-- Telemetry Strip -->
+      <div class="telemetry-strip">
+        <div class="telemetry-cell">
+          <div class="telemetry-label">Cluster SLA Availability</div>
+          <div class="telemetry-val tabular-num">99.98%</div>
+          <div class="telemetry-meta">12 of 12 regions online</div>
+        </div>
+        <div class="telemetry-cell">
+          <div class="telemetry-label">Throughput Velocity</div>
+          <div class="telemetry-val tabular-num">1.42M ops/s</div>
+          <div class="telemetry-meta">Peak telemetry rate</div>
+        </div>
+        <div class="telemetry-cell">
+          <div class="telemetry-label">P99 Query Latency</div>
+          <div class="telemetry-val tabular-num">14.2 ms</div>
+          <div class="telemetry-meta">Zero drift threshold</div>
+        </div>
+        <div class="telemetry-cell">
+          <div class="telemetry-label">Design Contrast Ratio</div>
+          <div class="telemetry-val tabular-num">12.8 : 1</div>
+          <div class="telemetry-meta">Full WCAG AAA compliance</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INTERACTIVE OPERATIONAL DATA COCKPIT (STUDIO LAB) -->
+    <section class="cockpit-studio" id="cockpit">
+      <div class="cockpit-header">
+        <div class="cockpit-title-group">
+          <h3>OPERATIONAL TELEMETRY COCKPIT</h3>
+          <p>Live interactive data matrix: test real-time density switching, status filtering, table sorting, and batch selections.</p>
+        </div>
+        <button class="sample-btn sample-btn-secondary" onclick="simulateDataRefresh()">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 2v6h-6M3 12a9 9 0 0 1 15-6.7L21 8M3 22v-6h6M21 12a9 9 0 0 1-15 6.7L3 16"/></svg>
+          <span>Refresh Data</span>
         </button>
       </div>
 
-      <div class="hero-btn-group">
-        <a href="#playground" class="pow-btn pow-btn-primary">
-          <span>Explore Specimen Lab</span>
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#install" class="pow-btn pow-btn-secondary">
-          <span>Installation Guide</span>
-        </a>
-      </div>
-
-      <!-- 4-Stat Mathematical Grid -->
-      <div class="pow-stat-strip">
-        <div class="stat-box">
-          <div class="stat-val">1px Hairline</div>
-          <div class="stat-label">Subtle Structural Stroke</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-val">Golden Ratio</div>
-          <div class="stat-label">Calibrated Type Scale</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-val">4.5:1+ WCAG</div>
-          <div class="stat-label">Zero Washed-Out Text</div>
-        </div>
-        <div class="stat-box">
-          <div class="stat-val">100% Intent</div>
-          <div class="stat-label">Zero Decorative Clutter</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================
-         INTERACTIVE COMPONENT PLAYGROUND (#playground)
-         A masterclass in Dieter Rams / Vignelli purposeful restraint
-         ========================================================= -->
-    <section class="pow-section" id="playground">
-      <div class="section-header">
-        <span class="section-badge">Live Interactive Studio</span>
-        <h2 class="section-title">Minimalist Specimen Studio Lab</h2>
-        <p class="section-desc">
-          Test interactive components, calibrated typography, razor-sharp hairline data matrices, and active negative space built strictly to Taste Engine's minimalism fidelity rules.
-        </p>
-      </div>
-
-      <div class="lab-container">
-        <!-- Lab Header Toolbar -->
-        <div class="lab-toolbar">
-          <div class="lab-toolbar-left">
-            <span class="lab-tag">Active Spacing Density:</span>
-            <div class="lab-segmented-group" id="densitySelector">
-              <button class="lab-seg-btn" onclick="setDensity('10px', this)">Compact</button>
-              <button class="lab-seg-btn active" onclick="setDensity('18px', this)">Balanced</button>
-              <button class="lab-seg-btn" onclick="setDensity('28px', this)">Generous</button>
-            </div>
-          </div>
-          <div class="lab-toolbar-left">
-            <span class="lab-tag">Type Scale:</span>
-            <div class="lab-segmented-group" id="scaleSelector">
-              <button class="lab-seg-btn active" onclick="setScale(1, this)">1.0x</button>
-              <button class="lab-seg-btn" onclick="setScale(1.12, this)">1.12x</button>
-              <button class="lab-seg-btn" onclick="setScale(1.25, this)">1.25x</button>
-            </div>
-          </div>
+      <!-- Cockpit Toolbar -->
+      <div class="cockpit-toolbar">
+        <div class="toolbar-left">
+          <button class="filter-tab-btn active" data-status="all" onclick="filterStatus('all')">All Services (12)</button>
+          <button class="filter-tab-btn" data-status="healthy" onclick="filterStatus('healthy')">Healthy (9)</button>
+          <button class="filter-tab-btn" data-status="degraded" onclick="filterStatus('degraded')">Degraded (2)</button>
+          <button class="filter-tab-btn" data-status="failed" onclick="filterStatus('failed')">Failed (1)</button>
         </div>
 
-        <!-- Canvas Grid -->
-        <div class="lab-canvas-grid">
-          
-          <!-- Module 1: Typographic Hierarchy -->
-          <div class="lab-card">
-            <div class="lab-card-title-row">
-              <span class="lab-card-title">Typographic Hierarchy & Contrast</span>
-              <span class="lab-card-caption">INTER // SYSTEM SANS</span>
-            </div>
-            
-            <div class="type-specimen-stack">
-              <div class="type-row">
-                <span class="type-meta">DISPLAY</span>
-                <span class="type-sample-display">Effortless Clarity</span>
-              </div>
-              <div class="type-row">
-                <span class="type-meta">HEADING</span>
-                <span class="type-sample-heading">Calibrated Negative Space</span>
-              </div>
-              <div class="type-row">
-                <span class="type-meta">BODY</span>
-                <span class="type-sample-body">Every element earns its placement through utility. Faint unreadable text is eliminated; high-contrast type and hairline dividers organize complex interfaces naturally.</span>
-              </div>
-              <div class="type-row">
-                <span class="type-meta">METADATA</span>
-                <span class="type-sample-caption">LATENCY: 14MS // SHA-256: 8A4F90C // WCAG AAA SAFE</span>
-              </div>
-            </div>
+        <div class="toolbar-right">
+          <div class="search-box-wrapper">
+            <input type="text" id="cockpit-search" class="cockpit-search-input" placeholder="Filter telemetry..." oninput="handleSearch(this.value)">
+            <span class="search-kbd-hint">⌘K</span>
           </div>
 
-          <!-- Module 2: Restrained Form & Micro-Interactions -->
-          <div class="lab-card">
-            <div class="lab-card-title-row">
-              <span class="lab-card-title">Restrained Controls & Affordances</span>
-              <span class="lab-card-caption">CLEAR STATES // NO NOISE</span>
-            </div>
-
-            <div class="controls-grid">
-              <div class="control-item">
-                <label class="control-label" for="sampleSearchInput">Search Query</label>
-                <input type="text" id="sampleSearchInput" class="minimal-input" placeholder="e.g. typography-tokens" value="taste-engine">
-              </div>
-
-              <div class="control-item">
-                <label class="control-label">Status Toggle</label>
-                <div class="minimal-switch-row">
-                  <span style="font-size: 0.825rem; font-weight: 500;">Dark Ink Anchor</span>
-                  <div class="switch-track on" id="demoSwitch" onclick="toggleDemoSwitch()">
-                    <div class="switch-knob"></div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="control-item">
-                <label class="control-label">Grid Stepper</label>
-                <div class="stepper-row">
-                  <button class="stepper-btn" onclick="stepVal(-1)">−</button>
-                  <span class="stepper-val" id="stepperVal">8 px</span>
-                  <button class="stepper-btn" onclick="stepVal(1)">+</button>
-                </div>
-              </div>
-
-              <div class="control-item">
-                <label class="control-label">Primary Actions</label>
-                <div style="display: flex; gap: 0.5rem;">
-                  <button class="pow-btn pow-btn-primary" style="padding: 0.5rem 0.85rem; font-size: 0.8rem;" onclick="handleBtnClick('Confirm')">Confirm</button>
-                  <button class="pow-btn pow-btn-secondary" style="padding: 0.5rem 0.85rem; font-size: 0.8rem;" onclick="handleBtnClick('Dismiss')">Dismiss</button>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Module 3: The Hairline Data Matrix -->
-          <div class="lab-card lab-card-full">
-            <div class="lab-card-title-row">
-              <span class="lab-card-title">Hairline Data Matrix (Zero Card-in-Card Clutter)</span>
-              <span class="lab-card-caption">4 ARTIFACTS MONITORED</span>
-            </div>
-
-            <div style="overflow-x: auto;">
-              <table class="data-matrix-table">
-                <thead>
-                  <tr>
-                    <th>Archetype Artifact</th>
-                    <th>Fidelity Rating</th>
-                    <th>Status</th>
-                    <th>Target Viewport</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td><strong>taste-style-minimalism</strong></td>
-                    <td>100% WCAG AAA Compliant</td>
-                    <td><span class="status-pill active"><span class="status-dot"></span>Active</span></td>
-                    <td style="font-family: var(--pow-font-mono);">320px–1920px Fluid</td>
-                    <td><button class="pow-btn-sm" style="padding: 0.25rem 0.6rem; font-size: 0.72rem;" onclick="handleBtnClick('Inspect Minimalism')">Inspect</button></td>
-                  </tr>
-                  <tr>
-                    <td><strong>taste-style-enterprise</strong></td>
-                    <td>High-Density Cockpit</td>
-                    <td><span class="status-pill active"><span class="status-dot"></span>Verified</span></td>
-                    <td style="font-family: var(--pow-font-mono);">320px–2560px Telemetry</td>
-                    <td><button class="pow-btn-sm" style="padding: 0.25rem 0.6rem; font-size: 0.72rem;" onclick="handleBtnClick('Inspect Enterprise')">Inspect</button></td>
-                  </tr>
-                  <tr>
-                    <td><strong>taste-style-glassmorphism</strong></td>
-                    <td>Crystalline Specular Rims</td>
-                    <td><span class="status-pill active"><span class="status-dot"></span>Verified</span></td>
-                    <td style="font-family: var(--pow-font-mono);">320px–1920px Blur</td>
-                    <td><button class="pow-btn-sm" style="padding: 0.25rem 0.6rem; font-size: 0.72rem;" onclick="handleBtnClick('Inspect Glassmorphism')">Inspect</button></td>
-                  </tr>
-                  <tr>
-                    <td><strong>taste-style-claymorphism</strong></td>
-                    <td>Dual Inner-Shadow Relief</td>
-                    <td><span class="status-pill active"><span class="status-dot"></span>Verified</span></td>
-                    <td style="font-family: var(--pow-font-mono);">320px–1920px Tactile</td>
-                    <td><button class="pow-btn-sm" style="padding: 0.25rem 0.6rem; font-size: 0.72rem;" onclick="handleBtnClick('Inspect Claymorphism')">Inspect</button></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- =========================================================
-         INTERACTIVE INSTALLATION GUIDE SECTION (#install)
-         ========================================================= -->
-    <section class="pow-section" id="install">
-      <div class="section-header">
-        <span class="section-badge">How to Install</span>
-        <h2 class="section-title">Install Minimalism or Full Engine</h2>
-        <p class="section-desc">
-          Choose whether you want this standalone Minimalism skill or the full 10-style autonomous Taste Engine suite for your AI coding agents.
-        </p>
-      </div>
-
-      <div class="pow-card">
-        <!-- Tab Headers -->
-        <div class="tab-header-strip">
-          <button class="tab-switch-btn active" data-tab="tab-standalone">1. Standalone Style Skill</button>
-          <button class="tab-switch-btn" data-tab="tab-global">2. Full Taste Engine (Global)</button>
-          <button class="tab-switch-btn" data-tab="tab-tailwind">3. Tailwind & shadcn Preset</button>
-        </div>
-
-        <!-- Tab 1: Standalone Skill -->
-        <div class="tab-body active" id="tab-standalone">
-          <h3 class="install-step-title">Option A: Install Dedicated Minimalism Skill</h3>
-          <p class="install-step-desc">
-            Installs only the Minimalism style pack. Perfect if your project has already committed to this exact aesthetic and does not need a multi-style router.
-          </p>
-
-          <div class="pow-terminal">
-            <div class="terminal-topbar">
-              <div class="terminal-dots">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-              </div>
-              <span class="terminal-label">bash — universal agent skills cli</span>
-              <button class="pow-btn-sm" onclick="copySnippet('cmdStandaloneCli')">Copy</button>
-            </div>
-            <div class="terminal-content" id="cmdStandaloneCli">
-              <div class="terminal-line">
-                <span class="line-comment"># Install standalone Minimalism pack via Agent Skills CLI</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-p">$</span>
-                <span class="line-cmd">npx skills add kennedys0/taste-engine --skill taste-style-minimalism</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-comment"># Or install directly for Antigravity IDE global config</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-p">$</span>
-                <span class="line-cmd">git clone https://github.com/kennedys0/taste-engine.git &amp;&amp; cp -r taste-engine/optional-standalone-skills/taste-style-minimalism ~/.gemini/config/skills/</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tab 2: Global Engine -->
-        <div class="tab-body" id="tab-global">
-          <h3 class="install-step-title">Option B: Install Full Taste Engine (All 10 Styles + SEO + Anti-Slop)</h3>
-          <p class="install-step-desc">
-            Equips your AI agent with the autonomous style router, preflight interviews, 10 aesthetic packs, full-screen hero gating, and automatic SEO audit.
-          </p>
-
-          <div class="pow-terminal">
-            <div class="terminal-topbar">
-              <div class="terminal-dots">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-              </div>
-              <span class="terminal-label">bash — multi-agent native installer</span>
-              <button class="pow-btn-sm" onclick="copySnippet('cmdGlobalCli')">Copy</button>
-            </div>
-            <div class="terminal-content" id="cmdGlobalCli">
-              <div class="terminal-line">
-                <span class="line-comment"># 1. Universal 1-click Agent Skills install</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-p">$</span>
-                <span class="line-cmd">npx skills add kennedys0/taste-engine</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-comment"># 2. Or install globally for Google Antigravity IDE / CLI (agy)</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-p">$</span>
-                <span class="line-cmd">node bin/taste-engine.mjs install --agent antigravity --global</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-comment"># 3. Or install for Claude Code or OpenAI Codex</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-p">$</span>
-                <span class="line-cmd">node bin/taste-engine.mjs install --agent claude --global</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-p">$</span>
-                <span class="line-cmd">node bin/taste-engine.mjs install --agent codex --global</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Tab 3: Tailwind & shadcn -->
-        <div class="tab-body" id="tab-tailwind">
-          <h3 class="install-step-title">Option C: Tailwind CSS &amp; shadcn/ui Preset</h3>
-          <p class="install-step-desc">
-            Scaffold Minimalism utility tokens directly into your React, Next.js, or Vite frontend stack.
-          </p>
-
-          <div class="pow-terminal">
-            <div class="terminal-topbar">
-              <div class="terminal-dots">
-                <span class="dot red"></span>
-                <span class="dot yellow"></span>
-                <span class="dot green"></span>
-              </div>
-              <span class="terminal-label">tailwind.config.js — preset integration</span>
-              <button class="pow-btn-sm" onclick="copySnippet('cmdTailwindPreset')">Copy</button>
-            </div>
-            <div class="terminal-content" id="cmdTailwindPreset">
-              <div class="terminal-line">
-                <span class="line-comment">// Add Taste Engine official presets to your Tailwind config</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">module.exports = {</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;presets: [require('./presets/tailwind/tailwind.preset.js')],</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;theme: {</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;extend: {</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;colors: { 'minimalism': '#18181B' }</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;&nbsp;&nbsp;}</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">&nbsp;&nbsp;}</span>
-              </div>
-              <div class="terminal-line">
-                <span class="line-cmd">};</span>
-              </div>
-            </div>
+          <div class="density-toggle-group">
+            <button class="density-btn active" id="btn-density-compact" onclick="setDensity('compact')">Compact</button>
+            <button class="density-btn" id="btn-density-comfortable" onclick="setDensity('comfortable')">Comfortable</button>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- =========================================================
-         DESIGN TOKEN MATRIX (#tokens)
-         ========================================================= -->
-    <section class="pow-section" id="tokens">
-      <div class="section-header">
-        <span class="section-badge">Tokens &amp; Architecture</span>
-        <h2 class="section-title">Minimalism Design Tokens</h2>
-        <p class="section-desc">
-          Standardized CSS custom properties with strict light/dark paired contrast rules.
-        </p>
-      </div>
-
-      <div class="token-table-wrap">
-        <table class="pow-table">
+      <!-- Scannable Data Table -->
+      <div class="table-container">
+        <table class="cockpit-table" id="cockpit-table">
           <thead>
             <tr>
-              <th>Token Name</th>
-              <th>Light Mode</th>
-              <th>Dark Mode</th>
-              <th>Architectural Role</th>
+              <th class="col-checkbox">
+                <input type="checkbox" id="select-all-checkbox" aria-label="Select all rows" onchange="toggleSelectAll(this)">
+              </th>
+              <th>Service / Identifier</th>
+              <th>Region</th>
+              <th>Operational Status</th>
+              <th class="col-num">CPU Load</th>
+              <th class="col-num">Memory</th>
+              <th class="col-num">P99 Latency</th>
+              <th style="text-align: right;">Action</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              <td class="token-code">--taste-mini-bg</td>
-              <td>#fafaf9</td>
-              <td>#121214</td>
-              <td>Base canvas backdrop</td>
-            </tr>
-            <tr>
-              <td class="token-code">--taste-mini-surface</td>
-              <td>#ffffff</td>
-              <td>#18181b</td>
-              <td>Elevated panel &amp; card surface</td>
-            </tr>
-            <tr>
-              <td class="token-code">--taste-mini-ink</td>
-              <td>#18181b</td>
-              <td>#f4f4f5</td>
-              <td>Primary text &amp; vector icons (WCAG AAA)</td>
-            </tr>
-            <tr>
-              <td class="token-code">--taste-mini-muted</td>
-              <td>#52525b</td>
-              <td>#a1a1aa</td>
-              <td>Secondary metadata &amp; descriptions (4.5:1+)</td>
-            </tr>
-            <tr>
-              <td class="token-code">--taste-mini-border</td>
-              <td>1px solid rgba(0,0,0,0.08)</td>
-              <td>1px solid rgba(255,255,255,0.09)</td>
-              <td>Subtle hairline structural dividing rule</td>
-            </tr>
-            <tr>
-              <td class="token-code">--taste-mini-accent</td>
-              <td>#18181b</td>
-              <td>#f4f4f5</td>
-              <td>Primary action fill</td>
-            </tr>
-            <tr>
-              <td class="token-code">--taste-mini-radius</td>
-              <td>6px</td>
-              <td>6px</td>
-              <td>Gentle unified corner radius</td>
-            </tr>
-            <tr>
-              <td class="token-code">--taste-mini-font-sans</td>
-              <td>Inter, system-ui</td>
-              <td>Inter, system-ui</td>
-              <td>Clean, unembellished typography stack</td>
-            </tr>
-            <tr>
-              <td class="token-code">--taste-mini-font-mono</td>
-              <td>JetBrains Mono</td>
-              <td>JetBrains Mono</td>
-              <td>Tabular metadata &amp; code font</td>
-            </tr>
-            <tr>
-              <td class="token-code">--taste-mini-space-unit</td>
-              <td>4px / 8px</td>
-              <td>4px / 8px</td>
-              <td>Mathematical spacing grid base</td>
-            </tr>
+          <tbody id="table-body">
+            <!-- Rendered by JavaScript -->
           </tbody>
         </table>
       </div>
-    </section>
 
-    <!-- =========================================================
-         FAQ ACCORDION (#faq)
-         ========================================================= -->
-    <section class="pow-section" id="faq">
-      <div class="section-header">
-        <span class="section-badge">FAQ &amp; Verification</span>
-        <h2 class="section-title">Frequently Asked Questions</h2>
-        <p class="section-desc">
-          Key architectural decisions and anti-slop rules governing authentic Minimalist interfaces.
-        </p>
-      </div>
-
-      <div class="faq-list">
-        <div class="pow-faq-item open">
-          <div class="pow-faq-header" onclick="toggleFaq(this)">
-            <span>Is Minimalism just an empty screen with white space?</span>
-            <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="pow-faq-body">
-            No. In Taste Engine, lazy emptiness (an empty screen with one centered sentence or faint gray text) is a direct failure. Authentic minimalism uses active, calibrated negative space and strict typographic scaling to present high-density information effortlessly without unnecessary box clutter.
-          </div>
-        </div>
-
-        <div class="pow-faq-item">
-          <div class="pow-faq-header" onclick="toggleFaq(this)">
-            <span>How does Taste Engine prevent washed-out text ("anti-gray")?</span>
-            <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="pow-faq-body">
-            We strictly enforce paired contrast switching: light mode uses deep slate ink (`#18181B`) with secondary text (`#52525B`) that strictly satisfies WCAG AA 4.5:1 ratio. In dark mode, text flips to crisp porcelain (`#F4F4F5`) against muted obsidian (`#121214`). Faint low-contrast gray text is strictly forbidden.
-          </div>
-        </div>
-
-        <div class="pow-faq-item">
-          <div class="pow-faq-header" onclick="toggleFaq(this)">
-            <span>What is the anti-slop rule for cards and borders?</span>
-            <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="pow-faq-body">
-            Minimalism eliminates "card inside card inside card" nesting. Related elements are grouped naturally through proximity, whitespace, and 1px hairline dividers rather than heavy shadows or multiple enclosing background boxes.
-          </div>
-        </div>
-
-        <div class="pow-faq-item">
-          <div class="pow-faq-header" onclick="toggleFaq(this)">
-            <span>How does responsive scaling prevent bloated UI down to 320px?</span>
-            <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="pow-faq-body">
-            On narrow mobile viewports (< 480px down to 320px), typography scales down proportionally (`clamp(1.35rem, 5.5vw, 1.75rem)` for hero headlines, `1.2rem` for section titles). The top header collapses into an accessible Hamburger Menu with a dedicated drawer, ensuring zero horizontal blowout.
-          </div>
-        </div>
-
-        <div class="pow-faq-item">
-          <div class="pow-faq-header" onclick="toggleFaq(this)">
-            <span>Can I install just the Minimalism skill without the full engine?</span>
-            <svg class="faq-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-          </div>
-          <div class="pow-faq-body">
-            Yes. Run `npx skills add kennedys0/taste-engine --skill taste-style-minimalism` to install only this standalone pack, perfectly self-contained with zero external dependencies.
-          </div>
-        </div>
+      <!-- Table Footer Summary -->
+      <div class="cockpit-table-footer">
+        <span id="table-record-count">Showing 12 of 12 monitored nodes</span>
+        <span>Shortcut: Press <code>/</code> or <code>⌘K</code> to filter records</span>
       </div>
     </section>
+
+    <!-- COMPONENT ANATOMY & TOKEN MATRIX LAB -->
+    <section class="component-lab" id="components">
+      <div class="section-heading-group">
+        <h2 class="section-title">COMPONENT ANATOMY & RESTRICTIONS</h2>
+        <p class="section-desc">Clean, hairline-bordered primitives with zero unnecessary shadow elevation and calibrated contrast.</p>
+      </div>
+
+      <div class="lab-grid">
+        <!-- Card 1: Buttons & Interactive Controls -->
+        <div class="lab-card">
+          <div class="lab-card-title">Restrained Action Controls</div>
+          <div class="lab-card-subtitle">Zero blur noise, high-contrast states, and visible focus rings.</div>
+
+          <div class="btn-sample-row">
+            <button class="sample-btn sample-btn-primary" onclick="showToast('Primary action acknowledged')">Primary Solid</button>
+            <button class="sample-btn sample-btn-secondary" onclick="showToast('Secondary outline selected')">Secondary Outline</button>
+            <button class="sample-btn sample-btn-blue" onclick="showToast('Enterprise blue trigger active')">Enterprise Blue</button>
+            <button class="sample-btn sample-btn-ghost" onclick="showToast('Ghost link clicked')">Ghost Action</button>
+          </div>
+
+          <div class="input-field-group">
+            <label class="field-label" for="sample-input">Workspace Domain</label>
+            <input type="text" id="sample-input" class="min-input" value="telemetry-node-01.internal.corp" placeholder="Enter node domain...">
+          </div>
+
+          <div class="controls-sample-row">
+            <div>
+              <div style="font-weight: 600; font-size: 0.8rem;">Auto-Recovery Daemon</div>
+              <div style="font-size: 0.725rem; color: var(--min-text-muted);">Automatically restart degraded pods</div>
+            </div>
+            <div class="toggle-switch-wrapper" onclick="toggleSwitch(this)">
+              <div class="toggle-track active">
+                <div class="toggle-thumb"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Calibrated Status Tokens -->
+        <div class="lab-card">
+          <div class="lab-card-title">Semantic Status Tokens (WCAG AA)</div>
+          <div class="lab-card-subtitle">Explicit operational denominators, never decorative vanity cards.</div>
+
+          <div style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1.25rem;">
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 10px; background: var(--min-well-bg); border-radius: var(--min-radius-sm);">
+              <span style="font-size: 0.8rem; font-weight: 500;">Core Authentication Gateway</span>
+              <span class="status-pill status-pill-success"><span class="status-dot"></span>Healthy</span>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 10px; background: var(--min-well-bg); border-radius: var(--min-radius-sm);">
+              <span style="font-size: 0.8rem; font-weight: 500;">Telemetry Collector Ingestion</span>
+              <span class="status-pill status-pill-warning"><span class="status-dot"></span>Degraded (Rate Limited)</span>
+            </div>
+            <div style="display: flex; align-items: center; justify-content: space-between; padding: 6px 10px; background: var(--min-well-bg); border-radius: var(--min-radius-sm);">
+              <span style="font-size: 0.8rem; font-weight: 500;">Legacy Webhook Dispatcher</span>
+              <span class="status-pill status-pill-error"><span class="status-dot"></span>Failed (Connection Timeout)</span>
+            </div>
+          </div>
+
+          <div style="font-size: 0.75rem; color: var(--min-text-muted); line-height: 1.5;">
+            Every status token maintains at least 4.5:1 text-to-surface contrast across both dark and light modes with explicit indicator dots enforcing <code>aspect-ratio: 1 / 1</code>.
+          </div>
+        </div>
+
+        <!-- Card 3: Design Tokens Matrix -->
+        <div class="lab-card" style="grid-column: 1 / -1;">
+          <div class="lab-card-title">Token Matrix (Minimalism & Enterprise)</div>
+          <div class="lab-card-subtitle">Exact CSS variable mappings for theme coupling and scaffolding.</div>
+
+          <table class="token-matrix-table">
+            <thead>
+              <tr>
+                <th>Token Identifier</th>
+                <th>Light Mode Default</th>
+                <th>Dark Mode Default</th>
+                <th>Architectural Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>--taste-mini-bg</code></td>
+                <td><span class="color-preview-box" style="background: #fafaf9;"></span>#FAFAF9</td>
+                <td><span class="color-preview-box" style="background: #0f1117;"></span>#0F1117</td>
+                <td>Base canvas backdrop surface</td>
+              </tr>
+              <tr>
+                <td><code>--taste-mini-surface</code></td>
+                <td><span class="color-preview-box" style="background: #ffffff;"></span>#FFFFFF</td>
+                <td><span class="color-preview-box" style="background: #161922;"></span>#161922</td>
+                <td>Elevated table & container fill</td>
+              </tr>
+              <tr>
+                <td><code>--taste-mini-ink</code></td>
+                <td><span class="color-preview-box" style="background: #18181b;"></span>#18181B</td>
+                <td><span class="color-preview-box" style="background: #f8fafc;"></span>#F8FAFC</td>
+                <td>Primary high-contrast typography</td>
+              </tr>
+              <tr>
+                <td><code>--taste-mini-border</code></td>
+                <td>rgba(0,0,0,0.08)</td>
+                <td>rgba(255,255,255,0.09)</td>
+                <td>Hairline divider rule (1px solid)</td>
+              </tr>
+              <tr>
+                <td><code>--taste-mini-blue</code></td>
+                <td><span class="color-preview-box" style="background: #2563eb;"></span>#2563EB</td>
+                <td><span class="color-preview-box" style="background: #3b82f6;"></span>#3B82F6</td>
+                <td>Operational focus & interactive trigger</td>
+              </tr>
+              <tr>
+                <td><code>--status-success-bg</code></td>
+                <td><span class="color-preview-box" style="background: #ecfdf5;"></span>#ECFDF5</td>
+                <td><span class="color-preview-box" style="background: rgba(16,185,129,0.15);"></span>rgba(16,185,129,0.15)</td>
+                <td>Calibrated success badge background</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURAL CASE STUDIES -->
+    <section class="architectures-section" id="architectures">
+      <div class="section-heading-group">
+        <h2 class="section-title">PRODUCTION BLUEPRINTS</h2>
+        <p class="section-desc">Battle-tested layout archetypes utilizing the merged minimalism & enterprise design system.</p>
+      </div>
+
+      <div class="archetypes-grid">
+        <div class="archetype-card">
+          <div>
+            <div class="archetype-tag">Pattern 01 // Operations</div>
+            <h4>Cloud Infrastructure Cockpit</h4>
+            <p>Designed for devops, site reliability engineers, and telemetry monitors where seconds matter and visual noise is fatal.</p>
+            <ul class="archetype-features">
+              <li>32px high-density table rows</li>
+              <li>Flush-right tabular numerals</li>
+              <li>Floating batch remediation dock</li>
+              <li>Keyboard filter shortcuts (⌘K)</li>
+            </ul>
+          </div>
+          <button class="sample-btn sample-btn-secondary" style="width: 100%; justify-content: center;" onclick="showToast('Blueprint: Cloud Cockpit selected')">Preview Blueprint</button>
+        </div>
+
+        <div class="archetype-card">
+          <div>
+            <div class="archetype-tag">Pattern 02 // Developer Tools</div>
+            <h4>API Documentation & Hub</h4>
+            <p>Mathematical negative space, high-contrast code snippets, and quiet navigation headers for developer productivity.</p>
+            <ul class="archetype-features">
+              <li>Pure sans typographic scale</li>
+              <li>Hairline split viewports</li>
+              <li>Zero decorative badge clutter</li>
+              <li>JetBrains Mono code blocks</li>
+            </ul>
+          </div>
+          <button class="sample-btn sample-btn-secondary" style="width: 100%; justify-content: center;" onclick="showToast('Blueprint: Developer Hub selected')">Preview Blueprint</button>
+        </div>
+
+        <div class="archetype-card">
+          <div>
+            <div class="archetype-tag">Pattern 03 // Fintech</div>
+            <h4>Institutional Audit Ledger</h4>
+            <p>Strict decimal point alignment, immutable record status pills, and truthful empty/loading states.</p>
+            <ul class="archetype-features">
+              <li>Tabular currency alignment</li>
+              <li>WCAG AA compliance audit</li>
+              <li>Master-detail lateral drawer</li>
+              <li>Deterministic audit logs</li>
+            </ul>
+          </div>
+          <button class="sample-btn sample-btn-secondary" style="width: 100%; justify-content: center;" onclick="showToast('Blueprint: Institutional Ledger selected')">Preview Blueprint</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- INSTALLATION & AGENT SKILLS GUIDANCE -->
+    <section class="install-section" id="install">
+      <div class="section-heading-group">
+        <h2 class="section-title">INSTALLATION & AGENT INTEGRATION</h2>
+        <p class="section-desc">Official Agent Skills workflow & CLI commands for developer agents.</p>
+      </div>
+
+      <div class="install-cards-grid">
+        <div class="install-card">
+          <h4>Agent Skills CLI</h4>
+          <p>Install portable skill directly for Claude Code, Codex, Cursor, or Antigravity:</p>
+          <div class="code-box-wrapper">
+            <code>npx skills add kennedys0/taste-engine --skill taste-engine</code>
+            <button class="copy-pill-btn" onclick="copySnippet('npx skills add kennedys0/taste-engine --skill taste-engine')">Copy</button>
+          </div>
+        </div>
+
+        <div class="install-card">
+          <h4>Native Node.js CLI</h4>
+          <p>Clone and install with zero external runtime dependencies (Node 20+):</p>
+          <div class="code-box-wrapper">
+            <code>node bin/taste-engine.mjs install --agent all --project</code>
+            <button class="copy-pill-btn" onclick="copySnippet('node bin/taste-engine.mjs install --agent all --project')">Copy</button>
+          </div>
+        </div>
+
+        <div class="install-card">
+          <h4>Tailwind & shadcn Scaffolding</h4>
+          <p>Scaffold official presets and component layers into your repository:</p>
+          <div class="code-box-wrapper">
+            <code>taste-engine init</code>
+            <button class="copy-pill-btn" onclick="copySnippet('taste-engine init')">Copy</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <!-- Site Footer (Balanced 2-column mobile grid) -->
-  <footer class="pow-footer">
-    <div class="footer-inner">
-      <div class="footer-brand">
-        <h4>Taste Engine</h4>
-        <p>Open-source frontend design intelligence pack for AI coding agents. Elevate design fidelity, eliminate AI-slop, and enforce contrast safety.</p>
-        <p style="margin-top: 0.5rem; font-size: 0.775rem;">Created by <a href="https://github.com/kennedys0" target="_blank" rel="noopener" style="color: var(--pow-accent); font-weight: 700;">Mochamad Vikry (@kennedys0)</a></p>
-      </div>
+  <!-- FLOATING BATCH ACTION DOCK -->
+  <div class="batch-dock" id="batch-dock">
+    <span class="batch-count" id="batch-count-label">0 rows selected</span>
+    <button class="sample-btn sample-btn-primary" onclick="executeBatchAction('restart')">Restart Nodes</button>
+    <button class="sample-btn sample-btn-secondary" onclick="executeBatchAction('export')">Export CSV</button>
+    <button class="sample-btn sample-btn-ghost" onclick="clearBatchSelection()">Deselect All</button>
+  </div>
 
-      <div class="footer-col">
-        <h5>Aesthetic Archetypes</h5>
-        <ul>
-          <li><a href="bento.html">Bento Grid (PoW)</a></li>
-          <li><a href="neo-brutalism.html">Neo-Brutalism (PoW)</a></li>
-          <li><a href="claymorphism.html">Claymorphism (PoW)</a></li>
-          <li><a href="enterprise.html">Enterprise (PoW)</a></li>
-          <li><a href="glassmorphism.html">Glassmorphism (PoW)</a></li>
-          <li><a href="swiss-editorial.html">Swiss Editorial (PoW)</a></li>
-          <li><a href="retro-pixel.html">Retro Pixel (PoW)</a></li>
-        </ul>
+  <!-- DETAIL INSPECTOR MODAL DIALOG -->
+  <div class="min-modal-backdrop" id="inspector-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="min-modal">
+      <div class="modal-header">
+        <span id="modal-title">Node Telemetry Inspector</span>
+        <button class="modal-close-btn" onclick="closeInspectorModal()" aria-label="Close dialog">×</button>
       </div>
-
-      <div class="footer-col">
-        <h5>Navigation &amp; Source</h5>
-        <ul>
-          <li><a href="index.html">Main Style Gallery</a></li>
-          <li><a href="index.html#installation">Installation Guide</a></li>
-          <li><a href="index.html#tokens">Token Matrix</a></li>
-          <li><a href="https://github.com/kennedys0/taste-engine" target="_blank" rel="noopener">GitHub Repository</a></li>
-        </ul>
+      <div class="modal-body">
+        <h4 id="modal-service-name" style="font-size: 1.1rem; color: var(--min-text); margin-bottom: 0.35rem;">Service Name</h4>
+        <p id="modal-service-desc">Detailed node diagnostic telemetry and operational health report.</p>
+        
+        <div class="modal-telemetry-box" id="modal-telemetry-json">
+          <!-- Injected by JS -->
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="sample-btn sample-btn-secondary" onclick="closeInspectorModal()">Close Inspector</button>
+        <button class="sample-btn sample-btn-blue" onclick="showToast('Diagnostic subset exported'); closeInspectorModal();">Export Diagnostics</button>
       </div>
     </div>
+  </div>
 
-    <div class="footer-bottom">
-      <p>&copy; 2026 Mochamad Vikry. Released under the MIT License.</p>
-      <a href="#" class="pow-btn-sm" style="text-decoration:none;">
-        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-        <span>Back to Top</span>
-      </a>
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div class="toast-container" id="toast-container" aria-live="polite"></div>
+
+  <!-- COMPACT MULTI-COLUMN FOOTER (10 STYLES) -->
+  <footer class="pow-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <div class="footer-brand-title">TASTE ENGINE // v0.11.0</div>
+          <p class="footer-brand-desc">
+            The style-agnostic design system skill for AI agents. Elevating web interfaces with user-selected visual tastes, anti-slop audits, conditional SEO, and purposeful motion.
+          </p>
+          <p class="footer-brand-credit">
+            Created by <a href="https://github.com/kennedys0" target="_blank" rel="noopener" class="footer-author-link">Mochamad Vikry (@kennedys0)</a>
+          </p>
+        </div>
+
+        <div class="footer-archetypes-col">
+          <div class="footer-col-title">STYLE ARCHETYPES (10)</div>
+          <ul class="footer-archetypes-list">
+            <li><a href="minimalism.html" class="footer-link active-link">● Minimalism (PoW)</a></li>
+            <li><a href="retro-pixel.html" class="footer-link">Retro Pixel (PoW)</a></li>
+            <li><a href="retro-terminal.html" class="footer-link">Retro Terminal (PoW)</a></li>
+            <li><a href="neo-brutalism.html" class="footer-link">Neo-Brutalism (PoW)</a></li>
+            <li><a href="claymorphism.html" class="footer-link">Claymorphism (PoW)</a></li>
+            <li><a href="glassmorphism.html" class="footer-link">Glassmorphism (PoW)</a></li>
+            <li><a href="bento.html" class="footer-link">Bento Grid (PoW)</a></li>
+            <li><a href="skeuomorphism.html" class="footer-link">Skeuomorphism (PoW)</a></li>
+            <li><a href="swiss-editorial.html" class="footer-link">Swiss / Editorial (PoW)</a></li>
+            <li><a href="brutalism.html" class="footer-link">Brutalism (PoW)</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-resources-col">
+          <div class="footer-col-title">RESOURCES & SPEC</div>
+          <ul class="footer-links-list">
+            <li><a href="index.html" class="footer-link">Main Style Gallery</a></li>
+            <li><a href="https://github.com/kennedys0/taste-engine" class="footer-link" target="_blank" rel="noopener">GitHub Repository ↗</a></li>
+            <li><a href="https://github.com/kennedys0/taste-engine/blob/main/CHANGELOG.md" class="footer-link" target="_blank" rel="noopener">Changelog & Releases ↗</a></li>
+            <li><a href="#overview" class="footer-link" style="color: var(--min-blue);">Back to Top ↑</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <span>&copy; 2026 Mochamad Vikry &bull; Released under MIT License</span>
+        <span>Built with mathematical hairline fidelity &amp; anti-slop verification.</span>
+      </div>
     </div>
   </footer>
 
-  <!-- Toast Notification -->
-  <div class="pow-toast" id="powToast">
-    <span id="toastMsg">COPIED TO CLIPBOARD</span>
-  </div>
-
+  <!-- CLIENT-SIDE SCRIPT CONTROLLER -->
   <script>
-    // Theme Toggling with LocalStorage Persistence
-    const themeToggleBtn = document.getElementById('themeToggleBtn');
-    const themeLabel = document.getElementById('themeLabel');
-    const htmlEl = document.documentElement;
+    // =========================================================
+    // 1. THEME SWITCHER CONTROLLER (WITH SVG ICONS)
+    // =========================================================
+    const themeToggleBtn = document.getElementById('theme-toggle-btn');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeText = document.getElementById('theme-text');
+
+    const moonSvg = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>';
+    const sunSvg = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="square"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>';
 
     function applyTheme(theme) {
-      htmlEl.setAttribute('data-theme', theme);
-      localStorage.setItem('taste-theme-pow-minimalism', theme);
-      if (theme === 'dark') {
-        themeLabel.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>LIGHT';
+      document.documentElement.setAttribute('data-theme', theme);
+      if (theme === 'light') {
+        themeIcon.innerHTML = sunSvg;
+        themeText.textContent = 'Light';
       } else {
-        themeLabel.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: -2px; margin-right: 4px;"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>DARK';
+        themeIcon.innerHTML = moonSvg;
+        themeText.textContent = 'Dark';
       }
+      localStorage.setItem('taste-mini-theme', theme);
     }
 
-    const savedTheme = localStorage.getItem('taste-theme-pow-minimalism') || 'dark';
+    const savedTheme = localStorage.getItem('taste-mini-theme') || 'dark';
     applyTheme(savedTheme);
 
     themeToggleBtn.addEventListener('click', () => {
-      const current = htmlEl.getAttribute('data-theme');
-      const next = current === 'dark' ? 'light' : 'dark';
-      applyTheme(next);
-      showToast(`Switched to ${next.toUpperCase()} mode`);
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+      showToast(`Theme switched to ${current === 'dark' ? 'Clean Studio Light' : 'Disciplined Cloud Dark'}`);
     });
 
-    // Mobile Navigation Controls
-    function openMobileNav() {
-      document.getElementById('mobileNavBackdrop').classList.add('open');
-      document.getElementById('mobileNavDrawer').classList.add('open');
-      const btn = document.getElementById('navHamburgerBtn');
-      if (btn) btn.setAttribute('aria-expanded', 'true');
+    // =========================================================
+    // 2. MOBILE DRAWER NAVIGATION
+    // =========================================================
+    const hamburgerBtn = document.getElementById('hamburger-btn');
+    const mobileDrawer = document.getElementById('mobile-drawer');
+    const drawerOverlay = document.getElementById('drawer-overlay');
+    const drawerCloseBtn = document.getElementById('drawer-close-btn');
+
+    function openDrawer() {
+      mobileDrawer.classList.add('open');
+      drawerOverlay.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
-    function closeMobileNav() {
-      document.getElementById('mobileNavBackdrop').classList.remove('open');
-      document.getElementById('mobileNavDrawer').classList.remove('open');
-      const btn = document.getElementById('navHamburgerBtn');
-      if (btn) btn.setAttribute('aria-expanded', 'false');
+
+    function closeDrawer() {
+      mobileDrawer.classList.remove('open');
+      drawerOverlay.classList.remove('open');
       document.body.style.overflow = '';
     }
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape') closeMobileNav();
+
+    hamburgerBtn.addEventListener('click', openDrawer);
+    drawerCloseBtn.addEventListener('click', closeDrawer);
+    drawerOverlay.addEventListener('click', closeDrawer);
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        closeDrawer();
+        closeInspectorModal();
+      }
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        const searchInput = document.getElementById('cockpit-search');
+        if (searchInput) searchInput.focus();
+      }
     });
 
-    // Toast Notification Utility
-    let toastTimeout;
-    function showToast(msg) {
-      const toast = document.getElementById('powToast');
-      const toastMsg = document.getElementById('toastMsg');
-      toastMsg.textContent = msg;
-      toast.classList.add('show');
-      clearTimeout(toastTimeout);
-      toastTimeout = setTimeout(() => {
-        toast.classList.remove('show');
-      }, 2200);
-    }
+    // =========================================================
+    // 3. OPERATIONAL COCKPIT DATA & INTERACTION LAB
+    // =========================================================
+    const initialServices = [
+      { id: "srv-01", name: "auth-gateway-primary", region: "us-east-1", status: "healthy", cpu: "14.2%", mem: "1.2 GB", latency: "12 ms", pids: 48 },
+      { id: "srv-02", name: "payment-ingress-api", region: "us-east-1", status: "healthy", cpu: "28.5%", mem: "2.4 GB", latency: "18 ms", pids: 64 },
+      { id: "srv-03", name: "event-stream-broker", region: "us-west-2", status: "healthy", cpu: "42.1%", mem: "4.8 GB", latency: "24 ms", pids: 112 },
+      { id: "srv-04", name: "telemetry-collector", region: "eu-central-1", status: "degraded", cpu: "88.4%", mem: "7.9 GB", latency: "142 ms", pids: 32 },
+      { id: "srv-05", name: "session-redis-cluster", region: "eu-west-1", status: "healthy", cpu: "8.6%", mem: "16.4 GB", latency: "4 ms", pids: 16 },
+      { id: "srv-06", name: "graphql-federation-core", region: "ap-southeast-1", status: "healthy", cpu: "36.2%", mem: "3.1 GB", latency: "38 ms", pids: 72 },
+      { id: "srv-07", name: "billing-settlement-cron", region: "us-east-1", status: "healthy", cpu: "4.2%", mem: "840 MB", latency: "8 ms", pids: 12 },
+      { id: "srv-08", name: "image-transformer-cdn", region: "sa-east-1", status: "healthy", cpu: "55.8%", mem: "3.8 GB", latency: "64 ms", pids: 88 },
+      { id: "srv-09", name: "webhook-delivery-worker", region: "us-east-2", status: "failed", cpu: "99.2%", mem: "8.1 GB", latency: "3,420 ms", pids: 8 },
+      { id: "srv-10", name: "fraud-evaluator-engine", region: "us-east-1", status: "healthy", cpu: "31.4%", mem: "2.9 GB", latency: "19 ms", pids: 40 },
+      { id: "srv-11", name: "customer-analytics-etl", region: "us-west-2", status: "degraded", cpu: "78.2%", mem: "12.2 GB", latency: "188 ms", pids: 24 },
+      { id: "srv-12", name: "dns-resolver-edge", region: "global-edge", status: "healthy", cpu: "12.0%", mem: "1.1 GB", latency: "6 ms", pids: 120 }
+    ];
 
-    // Hero Quick Copy Button
-    const heroCopyBtn = document.getElementById('heroCopyBtn');
-    const heroCmdText = document.getElementById('heroCmdText');
-    if (heroCopyBtn && heroCmdText) {
-      heroCopyBtn.addEventListener('click', async () => {
-        try {
-          await navigator.clipboard.writeText(heroCmdText.textContent.trim());
-          showToast('Copied installation command!');
-        } catch (e) {
-          showToast('Command copied');
+    let currentServices = [...initialServices];
+    let selectedIds = new Set();
+    let currentFilter = 'all';
+    let searchQuery = '';
+
+    const tableBody = document.getElementById('table-body');
+    const recordCountLabel = document.getElementById('table-record-count');
+    const batchDock = document.getElementById('batch-dock');
+    const batchCountLabel = document.getElementById('batch-count-label');
+    const selectAllCheckbox = document.getElementById('select-all-checkbox');
+
+    function renderTable() {
+      const filtered = currentServices.filter(srv => {
+        const matchesStatus = currentFilter === 'all' || srv.status === currentFilter;
+        const matchesSearch = srv.name.toLowerCase().includes(searchQuery.toLowerCase()) || srv.region.toLowerCase().includes(searchQuery.toLowerCase());
+        return matchesStatus && matchesSearch;
+      });
+
+      tableBody.innerHTML = '';
+
+      if (filtered.length === 0) {
+        tableBody.innerHTML = `<tr><td colspan="8" style="text-align: center; padding: 2.5rem; color: var(--min-text-muted);">No services match your active filter criteria.</td></tr>`;
+        recordCountLabel.textContent = `Showing 0 of ${currentServices.length} monitored nodes`;
+        return;
+      }
+
+      filtered.forEach(srv => {
+        const isSelected = selectedIds.has(srv.id);
+        const tr = document.createElement('tr');
+        if (isSelected) tr.classList.add('row-selected');
+
+        let statusClass = 'status-pill-success';
+        let statusLabel = 'Healthy';
+        if (srv.status === 'degraded') {
+          statusClass = 'status-pill-warning';
+          statusLabel = 'Degraded';
+        } else if (srv.status === 'failed') {
+          statusClass = 'status-pill-error';
+          statusLabel = 'Failed';
         }
+
+        tr.innerHTML = `
+          <td class="col-checkbox">
+            <input type="checkbox" aria-label="Select service ${srv.name}" ${isSelected ? 'checked' : ''} onchange="toggleRowSelection('${srv.id}', this.checked)">
+          </td>
+          <td>
+            <div class="cell-service-name">
+              <span>${srv.name}</span>
+            </div>
+          </td>
+          <td><code style="font-size: 0.75rem; color: var(--min-text-muted);">${srv.region}</code></td>
+          <td><span class="status-pill ${statusClass}"><span class="status-dot"></span>${statusLabel}</span></td>
+          <td class="col-num tabular-num">${srv.cpu}</td>
+          <td class="col-num tabular-num">${srv.mem}</td>
+          <td class="col-num tabular-num" style="color: ${srv.status === 'failed' ? 'var(--status-error-text)' : 'inherit'};">${srv.latency}</td>
+          <td style="text-align: right;">
+            <button class="action-btn-xs" onclick="inspectNode('${srv.id}')">Inspect</button>
+          </td>
+        `;
+        tableBody.appendChild(tr);
       });
+
+      recordCountLabel.textContent = `Showing ${filtered.length} of ${currentServices.length} monitored nodes`;
+      updateBatchDock();
     }
 
-    // Tab Switcher
-    const tabButtons = document.querySelectorAll('.tab-switch-btn');
-    const tabBodies = document.querySelectorAll('.tab-body');
+    function toggleRowSelection(id, isChecked) {
+      if (isChecked) {
+        selectedIds.add(id);
+      } else {
+        selectedIds.delete(id);
+      }
+      updateBatchDock();
+      renderTable();
+    }
 
-    tabButtons.forEach(btn => {
-      btn.addEventListener('click', () => {
-        tabButtons.forEach(b => b.classList.remove('active'));
-        tabBodies.forEach(b => b.classList.remove('active'));
+    function toggleSelectAll(checkbox) {
+      if (checkbox.checked) {
+        currentServices.forEach(s => selectedIds.add(s.id));
+      } else {
+        selectedIds.clear();
+      }
+      updateBatchDock();
+      renderTable();
+    }
 
-        btn.classList.add('active');
-        const targetId = btn.getAttribute('data-tab');
-        const targetBody = document.getElementById(targetId);
-        if (targetBody) targetBody.classList.add('active');
-      });
-    });
-
-    // Snippet Copier
-    async function copySnippet(elemId) {
-      const el = document.getElementById(elemId);
-      if (!el) return;
-      const text = el.innerText.trim();
-      try {
-        await navigator.clipboard.writeText(text);
-        showToast('Terminal snippet copied!');
-      } catch (e) {
-        showToast('Snippet copied');
+    function updateBatchDock() {
+      const count = selectedIds.size;
+      if (count > 0) {
+        batchCountLabel.textContent = `${count} ${count === 1 ? 'service' : 'services'} selected`;
+        batchDock.classList.add('visible');
+      } else {
+        batchDock.classList.remove('visible');
+        if (selectAllCheckbox) selectAllCheckbox.checked = false;
       }
     }
 
-    // Component Button Click Handler
-    function handleBtnClick(name) {
-      showToast(`Action: ${name}`);
+    function clearBatchSelection() {
+      selectedIds.clear();
+      updateBatchDock();
+      renderTable();
+      showToast('All selections cleared');
     }
 
-    // FAQ Accordion Toggle
-    function toggleFaq(header) {
-      const item = header.parentElement;
-      item.classList.toggle('open');
+    function executeBatchAction(action) {
+      const count = selectedIds.size;
+      if (action === 'restart') {
+        showToast(`Remediation signal dispatched to ${count} services.`);
+      } else if (action === 'export') {
+        showToast(`Exported telemetry dataset for ${count} nodes.`);
+      }
+      clearBatchSelection();
     }
 
-    // Studio Lab Interactive Controls
-    function setDensity(spacing, btn) {
-      document.documentElement.style.setProperty('--lab-spacing-density', spacing);
-      document.querySelectorAll('#densitySelector .lab-seg-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      showToast(`Density set to ${btn.textContent}`);
+    function filterStatus(status) {
+      currentFilter = status;
+      document.querySelectorAll('.filter-tab-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-status') === status);
+      });
+      renderTable();
     }
 
-    function setScale(scale, btn) {
-      document.documentElement.style.setProperty('--lab-font-scale', scale);
-      document.querySelectorAll('#scaleSelector .lab-seg-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      showToast(`Type scale set to ${scale}x`);
+    function handleSearch(val) {
+      searchQuery = val;
+      renderTable();
     }
 
-    function toggleDemoSwitch() {
-      const sw = document.getElementById('demoSwitch');
-      sw.classList.toggle('on');
-      const isOn = sw.classList.contains('on');
-      showToast(`Minimalist Switch: ${isOn ? 'Enabled' : 'Disabled'}`);
+    function setDensity(mode) {
+      const table = document.getElementById('cockpit-table');
+      const compactBtn = document.getElementById('btn-density-compact');
+      const comfortBtn = document.getElementById('btn-density-comfortable');
+      if (mode === 'compact') {
+        table.style.setProperty('--cockpit-row-height', '32px');
+        document.querySelectorAll('.cockpit-table td').forEach(td => td.style.padding = '6px 14px');
+        compactBtn.classList.add('active');
+        comfortBtn.classList.remove('active');
+        showToast('Table density set to Compact (32px)');
+      } else {
+        table.style.setProperty('--cockpit-row-height', '44px');
+        document.querySelectorAll('.cockpit-table td').forEach(td => td.style.padding = '14px 14px');
+        compactBtn.classList.remove('active');
+        comfortBtn.classList.add('active');
+        showToast('Table density set to Comfortable (44px)');
+      }
     }
 
-    let currentStep = 8;
-    function stepVal(delta) {
-      currentStep = Math.max(2, Math.min(32, currentStep + (delta * 2)));
-      document.getElementById('stepperVal').textContent = `${currentStep} px`;
-      showToast(`Grid Unit: ${currentStep}px`);
+    function simulateDataRefresh() {
+      currentServices.forEach(s => {
+        if (s.status !== 'failed') {
+          const cpuNum = (Math.random() * 45 + 5).toFixed(1);
+          s.cpu = `${cpuNum}%`;
+          const latNum = Math.floor(Math.random() * 25 + 4);
+          s.latency = `${latNum} ms`;
+        }
+      });
+      renderTable();
+      showToast('Live telemetry refreshed from cluster API');
     }
+
+    // =========================================================
+    // 4. DETAIL INSPECTOR MODAL
+    // =========================================================
+    const inspectorModal = document.getElementById('inspector-modal');
+    const modalServiceName = document.getElementById('modal-service-name');
+    const modalTelemetryJson = document.getElementById('modal-telemetry-json');
+
+    function inspectNode(id) {
+      const srv = currentServices.find(s => s.id === id);
+      if (!srv) return;
+      modalServiceName.textContent = srv.name;
+      modalTelemetryJson.textContent = JSON.stringify({
+        nodeId: srv.id,
+        service: srv.name,
+        datacenter: srv.region,
+        status: srv.status.toUpperCase(),
+        cpuUtilization: srv.cpu,
+        memoryWorkingSet: srv.mem,
+        p99Latency: srv.latency,
+        activePIDs: srv.pids,
+        healthCheckPolicy: "HTTP_GET /healthz interval=5s threshold=2",
+        remediationDaemon: "Enabled (GracefulDrain)"
+      }, null, 2);
+      inspectorModal.classList.add('open');
+    }
+
+    function closeInspectorModal() {
+      inspectorModal.classList.remove('open');
+    }
+
+    function toggleSwitch(el) {
+      const track = el.querySelector('.toggle-track');
+      track.classList.toggle('active');
+      const isActive = track.classList.contains('active');
+      showToast(`Auto-Recovery Daemon ${isActive ? 'Enabled' : 'Disabled'}`);
+    }
+
+    // =========================================================
+    // 5. TOAST NOTIFICATIONS & COPY SYSTEM
+    // =========================================================
+    const toastContainer = document.getElementById('toast-container');
+
+    function showToast(msg) {
+      const toast = document.createElement('div');
+      toast.className = 'toast-msg';
+      toast.innerHTML = `<span style="color: var(--min-blue); font-size: 1rem;">●</span> <span>${msg}</span>`;
+      toastContainer.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateY(10px)';
+        toast.style.transition = 'all 120ms ease-out';
+        setTimeout(() => toast.remove(), 120);
+      }, 2600);
+    }
+
+    function copySnippet(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast(`Copied to clipboard: ${text.slice(0, 36)}...`);
+      }).catch(() => {
+        showToast('Copied to clipboard.');
+      });
+    }
+
+    // Initial Table Render
+    renderTable();
   </script>
 </body>
 </html>

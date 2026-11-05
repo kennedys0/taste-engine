@@ -72,16 +72,26 @@
     },
     {
       "id": "minimalism",
-      "label": "Minimalism",
-      "description": "Purposeful restraint, active intentional negative space, mathematical typographic calibration, and effortless information clarity.",
+      "label": "Minimalism / Enterprise Data-first",
+      "description": "Purposeful restraint, active intentional negative space, mathematical typography, hairline dividers, and high-density operational data cockpits.",
       "path": "styles/minimalism.md",
-      "recommended_for": "Productivity tools, storefronts, portfolios, form-centric products.",
+      "recommended_for": "Productivity tools, developer consoles, B2B SaaS platforms, operational dashboards, storefronts, and form-centric workflows.",
       "aliases": [
         "minimalist",
         "minimalis",
         "minimalisme",
         "minimal ui",
-        "minimalistic"
+        "minimalistic",
+        "clean minimal",
+        "enterprise",
+        "enterprise ui",
+        "enterprise design",
+        "enterprise dashboard",
+        "data first",
+        "data-first ui",
+        "data first ui",
+        "professional data ui",
+        "b2b dashboard"
       ]
     },
     {
@@ -143,20 +153,6 @@
         "cli style",
         "console aesthetic",
         "terminal style"
-      ]
-    },
-    {
-      "id": "enterprise",
-      "label": "Enterprise / Data-first",
-      "description": "Information-dense operational cockpits, tabular data alignment, semantic status tokens, keyboard productivity, and reliable workflow architecture.",
-      "path": "styles/enterprise.md",
-      "recommended_for": "Admin consoles, B2B SaaS, trading and logistics operations, dashboards.",
-      "aliases": [
-        "data first",
-        "data-first ui",
-        "enterprise ui",
-        "enterprise design",
-        "professional data ui"
       ]
     },
     {

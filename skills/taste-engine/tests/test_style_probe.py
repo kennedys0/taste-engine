@@ -40,6 +40,8 @@ scenarios=[
  ('Do not use retro pixel design',None,['retro-pixel'],'needs-selection'),
  ('Buat web portfolio retro pixel','retro-pixel',[],'ready'),
  ('Buat website 8-bit ui','retro-pixel',[],'ready'),
+ ('Build an enterprise B2B dashboard','minimalism',[],'ready'),
+ ('Design a data-first console','minimalism',[],'ready'),
 ]
 for prompt,expected,excluded,status in scenarios:
     result=mod.candidates(prompt,registry)

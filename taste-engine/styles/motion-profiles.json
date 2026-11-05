@@ -41,13 +41,13 @@
       "avoid": "bounce and endlessly moving stickers"
     },
     "minimalism": {
-      "interaction": "Short opacity or translation feedback only on a meaningful state change.",
-      "duration_ms": 140,
+      "interaction": "Short opacity or translation feedback only on a meaningful state change; zero distracting animation during repeated data work.",
+      "duration_ms": 120,
       "allowed": [
         "opacity",
         "translate"
       ],
-      "avoid": "reveal-everything choreography"
+      "avoid": "reveal-everything choreography, staggering tables, and moving metrics"
     },
     "swiss-editorial": {
       "interaction": "Precise, restrained underlines or sectional changes that preserve reading flow.",
@@ -84,14 +84,6 @@
         "opacity"
       ],
       "avoid": "typing essential instructions and never-ending blinking gimmicks"
-    },
-    "enterprise": {
-      "interaction": "Minimal immediate feedback, no distracting animation during repeated data work.",
-      "duration_ms": 110,
-      "allowed": [
-        "opacity"
-      ],
-      "avoid": "staggering tables, moving metrics, and loading delays"
     },
     "retro-pixel": {
       "interaction": "Short stepped button press (2px displacement) and crisp window toggle; no bouncy springs or continuous glitch loops.",

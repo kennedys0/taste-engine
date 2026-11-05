@@ -1,6 +1,6 @@
 /**
  * Taste Engine — Tailwind CSS Preset (v0.11.0)
- * Comprehensive theme extension for 11 curated frontend aesthetic archetypes.
+ * Comprehensive theme extension for 10 curated frontend aesthetic archetypes.
  *
  * Usage in tailwind.config.js / tailwind.config.mjs:
  *   // ESM (Next.js / Vite / Nuxt):

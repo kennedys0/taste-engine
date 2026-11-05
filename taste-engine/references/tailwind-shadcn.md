@@ -79,7 +79,9 @@ Supported `data-theme` values:
 - `bento`
 - `swiss-editorial`
 - `brutalism`
-- `enterprise`
+- `minimalism` (Light & Dark, incorporates Enterprise data cockpits)
+- `skeuomorphism`
+- `retro-pixel` (Light & Dark)
 
 ---
 

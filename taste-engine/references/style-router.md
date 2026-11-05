@@ -13,7 +13,7 @@ Apply style preflight to requests that create or substantially redesign visible 
 3. If not specified, detect approved project config. If it describes the current project and the user has not overridden it, route directly.
 4. If maintaining existing UI, infer its documented or established style *for preservation only*; don't start a redesign.
 5. Otherwise ask exactly one choice question and **end that agent turn without UI implementation**.
-6. On reply: map selection or literal freeform answer to a concrete spec, avoiding coercion to the nearest trendy aesthetic. If user says "show more", present `bento`, `skeuomorphism`, `retro-terminal`, `enterprise`, and custom. Do not restart the first menu.
+6. On reply: map selection or literal freeform answer to a concrete spec, avoiding coercion to the nearest trendy aesthetic. If user says "show more", present `bento`, `skeuomorphism`, `retro-terminal`, `retro-pixel`, and custom. Do not restart the first menu.
 
 ## Multiple selections
 
@@ -39,7 +39,7 @@ Don't merge entire files blindly. Create a component-level decision table, e.g. 
 | "realistic physical controls" / "skeumorphsm" / "skeumorphism" / "skeuomorphic" | `skeuomorphism` |
 | "terminal" / "CLI aesthetic" | `retro-terminal` |
 | "retro pixel" / "pixel art" / "8-bit ui" / "retro desktop" | `retro-pixel` (distinct from `retro-terminal`) |
-| "enterprise dashboard" / "dense B2B" | `enterprise` **only if user intends an aesthetic**, otherwise consider it a product type, not style consent |
+| "enterprise dashboard" / "dense B2B" | `minimalism` (with high-density data cockpits) |
 | "modern" / "beautiful" | Ambiguous; offer choices |
 | "I have a screenshot" | Ask which parts matter if unclear; don't equate entire screenshot with approval |
 | "your choice" | Explicit delegation permits a reasoned, provisional choice; explain trade-off |

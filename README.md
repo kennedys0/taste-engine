@@ -99,7 +99,7 @@ git clone https://github.com/kennedys0/taste-engine.git
 
 cd taste-engine
 
-# Preview all 11 styles interactively in your browser with live Dark/Light mode toggle
+# Preview all 10 styles interactively in your browser with live Dark/Light mode toggle
 
 node bin/taste-engine.mjs gallery
 
@@ -144,7 +144,7 @@ npm link
 
 ### Tailwind CSS & shadcn/ui Presets
 
-Taste Engine includes official **Tailwind CSS presets** and **shadcn/ui theme variable overrides** across all 11 archetypes:
+Taste Engine includes official **Tailwind CSS presets** and **shadcn/ui theme variable overrides** across all 10 archetypes:
 
 ```bash
 # Preview available presets (alias: taste-engine --preset)
@@ -204,13 +204,12 @@ The agent's host controls automatic skill discovery. Taste Engine provides a pre
 | **Glassmorphism** | Controlled translucency, layered frosting, and readable glass planes | [`examples/glassmorphism/`](taste-engine/examples/glassmorphism/frosted-surfaces.css) |
 | **Brutalism** | Direct typography, raw structural scaffolding, intentionally hard edges, and monochrome contrast | [`examples/brutalism/`](taste-engine/examples/brutalism/raw-surfaces.css) |
 | **Neo-brutalism** | Playful contrast, 2.5px solid black borders, hard unblurred offset shadows, and press displacement | [`examples/neo-brutalism/`](taste-engine/examples/neo-brutalism/pop-surfaces.css) |
-| **Minimalism** | Purposeful restraint, active intentional negative space, and mathematical type hierarchy | [`examples/minimalism/`](taste-engine/examples/minimalism/clean-surfaces.css) |
+| **Minimalism** | Purposeful restraint, active intentional negative space, mathematical type hierarchy, and high-density operational data cockpits | [`examples/minimalism/`](taste-engine/examples/minimalism/clean-surfaces.css) |
 | **Swiss / Editorial** | Typographic rhythm, 12-column grids, dramatic scale contrast, and structural hairline rules | [`examples/swiss-editorial/`](taste-engine/examples/swiss-editorial/grid-typography.css) |
 | **Bento** | Asymmetric modular layout, strict visual weight hierarchy, and diverse internal tile compositions | [`examples/bento/`](taste-engine/examples/bento/modular-grid.css) |
 | **Skeuomorphism** | Physical metaphors, top-down specular bevels, multi-stop metallic reflections, and tactile hardware controls | [`examples/skeuomorphism/`](taste-engine/examples/skeuomorphism/tactile-controls.css) |
 | **Retro Terminal** | Console-inspired phosphor glow, static scanlines, ASCII frames, and monospace CLI prompts | [`examples/retro-terminal/`](taste-engine/examples/retro-terminal/crt-console.css) |
 | **Retro Pixel** | Nostalgic 8-bit/16-bit computing, desktop window chrome, stepped pixel bevels, and arcade accents | [`examples/retro-pixel/`](taste-engine/examples/retro-pixel/pixel-surfaces.css) |
-| **Enterprise / Data-first** | Information-dense cockpits, tabular figures (`tabular-nums`), semantic status tokens, and keyboard shortcuts | [`examples/enterprise/`](taste-engine/examples/enterprise/data-cockpit.css) |
 
 A `custom` design direction is always allowed. Styles do not dictate page sections: the product's goals, content, and audience determine the page anatomy.
 
@@ -241,9 +240,9 @@ Read the [core skill](taste-engine/SKILL.md), [quality gates](taste-engine/refer
 
 │   ├── SKILL.md
 
-│   ├── styles/               # 11 independent aesthetic packs
+│   ├── styles/               # 10 independent aesthetic packs
 
-│   ├── examples/             # Production CSS recipes for all 11 styles
+│   ├── examples/             # Production CSS recipes for all 10 styles
 
 │   ├── references/           # SEO, anti-slop, motion, accessibility, engineering
 
