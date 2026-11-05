@@ -66,6 +66,21 @@ For explicit UI micro-interaction requests, or when building a selected style th
 
 SEO and style share **FLOOR / REFLEX / FINISH** gates; privacy, truthful content, accessibility and functional behavior outrank aesthetic and search preferences. See [SEO acceptance scenarios](tests/seo-routing.md). The optional standalone `taste-seo` skill is for SEO-only installations; **router users do not need to install it separately**.
 
+## Proof-of-Work (PoW) showcase architecture — canonical preset contract
+
+When building, generating, or modifying style showcase pages, Proof-of-Work demos, or interactive design studios (such as `docs/*.html`), load [PoW Showcase Structure](references/pow-showcase-structure.md) and reuse the canonical preset template in `presets/templates/pow-showcase.template.html`.
+
+Every showcase must strictly preserve the **7 canonical sections**:
+1. **Sticky Header:** uniform `36px` action button heights, theme toggle, and `< 768px` mobile hamburger drawer.
+2. **Full-Screen Hero:** fluid typography `clamp()`, pill strip, and overflow-protected copy command box.
+3. **Interactive Studio Cockpit:** responsive workspace with title bar, touch containment, and zero horizontal clipping.
+4. **Component Anatomy & Quality Gates:** authentic specimen cards and explicit style-specific failure tests.
+5. **Tabbed Terminal Installation:** 3-tab terminal (`Standalone`, `Full Engine`, `Presets`), window dots, dedicated top-right header copy button (zero overlapping text), and agent support matrix strip.
+6. **Core Architectural Principles:** 3 key design pillars.
+7. **Canonical 10-Style Footer:** responsive auto-fit grid linking all 10 canonical styles.
+
+Arbitrary deviations—such as cramped 3-card installation layouts, copy buttons occluding text, mismatched header button heights, or stretched single-column footers—are strictly forbidden.
+
 ## Hard requirement: preflight before new visual implementation
 
 For tasks that introduce or substantially redesign visual UI, **do not write UI code, generate interface mockups, or change design tokens until the visual direction is resolved**.

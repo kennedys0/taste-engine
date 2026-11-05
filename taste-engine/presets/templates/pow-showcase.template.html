@@ -1,0 +1,1083 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{STYLE_NAME}} Proof-of-Work Showcase — Taste Engine</title>
+  <meta name="description" content="Official interactive Proof-of-Work showcase for {{STYLE_NAME}} aesthetic in Taste Engine.">
+  <style>
+    /* =========================================================
+       TASTE ENGINE POW SHOWCASE PRESET THEME VARIABLES
+       ========================================================= */
+    :root {
+      --pow-bg: #FAFAFA;
+      --pow-surface: #FFFFFF;
+      --pow-surface-hover: #F4F4F5;
+      --pow-well-bg: #F0F0F2;
+      --pow-border: 1px solid rgba(0, 0, 0, 0.10);
+      --pow-border-strong: 1px solid rgba(0, 0, 0, 0.22);
+      --pow-text: #090A0C;
+      --pow-text-muted: #52525B;
+      --pow-text-faint: #71717A;
+      --pow-accent: #3B82F6;
+      --pow-font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --pow-font-mono: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+      --pow-radius: 8px;
+      --pow-radius-sm: 4px;
+      --pow-header-h: 60px;
+      --pow-btn-h: 36px;
+    }
+
+    [data-theme="dark"] {
+      --pow-bg: #090A0C;
+      --pow-surface: #121417;
+      --pow-surface-hover: #1A1D21;
+      --pow-well-bg: #14171B;
+      --pow-border: 1px solid rgba(255, 255, 255, 0.12);
+      --pow-border-strong: 1px solid rgba(255, 255, 255, 0.24);
+      --pow-text: #F4F4F6;
+      --pow-text-muted: #A1A1AA;
+      --pow-text-faint: #71717A;
+      --pow-accent: #60A5FA;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--pow-bg);
+      color: var(--pow-text);
+      font-family: var(--pow-font-sans);
+      min-width: 320px;
+      line-height: 1.5;
+      overflow-x: hidden;
+      transition: background-color 150ms ease, color 150ms ease;
+    }
+
+    .pow-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* =========================================================
+       1. STICKY NAVIGATION HEADER
+       ========================================================= */
+    .pow-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--pow-header-h);
+      background: var(--pow-bg);
+      border-bottom: var(--pow-border);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+    }
+
+    .pow-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .pow-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      color: var(--pow-text);
+      font-weight: 700;
+      font-size: clamp(0.85rem, 2.5vw, 1rem);
+    }
+
+    .pow-version-badge {
+      font-family: var(--pow-font-mono);
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: var(--pow-radius-sm);
+      background: var(--pow-well-bg);
+      border: var(--pow-border);
+      color: var(--pow-text-muted);
+    }
+
+    .pow-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pow-nav-btn {
+      height: var(--pow-btn-h);
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 0 0.85rem;
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius-sm);
+      color: var(--pow-text);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 120ms ease;
+    }
+
+    .pow-nav-btn:hover {
+      background: var(--pow-surface-hover);
+      border-color: var(--pow-border-strong);
+    }
+
+    .pow-icon-btn {
+      width: var(--pow-btn-h);
+      height: var(--pow-btn-h);
+      aspect-ratio: 1 / 1;
+      flex-shrink: 0;
+      padding: 0;
+    }
+
+    .pow-hamburger-btn {
+      display: none;
+    }
+
+    /* Mobile Drawer */
+    .pow-drawer-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.65);
+      z-index: 200;
+      backdrop-filter: blur(4px);
+    }
+
+    .pow-drawer-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 300px;
+      max-width: 85vw;
+      background: var(--pow-surface);
+      border-left: var(--pow-border);
+      z-index: 210;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      transform: translateX(100%);
+      transition: transform 200ms ease;
+    }
+
+    .pow-drawer-backdrop.open {
+      display: block;
+    }
+
+    .pow-drawer-panel.open {
+      transform: translateX(0);
+    }
+
+    .pow-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: var(--pow-border);
+      padding-bottom: 0.75rem;
+    }
+
+    .pow-drawer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      overflow-y: auto;
+    }
+
+    .pow-drawer-link {
+      padding: 0.65rem 0.85rem;
+      background: var(--pow-well-bg);
+      border-radius: var(--pow-radius-sm);
+      color: var(--pow-text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      .pow-desktop-only {
+        display: none !important;
+      }
+      .pow-hamburger-btn {
+        display: inline-flex;
+      }
+    }
+
+    /* =========================================================
+       2. FULL-SCREEN HERO VIEWPORT
+       ========================================================= */
+    .pow-hero {
+      min-height: calc(100svh - var(--pow-header-h));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 3.5rem 0 2.5rem;
+      border-bottom: var(--pow-border);
+    }
+
+    .pow-hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .pow-pill {
+      font-family: var(--pow-font-mono);
+      font-size: 0.725rem;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: var(--pow-radius-sm);
+      background: var(--pow-well-bg);
+      border: var(--pow-border);
+      color: var(--pow-accent);
+    }
+
+    .pow-hero-title {
+      font-size: clamp(1.75rem, 5vw, 3.25rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .pow-hero-subtitle {
+      font-size: clamp(0.95rem, 2vw, 1.15rem);
+      color: var(--pow-text-muted);
+      max-width: 760px;
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+    }
+
+    .pow-hero-cmd {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--pow-well-bg);
+      border: var(--pow-border);
+      padding: 6px 6px 6px 14px;
+      border-radius: var(--pow-radius);
+      font-family: var(--pow-font-mono);
+      font-size: 0.8rem;
+      color: var(--pow-text);
+      margin-bottom: 1.75rem;
+      max-width: 100%;
+    }
+
+    .pow-hero-cmd code {
+      flex: 1;
+      min-width: 0;
+      overflow-x: auto;
+      white-space: nowrap;
+    }
+
+    .pow-copy-pill {
+      flex-shrink: 0;
+      background: var(--pow-text);
+      color: var(--pow-bg);
+      border: none;
+      padding: 5px 12px;
+      font-family: var(--pow-font-sans);
+      font-size: 0.75rem;
+      font-weight: 600;
+      border-radius: var(--pow-radius-sm);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: opacity 120ms ease;
+    }
+
+    .pow-copy-pill:hover {
+      opacity: 0.88;
+    }
+
+    .pow-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .pow-btn-primary {
+      height: 42px;
+      padding: 0 1.25rem;
+      background: var(--pow-accent);
+      color: #FFFFFF;
+      font-weight: 600;
+      border-radius: var(--pow-radius-sm);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      border: none;
+    }
+
+    .pow-btn-secondary {
+      height: 42px;
+      padding: 0 1.25rem;
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      color: var(--pow-text);
+      font-weight: 600;
+      border-radius: var(--pow-radius-sm);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .pow-hero-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: var(--pow-border);
+    }
+
+    .pow-stat-item {
+      font-family: var(--pow-font-mono);
+    }
+
+    .pow-stat-val {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--pow-text);
+    }
+
+    .pow-stat-label {
+      font-size: 0.75rem;
+      color: var(--pow-text-muted);
+      text-transform: uppercase;
+    }
+
+    /* =========================================================
+       3. INTERACTIVE STUDIO COCKPIT
+       ========================================================= */
+    .pow-section {
+      padding: 4.5rem 0;
+      border-bottom: var(--pow-border);
+    }
+
+    .pow-section-head {
+      margin-bottom: 2rem;
+    }
+
+    .pow-section-title {
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.4rem;
+    }
+
+    .pow-section-desc {
+      font-size: 0.95rem;
+      color: var(--pow-text-muted);
+      max-width: 680px;
+    }
+
+    .pow-studio-card {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      max-width: 100%;
+    }
+
+    .pow-window-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.65rem 1rem;
+      background: var(--pow-well-bg);
+      border-bottom: var(--pow-border);
+    }
+
+    .pow-window-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .pow-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      aspect-ratio: 1 / 1;
+      flex-shrink: 0;
+    }
+
+    .pow-dot-red { background: #EF4444; }
+    .pow-dot-yellow { background: #EAB308; }
+    .pow-dot-green { background: #22C55E; }
+
+    .pow-window-title {
+      font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
+      color: var(--pow-text-muted);
+    }
+
+    .pow-studio-body {
+      padding: 1.5rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* =========================================================
+       4. COMPONENT ANATOMY & QUALITY GATES
+       ========================================================= */
+    .pow-grid-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .pow-card {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius);
+      padding: 1.5rem;
+    }
+
+    .pow-card h4 {
+      font-size: 1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+    }
+
+    .pow-card p {
+      font-size: 0.85rem;
+      color: var(--pow-text-muted);
+      line-height: 1.5;
+    }
+
+    /* =========================================================
+       5. TABBED TERMINAL INSTALLATION MATRIX
+       ========================================================= */
+    .tabbed-terminal-card {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius);
+      overflow: hidden;
+    }
+
+    .terminal-tab-bar {
+      display: flex;
+      background: var(--pow-well-bg);
+      border-bottom: var(--pow-border);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .install-tab-btn {
+      padding: 0.85rem 1.35rem;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--pow-text-muted);
+      font-family: var(--pow-font-mono);
+      font-size: 0.775rem;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 120ms ease;
+    }
+
+    .install-tab-btn:hover {
+      color: var(--pow-text);
+    }
+
+    .install-tab-btn.active {
+      color: var(--pow-text);
+      background: var(--pow-surface);
+      border-bottom-color: var(--pow-accent);
+    }
+
+    .install-tab-pane {
+      display: none;
+      padding: 1.75rem;
+    }
+
+    .install-tab-pane.active {
+      display: block;
+    }
+
+    .code-terminal-box {
+      background: var(--pow-well-bg);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius-sm);
+      overflow: hidden;
+      margin-top: 1rem;
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.55rem 0.85rem;
+      border-bottom: var(--pow-border);
+      background: var(--pow-surface);
+      font-family: var(--pow-font-mono);
+      font-size: 0.725rem;
+      color: var(--pow-text-muted);
+    }
+
+    .terminal-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius-sm);
+      padding: 4px 10px;
+      font-family: var(--pow-font-sans);
+      font-size: 0.725rem;
+      font-weight: 600;
+      color: var(--pow-text);
+      cursor: pointer;
+      transition: background-color 100ms ease;
+    }
+
+    .terminal-copy-btn:hover {
+      background: var(--pow-surface-hover);
+    }
+
+    .terminal-body {
+      padding: 1.25rem;
+      font-family: var(--pow-font-mono);
+      font-size: 0.8rem;
+      line-height: 1.7;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .terminal-line {
+      display: flex;
+      align-items: baseline;
+      gap: 0.65rem;
+      white-space: nowrap;
+    }
+
+    .line-comment { color: var(--pow-text-faint); }
+    .line-p { color: var(--pow-accent); font-weight: 700; user-select: none; }
+    .line-cmd { color: var(--pow-text); }
+
+    .agent-support-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 0.75rem;
+      padding: 0.85rem 1.75rem;
+      background: var(--pow-well-bg);
+      border-top: var(--pow-border);
+      font-family: var(--pow-font-mono);
+      font-size: 0.725rem;
+    }
+
+    .agent-tag {
+      padding: 2px 7px;
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius-sm);
+      color: var(--pow-text);
+    }
+
+    /* =========================================================
+       6. CORE ARCHITECTURAL PRINCIPLES
+       ========================================================= */
+    .pow-principles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    /* =========================================================
+       7. CANONICAL 10-STYLE RESPONSIVE FOOTER
+       ========================================================= */
+    .pow-footer {
+      padding: 4.5rem 0 2.5rem;
+      background: var(--pow-surface);
+      border-top: var(--pow-border);
+    }
+
+    .pow-footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2.5rem 1.5rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .pow-footer-col h5 {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      font-weight: 700;
+      color: var(--pow-text-muted);
+      margin-bottom: 0.85rem;
+      letter-spacing: 0.05em;
+    }
+
+    .pow-footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .pow-footer-col a {
+      color: var(--pow-text);
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: color 100ms ease;
+    }
+
+    .pow-footer-col a:hover {
+      color: var(--pow-accent);
+    }
+
+    .pow-footer-bottom {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding-top: 1.5rem;
+      border-top: var(--pow-border);
+      font-size: 0.8rem;
+      color: var(--pow-text-muted);
+    }
+
+    /* Toast Notification */
+    .pow-toast-container {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      z-index: 500;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .pow-toast {
+      background: var(--pow-surface);
+      color: var(--pow-text);
+      border: var(--pow-border-strong);
+      padding: 8px 16px;
+      border-radius: var(--pow-radius-sm);
+      font-size: 0.8rem;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+      animation: fadeIn 150ms ease-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. STICKY NAVIGATION HEADER -->
+  <header class="pow-header">
+    <div class="pow-container pow-header-inner">
+      <a href="index.html" class="pow-brand">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m10 15 5-3-5-3v6z"/></svg>
+        <span>TASTE ENGINE</span>
+        <span class="pow-version-badge">v0.11.0</span>
+      </a>
+
+      <div class="pow-nav-actions">
+        <!-- Desktop Links -->
+        <a href="index.html" class="pow-nav-btn pow-desktop-only">
+          <span>All 10 Styles ↗</span>
+        </a>
+        <a href="#install" class="pow-nav-btn pow-desktop-only">
+          <span>Installation</span>
+        </a>
+
+        <!-- Theme Toggle Button -->
+        <button class="pow-nav-btn pow-icon-btn" onclick="toggleTheme()" aria-label="Toggle theme">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
+
+        <!-- Mobile Hamburger Button -->
+        <button class="pow-nav-btn pow-icon-btn pow-hamburger-btn" onclick="toggleMobileMenu()" aria-label="Open navigation menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer -->
+  <div class="pow-drawer-backdrop" id="drawerBackdrop" onclick="toggleMobileMenu()"></div>
+  <aside class="pow-drawer-panel" id="drawerPanel">
+    <div class="pow-drawer-header">
+      <span style="font-weight: 700; font-size: 0.9rem;">TASTE ENGINE DIRECTORY</span>
+      <button class="pow-nav-btn pow-icon-btn" onclick="toggleMobileMenu()" aria-label="Close menu">✕</button>
+    </div>
+    <div class="pow-drawer-links">
+      <a href="index.html" class="pow-drawer-link">✦ Overview &amp; Gallery</a>
+      <a href="minimalism.html" class="pow-drawer-link">01: Minimalism &amp; Data Cockpit</a>
+      <a href="retro-pixel.html" class="pow-drawer-link">02: Retro-Pixel &amp; 8-Bit</a>
+      <a href="claymorphism.html" class="pow-drawer-link">03: Claymorphism</a>
+      <a href="glassmorphism.html" class="pow-drawer-link">04: Glassmorphism</a>
+      <a href="neo-brutalism.html" class="pow-drawer-link">05: Neo-Brutalism</a>
+      <a href="bento.html" class="pow-drawer-link">06: Bento Grid</a>
+      <a href="skeuomorphism.html" class="pow-drawer-link">07: Skeuomorphism</a>
+      <a href="editorial.html" class="pow-drawer-link">08: Swiss Editorial</a>
+      <a href="brutalism.html" class="pow-drawer-link">09: Brutalism</a>
+      <a href="retro-terminal.html" class="pow-drawer-link">10: Retro-Terminal</a>
+      <a href="#install" class="pow-drawer-link" onclick="toggleMobileMenu()">⚡ Quick Installation</a>
+    </div>
+  </aside>
+
+  <main class="pow-container">
+
+    <!-- 2. FULL-SCREEN HERO VIEWPORT -->
+    <section class="pow-hero" id="hero">
+      <div class="pow-hero-pills">
+        <span class="pow-pill">PROTOTYPE CONTRACT</span>
+        <span class="pow-pill">ZERO AI-SLOP VERIFIED</span>
+        <span class="pow-pill">AGENT SKILLS READY</span>
+      </div>
+
+      <h1 class="pow-hero-title">{{HERO_TITLE}}</h1>
+      <p class="pow-hero-subtitle">{{HERO_SUBTITLE}}</p>
+
+      <div class="pow-hero-cmd">
+        <code>npx skills add kennedys0/taste-engine --skill {{SKILL_IDENTIFIER}}</code>
+        <button class="pow-copy-pill" onclick="copySnippet('npx skills add kennedys0/taste-engine --skill {{SKILL_IDENTIFIER}}')">Copy</button>
+      </div>
+
+      <div class="pow-hero-actions">
+        <a href="#studio" class="pow-btn-primary">Open Live Studio Cockpit ↵</a>
+        <a href="#components" class="pow-btn-secondary">Explore Components &amp; Tokens</a>
+      </div>
+
+      <div class="pow-hero-stats">
+        <div class="pow-stat-item">
+          <div class="pow-stat-val">100%</div>
+          <div class="pow-stat-label">Design Fidelity</div>
+        </div>
+        <div class="pow-stat-item">
+          <div class="pow-stat-val">4.5:1+</div>
+          <div class="pow-stat-label">WCAG AA Contrast</div>
+        </div>
+        <div class="pow-stat-item">
+          <div class="pow-stat-val">0 deps</div>
+          <div class="pow-stat-label">Native Framework</div>
+        </div>
+        <div class="pow-stat-item">
+          <div class="pow-stat-val">10 Styles</div>
+          <div class="pow-stat-label">Taste Suite</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. INTERACTIVE STUDIO COCKPIT -->
+    <section class="pow-section" id="studio">
+      <div class="pow-section-head">
+        <h2 class="pow-section-title">INTERACTIVE STUDIO COCKPIT</h2>
+        <p class="pow-section-desc">Hands-on live demonstration of the aesthetic in action with real-time controls, state persistence, and responsive viewport containment.</p>
+      </div>
+
+      <div class="pow-studio-card">
+        <div class="pow-window-bar">
+          <div class="pow-window-dots">
+            <span class="pow-dot pow-dot-red"></span>
+            <span class="pow-dot pow-dot-yellow"></span>
+            <span class="pow-dot pow-dot-green"></span>
+          </div>
+          <span class="pow-window-title">{{STUDIO_WINDOW_LABEL}}</span>
+          <span class="pow-version-badge">LIVE REPL</span>
+        </div>
+        <div class="pow-studio-body">
+          <!-- Interactive Workspace Content Here -->
+          <p style="color: var(--pow-text-muted); font-size: 0.9rem;">[Interactive studio workstation container — responsive, overflow-contained, touch-safe]</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. COMPONENT ANATOMY & QUALITY GATES -->
+    <section class="pow-section" id="components">
+      <div class="pow-section-head">
+        <h2 class="pow-section-title">COMPONENT SPECIMENS &amp; STRICT QUALITY GATES</h2>
+        <p class="pow-section-desc">Precision-crafted specimens proving adherence to token pairings, geometry rules, and anti-slop guidelines.</p>
+      </div>
+
+      <div class="pow-grid-cards">
+        <div class="pow-card">
+          <h4>Token Pairings</h4>
+          <p>Exhaustive contrast pairs ensuring AA accessibility across both light and dark operational modes.</p>
+        </div>
+        <div class="pow-card">
+          <h4>Interaction Mechanics</h4>
+          <p>Micro-interactions calibrated specifically to the aesthetic without gratuitous bounce or template defaults.</p>
+        </div>
+        <div class="pow-card">
+          <h4>Strict Gate Acceptance</h4>
+          <p>Automated verification preventing generic purple gradients, centered card slop, or artificial drop-shadows.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. TABBED TERMINAL INSTALLATION MATRIX -->
+    <section class="pow-section" id="install">
+      <div class="pow-section-head">
+        <h2 class="pow-section-title">INSTALLATION &amp; AGENT INTEGRATION</h2>
+        <p class="pow-section-desc">Choose between the dedicated standalone skill, the universal 10-style autonomous Taste Engine suite, or Tailwind/shadcn presets.</p>
+      </div>
+
+      <div class="tabbed-terminal-card">
+        <div class="terminal-tab-bar" role="tablist">
+          <button class="install-tab-btn active" role="tab" aria-selected="true" data-install-tab="tab-standalone" onclick="switchInstallTab('tab-standalone')">
+            <span>01: STANDALONE SKILL</span>
+          </button>
+          <button class="install-tab-btn" role="tab" aria-selected="false" data-install-tab="tab-global" onclick="switchInstallTab('tab-global')">
+            <span>02: FULL TASTE ENGINE</span>
+          </button>
+          <button class="install-tab-btn" role="tab" aria-selected="false" data-install-tab="tab-presets" onclick="switchInstallTab('tab-presets')">
+            <span>03: TAILWIND &amp; SHADCN PRESETS</span>
+          </button>
+        </div>
+
+        <!-- Tab 1: Standalone -->
+        <div class="install-tab-pane active" id="tab-standalone">
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">Option A: Standalone {{STYLE_NAME}} Skill</h3>
+          <p style="font-size: 0.85rem; color: var(--pow-text-muted);">Installs only this individual aesthetic pack directly into your AI agent environment.</p>
+
+          <div class="code-terminal-box">
+            <div class="terminal-header">
+              <div class="pow-window-dots">
+                <span class="pow-dot pow-dot-red"></span>
+                <span class="pow-dot pow-dot-yellow"></span>
+                <span class="pow-dot pow-dot-green"></span>
+              </div>
+              <span>bash — agent skills cli</span>
+              <button class="terminal-copy-btn" onclick="copySnippet('npx skills add kennedys0/taste-engine --skill {{SKILL_IDENTIFIER}}')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <span>Copy Command</span>
+              </button>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line"><span class="line-comment"># Install standalone skill via universal Agent Skills CLI:</span></div>
+              <div class="terminal-line"><span class="line-p">$</span><span class="line-cmd">npx skills add kennedys0/taste-engine --skill {{SKILL_IDENTIFIER}}</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Full Engine -->
+        <div class="install-tab-pane" id="tab-global">
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">Option B: Full Taste Engine (All 10 Styles + Router + SEO)</h3>
+          <p style="font-size: 0.85rem; color: var(--pow-text-muted);">Equips your AI agent with the full autonomous routing system, anti-slop audits, and conditional SEO.</p>
+
+          <div class="code-terminal-box">
+            <div class="terminal-header">
+              <div class="pow-window-dots">
+                <span class="pow-dot pow-dot-red"></span>
+                <span class="pow-dot pow-dot-yellow"></span>
+                <span class="pow-dot pow-dot-green"></span>
+              </div>
+              <span>bash — multi-agent installer</span>
+              <button class="terminal-copy-btn" onclick="copySnippet('node bin/taste-engine.mjs install --agent all --project')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <span>Copy Command</span>
+              </button>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line"><span class="line-comment"># Universal Agent Skills CLI (Claude Code, Cursor, Codex, Antigravity):</span></div>
+              <div class="terminal-line"><span class="line-p">$</span><span class="line-cmd">npx skills add kennedys0/taste-engine --skill taste-engine</span></div>
+              <div class="terminal-line" style="margin-top: 0.5rem;"><span class="line-comment"># Or run native zero-dependency CLI installer for all project agents:</span></div>
+              <div class="terminal-line"><span class="line-p">$</span><span class="line-cmd">node bin/taste-engine.mjs install --agent all --project</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: Presets -->
+        <div class="install-tab-pane" id="tab-presets">
+          <h3 style="font-size: 1rem; font-weight: 700; margin-bottom: 0.35rem;">Option C: Tailwind CSS &amp; shadcn/ui Presets</h3>
+          <p style="font-size: 0.85rem; color: var(--pow-text-muted);">Scaffold official design tokens and component layers into your repository.</p>
+
+          <div class="code-terminal-box">
+            <div class="terminal-header">
+              <div class="pow-window-dots">
+                <span class="pow-dot pow-dot-red"></span>
+                <span class="pow-dot pow-dot-yellow"></span>
+                <span class="pow-dot pow-dot-green"></span>
+              </div>
+              <span>bash — scaffolding cli</span>
+              <button class="terminal-copy-btn" onclick="copySnippet('taste-engine init')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <span>Copy Command</span>
+              </button>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line"><span class="line-comment"># Scaffold presets directly into your frontend repository:</span></div>
+              <div class="terminal-line"><span class="line-p">$</span><span class="line-cmd">taste-engine init</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Agent Support Strip -->
+        <div class="agent-support-strip">
+          <span style="color: var(--pow-text-muted); font-weight: 700;">SUPPORTED AGENTS:</span>
+          <span class="agent-tag">Antigravity (IDE &amp; CLI)</span>
+          <span class="agent-tag">Claude Code</span>
+          <span class="agent-tag">Cursor</span>
+          <span class="agent-tag">Codex</span>
+          <span class="agent-tag">Windsurf</span>
+          <span class="agent-tag">Cline</span>
+          <span class="agent-tag">GitHub Copilot</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. CORE ARCHITECTURAL PRINCIPLES -->
+    <section class="pow-section" id="principles">
+      <div class="pow-section-head">
+        <h2 class="pow-section-title">CORE ARCHITECTURAL PRINCIPLES</h2>
+        <p class="pow-section-desc">The governing design criteria separating authentic craft from template defaults.</p>
+      </div>
+
+      <div class="pow-principles-grid">
+        <div class="pow-card">
+          <h4>01 // Spatial Intent</h4>
+          <p>Every pixel and whitespace margin serves functional hierarchy, avoiding nested container bloat.</p>
+        </div>
+        <div class="pow-card">
+          <h4>02 // Honest Feedback</h4>
+          <p>Micro-interactions provide immediate, physical confirmation matching the chosen material philosophy.</p>
+        </div>
+        <div class="pow-card">
+          <h4>03 // Anti-Slop Discipline</h4>
+          <p>Rejects placeholder filler text, ungrounded floating cards, and gratuitous gradient backdrops.</p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 7. CANONICAL 10-STYLE RESPONSIVE FOOTER -->
+  <footer class="pow-footer">
+    <div class="pow-container">
+      <div class="pow-footer-grid">
+        <div class="pow-footer-col">
+          <h5>Canonical Styles</h5>
+          <ul>
+            <li><a href="minimalism.html">Minimalism &amp; Data Cockpit</a></li>
+            <li><a href="retro-pixel.html">Retro-Pixel &amp; 8-Bit</a></li>
+            <li><a href="claymorphism.html">Claymorphism</a></li>
+            <li><a href="glassmorphism.html">Glassmorphism</a></li>
+            <li><a href="neo-brutalism.html">Neo-Brutalism</a></li>
+          </ul>
+        </div>
+        <div class="pow-footer-col">
+          <h5>Extended Archetypes</h5>
+          <ul>
+            <li><a href="bento.html">Bento Grid</a></li>
+            <li><a href="skeuomorphism.html">Skeuomorphism</a></li>
+            <li><a href="editorial.html">Swiss Editorial</a></li>
+            <li><a href="brutalism.html">Brutalism</a></li>
+            <li><a href="retro-terminal.html">Retro-Terminal</a></li>
+          </ul>
+        </div>
+        <div class="pow-footer-col">
+          <h5>Developer Suite</h5>
+          <ul>
+            <li><a href="index.html">Engine Gallery &amp; Router</a></li>
+            <li><a href="#install">Agent Skills CLI Guide</a></li>
+            <li><a href="https://github.com/kennedys0/taste-engine">GitHub Repository ↗</a></li>
+            <li><a href="https://github.com/kennedys0/taste-engine/blob/main/CHANGELOG.md">Changelog &amp; Releases</a></li>
+          </ul>
+        </div>
+        <div class="pow-footer-col">
+          <h5>System Specifications</h5>
+          <ul>
+            <li><a href="#principles">Anti-Slop Quality Gate</a></li>
+            <li><a href="#hero">Full-Screen Hero Contract</a></li>
+            <li><a href="#install">Tailwind / shadcn Preset</a></li>
+            <li><a href="#studio">Responsive Viewport Standards</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pow-footer-bottom">
+        <div>© 2026 Taste Engine. Built for autonomous developer agents. MIT Licensed.</div>
+        <div style="font-family: var(--pow-font-mono); font-size: 0.75rem;">10 Styles • 0-Dependency Core • WCAG AA</div>
+      </div>
+    </div>
+  </footer>
+
+  <div class="pow-toast-container" id="toastContainer"></div>
+
+  <script>
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme') || 'dark';
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('taste-pow-theme', next);
+    }
+
+    function toggleMobileMenu() {
+      const backdrop = document.getElementById('drawerBackdrop');
+      const panel = document.getElementById('drawerPanel');
+      backdrop.classList.toggle('open');
+      panel.classList.toggle('open');
+    }
+
+    function switchInstallTab(tabId) {
+      document.querySelectorAll('.install-tab-btn').forEach(btn => {
+        const isActive = btn.getAttribute('data-install-tab') === tabId;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+      document.querySelectorAll('.install-tab-pane').forEach(pane => {
+        pane.classList.toggle('active', pane.id === tabId);
+      });
+    }
+
+    function copySnippet(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Copied to clipboard');
+      }).catch(() => {
+        showToast('Copied to clipboard');
+      });
+    }
+
+    function showToast(msg) {
+      const container = document.getElementById('toastContainer');
+      const toast = document.createElement('div');
+      toast.className = 'pow-toast';
+      toast.textContent = msg;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 150ms ease';
+        setTimeout(() => toast.remove(), 150);
+      }, 2200);
+    }
+
+    // Persisted theme preference
+    const savedTheme = localStorage.getItem('taste-pow-theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+  </script>
+</body>
+</html>
