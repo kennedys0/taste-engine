@@ -1189,18 +1189,29 @@
 </head>
 <body>
 
+  <!-- Architecture Consolidation Notice Banner -->
+  <aside style="background: #ffde00; color: #0a0a0a; padding: 0.65rem 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; font-weight: 800; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 0.5rem; border-bottom: 2px solid #000; position: relative; z-index: 101;">
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <span style="background: #000; color: #fff; padding: 0.15rem 0.45rem; border-radius: 2px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.05em;">Architecture Update</span>
+      <span>Bento Grid is consolidated into Brutalism as a native layout variant (Brutalist Bento).</span>
+    </div>
+    <a href="brutalism.html?variant=bento" style="color: #000; text-decoration: underline; font-weight: 900; display: inline-flex; align-items: center; gap: 0.35rem;">
+      VIEW BRUTALIST BENTO IN BRUTALISM POW &rarr;
+    </a>
+  </aside>
+
   <!-- Top Navigation with Integrated Quick-Install Pill -->
   <header class="pow-nav">
     <a href="index.html" class="nav-brand-group">
       <img src="assets/logo.webp" alt="Taste Engine Logo" class="brand-logo-img">
       <span class="nav-title">Taste Engine</span>
-      <span class="nav-tag-badge">#01 BENTO</span>
+      <span class="nav-tag-badge">#01 BENTO // BRUTALISM VARIANT</span>
     </a>
 
     <!-- Single-Line Inline Command Pill (Aligned) -->
     <div class="nav-command-pill">
       <span style="color: var(--pow-text-muted); font-family: var(--pow-font-mono); font-weight: 700;">$</span>
-      <code class="nav-cmd-code" id="navCmdText">npx skills add kennedys0/taste-engine --skill taste-style-bento</code>
+      <code class="nav-cmd-code" id="navCmdText">npx skills add kennedys0/taste-engine --skill taste-style-brutalism</code>
       <button class="nav-copy-btn" id="navCopyBtn" title="Copy command">Copy</button>
     </div>
 
@@ -1245,12 +1256,12 @@
       </a>
       <a href="index.html" class="mobile-nav-link" onclick="closeMobileNav()">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m15 18-6-6 6-6"/></svg>
-        <span>All 10 Styles</span>
+        <span>All 9 Styles</span>
       </a>
     </div>
     <div class="mobile-drawer-footer">
-      <a href="#install" class="mobile-drawer-cta-btn" onclick="closeMobileNav()">
-        <span>INSTALL BENTO SKILL</span>
+      <a href="brutalism.html?variant=bento" class="mobile-drawer-cta-btn" onclick="closeMobileNav()">
+        <span>VIEW BRUTALIST BENTO</span>
       </a>
     </div>
   </div>
@@ -1401,15 +1412,15 @@
     <section class="pow-section" id="install">
       <div class="section-header">
         <span class="section-badge">Fast-Track Setup</span>
-        <h2 class="section-title">Install Bento Grid Pack</h2>
+        <h2 class="section-title">Install Bento (Brutalism Variant)</h2>
         <p class="section-desc">
-          Choose whether to install Bento Grid as a lightweight standalone skill or as part of the full 10-style Taste Engine suite.
+          Bento Grid is now consolidated into the Brutalism archetype. Install Brutalism to access both Raw and Bento modular layouts, or install the full 9-style Taste Engine suite.
         </p>
       </div>
 
       <div class="install-tabs-wrap">
         <div class="install-tab-nav">
-          <button class="tab-nav-btn active" onclick="switchTab(0)">1. Standalone Skill</button>
+          <button class="tab-nav-btn active" onclick="switchTab(0)">1. Standalone Brutalism Skill</button>
           <button class="tab-nav-btn" onclick="switchTab(1)">2. Full Multi-Agent Suite</button>
           <button class="tab-nav-btn" onclick="switchTab(2)">3. Tailwind Preset</button>
         </div>
@@ -1427,18 +1438,17 @@
               </div>
               <div class="terminal-content" id="cmdStandaloneCli">
                 <div class="terminal-line">
-                  <span class="line-comment"># Install standalone Bento Grid pack via Agent Skills CLI</span>
+                  <span class="line-comment"># Install Brutalism pack (includes Raw + Bento modular layouts)</span>
                 </div>
                 <div class="terminal-line">
                   <span class="line-p">$</span>
-                  <span class="line-cmd">npx skills add kennedys0/taste-engine --skill taste-style-bento</span>
+                  <span class="line-cmd">npx skills add kennedys0/taste-engine --skill taste-style-brutalism</span>
                 </div>
                 <div class="terminal-line">
-                  <span class="line-comment"># Or clone directly into Antigravity IDE global config</span>
+                  <span class="line-comment"># Or configure your project style for Brutalist Bento:</span>
                 </div>
                 <div class="terminal-line">
-                  <span class="line-p">$</span>
-                  <span class="line-cmd">git clone https://github.com/kennedys0/taste-engine.git && cp -r taste-engine/optional-standalone-skills/taste-style-bento ~/.gemini/config/skills/</span>
+                  <span class="line-comment"># { "style": "brutalism", "variant": "bento" }</span>
                 </div>
               </div>
             </div>
@@ -1456,7 +1466,7 @@
               </div>
               <div class="terminal-content" id="cmdGlobalCli">
                 <div class="terminal-line">
-                  <span class="line-comment"># 1. Universal 1-click Agent Skills install (includes all 10 styles)</span>
+                  <span class="line-comment"># 1. Universal 1-click Agent Skills install (includes all 9 styles)</span>
                 </div>
                 <div class="terminal-line">
                   <span class="line-p">$</span>
@@ -1695,11 +1705,11 @@
 
         <div class="pow-faq-item">
           <div class="pow-faq-header" onclick="toggleFaq(this)">
-            <span>Can I install Bento Grid as a standalone skill?</span>
+            <span>How is Bento Grid packaged in Taste Engine?</span>
             <span class="faq-arrow">+</span>
           </div>
           <div class="pow-faq-body">
-            Yes! Run <code>npx skills add kennedys0/taste-engine --skill taste-style-bento</code>. This installs only the Bento Grid tokens, CSS recipes, and fidelity gates, keeping your AI agent's context window lightweight and focused.
+            Bento Grid is consolidated into the Brutalism archetype as a native layout variant (<code>variant: bento</code>). Run <code>npx skills add kennedys0/taste-engine --skill taste-style-brutalism</code> to install the Brutalism pack containing both Raw and Bento modular grid tokens and layouts.
           </div>
         </div>
       </div>
@@ -1720,20 +1730,19 @@
       </div>
 
       <div class="footer-col">
-        <h4>10 Archetypes</h4>
+        <h4>9 Archetypes</h4>
         <ul>
-          <li><a href="bento.html" style="color: var(--pow-accent-cta); font-weight: 700;">Bento Grid (PoW)</a></li>
+          <li><a href="brutalism.html?variant=bento" style="color: var(--pow-accent-cta); font-weight: 700;">Brutalist Bento (PoW)</a></li>
           <li><a href="neo-brutalism.html">Neo-Brutalism (PoW)</a></li>
           <li><a href="claymorphism.html">Claymorphism (PoW)</a></li>
-          <li><a href="enterprise.html">Enterprise (PoW)</a></li>
           <li><a href="glassmorphism.html">Glassmorphism (PoW)</a></li>
+          <li><a href="minimalism.html">Minimalism (PoW)</a></li>
         </ul>
       </div>
 
       <div class="footer-col">
         <h4>More Archetypes</h4>
         <ul>
-          <li><a href="minimalism.html">Minimalism (PoW)</a></li>
           <li><a href="retro-terminal.html">Retro Terminal (PoW)</a></li>
           <li><a href="retro-pixel.html">Retro Pixel (PoW)</a></li>
           <li><a href="skeuomorphism.html">Skeuomorphism (PoW)</a></li>

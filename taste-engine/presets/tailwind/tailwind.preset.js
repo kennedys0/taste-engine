@@ -59,10 +59,12 @@ const tastePreset = {
           'swiss-red': 'var(--taste-swiss-red, #e53935)',
           'swiss-muted': 'var(--taste-swiss-muted, #767676)',
 
-          // Brutalism: raw unembellished mono
+          // Brutalism: raw unembellished mono (Raw & Bento layout variants)
           'brutal-bg': 'var(--taste-brutal-bg, #f4f4f4)',
           'brutal-ink': 'var(--taste-brutal-ink, #000000)',
           'brutal-canvas': 'var(--taste-brutal-canvas, #ffffff)',
+          'brutal-yellow': 'var(--taste-brutal-signal-yellow, #ffde00)',
+          'brutal-red': 'var(--taste-brutal-signal-red, #ff3b30)',
 
           // Minimalism: deliberate intentional whitespace
           'minimal-bg': 'var(--taste-minimal-bg, #ffffff)',

@@ -8,6 +8,7 @@
   --taste-brutal-border: 2.5px solid #000000;
   --taste-brutal-signal: #ff0000;
   --taste-brutal-radius: 0px;
+  --taste-brutal-bento-gap: 20px;
   --taste-brutal-btn-bg: #ffffff;
   --taste-brutal-btn-ink: #000000;
   --taste-brutal-btn-hover-bg: #000000;
@@ -19,6 +20,7 @@
   --taste-brutal-ink: #ffffff;
   --taste-brutal-border: 2.5px solid #ffffff;
   --taste-brutal-signal: #ff3333;
+  --taste-brutal-bento-gap: 20px;
   --taste-brutal-btn-bg: #000000;
   --taste-brutal-btn-ink: #ffffff;
   --taste-brutal-btn-hover-bg: #ffffff;
@@ -111,6 +113,71 @@
 .taste-brutal-input:focus {
   outline: 3px solid #000000;
   outline-offset: 2px;
+}
+
+/* =========================================================
+   BRUTALIST BENTO (Modular Layout Variant)
+   Asymmetric modular grid with strict 0px brutalist borders
+   ========================================================= */
+.taste-brutal-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--taste-brutal-bento-gap, 20px);
+  max-width: 1200px;
+  margin: 2rem auto;
+}
+
+.taste-brutal-bento-tile {
+  background-color: var(--taste-brutal-bg, #ffffff);
+  color: var(--taste-brutal-ink, #000000);
+  border: var(--taste-brutal-border, 2.5px solid #000000);
+  border-radius: var(--taste-brutal-radius, 0px);
+  padding: 1.5rem;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: none; /* Immediate flip */
+}
+
+.taste-brutal-bento-tile:hover {
+  background-color: var(--taste-brutal-btn-hover-bg, #000000);
+  color: var(--taste-brutal-btn-hover-ink, #ffffff);
+}
+
+.taste-brutal-bento-tile.hero {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.taste-brutal-bento-tile.wide {
+  grid-column: span 2;
+}
+
+.taste-brutal-bento-tile:focus-visible,
+.taste-brutal-bento-tile :is(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid var(--taste-brutal-signal, #ff0000);
+  outline-offset: 3px;
+}
+
+@media (max-width: 900px) {
+  .taste-brutal-bento-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .taste-brutal-bento-tile.hero {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .taste-brutal-bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .taste-brutal-bento-tile.hero,
+  .taste-brutal-bento-tile.wide {
+    grid-column: span 1;
+  }
 }
 
 /* Accessibility */

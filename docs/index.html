@@ -1672,6 +1672,23 @@
       border: 1.5px solid currentColor;
       padding: 2px 6px;
     }
+    .brutal-variant-btn {
+      background: transparent;
+      color: inherit;
+      border: var(--taste-brutal-border);
+      padding: 3px 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.725rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 0;
+      transition: none;
+    }
+    .brutal-variant-btn.active, .brutal-variant-btn:hover {
+      background: var(--taste-brutal-btn-hover-bg);
+      color: var(--taste-brutal-btn-hover-ink);
+    }
 
     /* =========================================================
        STYLE 3: CLAYMORPHISM
@@ -2493,13 +2510,12 @@
     <div class="section-header">
       <span class="section-eyebrow">Interactive Gallery</span>
       <h2 class="section-title">Live Material Fidelity Preview</h2>
-      <p class="section-desc">Test all 10 styles across dark and light modes. Every component adheres to paired token coupling with guaranteed WCAG AA readability.</p>
+      <p class="section-desc">Test all 9 styles across dark and light modes. Every component adheres to paired token coupling with guaranteed WCAG AA readability.</p>
     </div>
 
     <!-- Filter Buttons -->
     <nav class="filter-bar" aria-label="Style pack filters">
-      <button class="filter-chip active" data-filter="all">All Styles (10)</button>
-      <button class="filter-chip" data-filter="bento">Bento Grid</button>
+      <button class="filter-chip active" data-filter="all">All Styles (9)</button>
       <button class="filter-chip" data-filter="brutalism">Brutalism</button>
       <button class="filter-chip" data-filter="claymorphism">Claymorphism</button>
       <button class="filter-chip" data-filter="glassmorphism">Glassmorphism</button>
@@ -2511,75 +2527,15 @@
       <button class="filter-chip" data-filter="swiss-editorial">Swiss Editorial</button>
     </nav>
 
-    <!-- 10 Showcase Cards -->
+    <!-- 9 Showcase Cards -->
     <main class="gallery-grid">
-<article class="showcase-card" data-style="bento">
-      <div class="showcase-header">
-        <div class="showcase-title-group">
-          <h2>Bento Grid</h2>
-          <span class="showcase-signature">Asymmetric modular cards & strict visual hierarchy</span>
-        </div>
-        <div class="showcase-actions">
-          <a href="bento.html" class="pow-link-btn">PoW Guide &rarr;</a>
-          <button class="copy-token-btn" data-tokens="--taste-bento-bg: #13151b; --taste-bento-surface: #1e222b; --taste-bento-surface-elevated: #262b36; --taste-bento-text: #f4f4f7; --taste-bento-border: 1px solid rgba(255,255,255,0.08); --taste-bento-accent-cta: #ff5722;">Copy Tokens</button>
-        </div>
-      </div>
-      <div class="showcase-body">
-        <div class="bento-wrapper">
-          <div class="bento-grid-demo" style="grid-template-columns: 1.4fr 1fr; gap: 14px;">
-            <!-- Tile 1: Profile & Two-Tone Narrative -->
-            <div class="bento-tile hero" style="border-radius: 20px; padding: 1.35rem; display: flex; flex-direction: column; justify-content: space-between;">
-              <div>
-                <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-                  <div style="width: 32px; height: 32px; border-radius: 50%; background: var(--taste-bento-surface-elevated); display: flex; align-items: center; justify-content: center; font-size: 0.8rem; font-weight: 800; color: var(--taste-bento-text);">FK</div>
-                  <span style="font-size: 0.85rem; font-weight: 700; color: var(--taste-bento-text);">fekojewan</span>
-                </div>
-                <div style="font-size: 1.05rem; font-weight: 700; line-height: 1.35; margin-bottom: 0.65rem;">
-                  <span style="color: var(--taste-bento-text);">fekojewan is a systems designer</span>
-                  <span style="color: var(--taste-bento-text-muted); font-weight: 500;"> engineering autonomous agent runtimes.</span>
-                </div>
-              </div>
-              <div style="display: flex; gap: 0.4rem; flex-wrap: wrap;">
-                <span style="font-size: 0.68rem; padding: 0.2rem 0.55rem; border-radius: 999px; background: var(--taste-bento-surface-elevated); color: var(--taste-bento-text-muted);">Token Hierarchy</span>
-                <span style="font-size: 0.68rem; padding: 0.2rem 0.55rem; border-radius: 999px; background: var(--taste-bento-surface-elevated); color: var(--taste-bento-text-muted);">Zero-Slop</span>
-              </div>
-            </div>
 
-            <!-- Right Column: Contact CTA Pill & Live Geo -->
-            <div style="display: flex; flex-direction: column; gap: 12px;">
-              <div class="bento-tile" style="border-radius: 20px; padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between;">
-                <div style="font-size: 0.7rem; font-weight: 700; color: var(--taste-bento-text-muted); text-transform: uppercase;">Direct Contact</div>
-                <div style="font-size: 0.95rem; font-weight: 700; margin: 0.35rem 0;">Have a project in mind?</div>
-                <button class="bento-btn" style="background: var(--taste-bento-accent-cta); color: #fff; border: none; padding: 0.55rem 0.9rem; border-radius: 999px; font-weight: 700; font-size: 0.785rem; cursor: pointer; margin-top: 0.25rem;">mail@fekojewan.my.id &rarr;</button>
-              </div>
-
-              <div class="bento-tile" style="border-radius: 20px; padding: 0.95rem 1.15rem; display: flex; align-items: center; justify-content: space-between;">
-                <div>
-                  <div style="font-size: 0.785rem; font-weight: 700;">Indonesia</div>
-                  <div style="font-size: 0.7rem; color: var(--taste-bento-text-muted); font-family: monospace;">WIB &bull; GMT+7</div>
-                </div>
-                <div style="width: 28px; height: 28px; border-radius: 50%; border: 1.5px solid var(--taste-bento-text-muted); opacity: 0.6; display: flex; align-items: center; justify-content: center; font-size: 0.75rem;">&oplus;</div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Capsule Link Strip -->
-          <div style="display: flex; gap: 0.5rem; margin-top: 12px; overflow-x: auto; padding-top: 4px;">
-            <span style="font-size: 0.725rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px; background: var(--taste-bento-surface); border: var(--taste-bento-border); color: var(--taste-bento-text-muted);">github.</span>
-            <span style="font-size: 0.725rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px; background: var(--taste-bento-surface); border: var(--taste-bento-border); color: var(--taste-bento-text-muted);">figma.</span>
-            <span style="font-size: 0.725rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px; background: var(--taste-bento-surface); border: var(--taste-bento-border); color: var(--taste-bento-text-muted);">dribbble.</span>
-            <span style="font-size: 0.725rem; font-weight: 600; padding: 0.3rem 0.75rem; border-radius: 999px; background: var(--taste-bento-surface); border: var(--taste-bento-border); color: var(--taste-bento-text-muted);">x.com.</span>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- 2. BRUTALISM -->
+    <!-- 1. BRUTALISM (Raw & Bento layout variants) -->
     <article class="showcase-card" data-style="brutalism">
       <div class="showcase-header">
         <div class="showcase-title-group">
           <h2>Brutalism</h2>
-          <span class="showcase-signature">Raw structural scaffolding, 0px corners, immediate flip</span>
+          <span class="showcase-signature">Raw structural scaffolding, 0px corners, Raw & Bento variants</span>
         </div>
         <div class="showcase-actions">
           <a href="brutalism.html" class="pow-link-btn">PoW Guide &rarr;</a>
@@ -2588,15 +2544,81 @@
       </div>
       <div class="showcase-body">
         <div class="brutal-wrapper">
-          <div class="brutal-header">
-            <span>INDEX // SPEC_01</span>
-            <span class="brutal-tag" style="background: #ffde00; color: #0a0a0a; font-weight: 800;">[2026 // ONLINE]</span>
+          <!-- Variant Switcher -->
+          <div class="brutal-variant-bar" style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 1.25rem; border-bottom: var(--taste-brutal-border); padding-bottom: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.725rem; font-weight: 800; letter-spacing: 0.05em;">VARIANT:</span>
+              <button class="brutal-variant-btn active" data-variant="raw" onclick="switchBrutalVariant(this, 'raw')">Raw</button>
+              <button class="brutal-variant-btn" data-variant="bento" onclick="switchBrutalVariant(this, 'bento')">Bento</button>
+            </div>
+            <span class="brutal-tag" style="background: #ffde00; color: #0a0a0a; font-weight: 800;">[2 VARIANTS]</span>
           </div>
-          <h3 style="font-size: 1.35rem; font-weight: 900; line-height: 1.05; margin-bottom: 0.75rem; text-transform: uppercase;">WE DESIGN WITHOUT AI SLOP.</h3>
-          <p style="font-size: 0.85rem; line-height: 1.4; margin-bottom: 1.25rem;">Frontend intelligence for AI agents. Continuous 2px blueprint grid borders. High-voltage caution yellow and signal red accents.</p>
-          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
-            <button class="brutal-btn">INITIALIZE RUN ↗</button>
-            <a href="brutalism.html" class="brutal-btn" style="background: #ff3b30; color: #ffffff; text-decoration: none; border: 2px solid #0a0a0a; display: inline-flex; align-items: center;">VIEW FULL POW &rarr;</a>
+
+          <!-- VARIANT 1: RAW BRUTALISM -->
+          <div class="brutal-variant-raw">
+            <div class="brutal-header">
+              <span>INDEX // RAW_SCAFFOLD_01</span>
+              <span class="brutal-tag" style="background: #ffde00; color: #0a0a0a; font-weight: 800;">[2026 // ONLINE]</span>
+            </div>
+            <h3 style="font-size: 1.35rem; font-weight: 900; line-height: 1.05; margin-bottom: 0.75rem; text-transform: uppercase;">WE DESIGN WITHOUT AI SLOP.</h3>
+            <p style="font-size: 0.85rem; line-height: 1.4; margin-bottom: 1.25rem;">Frontend intelligence for AI agents. Continuous 2px blueprint grid borders. High-voltage caution yellow and signal red accents.</p>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-bottom: 1.25rem; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem;">
+              <div style="border: var(--taste-brutal-border); padding: 0.5rem 0.75rem;">
+                <span style="display: block; font-size: 0.65rem; color: #ff3b30; font-weight: 800;">LATENCY</span>
+                0ms FLIP
+              </div>
+              <div style="border: var(--taste-brutal-border); padding: 0.5rem 0.75rem;">
+                <span style="display: block; font-size: 0.65rem; color: #ffde00; font-weight: 800;">RADIUS</span>
+                STRICT 0PX
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <button class="brutal-btn">INITIALIZE RUN ↗</button>
+              <a href="brutalism.html" class="brutal-btn" style="background: #ff3b30; color: #ffffff; text-decoration: none; border: 2px solid #0a0a0a; display: inline-flex; align-items: center;">VIEW FULL POW &rarr;</a>
+            </div>
+          </div>
+
+          <!-- VARIANT 2: BRUTALIST BENTO -->
+          <div class="brutal-variant-bento" style="display: none;">
+            <div class="brutal-bento-grid-demo" style="display: grid; grid-template-columns: 1.4fr 1fr; gap: 10px;">
+              <!-- Dominant Hero Bay (2x2 span) -->
+              <div style="border: var(--taste-brutal-border); padding: 1.15rem; display: flex; flex-direction: column; justify-content: space-between; background: var(--taste-brutal-bg);">
+                <div>
+                  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                    <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 800; background: #ffde00; color: #000; padding: 2px 6px;">[01 // HERO_BAY]</span>
+                    <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 800;">SPAN 2x2</span>
+                  </div>
+                  <h4 style="font-size: 1.15rem; font-weight: 900; line-height: 1.1; margin-bottom: 0.4rem; text-transform: uppercase;">MODULAR BLUEPRINT</h4>
+                  <p style="font-size: 0.8rem; line-height: 1.35; margin-bottom: 0.75rem;">Asymmetric bento panel composition enclosed in unyielding 2px structural borders.</p>
+                </div>
+                <button class="brutal-btn" style="padding: 6px 14px; font-size: 0.75rem; width: fit-content;">DISPATCH ACTION ↗</button>
+              </div>
+
+              <!-- Right Column: Secondary spec panels -->
+              <div style="display: flex; flex-direction: column; gap: 10px;">
+                <!-- Telemetry Cell -->
+                <div style="border: var(--taste-brutal-border); padding: 0.85rem; display: flex; flex-direction: column; justify-content: space-between;">
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 800; color: #ff3b30;">[02 // STATUS]</span>
+                  <div style="font-size: 0.85rem; font-weight: 900; margin: 0.25rem 0;">CELLULAR MATRIX</div>
+                  <div style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem;">WCAG AAA &bull; 0PX RADIUS</div>
+                </div>
+
+                <!-- Input Dock -->
+                <div style="border: var(--taste-brutal-border); padding: 0.85rem; display: flex; flex-direction: column; gap: 0.35rem;">
+                  <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; font-weight: 800;">[03 // TELEMETRY]</span>
+                  <div style="display: flex; gap: 4px;">
+                    <input type="text" placeholder="CMD_PARAM" style="width: 100%; border: 1.5px solid currentColor; background: transparent; color: inherit; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; padding: 4px 6px; border-radius: 0;">
+                    <button class="brutal-btn" style="padding: 4px 8px; font-size: 0.7rem;">GO</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Full-Width Bottom Strip -->
+            <div style="border: var(--taste-brutal-border); border-top: none; padding: 0.6rem 0.85rem; display: flex; justify-content: space-between; align-items: center; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; margin-top: 10px;">
+              <span>[04 // ARCHITECTURAL_DOCK]</span>
+              <a href="brutalism.html?variant=bento" style="color: inherit; font-weight: 800; text-decoration: underline;">EXPLORE BENTO VARIANT &rarr;</a>
+            </div>
           </div>
         </div>
       </div>
@@ -3172,7 +3194,7 @@ npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism</code></
           <div class="faq-answer">
             <div class="faq-answer-inner">
               <p>By default, AI coding agents generate uniform, repetitive frontend designs (often termed <em>AI-slop</em>): ungrounded floating cards, low-contrast text, purposeless blur effects, and generic blue-purple gradients.</p>
-              <p><strong>Taste Engine</strong> is an intelligence skill pack that equips AI agents with 10 distinctive aesthetic archetypes (Bento Grid, Brutalism, Claymorphism, Enterprise, Glassmorphism, Minimalism, Neo-Brutalism, Retro Terminal, Skeuomorphism, Swiss Editorial) backed by strict quality gates to produce production-grade frontend code.</p>
+              <p><strong>Taste Engine</strong> is an intelligence skill pack that equips AI agents with 9 distinctive aesthetic archetypes (Brutalism with Raw & Bento variants, Claymorphism, Enterprise/Minimalism, Glassmorphism, Neo-Brutalism, Retro Terminal, Retro Pixel, Skeuomorphism, Swiss Editorial) backed by strict quality gates to produce production-grade frontend code.</p>
             </div>
           </div>
         </div>
@@ -3375,7 +3397,7 @@ npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism</code></
       <div class="footer-col">
         <h4>Aesthetic Archetypes (PoW)</h4>
         <ul>
-          <li><a href="bento.html">Bento Grid (PoW)</a></li>
+          <li><a href="bento.html">Brutalist Bento (PoW)</a></li>
           <li><a href="neo-brutalism.html">Neo-Brutalism (PoW)</a></li>
           <li><a href="claymorphism.html">Claymorphism (PoW)</a></li>
           <li><a href="glassmorphism.html">Glassmorphism (PoW)</a></li>
@@ -3384,7 +3406,7 @@ npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism</code></
           <li><a href="retro-pixel.html">Retro Pixel (PoW)</a></li>
           <li><a href="skeuomorphism.html">Skeuomorphism (PoW)</a></li>
           <li><a href="swiss-editorial.html">Swiss Editorial (PoW)</a></li>
-          <li><a href="brutalism.html">Brutalism (PoW)</a></li>
+          <li><a href="brutalism.html">Brutalism (Raw & Bento) (PoW)</a></li>
         </ul>
       </div>
 
@@ -3498,8 +3520,24 @@ npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism</code></
     });
 
     // =========================================================
-    // 2. SHOWCASE STYLE FILTER
+    // 2. SHOWCASE STYLE FILTER & VARIANT SWITCHER
     // =========================================================
+    function switchBrutalVariant(btn, variant) {
+      const card = btn.closest('.showcase-card');
+      card.querySelectorAll('.brutal-variant-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const rawView = card.querySelector('.brutal-variant-raw');
+      const bentoView = card.querySelector('.brutal-variant-bento');
+      if (variant === 'bento') {
+        if (rawView) rawView.style.display = 'none';
+        if (bentoView) bentoView.style.display = 'block';
+      } else {
+        if (rawView) rawView.style.display = 'block';
+        if (bentoView) bentoView.style.display = 'none';
+      }
+    }
+    window.switchBrutalVariant = switchBrutalVariant;
+
     const filterChips = document.querySelectorAll('.filter-chip');
     const cards = document.querySelectorAll('.showcase-card');
 
@@ -3512,6 +3550,10 @@ npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism</code></
         cards.forEach(card => {
           if (filter === 'all' || card.getAttribute('data-style') === filter) {
             card.style.display = 'flex';
+          } else if (filter === 'bento' && card.getAttribute('data-style') === 'brutalism') {
+            card.style.display = 'flex';
+            const bentoBtn = card.querySelector('[data-variant="bento"]');
+            if (bentoBtn) bentoBtn.click();
           } else {
             card.style.display = 'none';
           }

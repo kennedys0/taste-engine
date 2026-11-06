@@ -1678,6 +1678,453 @@
     img.nav-logo-img {
       object-fit: cover;
     }
+
+    /* =========================================================
+       VARIANT SWITCHER BAR
+       ========================================================= */
+    .brut-variant-bar {
+      position: sticky;
+      top: 60px;
+      z-index: 990;
+      background: var(--pow-surface);
+      border-bottom: var(--pow-border);
+      display: flex;
+      align-items: stretch;
+      height: 48px;
+      width: 100%;
+    }
+    .brut-variant-title-cell {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0 1.25rem;
+      border-right: var(--pow-border);
+      font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+    .brut-variant-tab {
+      background: var(--pow-surface);
+      color: var(--pow-text);
+      border: none;
+      border-right: var(--pow-border);
+      padding: 0 1.5rem;
+      font-family: var(--pow-font-mono);
+      font-size: 0.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      transition: none;
+    }
+    .brut-variant-tab:hover {
+      background: var(--pow-surface-hover);
+      color: var(--pow-surface-hover-text);
+    }
+    .brut-variant-tab.active {
+      background: var(--pow-text);
+      color: var(--pow-bg);
+    }
+    .brut-bento-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+    .brut-bento-cell {
+      border: var(--pow-border);
+      background: var(--pow-surface);
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      position: relative;
+    }
+    .brut-bento-cell.span-2-2 {
+      grid-column: span 2;
+      grid-row: span 2;
+    }
+    .brut-bento-cell.span-2-1 {
+      grid-column: span 2;
+    }
+    .brut-bento-cell.span-3-1 {
+      grid-column: span 3;
+    }
+    @media (max-width: 900px) {
+      .brut-bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .brut-bento-cell.span-2-2,
+      .brut-bento-cell.span-3-1 {
+        grid-column: span 2;
+      }
+    }
+    @media (max-width: 650px) {
+      .brut-variant-bar {
+        height: auto;
+        flex-wrap: wrap;
+      }
+      .brut-variant-title-cell {
+        width: 100%;
+        border-right: none;
+        border-bottom: var(--pow-border);
+        padding: 0.5rem 1rem;
+      }
+      .brut-variant-tab {
+        padding: 0.6rem 1rem;
+        flex: 1;
+        justify-content: center;
+      }
+      .brut-bento-grid {
+        grid-template-columns: 1fr;
+        padding: 1.25rem 1rem;
+      }
+      .brut-bento-cell.span-2-2,
+      .brut-bento-cell.span-2-1,
+      .brut-bento-cell.span-3-1 {
+        grid-column: span 1;
+        grid-row: auto;
+      }
+    }
+
+    /* =========================================================
+       AUTHENTIC BRUTALIST BUTTONS & BENTO ACTION CONTROLS
+       (Resolves Unstyled Bento Buttons)
+       ========================================================= */
+    .brut-hero-action-btn {
+      height: 48px;
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.65rem;
+      background: var(--pow-text);
+      color: var(--pow-bg);
+      border: var(--pow-border);
+      padding: 0 1.65rem;
+      font-family: var(--pow-font-mono);
+      font-size: 0.85rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      text-decoration: none;
+      transition: none; /* Immediate flip */
+      user-select: none;
+      white-space: nowrap;
+      border-radius: 0 !important;
+    }
+
+    .brut-hero-action-btn:hover {
+      background: var(--pow-signal-yellow);
+      color: #000000;
+      border-color: var(--pow-border-color);
+    }
+
+    .brut-hero-action-btn:active {
+      background: var(--pow-signal-red);
+      color: #ffffff;
+    }
+
+    .brut-hero-action-btn:focus-visible {
+      outline: 3px solid var(--pow-signal-yellow);
+      outline-offset: 3px;
+    }
+
+    .brut-hero-action-btn.btn-secondary-mono {
+      background: transparent;
+      color: var(--pow-text);
+      border: var(--pow-border);
+    }
+
+    .brut-hero-action-btn.btn-secondary-mono:hover {
+      background: var(--pow-text);
+      color: var(--pow-bg);
+    }
+
+    .brut-hero-action-btn.btn-secondary-mono:active {
+      background: var(--pow-signal-yellow);
+      color: #000000;
+    }
+
+    .brut-bento-tag {
+      font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      border: var(--pow-border);
+      background: var(--pow-surface-elevated);
+      color: var(--pow-text);
+      padding: 4px 10px;
+      letter-spacing: 0.04em;
+      display: inline-block;
+      border-radius: 0 !important;
+    }
+
+    /* =========================================================
+       CANONICAL TABBED TERMINAL INSTALLATION MATRIX
+       ========================================================= */
+    .tabbed-terminal-card {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: 0 !important;
+      overflow: hidden;
+      margin-top: 1.5rem;
+    }
+
+    .terminal-tab-bar {
+      display: flex;
+      background: var(--pow-surface-elevated);
+      border-bottom: var(--pow-border);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .install-tab-btn {
+      padding: 0.95rem 1.65rem;
+      background: transparent;
+      border: none;
+      border-right: var(--pow-border);
+      border-bottom: 3px solid transparent;
+      color: var(--pow-text-muted);
+      font-family: var(--pow-font-mono);
+      font-size: 0.8rem;
+      font-weight: 800;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: none;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-radius: 0 !important;
+    }
+
+    .install-tab-btn:hover {
+      background: var(--pow-surface-hover);
+      color: var(--pow-surface-hover-text);
+    }
+
+    .install-tab-btn.active {
+      color: #000000;
+      background: var(--pow-signal-yellow);
+      border-bottom-color: var(--pow-signal-yellow);
+    }
+
+    .install-tab-pane {
+      display: none;
+      padding: 2rem;
+    }
+
+    .install-tab-pane.active {
+      display: block;
+    }
+
+    .tab-pane-meta {
+      margin-bottom: 1.25rem;
+    }
+
+    .tab-pane-title {
+      font-family: var(--pow-font-heading);
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--pow-text);
+      margin-bottom: 0.35rem;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+    }
+
+    .tab-pane-desc {
+      font-size: 0.9rem;
+      color: var(--pow-text-muted);
+      line-height: 1.55;
+    }
+
+    .code-terminal-box {
+      background: var(--pow-bg);
+      border: var(--pow-border);
+      border-radius: 0 !important;
+      overflow: hidden;
+      margin-top: 1.25rem;
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.65rem 1rem;
+      border-bottom: var(--pow-border);
+      background: var(--pow-surface-elevated);
+      font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--pow-text);
+    }
+
+    .terminal-dots {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .terminal-dots .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 0 !important;
+      aspect-ratio: 1 / 1;
+      flex-shrink: 0;
+      border: 1px solid var(--pow-text);
+    }
+
+    .dot.red { background: var(--pow-signal-red); }
+    .dot.yellow { background: var(--pow-signal-yellow); }
+    .dot.green { background: #00e676; }
+
+    .terminal-label {
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .terminal-copy-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--pow-text);
+      color: var(--pow-bg);
+      border: var(--pow-border);
+      border-radius: 0 !important;
+      padding: 6px 14px;
+      font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      cursor: pointer;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      transition: none;
+    }
+
+    .terminal-copy-btn:hover {
+      background: var(--pow-signal-yellow);
+      color: #000000;
+    }
+
+    .terminal-body {
+      padding: 1.25rem;
+      font-family: var(--pow-font-mono);
+      font-size: 0.85rem;
+      line-height: 1.8;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .terminal-line {
+      display: flex;
+      align-items: baseline;
+      gap: 0.65rem;
+      white-space: nowrap;
+    }
+
+    .line-comment { color: var(--pow-text-muted); }
+    .line-p { color: var(--pow-signal-red); font-weight: 900; user-select: none; }
+    .line-cmd { color: var(--pow-text); font-weight: 700; }
+
+    .agent-support-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.5rem 0.75rem;
+      padding: 1rem 1.75rem;
+      background: var(--pow-surface-elevated);
+      border-top: var(--pow-border);
+      font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
+    }
+
+    .agent-tag {
+      padding: 3px 8px;
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: 0 !important;
+      color: var(--pow-text);
+      font-weight: 700;
+    }
+
+    /* =========================================================
+       7. CANONICAL RESPONSIVE FOOTER
+       ========================================================= */
+    .pow-footer {
+      border-top: var(--pow-border);
+      background: var(--pow-bg);
+      color: var(--pow-text);
+      padding: 3rem 0 2rem;
+      font-family: var(--pow-font-body);
+    }
+
+    .pow-footer .pow-container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .pow-footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2.5rem 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .pow-footer-col h5 {
+      font-family: var(--pow-font-mono);
+      font-size: 0.85rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.25rem;
+      color: var(--pow-text);
+      border-bottom: var(--pow-border);
+      padding-bottom: 0.5rem;
+    }
+
+    .pow-footer-col ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .pow-footer-col a {
+      color: var(--pow-text-muted);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      transition: none;
+    }
+
+    .pow-footer-col a:hover {
+      color: var(--pow-signal-yellow);
+      background: #000000;
+      padding: 0 4px;
+    }
+
+    .pow-footer-bottom {
+      border-top: var(--pow-border);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-family: var(--pow-font-mono);
+      font-size: 0.8rem;
+      color: var(--pow-text-muted);
+    }
   </style>
 </head>
 <body>
@@ -1685,7 +2132,7 @@
   <!-- =========================================================
        TOP BLUEPRINT NAVIGATION (FAITHFUL TO REFERENCE 1)
        ========================================================= -->
-  <header class="pow-nav">
+  <header class="pow-header pow-nav">
     <a href="index.html" class="nav-brand-cell">
       <img src="assets/logo.webp" alt="Taste Engine Logo" class="brand-logo-img">
       <span class="brand-text">BRUT.</span>
@@ -1698,11 +2145,11 @@
     </div>
 
     <div class="nav-links-track">
-      <a href="#work" class="nav-cell">Work</a>
-      <a href="index.html" class="nav-cell">About</a>
-      <a href="#services" class="nav-cell">Services</a>
-      <a href="#install" class="nav-cell">Journal</a>
-      <a href="#faq" class="nav-cell">Contact</a>
+      <a href="#hero" class="nav-cell">Hero</a>
+      <a href="#studio" class="nav-cell">Studio</a>
+      <a href="#components" class="nav-cell">Components</a>
+      <a href="#install" class="nav-cell">Install</a>
+      <a href="#principles" class="nav-cell">Principles</a>
     </div>
 
     <div class="nav-right-track">
@@ -1719,6 +2166,26 @@
     </div>
   </header>
 
+  <!-- =========================================================
+       VARIANT SWITCHER (RAW VS BENTO)
+       ========================================================= -->
+  <nav class="brut-variant-bar" aria-label="Brutalism layout variant selector">
+    <div class="brut-variant-title-cell">
+      <span>STYLE: BRUTALISM</span>
+      <span style="color: var(--pow-text-muted);">//</span>
+      <span>VARIANT:</span>
+    </div>
+    <button class="brut-variant-tab active" id="tab-variant-raw" onclick="switchBrutalismDocVariant('raw')">
+      [ Raw Brutalism ]
+    </button>
+    <button class="brut-variant-tab" id="tab-variant-bento" onclick="switchBrutalismDocVariant('bento')">
+      [ Brutalist Bento ]
+    </button>
+    <div style="margin-left: auto; display: flex; align-items: center; padding: 0 1.5rem; font-family: var(--pow-font-mono); font-size: 0.7rem; font-weight: 700; color: var(--pow-text-muted);" id="variant-status-indicator">
+      ACTIVE: RAW_SCAFFOLDING (DEFAULT)
+    </div>
+  </nav>
+
   <!-- Mobile Navigation Drawer Overlay (Brutalism Archetype) -->
   <div class="mobile-nav-backdrop" id="mobileNavBackdrop" onclick="closeMobileNav()"></div>
   <div class="mobile-nav-drawer" id="mobileNavDrawer" role="dialog" aria-modal="true" aria-label="Mobile Navigation">
@@ -1729,12 +2196,12 @@
       </button>
     </div>
     <div class="mobile-drawer-body">
-      <a href="#work" class="mobile-nav-link" onclick="closeMobileNav()">01 // WORK</a>
-      <a href="index.html" class="mobile-nav-link" onclick="closeMobileNav()">02 // ABOUT</a>
-      <a href="#services" class="mobile-nav-link" onclick="closeMobileNav()">03 // SERVICES</a>
-      <a href="#install" class="mobile-nav-link" onclick="closeMobileNav()">04 // JOURNAL / INSTALL</a>
-      <a href="#faq" class="mobile-nav-link" onclick="closeMobileNav()">05 // CONTACT</a>
-      <a href="index.html" class="mobile-nav-link" onclick="closeMobileNav()">06 // ALL 10 STYLES</a>
+      <a href="#hero" class="mobile-nav-link" onclick="closeMobileNav()">01 // HERO VIEWPORT</a>
+      <a href="#studio" class="mobile-nav-link" onclick="closeMobileNav()">02 // INTERACTIVE STUDIO</a>
+      <a href="#components" class="mobile-nav-link" onclick="closeMobileNav()">03 // COMPONENT GATES</a>
+      <a href="#install" class="mobile-nav-link" onclick="closeMobileNav()">04 // INSTALLATION MATRIX</a>
+      <a href="#principles" class="mobile-nav-link" onclick="closeMobileNav()">05 // CORE PRINCIPLES</a>
+      <a href="index.html" class="mobile-nav-link" onclick="closeMobileNav()">06 // ALL 9 STYLES</a>
     </div>
     <div class="mobile-drawer-footer">
       <a href="#install" class="mobile-drawer-cta-btn" onclick="closeMobileNav()">
@@ -1743,180 +2210,322 @@
     </div>
   </div>
 
-  <main>
+    <main>
     <!-- =========================================================
-         HERO SECTION: 1-PAGE ARCHITECTURAL COMPOSITION
+         SECTION 2: FULL-SCREEN HERO VIEWPORT (DUAL VARIANT: RAW & BENTO)
          ========================================================= -->
-    <section class="brut-hero-grid">
+    <section class="pow-hero" id="hero">
       
-      <!-- Left Major Column: Monumental Headline & Core Action -->
-      <div class="hero-col-left">
-        <div class="hero-headline-block">
-          <div class="hero-brand-badge">
-            <span>TASTE ENGINE // ARCHETYPE #02</span>
-            <span class="badge-separator">/</span>
-            <span>BRUTALISM</span>
-          </div>
-
-          <h1 class="hero-monumental-title">
-            <span class="title-row">WE DESIGN</span>
-            <span class="title-row">WITHOUT</span>
-            <span class="title-row" style="color: var(--pow-signal-red);">AI SLOP.</span>
-          </h1>
-
-          <div class="hero-sub-statement">
-            <span class="bullet-yellow"></span>
-            <span>Frontend Intelligence. Agent Runtimes. Zero Slop.</span>
-          </div>
-        </div>
-
-        <!-- Architectural Spec Grid (Fills Hero Space with Rigorous Data) -->
-        <div class="hero-spec-grid">
-          <div class="spec-cell">
-            <div class="spec-num">01</div>
-            <div class="spec-title">Anti-Slop Gate</div>
-            <div class="spec-desc">Strictly eliminates generic AI card fluff, blurry dropshadows, and pastel roundings.</div>
-          </div>
-          <div class="spec-cell">
-            <div class="spec-num">02</div>
-            <div class="spec-title">2px Steel Skeleton</div>
-            <div class="spec-desc">Every element is enclosed in continuous blueprint gridlines with mandatory 0px square radii.</div>
-          </div>
-          <div class="spec-cell spec-cell-highlight">
-            <div class="spec-num">03</div>
-            <div class="spec-title">Contrast Coupled</div>
-            <div class="spec-desc">Guaranteed 7:1+ WCAG AAA contrast ratio with instant 0ms polarity inversion on hover.</div>
-          </div>
-        </div>
-
-        <!-- Manifesto & Circular Verified Stamp Seal -->
-        <div class="hero-manifesto-row">
-          <div class="manifesto-lead">
-            Taste Engine equips autonomous coding agents with deterministic frontend design intelligence. No decorative camouflage. Pure structural authority.
-          </div>
-          <div class="stamp-badge-circle" title="Verified Archetype Seal">
-            <svg viewBox="0 0 100 100" class="stamp-svg">
-              <path id="stampPath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
-              <text font-size="8.8" font-family="'JetBrains Mono', monospace" font-weight="900" fill="currentColor" letter-spacing="1.4">
-                <textPath href="#stampPath">TASTE ENGINE • VERIFIED ARCHETYPE •</textPath>
-              </text>
-            </svg>
-            <span class="stamp-center">★</span>
-          </div>
-        </div>
-
-        <div class="hero-action-group">
-          <a href="#work" class="brut-btn-action" onclick="handleAction('Navigating to Selected Work')">
-            <span>View Archetypes</span>
-            <span>↗</span>
-          </a>
+      <!-- Variant View 1: Raw Brutalism (Linear Scaffolding) -->
+      <div id="hero-view-raw">
+        <div class="brut-hero-grid">
           
-          <div class="hero-command-box">
-            <span class="cmd-prompt-glyph">$</span>
-            <code class="cmd-code-text" id="navCmdText">npx skills add kennedys0/taste-engine --skill taste-style-brutalism</code>
-            <button class="cmd-copy-action-btn" id="navCopyBtn" title="Copy CLI Command">Copy</button>
+          <!-- Left Major Column: Monumental Headline & Core Action -->
+          <div class="hero-col-left">
+            <div class="hero-headline-block">
+              <div class="hero-brand-badge">
+                <span>TASTE ENGINE // ARCHETYPE #02</span>
+                <span class="badge-separator">/</span>
+                <span>BRUTALISM</span>
+              </div>
+
+              <h1 class="hero-monumental-title">
+                <span class="title-row">WE DESIGN</span>
+                <span class="title-row">WITHOUT</span>
+                <span class="title-row" style="color: var(--pow-signal-red);">AI SLOP.</span>
+              </h1>
+
+              <div class="hero-sub-statement">
+                <span class="bullet-yellow"></span>
+                <span>Frontend Intelligence. Agent Runtimes. Zero Slop.</span>
+              </div>
+            </div>
+
+            <!-- Architectural Spec Grid (Fills Hero Space with Rigorous Data) -->
+            <div class="hero-spec-grid">
+              <div class="spec-cell">
+                <div class="spec-num">01</div>
+                <div class="spec-title">Anti-Slop Gate</div>
+                <div class="spec-desc">Strictly eliminates generic AI card fluff, blurry dropshadows, and pastel roundings.</div>
+              </div>
+              <div class="spec-cell">
+                <div class="spec-num">02</div>
+                <div class="spec-title">2px Steel Skeleton</div>
+                <div class="spec-desc">Every element is enclosed in continuous blueprint gridlines with mandatory 0px square radii.</div>
+              </div>
+              <div class="spec-cell spec-cell-highlight">
+                <div class="spec-num">03</div>
+                <div class="spec-title">Contrast Coupled</div>
+                <div class="spec-desc">Guaranteed 7:1+ WCAG AAA contrast ratio with instant 0ms polarity inversion on hover.</div>
+              </div>
+            </div>
+
+            <!-- Manifesto & Circular Verified Stamp Seal -->
+            <div class="hero-manifesto-row">
+              <div class="manifesto-lead">
+                Taste Engine equips autonomous coding agents with deterministic frontend design intelligence. No decorative camouflage. Pure structural authority.
+              </div>
+              <div class="stamp-badge-circle" title="Verified Archetype Seal">
+                <svg viewBox="0 0 100 100" class="stamp-svg">
+                  <path id="stampPath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+                  <text font-size="8.8" font-family="'JetBrains Mono', monospace" font-weight="900" fill="currentColor" letter-spacing="1.4">
+                    <textPath href="#stampPath">TASTE ENGINE • VERIFIED ARCHETYPE •</textPath>
+                  </text>
+                </svg>
+                <span class="stamp-center">★</span>
+              </div>
+            </div>
+
+            <div class="hero-action-group">
+              <a href="#studio" class="brut-btn-action" onclick="handleAction('Navigating to Selected Work')">
+                <span>View Archetypes</span>
+                <span>↗</span>
+              </a>
+              
+              <div class="hero-command-box">
+                <span class="cmd-prompt-glyph">$</span>
+                <code class="cmd-code-text" id="navCmdText">npx skills add kennedys0/taste-engine --skill taste-style-brutalism</code>
+                <button class="cmd-copy-action-btn" id="navCopyBtn" title="Copy CLI Command">Copy</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Architectural Compartments -->
+          <div class="hero-col-right">
+            
+            <!-- Top Compartment: Studio Descriptor & Signal Globe -->
+            <div class="hero-right-top">
+              <div class="hero-desc-cell">
+                Taste Engine provides deterministic frontend design intelligence and uncompromised aesthetic archetypes for autonomous AI agents.
+              </div>
+              <div class="hero-plus-cell" onclick="handleAction('Toggled Architectural Detail Grid')" title="Expand Details">
+                +
+              </div>
+              <div class="hero-globe-cell" title="Global Edge Routing">
+                <svg class="globe-svg" viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <line x1="2" y1="12" x2="22" y2="12"></line>
+                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
+                </svg>
+              </div>
+            </div>
+
+            <!-- Bottom Compartment: Béton Brut Architectural Drawing -->
+            <div class="hero-right-bottom">
+              <div class="brut-blueprint-meta">
+                <span>[LAT: 52.5200° N, LON: 13.4050° E]</span>
+                <span>TASTE ENGINE // ARCHETYPE #02</span>
+              </div>
+
+              <div class="brut-isometric-canvas">
+                <svg class="concrete-facade-svg" viewBox="0 0 380 260" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Geometric Brutalist Formwork Drawing -->
+                  <rect x="0" y="0" width="380" height="260" fill="var(--pow-surface)" />
+                  <line x1="0" y1="130" x2="380" y2="130" stroke="var(--pow-text)" stroke-width="2" />
+                  <line x1="190" y1="0" x2="190" y2="260" stroke="var(--pow-text)" stroke-width="2" />
+                  <!-- Upper Left: Cantilever Block -->
+                  <rect x="30" y="30" width="130" height="70" fill="var(--pow-signal-yellow)" stroke="var(--pow-text)" stroke-width="2" />
+                  <text x="45" y="70" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="14" fill="#0a0a0a">CANTILEVER 01</text>
+                  <!-- Upper Right: Grid Voids -->
+                  <rect x="220" y="30" width="60" height="70" fill="var(--pow-surface-elevated)" stroke="var(--pow-text)" stroke-width="2" />
+                  <rect x="290" y="30" width="60" height="70" fill="var(--pow-signal-red)" stroke="var(--pow-text)" stroke-width="2" />
+                  <!-- Bottom Span: Heavy Pylon -->
+                  <polygon points="40,230 150,150 180,150 180,230" fill="var(--pow-text)" />
+                  <line x1="220" y1="160" x2="350" y2="160" stroke="var(--pow-text)" stroke-width="3" stroke-dasharray="6,4" />
+                  <line x1="220" y1="180" x2="350" y2="180" stroke="var(--pow-text)" stroke-width="3" stroke-dasharray="6,4" />
+                  <line x1="220" y1="200" x2="350" y2="200" stroke="var(--pow-text)" stroke-width="3" stroke-dasharray="6,4" />
+                  <text x="215" y="225" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="var(--pow-text)">TASTE ENGINE // ZERO SLOP</text>
+                </svg>
+              </div>
+
+              <div class="blueprint-footer-tag">
+                <span>BÉTON BRUT FORM 04</span>
+                <span>ZERO COSMETIC CAMOUFLAGE</span>
+              </div>
+            </div>
+
           </div>
         </div>
-      </div>
 
-      <!-- Right Column: Architectural Compartments -->
-      <div class="hero-col-right">
-        
-        <!-- Top Compartment: Studio Descriptor & Signal Globe -->
-        <div class="hero-right-top">
-          <div class="hero-desc-cell">
-            Taste Engine provides deterministic frontend design intelligence and uncompromised aesthetic archetypes for autonomous AI agents.
+        <!-- Ticker Strip -->
+        <div class="brut-ticker-strip">
+          <div class="ticker-left">
+            <span class="ticker-year">(2026)</span>
+            <span>We don't follow trends. We set architectural directions.</span>
+            <span>→</span>
           </div>
-          <div class="hero-plus-cell" onclick="handleAction('Toggled Architectural Detail Grid')" title="Expand Details">
-            +
-          </div>
-          <div class="hero-globe-cell" title="Global Edge Routing">
-            <svg class="globe-svg" viewBox="0 0 24 24">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="2" y1="12" x2="22" y2="12"></line>
-              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-            </svg>
+          <div class="ticker-right-yellow">
+            <span>Available for New Projects</span>
+            <span class="status-dot-blink"></span>
           </div>
         </div>
 
-        <!-- Bottom Compartment: Béton Brut Architectural Drawing -->
-        <div class="hero-right-bottom">
-          <div class="brut-blueprint-meta">
-            <span>[LAT: 52.5200° N, LON: 13.4050° E]</span>
-            <span>TASTE ENGINE // ARCHETYPE #02</span>
+        <!-- Metrics Ribbon -->
+        <div class="brut-metrics-ribbon">
+          <div class="metric-cell">
+            <div class="metric-num">6+</div>
+            <div class="metric-label">Years Runtime Experience</div>
           </div>
-
-          <div class="brut-isometric-canvas">
-            <svg class="concrete-facade-svg" viewBox="0 0 380 260" xmlns="http://www.w3.org/2000/svg">
-              <!-- Geometric Brutalist Formwork Drawing -->
-              <rect x="0" y="0" width="380" height="260" fill="var(--pow-surface)" />
-              <line x1="0" y1="130" x2="380" y2="130" stroke="var(--pow-text)" stroke-width="2" />
-              <line x1="190" y1="0" x2="190" y2="260" stroke="var(--pow-text)" stroke-width="2" />
-              <!-- Upper Left: Cantilever Block -->
-              <rect x="30" y="30" width="130" height="70" fill="var(--pow-signal-yellow)" stroke="var(--pow-text)" stroke-width="2" />
-              <text x="45" y="70" font-family="'Space Grotesk', sans-serif" font-weight="900" font-size="14" fill="#0a0a0a">CANTILEVER 01</text>
-              <!-- Upper Right: Grid Voids -->
-              <rect x="220" y="30" width="60" height="70" fill="var(--pow-surface-elevated)" stroke="var(--pow-text)" stroke-width="2" />
-              <rect x="290" y="30" width="60" height="70" fill="var(--pow-signal-red)" stroke="var(--pow-text)" stroke-width="2" />
-              <!-- Bottom Span: Heavy Pylon -->
-              <polygon points="40,230 150,150 180,150 180,230" fill="var(--pow-text)" />
-              <line x1="220" y1="160" x2="350" y2="160" stroke="var(--pow-text)" stroke-width="3" stroke-dasharray="6,4" />
-              <line x1="220" y1="180" x2="350" y2="180" stroke="var(--pow-text)" stroke-width="3" stroke-dasharray="6,4" />
-              <line x1="220" y1="200" x2="350" y2="200" stroke="var(--pow-text)" stroke-width="3" stroke-dasharray="6,4" />
-              <text x="215" y="225" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="800" fill="var(--pow-text)">TASTE ENGINE // ZERO SLOP</text>
-            </svg>
+          <div class="metric-cell">
+            <div class="metric-num">80+</div>
+            <div class="metric-label">Production Archetypes Shipped</div>
           </div>
-
-          <div class="blueprint-footer-tag">
-            <span>BÉTON BRUT FORM 04</span>
-            <span>ZERO COSMETIC CAMOUFLAGE</span>
+          <div class="metric-cell">
+            <div class="metric-num">40+</div>
+            <div class="metric-label">Autonomous Agent Partners</div>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-num">100%</div>
+            <div class="metric-label">WCAG AAA Contrast Coupled</div>
           </div>
         </div>
+      </div> <!-- End hero-view-raw -->
 
-      </div>
+      <!-- Variant View 2: Brutalist Bento (Modular Grid Blueprint) -->
+      <div id="hero-view-bento" style="display: none;">
+        <div class="brut-bento-hero-section" style="padding: 2rem 0;">
+          <div style="max-width: 1280px; margin: 0 auto; padding: 0 1.5rem 1.5rem; border-bottom: var(--pow-border); display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 1rem;">
+            <div>
+              <div style="font-family: var(--pow-font-mono); font-size: 0.75rem; font-weight: 800; color: var(--pow-signal-yellow); background: #000; display: inline-block; padding: 2px 8px; margin-bottom: 0.5rem;">[LAYOUT VARIANT: BRUTALIST BENTO]</div>
+              <h1 style="font-family: var(--pow-font-display); font-size: clamp(2rem, 5vw, 4rem); font-weight: 900; line-height: 0.95; text-transform: uppercase;">MODULAR BLUEPRINT // BENTO GRID</h1>
+            </div>
+            <div style="font-family: var(--pow-font-mono); font-size: 0.75rem; font-weight: 700; text-align: right;">
+              <div>SPEC: ASYMMETRIC GRID</div>
+              <div style="color: var(--pow-signal-red);">CORNERS: STRICT 0PX</div>
+            </div>
+          </div>
+
+          <div class="brut-bento-grid">
+            <!-- Dominant Hero Bay (Span 2x2) -->
+            <article class="brut-bento-cell span-2-2">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: var(--pow-border); padding-bottom: 0.75rem; margin-bottom: 1.25rem;">
+                  <span style="font-family: var(--pow-font-mono); font-size: 0.8rem; font-weight: 800;">[01 // CORE_MODULE]</span>
+                  <span style="background: var(--pow-signal-yellow); color: #000; font-family: var(--pow-font-mono); font-size: 0.7rem; font-weight: 800; padding: 2px 6px;">2x2 DOMINANT SPAN</span>
+                </div>
+                <h2 style="font-family: var(--pow-font-display); font-size: clamp(1.8rem, 3.5vw, 2.75rem); font-weight: 900; line-height: 1.0; text-transform: uppercase; margin-bottom: 1rem;">CONTENT-FIRST ASYMMETRY WITHOUT COSMETIC CAMOUFLAGE</h2>
+                <p style="font-size: 1rem; line-height: 1.5; color: var(--pow-text-muted); margin-bottom: 1.5rem;">
+                  Bento defines the modular layout composition, while Brutalism governs the material reality. Thick 2.5px solid scaffolding, zero rounded bubble corners, razor-sharp alignment, and instantaneous polarity flips.
+                </p>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.5rem;">
+                  <span class="brut-bento-tag">#NO_DROPSHADOWS</span>
+                  <span class="brut-bento-tag">#0PX_RADIUS</span>
+                  <span class="brut-bento-tag">#WCAG_AAA</span>
+                </div>
+              </div>
+              <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                <button class="brut-hero-action-btn" onclick="handleAction('Dispatching Bento Workstream')">
+                  <span>INITIALIZE WORKSTREAM</span>
+                  <span>↗</span>
+                </button>
+                <button class="brut-hero-action-btn btn-secondary-mono" onclick="handleAction('Validating Grid Coordinates')">
+                  <span>VERIFY 0PX GATES</span>
+                </button>
+              </div>
+            </article>
+
+            <!-- Telemetry Bay (1x1) -->
+            <article class="brut-bento-cell" style="background: var(--pow-surface-elevated);">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: var(--pow-border); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">
+                  <span style="font-family: var(--pow-font-mono); font-size: 0.75rem; font-weight: 800; color: var(--pow-signal-red);">[02 // STATUS]</span>
+                  <span class="status-dot-blink" style="width: 8px; height: 8px; background: var(--pow-signal-yellow); display: inline-block;"></span>
+                </div>
+                <h3 style="font-family: var(--pow-font-heading); font-size: 1.25rem; font-weight: 900; text-transform: uppercase; margin-bottom: 0.5rem;">CELLULAR METRICS</h3>
+                <p style="font-size: 0.85rem; line-height: 1.4; color: var(--pow-text-muted);">Tabular operational specs locked to standard display tracks.</p>
+              </div>
+              <div style="border-top: var(--pow-border); padding-top: 0.75rem; margin-top: 1rem; font-family: var(--pow-font-mono); font-size: 0.8rem; font-weight: 700;">
+                <div style="display: flex; justify-content: space-between; margin-bottom: 0.25rem;">
+                  <span>LATENCY</span>
+                  <span style="color: var(--pow-signal-red);">0.00 MS</span>
+                </div>
+                <div style="display: flex; justify-content: space-between;">
+                  <span>CONTRAST</span>
+                  <span>AAA (21:1)</span>
+                </div>
+              </div>
+            </article>
+
+            <!-- Interactive Command Bay (1x1) -->
+            <article class="brut-bento-cell">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: var(--pow-border); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">
+                  <span style="font-family: var(--pow-font-mono); font-size: 0.75rem; font-weight: 800;">[03 // DISPATCH]</span>
+                  <span style="font-family: var(--pow-font-mono); font-size: 0.7rem; font-weight: 800;">CLI_RUNNER</span>
+                </div>
+                <h3 style="font-family: var(--pow-font-heading); font-size: 1.15rem; font-weight: 900; text-transform: uppercase; margin-bottom: 0.5rem;">EXECUTE COMMAND</h3>
+                <div style="display: flex; flex-direction: column; gap: 0.5rem; margin-top: 0.75rem;">
+                  <input type="text" placeholder="--variant bento" style="width: 100%; border: var(--pow-border); background: var(--pow-surface); color: var(--pow-text); padding: 8px 10px; font-family: var(--pow-font-mono); font-size: 0.75rem; border-radius: 0; outline: none;" id="bentoCmdInput">
+                  <button class="brut-hero-action-btn" style="width: 100%; height: 40px; min-height: 40px; padding: 0 1rem; justify-content: center; font-size: 0.75rem;" onclick="handleAction('Executing Bento Variant: ' + (document.getElementById('bentoCmdInput').value || '--variant bento'))">
+                    RUN COMMAND ↗
+                  </button>
+                </div>
+              </div>
+            </article>
+
+            <!-- Wide Spec Matrix (Span 2x1) -->
+            <article class="brut-bento-cell span-2-1">
+              <div>
+                <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: var(--pow-border); padding-bottom: 0.5rem; margin-bottom: 0.75rem;">
+                  <span style="font-family: var(--pow-font-mono); font-size: 0.75rem; font-weight: 800;">[04 // SPEC_MATRIX]</span>
+                  <span style="font-family: var(--pow-font-mono); font-size: 0.7rem; font-weight: 800;">SPAN 2x1</span>
+                </div>
+                <h3 style="font-family: var(--pow-font-heading); font-size: 1.25rem; font-weight: 900; text-transform: uppercase; margin-bottom: 0.75rem;">ARCHITECTURAL QUALITY GATES</h3>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; font-family: var(--pow-font-mono); font-size: 0.75rem;">
+                  <div style="border: var(--pow-border); padding: 0.75rem;">
+                    <div style="color: var(--pow-signal-red); font-weight: 800;">GATE 01</div>
+                    <div style="font-weight: 700; margin-top: 0.25rem;">2PX BORDERS</div>
+                    <div style="color: var(--pow-text-muted); font-size: 0.68rem;">Continuous blueprint framing</div>
+                  </div>
+                  <div style="border: var(--pow-border); padding: 0.75rem;">
+                    <div style="color: var(--pow-signal-yellow); font-weight: 800;">GATE 02</div>
+                    <div style="font-weight: 700; margin-top: 0.25rem;">0PX CORNERS</div>
+                    <div style="color: var(--pow-text-muted); font-size: 0.68rem;">Zero rounded bubble curves</div>
+                  </div>
+                  <div style="border: var(--pow-border); padding: 0.75rem;">
+                    <div style="color: var(--pow-signal-blue); font-weight: 800;">GATE 03</div>
+                    <div style="font-weight: 700; margin-top: 0.25rem;">320PX MOBILE</div>
+                    <div style="color: var(--pow-text-muted); font-size: 0.68rem;">Zero horizontal overflow</div>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Conversion Bay (1x1) -->
+            <article class="brut-bento-cell" style="background: var(--pow-signal-yellow); color: #000; cursor: pointer;" onclick="handleAction('Bento Conversion CTA Triggered')">
+              <div>
+                <span style="font-family: var(--pow-font-mono); font-size: 0.75rem; font-weight: 800;">[05 // CONVERT]</span>
+                <h3 style="font-family: var(--pow-font-display); font-size: 1.65rem; font-weight: 900; line-height: 1.05; text-transform: uppercase; margin-top: 0.75rem;">ADOPT BRUTALIST BENTO</h3>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-top: 1rem; font-family: var(--pow-font-mono); font-size: 1.25rem; font-weight: 900;">
+                <span>GET STARTED</span>
+                <span>↗</span>
+              </div>
+            </article>
+
+            <!-- Full Width Architecture Dock (Span 3x1) -->
+            <article class="brut-bento-cell span-3-1" style="background: var(--pow-surface);">
+              <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+                <div style="display: flex; align-items: center; gap: 1rem;">
+                  <span style="font-family: var(--pow-font-mono); font-size: 0.8rem; font-weight: 900; background: var(--pow-text); color: var(--pow-bg); padding: 4px 8px;">DOCK // 06</span>
+                  <span style="font-family: var(--pow-font-heading); font-weight: 800; font-size: 0.95rem;">TASTE ENGINE INTEGRATION MATRIX</span>
+                </div>
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                  <code style="font-family: var(--pow-font-mono); font-size: 0.75rem; background: var(--pow-surface-elevated); padding: 4px 8px; border: var(--pow-border);">style: brutalism</code>
+                  <code style="font-family: var(--pow-font-mono); font-size: 0.75rem; background: var(--pow-surface-elevated); padding: 4px 8px; border: var(--pow-border);">variant: bento</code>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div> <!-- End hero-view-bento -->
+
     </section>
 
     <!-- =========================================================
-         STATUS & MANIFESTO STRIP (REFERENCE IMAGE 1)
+         SECTION 3: INTERACTIVE STUDIO / LIVE COCKPIT
          ========================================================= -->
-    <div class="brut-ticker-strip">
-      <div class="ticker-left">
-        <span class="ticker-year">(2026)</span>
-        <span>We don't follow trends. We set architectural directions.</span>
-        <span>→</span>
-      </div>
-      <div class="ticker-right-yellow">
-        <span>Available for New Projects</span>
-        <span class="status-dot-blink"></span>
-      </div>
-    </div>
-
-    <!-- =========================================================
-         METRICS RIBBON (REFERENCE IMAGE 2)
-         ========================================================= -->
-    <section class="brut-metrics-ribbon">
-      <div class="metric-cell">
-        <div class="metric-num">6+</div>
-        <div class="metric-label">Years Runtime Experience</div>
-      </div>
-      <div class="metric-cell">
-        <div class="metric-num">80+</div>
-        <div class="metric-label">Production Archetypes Shipped</div>
-      </div>
-      <div class="metric-cell">
-        <div class="metric-num">40+</div>
-        <div class="metric-label">Autonomous Agent Partners</div>
-      </div>
-      <div class="metric-cell">
-        <div class="metric-num">100%</div>
-        <div class="metric-label">WCAG AAA Contrast Coupled</div>
-      </div>
-    </section>
-
-    <!-- =========================================================
-         SELECTED WORK MATRIX (REFERENCE IMAGE 1)
-         ========================================================= -->
-    <section class="brut-work-section" id="work">
+    <section class="pow-studio brut-work-section" id="studio">
       <div class="work-header-row">
         <div class="work-tag-cell">
           <span>Selected Work</span>
@@ -1946,7 +2555,7 @@
         </div>
       </article>
 
-      <!-- Project 02: High-Impact Red Row (Direct Reference 1 Feature) -->
+      <!-- Project 02: High-Impact Red Row -->
       <article class="work-project-row row-highlight-red" onclick="handleAction('Selected Project 02: Gridline Studio')">
         <div class="proj-num">02</div>
         <div class="proj-title-cell">
@@ -1986,146 +2595,16 @@
     </section>
 
     <!-- =========================================================
-         DISRUPTOR & SERVICES SECTION (REFERENCE IMAGE 1)
+         SECTION 4: COMPONENT ANATOMY & STRICT QUALITY GATES
          ========================================================= -->
-    <section class="brut-disrupt-grid">
-      
-      <!-- Cell 1: Industrial Yellow Asterisk Mark -->
-      <div class="disrupt-yellow-box">
-        <div class="giant-asterisk">*</div>
-      </div>
-
-      <!-- Cell 2: Built to Disrupt Manifesto -->
-      <div class="disrupt-statement-cell">
-        <div>
-          <h2 class="disrupt-title">BUILT TO DISRUPT.</h2>
-          <p class="disrupt-body">
-            We combine architectural discipline, stark typography, and uncompromising frontend engineering to create digital experiences that challenge the generic ordinary and deliver authentic impact.
-          </p>
-        </div>
-        <a href="#install" class="disrupt-link-btn" onclick="handleAction('Read Engine Architecture')">
-          <span>Read Our Architecture</span>
-          <span>↗</span>
-        </a>
-      </div>
-
-      <!-- Cell 3: Vertical Label & Interactive Services List -->
-      <div class="disrupt-services-cell">
-        <div class="services-vert-label">
-          Our Services →
-        </div>
-        <div class="services-list-container">
-          <div class="service-row-item" onclick="handleServiceClick('01 Branding')">
-            <div><span class="service-num">01</span>Branding & Identity</div>
-            <span>+</span>
-          </div>
-          <div class="service-row-item" onclick="handleServiceClick('02 Web Design')">
-            <div><span class="service-num">02</span>Web Architecture</div>
-            <span>+</span>
-          </div>
-          <div class="service-row-item" onclick="handleServiceClick('03 Development')">
-            <div><span class="service-num">03</span>Frontend Engineering</div>
-            <span>+</span>
-          </div>
-          <div class="service-row-item" onclick="handleServiceClick('04 Digital Strategy')">
-            <div><span class="service-num">04</span>Agentic UI Strategy</div>
-            <span>+</span>
-          </div>
-        </div>
-      </div>
-
-    </section>
-
-    <!-- =========================================================
-         INSTALLATION SPECIFICATION GUIDE (MULTI-AGENT TABS)
-         ========================================================= -->
-    <section class="brut-doc-section" id="install">
+    <section class="pow-components brut-doc-section" id="components">
       <div class="section-headline-block">
         <div>
-          <span style="font-family: var(--pow-font-mono); font-size: 0.75rem; font-weight: 800; color: var(--pow-signal-red); text-transform: uppercase;">// PRODUCTION SPECIFICATION</span>
-          <h2 class="doc-section-title">INSTALLATION GUIDE</h2>
-        </div>
-        <p class="doc-section-desc">
-          Install Architectural Brutalism across your agent runtime. Direct execution without decorative dependencies.
-        </p>
-      </div>
-
-      <!-- Tab System -->
-      <div class="tab-system">
-        <div class="tab-nav-bar">
-          <button class="tab-btn active" onclick="switchDocTab(0)">Antigravity CLI</button>
-          <button class="tab-btn" onclick="switchDocTab(1)">Claude Code</button>
-          <button class="tab-btn" onclick="switchDocTab(2)">OpenAI Codex</button>
-          <button class="tab-btn" onclick="switchDocTab(3)">Cursor & IDE</button>
-        </div>
-
-        <!-- Tab 0: Antigravity -->
-        <div class="tab-content-panel active">
-          <p style="font-family: var(--pow-font-mono); font-size: 0.8rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--pow-text-muted);">
-            # Install standalone brutalism skill into Antigravity IDE:
-          </p>
-          <div class="code-box">
-            <button class="code-copy-floating" onclick="copySnippet('codeAntigravity')">Copy</button>
-            <code class="code-text" id="codeAntigravity">npx skills add kennedys0/taste-engine --skill taste-style-brutalism</code>
-          </div>
-          <p style="font-size: 0.85rem; color: var(--pow-text-muted);">
-            Installs raw structural rules, 0px border-radius gates, stark monochrome contrast couplings, and instant hover inversion states into your agent's knowledge workspace.
-          </p>
-        </div>
-
-        <!-- Tab 1: Claude Code -->
-        <div class="tab-content-panel">
-          <p style="font-family: var(--pow-font-mono); font-size: 0.8rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--pow-text-muted);">
-            # Load brutalism into Claude Code project configuration:
-          </p>
-          <div class="code-box">
-            <button class="code-copy-floating" onclick="copySnippet('codeClaude')">Copy</button>
-            <code class="code-text" id="codeClaude">npx skills add kennedys0/taste-engine --agent claude-code --skill taste-style-brutalism</code>
-          </div>
-          <p style="font-size: 0.85rem; color: var(--pow-text-muted);">
-            Enforces the brutalist material fidelity gate: requires exposed 2px–3px solid borders, rejects soft drop shadows, and guarantees immediate state flips.
-          </p>
-        </div>
-
-        <!-- Tab 2: OpenAI Codex -->
-        <div class="tab-content-panel">
-          <p style="font-family: var(--pow-font-mono); font-size: 0.8rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--pow-text-muted);">
-            # Register in OpenAI Codex instructions:
-          </p>
-          <div class="code-box">
-            <button class="code-copy-floating" onclick="copySnippet('codeCodex')">Copy</button>
-            <code class="code-text" id="codeCodex">npx skills add kennedys0/taste-engine --agent codex --skill taste-style-brutalism</code>
-          </div>
-          <p style="font-size: 0.85rem; color: var(--pow-text-muted);">
-            Injects explicit layout constraints: 0px radii, solid dividing lines, monumental typography, and signal red/yellow operational blocks.
-          </p>
-        </div>
-
-        <!-- Tab 3: Cursor & Manual IDE -->
-        <div class="tab-content-panel">
-          <p style="font-family: var(--pow-font-mono); font-size: 0.8rem; font-weight: 700; margin-bottom: 0.75rem; color: var(--pow-text-muted);">
-            # Link skill into Cursor .cursorrules or project prompt:
-          </p>
-          <div class="code-box">
-            <button class="code-copy-floating" onclick="copySnippet('codeCursor')">Copy</button>
-            <code class="code-text" id="codeCursor">curl -sSL https://raw.githubusercontent.com/kennedys0/taste-engine/main/taste-engine/styles/brutalism.md -o .agents/brutalism.md</code>
-          </div>
-          <p style="font-size: 0.85rem; color: var(--pow-text-muted);">
-            Direct raw file fetch for local prompt grounding and linting checks.
-          </p>
-        </div>
-      </div>
-
-      <!-- =========================================================
-           TOKENS SPECIFICATION CHEATSHEET
-           ========================================================= -->
-      <div class="section-headline-block" style="margin-top: 4rem;">
-        <div>
-          <span style="font-family: var(--pow-font-mono); font-size: 0.75rem; font-weight: 800; color: var(--pow-signal-yellow); text-transform: uppercase;">// TOKEN ARCHITECTURE</span>
+          <span style="font-family: var(--pow-font-mono); font-size: 0.75rem; font-weight: 800; color: var(--pow-signal-yellow); text-transform: uppercase;">// TOKEN ARCHITECTURE &amp; MATERIAL GATES</span>
           <h2 class="doc-section-title">TOKENS CHEATSHEET</h2>
         </div>
         <p class="doc-section-desc">
-          CSS variables and strict mathematical contrast mappings for Architectural Brutalism.
+          CSS variables and strict mathematical contrast mappings for Architectural Brutalism (governing both Raw &amp; Bento layout variants).
         </p>
       </div>
 
@@ -2136,7 +2615,7 @@
               <th>Token Identifier</th>
               <th>Light Mode (Stark Paper)</th>
               <th>Dark Mode (Pitch Inversion)</th>
-              <th>Architectural Role & Description</th>
+              <th>Architectural Role &amp; Description</th>
             </tr>
           </thead>
           <tbody>
@@ -2192,7 +2671,7 @@
                   <code>#ffde00</code>
                 </div>
               </td>
-              <td>High-voltage caution yellow for operational badges & asterisk mark</td>
+              <td>High-voltage caution yellow for operational badges &amp; asterisk mark</td>
             </tr>
             <tr>
               <td style="font-family: var(--pow-font-mono); font-weight: 800;">--taste-brutal-signal-red</td>
@@ -2225,87 +2704,265 @@
           </tbody>
         </table>
       </div>
+    </section>
 
-      <!-- =========================================================
-           BRUTALISM FAQ ACCORDION (REFERENCE IMAGE 3)
-           ========================================================= -->
+    <!-- =========================================================
+         SECTION 5: TABBED TERMINAL INSTALLATION MATRIX
+         ========================================================= -->
+    <section class="pow-install brut-doc-section" id="install">
       <div class="section-headline-block">
         <div>
-          <span style="font-family: var(--pow-font-mono); font-size: 0.75rem; font-weight: 800; color: var(--pow-signal-red); text-transform: uppercase;">// FIDELITY KNOWLEDGE</span>
-          <h2 class="doc-section-title">BRUTALISM FAQ</h2>
+          <span style="font-family: var(--pow-font-mono); font-size: 0.75rem; font-weight: 800; color: var(--pow-signal-red); text-transform: uppercase;">// PRODUCTION SPECIFICATION</span>
+          <h2 class="doc-section-title">INSTALLATION GUIDE</h2>
         </div>
         <p class="doc-section-desc">
-          Core architectural principles behind Taste Engine's Architectural Brutalism style.
+          Install Architectural Brutalism across your agent runtime. Choose standalone skill, universal Taste Engine, or Tailwind/shadcn presets.
         </p>
       </div>
 
-      <div class="faq-accordion-group">
-        <!-- Q1 -->
-        <div class="faq-row">
-          <div class="faq-header" onclick="toggleFaqRow(this)">
-            <div class="faq-header-left">
-              <span class="faq-num">01</span>
-              <span>What defines Architectural Brutalism in frontend web design?</span>
-            </div>
-            <span class="faq-arrow">></span>
+      <div class="tabbed-terminal-card">
+        <!-- Tab Navigation Bar -->
+        <div class="terminal-tab-bar" role="tablist">
+          <button class="install-tab-btn active" role="tab" aria-selected="true" data-install-tab="tab-standalone" onclick="switchInstallTab('tab-standalone')">
+            <span>01: STANDALONE SKILL</span>
+          </button>
+          <button class="install-tab-btn" role="tab" aria-selected="false" data-install-tab="tab-global" onclick="switchInstallTab('tab-global')">
+            <span>02: FULL TASTE ENGINE</span>
+          </button>
+          <button class="install-tab-btn" role="tab" aria-selected="false" data-install-tab="tab-presets" onclick="switchInstallTab('tab-presets')">
+            <span>03: TAILWIND &amp; SHADCN PRESETS</span>
+          </button>
+        </div>
+
+        <!-- Tab 1: Standalone Skill -->
+        <div class="install-tab-pane active" id="tab-standalone">
+          <div class="tab-pane-meta">
+            <h3 class="tab-pane-title">Option A: Dedicated Brutalism Style Skill (Raw &amp; Bento Variants)</h3>
+            <p class="tab-pane-desc">Installs only the standalone Architectural Brutalism skill pack. Includes both Raw Scaffolding and Brutalist Bento layout variants with zero token bloat.</p>
           </div>
-          <div class="faq-body">
-            Architectural Brutalism (derived from Le Corbusier's <em>béton brut</em> or raw concrete) celebrates structural honesty: exposed 2px grid lines, pure monochrome contrast, monumental condensed grotesque typography, and zero cosmetic camouflage (no blurry drop shadows, no bubbly rounded corners, and no decorative gradients). Every element sits in an explicit, functional cell.
+
+          <div class="code-terminal-box">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="terminal-label">bash — agent skills cli</span>
+              <button class="terminal-copy-btn" onclick="copySnippet('npx skills add kennedys0/taste-engine --skill taste-style-brutalism')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <span>Copy Command</span>
+              </button>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line"><span class="line-comment"># Install standalone Brutalism pack via universal Agent Skills CLI:</span></div>
+              <div class="terminal-line"><span class="line-p">$</span><span class="line-cmd">npx skills add kennedys0/taste-engine --skill taste-style-brutalism</span></div>
+              <div class="terminal-line" style="margin-top: 0.5rem;"><span class="line-comment"># Or specify layout variant directly in prompt / configuration:</span></div>
+              <div class="terminal-line"><span class="line-p">$</span><span class="line-cmd">npx skills add kennedys0/taste-engine --skill taste-style-brutalism --variant bento</span></div>
+              <div class="terminal-line" style="margin-top: 0.5rem;"><span class="line-comment"># Or install into local Google Antigravity IDE global skills folder:</span></div>
+              <div class="terminal-line"><span class="line-p">$</span><span class="line-cmd">cp -r taste-engine/optional-standalone-skills/taste-style-brutalism ~/.gemini/config/skills/</span></div>
+            </div>
           </div>
         </div>
 
-        <!-- Q2 -->
-        <div class="faq-row">
-          <div class="faq-header" onclick="toggleFaqRow(this)">
-            <div class="faq-header-left">
-              <span class="faq-num">02</span>
-              <span>Why are borders strictly solid and 2px thick?</span>
-            </div>
-            <span class="faq-arrow">></span>
+        <!-- Tab 2: Full Engine -->
+        <div class="install-tab-pane" id="tab-global">
+          <div class="tab-pane-meta">
+            <h3 class="tab-pane-title">Option B: Full Taste Engine (All Canonical Styles + Router + SEO)</h3>
+            <p class="tab-pane-desc">Equips your AI agent with complete multi-style design system intelligence, automated style router, preflight interviews, anti-slop audits, and conditional SEO readiness.</p>
           </div>
-          <div class="faq-body">
-            In architectural brutalism, structural joints are celebrated rather than hidden. The 2px solid border acts as the webpage's visible steel framework, dividing the canvas into uncompromising modular bays that align cleanly across desktop and mobile screens.
+
+          <div class="code-terminal-box">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="terminal-label">bash — multi-agent native installer</span>
+              <button class="terminal-copy-btn" onclick="copySnippet('node bin/taste-engine.mjs install --agent all --project')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <span>Copy Command</span>
+              </button>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line"><span class="line-comment"># Universal Agent Skills CLI (Claude Code, Cursor, Codex, Antigravity):</span></div>
+              <div class="terminal-line"><span class="line-p">$</span><span class="line-cmd">npx skills add kennedys0/taste-engine --skill taste-engine</span></div>
+              <div class="terminal-line" style="margin-top: 0.5rem;"><span class="line-comment"># Or run native zero-dependency CLI installer for all project agents:</span></div>
+              <div class="terminal-line"><span class="line-p">$</span><span class="line-cmd">node bin/taste-engine.mjs install --agent all --project</span></div>
+              <div class="terminal-line" style="margin-top: 0.5rem;"><span class="line-comment"># Or install globally for Google Antigravity IDE / CLI (agy):</span></div>
+              <div class="terminal-line"><span class="line-p">$</span><span class="line-cmd">node bin/taste-engine.mjs install --agent antigravity --global</span></div>
+            </div>
           </div>
         </div>
 
-        <!-- Q3 -->
-        <div class="faq-row">
-          <div class="faq-header" onclick="toggleFaq(this)">
-            <div class="faq-header-left">
-              <span class="faq-num">03</span>
-              <span>How does Brutalism differ from Neo-Brutalism?</span>
-            </div>
-            <span class="faq-arrow">></span>
+        <!-- Tab 3: Tailwind & shadcn -->
+        <div class="install-tab-pane" id="tab-presets">
+          <div class="tab-pane-meta">
+            <h3 class="tab-pane-title">Option C: Tailwind CSS &amp; shadcn/ui Presets</h3>
+            <p class="tab-pane-desc">Scaffold official brutalist tokens (0px radius, 2px borders, stark contrast couplings) directly into your frontend repository.</p>
           </div>
-          <div class="faq-body">
-            While Neo-Brutalism employs playful pastel or neon pop colors, playful sticker badges, and offset hard drop shadows (e.g. <code>4px 4px 0px #000</code>), <strong>Architectural Brutalism</strong> is austere, authoritative, and monotone. It uses 0px shadows, unadorned rectangular cells, and reserves saturated color exclusively for operational signal accents (Caution Yellow and Signal Red).
+
+          <div class="code-terminal-box">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+              </div>
+              <span class="terminal-label">bash — scaffolding cli</span>
+              <button class="terminal-copy-btn" onclick="copySnippet('taste-engine init')">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect width="14" height="14" x="8" y="8" rx="2" ry="2"/><path d="M4 16c-1.1 0-2-.9-2-2V4c0-1.1.9-2 2-2h10c1.1 0 2 .9 2 2"/></svg>
+                <span>Copy Command</span>
+              </button>
+            </div>
+            <div class="terminal-body">
+              <div class="terminal-line"><span class="line-comment"># Scaffold presets directly into your repository:</span></div>
+              <div class="terminal-line"><span class="line-p">$</span><span class="line-cmd">taste-engine init</span></div>
+              <div class="terminal-line" style="margin-top: 0.5rem;"><span class="line-comment">// Or import directly into tailwind.config.js:</span></div>
+              <div class="terminal-line"><span class="line-cmd">module.exports = {</span></div>
+              <div class="terminal-line"><span class="line-cmd">&nbsp;&nbsp;presets: [require('@kennedys0/taste-engine/presets/tailwind/tailwind.preset.js')],</span></div>
+              <div class="terminal-line"><span class="line-cmd">};</span></div>
+            </div>
           </div>
         </div>
 
-        <!-- Q4 -->
-        <div class="faq-row">
-          <div class="faq-header" onclick="toggleFaqRow(this)">
-            <div class="faq-header-left">
-              <span class="faq-num">04</span>
-              <span>Can I install Brutalism as a standalone skill?</span>
-            </div>
-            <span class="faq-arrow">></span>
+        <!-- Agent Matrix Footer -->
+        <div class="agent-support-strip">
+          <span class="support-label" style="font-weight: 800; color: var(--pow-text);">SUPPORTED AGENTS:</span>
+          <span class="agent-tag">Antigravity (IDE &amp; CLI)</span>
+          <span class="agent-tag">Claude Code</span>
+          <span class="agent-tag">Cursor</span>
+          <span class="agent-tag">Codex</span>
+          <span class="agent-tag">Windsurf</span>
+          <span class="agent-tag">Cline</span>
+          <span class="agent-tag">GitHub Copilot</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         SECTION 6: CORE ARCHITECTURAL PRINCIPLES & FAQ
+         ========================================================= -->
+    <section class="pow-principles" id="principles">
+      <div class="brut-disrupt-grid">
+        <!-- Cell 1: Industrial Yellow Asterisk Mark -->
+        <div class="disrupt-yellow-box">
+          <div class="giant-asterisk">*</div>
+        </div>
+
+        <!-- Cell 2: Built to Disrupt Manifesto -->
+        <div class="disrupt-statement-cell">
+          <div>
+            <div class="manifesto-tag">// ARCHITECTURAL MANIFESTO</div>
+            <h2 class="manifesto-headline">
+              BUILT TO DISRUPT.<br>ENGINEERED TO LAST.
+            </h2>
           </div>
-          <div class="faq-body">
-            Yes. Run <code>npx skills add kennedys0/taste-engine --skill taste-style-brutalism</code>. This standalone package includes only the brutalist design rules, tokens, and fidelity gates, keeping your agent's context token consumption lean and efficient.
+          <div class="manifesto-body-text">
+            Architectural Brutalism is the unapologetic celebration of structural honesty. By exposing raw 2.5px gridlines, stripping away soft drop shadows, and coupling stark monochrome contrasts with signal accents, we produce digital artifacts of permanent authority.
+          </div>
+        </div>
+
+        <!-- Cell 3: Capabilities & Workstreams -->
+        <div class="disrupt-services-cell">
+          <div class="service-row-item" onclick="handleServiceClick('01 Autonomous UI Runtimes')">
+            <div><span class="service-num">01</span>Autonomous UI Runtimes</div>
+            <span>+</span>
+          </div>
+          <div class="service-row-item" onclick="handleServiceClick('02 Deterministic Scaffolding')">
+            <div><span class="service-num">02</span>Deterministic Scaffolding</div>
+            <span>+</span>
+          </div>
+          <div class="service-row-item" onclick="handleServiceClick('03 Contrast-Coupled Tokens')">
+            <div><span class="service-num">03</span>Contrast-Coupled Tokens</div>
+            <span>+</span>
+          </div>
+          <div class="service-row-item" onclick="handleServiceClick('04 Agentic UI Strategy')">
+            <div><span class="service-num">04</span>Agentic UI Strategy</div>
+            <span>+</span>
           </div>
         </div>
       </div>
 
+      <!-- Brutalism FAQ Accordion -->
+      <div class="brut-doc-section" style="border-top: var(--pow-border); margin-top: 0;">
+        <div class="section-headline-block">
+          <div>
+            <span style="font-family: var(--pow-font-mono); font-size: 0.75rem; font-weight: 800; color: var(--pow-signal-red); text-transform: uppercase;">// FIDELITY KNOWLEDGE</span>
+            <h2 class="doc-section-title">BRUTALISM FAQ</h2>
+          </div>
+          <p class="doc-section-desc">
+            Core architectural principles behind Taste Engine's Architectural Brutalism style and layout variants.
+          </p>
+        </div>
+
+        <div class="faq-accordion-group">
+          <!-- Q1 -->
+          <div class="faq-row">
+            <div class="faq-header" onclick="toggleFaqRow(this)">
+              <div class="faq-header-left">
+                <span class="faq-num">01</span>
+                <span>What defines Architectural Brutalism in frontend web design?</span>
+              </div>
+              <span class="faq-arrow">&gt;</span>
+            </div>
+            <div class="faq-body">
+              Architectural Brutalism (derived from Le Corbusier's <em>béton brut</em> or raw concrete) celebrates structural honesty: exposed 2px grid lines, pure monochrome contrast, monumental condensed grotesque typography, and zero cosmetic camouflage (no blurry drop shadows, no bubbly rounded corners, and no decorative gradients). Every element sits in an explicit, functional cell.
+            </div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="faq-row">
+            <div class="faq-header" onclick="toggleFaqRow(this)">
+              <div class="faq-header-left">
+                <span class="faq-num">02</span>
+                <span>Why are borders strictly solid and 2px thick?</span>
+              </div>
+              <span class="faq-arrow">&gt;</span>
+            </div>
+            <div class="faq-body">
+              In architectural brutalism, structural joints are celebrated rather than hidden. The 2px solid border acts as the webpage's visible steel framework, dividing the canvas into uncompromising modular bays that align cleanly across desktop and mobile screens.
+            </div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="faq-row">
+            <div class="faq-header" onclick="toggleFaqRow(this)">
+              <div class="faq-header-left">
+                <span class="faq-num">03</span>
+                <span>How does Brutalism differ from Neo-Brutalism?</span>
+              </div>
+              <span class="faq-arrow">&gt;</span>
+            </div>
+            <div class="faq-body">
+              While Neo-Brutalism employs playful pastel or neon pop colors, playful sticker badges, and offset hard drop shadows (e.g. <code>4px 4px 0px #000</code>), <strong>Architectural Brutalism</strong> is austere, authoritative, and monotone. It uses 0px shadows, unadorned rectangular cells, and reserves saturated color exclusively for operational signal accents (Caution Yellow and Signal Red).
+            </div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="faq-row">
+            <div class="faq-header" onclick="toggleFaqRow(this)">
+              <div class="faq-header-left">
+                <span class="faq-num">04</span>
+                <span>How does Bento fit into Architectural Brutalism?</span>
+              </div>
+              <span class="faq-arrow">&gt;</span>
+            </div>
+            <div class="faq-body">
+              Bento is treated as an asymmetric modular layout composition variant within Brutalism, rather than an independent visual language. Brutalist Bento retains thick 2.5px solid scaffolding, 0px border-radius, monumental condensed type, and high-voltage caution accents while structuring content into multi-span grid bays.
+            </div>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
   <!-- =========================================================
-       FOOTER & NEWSLETTER (REFERENCE IMAGE 1)
+       SECTION 7: CANONICAL RESPONSIVE FOOTER (10 CANONICAL STYLES)
        ========================================================= -->
-  <footer class="brut-footer">
+  <footer class="pow-footer brut-footer">
     <div class="footer-top-grid">
-      
       <!-- Red Action Cell -->
       <a href="#install" class="footer-red-cell" onclick="handleAction('Footer Contact Initiated')">
         <span>Let's Create<br>Something Different.</span>
@@ -2331,12 +2988,60 @@
           <a href="#" class="social-link" onclick="handleAction('LinkedIn')">LI.</a>
         </div>
       </div>
-
     </div>
 
-    <div class="footer-bottom-bar">
-      <div>&copy; 2026 Taste Engine. Architectural Brutalism Archetype. MIT Licensed.</div>
-      <div>Designed for Autonomous AI Agents & Developers.</div>
+    <!-- Multi-Column Canonical Style Directory -->
+    <div class="pow-container" style="padding-top: 2.5rem; border-top: var(--pow-border); margin-top: 2rem;">
+      <div class="pow-footer-grid">
+        <div class="pow-footer-col">
+          <h5>Taste Engine</h5>
+          <p style="font-size: 0.85rem; color: var(--pow-text-muted); line-height: 1.5; margin-bottom: 1rem;">
+            The style-agnostic design system intelligence for AI agents &amp; human frontend engineers.
+          </p>
+          <div style="font-family: var(--pow-font-mono); font-size: 0.75rem; color: var(--pow-text-muted);">
+            <span>VERSION: 0.11.0</span><br>
+            <span style="color: var(--pow-signal-yellow); font-weight: 800;">STATUS: ARCHITECTURAL GATES ACTIVE</span>
+          </div>
+        </div>
+
+        <div class="pow-footer-col">
+          <h5>Canonical Styles (1–5)</h5>
+          <ul>
+            <li><a href="minimalism.html">01 // Minimalism &amp; Data Cockpit</a></li>
+            <li><a href="retro-pixel.html">02 // Retro-Pixel &amp; 8-Bit</a></li>
+            <li><a href="claymorphism.html">03 // Claymorphism</a></li>
+            <li><a href="glassmorphism.html">04 // Glassmorphism</a></li>
+            <li><a href="neo-brutalism.html">05 // Neo-Brutalism (Independent)</a></li>
+          </ul>
+        </div>
+
+        <div class="pow-footer-col">
+          <h5>Canonical Styles (6–10)</h5>
+          <ul>
+            <li><a href="bento.html">06 // Brutalist Bento (Layout Variant)</a></li>
+            <li><a href="skeuomorphism.html">07 // Skeuomorphism</a></li>
+            <li><a href="editorial.html">08 // Swiss Editorial</a></li>
+            <li><a href="brutalism.html">09 // Architectural Brutalism</a></li>
+            <li><a href="retro-terminal.html">10 // Retro-Terminal CRT</a></li>
+          </ul>
+        </div>
+
+        <div class="pow-footer-col">
+          <h5>Autonomous Integration</h5>
+          <ul>
+            <li><a href="https://github.com/kennedys0/taste-engine" target="_blank" rel="noopener">GitHub Repository ↗</a></li>
+            <li><a href="#install">Agent Skills CLI</a></li>
+            <li><a href="#components">Quality Gates Spec</a></li>
+            <li><a href="#hero">Raw Scaffolding Hero</a></li>
+            <li><a href="javascript:switchBrutalismDocVariant('bento')">Bento Blueprint View</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pow-footer-bottom">
+        <div>&copy; 2026 Taste Engine. Architectural Brutalism Archetype. MIT Licensed.</div>
+        <div>Designed for Autonomous AI Agents &amp; Developers. 0px Radius Enforced.</div>
+      </div>
     </div>
   </footer>
 
@@ -2390,27 +3095,93 @@
         const text = document.getElementById('navCmdText').textContent.trim();
         navigator.clipboard.writeText(text).then(() => {
           showToast('Copied: ' + text);
+        }).catch(() => {
+          showToast('Copied to clipboard');
         });
       });
     }
 
-    // Snippet Copy
-    function copySnippet(elementId) {
-      const el = document.getElementById(elementId);
-      if (!el) return;
-      const text = el.innerText.trim();
+    // Generic Snippet / Command Copy
+    function copySnippet(elementIdOrText) {
+      const el = document.getElementById(elementIdOrText);
+      const text = el ? el.innerText.trim() : elementIdOrText;
       navigator.clipboard.writeText(text).then(() => {
         showToast('CLI command copied!');
+      }).catch(() => {
+        showToast('Copied to clipboard');
       });
     }
+    window.copySnippet = copySnippet;
 
-    // Documentation Tabs
-    function switchDocTab(index) {
-      const tabs = document.querySelectorAll('.tab-btn');
-      const panels = document.querySelectorAll('.tab-content-panel');
-      tabs.forEach((tab, i) => tab.classList.toggle('active', i === index));
-      panels.forEach((panel, i) => panel.classList.toggle('active', i === index));
+    // Canonical Installation Tabs Switcher
+    function switchInstallTab(tabId) {
+      document.querySelectorAll('.install-tab-btn').forEach(btn => {
+        const isActive = btn.getAttribute('data-install-tab') === tabId;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+      document.querySelectorAll('.install-tab-pane').forEach(pane => {
+        pane.classList.toggle('active', pane.id === tabId);
+      });
     }
+    window.switchInstallTab = switchInstallTab;
+
+    // Mobile Navigation Controls
+    function openMobileNav() {
+      const drawer = document.getElementById('mobileNavDrawer');
+      const backdrop = document.getElementById('mobileNavBackdrop');
+      const btn = document.getElementById('navHamburgerBtn');
+      if (drawer) drawer.classList.add('open');
+      if (backdrop) backdrop.classList.add('open');
+      if (btn) btn.setAttribute('aria-expanded', 'true');
+    }
+    window.openMobileNav = openMobileNav;
+
+    function closeMobileNav() {
+      const drawer = document.getElementById('mobileNavDrawer');
+      const backdrop = document.getElementById('mobileNavBackdrop');
+      const btn = document.getElementById('navHamburgerBtn');
+      if (drawer) drawer.classList.remove('open');
+      if (backdrop) backdrop.classList.remove('open');
+      if (btn) btn.setAttribute('aria-expanded', 'false');
+    }
+    window.closeMobileNav = closeMobileNav;
+
+    // =========================================================
+    // BRUTALISM VARIANT SWITCHER (RAW VS BENTO)
+    // =========================================================
+    function switchBrutalismDocVariant(variant) {
+      const rawTab = document.getElementById('tab-variant-raw');
+      const bentoTab = document.getElementById('tab-variant-bento');
+      const rawView = document.getElementById('hero-view-raw');
+      const bentoView = document.getElementById('hero-view-bento');
+      const indicator = document.getElementById('variant-status-indicator');
+
+      if (variant === 'bento') {
+        if (rawTab) rawTab.classList.remove('active');
+        if (bentoTab) bentoTab.classList.add('active');
+        if (rawView) rawView.style.display = 'none';
+        if (bentoView) bentoView.style.display = 'block';
+        if (indicator) indicator.textContent = 'ACTIVE: BRUTALIST_BENTO (MODULAR GRID)';
+        showToast('Switched to Brutalist Bento Variant');
+      } else {
+        if (rawTab) rawTab.classList.add('active');
+        if (bentoTab) bentoTab.classList.remove('active');
+        if (rawView) rawView.style.display = 'block';
+        if (bentoView) bentoView.style.display = 'none';
+        if (indicator) indicator.textContent = 'ACTIVE: RAW_SCAFFOLDING (DEFAULT)';
+        showToast('Switched to Raw Brutalism Variant');
+      }
+    }
+    window.switchBrutalismDocVariant = switchBrutalismDocVariant;
+
+    // Check URL parameters for variant
+    try {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (urlParams.get('variant') === 'bento') {
+        switchBrutalismDocVariant('bento');
+      }
+    } catch (e) {}
 
     // FAQ Accordion
     function toggleFaqRow(header) {

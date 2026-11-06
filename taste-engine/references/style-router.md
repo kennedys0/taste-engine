@@ -13,7 +13,7 @@ Apply style preflight to requests that create or substantially redesign visible 
 3. If not specified, detect approved project config. If it describes the current project and the user has not overridden it, route directly.
 4. If maintaining existing UI, infer its documented or established style *for preservation only*; don't start a redesign.
 5. Otherwise ask exactly one choice question and **end that agent turn without UI implementation**.
-6. On reply: map selection or literal freeform answer to a concrete spec, avoiding coercion to the nearest trendy aesthetic. If user says "show more", present `bento`, `skeuomorphism`, `retro-terminal`, `retro-pixel`, and custom. Do not restart the first menu.
+6. On reply: map selection or literal freeform answer to a concrete spec, avoiding coercion to the nearest trendy aesthetic. If user says "show more", present `skeuomorphism`, `retro-terminal`, `retro-pixel`, and custom. (Bento is selectable within Brutalism as a native layout variant: Raw or Bento). Do not restart the first menu.
 
 ## Multiple selections
 
@@ -31,11 +31,12 @@ Don't merge entire files blindly. Create a component-level decision table, e.g. 
 | --- | --- |
 | "clay" or "claymorphism" | `claymorphism` |
 | "glassmorphism" / "frosted glass" | `glassmorphism` |
-| "brutalist" / "raw brutalism" | `brutalism` |
-| "neubrutalism" / "neo brutalism" | `neo-brutalism` |
+| "brutalist" / "brutalism" | `brutalism` (variant: `raw`, default) |
+| "raw brutalism" | `brutalism` (variant: `raw`) |
+| "bento" / "bento grid" / "brutalist bento" | `brutalism` (variant: `bento`) |
+| "neubrutalism" / "neo brutalism" | `neo-brutalism` (independent) |
 | "minimalist" | `minimalism` |
 | "Swiss typography" / "editorial" | `swiss-editorial` |
-| "bento grid" | `bento` |
 | "realistic physical controls" / "skeumorphsm" / "skeumorphism" / "skeuomorphic" | `skeuomorphism` |
 | "terminal" / "CLI aesthetic" | `retro-terminal` |
 | "retro pixel" / "pixel art" / "8-bit ui" / "retro desktop" | `retro-pixel` (distinct from `retro-terminal`) |
@@ -45,6 +46,20 @@ Don't merge entire files blindly. Create a component-level decision table, e.g. 
 | "your choice" | Explicit delegation permits a reasoned, provisional choice; explain trade-off |
 | "no glassmorphism" | Negative constraint only; do **not** select glass |
 | "neo-brutalism" | Use longer alias, **not** `brutalism` |
+
+## Brutalism taxonomy & backward compatibility
+
+Bento is consolidated into Brutalism as a native layout variant:
+- **Raw Brutalism** (`variant: raw`, default): Linear structural scaffolding, monumental grotesk headlines, flush cellular blueprint compartments, and 0px square corners.
+- **Brutalist Bento** (`variant: bento`): Asymmetric modular grid composition (2x2 dominant panel, secondary panels, spec cells) locked inside uncompromising 2px–3px brutalist structural borders with 0px corners and high-voltage operational signal accents.
+
+### Backward compatibility
+Existing configurations or user prompts specifying `style: bento` or `primary_style: bento` automatically resolve to:
+```yaml
+style: brutalism
+variant: bento
+```
+Neo-Brutalism remains 100% independent with its own distinct visual language (vibrant pop palette, 4px unblurred offset shadows, mechanical press collapse, 6px radius).
 
 ## Persisted choices
 

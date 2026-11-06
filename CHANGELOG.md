@@ -2,6 +2,34 @@
 
 All notable changes to Taste Engine are documented here. Release tags use semantic versioning.
 
+## [0.12.0] - 2026-11-06
+
+### Changed
+
+- **Style Consolidation (Brutalism × Bento):** Consolidated Bento Grid from an independent top-level style into a native layout variant of Brutalism (`style: brutalism, variant: bento`). Bento defines layout composition (modular asymmetric grid, varied column/row spans, content prioritization), not an independent visual language. Both layout variants are first-class:
+  - **Raw Brutalism (`variant: "raw"`, default):** Exposed structural scaffolding, strong typographic hierarchy, high-contrast monochrome surfaces, deliberate visual tension, and unadorned structural honesty.
+  - **Brutalist Bento (`variant: "bento"`):** Modular asymmetric panels, multi-span hero compartments, telemetry docks, and command inputs executed strictly within Brutalist physical laws (0px border-radius, 2px–3px solid borders, zero soft drop shadows, high-voltage signal accents `#ffde00` and `#ff3b30`).
+- **Style Registry & Active Styles Count:** Reduced top-level registry styles from 10 to 9 (`claymorphism`, `glassmorphism`, `brutalism`, `neo-brutalism`, `minimalism`, `swiss-editorial`, `skeuomorphism`, `retro-terminal`, `retro-pixel`). Updated `styles/registry.json` with `default_variant: "raw"` and `variants: ["raw", "bento"]` under `brutalism`.
+- **Preservation of Neo-Brutalism:** Confirmed complete independence of `neo-brutalism`. Neo-Brutalism remains a separate, untouched top-level archetype with its distinct 2.5px solid borders, unblurred offset hard drop shadows (`box-shadow: 4px 4px 0px #000`), rounded pill/card geometry, and mechanical press displacement.
+- **Backward Compatibility & Automatic Alias Resolution:**
+  - Added comprehensive `bento` aliases (`bento`, `bento grid`, `bento box`, `apple bento`, `bento style`, `bento layout`, `bento dashboard`, `modular grid`, `asymmetric grid`, `bento portfolio`) to `brutalism` in `styles/registry.json`.
+  - Updated `scripts/style_probe.py` so any prompt mentioning Bento resolves to `primary_style: "brutalism"` with `variant: "bento"`.
+  - Extended project style schema (`assets/project-style.schema.json`) with the optional `variant` property, validating `"raw"` and `"bento"` variants. Existing configurations with `style: "bento"` resolve to Brutalist Bento.
+- **Motion Profiles Harmonization:** Consolidated motion profiles in `styles/motion-profiles.json`, setting `brutalism` to cover both Raw (0ms immediate state flips) and Bento (0–100ms swift mechanical transitions). Total profiles aligned to 9 active styles.
+- **Interactive Preview & Showcase Enhancements:**
+  - `docs/index.html`: Replaced the Bento filter chip with an interactive variant switcher (`[ Raw ] [ Bento ]`) on the Brutalism showcase card, allowing live in-place toggling between Raw Brutalism and Brutalist Bento UI demonstrations. Updated style count indicator to 9.
+  - `docs/brutalism.html`: Added sticky dual-variant tab navigation bar (`[ Raw Brutalism ] [ Brutalist Bento ]`) and full dedicated Brutalist Bento modular grid demonstration with telemetry status bay, command inputs, and matrix dock. Supports deep linking via `?variant=bento`.
+  - `docs/bento.html`: Added persistent architecture update banner directing users to Brutalist Bento in `brutalism.html?variant=bento`, and updated installation snippets to `taste-style-brutalism`.
+- **Presets & CSS Utilities:**
+  - `presets/tailwind/tailwind.preset.js`: Extended brutalism palette with high-voltage signal accents (`accent-yellow: #ffde00`, `accent-red: #ff3b30`) while preserving legacy bento tokens for backward compatibility.
+  - `presets/tailwind/taste-components.css`: Added Brutalist Bento grid and tile classes (`.taste-brutal-bento-grid`, `.taste-brutal-bento-tile`, `.taste-brutal-bento-hero`) enforcing strict 0px radius, 2px solid borders, and zero shadows.
+  - `presets/shadcn/shadcn-themes.css`: Aliased `[data-theme="brutalist-bento"]` to brutalism tokens.
+  - `examples/brutalism/raw-surfaces.css`: Added production-grade CSS utility classes for responsive Brutalist Bento grid layouts with `@media` responsive breakpoints and `:focus-visible` compliance.
+- **Skill Documentation & Standalone Cleanup:**
+  - Canonical `styles/brutalism.md` and `optional-standalone-skills/taste-style-brutalism/SKILL.md` updated with exhaustive architecture rules, token schemas, component anatomy, and anti-slop gates for both Raw and Bento variants.
+  - Removed deprecated `optional-standalone-skills/taste-style-bento` standalone skill.
+  - Replaced `styles/bento.md` with an architectural consolidation and migration guide pointing to `styles/brutalism.md`.
+
 ## [0.11.0] - 2026-11-05
 
 ### Added

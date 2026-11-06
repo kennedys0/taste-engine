@@ -171,7 +171,7 @@
   }
 
   /* =========================================================
-     8. BRUTALISM (Raw unembellished mono)
+     8. BRUTALISM (Raw unembellished mono — Raw & Bento variants)
      ========================================================= */
   .taste-brutal-card {
     @apply bg-taste-brutal-canvas border-brutal border-taste-brutal-ink rounded-none p-6 shadow-none;
@@ -183,6 +183,23 @@
 
   .taste-brutal-btn:hover {
     @apply bg-taste-brutal-ink text-white;
+  }
+
+  /* Brutalist Bento layout variant */
+  .taste-brutal-bento-grid {
+    @apply grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4;
+  }
+
+  .taste-brutal-bento-tile {
+    @apply bg-taste-brutal-canvas border-brutal border-taste-brutal-ink rounded-none p-6 flex flex-col justify-between shadow-none transition-none;
+  }
+
+  .taste-brutal-bento-tile:hover {
+    @apply bg-taste-brutal-ink text-white;
+  }
+
+  .taste-brutal-bento-hero {
+    @apply md:col-span-2 md:row-span-2 bg-taste-brutal-canvas border-brutal border-taste-brutal-ink rounded-none p-8 shadow-none;
   }
 
   /* =========================================================

@@ -229,11 +229,13 @@
 }
 
 /* =========================================================
-   7. BRUTALISM (Raw architectural unembellished mono)
+   7. BRUTALISM (Raw architectural mono — Raw & Bento variants)
    Stark monochrome, zero radii, maximum contrast
    ========================================================= */
 [data-theme="brutalism"],
-.theme-brutalism {
+.theme-brutalism,
+[data-theme="brutalist-bento"],
+.theme-brutalist-bento {
   --background: 0 0% 96%;           /* #f4f4f4 */
   --foreground: 0 0% 0%;            /* #000000 */
   --card: 0 0% 100%;

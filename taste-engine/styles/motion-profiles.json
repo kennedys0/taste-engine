@@ -25,12 +25,12 @@
       "avoid": "animating blur radius or continuous glow"
     },
     "brutalism": {
-      "interaction": "Use immediate state flips by default; Anime.js generally unnecessary.",
+      "interaction": "Use immediate state flips by default (0ms) for Raw Brutalism; for Brutalist Bento modular tiles, use immediate or brief restrained transitions (0–100ms) that preserve structural stability.",
       "duration_ms": 0,
       "allowed": [
         "opacity"
       ],
-      "avoid": "springs, sliding reveals, theatrical scroll animations"
+      "avoid": "springs, sliding reveals, theatrical scroll animations, continuous tile bounce"
     },
     "neo-brutalism": {
       "interaction": "Short direct 1–2px button shift with a matching hard-shadow response; never animate giant shadows.",
@@ -57,16 +57,6 @@
         "translate"
       ],
       "avoid": "word-by-word autoplay and gratuitous kinetic text"
-    },
-    "bento": {
-      "interaction": "Animate a tile only when its contents or layout genuinely change; ensure stable reading order.",
-      "duration_ms": 180,
-      "allowed": [
-        "opacity",
-        "translate",
-        "scale"
-      ],
-      "avoid": "every tile animating on initial page load"
     },
     "skeuomorphism": {
       "interaction": "Believable short travel of a physical control with strong immediate feedback.",

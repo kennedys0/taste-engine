@@ -21,7 +21,7 @@ A portable, open-source Agent Skill for building distinctive, accessible fronten
 </p>
 
 [![License: MIT](https://img.shields.io/badge/license-MIT-111111.svg)](LICENSE)
-[![Version](https://img.shields.io/badge/version-0.11.0-4F46E5.svg)](CHANGELOG.md)
+[![Version](https://img.shields.io/badge/version-0.12.0-4F46E5.svg)](CHANGELOG.md)
 [![Agent Skills](https://img.shields.io/badge/Agent%20Skills-compatible-111111.svg)](https://agentskills.io/)
 
 [Live Showcase](https://kennedys0.github.io/taste-engine/) · [Installation](#install) · [CLI Setup](#enable-global-taste-engine-cli-command) · [How it works](#how-it-works) · [Styles](#style-library) · [Quality principles](#quality-without-a-house-style) · [Contributing](#contributing)
@@ -44,11 +44,9 @@ The chosen style must be unmistakable in the finished UI. Every style pack in Ta
 
 - **Retro Pixel:** 8-bit and 16-bit pixel illustrations, stepped bevel borders, classic desktop window chrome, arcade orange/teal accents, and integer pixel press displacement. [Read pack](taste-engine/styles/retro-pixel.md) · [CSS recipe](taste-engine/examples/retro-pixel/pixel-surfaces.css) · [Visual QA](taste-engine/tests/retro-pixel-visual.md)
 
-- **Bento Grid:** Strict asymmetric visual hierarchy (2x2 hero tile) and diverse internal tile compositions. [Read pack](taste-engine/styles/bento.md) · [CSS recipe](taste-engine/examples/bento/modular-grid.css)
+- **Brutalism (Raw & Bento):** Raw structural scaffolding, square corners, stark monochrome contrast, and immediate state flips. Features two native layout variants: **Raw** (exposed composition, deliberate visual tension) and **Bento** (modular grid composition with asymmetric panel spans while maintaining strict brutalist materials). [Read pack](taste-engine/styles/brutalism.md) · [CSS recipe](taste-engine/examples/brutalism/raw-surfaces.css)
 
 - **Swiss / Editorial:** Dramatic scale contrast (up to 72px headlines), 12-column grid, structural hairline rules, and section indexes. [Read pack](taste-engine/styles/swiss-editorial.md) · [CSS recipe](taste-engine/examples/swiss-editorial/grid-typography.css)
-
-- **Brutalism:** Raw structural scaffolding, square corners, stark monochrome contrast, and immediate state flips. [Read pack](taste-engine/styles/brutalism.md) · [CSS recipe](taste-engine/examples/brutalism/raw-surfaces.css)
 
 - **Minimalism & Data Cockpit:** Active intentional negative space, mathematical type calibration, hairline dividers, scannable tabular figures (`tabular-nums`), and high-density operational data cockpits (`⌘K`, floating docks, lateral inspectors). [Read pack](taste-engine/styles/minimalism.md) · [CSS recipe](taste-engine/examples/minimalism/clean-surfaces.css) · [Data cockpit recipe](taste-engine/examples/enterprise/data-cockpit.css)
 
@@ -97,7 +95,7 @@ git clone https://github.com/kennedys0/taste-engine.git
 
 cd taste-engine
 
-# Preview all 10 styles interactively in your browser with live Dark/Light mode toggle
+# Preview all 9 styles interactively in your browser with live Dark/Light mode toggle
 
 node bin/taste-engine.mjs gallery
 
@@ -142,7 +140,7 @@ npm link
 
 ### Tailwind CSS & shadcn/ui Presets
 
-Taste Engine includes official **Tailwind CSS presets** and **shadcn/ui theme variable overrides** across all 10 archetypes:
+Taste Engine includes official **Tailwind CSS presets** and **shadcn/ui theme variable overrides** across all 9 archetypes (with native layout variants):
 
 ```bash
 # Preview available presets (alias: taste-engine --preset)
@@ -200,14 +198,21 @@ The agent's host controls automatic skill discovery. Taste Engine provides a pre
 | --- | --- | --- |
 | **Claymorphism** | Sculpted, tactile surfaces, dual inner-shadow volumetric depth, and soft dimensional presence | [`examples/claymorphism/`](taste-engine/examples/claymorphism/sculpted-surfaces.css) |
 | **Glassmorphism** | Controlled translucency, layered frosting, and readable glass planes | [`examples/glassmorphism/`](taste-engine/examples/glassmorphism/frosted-surfaces.css) |
-| **Brutalism** | Direct typography, raw structural scaffolding, intentionally hard edges, and monochrome contrast | [`examples/brutalism/`](taste-engine/examples/brutalism/raw-surfaces.css) |
+| **Brutalism** | Direct typography, raw structural scaffolding, intentionally hard edges, and monochrome contrast. Features **Raw** and **Bento** layout variants | [`examples/brutalism/`](taste-engine/examples/brutalism/raw-surfaces.css) |
 | **Neo-brutalism** | Playful contrast, 2.5px solid black borders, hard unblurred offset shadows, and press displacement | [`examples/neo-brutalism/`](taste-engine/examples/neo-brutalism/pop-surfaces.css) |
 | **Minimalism** | Purposeful restraint, active intentional negative space, mathematical type hierarchy, and high-density operational data cockpits | [`examples/minimalism/`](taste-engine/examples/minimalism/clean-surfaces.css) |
 | **Swiss / Editorial** | Typographic rhythm, 12-column grids, dramatic scale contrast, and structural hairline rules | [`examples/swiss-editorial/`](taste-engine/examples/swiss-editorial/grid-typography.css) |
-| **Bento** | Asymmetric modular layout, strict visual weight hierarchy, and diverse internal tile compositions | [`examples/bento/`](taste-engine/examples/bento/modular-grid.css) |
 | **Skeuomorphism** | Physical metaphors, top-down specular bevels, multi-stop metallic reflections, and tactile hardware controls | [`examples/skeuomorphism/`](taste-engine/examples/skeuomorphism/tactile-controls.css) |
 | **Retro Terminal** | Console-inspired phosphor glow, static scanlines, ASCII frames, and monospace CLI prompts | [`examples/retro-terminal/`](taste-engine/examples/retro-terminal/crt-console.css) |
 | **Retro Pixel** | Nostalgic 8-bit/16-bit computing, desktop window chrome, stepped pixel bevels, and arcade accents | [`examples/retro-pixel/`](taste-engine/examples/retro-pixel/pixel-surfaces.css) |
+
+### Brutalism Layout Taxonomy & Bento Consolidation
+
+Bento Grid is consolidated into **Brutalism** as a native layout variant:
+- **Raw Brutalism (`variant: "raw"`, default):** Pure structural honesty, visible scaffolding, deliberate visual tension, zero card-boundary mandates, and high-contrast typography.
+- **Brutalist Bento (`variant: "bento"`):** Modular grid composition with diverse column/row spans and content prioritization, implemented strictly within brutalist physical laws (0px border-radius, 2px–3px solid borders, zero soft drop shadows, high-voltage signal accents `#ffde00` and `#ff3b30`).
+
+**Backward Compatibility:** Requests specifying `style: "bento"` or prompts mentioning "bento grid" are automatically resolved by the style probe to `style: "brutalism"` with `variant: "bento"`. Existing project configurations specifying `"style": "bento"` are transparently normalized to Brutalist Bento. Neo-Brutalism remains 100% independent and unaffected.
 
 A `custom` design direction is always allowed. Styles do not dictate page sections: the product's goals, content, and audience determine the page anatomy.
 
@@ -238,9 +243,9 @@ Read the [core skill](taste-engine/SKILL.md), [quality gates](taste-engine/refer
 
 │   ├── SKILL.md
 
-│   ├── styles/               # 10 independent aesthetic packs
+│   ├── styles/               # 9 independent aesthetic packs (with native layout variants)
 
-│   ├── examples/             # Production CSS recipes for all 10 styles
+│   ├── examples/             # Production CSS recipes for all 9 styles
 
 │   ├── references/           # SEO, anti-slop, motion, accessibility, engineering
 

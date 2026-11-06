@@ -21,7 +21,7 @@ class HeroPolicyTest(unittest.TestCase):
 
     def test_every_pack_and_standalone(self):
         registry = json.loads((ROOT / 'styles/registry.json').read_text(encoding='utf-8'))
-        self.assertEqual(len(registry['styles']), 10)
+        self.assertEqual(len(registry['styles']), 9)
         for style in registry['styles']:
             id = style['id']
             text = (ROOT / 'styles' / (id+'.md')).read_text(encoding='utf-8')

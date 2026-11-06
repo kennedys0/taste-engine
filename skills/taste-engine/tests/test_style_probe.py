@@ -23,29 +23,38 @@ scenarios=[
  ('Buat web bertema neo brutalism','neo-brutalism',[],'ready'),
  ('Buat web gaya skeumorphism','skeuomorphism',[],'ready'),
  ('dashboard with no clutter, in brutalism','brutalism',[],'ready'),
- ('not only glassmorphism but also clay','glassmorphism',[],'blend'),
- ('I hate glassmorphism, go with bento','bento',['glassmorphism'],'ready'),
- ('without a sign-up form, in minimalism','minimalism',[],'ready'),
- ('I dislike brutalism, choose minimalism','minimalism',['brutalism'],'ready'),
- ('I do not want skeuomorphism, in brutalism','brutalism',['skeuomorphism'],'ready'),
- ('I don’t want neo-brutalism, make it clean minimalism','minimalism',['neo-brutalism'],'ready'),
- ('saya gak mau claymorphism tapi brutalism','brutalism',['claymorphism'],'ready'),
- ('tidak mau retro-terminal dan benci glassmorphism, pilih swiss editorial','swiss-editorial',['retro-terminal','glassmorphism'],'ready'),
- ('tanpa glassmorphism, buat dengan neo brutalism','neo-brutalism',['glassmorphism'],'ready'),
- ('hindari skeuomorphism melainkan bento','bento',['skeuomorphism'],'ready'),
- ('Build a Retro Pixel portfolio','retro-pixel',[],'ready'),
- ('Create a pixel art landing page','retro-pixel',[],'ready'),
- ('Build a retro terminal','retro-terminal',[],'ready'),
- ('I want neo-brutalism, not pixel art','neo-brutalism',['retro-pixel'],'ready'),
- ('Do not use retro pixel design',None,['retro-pixel'],'needs-selection'),
- ('Buat web portfolio retro pixel','retro-pixel',[],'ready'),
- ('Buat website 8-bit ui','retro-pixel',[],'ready'),
- ('Build an enterprise B2B dashboard','minimalism',[],'ready'),
- ('Design a data-first console','minimalism',[],'ready'),
+ ('not only glassmorphism but also clay','glassmorphism',[],'blend',None),
+ ('I hate glassmorphism, go with bento','brutalism',['glassmorphism'],'ready','bento'),
+ ('without a sign-up form, in minimalism','minimalism',[],'ready',None),
+ ('I dislike brutalism, choose minimalism','minimalism',['brutalism'],'ready',None),
+ ('I do not want skeuomorphism, in brutalism','brutalism',['skeuomorphism'],'ready','raw'),
+ ('I don’t want neo-brutalism, make it clean minimalism','minimalism',['neo-brutalism'],'ready',None),
+ ('saya gak mau claymorphism tapi brutalism','brutalism',['claymorphism'],'ready','raw'),
+ ('tidak mau retro-terminal dan benci glassmorphism, pilih swiss editorial','swiss-editorial',['retro-terminal','glassmorphism'],'ready',None),
+ ('tanpa glassmorphism, buat dengan neo brutalism','neo-brutalism',['glassmorphism'],'ready',None),
+ ('hindari skeuomorphism melainkan bento','brutalism',['skeuomorphism'],'ready','bento'),
+ ('Build a Retro Pixel portfolio','retro-pixel',[],'ready',None),
+ ('Create a pixel art landing page','retro-pixel',[],'ready',None),
+ ('Build a retro terminal','retro-terminal',[],'ready',None),
+ ('I want neo-brutalism, not pixel art','neo-brutalism',['retro-pixel'],'ready',None),
+ ('Do not use retro pixel design',None,['retro-pixel'],'needs-selection',None),
+ ('Buat web portfolio retro pixel','retro-pixel',[],'ready',None),
+ ('Buat website 8-bit ui','retro-pixel',[],'ready',None),
+ ('Build an enterprise B2B dashboard','minimalism',[],'ready',None),
+ ('Design a data-first console','minimalism',[],'ready',None),
+ ('Build a brutalist bento grid landing page','brutalism',[],'ready','bento'),
+ ('Design a raw brutalist website','brutalism',[],'ready','raw'),
 ]
-for prompt,expected,excluded,status in scenarios:
+for item in scenarios:
+    if len(item) == 5:
+        prompt,expected,excluded,status,expected_variant = item
+    else:
+        prompt,expected,excluded,status = item
+        expected_variant = None
     result=mod.candidates(prompt,registry)
     assert result['primary_style']==expected,(prompt,result)
     assert result['excluded_styles']==excluded,(prompt,result)
     assert result['status']==status,(prompt,result)
+    if expected_variant is not None:
+        assert result['variant']==expected_variant,(prompt,result)
 print('PASS:',len(scenarios),'alias and exclusion scenarios')

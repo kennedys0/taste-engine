@@ -50,11 +50,19 @@ def candidates(prompt, registry):
 
     hits = []
     for style in registry['styles']:
+        variant_map = {}
+        if 'variants' in style:
+            for v in style['variants']:
+                v_names = [v['id'], v['label']] + v.get('aliases', [])
+                for v_raw in v_names:
+                    variant_map[normalize(v_raw)] = v['id']
+
         names = [style['id'], style['label']] + style.get('aliases', [])
         for raw in names:
             needle = normalize(raw)
             nwords = needle.split()
             if not nwords: continue
+            matched_variant = variant_map.get(needle, style.get('default_variant'))
             for i in range(len(words) - len(nwords) + 1):
                 if words[i:i+len(nwords)] != nwords: continue
                 # Look for negation within the current clause before the style match
@@ -64,7 +72,15 @@ def candidates(prompt, registry):
                         break
                     before.append(words[k])
                 negative = any(w in NEGATIONS for w in before)
-                hits.append({'style':style['id'],'start':i,'end':i+len(nwords),'length':len(nwords),'negative':negative,'alias':raw})
+                hits.append({
+                    'style': style['id'],
+                    'variant': matched_variant,
+                    'start': i,
+                    'end': i + len(nwords),
+                    'length': len(nwords),
+                    'negative': negative,
+                    'alias': raw
+                })
     hits.sort(key=lambda h:(-h['length'], h['start']))
     used=set(); resolved=[]
     for hit in hits:
@@ -78,7 +94,16 @@ def candidates(prompt, registry):
         dest=excluded if h['negative'] else positive
         if h['style'] not in dest: dest.append(h['style'])
     positive=[p for p in positive if p not in excluded]
-    return {'status':('ready' if len(positive)==1 else 'blend' if len(positive)>1 else 'needs-selection'), 'primary_style':positive[0] if positive else None,'secondary_styles':positive[1:],'excluded_styles':excluded,'style_matches':resolved}
+    primary_hit = next((h for h in resolved if not h['negative'] and h['style'] == positive[0]), None) if positive else None
+    primary_variant = primary_hit.get('variant') if primary_hit else None
+    return {
+        'status': ('ready' if len(positive)==1 else 'blend' if len(positive)>1 else 'needs-selection'),
+        'primary_style': positive[0] if positive else None,
+        'variant': primary_variant,
+        'secondary_styles': positive[1:],
+        'excluded_styles': excluded,
+        'style_matches': resolved
+    }
 
 
 def main():

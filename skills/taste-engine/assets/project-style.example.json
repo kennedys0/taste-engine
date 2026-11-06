@@ -2,6 +2,7 @@
   "schema_version": "1.0",
   "scope": "project",
   "primary_style": "brutalism",
+  "variant": "raw",
   "secondary_style": "swiss-editorial",
   "overrides": {
     "color": "Keep existing company red as the sole accent",

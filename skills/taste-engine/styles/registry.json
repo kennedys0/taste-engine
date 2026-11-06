@@ -42,15 +42,56 @@
     {
       "id": "brutalism",
       "label": "Brutalism",
-      "description": "Raw structural honesty, exposed layout scaffolding, unapologetic monochrome contrast, and zero cosmetic camouflage.",
+      "description": "Raw structural honesty, exposed layout scaffolding, unapologetic monochrome contrast, and zero cosmetic camouflage. Includes Raw Brutalism and Brutalist Bento layout variants.",
       "path": "styles/brutalism.md",
-      "recommended_for": "Experimental portfolios, art/culture, activist/editorial sites, distinctive landing pages.",
+      "recommended_for": "Experimental portfolios, art/culture, activist/editorial sites, distinctive landing pages, and modular architectural showcases.",
+      "default_variant": "raw",
+      "variants": [
+        {
+          "id": "raw",
+          "label": "Raw Brutalism",
+          "identity": "raw-brutalism",
+          "description": "Exposed structural scaffolding, stark monochrome authority, 0px square corners, and immediate state transitions.",
+          "aliases": [
+            "raw",
+            "raw brutalism",
+            "classic brutalism",
+            "architectural brutalism"
+          ]
+        },
+        {
+          "id": "bento",
+          "label": "Brutalist Bento",
+          "identity": "brutalist-bento",
+          "description": "Modular asymmetric grid composition with varied panel spans locked inside uncompromising brutalist structural borders.",
+          "aliases": [
+            "bento",
+            "bento grid",
+            "bento layout",
+            "bento ui",
+            "bento box",
+            "apple bento",
+            "brutalist bento",
+            "brutalist bento grid"
+          ]
+        }
+      ],
       "aliases": [
         "brutalist",
         "brutalisme",
         "brutalis",
         "raw brutalism",
-        "web brutalism"
+        "web brutalism",
+        "classic brutalism",
+        "architectural brutalism",
+        "bento",
+        "bento grid",
+        "bento layout",
+        "bento ui",
+        "bento box",
+        "apple bento",
+        "brutalist bento",
+        "brutalist bento grid"
       ]
     },
     {
@@ -107,18 +148,6 @@
         "international typographic style",
         "swiss editorial",
         "editorial swiss"
-      ]
-    },
-    {
-      "id": "bento",
-      "label": "Bento Grid",
-      "description": "Asymmetric modular card composition with strict visual weight hierarchy, diverse internal tile anatomy, and unified spatial rhythm.",
-      "path": "styles/bento.md",
-      "recommended_for": "Product overviews, portfolios, landing pages and feature discovery.",
-      "aliases": [
-        "bento grid",
-        "bento layout",
-        "bento ui"
       ]
     },
     {
