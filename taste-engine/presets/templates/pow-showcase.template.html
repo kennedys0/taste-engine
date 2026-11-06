@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{STYLE_NAME}} Proof-of-Work Showcase — Taste Engine</title>
   <meta name="description" content="Official interactive Proof-of-Work showcase for {{STYLE_NAME}} aesthetic in Taste Engine.">
+  <link rel="icon" type="image/webp" href="assets/logo.webp">
   <style>
     /* =========================================================
        TASTE ENGINE POW SHOWCASE PRESET THEME VARIABLES
@@ -93,6 +94,14 @@
       color: var(--pow-text);
       font-weight: 700;
       font-size: clamp(0.85rem, 2.5vw, 1rem);
+    }
+
+    .pow-brand-logo {
+      width: 22px;
+      height: 22px;
+      aspect-ratio: 1 / 1;
+      flex-shrink: 0;
+      object-fit: contain;
     }
 
     .pow-version-badge {
@@ -696,7 +705,7 @@
   <header class="pow-header">
     <div class="pow-container pow-header-inner">
       <a href="index.html" class="pow-brand">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="m10 15 5-3-5-3v6z"/></svg>
+        <img src="assets/logo.webp" alt="Taste Engine Logo" class="pow-brand-logo" width="22" height="22">
         <span>TASTE ENGINE</span>
         <span class="pow-version-badge">v0.12.0</span>
       </a>

@@ -19,7 +19,8 @@ graph TD
 ```
 
 1. **Sticky Navigation Header (`<header class="pow-header">` / `<nav>`):**
-   - Brand logo / icon with version badge (e.g., `v0.12.0`).
+   - Brand logo and icon sourced from `assets/logo.webp` (with `width: 24px; height: 24px; aspect-ratio: 1 / 1; flex-shrink: 0; object-fit: contain;`) paired with version badge (e.g., `v0.12.0` / `v0.13.0`).
+   - Page favicon declared in `<head>` via `<link rel="icon" type="image/webp" href="assets/logo.webp">`.
    - Symmetrical desktop action buttons (`36px` uniform height).
    - Theme toggle (light/dark switch) with centered SVG icon.
    - Mobile hamburger drawer trigger (`< 768px`) with accessible sliding drawer containing style selector links.
@@ -50,8 +51,8 @@ graph TD
    - 3 fundamental pillars of the aesthetic system (e.g., purposeful restraint, strict grid alignment, honest data density).
 7. **Canonical 10-Style Responsive Footer (`<footer class="pow-footer">`):**
    - Responsive multi-column grid (`repeat(auto-fit, minmax(200px, 1fr))`) — never stretched into a single tall column on desktop.
-   - Directory linking all 10 canonical Taste Engine styles (`Minimalism`, `Retro-Pixel`, `Claymorphism`, `Glassmorphism`, `Neo-Brutalism`, `Art Deco`, `Skeuomorphism`, `Editorial`, `Brutalism`, `Retro-Terminal`).
-   - Documentation links, Agent Skills CLI reference, copyright, and MIT license.
+   - Directory linking all 10 canonical Taste Engine styles (`Minimalism`, `Retro-Pixel`, `Claymorphism`, `Frutiger Aero`, `Neo-Brutalism`, `Art Deco`, `Swiss Editorial`, `Brutalism`, `Retro-Terminal`, `Y2K Futurism`).
+   - Brand column including `assets/logo.webp` alongside copyright, Agent Skills CLI reference, and MIT license.
 
 ---
 
@@ -86,13 +87,20 @@ graph TD
   1. Minimalism & Data Cockpit
   2. Retro-Pixel & 8-Bit
   3. Claymorphism
-  4. Glassmorphism
+  4. Frutiger Aero (Classic, Glass, Tactile)
   5. Neo-Brutalism
   6. Art Deco (Modern, Classic, Minimal)
-  7. Skeuomorphism
+  7. Y2K Futurism (Chrome, Holographic, Retro Tech)
   8. Swiss Editorial
   9. Brutalism (Raw & Bento layout variants)
   10. Retro-Terminal CRT
+
+### Invariant F: Asset Management (Logo & Brand Icon from Assets)
+- Showcases MUST link and display canonical brand assets from the repository's `assets/` directory (`docs/assets/`):
+  - **Favicon:** Every showcase declares `<link rel="icon" type="image/webp" href="assets/logo.webp">` in `<head>`.
+  - **Header Brand Icon:** Brand lockup includes the official logo `<img src="assets/logo.webp" alt="Taste Engine Logo" class="pow-brand-logo">` enforcing `width: 24px; height: 24px; aspect-ratio: 1 / 1; flex-shrink: 0; object-fit: contain;` alongside the text title.
+  - **Drawer & Footer Brand Presence:** Mobile drawer header and site footer brand column utilize `assets/logo.webp` to anchor visual recognition.
+  - **Workstation Fixtures:** When hardware illustrations or social preview cards are utilized, link `assets/computer.webp` or `assets/banner.webp` without broken relative paths.
 
 ---
 

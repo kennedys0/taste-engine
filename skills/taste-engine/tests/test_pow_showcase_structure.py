@@ -26,6 +26,15 @@ class TestPoWShowcaseStructure(unittest.TestCase):
         self.assertTrue(self.template_path.is_file(), "pow-showcase.template.html must exist")
         self.assertTrue(self.reference_path.is_file(), "pow-showcase-structure.md must exist")
 
+    def test_logo_and_brand_assets_contract(self):
+        ref_content = self.reference_path.read_text(encoding='utf-8')
+        self.assertIn('assets/logo.webp', ref_content)
+        self.assertIn('Invariant F: Asset Management', ref_content)
+        
+        template_content = self.template_path.read_text(encoding='utf-8')
+        self.assertIn('assets/logo.webp', template_content)
+        self.assertIn('pow-brand-logo', template_content)
+
     def test_template_contains_7_canonical_sections(self):
         content = self.template_path.read_text(encoding='utf-8')
         # Section 1: Header
