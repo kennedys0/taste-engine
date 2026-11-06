@@ -30,25 +30,49 @@ Don't merge entire files blindly. Create a component-level decision table, e.g. 
 | User writes | Routing |
 | --- | --- |
 | "clay" or "claymorphism" | `claymorphism` |
-| "glassmorphism" / "frosted glass" | `glassmorphism` |
+| "frutiger aero" / "aero" / "aqua" / "web 2.0" | `frutiger-aero` (variant: `classic`, default) |
+| "glassmorphism" / "frosted glass" | `frutiger-aero` (variant: `glass`) |
 | "brutalist" / "brutalism" | `brutalism` (variant: `raw`, default) |
 | "raw brutalism" | `brutalism` (variant: `raw`) |
 | "bento" / "bento grid" / "brutalist bento" | `brutalism` (variant: `bento`) |
 | "neubrutalism" / "neo brutalism" | `neo-brutalism` (independent) |
 | "minimalist" | `minimalism` |
 | "Swiss typography" / "editorial" | `swiss-editorial` |
-| "realistic physical controls" / "skeumorphsm" / "skeumorphism" / "skeuomorphic" | `skeuomorphism` |
+| "realistic physical controls" / "skeumorphsm" / "skeumorphism" / "skeuomorphic" | `frutiger-aero` (variant: `tactile`) |
 | "terminal" / "CLI aesthetic" | `retro-terminal` |
 | "retro pixel" / "pixel art" / "8-bit ui" / "retro desktop" | `retro-pixel` (distinct from `retro-terminal`) |
 | "art deco" / "art-deco" / "deco ui" / "deco style" | `art-deco` (variant: `modern`, default) |
 | "classic deco" / "gatsby style" / "vintage deco" | `art-deco` (variant: `classic`) |
 | "minimal deco" / "quiet deco" | `art-deco` (variant: `minimal`) |
+| "y2k" / "y2k futurism" / "cyber y2k" / "futurism" | `y2k-futurism` (variant: `chrome`, default) |
+| "chrome" / "liquid chrome" / "metallic silver" / "chrome ui" | `y2k-futurism` (variant: `chrome`) |
+| "holographic" / "holo" / "iridescent" / "spectral" | `y2k-futurism` (variant: `holographic`) |
+| "retro tech" / "retro-tech" / "speculative tech" / "cyber optimism" | `y2k-futurism` (variant: `retro-tech`) |
 | "enterprise dashboard" / "dense B2B" | `minimalism` (with high-density data cockpits) |
 | "modern" / "beautiful" | Ambiguous; offer choices |
 | "I have a screenshot" | Ask which parts matter if unclear; don't equate entire screenshot with approval |
 | "your choice" | Explicit delegation permits a reasoned, provisional choice; explain trade-off |
 | "no glassmorphism" | Negative constraint only; do **not** select glass |
 | "neo-brutalism" | Use longer alias, **not** `brutalism` |
+
+## Frutiger Aero taxonomy & backward compatibility
+
+Glassmorphism and Skeuomorphism are consolidated into Frutiger Aero as native visual expressions:
+- **Classic Aero** (`variant: classic`, default): Bright aqua-inspired palette, glossy dimensional controls, nature-tech balance, and optimistic mid-2000s technological vision.
+- **Aero Glass** (`variant: glass`): Preserves core Glassmorphism principles—frosted crystalline panels, layered transparency, controlled background blur, and soft luminous borders.
+- **Aero Tactile** (`variant: tactile`): Preserves core Skeuomorphism principles—physical material cues, tactile button surfaces, convincing highlights and shadows, and realistic surface depth.
+
+### Backward compatibility
+Legacy inputs and configurations specifying `style: glassmorphism` automatically resolve to:
+```yaml
+style: frutiger-aero
+variant: glass
+```
+Legacy inputs and configurations specifying `style: skeuomorphism` automatically resolve to:
+```yaml
+style: frutiger-aero
+variant: tactile
+```
 
 ## Brutalism taxonomy & backward compatibility
 
@@ -72,6 +96,15 @@ Art Deco is a unified architectural visual language with three native expression
 - **Minimal Deco** (`variant: minimal`): Quiet sophistication, subtle geometric accents, ivory canvas, deep burgundy and warm bronze tones, and high-density readability.
 
 All three expressions resolve under `style: art-deco` with their corresponding `variant`.
+
+## Y2K Futurism taxonomy & expressions
+
+Y2K Futurism is a cyber-optimistic and speculative technological visual language with three native expressions:
+- **Chrome** (`variant: chrome`, default): Polished metallic silver surfaces, high-contrast dark and light zones, chrome-beveled geometric framing, bold futuristic typography, and restrained electric violet or ice blue accents.
+- **Holographic** (`variant: holographic`): Iridescent accents, controlled spectral gradients, translucent colored layering, soft chromatic reflections, and experimental futuristic layouts without chaotic color clashes.
+- **Retro Tech** (`variant: retro-tech`): Early internet cyber-optimism, futuristic industrial typography, modular console panels, segmented status indicators, and speculative hardware references.
+
+All three expressions resolve under `style: y2k-futurism` with their corresponding `variant`.
 
 ## Persisted choices
 

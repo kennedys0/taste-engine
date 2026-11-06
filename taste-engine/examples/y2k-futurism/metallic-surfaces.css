@@ -1,0 +1,200 @@
+/**
+ * Taste Engine — Y2K Futurism Metallic & Chrome Surfaces Recipe
+ * Late-1990s and early-2000s cyber-optimism, polished chrome sheens, and iridescent accents.
+ */
+
+:root {
+  --taste-y2k-silver: #C5CBD3;
+  --taste-y2k-chrome: #F1F3F6;
+  --taste-y2k-chrome-light: #F1F3F6;
+  --taste-y2k-graphite: #252833;
+  --taste-y2k-violet: #8865DD;
+  --taste-y2k-ice: #8FCFE9;
+  --taste-y2k-pink: #E6ABD8;
+  --taste-y2k-space: #181821;
+
+  /* Surface tokens (Dark Mode Default for Y2K Futurism) */
+  --taste-y2k-bg: #181821;
+  --taste-y2k-surface: linear-gradient(145deg, #2A2E3D 0%, #1E202B 100%);
+  --taste-y2k-surface-solid: #212430;
+  --taste-y2k-border: 1px solid rgba(197, 203, 211, 0.35);
+  --taste-y2k-border-accent: 1px solid rgba(136, 101, 221, 0.5);
+  --taste-y2k-ink: #F1F3F6;
+  --taste-y2k-ink-muted: #9AA2B1;
+  --taste-y2k-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(241, 243, 246, 0.4);
+  --taste-y2k-radius: 6px;
+}
+
+[data-theme="light"],
+[data-y2k-theme="light"] {
+  --taste-y2k-bg: #F1F3F6;
+  --taste-y2k-surface: linear-gradient(145deg, #FFFFFF 0%, #E4E7ED 100%);
+  --taste-y2k-surface-solid: #FFFFFF;
+  --taste-y2k-border: 1px solid #C5CBD3;
+  --taste-y2k-border-accent: 1px solid #734BC7;
+  --taste-y2k-ink: #181821;
+  --taste-y2k-ink-muted: #565D6D;
+  --taste-y2k-shadow: 0 8px 24px rgba(0, 0, 0, 0.08), inset 0 1px 0 #FFFFFF;
+}
+
+/* =========================================================
+   1. SURFACES & CONTAINERS
+   ========================================================= */
+
+/* Chrome Metallic Panel */
+.taste-y2k-card {
+  background: var(--taste-y2k-surface);
+  border: var(--taste-y2k-border);
+  box-shadow: var(--taste-y2k-shadow);
+  border-radius: var(--taste-y2k-radius);
+  color: var(--taste-y2k-ink);
+  padding: 1.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+
+/* Holographic Accent Surface */
+.taste-y2k-card-holo {
+  background: linear-gradient(145deg, rgba(37, 40, 51, 0.9) 0%, rgba(24, 24, 33, 0.95) 100%);
+  border: 1px solid rgba(136, 101, 221, 0.5);
+  box-shadow: 0 10px 32px rgba(136, 101, 221, 0.15), inset 0 1px 1px rgba(143, 207, 233, 0.4);
+}
+
+[data-theme="light"] .taste-y2k-card-holo,
+[data-y2k-theme="light"] .taste-y2k-card-holo {
+  background: linear-gradient(145deg, #FFFFFF 0%, #F5F3FA 100%);
+  border: 1px solid rgba(115, 75, 199, 0.4);
+  box-shadow: 0 8px 24px rgba(115, 75, 199, 0.12), inset 0 1px 0 #FFFFFF;
+}
+
+/* Chamfered Technological Frame */
+.taste-y2k-frame {
+  clip-path: polygon(
+    0 8px, 8px 0,
+    calc(100% - 8px) 0, 100% 8px,
+    100% calc(100% - 8px), calc(100% - 8px) 100%,
+    8px 100%, 0 calc(100% - 8px)
+  );
+}
+
+/* =========================================================
+   2. INTERACTIVE CONTROLS
+   ========================================================= */
+
+/* Polished Chrome Button */
+.taste-y2k-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.5rem;
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #181821;
+  background: linear-gradient(180deg, #F1F3F6 0%, #C5CBD3 50%, #9DA5B2 100%);
+  border: 1px solid #FFFFFF;
+  border-radius: var(--taste-y2k-radius);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35), inset 0 1px 0 #FFFFFF;
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  user-select: none;
+  transition: transform 110ms ease, box-shadow 110ms ease, filter 110ms ease;
+}
+
+.taste-y2k-btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45), inset 0 1px 0 #FFFFFF;
+}
+
+.taste-y2k-btn:active {
+  transform: translateY(1.5px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25), inset 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* Electric Violet Accent Button */
+.taste-y2k-btn-violet {
+  background: linear-gradient(180deg, #9D7EF0 0%, #734BC7 50%, #5B35AB 100%);
+  color: #FFFFFF;
+  border: 1px solid #C4B1FB;
+  box-shadow: 0 4px 16px rgba(115, 75, 199, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.taste-y2k-btn-violet:hover {
+  box-shadow: 0 6px 20px rgba(115, 75, 199, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+/* Focus Visible Compliance */
+.taste-y2k-btn:focus-visible,
+a.taste-y2k-btn:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(136, 101, 221, 0.7), 0 0 12px rgba(143, 207, 233, 0.5);
+}
+
+/* Sunken Diagnostic Input */
+.taste-y2k-input {
+  width: 100%;
+  padding: 0.65rem 1rem;
+  font-family: inherit;
+  font-size: 0.9rem;
+  color: var(--taste-y2k-ink);
+  background: #151720;
+  border: 1px solid #3B4052;
+  border-radius: var(--taste-y2k-radius);
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.6), 0 1px 0 rgba(255, 255, 255, 0.1);
+  outline: none;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+[data-theme="light"] .taste-y2k-input,
+[data-y2k-theme="light"] .taste-y2k-input {
+  background: #FFFFFF;
+  border: 1px solid #C5CBD3;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.08), 0 1px 0 #FFFFFF;
+  color: #181821;
+}
+
+.taste-y2k-input:focus-visible {
+  border-color: var(--taste-y2k-violet);
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4), 0 0 0 3px rgba(136, 101, 221, 0.4);
+}
+
+/* Holographic Accent Pill Badge */
+.taste-y2k-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.65rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.725rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #181821;
+  background: linear-gradient(90deg, #8FCFE9 0%, #8865DD 50%, #E6ABD8 100%);
+  border-radius: 9999px;
+  box-shadow: 0 2px 8px rgba(136, 101, 221, 0.3);
+}
+
+/* =========================================================
+   3. ACCESSIBILITY & MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .taste-y2k-card,
+  .taste-y2k-btn,
+  .taste-y2k-input {
+    transition: none !important;
+    transform: none !important;
+  }
+}

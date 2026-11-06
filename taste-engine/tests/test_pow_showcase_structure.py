@@ -17,6 +17,8 @@ class TestPoWShowcaseStructure(unittest.TestCase):
         self.pixel_doc_path = self.project_root / 'docs' / 'retro-pixel.html'
         self.brutalism_doc_path = self.project_root / 'docs' / 'brutalism.html'
         self.art_deco_doc_path = self.project_root / 'docs' / 'art-deco.html'
+        self.aero_doc_path = self.project_root / 'docs' / 'frutiger-aero.html'
+        self.y2k_doc_path = self.project_root / 'docs' / 'y2k-futurism.html'
         registry_path = self.root / 'styles' / 'registry.json'
         self.registry = json.loads(registry_path.read_text(encoding='utf-8'))
 
@@ -109,6 +111,69 @@ class TestPoWShowcaseStructure(unittest.TestCase):
         self.assertIn('pow-footer-grid', content)
         # Verify 10-style links in footer
         self.assertIn('art-deco.html', content)
+
+    def test_frutiger_aero_pow_satisfies_contract(self):
+        if not self.aero_doc_path.is_file():
+            self.skipTest("docs/frutiger-aero.html not present")
+        content = self.aero_doc_path.read_text(encoding='utf-8')
+        # Section 1: Header
+        self.assertIn('pow-header', content)
+        # Section 2: Hero
+        self.assertIn('id="hero"', content)
+        self.assertIn('pow-hero', content)
+        # Section 3: Interactive Studio
+        self.assertIn('id="studio"', content)
+        self.assertIn('pow-studio', content)
+        self.assertIn('switchExpression', content)
+        # Section 4: Component Anatomy & Gates
+        self.assertIn('id="components"', content)
+        self.assertIn('pow-components', content)
+        # Section 5: Tabbed Terminal Installation
+        self.assertIn('id="install"', content)
+        self.assertIn('pow-install', content)
+        self.assertIn('tabbed-terminal-card', content)
+        self.assertIn('terminal-tab-bar', content)
+        self.assertIn('terminal-copy-btn', content)
+        self.assertIn('switchInstallTab', content)
+        self.assertIn('agent-support-strip', content)
+        # Section 6: Core Architectural Principles
+        self.assertIn('id="principles"', content)
+        self.assertIn('pow-principles', content)
+        # Section 7: Responsive Footer
+        self.assertIn('pow-footer', content)
+        self.assertIn('frutiger-aero.html', content)
+
+    def test_y2k_futurism_pow_satisfies_contract(self):
+        if not self.y2k_doc_path.is_file():
+            self.skipTest("docs/y2k-futurism.html not present")
+        content = self.y2k_doc_path.read_text(encoding='utf-8')
+        # Section 1: Header
+        self.assertIn('pow-header', content)
+        # Section 2: Hero
+        self.assertIn('id="hero"', content)
+        self.assertIn('pow-hero', content)
+        # Section 3: Interactive Studio
+        self.assertIn('id="studio"', content)
+        self.assertIn('pow-studio', content)
+        self.assertIn('switchExpression', content)
+        # Section 4: Component Anatomy & Gates
+        self.assertIn('id="components"', content)
+        self.assertIn('pow-components', content)
+        # Section 5: Tabbed Terminal Installation
+        self.assertIn('id="install"', content)
+        self.assertIn('pow-install', content)
+        self.assertIn('tabbed-terminal-card', content)
+        self.assertIn('terminal-tab-bar', content)
+        self.assertIn('terminal-copy-btn', content)
+        self.assertIn('switchInstallTab', content)
+        self.assertIn('agent-support-strip', content)
+        # Section 6: Core Architectural Principles
+        self.assertIn('id="principles"', content)
+        self.assertIn('pow-principles', content)
+        # Section 7: Responsive Footer
+        self.assertIn('pow-footer', content)
+        self.assertIn('pow-footer-grid', content)
+        self.assertIn('y2k-futurism.html', content)
 
     def test_brutalism_pow_satisfies_contract(self):
         if not self.brutalism_doc_path.is_file():

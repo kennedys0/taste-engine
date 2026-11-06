@@ -38,7 +38,8 @@ class ArtDecoFidelityTests(unittest.TestCase):
 
     def test_standalone_sync(self):
         canonical = (BASE / 'styles/art-deco.md').read_text(encoding='utf-8')
-        standalone_path = BASE.parent / 'optional-standalone-skills' / 'taste-style-art-deco' / 'SKILL.md'
+        project_root = BASE.parent if (BASE.parent / 'optional-standalone-skills').is_dir() else BASE.parents[1]
+        standalone_path = project_root / 'optional-standalone-skills' / 'taste-style-art-deco' / 'SKILL.md'
         self.assertTrue(standalone_path.is_file(), "Standalone skill must exist")
         standalone = standalone_path.read_text(encoding='utf-8')
         before_part = canonical.split('## Anti-slop: style-specific')[0].strip()

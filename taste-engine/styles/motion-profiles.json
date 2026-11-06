@@ -15,14 +15,15 @@
       ],
       "avoid": "bounce, overshoot, floating loops"
     },
-    "glassmorphism": {
-      "interaction": "Short surface opacity/translate transitions for revealing real layers; keep content contrast stable.",
-      "duration_ms": 180,
+    "frutiger-aero": {
+      "interaction": "Buoyant, tactile press with 120ms ease-out compression (translateY 1.5px) and specular highlight contraction; subtle upward dock float on hover.",
+      "duration_ms": 140,
       "allowed": [
-        "opacity",
-        "translate"
+        "scale",
+        "translate",
+        "opacity"
       ],
-      "avoid": "animating blur radius or continuous glow"
+      "avoid": "continuous floating bubble loops, spinning widgets, and delayed bouncy springs"
     },
     "brutalism": {
       "interaction": "Use immediate state flips by default (0ms) for Raw Brutalism; for Brutalist Bento modular tiles, use immediate or brief restrained transitions (0–100ms) that preserve structural stability.",
@@ -58,15 +59,6 @@
       ],
       "avoid": "word-by-word autoplay and gratuitous kinetic text"
     },
-    "skeuomorphism": {
-      "interaction": "Believable short travel of a physical control with strong immediate feedback.",
-      "duration_ms": 190,
-      "allowed": [
-        "translate",
-        "scale"
-      ],
-      "avoid": "slow springs, idle knob movement, decorative sounds"
-    },
     "retro-terminal": {
       "interaction": "Immediate state changes; optional skippable typing demo only when user asks.",
       "duration_ms": 0,
@@ -92,6 +84,15 @@
         "translate"
       ],
       "avoid": "constantly animated ornaments, excessive parallax, aggressive scroll effects, bounce and elastic transitions"
+    },
+    "y2k-futurism": {
+      "interaction": "Precise downward button displacement (1.5px) with immediate specular shadow response; subtle metallic border glint without distracting bounce.",
+      "duration_ms": 120,
+      "allowed": [
+        "translate",
+        "opacity"
+      ],
+      "avoid": "floating 3D globes, spinning ASCII skulls, heavy bounce, and endless glitch loops"
     }
   }
 }

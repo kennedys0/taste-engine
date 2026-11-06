@@ -15,7 +15,7 @@ project_root = root.parent
 # The distributed ZIP includes optional standalones; a normal installation only
 # contains taste-engine/. Validate cross-copy parity when siblings are present.
 standalone_bundle_present = (project_root / 'optional-standalone-skills').is_dir()
-required_references = ['references/responsive-baseline.md', 'references/anti-slop.md','references/anti-slop-copywriting.md','references/anti-slop-audit.md','tests/anti-slop.md', 'references/decision-system.md', 'references/quality-tiers.md', 'references/redesign-preservation.md', 'references/browser-validation.md', 'references/writing-calibration.md', 'references/research-notes.md', 'tests/research-acceptance.md', 'references/seo.md', 'references/seo-implementation.md', 'tests/seo-routing.md', 'references/motion-engine.md', 'tests/motion-routing.md', 'references/hero-layout.md', 'tests/hero-layout.md', 'tests/test_hero_policy.py', 'styles/motion-profiles.json', 'examples/react/anime-v4-press.jsx', 'references/engineering-router.md', 'references/web-interface-quality.md', 'references/react-performance.md', 'references/react-composition.md', 'references/native-mobile.md', 'references/view-transitions.md', 'references/docs-writing.md', 'references/vercel-research.md', 'tests/engineering-routing.md', 'tests/glassmorphism-visual.md', 'examples/glassmorphism/frosted-surfaces.css', 'tests/claymorphism-visual.md', 'examples/claymorphism/sculpted-surfaces.css', 'examples/neo-brutalism/pop-surfaces.css', 'examples/skeuomorphism/tactile-controls.css', 'examples/retro-terminal/crt-console.css', 'examples/swiss-editorial/grid-typography.css', 'examples/brutalism/raw-surfaces.css', 'examples/minimalism/clean-surfaces.css', 'tests/retro-pixel-visual.md', 'examples/retro-pixel/pixel-surfaces.css', 'tests/art-deco-visual.md', 'examples/art-deco/geometric-surfaces.css', 'references/tailwind-shadcn.md', 'presets/tailwind/tailwind.preset.js', 'presets/tailwind/taste-components.css', 'presets/shadcn/shadcn-themes.css', 'references/pow-showcase-structure.md', 'presets/templates/pow-showcase.template.html']
+required_references = ['references/responsive-baseline.md', 'references/anti-slop.md','references/anti-slop-copywriting.md','references/anti-slop-audit.md','tests/anti-slop.md', 'references/decision-system.md', 'references/quality-tiers.md', 'references/redesign-preservation.md', 'references/browser-validation.md', 'references/writing-calibration.md', 'references/research-notes.md', 'tests/research-acceptance.md', 'references/seo.md', 'references/seo-implementation.md', 'tests/seo-routing.md', 'references/motion-engine.md', 'tests/motion-routing.md', 'references/hero-layout.md', 'tests/hero-layout.md', 'tests/test_hero_policy.py', 'styles/motion-profiles.json', 'examples/react/anime-v4-press.jsx', 'references/engineering-router.md', 'references/web-interface-quality.md', 'references/react-performance.md', 'references/react-composition.md', 'references/native-mobile.md', 'references/view-transitions.md', 'references/docs-writing.md', 'references/vercel-research.md', 'tests/engineering-routing.md', 'tests/glassmorphism-visual.md', 'examples/glassmorphism/frosted-surfaces.css', 'tests/claymorphism-visual.md', 'examples/claymorphism/sculpted-surfaces.css', 'examples/neo-brutalism/pop-surfaces.css', 'examples/skeuomorphism/tactile-controls.css', 'examples/retro-terminal/crt-console.css', 'examples/swiss-editorial/grid-typography.css', 'examples/brutalism/raw-surfaces.css', 'examples/minimalism/clean-surfaces.css', 'tests/retro-pixel-visual.md', 'examples/retro-pixel/pixel-surfaces.css', 'tests/art-deco-visual.md', 'examples/art-deco/geometric-surfaces.css', 'tests/frutiger-aero-visual.md', 'examples/frutiger-aero/glossy-surfaces.css', 'tests/y2k-futurism-visual.md', 'examples/y2k-futurism/metallic-surfaces.css', 'references/tailwind-shadcn.md', 'presets/tailwind/tailwind.preset.js', 'presets/tailwind/taste-components.css', 'presets/shadcn/shadcn-themes.css', 'references/pow-showcase-structure.md', 'presets/templates/pow-showcase.template.html']
 for filename in required_references:
     if not (root / filename).is_file(): errors.append(f'missing anti-slop resource: {filename}')
 
@@ -36,14 +36,23 @@ for style in registry['styles']:
             errors.append(f'alias collision {raw!r}: {previous} vs {style["id"]}')
         seen_aliases[norm]=style['id']
 
-glass_style = (root / 'styles/glassmorphism.md').read_text(encoding='utf8')
-for phrase in ['Glass material fidelity gate', 'backdrop-filter', 'Frosted light', 'Smoked dark', 'first viewport', 'Explicit background gradient exception', 'radial-gradient']:
-    if phrase.lower() not in glass_style.lower():
-        errors.append(f'glassmorphism missing visible material requirement: {phrase}')
-css_source=(root/'examples/glassmorphism/frosted-surfaces.css').read_text(encoding='utf8')
-for phrase in ['backdrop-filter', 'background:', 'prefers-reduced-transparency', '@supports not']:
-    if phrase not in css_source:
-        errors.append(f'glass recipe missing {phrase}')
+aero_style = (root / 'styles/frutiger-aero.md').read_text(encoding='utf8')
+for phrase in ['Frutiger Aero material fidelity gate', 'specular', 'Classic Aero', 'Aero Glass', 'Aero Tactile', 'first viewport', 'Explicit Frutiger Aero material exception']:
+    if phrase.lower() not in aero_style.lower():
+        errors.append(f'frutiger-aero missing visible material requirement: {phrase}')
+aero_css_source = (root / 'examples/frutiger-aero/glossy-surfaces.css').read_text(encoding='utf8')
+for phrase in ['--taste-aero-aqua', '--taste-aero-ocean', '--taste-aero-leaf', 'backdrop-filter', 'prefers-reduced-motion', ':focus-visible']:
+    if phrase not in aero_css_source:
+        errors.append(f'frutiger-aero recipe missing {phrase}')
+
+y2k_style = (root / 'styles/y2k-futurism.md').read_text(encoding='utf8')
+for phrase in ['Y2K Futurism material fidelity gate', 'chrome', 'Chrome', 'Holographic', 'Retro Tech', 'first viewport', 'Explicit Y2K Futurism material exception']:
+    if phrase.lower() not in y2k_style.lower():
+        errors.append(f'y2k-futurism missing visible material requirement: {phrase}')
+y2k_css_source = (root / 'examples/y2k-futurism/metallic-surfaces.css').read_text(encoding='utf8')
+for phrase in ['--taste-y2k-silver', '--taste-y2k-chrome-light', '--taste-y2k-violet', 'prefers-reduced-motion', ':focus-visible']:
+    if phrase not in y2k_css_source:
+        errors.append(f'y2k recipe missing {phrase}')
 
 clay_style = (root / 'styles/claymorphism.md').read_text(encoding='utf8')
 for phrase in ['Clay material fidelity gate', 'dual inner shadow', 'first viewport', 'Explicit clay depth exception', 'inset', 'tactile']:

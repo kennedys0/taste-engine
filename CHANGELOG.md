@@ -2,6 +2,45 @@
 
 All notable changes to Taste Engine are documented here. Release tags use semantic versioning.
 
+## [0.13.0] - 2026-11-06
+
+### Added
+
+- **Phase A — Frutiger Aero Consolidation:**
+  - Consolidated Glassmorphism and Skeuomorphism into a single unified top-level design system: Frutiger Aero (`id: "frutiger-aero"`).
+  - **Three Native Expressions:**
+    - **Classic Aero (`variant: "classic"`, default):** Bright aqua-inspired palette (`#48BFD3`, `#247EA3`, `#70B981`, `#C9EDF8`, `#F4FAFC`), glossy surfaces, dual-gradient horizon curvature, and optimistic nature-tech harmony.
+    - **Aero Glass (`variant: "glass"`):** Frosted crystalline panels, layered transparency, controlled background blur, and soft luminous borders preserving core Glassmorphism design affordances.
+    - **Aero Tactile (`variant: "tactile"`):** Physical material cues, tactile button surfaces, convincing highlights/shadows, and realistic surface depth preserving core Skeuomorphism design affordances.
+  - **Backward Compatibility & Automatic Alias Routing:**
+    - Legacy requests specifying `style: "glassmorphism"` automatically resolve to `style: "frutiger-aero"` with `variant: "glass"`.
+    - Legacy requests specifying `style: "skeuomorphism"` automatically resolve to `style: "frutiger-aero"` with `variant: "tactile"`.
+    - `docs/glassmorphism.html` and `docs/skeuomorphism.html` upgraded to clean, accessible deep-linking redirects to `frutiger-aero.html#variant=glass` and `frutiger-aero.html#variant=tactile`.
+  - **Reference Recipe & Visual Acceptance:** Created `examples/frutiger-aero/glossy-surfaces.css`, `tests/frutiger-aero-visual.md`, and synchronized `optional-standalone-skills/taste-style-frutiger-aero/SKILL.md`.
+  - **Interactive Proof-of-Work Showcase (`docs/frutiger-aero.html`):** Built full 7-section PoW studio cockpit with live 3-expression switcher, 6 studio preview panes, FAQ accordion, light/dark mode, and mobile drawer.
+
+- **Phase B — Y2K Futurism Archetype Implementation (10 Canonical Styles):**
+  - Introduced Y2K Futurism (`id: "y2k-futurism"`) as the new 10th top-level archetype, capturing late-1990s and early-2000s cyber-optimism, polished chrome finishes, iridescent reflections, and chamfered geometric framing.
+  - **Three Native Expressions:**
+    - **Chrome (`variant: "chrome"`, default):** Polished metallic silver surfaces (`#C5CBD3`, `#F1F3F6`, `#252833`), high-contrast dark and light zones, chrome-beveled geometric framing, and bold futuristic typography.
+    - **Holographic (`variant: "holographic"`):** Iridescent accents, controlled spectral gradients (`#8FCFE9`, `#8865DD`, `#E6ABD8`), translucent colored layering, and soft chromatic reflections without rainbow text noise.
+    - **Retro Tech (`variant: "retro-tech"`):** Early internet cyber-optimism, futuristic industrial typography, modular console panels, and speculative hardware references.
+  - **Style Pack & Material Fidelity Gate:** Codified `styles/y2k-futurism.md` with mandatory screenshot-level acceptance gate requiring recognizable metallic chrome framing, restrained iridescent highlights, and WCAG AA 4.5:1 contrast. Formalized explicit Y2K chrome exception in `references/anti-slop.md`.
+  - **Production Recipe & Acceptance Tests:** Created `examples/y2k-futurism/metallic-surfaces.css`, `tests/y2k-futurism-visual.md`, and synchronized `optional-standalone-skills/taste-style-y2k-futurism/SKILL.md`.
+  - **Interactive Proof-of-Work Showcase (`docs/y2k-futurism.html`):** Built complete 7-section PoW studio page with live 3-expression switcher, 6 studio tabs (Landing Bay, Component Gallery, Telemetry Cockpit, Authentication, Editorial Reader, FAQ Accordion), tabbed installation matrix, and responsive 10-style footer.
+  - **Tailwind CSS & shadcn/ui Presets:** Added Y2K Futurism color tokens, box shadows, border radii, font families, and component classes (`.taste-y2k-card`, `.taste-y2k-btn`, etc.) to `presets/tailwind/tailwind.preset.js`, `presets/tailwind/taste-components.css`, and `presets/shadcn/shadcn-themes.css`.
+  - **Catalog Architecture Invariant:** Final catalog verified at **exactly 10 top-level styles**:
+    1. Claymorphism (`claymorphism`)
+    2. Frutiger Aero (`frutiger-aero`, including Classic, Glass, Tactile)
+    3. Brutalism (`brutalism`, including Raw & Bento)
+    4. Neo-Brutalism (`neo-brutalism`)
+    5. Minimalism (`minimalism`, including Enterprise)
+    6. Swiss Editorial (`swiss-editorial`)
+    7. Retro Terminal (`retro-terminal`)
+    8. Retro Pixel (`retro-pixel`)
+    9. Art Deco (`art-deco`, including Modern, Classic, Minimal)
+    10. Y2K Futurism (`y2k-futurism`, including Chrome, Holographic, Retro Tech)
+
 ## [0.12.0] - 2026-11-06
 
 ### Added

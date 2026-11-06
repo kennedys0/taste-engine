@@ -15,7 +15,7 @@ import unittest
 class TestBrutalismVariants(unittest.TestCase):
     def setUp(self):
         self.root = Path(__file__).resolve().parents[1]
-        self.project_root = self.root.parent
+        self.project_root = self.root.parent if (self.root.parent / 'optional-standalone-skills').is_dir() else self.root.parents[1]
         self.registry_path = self.root / 'styles' / 'registry.json'
         self.registry = json.loads(self.registry_path.read_text(encoding='utf-8'))
         self.styles_by_id = {s['id']: s for s in self.registry.get('styles', [])}
@@ -32,6 +32,8 @@ class TestBrutalismVariants(unittest.TestCase):
         self.assertIn('brutalism', self.styles_by_id, "brutalism must exist as a top-level style")
         self.assertIn('neo-brutalism', self.styles_by_id, "neo-brutalism must exist as an independent top-level style")
         self.assertIn('art-deco', self.styles_by_id, "art-deco must exist as a top-level style")
+        self.assertIn('frutiger-aero', self.styles_by_id, "frutiger-aero must exist as a top-level style")
+        self.assertIn('y2k-futurism', self.styles_by_id, "y2k-futurism must exist as a top-level style")
 
     def test_brutalism_variants_in_registry(self):
         brutalism = self.styles_by_id['brutalism']

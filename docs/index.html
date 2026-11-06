@@ -1709,6 +1709,42 @@
       border-color: #d8bc88;
     }
 
+    .aero-card-btn {
+      background: rgba(255, 255, 255, 0.4);
+      color: #173F61;
+      border: 1px solid rgba(36, 126, 163, 0.3);
+      padding: 3px 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.725rem;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 9999px;
+      transition: all 120ms ease;
+    }
+    .aero-card-btn.active, .aero-card-btn:hover {
+      background: #247EA3;
+      color: #FFFFFF;
+      border-color: #247EA3;
+    }
+
+    .y2k-card-btn {
+      background: rgba(255, 255, 255, 0.08);
+      color: #F1F3F6;
+      border: 1px solid rgba(197, 203, 211, 0.35);
+      padding: 3px 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.725rem;
+      font-weight: 700;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: all 120ms ease;
+    }
+    .y2k-card-btn.active, .y2k-card-btn:hover {
+      background: #8865DD;
+      color: #FFFFFF;
+      border-color: #8865DD;
+    }
+
     /* =========================================================
        STYLE 3: CLAYMORPHISM
        ========================================================= */
@@ -2534,17 +2570,17 @@
 
     <!-- Filter Buttons -->
     <nav class="filter-bar" aria-label="Style pack filters">
-      <button class="filter-chip active" data-filter="all">All Styles (10)</button>
+      <button class="filter-chip active" data-filter="all">All Styles</button>
       <button class="filter-chip" data-filter="art-deco">Art Deco</button>
       <button class="filter-chip" data-filter="brutalism">Brutalism</button>
       <button class="filter-chip" data-filter="claymorphism">Claymorphism</button>
-      <button class="filter-chip" data-filter="glassmorphism">Glassmorphism</button>
+      <button class="filter-chip" data-filter="frutiger-aero">Frutiger Aero</button>
       <button class="filter-chip" data-filter="minimalism">Minimalism</button>
       <button class="filter-chip" data-filter="neo-brutalism">Neo-Brutalism</button>
       <button class="filter-chip" data-filter="retro-terminal">Retro Terminal</button>
       <button class="filter-chip" data-filter="retro-pixel">Retro Pixel</button>
-      <button class="filter-chip" data-filter="skeuomorphism">Skeuomorphism</button>
       <button class="filter-chip" data-filter="swiss-editorial">Swiss Editorial</button>
+      <button class="filter-chip" data-filter="y2k-futurism">Y2K Futurism</button>
     </nav>
 
     <!-- 10 Showcase Cards -->
@@ -2670,24 +2706,58 @@
       </div>
     </article>
 
-    <!-- 4. GLASSMORPHISM -->
-    <article class="showcase-card" data-style="glassmorphism">
+    <!-- 4. FRUTIGER AERO (Classic, Glass & Tactile Expressions) -->
+    <article class="showcase-card" data-style="frutiger-aero">
       <div class="showcase-header">
         <div class="showcase-title-group">
-          <h2>Glassmorphism</h2>
-          <span class="showcase-signature">Translucent frosted planes filtering ambient lighting</span>
+          <h2>Frutiger Aero</h2>
+          <span class="showcase-signature">Optimistic gloss, nature-tech harmony, Classic, Glass &amp; Tactile</span>
         </div>
         <div class="showcase-actions">
-          <a href="glassmorphism.html" class="pow-link-btn">PoW Guide &rarr;</a>
-          <button class="copy-token-btn" data-tokens="--taste-glass-blur: 18px; --taste-glass-surface: rgba(22, 28, 45, 0.55); --taste-glass-text: #f8fafc; --taste-glass-edge: rgba(255, 255, 255, 0.15);">Copy Tokens</button>
+          <a href="frutiger-aero.html" class="pow-link-btn">PoW Guide &rarr;</a>
+          <button class="copy-token-btn" data-tokens="--taste-aero-aqua: #48BFD3; --taste-aero-ocean: #247EA3; --taste-aero-leaf: #70B981; --taste-aero-sky: #C9EDF8; --taste-aero-cloud: #F4FAFC; --taste-aero-deep-blue: #173F61; --taste-aero-border: 1px solid rgba(255,255,255,0.85); --taste-aero-radius: 16px;">Copy Tokens</button>
         </div>
       </div>
       <div class="showcase-body">
-        <div class="glass-scene">
-          <div class="glass-pane">
-            <h3 style="font-size: 1.15rem; font-weight: 700; margin-bottom: 0.25rem;">Frosted Glass Surface</h3>
-            <p style="font-size: 0.85rem; opacity: 0.85; margin-bottom: 1rem;">Visibly filtering the differentiated ambient light field behind this panel.</p>
-            <button class="glass-btn">Explore Ambient →</button>
+        <div class="aero-wrapper" style="background: linear-gradient(180deg, #F4FAFC 0%, #DCEFF7 50%, #C9EDF8 100%); border: 1px solid rgba(255, 255, 255, 0.85); border-radius: 16px; padding: 1.25rem; color: #173F61; font-family: 'Plus Jakarta Sans', sans-serif; position: relative; box-shadow: 0 10px 28px rgba(36, 126, 163, 0.16);">
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(36, 126, 163, 0.15); padding-bottom: 0.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.4rem;">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 800; color: #247EA3;">EXPR:</span>
+              <button class="aero-card-btn active" data-expr="classic" onclick="switchAeroCardVariant(this, 'classic')">Classic</button>
+              <button class="aero-card-btn" data-expr="glass" onclick="switchAeroCardVariant(this, 'glass')">Glass</button>
+              <button class="aero-card-btn" data-expr="tactile" onclick="switchAeroCardVariant(this, 'tactile')">Tactile</button>
+            </div>
+            <span style="font-size: 0.68rem; font-weight: 800; color: #247EA3; border: 1px solid #247EA3; padding: 1px 5px; border-radius: 4px;">AERO 2000s</span>
+          </div>
+
+          <!-- Classic View -->
+          <div class="aero-card-view aero-view-classic">
+            <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.35rem; color: #173F61;">Luminous Aqua &amp; Gloss</h3>
+            <p style="font-size: 0.825rem; color: #4B6B88; margin-bottom: 1rem;">Nature-tech optimism with top-half specular horizon sheens and convex action pills.</p>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <a href="frutiger-aero.html" class="pow-btn-cta" style="padding: 6px 14px; font-size: 0.75rem; text-decoration: none;">Launch Suite &rarr;</a>
+              <span style="font-size: 0.725rem; font-weight: 700; color: #70B981;">&#x2714; WCAG AA 4.5:1</span>
+            </div>
+          </div>
+
+          <!-- Glass View -->
+          <div class="aero-card-view aero-view-glass" style="display: none;">
+            <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.35rem; color: #173F61;">Crystalline Aero Glass</h3>
+            <p style="font-size: 0.825rem; color: #4B6B88; margin-bottom: 1rem;">Frosted 24px backdrop blur filtering atmospheric sky and ocean light with 1px highlights.</p>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <a href="frutiger-aero.html#variant=glass" class="pow-btn-cta" style="background: rgba(255,255,255,0.65); color: #173F61; border: 1px solid rgba(255,255,255,0.85); padding: 6px 14px; font-size: 0.75rem; text-decoration: none;">Refract Light</a>
+              <span style="font-size: 0.725rem; font-weight: 700; color: #247EA3;">Preserves Glassmorphism</span>
+            </div>
+          </div>
+
+          <!-- Tactile View -->
+          <div class="aero-card-view aero-view-tactile" style="display: none;">
+            <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.35rem; color: #173F61;">Tactile Button Depression</h3>
+            <p style="font-size: 0.825rem; color: #4B6B88; margin-bottom: 1rem;">Convex button planes with 1.5px mechanical travel and recessed sunken wells.</p>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <a href="frutiger-aero.html#variant=tactile" class="pow-btn-cta" style="background: linear-gradient(180deg, #FFFFFF 0%, #DCEFF7 100%); color: #173F61; border: 1px solid #B8D8E6; padding: 6px 14px; font-size: 0.75rem; box-shadow: 0 4px 10px rgba(0,0,0,0.12), inset 0 1px 0 #FFF; text-decoration: none;">Depress Switch</a>
+              <span style="font-size: 0.725rem; font-weight: 700; color: #247EA3;">Preserves Skeuomorphism</span>
+            </div>
           </div>
         </div>
       </div>
@@ -2773,39 +2843,7 @@
       </div>
     </article>
 
-    <!-- 9. SKEUOMORPHISM -->
-    <article class="showcase-card" data-style="skeuomorphism">
-      <div class="showcase-header">
-        <div class="showcase-title-group">
-          <h2>Skeuomorphism</h2>
-          <span class="showcase-signature">Tactile hardware unibody, dual opposite light physics, extruded controls</span>
-        </div>
-        <div class="showcase-actions">
-          <a href="skeuomorphism.html" class="pow-link-btn">PoW Guide &rarr;</a>
-          <button class="copy-token-btn" data-tokens="--taste-skeuo-chassis-dark: #1a1d23; --taste-skeuo-chassis-light: #e0e5ec; --taste-skeuo-surface-extruded: -6px -6px 16px rgba(255,255,255,0.95), 6px 6px 16px rgba(163,177,198,0.6); --taste-skeuo-well-inset: inset 5px 5px 12px rgba(163,177,198,0.65), inset -5px -5px 12px rgba(255,255,255,0.95);">Copy Tokens</button>
-        </div>
-      </div>
-      <div class="showcase-body">
-        <div class="skeuo-wrapper">
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.75rem;">
-            <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em;">Analog Rack Console</span>
-            <span style="display: flex; align-items: center; font-size: 0.75rem; font-weight: 600;"><span class="skeuo-led"></span>PWR ACTIVE</span>
-          </div>
-          <div class="skeuo-well-box" style="margin-bottom: 1rem; padding: 0.75rem 1rem;">
-            <div style="display: flex; justify-content: space-between; align-items: center; font-family: monospace; font-size: 0.75rem;">
-              <span>GAIN: +12.4 dB</span>
-              <span style="color: #10b981; font-weight: 700;">STATUS: NOMINAL</span>
-            </div>
-          </div>
-          <div style="display: flex; gap: 0.65rem; align-items: center; justify-content: space-between;">
-            <button class="skeuo-btn">Engage Relay</button>
-            <span style="font-size: 0.725rem; opacity: 0.8; font-weight: 600;">Single-plane tactile unibody</span>
-          </div>
-        </div>
-      </div>
-    </article>
-
-    <!-- 10. SWISS / EDITORIAL -->
+    <!-- 7. RETRO TERMINAL -->
     <article class="showcase-card" data-style="swiss-editorial">
       <div class="showcase-header">
         <div class="showcase-title-group">
@@ -2955,6 +2993,64 @@
             </div>
             <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
               <a href="art-deco.html" class="deco-btn" style="background: #8a4e58; color: #ffffff; padding: 6px 14px; font-weight: 800; font-size: 0.75rem; text-decoration: none; border: 1px solid #8a4e58; display: inline-flex; align-items: center; cursor: pointer;">EXPLORE MINIMAL &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 10. Y2K FUTURISM (Chrome, Holographic & Retro Tech Expressions) -->
+    <article class="showcase-card" data-style="y2k-futurism">
+      <div class="showcase-header">
+        <div class="showcase-title-group">
+          <h2>Y2K Futurism</h2>
+          <span class="showcase-signature">Polished chrome, iridescent reflections, Chrome, Holographic &amp; Retro Tech</span>
+        </div>
+        <div class="showcase-actions">
+          <a href="y2k-futurism.html" class="pow-link-btn">PoW Guide &rarr;</a>
+          <button class="copy-token-btn" data-tokens="--taste-y2k-silver: #C5CBD3; --taste-y2k-chrome: #F1F3F6; --taste-y2k-graphite: #252833; --taste-y2k-violet: #8865DD; --taste-y2k-ice: #8FCFE9; --taste-y2k-border: 1px solid rgba(197,203,211,0.35); --taste-y2k-radius: 6px;">Copy Tokens</button>
+        </div>
+      </div>
+      <div class="showcase-body">
+        <div class="y2k-wrapper" style="background: linear-gradient(135deg, #2E3344 0%, #1E202B 100%); border: 1px solid rgba(197, 203, 211, 0.35); border-radius: 8px; padding: 1.25rem; color: #F1F3F6; font-family: 'Plus Jakarta Sans', sans-serif; position: relative; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(241, 243, 246, 0.4);">
+          <!-- Expression Switcher -->
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 1rem; border-bottom: 1px solid rgba(197, 203, 211, 0.2); padding-bottom: 0.5rem;">
+            <div style="display: flex; align-items: center; gap: 0.4rem;">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 800; color: #8865DD;">EXPR:</span>
+              <button class="y2k-card-btn active" data-expr="chrome" onclick="switchY2KCardVariant(this, 'chrome')">Chrome</button>
+              <button class="y2k-card-btn" data-expr="holographic" onclick="switchY2KCardVariant(this, 'holographic')">Holographic</button>
+              <button class="y2k-card-btn" data-expr="retro-tech" onclick="switchY2KCardVariant(this, 'retro-tech')">Retro Tech</button>
+            </div>
+            <span style="font-size: 0.68rem; font-weight: 800; color: #8FCFE9; border: 1px solid #8FCFE9; padding: 1px 5px; border-radius: 4px;">CYBER 2000s</span>
+          </div>
+
+          <!-- Chrome View -->
+          <div class="y2k-card-view y2k-view-chrome">
+            <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.35rem; color: #F1F3F6; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase;">Liquid Chrome Core</h3>
+            <p style="font-size: 0.825rem; color: #9AA2B1; margin-bottom: 1rem;">Multi-stop metallic linear gradients with bright specular highlights simulating extruded aluminum.</p>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <a href="y2k-futurism.html" class="pow-btn-cta" style="background: linear-gradient(180deg, #F1F3F6 0%, #C5CBD3 50%, #9DA5B2 100%); color: #181821; border: 1px solid #FFFFFF; padding: 6px 14px; font-size: 0.75rem; text-decoration: none; font-weight: 800; border-radius: 4px;">Initialize Core &rarr;</a>
+              <span style="font-size: 0.725rem; font-weight: 700; color: #8FCFE9;">&#x2714; WCAG AA 4.5:1</span>
+            </div>
+          </div>
+
+          <!-- Holographic View -->
+          <div class="y2k-card-view y2k-view-holographic" style="display: none;">
+            <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.35rem; color: #E6ABD8; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase;">Spectral Iridescence</h3>
+            <p style="font-size: 0.825rem; color: #9AA2B1; margin-bottom: 1rem;">Restrained violet and ice-blue spectral highlights on translucent metallic layers.</p>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <a href="y2k-futurism.html" class="pow-btn-cta" style="background: linear-gradient(90deg, #8FCFE9 0%, #8865DD 50%, #E6ABD8 100%); color: #181821; border: 1px solid rgba(255,255,255,0.8); padding: 6px 14px; font-size: 0.75rem; text-decoration: none; font-weight: 800; border-radius: 4px;">Refract Spectral</a>
+              <span style="font-size: 0.725rem; font-weight: 700; color: #8865DD;">Holo Accents</span>
+            </div>
+          </div>
+
+          <!-- Retro Tech View -->
+          <div class="y2k-card-view y2k-view-retro-tech" style="display: none;">
+            <h3 style="font-size: 1.15rem; font-weight: 800; margin-bottom: 0.35rem; color: #8FCFE9; font-family: 'Space Grotesk', sans-serif; text-transform: uppercase;">Orbital Telemetry</h3>
+            <p style="font-size: 0.825rem; color: #9AA2B1; margin-bottom: 1rem;">Structured console modules, high-density monospace readouts, and speculative hardware framing.</p>
+            <div style="display: flex; gap: 0.5rem; align-items: center;">
+              <a href="y2k-futurism.html" class="pow-btn-cta" style="background: #1C1E26; color: #8FCFE9; border: 1px solid #3B4052; padding: 6px 14px; font-size: 0.75rem; text-decoration: none; font-weight: 800; border-radius: 4px;">Sync Telemetry</a>
+              <span style="font-size: 0.725rem; font-weight: 700; color: #8FCFE9;">Console Grid</span>
             </div>
           </div>
         </div>
@@ -3517,14 +3613,14 @@ npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism</code></
         <ul>
           <li><a href="neo-brutalism.html">Neo-Brutalism (PoW)</a></li>
           <li><a href="claymorphism.html">Claymorphism (PoW)</a></li>
-          <li><a href="glassmorphism.html">Glassmorphism (PoW)</a></li>
+          <li><a href="frutiger-aero.html">Frutiger Aero (PoW)</a></li>
           <li><a href="minimalism.html">Minimalism (PoW)</a></li>
           <li><a href="retro-terminal.html">Retro Terminal (PoW)</a></li>
           <li><a href="retro-pixel.html">Retro Pixel (PoW)</a></li>
-          <li><a href="skeuomorphism.html">Skeuomorphism (PoW)</a></li>
           <li><a href="swiss-editorial.html">Swiss Editorial (PoW)</a></li>
           <li><a href="brutalism.html">Brutalism (Raw & Bento) (PoW)</a></li>
           <li><a href="art-deco.html">Art Deco Architecture (PoW)</a></li>
+          <li><a href="y2k-futurism.html">Y2K Futurism (PoW)</a></li>
         </ul>
       </div>
 
@@ -3665,6 +3761,26 @@ npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism</code></
       if (target) target.style.display = 'block';
     }
     window.switchArtDecoCardVariant = switchArtDecoCardVariant;
+
+    function switchAeroCardVariant(btn, variant) {
+      const card = btn.closest('.showcase-card');
+      card.querySelectorAll('.aero-card-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      card.querySelectorAll('.aero-card-view').forEach(v => v.style.display = 'none');
+      const target = card.querySelector('.aero-view-' + variant);
+      if (target) target.style.display = 'block';
+    }
+    window.switchAeroCardVariant = switchAeroCardVariant;
+
+    function switchY2KCardVariant(btn, variant) {
+      const card = btn.closest('.showcase-card');
+      card.querySelectorAll('.y2k-card-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      card.querySelectorAll('.y2k-card-view').forEach(v => v.style.display = 'none');
+      const target = card.querySelector('.y2k-view-' + variant);
+      if (target) target.style.display = 'block';
+    }
+    window.switchY2KCardVariant = switchY2KCardVariant;
 
     const filterChips = document.querySelectorAll('.filter-chip');
     const cards = document.querySelectorAll('.showcase-card');

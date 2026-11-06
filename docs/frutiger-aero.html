@@ -1,0 +1,1886 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Frutiger Aero Proof of Work & Design System — Taste Engine</title>
+  <meta name="description" content="Dedicated Proof of Work and interactive showcase for Taste Engine's Frutiger Aero aesthetic archetype. Experience optimistic mid-2000s gloss, nature-tech harmony, luminous aqua depth, and tactile physical feedback.">
+  <meta name="theme-color" content="#48BFD3">
+  <link rel="canonical" href="https://kennedys0.github.io/taste-engine/frutiger-aero.html">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kennedys0.github.io/taste-engine/frutiger-aero.html">
+  <meta property="og:title" content="Frutiger Aero Proof of Work & Design System — Taste Engine">
+  <meta property="og:description" content="Dedicated Proof of Work and interactive showcase for Taste Engine's Frutiger Aero aesthetic archetype. Experience optimistic mid-2000s gloss, nature-tech harmony, luminous aqua depth, and tactile physical feedback.">
+  <meta property="og:image" content="https://kennedys0.github.io/taste-engine/assets/banner.webp">
+  <meta property="og:site_name" content="Taste Engine">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Frutiger Aero Proof of Work & Design System — Taste Engine">
+  <meta name="twitter:description" content="Dedicated Proof of Work and interactive showcase for Taste Engine's Frutiger Aero aesthetic archetype. Experience optimistic mid-2000s gloss, nature-tech harmony, luminous aqua depth, and tactile physical feedback.">
+  <meta name="twitter:image" content="https://kennedys0.github.io/taste-engine/assets/banner.webp">
+
+  <!-- Google Fonts: Humanist and Modern Sans-Serif -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =========================================================
+       FRUTIGER AERO DESIGN SYSTEM TOKENS & BASE
+       ========================================================= */
+    :root {
+      --pow-aqua: #48BFD3;
+      --pow-ocean: #247EA3;
+      --pow-leaf: #70B981;
+      --pow-leaf-dark: #4E9B60;
+      --pow-sky: #C9EDF8;
+      --pow-cloud: #F4FAFC;
+      --pow-deep-blue: #173F61;
+      --pow-charcoal: #243642;
+
+      /* Dynamic Theme Variables (Light Mode Default) */
+      --pow-bg: #F4FAFC;
+      --pow-bg-gradient: linear-gradient(180deg, #F4FAFC 0%, #DCEFF7 40%, #C9EDF8 100%);
+      --pow-surface: rgba(255, 255, 255, 0.78);
+      --pow-surface-solid: #FFFFFF;
+      --pow-surface-elevated: rgba(255, 255, 255, 0.9);
+      --pow-text: #173F61;
+      --pow-text-muted: #4B6B88;
+      --pow-border: 1px solid rgba(255, 255, 255, 0.85);
+      --pow-border-strong: 1px solid rgba(36, 126, 163, 0.35);
+      --pow-accent: #48BFD3;
+      --pow-accent-secondary: #70B981;
+      --pow-shadow: 0 10px 28px rgba(36, 126, 163, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+      --pow-dock-shadow: 0 12px 32px rgba(36, 126, 163, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+      --pow-radius: 16px;
+      --pow-btn-h: 36px;
+      --pow-font-display: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --pow-font-body: 'Plus Jakarta Sans', system-ui, sans-serif;
+      --pow-font-mono: 'JetBrains Mono', monospace;
+    }
+
+    [data-theme="dark"] {
+      --pow-bg: #0B1926;
+      --pow-bg-gradient: linear-gradient(180deg, #0B1926 0%, #12263A 40%, #173F61 100%);
+      --pow-surface: rgba(20, 42, 64, 0.72);
+      --pow-surface-solid: #142A40;
+      --pow-surface-elevated: rgba(26, 52, 78, 0.85);
+      --pow-text: #F4FAFC;
+      --pow-text-muted: #9BB8CD;
+      --pow-border: 1px solid rgba(255, 255, 255, 0.2);
+      --pow-border-strong: 1px solid rgba(86, 210, 232, 0.4);
+      --pow-accent: #56D2E8;
+      --pow-accent-secondary: #82D898;
+      --pow-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      --pow-dock-shadow: 0 14px 36px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    }
+
+    /* Reset & Base Scaffolding */
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--pow-bg);
+      background-image: var(--pow-bg-gradient);
+      background-attachment: fixed;
+      color: var(--pow-text);
+      font-family: var(--pow-font-body);
+      font-size: 1rem;
+      line-height: 1.55;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      transition: background 200ms ease, color 200ms ease;
+    }
+
+    a {
+      color: var(--pow-ocean);
+      text-decoration: none;
+      transition: color 150ms ease;
+    }
+
+    [data-theme="dark"] a {
+      color: var(--pow-accent);
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Focus Visibility Contract */
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(72, 191, 211, 0.65), 0 0 12px rgba(72, 191, 211, 0.5);
+    }
+
+    /* Container */
+    .pow-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* =========================================================
+       SECTION 1: STICKY NAVIGATION HEADER
+       ========================================================= */
+    .pow-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--pow-surface);
+      backdrop-filter: blur(16px) saturate(140%);
+      -webkit-backdrop-filter: blur(16px) saturate(140%);
+      border-bottom: var(--pow-border);
+      box-shadow: 0 4px 16px rgba(36, 126, 163, 0.08);
+      height: 60px;
+      display: flex;
+      align-items: center;
+    }
+
+    .pow-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .pow-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-weight: 800;
+      font-size: clamp(0.95rem, 2.5vw, 1.15rem);
+      color: var(--pow-text);
+      text-decoration: none;
+    }
+
+    .pow-brand-orb {
+      width: 26px;
+      height: 26px;
+      aspect-ratio: 1 / 1;
+      flex-shrink: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #70B981 0%, #48BFD3 50%, #247EA3 100%);
+      box-shadow: 0 2px 8px rgba(72, 191, 211, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.6);
+    }
+
+    .pow-version-badge {
+      font-family: var(--pow-font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      background: rgba(72, 191, 211, 0.15);
+      color: var(--pow-ocean);
+      border: 1px solid rgba(72, 191, 211, 0.35);
+      border-radius: 9999px;
+      padding: 0.15rem 0.5rem;
+    }
+
+    [data-theme="dark"] .pow-version-badge {
+      color: var(--pow-accent);
+      background: rgba(86, 210, 232, 0.15);
+      border-color: rgba(86, 210, 232, 0.35);
+    }
+
+    .pow-header-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pow-nav-link {
+      height: var(--pow-btn-h);
+      display: inline-flex;
+      align-items: center;
+      padding: 0 0.85rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--pow-text-muted);
+      border-radius: 9999px;
+      transition: all 120ms ease;
+    }
+
+    .pow-nav-link:hover {
+      color: var(--pow-text);
+      background: rgba(72, 191, 211, 0.12);
+      text-decoration: none;
+    }
+
+    .pow-btn-h36 {
+      height: var(--pow-btn-h);
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 1rem;
+      font-size: 0.825rem;
+      font-weight: 700;
+      border-radius: 9999px;
+      cursor: pointer;
+      border: var(--pow-border);
+      background: var(--pow-surface);
+      color: var(--pow-text);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+      transition: all 120ms ease;
+    }
+
+    .pow-btn-h36:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      text-decoration: none;
+    }
+
+    .pow-icon-btn {
+      width: var(--pow-btn-h);
+      height: var(--pow-btn-h);
+      aspect-ratio: 1 / 1;
+      flex-shrink: 0;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      cursor: pointer;
+      border: var(--pow-border);
+      background: var(--pow-surface);
+      color: var(--pow-text);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+      transition: all 120ms ease;
+    }
+
+    .pow-icon-btn:hover {
+      transform: translateY(-1px);
+      filter: brightness(1.05);
+    }
+
+    /* Mobile Hamburger Trigger & Drawer (< 768px) */
+    .pow-menu-trigger {
+      display: none;
+    }
+
+    .pow-drawer-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(11, 25, 38, 0.65);
+      backdrop-filter: blur(8px);
+      z-index: 200;
+      opacity: 0;
+      transition: opacity 200ms ease;
+    }
+
+    .pow-drawer-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 82%;
+      max-width: 320px;
+      height: 100%;
+      background: var(--pow-bg);
+      border-left: var(--pow-border);
+      box-shadow: -8px 0 28px rgba(0, 0, 0, 0.3);
+      padding: 1.5rem;
+      transform: translateX(100%);
+      transition: transform 250ms ease;
+      display: flex;
+      flex-direction: column;
+      z-index: 210;
+      overflow-y: auto;
+    }
+
+    .pow-drawer-panel.open {
+      transform: translateX(0);
+    }
+
+    .pow-drawer-overlay.open {
+      display: block;
+      opacity: 1;
+    }
+
+    .pow-drawer-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: var(--pow-border);
+    }
+
+    .pow-drawer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .pow-drawer-link {
+      display: flex;
+      align-items: center;
+      padding: 0.65rem 0.85rem;
+      border-radius: 10px;
+      font-weight: 600;
+      color: var(--pow-text);
+    }
+
+    .pow-drawer-link:hover {
+      background: rgba(72, 191, 211, 0.15);
+      text-decoration: none;
+    }
+
+    /* =========================================================
+       SECTION 2: FULL-SCREEN HERO VIEWPORT
+       ========================================================= */
+    .pow-hero {
+      min-height: calc(100svh - 60px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 3rem 1.25rem 2rem;
+      position: relative;
+    }
+
+    .pow-hero-pills {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      border: var(--pow-border);
+      border-radius: 9999px;
+      padding: 0.35rem 0.95rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(36, 126, 163, 0.1);
+    }
+
+    [data-theme="dark"] .pow-hero-pills {
+      background: rgba(20, 42, 64, 0.6);
+    }
+
+    .pow-pill-tag {
+      font-family: var(--pow-font-mono);
+      font-size: 0.725rem;
+      font-weight: 700;
+      color: var(--pow-leaf-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    [data-theme="dark"] .pow-pill-tag {
+      color: var(--pow-accent-secondary);
+    }
+
+    .pow-hero-title {
+      font-family: var(--pow-font-display);
+      font-size: clamp(2rem, 5.5vw, 3.75rem);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--pow-text);
+      max-width: 900px;
+      margin-bottom: 1.25rem;
+    }
+
+    .pow-hero-subtitle {
+      font-size: clamp(1rem, 2.2vw, 1.25rem);
+      color: var(--pow-text-muted);
+      max-width: 720px;
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    /* Live Install Command Box */
+    .pow-hero-cmd {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--pow-surface-solid);
+      border: var(--pow-border-strong);
+      border-radius: 9999px;
+      padding: 0.35rem 0.5rem 0.35rem 1.25rem;
+      box-shadow: 0 6px 20px rgba(36, 126, 163, 0.14);
+      margin-bottom: 2rem;
+      max-width: 100%;
+      overflow-x: auto;
+    }
+
+    [data-theme="dark"] .pow-hero-cmd {
+      background: #142A40;
+    }
+
+    .pow-cmd-text {
+      font-family: var(--pow-font-mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--pow-text);
+      white-space: nowrap;
+      margin-right: 0.85rem;
+    }
+
+    .pow-cmd-copy-btn {
+      height: 32px;
+      padding: 0 0.85rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: linear-gradient(180deg, #48BFD3 0%, #247EA3 100%);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 9999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      box-shadow: 0 2px 6px rgba(36, 126, 163, 0.3);
+      transition: transform 120ms ease, filter 120ms ease;
+    }
+
+    .pow-cmd-copy-btn:hover {
+      filter: brightness(1.08);
+      transform: translateY(-1px);
+    }
+
+    .pow-hero-actions {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    /* Glossy Aero Buttons */
+    .pow-btn-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #FFFFFF;
+      background: linear-gradient(180deg, #48BFD3 0%, #247EA3 100%);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 9999px;
+      box-shadow: 0 6px 18px rgba(36, 126, 163, 0.38),
+                  inset 0 1px 0 rgba(255, 255, 255, 0.8),
+                  inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+      transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+    }
+
+    .pow-btn-cta::before {
+      content: "";
+      position: absolute;
+      top: 1px;
+      left: 12%;
+      right: 12%;
+      height: 45%;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.1) 100%);
+      border-radius: 9999px 9999px 20px 20px;
+      pointer-events: none;
+    }
+
+    .pow-btn-cta:hover {
+      filter: brightness(1.06);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(36, 126, 163, 0.45);
+      text-decoration: none;
+    }
+
+    .pow-btn-cta:active {
+      transform: translateY(1.5px) scale(0.99);
+      box-shadow: 0 2px 6px rgba(36, 126, 163, 0.3);
+    }
+
+    .pow-btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.75rem;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--pow-text);
+      background: var(--pow-surface);
+      backdrop-filter: blur(12px);
+      border: var(--pow-border);
+      border-radius: 9999px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 120ms ease, filter 120ms ease;
+    }
+
+    .pow-btn-secondary:hover {
+      transform: translateY(-2px);
+      filter: brightness(1.04);
+      text-decoration: none;
+    }
+
+    /* Live Telemetry Status Strip */
+    .pow-telemetry-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      width: 100%;
+      max-width: 900px;
+    }
+
+    .pow-telemetry-card {
+      background: var(--pow-surface);
+      backdrop-filter: blur(16px);
+      border: var(--pow-border);
+      border-radius: 14px;
+      padding: 1rem;
+      box-shadow: var(--pow-shadow);
+      text-align: center;
+    }
+
+    .pow-telemetry-num {
+      font-family: var(--pow-font-display);
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--pow-ocean);
+      line-height: 1.2;
+    }
+
+    [data-theme="dark"] .pow-telemetry-num {
+      color: var(--pow-accent);
+    }
+
+    .pow-telemetry-lbl {
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--pow-text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.25rem;
+    }
+
+    /* =========================================================
+       SECTION 3: INTERACTIVE STUDIO / LIVE COCKPIT
+       ========================================================= */
+    .pow-studio {
+      padding: 4rem 0;
+    }
+
+    .pow-section-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .pow-eyebrow {
+      font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--pow-leaf-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    [data-theme="dark"] .pow-eyebrow {
+      color: var(--pow-accent-secondary);
+    }
+
+    .pow-section-title {
+      font-family: var(--pow-font-display);
+      font-size: clamp(1.75rem, 3.8vw, 2.5rem);
+      font-weight: 800;
+      color: var(--pow-text);
+      line-height: 1.2;
+      margin-bottom: 0.75rem;
+    }
+
+    .pow-section-desc {
+      font-size: 1rem;
+      color: var(--pow-text-muted);
+      max-width: 650px;
+      margin: 0 auto;
+    }
+
+    /* Studio Card Scaffolding */
+    .pow-studio-card {
+      background: var(--pow-surface);
+      backdrop-filter: blur(20px) saturate(140%);
+      -webkit-backdrop-filter: blur(20px) saturate(140%);
+      border: var(--pow-border);
+      border-radius: 20px;
+      box-shadow: 0 16px 40px rgba(36, 126, 163, 0.2);
+      overflow: hidden;
+      max-width: 100%;
+    }
+
+    .pow-window-header {
+      background: rgba(255, 255, 255, 0.85);
+      border-bottom: var(--pow-border);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    [data-theme="dark"] .pow-window-header {
+      background: rgba(18, 38, 58, 0.85);
+    }
+
+    .pow-window-dots {
+      display: flex;
+      gap: 0.45rem;
+      align-items: center;
+    }
+
+    .pow-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.15);
+    }
+
+    .pow-dot-red { background: #FF5F56; }
+    .pow-dot-yellow { background: #FFBD2E; }
+    .pow-dot-green { background: #27C93F; }
+
+    .pow-window-title {
+      font-family: var(--pow-font-mono);
+      font-size: 0.785rem;
+      font-weight: 700;
+      color: var(--pow-text);
+      letter-spacing: 0.05em;
+    }
+
+    /* Variant Switcher Control */
+    .pow-variant-switcher {
+      display: flex;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.06);
+      border-radius: 9999px;
+      padding: 2px;
+      gap: 2px;
+    }
+
+    [data-theme="dark"] .pow-variant-switcher {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    .pow-variant-btn {
+      border: none;
+      background: transparent;
+      padding: 0.35rem 0.85rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--pow-text-muted);
+      border-radius: 9999px;
+      cursor: pointer;
+      transition: all 120ms ease;
+    }
+
+    .pow-variant-btn.active {
+      background: #FFFFFF;
+      color: #173F61;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    }
+
+    [data-theme="dark"] .pow-variant-btn.active {
+      background: #247EA3;
+      color: #FFFFFF;
+    }
+
+    /* Studio Body & Tabs */
+    .pow-studio-body {
+      padding: 1.5rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .studio-tab-bar {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: var(--pow-border);
+      padding-bottom: 1rem;
+      margin-bottom: 1.5rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .studio-tab-btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.825rem;
+      font-weight: 700;
+      color: var(--pow-text-muted);
+      background: transparent;
+      border: var(--pow-border);
+      border-radius: 9999px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 120ms ease;
+    }
+
+    .studio-tab-btn:hover {
+      color: var(--pow-text);
+      background: rgba(72, 191, 211, 0.12);
+    }
+
+    .studio-tab-btn.active {
+      color: #FFFFFF;
+      background: linear-gradient(180deg, #48BFD3 0%, #247EA3 100%);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 2px 8px rgba(36, 126, 163, 0.3);
+    }
+
+    .studio-pane {
+      display: none;
+      animation: fadeIn 200ms ease forwards;
+    }
+
+    .studio-pane.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* =========================================================
+       SECTION 4: COMPONENT ANATOMY & QUALITY GATES
+       ========================================================= */
+    .pow-components {
+      padding: 4rem 0;
+    }
+
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    .component-specimen {
+      background: var(--pow-surface);
+      backdrop-filter: blur(16px);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius);
+      padding: 1.5rem;
+      box-shadow: var(--pow-shadow);
+    }
+
+    .specimen-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem;
+      border-bottom: var(--pow-border);
+    }
+
+    .specimen-title {
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: var(--pow-text);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .specimen-tag {
+      font-family: var(--pow-font-mono);
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: var(--pow-ocean);
+    }
+
+    [data-theme="dark"] .specimen-tag {
+      color: var(--pow-accent);
+    }
+
+    /* Quality Gate Comparison Cards */
+    .gate-comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .gate-card-fail {
+      background: rgba(239, 68, 68, 0.06);
+      border: 1px solid rgba(239, 68, 68, 0.35);
+      border-radius: var(--pow-radius);
+      padding: 1.5rem;
+    }
+
+    .gate-card-pass {
+      background: rgba(112, 185, 129, 0.08);
+      border: 1px solid rgba(112, 185, 129, 0.4);
+      border-radius: var(--pow-radius);
+      padding: 1.5rem;
+    }
+
+    .gate-header {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 800;
+      font-size: 0.95rem;
+      margin-bottom: 1rem;
+    }
+
+    .gate-fail-title { color: #DC2626; }
+    .gate-pass-title { color: #16A34A; }
+
+    .gate-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+      font-size: 0.875rem;
+    }
+
+    .gate-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      line-height: 1.45;
+    }
+
+    /* =========================================================
+       SECTION 5: TABBED TERMINAL INSTALLATION MATRIX
+       ========================================================= */
+    .pow-install {
+      padding: 4rem 0;
+    }
+
+    .tabbed-terminal-card {
+      background: #111D2B;
+      border: 1px solid rgba(72, 191, 211, 0.3);
+      border-radius: 16px;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+      overflow: hidden;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .terminal-header {
+      background: #0B141E;
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .terminal-title-group {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .terminal-copy-btn {
+      height: 30px;
+      padding: 0 0.85rem;
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: #1D344B;
+      color: #A3CDE8;
+      border: 1px solid rgba(72, 191, 211, 0.3);
+      border-radius: 9999px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      transition: all 120ms ease;
+    }
+
+    .terminal-copy-btn:hover {
+      background: #247EA3;
+      color: #FFFFFF;
+    }
+
+    .terminal-tab-bar {
+      display: flex;
+      background: #0E1824;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      padding: 0.25rem 0.5rem 0;
+      gap: 0.25rem;
+      overflow-x: auto;
+    }
+
+    .terminal-tab {
+      padding: 0.5rem 1rem;
+      font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #6C8CA5;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 120ms ease;
+    }
+
+    .terminal-tab:hover {
+      color: #B4D7EF;
+    }
+
+    .terminal-tab.active {
+      color: #56D2E8;
+      border-bottom-color: #56D2E8;
+      background: rgba(86, 210, 232, 0.06);
+    }
+
+    .terminal-pane {
+      display: none;
+      padding: 1.5rem;
+      font-family: var(--pow-font-mono);
+      font-size: 0.875rem;
+      line-height: 1.6;
+      color: #E2F1F8;
+    }
+
+    .terminal-pane.active {
+      display: block;
+    }
+
+    .term-comment { color: #5B7F9B; }
+    .term-prompt { color: #56D2E8; font-weight: 700; }
+    .term-cmd { color: #FFFFFF; }
+
+    .agent-support-strip {
+      background: #09111A;
+      padding: 0.85rem 1.25rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      font-size: 0.75rem;
+      color: #6C8CA5;
+    }
+
+    .agent-tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .agent-tag {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 0.2rem 0.5rem;
+      border-radius: 4px;
+      color: #A3CDE8;
+    }
+
+    /* =========================================================
+       SECTION 6: CORE ARCHITECTURAL PRINCIPLES
+       ========================================================= */
+    .pow-principles {
+      padding: 4rem 0;
+    }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .principle-card {
+      background: var(--pow-surface);
+      backdrop-filter: blur(16px);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius);
+      padding: 2rem 1.5rem;
+      box-shadow: var(--pow-shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .principle-num {
+      font-family: var(--pow-font-display);
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: rgba(72, 191, 211, 0.35);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .principle-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: var(--pow-text);
+      margin-bottom: 0.75rem;
+    }
+
+    .principle-desc {
+      font-size: 0.925rem;
+      color: var(--pow-text-muted);
+      line-height: 1.6;
+    }
+
+    /* =========================================================
+       SECTION 7: CANONICAL RESPONSIVE FOOTER
+       ========================================================= */
+    .pow-footer {
+      border-top: var(--pow-border);
+      background: var(--pow-surface);
+      backdrop-filter: blur(20px);
+      padding: 4rem 0 2rem;
+      margin-top: 4rem;
+    }
+
+    .pow-footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .footer-col-title {
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: var(--pow-text);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+    }
+
+    .footer-link {
+      color: var(--pow-text-muted);
+      transition: color 120ms ease;
+    }
+
+    .footer-link:hover {
+      color: var(--pow-text);
+    }
+
+    .footer-bottom {
+      border-top: var(--pow-border);
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.8rem;
+      color: var(--pow-text-muted);
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 768px) {
+      .pow-nav-link { display: none; }
+      .pow-menu-trigger { display: inline-flex; }
+      .pow-hero { padding: 2rem 1rem 1.5rem; }
+      .pow-hero-cmd { width: 100%; justify-content: space-between; }
+      .pow-window-header { flex-direction: column; align-items: flex-start; }
+      .pow-variant-switcher { width: 100%; justify-content: space-between; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================
+       SECTION 1: STICKY NAVIGATION HEADER
+       ========================================================= -->
+  <header class="pow-header">
+    <div class="pow-container pow-nav">
+      <a href="index.html" class="pow-brand">
+        <div class="pow-brand-orb"></div>
+        <span>Taste Engine</span>
+        <span class="pow-version-badge">v0.12.0</span>
+      </a>
+
+      <div class="pow-header-actions">
+        <a href="#hero" class="pow-nav-link">Overview</a>
+        <a href="#studio" class="pow-nav-link">Studio</a>
+        <a href="#components" class="pow-nav-link">Components</a>
+        <a href="#install" class="pow-nav-link">Install</a>
+        <a href="#principles" class="pow-nav-link">Principles</a>
+        <a href="index.html" class="pow-btn-h36">All 10 Styles &rarr;</a>
+        <button class="pow-icon-btn" id="theme-toggle" onclick="toggleTheme()" aria-label="Toggle dark/light theme" title="Toggle Theme">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        <button class="pow-icon-btn pow-menu-trigger" onclick="toggleDrawer()" aria-label="Open navigation menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Menu -->
+  <div class="pow-drawer-overlay" id="drawer-overlay" onclick="toggleDrawer()"></div>
+  <div class="pow-drawer-panel" id="drawer-panel">
+    <div class="pow-drawer-header">
+      <span style="font-weight: 800; font-size: 1.05rem;">Frutiger Aero PoW</span>
+      <button class="pow-icon-btn" onclick="toggleDrawer()" aria-label="Close menu">&times;</button>
+    </div>
+    <div class="pow-drawer-links">
+      <a href="#hero" class="pow-drawer-link" onclick="toggleDrawer()">1. Hero & Overview</a>
+      <a href="#studio" class="pow-drawer-link" onclick="toggleDrawer()">2. Interactive Studio</a>
+      <a href="#components" class="pow-drawer-link" onclick="toggleDrawer()">3. Component Anatomy</a>
+      <a href="#install" class="pow-drawer-link" onclick="toggleDrawer()">4. Installation Terminal</a>
+      <a href="#principles" class="pow-drawer-link" onclick="toggleDrawer()">5. Design Principles</a>
+      <hr style="border: none; border-top: var(--pow-border); margin: 0.75rem 0;">
+      <a href="index.html" class="pow-drawer-link">Explore All Styles</a>
+      <a href="brutalism.html" class="pow-drawer-link">Brutalism (Raw & Bento)</a>
+      <a href="claymorphism.html" class="pow-drawer-link">Claymorphism</a>
+      <a href="art-deco.html" class="pow-drawer-link">Art Deco</a>
+      <a href="minimalism.html" class="pow-drawer-link">Minimalism</a>
+      <a href="retro-pixel.html" class="pow-drawer-link">Retro Pixel</a>
+      <a href="retro-terminal.html" class="pow-drawer-link">Retro Terminal</a>
+      <a href="swiss-editorial.html" class="pow-drawer-link">Swiss Editorial</a>
+      <a href="neo-brutalism.html" class="pow-drawer-link">Neo-Brutalism</a>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       SECTION 2: FULL-SCREEN HERO VIEWPORT
+       ========================================================= -->
+  <section class="pow-hero" id="hero">
+    <div class="pow-container" style="display: flex; flex-direction: column; align-items: center;">
+      <div class="pow-hero-pills">
+        <span class="pow-pill-tag">WCAG AA CONTRAST 4.5:1</span>
+        <span style="color: var(--pow-border);">&bull;</span>
+        <span class="pow-pill-tag">ZERO AI-SLOP</span>
+        <span style="color: var(--pow-border);">&bull;</span>
+        <span class="pow-pill-tag">3 NATIVE EXPRESSIONS</span>
+      </div>
+
+      <h1 class="pow-hero-title">
+        Optimistic Computing, Glossy Horizons & Tactile Clarity
+      </h1>
+
+      <p class="pow-hero-subtitle">
+        Frutiger Aero unifies mid-2000s technological optimism, luminous aqua/ocean atmospheres, acrylic specular sheens, and physical button affordances. Consolidates Glassmorphism and Skeuomorphism into a cohesive design language.
+      </p>
+
+      <div class="pow-hero-cmd">
+        <span class="pow-cmd-text">$ npx @kennedys0/taste-engine init --style frutiger-aero</span>
+        <button class="pow-cmd-copy-btn" onclick="copyHeroCmd(this)">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          Copy
+        </button>
+      </div>
+
+      <div class="pow-hero-actions">
+        <a href="#studio" class="pow-btn-cta">Explore Studio Cockpit &darr;</a>
+        <a href="#install" class="pow-btn-secondary">Install Presets</a>
+      </div>
+
+      <div class="pow-telemetry-strip">
+        <div class="pow-telemetry-card">
+          <div class="pow-telemetry-num">3</div>
+          <div class="pow-telemetry-lbl">Native Variants</div>
+        </div>
+        <div class="pow-telemetry-card">
+          <div class="pow-telemetry-num">100%</div>
+          <div class="pow-telemetry-lbl">WCAG AA Gated</div>
+        </div>
+        <div class="pow-telemetry-card">
+          <div class="pow-telemetry-num">140ms</div>
+          <div class="pow-telemetry-lbl">Restrained Motion</div>
+        </div>
+        <div class="pow-telemetry-card">
+          <div class="pow-telemetry-num">320px</div>
+          <div class="pow-telemetry-lbl">Zero Mobile Overflow</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 3: INTERACTIVE STUDIO COCKPIT
+       ========================================================= -->
+  <section class="pow-studio" id="studio">
+    <div class="pow-container">
+      <div class="pow-section-header">
+        <span class="pow-eyebrow">Proof-of-Work Cockpit</span>
+        <h2 class="pow-section-title">Interactive Frutiger Aero Studio</h2>
+        <p class="pow-section-desc">
+          Test real interactive interfaces across all three native expressions: Classic Aero, Aero Glass, and Aero Tactile.
+        </p>
+      </div>
+
+      <div class="pow-studio-card">
+        <!-- Studio Title Bar & Variant Switcher -->
+        <div class="pow-window-header">
+          <div class="pow-window-dots">
+            <div class="pow-dot pow-dot-red"></div>
+            <div class="pow-dot pow-dot-yellow"></div>
+            <div class="pow-dot pow-dot-green"></div>
+          </div>
+          <div class="pow-window-title" id="studio-window-title">STUDIO // FRUTIGER_AERO_CLASSIC</div>
+          <div style="display: flex; align-items: center; gap: 0.5rem;">
+            <span style="font-size: 0.7rem; font-weight: 700; color: var(--pow-text-muted); text-transform: uppercase;">Expression:</span>
+            <div class="pow-variant-switcher">
+              <button class="pow-variant-btn active" data-var="classic" onclick="switchExpression('classic')">Classic Aero</button>
+              <button class="pow-variant-btn" data-var="glass" onclick="switchExpression('glass')">Aero Glass</button>
+              <button class="pow-variant-btn" data-var="tactile" onclick="switchExpression('tactile')">Aero Tactile</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="pow-studio-body">
+          <!-- Studio Nav Tabs -->
+          <div class="studio-tab-bar">
+            <button class="studio-tab-btn active" onclick="switchStudioTab('landing', this)">1. Landing Bay</button>
+            <button class="studio-tab-btn" onclick="switchStudioTab('gallery', this)">2. Component Gallery</button>
+            <button class="studio-tab-btn" onclick="switchStudioTab('dashboard', this)">3. Nature-Tech Cockpit</button>
+            <button class="studio-tab-btn" onclick="switchStudioTab('auth', this)">4. Authentication</button>
+            <button class="studio-tab-btn" onclick="switchStudioTab('editorial', this)">5. Editorial Reader</button>
+            <button class="studio-tab-btn" onclick="switchStudioTab('faq', this)">6. FAQ Accordion</button>
+          </div>
+
+          <!-- TAB 1: LANDING BAY -->
+          <div class="studio-pane active" id="pane-landing">
+            <div style="padding: 1.5rem; text-align: center; max-width: 760px; margin: 0 auto;">
+              <span class="pow-eyebrow" id="landing-tag">NATURE-TECH HARMONY &bull; ECO-OPTIMISM</span>
+              <h3 style="font-size: clamp(1.5rem, 3.5vw, 2.25rem); font-weight: 800; line-height: 1.2; margin-bottom: 1rem; color: var(--pow-text);" id="landing-heading">
+                Bright, Glossy Horizon Surfaces with Tactile Fluidity
+              </h3>
+              <p style="font-size: 0.95rem; color: var(--pow-text-muted); margin-bottom: 2rem; line-height: 1.6;" id="landing-desc">
+                Frutiger Aero rejects flat, uninspired interfaces. Luminous water reflections, friendly rounded corners, convex action pills, and vibrant spring green accents create an unmistakable sense of wonder and technical optimism.
+              </p>
+
+              <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem;">
+                <button class="pow-btn-cta" onclick="triggerToast('Action: Workspace Launched!')">Launch Workspace &rarr;</button>
+                <button class="pow-btn-secondary" onclick="triggerToast('Action: Documentation Opened!')">Read Specifications</button>
+              </div>
+
+              <!-- 3 Nature-Tech Floating Pods -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; text-align: left;">
+                <div style="background: var(--pow-surface-elevated); border: var(--pow-border); border-radius: var(--pow-radius); padding: 1.25rem; box-shadow: var(--pow-shadow); position: relative; overflow: hidden;">
+                  <div style="font-family: var(--pow-font-mono); font-size: 0.7rem; font-weight: 700; color: var(--pow-accent); margin-bottom: 0.4rem;">[POD 01 // LAGOON]</div>
+                  <h4 style="font-size: 1rem; font-weight: 800; color: var(--pow-text); margin-bottom: 0.4rem;">Luminous Aqua</h4>
+                  <p style="font-size: 0.825rem; color: var(--pow-text-muted);">Atmospheric sky-to-cyan transitions that make acrylic surfaces visibly refract light.</p>
+                </div>
+                <div style="background: var(--pow-surface-elevated); border: var(--pow-border); border-radius: var(--pow-radius); padding: 1.25rem; box-shadow: var(--pow-shadow); position: relative; overflow: hidden;">
+                  <div style="font-family: var(--pow-font-mono); font-size: 0.7rem; font-weight: 700; color: var(--pow-leaf); margin-bottom: 0.4rem;">[POD 02 // FLORA]</div>
+                  <h4 style="font-size: 1rem; font-weight: 800; color: var(--pow-text); margin-bottom: 0.4rem;">Fresh Spring Leaf</h4>
+                  <p style="font-size: 0.825rem; color: var(--pow-text-muted);">Vibrant botanical greens representing ecological and biological optimism.</p>
+                </div>
+                <div style="background: var(--pow-surface-elevated); border: var(--pow-border); border-radius: var(--pow-radius); padding: 1.25rem; box-shadow: var(--pow-shadow); position: relative; overflow: hidden;">
+                  <div style="font-family: var(--pow-font-mono); font-size: 0.7rem; font-weight: 700; color: var(--pow-ocean); margin-bottom: 0.4rem;">[POD 03 // TACTILE]</div>
+                  <h4 style="font-size: 1rem; font-weight: 800; color: var(--pow-text); margin-bottom: 0.4rem;">Physical Spring</h4>
+                  <p style="font-size: 0.825rem; color: var(--pow-text-muted);">Dual specular highlights with 1.5px mechanical travel on click depression.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: COMPONENT GALLERY -->
+          <div class="studio-pane" id="pane-gallery">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+              <!-- Buttons & Actions -->
+              <div style="background: var(--pow-surface); border: var(--pow-border); border-radius: var(--pow-radius); padding: 1.5rem; box-shadow: var(--pow-shadow);">
+                <h4 style="font-size: 0.85rem; font-weight: 800; color: var(--pow-text); text-transform: uppercase; margin-bottom: 1rem;">Action Controls</h4>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                  <button class="pow-btn-cta" onclick="triggerToast('Primary Glossy Button Pressed')">Glossy Aqua Pill</button>
+                  <button class="pow-btn-cta" style="background: linear-gradient(180deg, #70B981 0%, #4E9B60 100%);" onclick="triggerToast('Leaf Accent Button Pressed')">Leaf Green Action</button>
+                  <button class="pow-btn-secondary" onclick="triggerToast('Secondary Acrylic Button Pressed')">Translucent Acrylic</button>
+                  <button class="pow-btn-cta" style="opacity: 0.5; cursor: not-allowed;" disabled>Disabled State</button>
+                </div>
+              </div>
+
+              <!-- Form Inputs -->
+              <div style="background: var(--pow-surface); border: var(--pow-border); border-radius: var(--pow-radius); padding: 1.5rem; box-shadow: var(--pow-shadow);">
+                <h4 style="font-size: 0.85rem; font-weight: 800; color: var(--pow-text); text-transform: uppercase; margin-bottom: 1rem;">Sunken Controls</h4>
+                <div style="display: flex; flex-direction: column; gap: 1rem;">
+                  <div>
+                    <label style="display: block; font-size: 0.75rem; font-weight: 700; color: var(--pow-text-muted); margin-bottom: 0.35rem;">AERO WORKSPACE NAME</label>
+                    <input type="text" value="Lagoon Studio Suite" style="width: 100%; padding: 0.65rem 1rem; border-radius: 10px; border: var(--pow-border-strong); background: var(--pow-surface-solid); color: var(--pow-text); font-family: inherit; font-size: 0.9rem; box-shadow: inset 0 2px 4px rgba(0,0,0,0.08);">
+                  </div>
+                  <div>
+                    <label style="display: block; font-size: 0.75rem; font-weight: 700; color: var(--pow-text-muted); margin-bottom: 0.35rem;">REFRACTION DENSITY</label>
+                    <select style="width: 100%; padding: 0.65rem 1rem; border-radius: 10px; border: var(--pow-border-strong); background: var(--pow-surface-solid); color: var(--pow-text); font-family: inherit; font-size: 0.9rem; box-shadow: inset 0 2px 4px rgba(0,0,0,0.08);">
+                      <option>High Refraction (24px Blur)</option>
+                      <option>Balanced Acrylic (16px Blur)</option>
+                      <option>Solid Tactile (0px Blur)</option>
+                    </select>
+                  </div>
+                  <div style="display: flex; align-items: center; justify-content: space-between;">
+                    <span style="font-size: 0.85rem; font-weight: 600;">Hardware Specular Sheen</span>
+                    <input type="checkbox" checked style="width: 18px; height: 18px; accent-color: var(--pow-aqua); cursor: pointer;">
+                  </div>
+                </div>
+              </div>
+
+              <!-- Floating Navigation Dock -->
+              <div style="background: var(--pow-surface); border: var(--pow-border); border-radius: var(--pow-radius); padding: 1.5rem; box-shadow: var(--pow-shadow); display: flex; flex-direction: column; justify-content: space-between;">
+                <h4 style="font-size: 0.85rem; font-weight: 800; color: var(--pow-text); text-transform: uppercase; margin-bottom: 0.75rem;">Floating Acrylic Dock</h4>
+                <p style="font-size: 0.825rem; color: var(--pow-text-muted); margin-bottom: 1.25rem;">
+                  Aqua and Aero taskbars elevated above content with high refraction saturation.
+                </p>
+                <div style="display: flex; justify-content: center;">
+                  <div style="background: rgba(255, 255, 255, 0.85); border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: var(--pow-dock-shadow); border-radius: 9999px; padding: 0.45rem 1rem; display: inline-flex; align-items: center; gap: 0.75rem;">
+                    <button class="pow-icon-btn" onclick="triggerToast('Home Dock')" title="Home">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+                    </button>
+                    <button class="pow-icon-btn" onclick="triggerToast('Media Dock')" title="Media">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polygon points="10 8 16 12 10 16 10 8"></polygon></svg>
+                    </button>
+                    <button class="pow-icon-btn" onclick="triggerToast('Settings Dock')" title="Settings">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: NATURE-TECH COCKPIT / DASHBOARD -->
+          <div class="studio-pane" id="pane-dashboard">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 1.5rem;">
+              <div style="background: var(--pow-surface); border: var(--pow-border); border-radius: var(--pow-radius); padding: 1.25rem; box-shadow: var(--pow-shadow);">
+                <div style="font-size: 0.75rem; font-weight: 700; color: var(--pow-text-muted); text-transform: uppercase;">AQUATIC TELEMETRY</div>
+                <div style="font-size: 1.75rem; font-weight: 800; color: var(--pow-ocean); margin: 0.25rem 0;">99.8%</div>
+                <div style="font-size: 0.75rem; color: var(--pow-leaf-dark); font-weight: 600;">&uarr; 0.4% efficiency rate</div>
+              </div>
+              <div style="background: var(--pow-surface); border: var(--pow-border); border-radius: var(--pow-radius); padding: 1.25rem; box-shadow: var(--pow-shadow);">
+                <div style="font-size: 0.75rem; font-weight: 700; color: var(--pow-text-muted); text-transform: uppercase;">ACTIVE NODES</div>
+                <div style="font-size: 1.75rem; font-weight: 800; color: var(--pow-text); margin: 0.25rem 0;">1,420</div>
+                <div style="font-size: 0.75rem; color: var(--pow-text-muted);">Decentralized peers</div>
+              </div>
+              <div style="background: var(--pow-surface); border: var(--pow-border); border-radius: var(--pow-radius); padding: 1.25rem; box-shadow: var(--pow-shadow);">
+                <div style="font-size: 0.75rem; font-weight: 700; color: var(--pow-text-muted); text-transform: uppercase;">REFRACTION LOAD</div>
+                <div style="font-size: 1.75rem; font-weight: 800; color: var(--pow-leaf-dark); margin: 0.25rem 0;">12.4 ms</div>
+                <div style="font-size: 0.75rem; color: var(--pow-leaf-dark); font-weight: 600;">Zero GPU stutter</div>
+              </div>
+            </div>
+
+            <!-- Cockpit Data Table -->
+            <div style="background: var(--pow-surface); border: var(--pow-border); border-radius: var(--pow-radius); box-shadow: var(--pow-shadow); overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.85rem;">
+                <thead>
+                  <tr style="border-bottom: var(--pow-border); background: rgba(72, 191, 211, 0.08);">
+                    <th style="padding: 0.85rem 1.25rem; font-weight: 800; color: var(--pow-text);">NODE IDENTIFIER</th>
+                    <th style="padding: 0.85rem 1.25rem; font-weight: 800; color: var(--pow-text);">ENVIRONMENT</th>
+                    <th style="padding: 0.85rem 1.25rem; font-weight: 800; color: var(--pow-text);">STATUS</th>
+                    <th style="padding: 0.85rem 1.25rem; font-weight: 800; color: var(--pow-text);">LATENCY</th>
+                    <th style="padding: 0.85rem 1.25rem; font-weight: 800; color: var(--pow-text); text-align: right;">ACTION</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom: var(--pow-border);">
+                    <td style="padding: 0.85rem 1.25rem; font-family: var(--pow-font-mono); font-weight: 600;">lagoon-cluster-01</td>
+                    <td style="padding: 0.85rem 1.25rem;">Ocean Basin Alpha</td>
+                    <td style="padding: 0.85rem 1.25rem;"><span style="background: rgba(112, 185, 129, 0.2); color: var(--pow-leaf-dark); font-weight: 700; padding: 2px 8px; border-radius: 9999px; font-size: 0.75rem;">ONLINE</span></td>
+                    <td style="padding: 0.85rem 1.25rem; font-family: var(--pow-font-mono);">8.2 ms</td>
+                    <td style="padding: 0.85rem 1.25rem; text-align: right;"><button class="pow-btn-h36" style="padding: 0 0.75rem; font-size: 0.75rem;" onclick="triggerToast('Configured lagoon-cluster-01')">Tune</button></td>
+                  </tr>
+                  <tr style="border-bottom: var(--pow-border);">
+                    <td style="padding: 0.85rem 1.25rem; font-family: var(--pow-font-mono); font-weight: 600;">sky-canopy-edge-04</td>
+                    <td style="padding: 0.85rem 1.25rem;">Cloud Relay Beta</td>
+                    <td style="padding: 0.85rem 1.25rem;"><span style="background: rgba(112, 185, 129, 0.2); color: var(--pow-leaf-dark); font-weight: 700; padding: 2px 8px; border-radius: 9999px; font-size: 0.75rem;">ONLINE</span></td>
+                    <td style="padding: 0.85rem 1.25rem; font-family: var(--pow-font-mono);">14.1 ms</td>
+                    <td style="padding: 0.85rem 1.25rem; text-align: right;"><button class="pow-btn-h36" style="padding: 0 0.75rem; font-size: 0.75rem;" onclick="triggerToast('Configured sky-canopy-edge-04')">Tune</button></td>
+                  </tr>
+                  <tr>
+                    <td style="padding: 0.85rem 1.25rem; font-family: var(--pow-font-mono); font-weight: 600;">deep-trench-relay-09</td>
+                    <td style="padding: 0.85rem 1.25rem;">Hydrothermal Zone</td>
+                    <td style="padding: 0.85rem 1.25rem;"><span style="background: rgba(72, 191, 211, 0.2); color: var(--pow-ocean); font-weight: 700; padding: 2px 8px; border-radius: 9999px; font-size: 0.75rem;">OPTIMIZING</span></td>
+                    <td style="padding: 0.85rem 1.25rem; font-family: var(--pow-font-mono);">21.0 ms</td>
+                    <td style="padding: 0.85rem 1.25rem; text-align: right;"><button class="pow-btn-h36" style="padding: 0 0.75rem; font-size: 0.75rem;" onclick="triggerToast('Configured deep-trench-relay-09')">Tune</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- TAB 4: AUTHENTICATION -->
+          <div class="studio-pane" id="pane-auth">
+            <div style="max-width: 420px; margin: 1rem auto; background: var(--pow-surface-elevated); border: var(--pow-border); border-radius: var(--pow-radius); padding: 2rem; box-shadow: var(--pow-shadow); text-align: center;">
+              <div class="pow-brand-orb" style="margin: 0 auto 1rem; width: 36px; height: 36px;"></div>
+              <h4 style="font-size: 1.25rem; font-weight: 800; color: var(--pow-text); margin-bottom: 0.25rem;">Access Aero Portal</h4>
+              <p style="font-size: 0.85rem; color: var(--pow-text-muted); margin-bottom: 1.5rem;">Sign in with your biometric key or project pass</p>
+
+              <form onsubmit="event.preventDefault(); triggerToast('Authenticated successfully!');" style="display: flex; flex-direction: column; gap: 1rem; text-align: left;">
+                <div>
+                  <label style="display: block; font-size: 0.75rem; font-weight: 700; color: var(--pow-text-muted); margin-bottom: 0.35rem;">USER ID</label>
+                  <input type="email" value="alex.rivera@aerolagoon.dev" required style="width: 100%; padding: 0.65rem 1rem; border-radius: 10px; border: var(--pow-border-strong); background: var(--pow-surface-solid); color: var(--pow-text); font-family: inherit; font-size: 0.9rem; box-shadow: inset 0 2px 4px rgba(0,0,0,0.08);">
+                </div>
+                <div>
+                  <label style="display: block; font-size: 0.75rem; font-weight: 700; color: var(--pow-text-muted); margin-bottom: 0.35rem;">SECURITY PASSKEY</label>
+                  <input type="password" value="••••••••••••" required style="width: 100%; padding: 0.65rem 1rem; border-radius: 10px; border: var(--pow-border-strong); background: var(--pow-surface-solid); color: var(--pow-text); font-family: inherit; font-size: 0.9rem; box-shadow: inset 0 2px 4px rgba(0,0,0,0.08);">
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: center; font-size: 0.8rem;">
+                  <label style="display: flex; align-items: center; gap: 0.35rem; cursor: pointer;">
+                    <input type="checkbox" checked style="accent-color: var(--pow-aqua);"> Remember session
+                  </label>
+                  <a href="javascript:void(0)" onclick="triggerToast('Recovery link dispatched.')">Reset key</a>
+                </div>
+                <button type="submit" class="pow-btn-cta" style="width: 100%; margin-top: 0.5rem;">Authenticate &rarr;</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- TAB 5: EDITORIAL READER -->
+          <div class="studio-pane" id="pane-editorial">
+            <div style="max-width: 720px; margin: 0 auto; padding: 1.5rem; background: var(--pow-surface-elevated); border: var(--pow-border); border-radius: var(--pow-radius); box-shadow: var(--pow-shadow);">
+              <span class="pow-eyebrow">ESSAY &bull; DIGITAL VISUAL CULTURE</span>
+              <h3 style="font-size: clamp(1.5rem, 3.2vw, 2.2rem); font-weight: 800; line-height: 1.25; margin-bottom: 0.75rem; color: var(--pow-text);">
+                The Rebirth of Optimistic Computing
+              </h3>
+              <div style="display: flex; align-items: center; gap: 0.75rem; font-size: 0.825rem; color: var(--pow-text-muted); margin-bottom: 1.5rem; border-bottom: var(--pow-border); padding-bottom: 0.75rem;">
+                <span>By Elena Vance</span>
+                <span>&bull;</span>
+                <span>November 2026</span>
+                <span>&bull;</span>
+                <span>6 min read</span>
+              </div>
+              <p style="font-size: 0.95rem; line-height: 1.7; color: var(--pow-text); margin-bottom: 1.25rem;">
+                Throughout the late 2000s, interface design celebrated tangible optimism. Software was envisioned not as cold, sterile monochrome spreadsheets, but as luminous windows connecting human intent with natural landscapes and fluid physics.
+              </p>
+              <blockquote style="border-left: 3px solid var(--pow-aqua); padding-left: 1rem; margin: 1.5rem 0; font-style: italic; color: var(--pow-text-muted);">
+                "A computer interface should feel like clean water running through transparent glass—inviting, clear, and full of natural vitality."
+              </blockquote>
+              <p style="font-size: 0.95rem; line-height: 1.7; color: var(--pow-text);">
+                By consolidating Glassmorphism’s refractive translucency with Skeuomorphism’s tactile button depression into Frutiger Aero, Taste Engine recovers this forward-looking energy while enforcing contemporary WCAG AA contrast safety and zero AI-slop discipline.
+              </p>
+            </div>
+          </div>
+
+          <!-- TAB 6: FAQ ACCORDION -->
+          <div class="studio-pane" id="pane-faq">
+            <div style="max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 0.75rem;">
+              <div style="background: var(--pow-surface-elevated); border: var(--pow-border); border-radius: 12px; overflow: hidden;">
+                <button onclick="toggleFaq(this)" style="width: 100%; text-align: left; padding: 1rem 1.25rem; background: transparent; border: none; font-size: 0.95rem; font-weight: 700; color: var(--pow-text); display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+                  <span>What is Frutiger Aero and why consolidate Glassmorphism + Skeuomorphism?</span>
+                  <span style="font-size: 1.2rem; transition: transform 200ms ease;">+</span>
+                </button>
+                <div style="display: none; padding: 0 1.25rem 1rem; font-size: 0.875rem; color: var(--pow-text-muted); line-height: 1.6;">
+                  Frutiger Aero represents the bright, nature-tech technological optimism of the mid-2000s. Glassmorphism contributed frosted translucency, while Skeuomorphism contributed tactile physical affordances. Combining them into Frutiger Aero creates a cohesive, distinctive design system without cluttering the top-level style catalog with overlapping templates.
+                </div>
+              </div>
+
+              <div style="background: var(--pow-surface-elevated); border: var(--pow-border); border-radius: 12px; overflow: hidden;">
+                <button onclick="toggleFaq(this)" style="width: 100%; text-align: left; padding: 1rem 1.25rem; background: transparent; border: none; font-size: 0.95rem; font-weight: 700; color: var(--pow-text); display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+                  <span>How does Frutiger Aero maintain WCAG AA contrast compliance?</span>
+                  <span style="font-size: 1.2rem; transition: transform 200ms ease;">+</span>
+                </button>
+                <div style="display: none; padding: 0 1.25rem 1rem; font-size: 0.875rem; color: var(--pow-text-muted); line-height: 1.6;">
+                  Every surface enforces paired dark/light mode token inversion. On light aqua/cloud surfaces, text is deep navy or charcoal ink (#173F61). On dark ocean glass, text flips to crisp porcelain white (#F4FAFC). Text never relies on faint white ink over light glass.
+                </div>
+              </div>
+
+              <div style="background: var(--pow-surface-elevated); border: var(--pow-border); border-radius: 12px; overflow: hidden;">
+                <button onclick="toggleFaq(this)" style="width: 100%; text-align: left; padding: 1rem 1.25rem; background: transparent; border: none; font-size: 0.95rem; font-weight: 700; color: var(--pow-text); display: flex; justify-content: space-between; align-items: center; cursor: pointer;">
+                  <span>What happens to existing Glassmorphism and Skeuomorphism prompts?</span>
+                  <span style="font-size: 1.2rem; transition: transform 200ms ease;">+</span>
+                </button>
+                <div style="display: none; padding: 0 1.25rem 1rem; font-size: 0.875rem; color: var(--pow-text-muted); line-height: 1.6;">
+                  Legacy inputs specifying <code>glassmorphism</code> automatically resolve to <code>frutiger-aero</code> with variant <code>glass</code>. Prompts specifying <code>skeuomorphism</code> automatically resolve to <code>frutiger-aero</code> with variant <code>tactile</code>. No legacy user experiences breakage.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 4: COMPONENT ANATOMY & QUALITY GATES
+       ========================================================= -->
+  <section class="pow-components" id="components">
+    <div class="pow-container">
+      <div class="pow-section-header">
+        <span class="pow-eyebrow">Quality System</span>
+        <h2 class="pow-section-title">Component Anatomy & Strict Style Gates</h2>
+        <p class="pow-section-desc">
+          How to evaluate Frutiger Aero implementations against rigorous design standards and anti-slop rules.
+        </p>
+      </div>
+
+      <div class="gate-comparison-grid">
+        <!-- FAIL CARD -->
+        <div class="gate-card-fail">
+          <div class="gate-header gate-fail-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+            <span>FAILS THE AERO GATE</span>
+          </div>
+          <ul class="gate-list">
+            <li class="gate-item">
+              <span style="color: #DC2626; font-weight: 800;">&times;</span>
+              <span>Flat pitch-black (#000000) cards with a single generic blue button.</span>
+            </li>
+            <li class="gate-item">
+              <span style="color: #DC2626; font-weight: 800;">&times;</span>
+              <span>Arbitrary blurry circles placed behind gray SaaS boxes that filter no recognizable light.</span>
+            </li>
+            <li class="gate-item">
+              <span style="color: #DC2626; font-weight: 800;">&times;</span>
+              <span>Non-functional floating bubbles, animated swimming fish, or fake telemetry gauges.</span>
+            </li>
+            <li class="gate-item">
+              <span style="color: #DC2626; font-weight: 800;">&times;</span>
+              <span>White text on pale frosted white glass causing severe contrast collisions.</span>
+            </li>
+            <li class="gate-item">
+              <span style="color: #DC2626; font-weight: 800;">&times;</span>
+              <span>Emojis used as interface button icons or status badges.</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- PASS CARD -->
+        <div class="gate-card-pass">
+          <div class="gate-header gate-pass-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"></circle><polyline points="9 11 12 14 22 4"></polyline></svg>
+            <span>PASSES THE AERO GATE</span>
+          </div>
+          <ul class="gate-list">
+            <li class="gate-item">
+              <span style="color: #16A34A; font-weight: 800;">&check;</span>
+              <span>Luminous aqua (#48BFD3) and fresh spring leaf (#70B981) nature-tech atmosphere.</span>
+            </li>
+            <li class="gate-item">
+              <span style="color: #16A34A; font-weight: 800;">&check;</span>
+              <span>Dual-gradient specular horizon sheens simulating curved acrylic or water lens physics.</span>
+            </li>
+            <li class="gate-item">
+              <span style="color: #16A34A; font-weight: 800;">&check;</span>
+              <span>Convex tactile push-buttons with 1.5px mechanical travel and spring rebound.</span>
+            </li>
+            <li class="gate-item">
+              <span style="color: #16A34A; font-weight: 800;">&check;</span>
+              <span>Guaranteed WCAG AA (4.5:1+) reading contrast across both light and dark themes.</span>
+            </li>
+            <li class="gate-item">
+              <span style="color: #16A34A; font-weight: 800;">&check;</span>
+              <span>Solid fallbacks when <code>backdrop-filter</code> is unsupported or transparency is reduced.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 5: TABBED TERMINAL INSTALLATION MATRIX
+       ========================================================= -->
+  <section class="pow-install" id="install">
+    <div class="pow-container">
+      <div class="pow-section-header">
+        <span class="pow-eyebrow">Zero Button Overlap</span>
+        <h2 class="pow-section-title">Install Frutiger Aero</h2>
+        <p class="pow-section-desc">
+          Add Frutiger Aero to your agent skill suite or scaffold pre-built Tailwind and shadcn presets.
+        </p>
+      </div>
+
+      <div class="tabbed-terminal-card">
+        <div class="terminal-header">
+          <div class="terminal-title-group">
+            <div class="pow-dot pow-dot-red"></div>
+            <div class="pow-dot pow-dot-yellow"></div>
+            <div class="pow-dot pow-dot-green"></div>
+            <span style="font-family: var(--pow-font-mono); font-size: 0.75rem; color: #6C8CA5; font-weight: 700; margin-left: 0.5rem;">TERMINAL // INSTALLATION</span>
+          </div>
+          <button class="terminal-copy-btn" onclick="copyActiveInstallTab(this)">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            Copy Command
+          </button>
+        </div>
+
+        <div class="terminal-tab-bar">
+          <button class="terminal-tab active" data-tab="standalone" onclick="switchInstallTab('standalone', this)">01: STANDALONE SKILL</button>
+          <button class="terminal-tab" data-tab="global" onclick="switchInstallTab('global', this)">02: FULL TASTE ENGINE</button>
+          <button class="terminal-tab" data-tab="presets" onclick="switchInstallTab('presets', this)">03: TAILWIND & SHADCN</button>
+        </div>
+
+        <!-- TAB 1: STANDALONE SKILL -->
+        <div class="terminal-pane active" id="tab-standalone">
+          <div class="term-comment"># Install standalone Frutiger Aero skill for Antigravity, Claude, Cursor, Codex</div>
+          <div><span class="term-prompt">$ </span><span class="term-cmd">npx @kennedys0/taste-engine install --agent all --style frutiger-aero</span></div>
+          <div class="term-comment" style="margin-top: 0.5rem;"># Target directories: .gemini/config/skills, .claude/skills, .cursor/skills</div>
+        </div>
+
+        <!-- TAB 2: FULL TASTE ENGINE -->
+        <div class="terminal-pane" id="tab-global">
+          <div class="term-comment"># Install universal 10-style autonomous router suite</div>
+          <div><span class="term-prompt">$ </span><span class="term-cmd">npm install -g @kennedys0/taste-engine</span></div>
+          <div><span class="term-prompt">$ </span><span class="term-cmd">taste-engine update --agent all --global</span></div>
+        </div>
+
+        <!-- TAB 3: TAILWIND & SHADCN -->
+        <div class="terminal-pane" id="tab-presets">
+          <div class="term-comment"># Scaffold Frutiger Aero Tailwind preset & shadcn themes</div>
+          <div><span class="term-prompt">$ </span><span class="term-cmd">npx @kennedys0/taste-engine init taste-presets --force</span></div>
+          <div class="term-comment" style="margin-top: 0.5rem;"># Includes presets/tailwind/tailwind.preset.js and presets/shadcn/shadcn-themes.css</div>
+        </div>
+
+        <div class="agent-support-strip">
+          <span>Supported Autonomous Agents:</span>
+          <div class="agent-tags">
+            <span class="agent-tag">Antigravity</span>
+            <span class="agent-tag">Claude Code</span>
+            <span class="agent-tag">Cursor</span>
+            <span class="agent-tag">Codex</span>
+            <span class="agent-tag">Windsurf</span>
+            <span class="agent-tag">Cline</span>
+            <span class="agent-tag">Copilot</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 6: CORE ARCHITECTURAL PRINCIPLES
+       ========================================================= -->
+  <section class="pow-principles" id="principles">
+    <div class="pow-container">
+      <div class="pow-section-header">
+        <span class="pow-eyebrow">Foundations</span>
+        <h2 class="pow-section-title">Core Architectural Principles</h2>
+        <p class="pow-section-desc">
+          Three design tenets that distinguish authentic Frutiger Aero from superficial glossy gradients.
+        </p>
+      </div>
+
+      <div class="principles-grid">
+        <div class="principle-card">
+          <div class="principle-num">01</div>
+          <h3 class="principle-title">Luminous Nature-Tech Balance</h3>
+          <p class="principle-desc">
+            Technology and ecology are unified. Sky blue, vibrant ocean cyan, and spring leaf greens frame digital data, communicating warmth, growth, and forward-looking human capability.
+          </p>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-num">02</div>
+          <h3 class="principle-title">Specular Horizon Sheens</h3>
+          <p class="principle-desc">
+            Surfaces adhere to real light physics. Specular top-half horizon highlights and gentle perimeter reflections make cards appear as polished acrylic and curved lens planes.
+          </p>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-num">03</div>
+          <h3 class="principle-title">Physical Spring & Affordance</h3>
+          <p class="principle-desc">
+            Digital controls borrow tangible depth without clunky retro baggage. Buttons physically depress on click, inputs sink into the surface plane, and docks float buoyantly above content.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =========================================================
+       SECTION 7: CANONICAL 10-STYLE RESPONSIVE FOOTER
+       ========================================================= -->
+  <footer class="pow-footer">
+    <div class="pow-container">
+      <div class="pow-footer-grid">
+        <div>
+          <div class="footer-col-title">Frutiger Aero PoW</div>
+          <p style="font-size: 0.85rem; color: var(--pow-text-muted); line-height: 1.6; margin-bottom: 1rem;">
+            Autonomous frontend agent skill with adaptive style routing, anti-slop verification, and conditional public SEO.
+          </p>
+          <div class="pow-version-badge" style="display: inline-block;">v0.12.0 Active</div>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Tactile & Organic</div>
+          <ul class="footer-links">
+            <li><a href="frutiger-aero.html" class="footer-link">Frutiger Aero (Active)</a></li>
+            <li><a href="claymorphism.html" class="footer-link">Claymorphism</a></li>
+            <li><a href="art-deco.html" class="footer-link">Art Deco</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Structural & Modernist</div>
+          <ul class="footer-links">
+            <li><a href="brutalism.html" class="footer-link">Brutalism (Raw & Bento)</a></li>
+            <li><a href="neo-brutalism.html" class="footer-link">Neo-Brutalism</a></li>
+            <li><a href="minimalism.html" class="footer-link">Minimalism & Data Cockpit</a></li>
+            <li><a href="swiss-editorial.html" class="footer-link">Swiss Editorial</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-col-title">Retro & Cyber</div>
+          <ul class="footer-links">
+            <li><a href="retro-pixel.html" class="footer-link">Retro Pixel</a></li>
+            <li><a href="retro-terminal.html" class="footer-link">Retro Terminal CRT</a></li>
+            <li><a href="index.html" class="footer-link">Universal Gallery</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>Taste Engine &copy; 2026. MIT Licensed. Open source design system.</div>
+        <div>Built for Antigravity, Claude Code, Cursor, Codex, Windsurf, and Copilot.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" style="position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 1000; display: flex; flex-direction: column; gap: 0.5rem; pointer-events: none;"></div>
+
+  <!-- Interactive Scripts -->
+  <script>
+    // Theme Toggle
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme') || 'light';
+      const next = current === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+    }
+
+    // Mobile Drawer
+    function toggleDrawer() {
+      const drawer = document.getElementById('drawer-panel');
+      const overlay = document.getElementById('drawer-overlay');
+      drawer.classList.toggle('open');
+      overlay.classList.toggle('open');
+    }
+
+    // Expression Switcher (Classic, Glass, Tactile)
+    function switchExpression(expr) {
+      document.querySelectorAll('.pow-variant-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-var') === expr);
+      });
+
+      const title = document.getElementById('studio-window-title');
+      const landingTag = document.getElementById('landing-tag');
+      const landingHeading = document.getElementById('landing-heading');
+      const landingDesc = document.getElementById('landing-desc');
+
+      if (expr === 'classic') {
+        title.innerText = 'STUDIO // FRUTIGER_AERO_CLASSIC';
+        landingTag.innerText = 'NATURE-TECH HARMONY • ECO-OPTIMISM';
+        landingHeading.innerText = 'Bright, Glossy Horizon Surfaces with Tactile Fluidity';
+        landingDesc.innerText = 'Frutiger Aero rejects flat, uninspired interfaces. Luminous water reflections, friendly rounded corners, convex action pills, and vibrant spring green accents create an unmistakable sense of wonder and technical optimism.';
+        document.documentElement.style.setProperty('--pow-radius', '16px');
+        document.documentElement.style.setProperty('--pow-surface', 'rgba(255, 255, 255, 0.78)');
+      } else if (expr === 'glass') {
+        title.innerText = 'STUDIO // FRUTIGER_AERO_GLASS';
+        landingTag.innerText = 'CRYSTALLINE TRANSLUCENCY • REFRACTIVE DEPTH';
+        landingHeading.innerText = 'High-Refraction Frosted Panes Filtering Natural Ambient Light';
+        landingDesc.innerText = 'Preserving core Glassmorphism principles within Aero optimism. Crystalline panels let atmospheric sky and ocean light pass through with 24px backdrop blur and delicate 1px specular highlight rims.';
+        document.documentElement.style.setProperty('--pow-radius', '16px');
+        document.documentElement.style.setProperty('--pow-surface', 'rgba(255, 255, 255, 0.45)');
+      } else if (expr === 'tactile') {
+        title.innerText = 'STUDIO // FRUTIGER_AERO_TACTILE';
+        landingTag.innerText = 'PHYSICAL AFFORDANCES • SIMULATED DEPTH';
+        landingHeading.innerText = 'Tangible Push-Buttons with Distinct Mechanical Spring Travel';
+        landingDesc.innerText = 'Preserving core Skeuomorphism principles within modern usability. Dual-gradient push buttons catch top specular highlights and depress into recessed wells with authentic physical affordance.';
+        document.documentElement.style.setProperty('--pow-radius', '12px');
+        document.documentElement.style.setProperty('--pow-surface', 'rgba(255, 255, 255, 0.95)');
+      }
+      triggerToast('Switched to Frutiger Aero ' + expr.toUpperCase());
+    }
+
+    // Studio Tabs
+    function switchStudioTab(tabId, btn) {
+      document.querySelectorAll('.studio-tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.studio-pane').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      const pane = document.getElementById('pane-' + tabId);
+      if (pane) pane.classList.add('active');
+    }
+
+    // FAQ Accordion
+    function toggleFaq(btn) {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('span:last-child');
+      const isOpen = content.style.display === 'block';
+      content.style.display = isOpen ? 'none' : 'block';
+      icon.innerText = isOpen ? '+' : '−';
+    }
+
+    // Terminal Installation Tabs
+    function switchInstallTab(tabId, btn) {
+      document.querySelectorAll('.terminal-tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.terminal-pane').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      const pane = document.getElementById('tab-' + tabId);
+      if (pane) pane.classList.add('active');
+    }
+
+    // Copy Terminal Active Command
+    function copyActiveInstallTab(btn) {
+      const activePane = document.querySelector('.terminal-pane.active');
+      const cmdSpan = activePane ? activePane.querySelector('.term-cmd') : null;
+      if (cmdSpan) {
+        navigator.clipboard.writeText(cmdSpan.innerText.trim());
+        const orig = btn.innerHTML;
+        btn.innerHTML = 'Copied!';
+        setTimeout(() => { btn.innerHTML = orig; }, 1800);
+      }
+    }
+
+    // Copy Hero Command
+    function copyHeroCmd(btn) {
+      const text = '$ npx @kennedys0/taste-engine init --style frutiger-aero';
+      navigator.clipboard.writeText(text);
+      const orig = btn.innerHTML;
+      btn.innerHTML = 'Copied!';
+      setTimeout(() => { btn.innerHTML = orig; }, 1800);
+    }
+
+    // Toast Notifications
+    function triggerToast(msg) {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.style.cssText = 'background: rgba(23, 63, 97, 0.92); backdrop-filter: blur(8px); color: #F4FAFC; padding: 0.65rem 1.25rem; border-radius: 9999px; font-size: 0.85rem; font-weight: 600; box-shadow: 0 4px 16px rgba(0,0,0,0.25); border: 1px solid rgba(255,255,255,0.2); animation: fadeIn 150ms ease forwards; pointer-events: auto;';
+      toast.innerText = msg;
+      container.appendChild(toast);
+      setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transition = 'opacity 200ms ease';
+        setTimeout(() => toast.remove(), 200);
+      }, 2400);
+    }
+
+    // Hash parameter check for direct variant deep-linking (#variant=glass or #variant=tactile)
+    window.addEventListener('DOMContentLoaded', () => {
+      const hash = window.location.hash;
+      if (hash.includes('variant=glass')) {
+        switchExpression('glass');
+      } else if (hash.includes('variant=tactile')) {
+        switchExpression('tactile');
+      }
+    });
+  </script>
+</body>
+</html>

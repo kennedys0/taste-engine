@@ -25,6 +25,18 @@ const tastePreset = {
           'clay-primary': 'var(--taste-clay-primary, #6366f1)',
           'clay-well': 'var(--taste-clay-well, #dfe4ec)',
 
+          // Frutiger Aero: luminous aqua, deep ocean, spring leaf, and cloud white
+          'aero-aqua': 'var(--taste-aero-aqua, #48BFD3)',
+          'aero-ocean': 'var(--taste-aero-ocean, #247EA3)',
+          'aero-leaf': 'var(--taste-aero-leaf, #70B981)',
+          'aero-sky': 'var(--taste-aero-sky, #C9EDF8)',
+          'aero-cloud': 'var(--taste-aero-cloud, #F4FAFC)',
+          'aero-deep-blue': 'var(--taste-aero-deep-blue, #173F61)',
+          'aero-charcoal': 'var(--taste-aero-charcoal, #243642)',
+          'aero-surface': 'var(--taste-aero-surface, rgba(255, 255, 255, 0.75))',
+          'aero-surface-dark': 'var(--taste-aero-surface-dark, rgba(20, 42, 64, 0.72))',
+          'aero-border': 'var(--taste-aero-border, rgba(255, 255, 255, 0.85))',
+
           // Neo-brutalism: high-contrast pop palette
           'neo-bg': 'var(--taste-neo-bg, #fffdf8)',
           'neo-ink': 'var(--taste-neo-ink, #121212)',
@@ -103,6 +115,17 @@ const tastePreset = {
           'deco-forest': '#24453d',
           'deco-burgundy': '#693b43',
           'deco-border': 'var(--taste-deco-border, #d4c7b0)',
+
+          // Y2K Futurism: cyber-optimism, polished chrome, and iridescent spectral tones
+          'y2k-silver': 'var(--taste-y2k-silver, #C5CBD3)',
+          'y2k-chrome-light': 'var(--taste-y2k-chrome-light, #F1F3F6)',
+          'y2k-graphite': 'var(--taste-y2k-graphite, #252833)',
+          'y2k-violet': 'var(--taste-y2k-violet, #8865DD)',
+          'y2k-ice-blue': 'var(--taste-y2k-ice-blue, #8FCFE9)',
+          'y2k-pink': 'var(--taste-y2k-pink, #E6ABD8)',
+          'y2k-deep-space': 'var(--taste-y2k-deep-space, #181821)',
+          'y2k-surface': 'var(--taste-y2k-surface, #2A2E3D)',
+          'y2k-border': 'var(--taste-y2k-border, rgba(197, 203, 211, 0.35))',
         },
       },
       boxShadow: {
@@ -145,12 +168,33 @@ const tastePreset = {
         // Art Deco: crisp architectural framing
         'deco-card': '0 4px 20px rgba(0, 0, 0, 0.06)',
         'deco-elevated': '0 12px 36px rgba(0, 0, 0, 0.12)',
+
+        // Frutiger Aero: glossy horizon sheens, tactile convex buttons, and translucent dock elevation
+        'aero-card': '0 10px 28px rgba(36, 126, 163, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.9)',
+        'aero-card-dark': '0 12px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25)',
+        'aero-btn': '0 4px 14px rgba(36, 126, 163, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.7), inset 0 -1px 0 rgba(0, 0, 0, 0.2)',
+        'aero-btn-active': '0 2px 6px rgba(36, 126, 163, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.3)',
+        'aero-dock': '0 12px 32px rgba(36, 126, 163, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.95)',
+        'aero-well': 'inset 0 2px 4px rgba(23, 63, 97, 0.12), 0 1px 0 rgba(255, 255, 255, 0.9)',
+
+        // Y2K Futurism: metallic chrome, holographic glow, and specular framing
+        'y2k-card': '0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(241, 243, 246, 0.4)',
+        'y2k-card-light': '0 8px 24px rgba(37, 40, 51, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9)',
+        'y2k-btn': '0 4px 14px rgba(0, 0, 0, 0.35), inset 0 1px 0 #FFFFFF',
+        'y2k-btn-violet': '0 4px 16px rgba(136, 101, 221, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.4)',
       },
       borderRadius: {
         'clay-sm': '1rem',
         'clay-md': '1.5rem',
         'clay-lg': '2rem',
         'clay-full': '9999px',
+        'aero-sm': '0.625rem',
+        'aero-md': '1rem',
+        'aero-lg': '1.25rem',
+        'aero-full': '9999px',
+        'y2k-sm': '0.25rem',
+        'y2k': '0.375rem',
+        'y2k-lg': '0.5rem',
         'neo': '0.375rem',
         'brutal': '0px',
         'bento': '1.75rem',
@@ -168,6 +212,8 @@ const tastePreset = {
         swiss: ['"Space Grotesk"', 'Inter', 'Helvetica', 'Arial', 'sans-serif'],
         pixel: ['"Pixelify Sans"', '"Press Start 2P"', 'monospace'],
         deco: ['"Cinzel"', '"Playfair Display"', 'Georgia', 'serif'],
+        aero: ['"Segoe UI"', 'Frutiger', '"Trebuchet MS"', 'Inter', 'sans-serif'],
+        y2k: ['"Space Grotesk"', '"Syne"', '"Orbitron"', 'Inter', 'sans-serif'],
       },
     },
   },

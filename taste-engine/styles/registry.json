@@ -20,13 +20,90 @@
       ]
     },
     {
-      "id": "glassmorphism",
-      "label": "Glassmorphism",
-      "description": "Recognizable frosted, translucent panes filtering layered ambient light, in light or dark glass themes.",
-      "path": "styles/glassmorphism.md",
-      "recommended_for": "Marketing microsites, media interfaces, hero sections and light dashboards.",
+      "id": "frutiger-aero",
+      "label": "Frutiger Aero",
+      "description": "Optimistic mid-2000s technological vision featuring glossy surfaces, luminous aqua/ocean hues, nature-tech harmony, and soft dimensional depth. Consolidates Classic Aero, Aero Glass, and Aero Tactile expressions.",
+      "path": "styles/frutiger-aero.md",
+      "recommended_for": "Optimistic tech landing pages, creative portfolios, media suites, vibrant dashboards, and tactile web apps.",
+      "default_variant": "classic",
+      "variants": [
+        {
+          "id": "classic",
+          "label": "Classic Aero",
+          "identity": "classic-aero",
+          "description": "Bright aqua-inspired palette, glossy dimensional controls, nature-tech balance, and optimistic compositions.",
+          "aliases": [
+            "classic",
+            "classic aero",
+            "frutiger aero",
+            "frutiger",
+            "aero",
+            "aqua",
+            "glossy",
+            "web 2.0"
+          ]
+        },
+        {
+          "id": "glass",
+          "label": "Aero Glass",
+          "identity": "aero-glass",
+          "description": "Frosted crystalline panels, layered transparency, controlled backdrop blur, and soft luminous borders rooted in Aero optimism.",
+          "aliases": [
+            "glass",
+            "aero glass",
+            "glassmorphism",
+            "glass morphism",
+            "glassmorph",
+            "glassmorfisme",
+            "frosted glass",
+            "frosted ui",
+            "glass ui",
+            "kaca buram",
+            "glassmorphsm",
+            "glass morph",
+            "frosted glass ui"
+          ]
+        },
+        {
+          "id": "tactile",
+          "label": "Aero Tactile",
+          "identity": "aero-tactile",
+          "description": "Physical material cues, tactile button surfaces, convincing highlights and shadows, and realistic surface depth.",
+          "aliases": [
+            "tactile",
+            "aero tactile",
+            "skeuomorphism",
+            "skeuomorphic",
+            "skeuomorph",
+            "skeuomorfisme",
+            "skeumorphism",
+            "skeumorphsm",
+            "skeumorfisme",
+            "skeuomorpism",
+            "skeuomorphic ui",
+            "physical ui",
+            "realistic physical controls"
+          ]
+        }
+      ],
       "aliases": [
+        "frutiger aero",
+        "frutiger-aero",
+        "frutiger",
+        "aero",
+        "aero ui",
+        "classic aero",
+        "aero glass",
+        "aero tactile",
         "glass",
+        "tactile",
+        "aqua ui",
+        "aqua",
+        "web 2.0",
+        "web2.0",
+        "glossy ui",
+        "glossy",
+        "glassmorphism",
         "glass morphism",
         "glassmorph",
         "glassmorfisme",
@@ -36,7 +113,18 @@
         "kaca buram",
         "glassmorphsm",
         "glass morph",
-        "frosted glass ui"
+        "frosted glass ui",
+        "skeuomorphism",
+        "skeuomorphic",
+        "skeuomorph",
+        "skeuomorfisme",
+        "skeumorphism",
+        "skeumorphsm",
+        "skeumorfisme",
+        "skeuomorpism",
+        "skeuomorphic ui",
+        "physical ui",
+        "realistic physical controls"
       ]
     },
     {
@@ -151,25 +239,6 @@
       ]
     },
     {
-      "id": "skeuomorphism",
-      "label": "Skeuomorphism",
-      "description": "Digital controls borrow tangible affordances from physical objects, industrial machinery, and analog hardware.",
-      "path": "styles/skeuomorphism.md",
-      "recommended_for": "Music tools, specialized controls, educational simulations and playful product interfaces.",
-      "aliases": [
-        "skeuomorphic",
-        "skeuomorph",
-        "skeuomorfisme",
-        "skeumorphism",
-        "skeumorphsm",
-        "skeumorfisme",
-        "skeuomorpism",
-        "skeuomorphic ui",
-        "physical ui",
-        "realistic physical controls"
-      ]
-    },
-    {
       "id": "retro-terminal",
       "label": "Retro Terminal",
       "description": "Authentic CRT developer-console visual language, phosphor glow, monospace tabular structure, and modern keyboard-driven utility.",
@@ -273,6 +342,81 @@
         "streamline moderne",
         "deco design",
         "geometric luxury"
+      ]
+    },
+    {
+      "id": "y2k-futurism",
+      "label": "Y2K Futurism",
+      "description": "Late-1990s and early-2000s cyber-optimism and speculative technology aesthetic featuring polished chrome finishes, iridescent reflections, experimental geometric framing, and metallic neutrality.",
+      "path": "styles/y2k-futurism.md",
+      "recommended_for": "Creative studios, electronic music platforms, cutting-edge fashion labels, experimental portfolios, web3/fintech products, and digital culture apps.",
+      "default_variant": "chrome",
+      "variants": [
+        {
+          "id": "chrome",
+          "label": "Chrome",
+          "identity": "y2k-chrome",
+          "description": "Metallic silver surfaces, high-contrast dark and light zones, chrome-beveled geometric framing, and bold futuristic typography.",
+          "aliases": [
+            "chrome",
+            "liquid chrome",
+            "metallic silver",
+            "chrome ui",
+            "metallic"
+          ]
+        },
+        {
+          "id": "holographic",
+          "label": "Holographic",
+          "identity": "y2k-holographic",
+          "description": "Iridescent accents, controlled spectral gradients, translucent colored layering, and soft chromatic reflections.",
+          "aliases": [
+            "holographic",
+            "holo",
+            "iridescent",
+            "iridescence",
+            "spectral",
+            "holo ui"
+          ]
+        },
+        {
+          "id": "retro-tech",
+          "label": "Retro Tech",
+          "identity": "y2k-retro-tech",
+          "description": "Early internet cyber-optimism, futuristic industrial typography, modular console panels, and speculative technology aesthetics.",
+          "aliases": [
+            "retro-tech",
+            "retro tech",
+            "cyber optimism",
+            "speculative tech",
+            "millennium tech"
+          ]
+        }
+      ],
+      "aliases": [
+        "y2k",
+        "y2k futurism",
+        "y2k-futurism",
+        "y2k aesthetic",
+        "y2k ui",
+        "cyber y2k",
+        "futurism",
+        "chrome",
+        "liquid chrome",
+        "metallic silver",
+        "chrome ui",
+        "metallic",
+        "holographic",
+        "holo",
+        "iridescent",
+        "iridescence",
+        "spectral",
+        "holo ui",
+        "retro-tech",
+        "retro tech",
+        "cyber optimism",
+        "speculative tech",
+        "millennium tech"
       ]
     }
   ]

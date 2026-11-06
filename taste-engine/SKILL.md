@@ -1,6 +1,6 @@
 ---
 name: taste-engine
-description: Automatically routes visual UI work to a user-chosen aesthetic and applies SEO readiness to public-facing websites. Use whenever a user asks to build, create, design, or redesign a website, portfolio, landing page, dashboard, web app, mobile app, UI/UX screen, frontend, or component, or add/refine micro-interactions or full-screen hero sections (including Indonesian prompts such as "build a portfolio website"). Before writing UI code, ask ONE style question and stop if no visual style or approved project design system is specified. If the prompt already names an aesthetic such as skeuomorphism, claymorphism, glassmorphism, brutalism, neo-brutalism, minimalism, bento, retro-pixel, art-deco, or editorial, load its bundled style pack immediately and proceed WITHOUT asking again. Preserve established styles for minor fixes; for SEO-only tasks, load the SEO module without a visual style question; skip unrelated non-visual work.
+description: Automatically routes visual UI work to a user-chosen aesthetic and applies SEO readiness to public-facing websites. Use whenever a user asks to build, create, design, or redesign a website, portfolio, landing page, dashboard, web app, mobile app, UI/UX screen, frontend, or component, or add/refine micro-interactions or full-screen hero sections (including Indonesian prompts such as "build a portfolio website"). Before writing UI code, ask ONE style question and stop if no visual style or approved project design system is specified. If the prompt already names an aesthetic such as claymorphism, frutiger-aero, brutalism, neo-brutalism, minimalism, bento, retro-pixel, art-deco, y2k-futurism, or editorial, load its bundled style pack immediately and proceed WITHOUT asking again. Preserve established styles for minor fixes; for SEO-only tasks, load the SEO module without a visual style question; skip unrelated non-visual work.
 license: MIT
 metadata:
   version: "0.12.0"
@@ -12,11 +12,11 @@ metadata:
 
 ## Material fidelity (selected styles) — screenshot-level contract
 
-Selected visual aesthetics must be **recognizable from the rendered interface**, not just stated in headings or CSS variable names. When `glassmorphism` is selected, load `styles/glassmorphism.md` and apply its mandatory **Glass material fidelity gate**: real visibly frosted/tinted panes filtering differentiated background light, readable reflections/edges, and accessible fallback. A flat navy hero plus a blue CTA is not Glassmorphism. Use `tests/glassmorphism-visual.md` for acceptance checks and `examples/glassmorphism/frosted-surfaces.css` as a starting recipe. Do not apply this glass-specific check to other styles; every aesthetic retains its own requirements.
+Selected visual aesthetics must be **recognizable from the rendered interface**, not just stated in headings or CSS variable names. When `frutiger-aero` is selected, load `styles/frutiger-aero.md` and apply its mandatory **Frutiger Aero material fidelity gate**: authentic glossy acrylic specular sheens, aqua/ocean/leaf nature-tech balance, tactile controls, and accessible fallback. A flat navy hero plus a blue CTA is not Frutiger Aero. Use `tests/frutiger-aero-visual.md` for acceptance checks and `examples/frutiger-aero/glossy-surfaces.css` as a starting recipe. When `y2k-futurism` is selected, load `styles/y2k-futurism.md` and apply its mandatory **Y2K Futurism material fidelity gate**: polished chrome finishes, liquid silver surfaces, iridescent spectral highlights, and chamfered geometric framing. Use `tests/y2k-futurism-visual.md` and `examples/y2k-futurism/metallic-surfaces.css`. Do not apply these style-specific checks to other styles; every aesthetic retains its own requirements.
 
-## Glassmorphism-specific gradient exception
+## Frutiger Aero and Y2K Futurism material exceptions — gloss, nature gradients, and metallic chrome are allowed
 
-When Glassmorphism is selected, **purposeful CSS gradient backdrops, ambient light fields and controlled soft color shapes are explicitly permitted** because they make translucent frosting and depth visible. Do not remove these to satisfy general anti-slop gradient warnings. Read `styles/glassmorphism.md` ("Explicit background gradient exception") and validate that the first viewport shows a real pane filtering its differentiated backdrop. This exemption applies only to the selected material and never overrides usability, truthfulness, accessibility or user constraints.
+When Frutiger Aero is selected, **purposeful CSS gradient backdrops, atmospheric nature-tech light fields, and acrylic specular horizon sheens are explicitly permitted** because they define optimistic mid-2000s technological aesthetics. When Y2K Futurism is selected, **multi-stop metallic chrome gradients, liquid silver finishes, and iridescent spectral borders are explicitly permitted** because they define millennium speculative cyber-optimism. Do not remove these to satisfy general anti-slop gradient warnings. Read the style packs and validate that the first viewport visibly reads as an authentic composition. These exemptions apply only to the selected material and never override usability, truthfulness, accessibility or user constraints.
 
 ## Automatic invocation: the zero-command contract
 
@@ -26,7 +26,7 @@ When Glassmorphism is selected, **purposeful CSS gradient backdrops, ambient lig
 
 - **Implicit style selection:** "build me a portfolio website" → ask ONE concise style question, then end turn. Never ask the user about unrelated details in the same turn.
 
-- **Explicit style selection:** "build a portfolio website in skeumorphsm style" → normalize the typo to `skeuomorphism`, read `styles/skeuomorphism.md`, and build. Do not run the question menu.
+- **Explicit style selection:** "build a portfolio website in skeumorphsm style" → normalize the typo to `skeuomorphism` (resolving to canonical `frutiger-aero` with variant `tactile`), read `styles/frutiger-aero.md`, without asking, and build. Do not run the question menu.
 
 - **Established project:** an approved project config or documented brand/style wins over generic defaults for incremental work; do not interrupt with a menu.
 
@@ -124,15 +124,15 @@ Read `styles/registry.json` when matching IDs, **aliases, common misspellings**,
 | ID | Direction | File to load once selected |
 | --- | --- | --- |
 | `claymorphism` | Sculpted tactile | [style pack](styles/claymorphism.md) |
-| `glassmorphism` | Translucent layered | [style pack](styles/glassmorphism.md) |
+| `frutiger-aero` | Optimistic mid-2000s gloss & nature-tech (Classic, Glass, Tactile) | [style pack](styles/frutiger-aero.md) |
 | `brutalism` | Raw structural (Raw & Bento variants) | [style pack](styles/brutalism.md) |
 | `neo-brutalism` | Playful bold | [style pack](styles/neo-brutalism.md) |
 | `minimalism` | Restrained clarity & data cockpits | [style pack](styles/minimalism.md) |
 | `swiss-editorial` | Typographic grid | [style pack](styles/swiss-editorial.md) |
-| `skeuomorphism` | Physical control metaphor | [style pack](styles/skeuomorphism.md) |
 | `retro-terminal` | Console aesthetic | [style pack](styles/retro-terminal.md) |
 | `retro-pixel` | 8-bit/16-bit arcade desktop | [style pack](styles/retro-pixel.md) |
 | `art-deco` | Architectural geometric elegance & luxury (Modern, Classic, Minimal) | [style pack](styles/art-deco.md) |
+| `y2k-futurism` | Cyber-optimism, polished chrome & iridescent reflections (Chrome, Holographic, Retro Tech) | [style pack](styles/y2k-futurism.md) |
 
 **Custom is first-class:** if the chosen aesthetic is not in the registry, gather a short reference or constraints, then create a provisional project-specific style definition using the same dimensions. Never mislabel the style as a pack not present. Do not require external internet access to choose.
 
