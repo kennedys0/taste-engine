@@ -1,0 +1,1694 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-variant="modern">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Art Deco Proof-of-Work Showcase — Taste Engine</title>
+  <meta name="description" content="Official interactive Proof-of-Work showcase for the Art Deco visual style in Taste Engine. Features Modern Deco, Classic Deco, and Minimal Deco expressions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    /* =========================================================
+       ART DECO POW SHOWCASE DESIGN SYSTEM TOKENS
+       ========================================================= */
+    :root {
+      --pow-bg: #F5F0E6;
+      --pow-surface: #FFFFFF;
+      --pow-surface-hover: #FAF7F0;
+      --pow-surface-elevated: #ECE5D6;
+      --pow-well-bg: #EAE3D2;
+      --pow-border: 1px solid #D4C7B0;
+      --pow-border-strong: 1px solid #B69A68;
+      --pow-text: #292B29;
+      --pow-text-muted: #636662;
+      --pow-text-faint: #8E918C;
+      --pow-accent: #B69A68;
+      --pow-accent-secondary: #24453D;
+      --pow-font-display: 'Cinzel', Georgia, serif;
+      --pow-font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      --pow-font-mono: "JetBrains Mono", Menlo, Consolas, monospace;
+      --pow-radius: 2px;
+      --pow-radius-sm: 1px;
+      --pow-header-h: 60px;
+      --pow-btn-h: 36px;
+      --pow-deco-gold: #B69A68;
+      --pow-deco-line-opacity: 0.45;
+    }
+
+    [data-theme="dark"] {
+      --pow-bg: #161B18;
+      --pow-surface: #1F2622;
+      --pow-surface-hover: #262E2A;
+      --pow-surface-elevated: #29332D;
+      --pow-well-bg: #121614;
+      --pow-border: 1px solid #38423C;
+      --pow-border-strong: 1px solid #D8BC88;
+      --pow-text: #F5F0E6;
+      --pow-text-muted: #A3A8A2;
+      --pow-text-faint: #6E736E;
+      --pow-accent: #D8BC88;
+      --pow-accent-secondary: #345C52;
+      --pow-deco-gold: #D8BC88;
+      --pow-deco-line-opacity: 0.35;
+    }
+
+    /* Classic Deco Variant Overrides */
+    [data-variant="classic"] {
+      --pow-bg: #F3ECDD;
+      --pow-surface: #FCF9F2;
+      --pow-surface-hover: #F5EEDB;
+      --pow-surface-elevated: #E7DDC8;
+      --pow-well-bg: #DFD3BB;
+      --pow-border: 1px solid #D6C8A8;
+      --pow-border-strong: 1px solid #9E8043;
+      --pow-text: #171715;
+      --pow-text-muted: #5C5A52;
+      --pow-accent: #9E8043;
+      --pow-accent-secondary: #183D36;
+      --pow-radius: 0px;
+      --pow-radius-sm: 0px;
+    }
+
+    [data-theme="dark"][data-variant="classic"],
+    [data-variant="classic"][data-theme="dark"] {
+      --pow-bg: #171715;
+      --pow-surface: #20201D;
+      --pow-surface-hover: #292925;
+      --pow-surface-elevated: #2B2B27;
+      --pow-well-bg: #0F0F0E;
+      --pow-border: 1px solid #3D3B33;
+      --pow-border-strong: 1px solid #B89B5E;
+      --pow-text: #F3ECDD;
+      --pow-text-muted: #AFA898;
+      --pow-accent: #B89B5E;
+      --pow-accent-secondary: #1E4E45;
+    }
+
+    /* Minimal Deco Variant Overrides */
+    [data-variant="minimal"] {
+      --pow-bg: #F7F4ED;
+      --pow-surface: #FFFFFF;
+      --pow-surface-hover: #F2EDE2;
+      --pow-surface-elevated: #EBE6DB;
+      --pow-well-bg: #E4DED1;
+      --pow-border: 1px solid #D8CFC0;
+      --pow-border-strong: 1px solid #A98462;
+      --pow-text: #272625;
+      --pow-text-muted: #68645E;
+      --pow-accent: #A98462;
+      --pow-accent-secondary: #693B43;
+      --pow-radius: 2px;
+      --pow-radius-sm: 1px;
+    }
+
+    [data-theme="dark"][data-variant="minimal"],
+    [data-variant="minimal"][data-theme="dark"] {
+      --pow-bg: #1B1A19;
+      --pow-surface: #242321;
+      --pow-surface-hover: #2D2B28;
+      --pow-surface-elevated: #2F2D2A;
+      --pow-well-bg: #141312;
+      --pow-border: 1px solid #3B3935;
+      --pow-border-strong: 1px solid #C5A281;
+      --pow-text: #F7F4ED;
+      --pow-text-muted: #ABA59B;
+      --pow-accent: #C5A281;
+      --pow-accent-secondary: #8A4E58;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--pow-bg);
+      color: var(--pow-text);
+      font-family: var(--pow-font-sans);
+      min-width: 320px;
+      line-height: 1.55;
+      overflow-x: hidden;
+      transition: background-color 150ms ease, color 150ms ease;
+    }
+
+    .pow-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    /* =========================================================
+       1. STICKY NAVIGATION HEADER
+       ========================================================= */
+    .pow-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: var(--pow-header-h);
+      background: var(--pow-bg);
+      border-bottom: var(--pow-border);
+      backdrop-filter: blur(8px);
+      display: flex;
+      align-items: center;
+    }
+
+    .pow-header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .pow-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      text-decoration: none;
+      color: var(--pow-text);
+      font-family: var(--pow-font-display);
+      font-weight: 700;
+      font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .pow-brand-monogram {
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid var(--pow-accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 900;
+      color: var(--pow-accent);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    .pow-brand-monogram span {
+      transform: rotate(-45deg);
+    }
+
+    .pow-version-badge {
+      font-family: var(--pow-font-mono);
+      font-size: 0.7rem;
+      padding: 2px 6px;
+      border-radius: var(--pow-radius-sm);
+      background: var(--pow-well-bg);
+      border: var(--pow-border);
+      color: var(--pow-text-muted);
+    }
+
+    .pow-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .pow-nav-btn {
+      height: var(--pow-btn-h);
+      box-sizing: border-box;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 0 0.85rem;
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius-sm);
+      color: var(--pow-text);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 120ms ease;
+    }
+
+    .pow-nav-btn:hover {
+      background: var(--pow-surface-hover);
+      border-color: var(--pow-border-strong);
+    }
+
+    .pow-icon-btn {
+      width: var(--pow-btn-h);
+      height: var(--pow-btn-h);
+      aspect-ratio: 1 / 1;
+      flex-shrink: 0;
+      padding: 0;
+    }
+
+    .pow-hamburger-btn {
+      display: none;
+    }
+
+    /* Mobile Drawer */
+    .pow-drawer-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(4px);
+      z-index: 200;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease;
+    }
+
+    .pow-drawer-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .pow-drawer-panel {
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: min(340px, 85vw);
+      background: var(--pow-bg);
+      border-left: var(--pow-border);
+      z-index: 201;
+      transform: translateX(100%);
+      transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+      display: flex;
+      flex-direction: column;
+      padding: 1.5rem;
+      overflow-y: auto;
+    }
+
+    .pow-drawer-panel.active {
+      transform: translateX(0);
+    }
+
+    .pow-drawer-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 1rem;
+      border-bottom: var(--pow-border);
+      margin-bottom: 1.25rem;
+    }
+
+    .pow-drawer-links {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .pow-drawer-link {
+      padding: 0.65rem 0.85rem;
+      border-radius: var(--pow-radius-sm);
+      text-decoration: none;
+      color: var(--pow-text);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: background 120ms ease;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .pow-drawer-link:hover,
+    .pow-drawer-link.active {
+      background: var(--pow-surface-elevated);
+      color: var(--pow-accent);
+    }
+
+    /* =========================================================
+       2. FULL-SCREEN HERO VIEWPORT
+       ========================================================= */
+    .pow-hero {
+      min-height: calc(100svh - var(--pow-header-h));
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 3.5rem 0 2.5rem;
+      position: relative;
+    }
+
+    .pow-hero-pills {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      margin-bottom: 1.5rem;
+    }
+
+    .pow-pill {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: var(--pow-radius-sm);
+      background: var(--pow-surface);
+      border: 1px solid var(--pow-accent);
+      color: var(--pow-accent);
+    }
+
+    .pow-hero-title {
+      font-family: var(--pow-font-display);
+      font-size: clamp(2rem, 5.5vw, 3.75rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+      max-width: 960px;
+    }
+
+    .pow-hero-subtitle {
+      font-size: clamp(0.95rem, 2vw, 1.2rem);
+      color: var(--pow-text-muted);
+      max-width: 760px;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .pow-hero-cmd {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: var(--pow-surface);
+      border: var(--pow-border-strong);
+      border-radius: var(--pow-radius);
+      padding: 0.5rem 0.5rem 0.5rem 1rem;
+      max-width: 580px;
+      width: 100%;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .pow-hero-cmd code {
+      font-family: var(--pow-font-mono);
+      font-size: 0.8rem;
+      color: var(--pow-text);
+      overflow-x: auto;
+      white-space: nowrap;
+      margin-right: 0.75rem;
+    }
+
+    .pow-hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.85rem;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+
+    .pow-btn-cta {
+      height: 42px;
+      padding: 0 1.5rem;
+      background: var(--pow-accent);
+      color: var(--pow-bg);
+      border: 1px solid var(--pow-accent);
+      border-radius: var(--pow-radius);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: transform 120ms ease, filter 120ms ease;
+    }
+
+    .pow-btn-cta:hover {
+      filter: brightness(1.1);
+      transform: translateY(-1px);
+    }
+
+    .pow-btn-secondary {
+      height: 42px;
+      padding: 0 1.5rem;
+      background: transparent;
+      color: var(--pow-text);
+      border: 1px solid var(--pow-border-strong);
+      border-radius: var(--pow-radius);
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background 120ms ease;
+    }
+
+    .pow-btn-secondary:hover {
+      background: var(--pow-surface-elevated);
+    }
+
+    .pow-telemetry-strip {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      width: 100%;
+      max-width: 960px;
+      border-top: var(--pow-border);
+      padding-top: 1.5rem;
+    }
+
+    .pow-telemetry-item {
+      text-align: center;
+    }
+
+    .pow-telemetry-val {
+      font-family: var(--pow-font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--pow-accent);
+      letter-spacing: 0.05em;
+    }
+
+    .pow-telemetry-lbl {
+      font-size: 0.7rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--pow-text-muted);
+    }
+
+    /* =========================================================
+       3. INTERACTIVE STUDIO COCKPIT
+       ========================================================= */
+    .pow-studio {
+      padding: 4rem 0;
+      border-top: var(--pow-border);
+    }
+
+    .pow-section-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    .pow-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--pow-accent);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .pow-title {
+      font-family: var(--pow-font-display);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .pow-desc {
+      font-size: 0.95rem;
+      color: var(--pow-text-muted);
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .pow-studio-card {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      max-width: 100%;
+    }
+
+    .pow-window-header {
+      background: var(--pow-surface-elevated);
+      border-bottom: var(--pow-border);
+      padding: 0.75rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .pow-window-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .pow-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--pow-text-faint);
+      opacity: 0.6;
+    }
+
+    .pow-window-title {
+      font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--pow-text-muted);
+    }
+
+    .pow-studio-controls {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .pow-variant-btn {
+      padding: 3px 10px;
+      font-size: 0.725rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 1px solid var(--pow-border);
+      background: transparent;
+      color: var(--pow-text-muted);
+      cursor: pointer;
+      border-radius: var(--pow-radius-sm);
+      transition: all 120ms ease;
+    }
+
+    .pow-variant-btn.active,
+    .pow-variant-btn:hover {
+      background: var(--pow-accent);
+      color: var(--pow-bg);
+      border-color: var(--pow-accent);
+    }
+
+    .pow-studio-body {
+      padding: 2rem;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Studio Tab Bar */
+    .studio-tabs {
+      display: flex;
+      gap: 0.5rem;
+      border-bottom: var(--pow-border);
+      padding-bottom: 1rem;
+      margin-bottom: 2rem;
+      overflow-x: auto;
+    }
+
+    .studio-tab-btn {
+      padding: 0.5rem 1rem;
+      font-family: var(--pow-font-sans);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--pow-text-muted);
+      border-radius: var(--pow-radius-sm);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 120ms ease;
+    }
+
+    .studio-tab-btn.active {
+      background: var(--pow-surface-elevated);
+      color: var(--pow-accent);
+      border-color: var(--pow-accent);
+    }
+
+    .studio-pane {
+      display: none;
+    }
+
+    .studio-pane.active {
+      display: block;
+    }
+
+    /* Architectural Geometric Frame */
+    .deco-frame {
+      border: 1px solid var(--pow-border);
+      position: relative;
+      padding: 2rem;
+      background: var(--pow-bg);
+    }
+
+    .deco-frame::before {
+      content: '';
+      position: absolute;
+      inset: 4px;
+      border: 1px solid var(--pow-accent);
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    /* Stepped Corner Details */
+    .corner-bracket {
+      position: absolute;
+      width: 14px;
+      height: 14px;
+      border: 2px solid var(--pow-accent);
+      pointer-events: none;
+    }
+
+    .corner-tl { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+    .corner-tr { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+    .corner-bl { bottom: -2px; left: -2px; border-right: none; border-top: none; }
+    .corner-br { bottom: -2px; right: -2px; border-left: none; border-top: none; }
+
+    /* Symmetrical Divider */
+    .deco-divider-symm {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin: 2.5rem 0;
+    }
+
+    .deco-divider-symm::before,
+    .deco-divider-symm::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--pow-accent);
+      opacity: var(--pow-deco-line-opacity);
+    }
+
+    .deco-diamond {
+      width: 10px;
+      height: 10px;
+      background: var(--pow-accent);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* =========================================================
+       4. COMPONENT ANATOMY & QUALITY GATES
+       ========================================================= */
+    .pow-components {
+      padding: 4rem 0;
+      border-top: var(--pow-border);
+    }
+
+    .gates-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .gate-card {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius);
+      padding: 1.5rem;
+      position: relative;
+    }
+
+    .gate-card.pass {
+      border-top: 3px solid #10B981;
+    }
+
+    .gate-card.fail {
+      border-top: 3px solid #EF4444;
+    }
+
+    .gate-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: var(--pow-radius-sm);
+      margin-bottom: 0.75rem;
+    }
+
+    .gate-badge.pass {
+      background: rgba(16, 185, 129, 0.15);
+      color: #10B981;
+    }
+
+    .gate-badge.fail {
+      background: rgba(239, 68, 68, 0.15);
+      color: #EF4444;
+    }
+
+    /* =========================================================
+       5. TABBED TERMINAL INSTALLATION MATRIX
+       ========================================================= */
+    .pow-install {
+      padding: 4rem 0;
+      border-top: var(--pow-border);
+    }
+
+    .tabbed-terminal-card {
+      background: #0D1117;
+      border: 1px solid #30363D;
+      border-radius: 6px;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+      max-width: 880px;
+      margin: 0 auto;
+    }
+
+    .terminal-header {
+      background: #161B22;
+      border-bottom: 1px solid #30363D;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .terminal-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .terminal-title {
+      font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
+      color: #8B949E;
+    }
+
+    .terminal-copy-btn {
+      height: 28px;
+      padding: 0 10px;
+      background: #21262D;
+      border: 1px solid #30363D;
+      border-radius: 4px;
+      color: #C9D1D9;
+      font-family: var(--pow-font-mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 120ms ease;
+    }
+
+    .terminal-copy-btn:hover {
+      background: #30363D;
+      color: #FFFFFF;
+    }
+
+    .terminal-tab-bar {
+      display: flex;
+      background: #0D1117;
+      border-bottom: 1px solid #30363D;
+      overflow-x: auto;
+    }
+
+    .terminal-tab {
+      padding: 0.6rem 1.25rem;
+      font-family: var(--pow-font-mono);
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #8B949E;
+      background: transparent;
+      border: none;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 120ms ease;
+    }
+
+    .terminal-tab.active {
+      color: #58A6FF;
+      border-bottom-color: #58A6FF;
+      background: rgba(56, 139, 253, 0.05);
+    }
+
+    .terminal-body {
+      padding: 1.5rem;
+      font-family: var(--pow-font-mono);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      color: #E6EDF3;
+      overflow-x: auto;
+    }
+
+    .tab-pane {
+      display: none;
+    }
+
+    .tab-pane.active {
+      display: block;
+    }
+
+    .term-comment { color: #8B949E; }
+    .term-prompt { color: #7EE787; font-weight: bold; }
+    .term-cmd { color: #A5D6FF; }
+
+    .agent-support-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+      font-size: 0.75rem;
+      color: var(--pow-text-muted);
+    }
+
+    .agent-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 2px 8px;
+      border-radius: var(--pow-radius-sm);
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      font-weight: 600;
+    }
+
+    /* =========================================================
+       6. CORE ARCHITECTURAL PRINCIPLES
+       ========================================================= */
+    .pow-principles {
+      padding: 4rem 0;
+      border-top: var(--pow-border);
+    }
+
+    .principles-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+
+    .principle-card {
+      background: var(--pow-surface);
+      border: var(--pow-border);
+      border-radius: var(--pow-radius);
+      padding: 2rem;
+      position: relative;
+    }
+
+    .principle-num {
+      font-family: var(--pow-font-display);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--pow-accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .principle-title {
+      font-family: var(--pow-font-display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .principle-desc {
+      font-size: 0.875rem;
+      color: var(--pow-text-muted);
+      line-height: 1.6;
+    }
+
+    /* =========================================================
+       7. CANONICAL 10-STYLE RESPONSIVE FOOTER
+       ========================================================= */
+    .pow-footer {
+      padding: 4rem 0 2rem;
+      border-top: var(--pow-border);
+      background: var(--pow-surface);
+    }
+
+    .pow-footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .pow-footer-col h5 {
+      font-family: var(--pow-font-display);
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--pow-accent);
+      margin-bottom: 1rem;
+    }
+
+    .pow-footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .pow-footer-col a {
+      color: var(--pow-text-muted);
+      text-decoration: none;
+      font-size: 0.825rem;
+      transition: color 120ms ease;
+    }
+
+    .pow-footer-col a:hover {
+      color: var(--pow-accent);
+    }
+
+    .pow-footer-bottom {
+      border-top: var(--pow-border);
+      padding-top: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: 0.775rem;
+      color: var(--pow-text-muted);
+    }
+
+    /* Accessibility focus indicators */
+    button:focus-visible,
+    a:focus-visible,
+    input:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 2px solid var(--pow-accent);
+      outline-offset: 2px;
+    }
+
+    /* Mobile Responsive Invariants */
+    @media (max-width: 768px) {
+      .pow-nav-btn:not(.pow-icon-btn) {
+        display: none;
+      }
+      .pow-hamburger-btn {
+        display: inline-flex;
+      }
+      .pow-hero {
+        padding: 2.5rem 0 2rem;
+      }
+      .pow-telemetry-strip {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .pow-studio-body {
+        padding: 1rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0ms !important;
+        transform: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 1. STICKY NAVIGATION HEADER -->
+  <header class="pow-header">
+    <div class="pow-container pow-header-inner">
+      <a href="index.html" class="pow-brand">
+        <div class="pow-brand-monogram"><span>AD</span></div>
+        <span>Art Deco</span>
+        <span class="pow-version-badge">v0.12.0</span>
+      </a>
+
+      <div class="pow-nav-actions">
+        <a href="#studio" class="pow-nav-btn">Interactive Studio</a>
+        <a href="#components" class="pow-nav-btn">Anatomy &amp; Gates</a>
+        <a href="#install" class="pow-nav-btn">Install Skill</a>
+        <button class="pow-nav-btn pow-icon-btn" onclick="toggleTheme()" aria-label="Toggle light and dark mode">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+        </button>
+        <button class="pow-nav-btn pow-icon-btn pow-hamburger-btn" onclick="toggleMobileMenu()" aria-label="Open mobile menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Mobile Drawer Overlay & Panel -->
+  <div class="pow-drawer-overlay" id="drawerOverlay" onclick="toggleMobileMenu()"></div>
+  <aside class="pow-drawer-panel" id="drawerPanel">
+    <div class="pow-drawer-header">
+      <span style="font-family: var(--pow-font-display); font-weight: 700; font-size: 0.9rem; letter-spacing: 0.08em; text-transform: uppercase;">Aesthetic Directory</span>
+      <button class="pow-nav-btn pow-icon-btn" onclick="toggleMobileMenu()" aria-label="Close menu">✕</button>
+    </div>
+    <div class="pow-drawer-links">
+      <a href="index.html" class="pow-drawer-link">✦ Overview &amp; Gallery</a>
+      <a href="minimalism.html" class="pow-drawer-link">01 // Minimalism &amp; Data Cockpit</a>
+      <a href="retro-pixel.html" class="pow-drawer-link">02 // Retro-Pixel &amp; 8-Bit</a>
+      <a href="claymorphism.html" class="pow-drawer-link">03 // Claymorphism</a>
+      <a href="glassmorphism.html" class="pow-drawer-link">04 // Glassmorphism</a>
+      <a href="neo-brutalism.html" class="pow-drawer-link">05 // Neo-Brutalism</a>
+      <a href="skeuomorphism.html" class="pow-drawer-link">06 // Skeuomorphism</a>
+      <a href="swiss-editorial.html" class="pow-drawer-link">07 // Swiss Editorial</a>
+      <a href="brutalism.html" class="pow-drawer-link">08 // Brutalism (Raw &amp; Bento)</a>
+      <a href="retro-terminal.html" class="pow-drawer-link">09 // Retro-Terminal CRT</a>
+      <a href="art-deco.html" class="pow-drawer-link active">10 // Art Deco Architecture</a>
+      <a href="#install" class="pow-drawer-link" onclick="toggleMobileMenu()">⚡ Quick Installation</a>
+    </div>
+  </aside>
+
+  <main class="pow-container">
+
+    <!-- 2. FULL-SCREEN HERO VIEWPORT -->
+    <section class="pow-hero" id="hero">
+      <div class="pow-hero-pills">
+        <span class="pow-pill">WCAG AA VERIFIED</span>
+        <span class="pow-pill">ZERO AI-SLOP ARCHITECTURE</span>
+        <span class="pow-pill">10 TOP-LEVEL STYLES</span>
+        <span class="pow-pill">3 NATIVE EXPRESSIONS</span>
+      </div>
+
+      <h1 class="pow-hero-title">Architectural Precision. Timeless Symmetry.</h1>
+      <p class="pow-hero-subtitle">
+        Art Deco is an architectural visual language of geometric lines, stepped forms, balanced negative space, and disciplined ornamentation. Designed for production digital interfaces, luxury brands, editorial archives, and sophisticated software.
+      </p>
+
+      <div class="pow-hero-cmd">
+        <code>npx skills add kennedys0/taste-engine --skill taste-style-art-deco</code>
+        <button class="terminal-copy-btn" onclick="copyHeroCmd()">Copy</button>
+      </div>
+
+      <div class="pow-hero-actions">
+        <a href="#studio" class="pow-btn-cta">Explore Interactive Studio</a>
+        <a href="#components" class="pow-btn-secondary">Inspect Style Gates</a>
+      </div>
+
+      <div class="pow-telemetry-strip">
+        <div class="pow-telemetry-item">
+          <div class="pow-telemetry-val">0%</div>
+          <div class="pow-telemetry-lbl">Yellow Gradient Slop</div>
+        </div>
+        <div class="pow-telemetry-item">
+          <div class="pow-telemetry-val">100%</div>
+          <div class="pow-telemetry-lbl">Axial Grid Alignment</div>
+        </div>
+        <div class="pow-telemetry-item">
+          <div class="pow-telemetry-val">4.5:1+</div>
+          <div class="pow-telemetry-lbl">WCAG AA Contrast</div>
+        </div>
+        <div class="pow-telemetry-item">
+          <div class="pow-telemetry-val">150ms</div>
+          <div class="pow-telemetry-lbl">Max Motion Duration</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. INTERACTIVE STUDIO COCKPIT -->
+    <section class="pow-studio" id="studio">
+      <div class="pow-section-header">
+        <span class="pow-eyebrow">Proof-of-Work Cockpit</span>
+        <h2 class="pow-title">Art Deco Architectural Salon</h2>
+        <p class="pow-desc">
+          Experience Art Deco across real interactive scenarios. Switch between Modern Deco, Classic Deco, and Minimal Deco expressions in real time.
+        </p>
+      </div>
+
+      <div class="pow-studio-card">
+        <div class="pow-window-header">
+          <div class="pow-window-dots">
+            <div class="pow-dot"></div>
+            <div class="pow-dot"></div>
+            <div class="pow-dot"></div>
+          </div>
+          <div class="pow-window-title">STUDIO // ART_DECO_SALON_V0.12.0</div>
+          <div class="pow-studio-controls">
+            <span style="font-size: 0.7rem; font-weight: 700; color: var(--pow-text-muted); text-transform: uppercase;">Expression:</span>
+            <button class="pow-variant-btn active" data-expr="modern" onclick="switchExpression('modern')">Modern</button>
+            <button class="pow-variant-btn" data-expr="classic" onclick="switchExpression('classic')">Classic</button>
+            <button class="pow-variant-btn" data-expr="minimal" onclick="switchExpression('minimal')">Minimal</button>
+          </div>
+        </div>
+
+        <div class="pow-studio-body">
+          <!-- Studio Navigation Tabs -->
+          <div class="studio-tabs">
+            <button class="studio-tab-btn active" onclick="switchStudioTab('landing', this)">1. Landing Bay</button>
+            <button class="studio-tab-btn" onclick="switchStudioTab('gallery', this)">2. Component Gallery</button>
+            <button class="studio-tab-btn" onclick="switchStudioTab('dashboard', this)">3. Data Cockpit</button>
+            <button class="studio-tab-btn" onclick="switchStudioTab('auth', this)">4. Authentication</button>
+            <button class="studio-tab-btn" onclick="switchStudioTab('editorial', this)">5. Editorial Reader</button>
+          </div>
+
+          <!-- TAB 1: LANDING BAY PREVIEW -->
+          <div class="studio-pane active" id="pane-landing">
+            <div class="deco-frame">
+              <div class="corner-bracket corner-tl"></div>
+              <div class="corner-bracket corner-tr"></div>
+              <div class="corner-bracket corner-bl"></div>
+              <div class="corner-bracket corner-br"></div>
+
+              <div style="text-align: center; max-width: 720px; margin: 0 auto; padding: 2rem 0;">
+                <span class="pow-eyebrow" id="studio-landing-badge">Atelier &bull; Established MCMXXVI</span>
+                <h3 style="font-family: var(--pow-font-display); font-size: clamp(1.75rem, 4vw, 2.75rem); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem; line-height: 1.15;" id="studio-landing-title">
+                  Architectural Grandeur for Contemporary Systems
+                </h3>
+                <p style="font-size: 0.95rem; color: var(--pow-text-muted); line-height: 1.6; margin-bottom: 2rem;" id="studio-landing-desc">
+                  Structured geometry replaces transient UI trends. Every column locks flush into an axial proportion, framed by disciplined hairline borders and authentic metallic finishes.
+                </p>
+
+                <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem;">
+                  <button class="pow-btn-cta" onclick="showStudioToast('Primary action dispatched.')">Commission Project ↗</button>
+                  <button class="pow-btn-secondary" onclick="showStudioToast('Archive indexed.')">Explore Archive</button>
+                </div>
+
+                <!-- 3 Symmetrical Architectural Bays -->
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; text-align: left; margin-top: 1.5rem;">
+                  <div style="background: var(--pow-surface); border: var(--pow-border); padding: 1.25rem; position: relative;">
+                    <div style="font-family: var(--pow-font-mono); font-size: 0.65rem; color: var(--pow-accent); font-weight: 700; margin-bottom: 0.4rem;">[BAY 01 // FAÇADE]</div>
+                    <div style="font-family: var(--pow-font-display); font-size: 0.95rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.4rem;">Stepped Cornices</div>
+                    <div style="font-size: 0.8rem; color: var(--pow-text-muted);">Ziggurat silhouettes that terminate vertical energy with mathematical precision.</div>
+                  </div>
+                  <div style="background: var(--pow-surface); border: var(--pow-border); padding: 1.25rem; position: relative;">
+                    <div style="font-family: var(--pow-font-mono); font-size: 0.65rem; color: var(--pow-accent); font-weight: 700; margin-bottom: 0.4rem;">[BAY 02 // CHVRN]</div>
+                    <div style="font-family: var(--pow-font-display); font-size: 0.95rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.4rem;">Fluted Reliefs</div>
+                    <div style="font-size: 0.8rem; color: var(--pow-text-muted);">Continuous parallel hairline channels providing subtle tactile elevation.</div>
+                  </div>
+                  <div style="background: var(--pow-surface); border: var(--pow-border); padding: 1.25rem; position: relative;">
+                    <div style="font-family: var(--pow-font-mono); font-size: 0.65rem; color: var(--pow-accent); font-weight: 700; margin-bottom: 0.4rem;">[BAY 03 // METRIC]</div>
+                    <div style="font-family: var(--pow-font-display); font-size: 0.95rem; font-weight: 700; text-transform: uppercase; margin-bottom: 0.4rem;">Axial Symmetry</div>
+                    <div style="font-size: 0.8rem; color: var(--pow-text-muted);">Bilateral balance engineered to direct human attention to high-value actions.</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: COMPONENT GALLERY -->
+          <div class="studio-pane" id="pane-gallery">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+              <!-- Action Controls -->
+              <div style="background: var(--pow-bg); border: var(--pow-border); padding: 1.5rem;">
+                <h4 style="font-family: var(--pow-font-display); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem; color: var(--pow-accent);">Interactive Actions</h4>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                  <button class="pow-btn-cta" onclick="showStudioToast('Primary button pressed')">Primary Deco Button</button>
+                  <button class="pow-btn-secondary" onclick="showStudioToast('Secondary button pressed')">Secondary Outline</button>
+                  <button class="pow-nav-btn" style="width: 100%;" disabled>Disabled Action State</button>
+                  <div style="display: flex; gap: 0.5rem;">
+                    <button class="pow-variant-btn active" style="flex: 1;">Option Alpha</button>
+                    <button class="pow-variant-btn" style="flex: 1;">Option Beta</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Form Inputs -->
+              <div style="background: var(--pow-bg); border: var(--pow-border); padding: 1.5rem;">
+                <h4 style="font-family: var(--pow-font-display); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem; color: var(--pow-accent);">Structured Inputs</h4>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                  <div>
+                    <label style="display: block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.35rem;">Architectural Monograph</label>
+                    <input type="text" placeholder="e.g. Chrysler Rotunda Study" style="width: 100%; height: 36px; padding: 0 0.75rem; background: var(--pow-surface); border: var(--pow-border); color: var(--pow-text); border-radius: var(--pow-radius); font-size: 0.85rem;">
+                  </div>
+                  <div>
+                    <label style="display: block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.35rem;">Territory Classification</label>
+                    <select style="width: 100%; height: 36px; padding: 0 0.75rem; background: var(--pow-surface); border: var(--pow-border); color: var(--pow-text); border-radius: var(--pow-radius); font-size: 0.85rem;">
+                      <option>Metropolitan Salon</option>
+                      <option>Industrial Moderne</option>
+                      <option>Heritage Pavilion</option>
+                    </select>
+                  </div>
+                  <div style="display: flex; align-items: center; gap: 0.5rem; margin-top: 0.25rem;">
+                    <input type="checkbox" id="demo-check" checked style="accent-color: var(--pow-accent); width: 16px; height: 16px;">
+                    <label for="demo-check" style="font-size: 0.75rem; font-weight: 600;">Enforce Symmetrical Alignment Contract</label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Feedback & Accordion -->
+              <div style="background: var(--pow-bg); border: var(--pow-border); padding: 1.5rem;">
+                <h4 style="font-family: var(--pow-font-display); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1rem; color: var(--pow-accent);">Feedback &amp; Disclosure</h4>
+                <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+                  <div style="border: 1px solid var(--pow-accent); background: var(--pow-surface); padding: 0.75rem 1rem; display: flex; align-items: center; gap: 0.75rem;">
+                    <div style="width: 8px; height: 8px; background: var(--pow-accent); transform: rotate(45deg); flex-shrink: 0;"></div>
+                    <span style="font-size: 0.775rem; font-weight: 600;">Status: Axial calibration verified at 100svh.</span>
+                  </div>
+
+                  <!-- Accordion specimen -->
+                  <div style="border: var(--pow-border); background: var(--pow-surface);">
+                    <button onclick="toggleAccordion(this)" style="width: 100%; padding: 0.75rem 1rem; text-align: left; background: transparent; border: none; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; color: var(--pow-text); display: flex; justify-content: space-between; cursor: pointer;">
+                      <span>Ornamentation Philosophy</span>
+                      <span class="acc-icon">+</span>
+                    </button>
+                    <div class="acc-body" style="display: none; padding: 0.75rem 1rem; border-top: var(--pow-border); font-size: 0.775rem; color: var(--pow-text-muted); line-height: 1.5;">
+                      Ornaments in Art Deco are never decorative confetti. Every stepped corner bracket and geometric hairline rule reinforces the structural skeleton of the container.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: DATA COCKPIT (DASHBOARD) -->
+          <div class="studio-pane" id="pane-dashboard">
+            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+              <!-- Metric Tiles -->
+              <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                <div style="background: var(--pow-bg); border: var(--pow-border); padding: 1.25rem; position: relative;">
+                  <div class="corner-bracket corner-tl"></div>
+                  <div style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--pow-text-muted); letter-spacing: 0.08em;">Active Commissions</div>
+                  <div style="font-family: var(--pow-font-display); font-size: 1.85rem; font-weight: 900; color: var(--pow-accent); margin: 0.25rem 0;">24 Vaults</div>
+                  <div style="font-size: 0.75rem; color: var(--pow-text-muted);">+12% verified throughput</div>
+                </div>
+                <div style="background: var(--pow-bg); border: var(--pow-border); padding: 1.25rem; position: relative;">
+                  <div class="corner-bracket corner-tl"></div>
+                  <div style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--pow-text-muted); letter-spacing: 0.08em;">Contrast Integrity</div>
+                  <div style="font-family: var(--pow-font-display); font-size: 1.85rem; font-weight: 900; color: #10B981; margin: 0.25rem 0;">7.8:1 AAA</div>
+                  <div style="font-size: 0.75rem; color: var(--pow-text-muted);">Zero low-contrast gold ink</div>
+                </div>
+                <div style="background: var(--pow-bg); border: var(--pow-border); padding: 1.25rem; position: relative;">
+                  <div class="corner-bracket corner-tl"></div>
+                  <div style="font-size: 0.7rem; font-weight: 700; text-transform: uppercase; color: var(--pow-text-muted); letter-spacing: 0.08em;">Framing Precision</div>
+                  <div style="font-family: var(--pow-font-display); font-size: 1.85rem; font-weight: 900; color: var(--pow-accent); margin: 0.25rem 0;">1px Rules</div>
+                  <div style="font-size: 0.75rem; color: var(--pow-text-muted);">Double hairline structure</div>
+                </div>
+              </div>
+
+              <!-- High-Density Data Table -->
+              <div style="background: var(--pow-bg); border: var(--pow-border); overflow-x: auto;">
+                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 0.8rem;">
+                  <thead>
+                    <tr style="border-bottom: 2px solid var(--pow-border-strong); background: var(--pow-surface-elevated);">
+                      <th style="padding: 0.75rem 1rem; font-family: var(--pow-font-display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--pow-accent);">Codex Ref</th>
+                      <th style="padding: 0.75rem 1rem; font-family: var(--pow-font-display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--pow-accent);">Architectural Facet</th>
+                      <th style="padding: 0.75rem 1rem; font-family: var(--pow-font-display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--pow-accent);">Territory</th>
+                      <th style="padding: 0.75rem 1rem; font-family: var(--pow-font-display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--pow-accent);">Status</th>
+                      <th style="padding: 0.75rem 1rem; font-family: var(--pow-font-display); letter-spacing: 0.08em; text-transform: uppercase; color: var(--pow-accent); text-align: right;">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom: var(--pow-border);">
+                      <td style="padding: 0.75rem 1rem; font-family: var(--pow-font-mono); font-size: 0.75rem;">ARC-1926-01</td>
+                      <td style="padding: 0.75rem 1rem; font-weight: 600;">Palais de Chaillot Spandrel</td>
+                      <td style="padding: 0.75rem 1rem; color: var(--pow-text-muted);">Parisian Classic</td>
+                      <td style="padding: 0.75rem 1rem;"><span class="pow-pill" style="font-size: 0.65rem;">Active Atelier</span></td>
+                      <td style="padding: 0.75rem 1rem; text-align: right;"><button class="pow-variant-btn" onclick="showStudioToast('Viewing ARC-1926-01')">Inspect</button></td>
+                    </tr>
+                    <tr style="border-bottom: var(--pow-border);">
+                      <td style="padding: 0.75rem 1rem; font-family: var(--pow-font-mono); font-size: 0.75rem;">ARC-1930-08</td>
+                      <td style="padding: 0.75rem 1rem; font-weight: 600;">Chrysler Sunburst Chevrons</td>
+                      <td style="padding: 0.75rem 1rem; color: var(--pow-text-muted);">Manhattan Moderne</td>
+                      <td style="padding: 0.75rem 1rem;"><span class="pow-pill" style="font-size: 0.65rem;">Verified Form</span></td>
+                      <td style="padding: 0.75rem 1rem; text-align: right;"><button class="pow-variant-btn" onclick="showStudioToast('Viewing ARC-1930-08')">Inspect</button></td>
+                    </tr>
+                    <tr>
+                      <td style="padding: 0.75rem 1rem; font-family: var(--pow-font-mono); font-size: 0.75rem;">ARC-1935-14</td>
+                      <td style="padding: 0.75rem 1rem; font-weight: 600;">Streamline Terminal Console</td>
+                      <td style="padding: 0.75rem 1rem; color: var(--pow-text-muted);">Aviation Studio</td>
+                      <td style="padding: 0.75rem 1rem;"><span class="pow-pill" style="font-size: 0.65rem;">In Progress</span></td>
+                      <td style="padding: 0.75rem 1rem; text-align: right;"><button class="pow-variant-btn" onclick="showStudioToast('Viewing ARC-1935-14')">Inspect</button></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4: AUTHENTICATION PREVIEW -->
+          <div class="studio-pane" id="pane-auth">
+            <div style="max-width: 440px; margin: 0 auto; background: var(--pow-bg); border: var(--pow-border); padding: 2.25rem; position: relative;">
+              <div class="corner-bracket corner-tl"></div>
+              <div class="corner-bracket corner-tr"></div>
+              <div class="corner-bracket corner-bl"></div>
+              <div class="corner-bracket corner-br"></div>
+
+              <div style="text-align: center; margin-bottom: 1.75rem;">
+                <div class="pow-brand-monogram" style="margin-bottom: 0.75rem;"><span>AD</span></div>
+                <h4 style="font-family: var(--pow-font-display); font-size: 1.25rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 0.35rem;">Atelier Vault Access</h4>
+                <p style="font-size: 0.775rem; color: var(--pow-text-muted);">Enter architectural credentials to unlock project blueprints.</p>
+              </div>
+
+              <form onsubmit="handleAuthSubmit(event)" style="display: flex; flex-direction: column; gap: 1rem;">
+                <div>
+                  <label style="display: block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.35rem;">Client Identity</label>
+                  <input type="email" required placeholder="architect@atelier.studio" style="width: 100%; height: 38px; padding: 0 0.85rem; background: var(--pow-surface); border: var(--pow-border); color: var(--pow-text); border-radius: var(--pow-radius); font-size: 0.85rem;">
+                </div>
+                <div>
+                  <label style="display: block; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 0.35rem;">Passphrase</label>
+                  <input type="password" required placeholder="••••••••••••" style="width: 100%; height: 38px; padding: 0 0.85rem; background: var(--pow-surface); border: var(--pow-border); color: var(--pow-text); border-radius: var(--pow-radius); font-size: 0.85rem;">
+                </div>
+                <div id="auth-feedback" style="display: none; padding: 0.5rem; background: rgba(16, 185, 129, 0.15); border: 1px solid #10B981; color: #10B981; font-size: 0.75rem; text-align: center; font-weight: 600;">
+                  Credentials verified. Authorizing access...
+                </div>
+                <button type="submit" class="pow-btn-cta" style="width: 100%; margin-top: 0.5rem;">Authenticate Access ↗</button>
+              </form>
+            </div>
+          </div>
+
+          <!-- TAB 5: EDITORIAL READER -->
+          <div class="studio-pane" id="pane-editorial">
+            <div style="max-width: 720px; margin: 0 auto; background: var(--pow-bg); padding: 2rem; border: var(--pow-border); position: relative;">
+              <span class="pow-eyebrow">Monograph Issue IX &bull; Architectural Treatise</span>
+              <h3 style="font-family: var(--pow-font-display); font-size: 1.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; margin: 0.5rem 0 1rem; line-height: 1.2;">
+                The Geometry of Permanence
+              </h3>
+              <p style="font-size: 0.95rem; line-height: 1.7; color: var(--pow-text); margin-bottom: 1.5rem;">
+                In the early decades of the twentieth century, architecture turned away from the historicist pastiche of the Victorian era. In its place arose an aesthetic founded upon pure mathematical proportion: the stepped silhouette of ancient ziggurats merged seamlessly with the industrial power of dynamos, ocean liners, and skyscrapers.
+              </p>
+
+              <!-- Editorial Pull Quote -->
+              <div style="border-left: 3px solid var(--pow-accent); padding: 1rem 1.5rem; margin: 2rem 0; background: var(--pow-surface); font-family: var(--pow-font-display); font-size: 1.15rem; font-weight: 700; letter-spacing: 0.04em; color: var(--pow-text);">
+                “Art Deco is not a gilded surface applied to an ordinary room; it is the structural harmony of the room itself.”
+              </div>
+
+              <p style="font-size: 0.95rem; line-height: 1.7; color: var(--pow-text);">
+                Today, translated into the digital medium, Art Deco provides modern software engineers with an antidote to interchangeable SaaS minimalism. It demonstrates that interfaces can express confidence, authority, and beauty without sacrificing responsiveness or accessibility.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. COMPONENT ANATOMY & QUALITY GATES -->
+    <section class="pow-components" id="components">
+      <div class="pow-section-header">
+        <span class="pow-eyebrow">Quality Gate Standards</span>
+        <h2 class="pow-title">Art Deco Architectural Invariants</h2>
+        <p class="pow-desc">
+          Every Art Deco interface produced by Taste Engine must pass these strict visual and mechanical quality checks.
+        </p>
+      </div>
+
+      <div class="gates-grid">
+        <div class="gate-card pass">
+          <span class="gate-badge pass">Pass Gate</span>
+          <h4 style="font-family: var(--pow-font-display); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;">Stepped Architectural Framing</h4>
+          <p style="font-size: 0.85rem; color: var(--pow-text-muted); line-height: 1.5;">
+            Containers and cards use crisp 0px–2px radius, fine 1px hairline borders, and symmetrical corner brackets that celebrate geometric enclosure.
+          </p>
+        </div>
+
+        <div class="gate-card fail">
+          <span class="gate-badge fail">Fail Gate</span>
+          <h4 style="font-family: var(--pow-font-display); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;">Generic Rounded Bubble Cards</h4>
+          <p style="font-size: 0.85rem; color: var(--pow-text-muted); line-height: 1.5;">
+            Soft SaaS radii (1.5rem–2rem), pill buttons, and loose ungrounded floating cards violate Art Deco's foundational architectural laws.
+          </p>
+        </div>
+
+        <div class="gate-card pass">
+          <span class="gate-badge pass">Pass Gate</span>
+          <h4 style="font-family: var(--pow-font-display); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;">Flat &amp; Layered Metallic Finishes</h4>
+          <p style="font-size: 0.85rem; color: var(--pow-text-muted); line-height: 1.5;">
+            Metallic colors (Antique Gold #B89B5E, Muted Brass #B69A68, Bronze #A98462) are flat or subtly paired with dark emerald and obsidian backgrounds.
+          </p>
+        </div>
+
+        <div class="gate-card fail">
+          <span class="gate-badge fail">Fail Gate</span>
+          <h4 style="font-family: var(--pow-font-display); font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem;">Noisy Yellow Gradients &amp; Glows</h4>
+          <p style="font-size: 0.85rem; color: var(--pow-text-muted); line-height: 1.5;">
+            Multi-stop diagonal yellow-to-white gradients simulating "gold shine" and glowing drop shadows read as cheap AI-generated luxury slop.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. TABBED TERMINAL INSTALLATION MATRIX -->
+    <section class="pow-install" id="install">
+      <div class="pow-section-header">
+        <span class="pow-eyebrow">Zero-Overlap Installation</span>
+        <h2 class="pow-title">Install Art Deco for AI Agents</h2>
+        <p class="pow-desc">
+          Add Art Deco directly to your agent workflows via npm or the standalone Agent Skill pack.
+        </p>
+      </div>
+
+      <div class="tabbed-terminal-card">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <div class="terminal-dot" style="background: #FF5F56;"></div>
+            <div class="terminal-dot" style="background: #FFBD2E;"></div>
+            <div class="terminal-dot" style="background: #27C93F;"></div>
+          </div>
+          <div class="terminal-title">TERMINAL // INSTALL_MATRIX</div>
+          <button class="terminal-copy-btn" onclick="copyTerminalCmd()">Copy Command</button>
+        </div>
+
+        <div class="terminal-tab-bar">
+          <button class="terminal-tab active" onclick="switchInstallTab('tab-standalone', this)">01: STANDALONE SKILL</button>
+          <button class="terminal-tab" onclick="switchInstallTab('tab-global', this)">02: FULL TASTE ENGINE</button>
+          <button class="terminal-tab" onclick="switchInstallTab('tab-presets', this)">03: TAILWIND &amp; SHADCN PRESETS</button>
+        </div>
+
+        <div class="terminal-body">
+          <div class="tab-pane active" id="tab-standalone">
+            <span class="term-comment"># Install standalone Art Deco skill for Antigravity, Claude Code, Cursor</span><br>
+            <span class="term-prompt">$</span> <span class="term-cmd">npx skills add kennedys0/taste-engine --skill taste-style-art-deco</span><br><br>
+            <span class="term-comment"># Or install globally for all registered developer agents</span><br>
+            <span class="term-prompt">$</span> <span class="term-cmd">npx skills add kennedys0/taste-engine --skill taste-style-art-deco -g</span>
+          </div>
+
+          <div class="tab-pane" id="tab-global">
+            <span class="term-comment"># Install universal 10-style autonomous suite</span><br>
+            <span class="term-prompt">$</span> <span class="term-cmd">npx @kennedys0/taste-engine install --agent all</span><br><br>
+            <span class="term-comment"># Verify installation status across tools</span><br>
+            <span class="term-prompt">$</span> <span class="term-cmd">npx @kennedys0/taste-engine doctor</span>
+          </div>
+
+          <div class="tab-pane" id="tab-presets">
+            <span class="term-comment"># Scaffold Art Deco Tailwind &amp; shadcn tokens into existing project</span><br>
+            <span class="term-prompt">$</span> <span class="term-cmd">npx @kennedys0/taste-engine init ./src</span><br><br>
+            <span class="term-comment"># Inspect available theme tokens</span><br>
+            <span class="term-prompt">$</span> <span class="term-cmd">npx @kennedys0/taste-engine preset</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="agent-support-strip">
+        <span>Verified Compatibility:</span>
+        <span class="agent-pill">Antigravity</span>
+        <span class="agent-pill">Claude Code</span>
+        <span class="agent-pill">Cursor</span>
+        <span class="agent-pill">Codex</span>
+        <span class="agent-pill">Windsurf</span>
+        <span class="agent-pill">Cline</span>
+        <span class="agent-pill">GitHub Copilot</span>
+      </div>
+    </section>
+
+    <!-- 6. CORE ARCHITECTURAL PRINCIPLES -->
+    <section class="pow-principles" id="principles">
+      <div class="pow-section-header">
+        <span class="pow-eyebrow">Aesthetic Foundations</span>
+        <h2 class="pow-title">Three Architectural Pillars</h2>
+        <p class="pow-desc">
+          How Art Deco balances historical visual power with high-performance digital engineering.
+        </p>
+      </div>
+
+      <div class="principles-grid">
+        <div class="principle-card">
+          <div class="principle-num">01</div>
+          <h3 class="principle-title">Geometric Discipline</h3>
+          <p class="principle-desc">
+            Interfaces are constructed like architectural elevations. Parallel hairline rules, stepped corners, and pure verticality provide structural order without visual weight.
+          </p>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-num">02</div>
+          <h3 class="principle-title">Intentional Symmetry</h3>
+          <p class="principle-desc">
+            Bilateral balance commands immediate authority. Content is arranged in scannable rhythmic bays that naturally guide the user's eye to primary actions.
+          </p>
+        </div>
+
+        <div class="principle-card">
+          <div class="principle-num">03</div>
+          <h3 class="principle-title">Material Restraint</h3>
+          <p class="principle-desc">
+            Finishes are flat, matte, and noble. Gold, brass, and bronze tones are applied with extreme discipline, ensuring zero clutter and guaranteed WCAG AA readability.
+          </p>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- 7. CANONICAL 10-STYLE RESPONSIVE FOOTER -->
+  <footer class="pow-footer">
+    <div class="pow-container">
+      <div class="pow-footer-grid">
+        <div class="pow-footer-col">
+          <h5>Aesthetic Archetypes (1–5)</h5>
+          <ul>
+            <li><a href="minimalism.html">01 // Minimalism &amp; Data Cockpit</a></li>
+            <li><a href="retro-pixel.html">02 // Retro-Pixel &amp; 8-Bit</a></li>
+            <li><a href="claymorphism.html">03 // Claymorphism</a></li>
+            <li><a href="glassmorphism.html">04 // Glassmorphism</a></li>
+            <li><a href="neo-brutalism.html">05 // Neo-Brutalism (Independent)</a></li>
+          </ul>
+        </div>
+
+        <div class="pow-footer-col">
+          <h5>Aesthetic Archetypes (6–10)</h5>
+          <ul>
+            <li><a href="skeuomorphism.html">06 // Skeuomorphism</a></li>
+            <li><a href="swiss-editorial.html">07 // Swiss Editorial</a></li>
+            <li><a href="brutalism.html">08 // Brutalism (Raw &amp; Bento)</a></li>
+            <li><a href="retro-terminal.html">09 // Retro-Terminal CRT</a></li>
+            <li><a href="art-deco.html" style="color: var(--pow-accent); font-weight: 700;">10 // Art Deco Architecture</a></li>
+          </ul>
+        </div>
+
+        <div class="pow-footer-col">
+          <h5>Autonomous Integration</h5>
+          <ul>
+            <li><a href="https://github.com/kennedys0/taste-engine" target="_blank" rel="noopener">GitHub Repository ↗</a></li>
+            <li><a href="#install">Agent Skills CLI Guide</a></li>
+            <li><a href="#components">Quality Gates Spec</a></li>
+            <li><a href="index.html">Universal Style Gallery</a></li>
+          </ul>
+        </div>
+
+        <div class="pow-footer-col">
+          <h5>System Invariants</h5>
+          <ul>
+            <li><a href="#principles">Anti-Slop Constitution</a></li>
+            <li><a href="#hero">100svh Hero Invariant</a></li>
+            <li><a href="#studio">Responsive 320px Baseline</a></li>
+            <li><a href="https://github.com/kennedys0/taste-engine/blob/main/CHANGELOG.md">Changelog &amp; Releases</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="pow-footer-bottom">
+        <div>&copy; 2026 Taste Engine. Art Deco Architectural Archetype. MIT Licensed.</div>
+        <div style="font-family: var(--pow-font-mono); font-size: 0.75rem;">10 Styles &bull; 0-Dependency Core &bull; WCAG AA</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Box -->
+  <div id="studioToast" style="position: fixed; bottom: 20px; right: 20px; z-index: 300; background: var(--pow-surface-elevated); border: 1px solid var(--pow-accent); color: var(--pow-text); padding: 0.75rem 1.25rem; font-size: 0.8rem; font-weight: 600; border-radius: var(--pow-radius); box-shadow: 0 4px 16px rgba(0,0,0,0.2); transform: translateY(100px); opacity: 0; transition: all 180ms ease;"></div>
+
+  <script>
+    // Theme Toggle
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+    }
+
+    // Mobile Drawer
+    function toggleMobileMenu() {
+      document.getElementById('drawerOverlay').classList.toggle('active');
+      document.getElementById('drawerPanel').classList.toggle('active');
+    }
+
+    // Studio Expression Switcher
+    function switchExpression(expr) {
+      document.documentElement.setAttribute('data-variant', expr);
+      document.querySelectorAll('.pow-variant-btn[data-expr]').forEach(b => {
+        b.classList.toggle('active', b.getAttribute('data-expr') === expr);
+      });
+      
+      const title = document.getElementById('studio-landing-title');
+      const badge = document.getElementById('studio-landing-badge');
+      const desc = document.getElementById('studio-landing-desc');
+
+      if (expr === 'classic') {
+        badge.textContent = 'Historic Salon • Established MCMXXV';
+        title.textContent = 'Monumental Symmetry & Dramatic Obsidian';
+        desc.textContent = 'Rich antique gold accents against deep obsidian night and emerald finishes. Inspired by the Chrysler Building and monumental 1920s architecture.';
+      } else if (expr === 'minimal') {
+        badge.textContent = 'Modern Atelier • Quiet Refinement';
+        title.textContent = 'Quiet Sophistication in Burgundy & Bronze';
+        desc.textContent = 'Subtle geometric accents on a clean ivory canvas. Maximum whitespace discipline, refined typography, and high content readability.';
+      } else {
+        badge.textContent = 'Atelier • Established MCMXXVI';
+        title.textContent = 'Architectural Grandeur for Contemporary Systems';
+        desc.textContent = 'Structured geometry replaces transient UI trends. Every column locks flush into an axial proportion, framed by disciplined hairline borders and authentic metallic finishes.';
+      }
+      showStudioToast('Switched to ' + expr.toUpperCase() + ' DECO expression.');
+    }
+
+    // Studio Tab Switching
+    function switchStudioTab(tabName, btn) {
+      document.querySelectorAll('.studio-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.studio-pane').forEach(p => p.classList.remove('active'));
+      const activePane = document.getElementById('pane-' + tabName);
+      if (activePane) activePane.classList.add('active');
+    }
+
+    // Install Matrix Tab Switching
+    function switchInstallTab(tabId, btn) {
+      document.querySelectorAll('.terminal-tab').forEach(t => t.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+      const activePane = document.getElementById(tabId);
+      if (activePane) activePane.classList.add('active');
+    }
+
+    // Accordion Toggle
+    function toggleAccordion(btn) {
+      const body = btn.nextElementSibling;
+      const icon = btn.querySelector('.acc-icon');
+      if (body.style.display === 'block') {
+        body.style.display = 'none';
+        icon.textContent = '+';
+      } else {
+        body.style.display = 'block';
+        icon.textContent = '−';
+      }
+    }
+
+    // Toast feedback
+    function showStudioToast(msg) {
+      const toast = document.getElementById('studioToast');
+      toast.textContent = msg;
+      toast.style.transform = 'translateY(0)';
+      toast.style.opacity = '1';
+      setTimeout(() => {
+        toast.style.transform = 'translateY(100px)';
+        toast.style.opacity = '0';
+      }, 2500);
+    }
+
+    // Copy Hero Command
+    function copyHeroCmd() {
+      navigator.clipboard.writeText('npx skills add kennedys0/taste-engine --skill taste-style-art-deco');
+      showStudioToast('Copied standalone skill command to clipboard.');
+    }
+
+    // Copy Terminal Command
+    function copyTerminalCmd() {
+      const activePane = document.querySelector('.tab-pane.active');
+      const cmds = Array.from(activePane.querySelectorAll('.term-cmd')).map(c => c.textContent).join('\n');
+      navigator.clipboard.writeText(cmds);
+      showStudioToast('Copied terminal installation commands.');
+    }
+
+    // Auth Form Demo Submit
+    function handleAuthSubmit(e) {
+      e.preventDefault();
+      const feedback = document.getElementById('auth-feedback');
+      feedback.style.display = 'block';
+      setTimeout(() => {
+        feedback.style.display = 'none';
+        showStudioToast('Authentication simulation completed successfully.');
+      }, 2000);
+    }
+  </script>
+</body>
+</html>
+

@@ -44,6 +44,12 @@ scenarios=[
  ('Design a data-first console','minimalism',[],'ready',None),
  ('Build a brutalist bento grid landing page','brutalism',[],'ready','bento'),
  ('Design a raw brutalist website','brutalism',[],'ready','raw'),
+ ('Design an art deco portfolio','art-deco',[],'ready','modern'),
+ ('Create a classic deco luxury landing page','art-deco',[],'ready','classic'),
+ ('Build a minimal deco architectural website','art-deco',[],'ready','minimal'),
+ ('Buat web tema art deco','art-deco',[],'ready','modern'),
+ ('I want gatsby style, not brutalism','art-deco',['brutalism'],'ready','classic'),
+ ('Do not use art deco',None,['art-deco'],'needs-selection',None),
 ]
 for item in scenarios:
     if len(item) == 5:

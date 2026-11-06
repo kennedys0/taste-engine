@@ -208,6 +208,72 @@
         "8-bit",
         "16-bit"
       ]
+    },
+    {
+      "id": "art-deco",
+      "label": "Art Deco",
+      "description": "Architectural geometric precision, stepped chevron forms, elegant symmetry, refined typography, and disciplined ornamentation. Features Modern Deco, Classic Deco, and Minimal Deco expressions.",
+      "path": "styles/art-deco.md",
+      "recommended_for": "Luxury brands, cultural institutions, architecture & interior studios, editorial publications, premium hospitality, and sophisticated SaaS.",
+      "default_variant": "modern",
+      "variants": [
+        {
+          "id": "modern",
+          "label": "Modern Deco",
+          "identity": "modern-deco",
+          "description": "Contemporary architectural refinement, generous whitespace, simplified geometric motifs, and modern grid discipline.",
+          "aliases": [
+            "modern deco",
+            "modern art deco",
+            "contemporary deco",
+            "architectural deco"
+          ]
+        },
+        {
+          "id": "classic",
+          "label": "Classic Deco",
+          "identity": "classic-deco",
+          "description": "Rich dramatic sophistication, stepped architectural framing, high-contrast typography, and antique gold accents.",
+          "aliases": [
+            "classic deco",
+            "classic art deco",
+            "vintage deco",
+            "roaring twenties",
+            "gatsby",
+            "gatsby style",
+            "chrysler deco"
+          ]
+        },
+        {
+          "id": "minimal",
+          "label": "Minimal Deco",
+          "identity": "minimal-deco",
+          "description": "Quiet sophistication, bronze and burgundy accents, clean architectural composition, and spacious modern layouts.",
+          "aliases": [
+            "minimal deco",
+            "minimal art deco",
+            "quiet deco",
+            "subtle deco"
+          ]
+        }
+      ],
+      "aliases": [
+        "art deco",
+        "art-deco",
+        "artdeco",
+        "deco",
+        "deco ui",
+        "deco style",
+        "modern deco",
+        "classic deco",
+        "minimal deco",
+        "gatsby",
+        "gatsby style",
+        "roaring twenties",
+        "streamline moderne",
+        "deco design",
+        "geometric luxury"
+      ]
     }
   ]
 }

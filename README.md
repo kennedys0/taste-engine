@@ -48,7 +48,9 @@ The chosen style must be unmistakable in the finished UI. Every style pack in Ta
 
 - **Swiss / Editorial:** Dramatic scale contrast (up to 72px headlines), 12-column grid, structural hairline rules, and section indexes. [Read pack](taste-engine/styles/swiss-editorial.md) · [CSS recipe](taste-engine/examples/swiss-editorial/grid-typography.css)
 
-- **Minimalism & Data Cockpit:** Active intentional negative space, mathematical type calibration, hairline dividers, scannable tabular figures (`tabular-nums`), and high-density operational data cockpits (`⌘K`, floating docks, lateral inspectors). [Read pack](taste-engine/styles/minimalism.md) · [CSS recipe](taste-engine/examples/minimalism/clean-surfaces.css) · [Data cockpit recipe](taste-engine/examples/enterprise/data-cockpit.css)
+- **Minimalism & Data Cockpit:** Active intentional negative space, mathematical type calibration, hairline dividers, scannable tabular figures (`tabular-nums`), and high-density operational data cockpits (`⌘K`, floating docks, lateral inspectors). [Read pack](taste-engine/styles/minimalism.md) · [CSS recipe](taste-engine/examples/minimalism/clean-surfaces.css)
+
+- **Art Deco:** Architectural geometric precision, stepped chevron silhouettes, symmetrical framing, and flat metallic finishes (Antique Gold `#B89B5E`, Muted Brass `#B69A68`, Bronze `#A98462`). Features three expressions: **Modern Deco** (default, generous whitespace), **Classic Deco** (monumental obsidian drama), and **Minimal Deco** (quiet burgundy & bronze). [Read pack](taste-engine/styles/art-deco.md) · [CSS recipe](taste-engine/examples/art-deco/geometric-surfaces.css)
 
 ## Why Taste Engine?
 
@@ -95,7 +97,7 @@ git clone https://github.com/kennedys0/taste-engine.git
 
 cd taste-engine
 
-# Preview all 9 styles interactively in your browser with live Dark/Light mode toggle
+# Preview all 10 styles interactively in your browser with live Dark/Light mode toggle
 
 node bin/taste-engine.mjs gallery
 
@@ -243,9 +245,9 @@ Read the [core skill](taste-engine/SKILL.md), [quality gates](taste-engine/refer
 
 │   ├── SKILL.md
 
-│   ├── styles/               # 9 independent aesthetic packs (with native layout variants)
+│   ├── styles/               # 10 independent aesthetic packs (with native layout variants)
 
-│   ├── examples/             # Production CSS recipes for all 9 styles
+│   ├── examples/             # Production CSS recipes for all 10 styles
 
 │   ├── references/           # SEO, anti-slop, motion, accessibility, engineering
 

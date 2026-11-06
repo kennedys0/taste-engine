@@ -1,5 +1,5 @@
 /**
- * Taste Engine — Tailwind CSS Preset (v0.11.0)
+ * Taste Engine — Tailwind CSS Preset (v0.12.0)
  * Comprehensive theme extension for 10 curated frontend aesthetic archetypes.
  *
  * Usage in tailwind.config.js / tailwind.config.mjs:
@@ -89,6 +89,20 @@ const tastePreset = {
           'pixel-orange': 'var(--taste-pixel-orange, #f27d36)',
           'pixel-purple': 'var(--taste-pixel-purple, #5b438e)',
           'pixel-cream': 'var(--taste-pixel-cream, #f2dfb5)',
+
+          // Art Deco: architectural geometric elegance and metallic accents
+          'deco-bg': 'var(--taste-deco-bg, #f5f0e6)',
+          'deco-surface': 'var(--taste-deco-surface, #ffffff)',
+          'deco-surface-elevated': 'var(--taste-deco-surface-elevated, #ece5d6)',
+          'deco-ink': 'var(--taste-deco-ink, #292b29)',
+          'deco-ink-muted': 'var(--taste-deco-ink-muted, #636662)',
+          'deco-brass': 'var(--taste-deco-accent, #b69a68)',
+          'deco-gold': '#b89b5e',
+          'deco-bronze': '#a98462',
+          'deco-emerald': '#183d36',
+          'deco-forest': '#24453d',
+          'deco-burgundy': '#693b43',
+          'deco-border': 'var(--taste-deco-border, #d4c7b0)',
         },
       },
       boxShadow: {
@@ -127,6 +141,10 @@ const tastePreset = {
         'pixel-btn-active': 'inset 2px 2px 0px #000, inset -2px -2px 0px rgba(255, 255, 255, 0.35)',
         'pixel-window': 'inset 2px 2px 0px rgba(255, 255, 255, 0.35), inset -2px -2px 0px #000, 4px 4px 0px #000',
         'pixel-well': 'inset 2px 2px 0px #000, inset -2px -2px 0px rgba(255, 255, 255, 0.25)',
+
+        // Art Deco: crisp architectural framing
+        'deco-card': '0 4px 20px rgba(0, 0, 0, 0.06)',
+        'deco-elevated': '0 12px 36px rgba(0, 0, 0, 0.12)',
       },
       borderRadius: {
         'clay-sm': '1rem',
@@ -137,6 +155,7 @@ const tastePreset = {
         'brutal': '0px',
         'bento': '1.75rem',
         'pixel': '0px',
+        'deco': '2px',
       },
       borderWidth: {
         'neo': '2.5px',
@@ -148,6 +167,7 @@ const tastePreset = {
         term: ['"JetBrains Mono"', '"Courier New"', 'monospace'],
         swiss: ['"Space Grotesk"', 'Inter', 'Helvetica', 'Arial', 'sans-serif'],
         pixel: ['"Pixelify Sans"', '"Press Start 2P"', 'monospace'],
+        deco: ['"Cinzel"', '"Playfair Display"', 'Georgia', 'serif'],
       },
     },
   },

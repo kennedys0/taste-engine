@@ -40,6 +40,9 @@ Don't merge entire files blindly. Create a component-level decision table, e.g. 
 | "realistic physical controls" / "skeumorphsm" / "skeumorphism" / "skeuomorphic" | `skeuomorphism` |
 | "terminal" / "CLI aesthetic" | `retro-terminal` |
 | "retro pixel" / "pixel art" / "8-bit ui" / "retro desktop" | `retro-pixel` (distinct from `retro-terminal`) |
+| "art deco" / "art-deco" / "deco ui" / "deco style" | `art-deco` (variant: `modern`, default) |
+| "classic deco" / "gatsby style" / "vintage deco" | `art-deco` (variant: `classic`) |
+| "minimal deco" / "quiet deco" | `art-deco` (variant: `minimal`) |
 | "enterprise dashboard" / "dense B2B" | `minimalism` (with high-density data cockpits) |
 | "modern" / "beautiful" | Ambiguous; offer choices |
 | "I have a screenshot" | Ask which parts matter if unclear; don't equate entire screenshot with approval |
@@ -60,6 +63,15 @@ style: brutalism
 variant: bento
 ```
 Neo-Brutalism remains 100% independent with its own distinct visual language (vibrant pop palette, 4px unblurred offset shadows, mechanical press collapse, 6px radius).
+
+## Art Deco taxonomy & expressions
+
+Art Deco is a unified architectural visual language with three native expressions:
+- **Modern Deco** (`variant: modern`, default): Contemporary architectural refinement, generous intentional whitespace, simplified geometric line frames, forest green and muted brass accents.
+- **Classic Deco** (`variant: classic`): Monumental architectural symmetry, stepped ornamental borders, high-contrast typography, obsidian canvas, and antique gold accents.
+- **Minimal Deco** (`variant: minimal`): Quiet sophistication, subtle geometric accents, ivory canvas, deep burgundy and warm bronze tones, and high-density readability.
+
+All three expressions resolve under `style: art-deco` with their corresponding `variant`.
 
 ## Persisted choices
 

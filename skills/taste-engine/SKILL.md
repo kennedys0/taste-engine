@@ -1,6 +1,6 @@
 ---
 name: taste-engine
-description: Automatically routes visual UI work to a user-chosen aesthetic and applies SEO readiness to public-facing websites. Use whenever a user asks to build, create, design, or redesign a website, portfolio, landing page, dashboard, web app, mobile app, UI/UX screen, frontend, or component, or add/refine micro-interactions or full-screen hero sections (including Indonesian prompts such as "build a portfolio website"). Before writing UI code, ask ONE style question and stop if no visual style or approved project design system is specified. If the prompt already names an aesthetic such as skeuomorphism, claymorphism, glassmorphism, brutalism, neo-brutalism, minimalism, bento, retro-pixel, or editorial, load its bundled style pack immediately and proceed WITHOUT asking again. Preserve established styles for minor fixes; for SEO-only tasks, load the SEO module without a visual style question; skip unrelated non-visual work.
+description: Automatically routes visual UI work to a user-chosen aesthetic and applies SEO readiness to public-facing websites. Use whenever a user asks to build, create, design, or redesign a website, portfolio, landing page, dashboard, web app, mobile app, UI/UX screen, frontend, or component, or add/refine micro-interactions or full-screen hero sections (including Indonesian prompts such as "build a portfolio website"). Before writing UI code, ask ONE style question and stop if no visual style or approved project design system is specified. If the prompt already names an aesthetic such as skeuomorphism, claymorphism, glassmorphism, brutalism, neo-brutalism, minimalism, bento, retro-pixel, art-deco, or editorial, load its bundled style pack immediately and proceed WITHOUT asking again. Preserve established styles for minor fixes; for SEO-only tasks, load the SEO module without a visual style question; skip unrelated non-visual work.
 license: MIT
 metadata:
   version: "0.12.0"
@@ -132,6 +132,7 @@ Read `styles/registry.json` when matching IDs, **aliases, common misspellings**,
 | `skeuomorphism` | Physical control metaphor | [style pack](styles/skeuomorphism.md) |
 | `retro-terminal` | Console aesthetic | [style pack](styles/retro-terminal.md) |
 | `retro-pixel` | 8-bit/16-bit arcade desktop | [style pack](styles/retro-pixel.md) |
+| `art-deco` | Architectural geometric elegance & luxury (Modern, Classic, Minimal) | [style pack](styles/art-deco.md) |
 
 **Custom is first-class:** if the chosen aesthetic is not in the registry, gather a short reference or constraints, then create a provisional project-specific style definition using the same dimensions. Never mislabel the style as a pack not present. Do not require external internet access to choose.
 
@@ -199,7 +200,7 @@ If style is only one of many pieces of a broader task, resolve the style before 
 
 ## Non-negotiable anti-slop contract
 
-All nine style packs and every custom style must pass the **shared anti-slop quality bar**. The agent may not use a visual theme to justify deceptive data, useless nested cards, generic hype copy, misleading buttons, inaccessible typography or clutter. **Style-specific signature traits are exempt from aesthetic blacklists when purposeful and usable**: e.g. intentional glass, sculpted clay, neo-brutalist offset shadow, and justified Bento grids. Anti-slop is a decision framework, not a minimalism preset.
+All ten style packs and every custom style must pass the **shared anti-slop quality bar**. The agent may not use a visual theme to justify deceptive data, useless nested cards, generic hype copy, misleading buttons, inaccessible typography or clutter. **Style-specific signature traits are exempt from aesthetic blacklists when purposeful and usable**: e.g. intentional glass, sculpted clay, neo-brutalist offset shadow, and justified Bento grids. Anti-slop is a decision framework, not a minimalism preset.
 
 Read `references/anti-slop.md`, `references/anti-slop-copywriting.md`, and `references/anti-slop-audit.md` for applicable UI work. Include anti-slop in the final QA pass, not just the prompt. Non-visual tasks do not trigger the design preflight/audit.
 

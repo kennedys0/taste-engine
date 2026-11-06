@@ -25,12 +25,13 @@ class TestBrutalismVariants(unittest.TestCase):
         self.style_probe = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(self.style_probe)
 
-    def test_top_level_styles_count_is_nine(self):
+    def test_top_level_styles_count_restored_to_ten(self):
         styles = self.registry.get('styles', [])
-        self.assertEqual(len(styles), 9, f"Expected exactly 9 top-level styles, found {len(styles)}: {list(self.styles_by_id.keys())}")
+        self.assertEqual(len(styles), 10, f"Expected exactly 10 top-level styles, found {len(styles)}: {list(self.styles_by_id.keys())}")
         self.assertNotIn('bento', self.styles_by_id, "bento must not exist as an independent top-level style")
         self.assertIn('brutalism', self.styles_by_id, "brutalism must exist as a top-level style")
         self.assertIn('neo-brutalism', self.styles_by_id, "neo-brutalism must exist as an independent top-level style")
+        self.assertIn('art-deco', self.styles_by_id, "art-deco must exist as a top-level style")
 
     def test_brutalism_variants_in_registry(self):
         brutalism = self.styles_by_id['brutalism']
@@ -85,14 +86,15 @@ class TestBrutalismVariants(unittest.TestCase):
         self.assertEqual(res_neo['primary_style'], 'neo-brutalism')
         self.assertIsNone(res_neo.get('variant'))
 
-    def test_motion_profiles_has_nine_styles(self):
+    def test_motion_profiles_has_ten_styles(self):
         motion_path = self.root / 'styles' / 'motion-profiles.json'
         profiles = json.loads(motion_path.read_text(encoding='utf-8'))
         styles = profiles.get('styles', {})
-        self.assertEqual(len(styles), 9)
+        self.assertEqual(len(styles), 10)
         self.assertNotIn('bento', styles)
         self.assertIn('brutalism', styles)
         self.assertIn('neo-brutalism', styles)
+        self.assertIn('art-deco', styles)
 
     def test_project_style_schema_supports_variant(self):
         schema_path = self.root / 'assets' / 'project-style.schema.json'
@@ -117,11 +119,17 @@ class TestBrutalismVariants(unittest.TestCase):
         self.assertIn('variant: raw', doc_content)
         self.assertIn('variant: bento', doc_content)
 
-    def test_bento_doc_is_migration_guide(self):
+    def test_merged_style_assets_removed(self):
         bento_doc = self.root / 'styles' / 'bento.md'
-        content = bento_doc.read_text(encoding='utf-8')
-        self.assertIn('Consolidated into Brutalism', content)
-        self.assertIn('styles/brutalism.md', content)
+        self.assertFalse(bento_doc.exists(), "styles/bento.md must be removed")
+        bento_examples = self.root / 'examples' / 'bento'
+        self.assertFalse(bento_examples.exists(), "examples/bento must be removed")
+        enterprise_examples = self.root / 'examples' / 'enterprise'
+        self.assertFalse(enterprise_examples.exists(), "examples/enterprise must be removed")
+        bento_html = self.project_root / 'docs' / 'bento.html'
+        self.assertFalse(bento_html.exists(), "docs/bento.html must be removed")
+        enterprise_html = self.project_root / 'docs' / 'enterprise.html'
+        self.assertFalse(enterprise_html.exists(), "docs/enterprise.html must be removed")
 
     def test_standalone_bento_skill_removed(self):
         standalone_bento = self.project_root / 'optional-standalone-skills' / 'taste-style-bento'

@@ -16,6 +16,7 @@ class TestPoWShowcaseStructure(unittest.TestCase):
         self.min_doc_path = self.project_root / 'docs' / 'minimalism.html'
         self.pixel_doc_path = self.project_root / 'docs' / 'retro-pixel.html'
         self.brutalism_doc_path = self.project_root / 'docs' / 'brutalism.html'
+        self.art_deco_doc_path = self.project_root / 'docs' / 'art-deco.html'
         registry_path = self.root / 'styles' / 'registry.json'
         self.registry = json.loads(registry_path.read_text(encoding='utf-8'))
 
@@ -76,6 +77,39 @@ class TestPoWShowcaseStructure(unittest.TestCase):
         self.assertIn('switchInstallTab', content)
         self.assertIn('agent-support-strip', content)
 
+    def test_art_deco_pow_satisfies_contract(self):
+        if not self.art_deco_doc_path.is_file():
+            self.skipTest("docs/art-deco.html not present")
+        content = self.art_deco_doc_path.read_text(encoding='utf-8')
+        # Section 1: Header
+        self.assertIn('pow-header', content)
+        # Section 2: Hero
+        self.assertIn('id="hero"', content)
+        self.assertIn('pow-hero', content)
+        # Section 3: Interactive Studio
+        self.assertIn('id="studio"', content)
+        self.assertIn('pow-studio', content)
+        self.assertIn('switchExpression', content)
+        # Section 4: Component Anatomy & Gates
+        self.assertIn('id="components"', content)
+        self.assertIn('pow-components', content)
+        # Section 5: Tabbed Terminal Installation
+        self.assertIn('id="install"', content)
+        self.assertIn('pow-install', content)
+        self.assertIn('tabbed-terminal-card', content)
+        self.assertIn('terminal-tab-bar', content)
+        self.assertIn('terminal-copy-btn', content)
+        self.assertIn('switchInstallTab', content)
+        self.assertIn('agent-support-strip', content)
+        # Section 6: Core Architectural Principles
+        self.assertIn('id="principles"', content)
+        self.assertIn('pow-principles', content)
+        # Section 7: Responsive Footer
+        self.assertIn('pow-footer', content)
+        self.assertIn('pow-footer-grid', content)
+        # Verify 10-style links in footer
+        self.assertIn('art-deco.html', content)
+
     def test_brutalism_pow_satisfies_contract(self):
         if not self.brutalism_doc_path.is_file():
             self.skipTest("docs/brutalism.html not present")
@@ -112,9 +146,9 @@ class TestPoWShowcaseStructure(unittest.TestCase):
         # Invariant: 10 canonical styles linked in footer
         expected_styles = [
             'minimalism.html', 'retro-pixel.html', 'claymorphism.html',
-            'glassmorphism.html', 'neo-brutalism.html', 'bento.html',
-            'skeuomorphism.html', 'editorial.html', 'brutalism.html',
-            'retro-terminal.html'
+            'glassmorphism.html', 'neo-brutalism.html',
+            'skeuomorphism.html', 'swiss-editorial.html', 'brutalism.html',
+            'retro-terminal.html', 'art-deco.html'
         ]
         for s in expected_styles:
             self.assertIn(s, content, f"docs/brutalism.html must link to {s}")
@@ -123,9 +157,9 @@ class TestPoWShowcaseStructure(unittest.TestCase):
         content = self.template_path.read_text(encoding='utf-8')
         expected_styles = [
             'minimalism.html', 'retro-pixel.html', 'claymorphism.html',
-            'glassmorphism.html', 'neo-brutalism.html', 'bento.html',
-            'skeuomorphism.html', 'editorial.html', 'brutalism.html',
-            'retro-terminal.html'
+            'glassmorphism.html', 'neo-brutalism.html',
+            'skeuomorphism.html', 'swiss-editorial.html', 'brutalism.html',
+            'retro-terminal.html', 'art-deco.html'
         ]
         for style_href in expected_styles:
             self.assertIn(style_href, content, f"Template footer must link to {style_href}")

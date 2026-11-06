@@ -4,6 +4,21 @@ All notable changes to Taste Engine are documented here. Release tags use semant
 
 ## [0.12.0] - 2026-11-06
 
+### Added
+
+- **Art Deco Archetype Implementation (Restoring Catalog to 10 Top-Level Styles):** Introduced Art Deco (`id: "art-deco"`) as a production-quality, fully integrated visual archetype within Taste Engine, following the Brutalism × Bento layout consolidation:
+  - **Three Native Expressions:** Implemented under a single unified style pack with variant switching:
+    - **Modern Deco (`variant: "modern"`, default):** Contemporary architectural refinement, generous intentional whitespace, simplified geometric line frames, forest green (`#24453D`) and muted brass (`#B69A68`) accents against warm cream (`#F5F0E6`).
+    - **Classic Deco (`variant: "classic"`):** Monumental architectural symmetry, stepped ornamental borders, high-contrast typography, obsidian canvas (`#171715`), and flat antique gold (`#B89B5E`) finishes.
+    - **Minimal Deco (`variant: "minimal"`):** Quiet sophistication, subtle geometric accents, ivory canvas (`#F7F4ED`), deep burgundy (`#693B43`), and warm bronze (`#A98462`) tones.
+  - **Style Registry & Active Styles Restored to 10:** Added `art-deco` to `styles/registry.json` with 3 variants and comprehensive aliases (`art deco`, `deco`, `classic deco`, `modern deco`, `minimal deco`, `gatsby`, `streamline moderne`, etc.). Restored top-level styles count from 9 to 10 while preserving Brutalism's Raw and Bento layout variants and keeping Neo-Brutalism 100% independent.
+  - **Mandatory Material Fidelity Gate & Anti-Slop Exemption:** Codified strict screenshot-level acceptance gate requiring recognizable architectural framing, stepped corner silhouettes, axial symmetry, and multi-tiered typography. Formalized explicit exemption for geometric ornamental borders, stepped corner brackets, and flat metallic finishes in `references/anti-slop.md`.
+  - **Production Reference Recipe:** Created `examples/art-deco/geometric-surfaces.css` providing semantic design tokens, light/dark paired mode coupling, stepped corner brackets, fluted panels, symmetrical dividers, and `:focus-visible` / `prefers-reduced-motion` compliance.
+  - **Interactive Proof-of-Work Showcase (`docs/art-deco.html`):** Created full PoW studio page adhering to the canonical 7-section architecture: Sticky Header with 36px buttons and mobile drawer, Full-Screen Hero (`100svh`), Interactive Studio Salon with live 3-expression switcher and 5 preview panes (Landing, Component Gallery, Data Cockpit, Authentication, Editorial Reader), Component Anatomy & Quality Gates, Tabbed Terminal Installation Matrix with header copy button, 3 Core Principles, and Responsive 10-Style Footer.
+  - **Gallery & CLI Expansion:** Updated `docs/index.html` with Art Deco showcase card, live 3-expression switcher, filter chip, and footer directory. Updated `bin/taste-engine.mjs` help text to reflect 10 active styles.
+  - **Tailwind CSS & shadcn/ui Presets:** Added Art Deco color tokens, shadows, borders, radii, font families, and `.taste-deco-*` classes to `presets/tailwind/tailwind.preset.js`, `presets/tailwind/taste-components.css`, and `presets/shadcn/shadcn-themes.css`.
+  - **Automated Verification:** Added unit tests in `tests/test_art_deco_fidelity.py`, visual acceptance tests in `tests/art-deco-visual.md`, updated `tests/test_style_probe.py` with 6 deterministic Art Deco routing scenarios, updated `tests/test_pow_showcase_structure.py` with Art Deco contract verification, and confirmed catalog restored to 10 top-level styles in `tests/test_brutalism_variants.py`.
+
 ### Changed
 
 - **Style Consolidation (Brutalism × Bento):** Consolidated Bento Grid from an independent top-level style into a native layout variant of Brutalism (`style: brutalism, variant: bento`). Bento defines layout composition (modular asymmetric grid, varied column/row spans, content prioritization), not an independent visual language. Both layout variants are first-class:

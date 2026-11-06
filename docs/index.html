@@ -1690,6 +1690,25 @@
       color: var(--taste-brutal-btn-hover-ink);
     }
 
+    .deco-variant-btn {
+      background: transparent;
+      color: inherit;
+      border: 1px solid #38423c;
+      padding: 3px 10px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.725rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: none;
+    }
+    .deco-variant-btn.active, .deco-variant-btn:hover {
+      background: #d8bc88;
+      color: #161b18;
+      border-color: #d8bc88;
+    }
+
     /* =========================================================
        STYLE 3: CLAYMORPHISM
        ========================================================= */
@@ -2367,7 +2386,7 @@
       <a href="#" class="brand-title">
         <img src="assets/logo.webp" alt="Taste Engine Logo" class="brand-logo-img">
         <span>Taste Engine</span>
-        <span class="brand-badge">v0.11.0</span>
+        <span class="brand-badge">v0.12.0</span>
       </a>
     </div>
     
@@ -2510,12 +2529,13 @@
     <div class="section-header">
       <span class="section-eyebrow">Interactive Gallery</span>
       <h2 class="section-title">Live Material Fidelity Preview</h2>
-      <p class="section-desc">Test all 9 styles across dark and light modes. Every component adheres to paired token coupling with guaranteed WCAG AA readability.</p>
+      <p class="section-desc">Test all 10 styles across dark and light modes. Every component adheres to paired token coupling with guaranteed WCAG AA readability.</p>
     </div>
 
     <!-- Filter Buttons -->
     <nav class="filter-bar" aria-label="Style pack filters">
-      <button class="filter-chip active" data-filter="all">All Styles (9)</button>
+      <button class="filter-chip active" data-filter="all">All Styles (10)</button>
+      <button class="filter-chip" data-filter="art-deco">Art Deco</button>
       <button class="filter-chip" data-filter="brutalism">Brutalism</button>
       <button class="filter-chip" data-filter="claymorphism">Claymorphism</button>
       <button class="filter-chip" data-filter="glassmorphism">Glassmorphism</button>
@@ -2527,7 +2547,7 @@
       <button class="filter-chip" data-filter="swiss-editorial">Swiss Editorial</button>
     </nav>
 
-    <!-- 9 Showcase Cards -->
+    <!-- 10 Showcase Cards -->
     <main class="gallery-grid">
 
     <!-- 1. BRUTALISM (Raw & Bento layout variants) -->
@@ -2741,7 +2761,7 @@
       </div>
       <div class="showcase-body">
         <div class="term-wrapper">
-          <div style="font-size: 0.75rem; margin-bottom: 0.5rem;">[TASTE_OS v0.11.0 / SYS_READY]</div>
+          <div style="font-size: 0.75rem; margin-bottom: 0.5rem;">[TASTE_OS v0.12.0 / SYS_READY]</div>
           <p style="font-size: 0.85rem;">&gt; Core diagnostic: ALL SYSTEMS NOMINAL.<br>&gt; Memory heap: 640K OK.</p>
           <div class="term-prompt">
             <span>user@system:~$</span>
@@ -2838,6 +2858,104 @@
           <div style="display: flex; gap: 8px; flex-wrap: wrap;">
             <a href="retro-pixel.html" class="pixel-btn" style="background: #f27d36; color: #10102b; border: 2px solid #080816; box-shadow: inset 1px 1px 0px rgba(255,255,255,0.4), inset -1px -1px 0px #000, 2px 2px 0px #000; padding: 6px 12px; font-weight: bold; font-size: 0.75rem; text-decoration: none; cursor: pointer;">OPEN STUDIO &rarr;</a>
             <span class="pixel-badge" style="background: #2ca7a3; color: #10102b; border: 1px solid #080816; font-size: 0.7rem; font-weight: bold; padding: 4px 8px; display: inline-flex; align-items: center;">16-BIT ACTIVE</span>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 10. ART DECO (Modern, Classic, Minimal Expressions) -->
+    <article class="showcase-card" data-style="art-deco">
+      <div class="showcase-header">
+        <div class="showcase-title-group">
+          <h2>Art Deco</h2>
+          <span class="showcase-signature">Architectural geometry, stepped chevrons, Modern, Classic &amp; Minimal</span>
+        </div>
+        <div class="showcase-actions">
+          <a href="art-deco.html" class="pow-link-btn">PoW Guide &rarr;</a>
+          <button class="copy-token-btn" data-tokens="--taste-deco-bg: #F5F0E6; --taste-deco-ink: #292B29; --taste-deco-accent: #B69A68; --taste-deco-accent-secondary: #24453D; --taste-deco-border: 1px solid #D4C7B0; --taste-deco-radius: 2px;">Copy Tokens</button>
+        </div>
+      </div>
+      <div class="showcase-body">
+        <div class="deco-wrapper" style="background: #161b18; border: 1px solid #38423c; padding: 1.25rem; color: #f5f0e6; font-family: 'Plus Jakarta Sans', sans-serif; position: relative;">
+          <!-- Variant Switcher -->
+          <div style="display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 1.25rem; border-bottom: 1px solid #38423c; padding-bottom: 0.75rem;">
+            <div style="display: flex; align-items: center; gap: 0.5rem;">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.725rem; font-weight: 800; letter-spacing: 0.05em; color: #d8bc88;">EXPRESSION:</span>
+              <button class="deco-variant-btn active" data-variant="modern" onclick="switchArtDecoCardVariant(this, 'modern')">Modern</button>
+              <button class="deco-variant-btn" data-variant="classic" onclick="switchArtDecoCardVariant(this, 'classic')">Classic</button>
+              <button class="deco-variant-btn" data-variant="minimal" onclick="switchArtDecoCardVariant(this, 'minimal')">Minimal</button>
+            </div>
+            <span style="font-size: 0.7rem; font-weight: 800; color: #d8bc88; border: 1px solid #d8bc88; padding: 2px 6px;">[3 EXPRESSIONS]</span>
+          </div>
+
+          <!-- VARIANT 1: MODERN DECO -->
+          <div class="deco-variant-view deco-view-modern">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.65rem;">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; color: #d8bc88;">[ATELIER // MODERN_AXIAL]</span>
+              <span style="font-size: 0.7rem; font-weight: 700; color: #a3a8a2;">FOREST &amp; BRASS</span>
+            </div>
+            <h3 style="font-family: 'Cinzel', serif; font-size: 1.25rem; font-weight: 800; line-height: 1.15; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.06em; color: #f5f0e6;">ARCHITECTURAL BALANCE.</h3>
+            <p style="font-size: 0.825rem; line-height: 1.45; color: #a3a8a2; margin-bottom: 1rem;">Contemporary whitespace discipline, fine geometric hairline frames, and zero yellow-gradient slop.</p>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-bottom: 1rem; font-size: 0.75rem;">
+              <div style="background: #1f2622; border: 1px solid #38423c; padding: 0.5rem 0.75rem;">
+                <span style="display: block; font-size: 0.65rem; color: #d8bc88; font-weight: 800;">FINISH</span>
+                FLAT BRASS #B69A68
+              </div>
+              <div style="background: #1f2622; border: 1px solid #38423c; padding: 0.5rem 0.75rem;">
+                <span style="display: block; font-size: 0.65rem; color: #d8bc88; font-weight: 800;">CONTRAST</span>
+                WCAG AA 7.2:1
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <a href="art-deco.html" class="deco-btn" style="background: #d8bc88; color: #161b18; padding: 6px 14px; font-weight: 800; font-size: 0.75rem; text-decoration: none; border: 1px solid #d8bc88; display: inline-flex; align-items: center; cursor: pointer;">OPEN SALON &rarr;</a>
+              <span style="border: 1px solid #38423c; padding: 6px 12px; font-size: 0.75rem; color: #d8bc88; font-weight: 700;">DEFAULT</span>
+            </div>
+          </div>
+
+          <!-- VARIANT 2: CLASSIC DECO -->
+          <div class="deco-variant-view deco-view-classic" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.65rem;">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; color: #b89b5e;">[HERITAGE // CHRYSLER_CHVRN]</span>
+              <span style="font-size: 0.7rem; font-weight: 700; color: #afa898;">OBSIDIAN &amp; GOLD</span>
+            </div>
+            <h3 style="font-family: 'Cinzel', serif; font-size: 1.25rem; font-weight: 800; line-height: 1.15; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.06em; color: #f3ecdd;">MONUMENTAL DRAMA.</h3>
+            <p style="font-size: 0.825rem; line-height: 1.45; color: #afa898; margin-bottom: 1rem;">Stepped ornamental border silhouettes, deep emerald accents, antique gold medallions, and bilateral symmetry.</p>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-bottom: 1rem; font-size: 0.75rem;">
+              <div style="background: #20201d; border: 1px solid #3d3b33; padding: 0.5rem 0.75rem;">
+                <span style="display: block; font-size: 0.65rem; color: #b89b5e; font-weight: 800;">CANVAS</span>
+                OBSIDIAN #171715
+              </div>
+              <div style="background: #20201d; border: 1px solid #3d3b33; padding: 0.5rem 0.75rem;">
+                <span style="display: block; font-size: 0.65rem; color: #b89b5e; font-weight: 800;">ACCENT</span>
+                ANTIQUE GOLD #B89B5E
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <a href="art-deco.html" class="deco-btn" style="background: #b89b5e; color: #171715; padding: 6px 14px; font-weight: 800; font-size: 0.75rem; text-decoration: none; border: 1px solid #b89b5e; display: inline-flex; align-items: center; cursor: pointer;">EXPLORE CLASSIC &rarr;</a>
+            </div>
+          </div>
+
+          <!-- VARIANT 3: MINIMAL DECO -->
+          <div class="deco-variant-view deco-view-minimal" style="display: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.65rem;">
+              <span style="font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 700; color: #c5a281;">[STUDIO // QUIET_BRONZE]</span>
+              <span style="font-size: 0.7rem; font-weight: 700; color: #aba59b;">BURGUNDY &amp; BRONZE</span>
+            </div>
+            <h3 style="font-family: 'Cinzel', serif; font-size: 1.25rem; font-weight: 800; line-height: 1.15; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.06em; color: #f7f4ed;">QUIET REFINEMENT.</h3>
+            <p style="font-size: 0.825rem; line-height: 1.45; color: #aba59b; margin-bottom: 1rem;">Understated architectural framing, deep burgundy tones, brushed bronze rules, and high data density.</p>
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.5rem; margin-bottom: 1rem; font-size: 0.75rem;">
+              <div style="background: #242321; border: 1px solid #3b3935; padding: 0.5rem 0.75rem;">
+                <span style="display: block; font-size: 0.65rem; color: #c5a281; font-weight: 800;">PALETTE</span>
+                BURGUNDY #693B43
+              </div>
+              <div style="background: #242321; border: 1px solid #3b3935; padding: 0.5rem 0.75rem;">
+                <span style="display: block; font-size: 0.65rem; color: #c5a281; font-weight: 800;">ACCENT</span>
+                BRONZE #A98462
+              </div>
+            </div>
+            <div style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+              <a href="art-deco.html" class="deco-btn" style="background: #8a4e58; color: #ffffff; padding: 6px 14px; font-weight: 800; font-size: 0.75rem; text-decoration: none; border: 1px solid #8a4e58; display: inline-flex; align-items: center; cursor: pointer;">EXPLORE MINIMAL &rarr;</a>
+            </div>
           </div>
         </div>
       </div>
@@ -3194,7 +3312,7 @@ npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism</code></
           <div class="faq-answer">
             <div class="faq-answer-inner">
               <p>By default, AI coding agents generate uniform, repetitive frontend designs (often termed <em>AI-slop</em>): ungrounded floating cards, low-contrast text, purposeless blur effects, and generic blue-purple gradients.</p>
-              <p><strong>Taste Engine</strong> is an intelligence skill pack that equips AI agents with 9 distinctive aesthetic archetypes (Brutalism with Raw & Bento variants, Claymorphism, Enterprise/Minimalism, Glassmorphism, Neo-Brutalism, Retro Terminal, Retro Pixel, Skeuomorphism, Swiss Editorial) backed by strict quality gates to produce production-grade frontend code.</p>
+              <p><strong>Taste Engine</strong> is an intelligence skill pack that equips AI agents with 10 distinctive aesthetic archetypes (Art Deco with Modern, Classic & Minimal expressions, Brutalism with Raw & Bento variants, Claymorphism, Enterprise/Minimalism, Glassmorphism, Neo-Brutalism, Retro Terminal, Retro Pixel, Skeuomorphism, Swiss Editorial) backed by strict quality gates to produce production-grade frontend code.</p>
             </div>
           </div>
         </div>
@@ -3388,7 +3506,7 @@ npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism</code></
         <div class="brand-group">
           <img src="assets/logo.webp" alt="Taste Engine Logo" class="brand-logo-img">
           <strong style="font-size: 1.05rem; font-weight: 700;">Taste Engine</strong>
-          <span class="brand-badge">v0.11.0</span>
+          <span class="brand-badge">v0.12.0</span>
         </div>
         <p class="footer-tagline">Open-source frontend design intelligence pack for AI coding agents. Elevate design fidelity, eliminate AI-slop, and enforce contrast safety.</p>
         <p class="footer-credit">Created by <a href="https://github.com/kennedys0" target="_blank" rel="noopener">Mochamad Vikry (@kennedys0)</a></p>
@@ -3397,7 +3515,6 @@ npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism</code></
       <div class="footer-col">
         <h4>Aesthetic Archetypes (PoW)</h4>
         <ul>
-          <li><a href="bento.html">Brutalist Bento (PoW)</a></li>
           <li><a href="neo-brutalism.html">Neo-Brutalism (PoW)</a></li>
           <li><a href="claymorphism.html">Claymorphism (PoW)</a></li>
           <li><a href="glassmorphism.html">Glassmorphism (PoW)</a></li>
@@ -3407,6 +3524,7 @@ npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism</code></
           <li><a href="skeuomorphism.html">Skeuomorphism (PoW)</a></li>
           <li><a href="swiss-editorial.html">Swiss Editorial (PoW)</a></li>
           <li><a href="brutalism.html">Brutalism (Raw & Bento) (PoW)</a></li>
+          <li><a href="art-deco.html">Art Deco Architecture (PoW)</a></li>
         </ul>
       </div>
 
@@ -3537,6 +3655,16 @@ npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism</code></
       }
     }
     window.switchBrutalVariant = switchBrutalVariant;
+
+    function switchArtDecoCardVariant(btn, variant) {
+      const card = btn.closest('.showcase-card');
+      card.querySelectorAll('.deco-variant-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      card.querySelectorAll('.deco-variant-view').forEach(v => v.style.display = 'none');
+      const target = card.querySelector('.deco-view-' + variant);
+      if (target) target.style.display = 'block';
+    }
+    window.switchArtDecoCardVariant = switchArtDecoCardVariant;
 
     const filterChips = document.querySelectorAll('.filter-chip');
     const cards = document.querySelectorAll('.showcase-card');

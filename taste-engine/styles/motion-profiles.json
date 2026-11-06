@@ -83,6 +83,15 @@
         "opacity"
       ],
       "avoid": "bounce, overshoot, continuous glitch animations, CRT distortion loops"
+    },
+    "art-deco": {
+      "interaction": "Subtle hover feedback, short opacity transitions, and restrained state transitions for geometric frames and controls; preserve architectural stability.",
+      "duration_ms": 150,
+      "allowed": [
+        "opacity",
+        "translate"
+      ],
+      "avoid": "constantly animated ornaments, excessive parallax, aggressive scroll effects, bounce and elastic transitions"
     }
   }
 }

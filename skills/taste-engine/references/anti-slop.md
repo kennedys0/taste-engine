@@ -33,6 +33,7 @@ A heuristic must **never** erase a defining feature of the chosen style:
 - **Brutalism:** Exposed 2px–3px structural scaffolding borders, raw monochrome contrast, and immediate state flips are celebrated as honest architecture.
 - **Minimalism:** Active intentional negative space, mathematical type calibration, and hairline dividers are prioritized over decorative fillers.
 - **Enterprise:** High-density data tables, tabular figures (`tabular-nums`), filter toolbars, keyboard shortcuts, and semantic status pills are essential operational tools.
+- **Art Deco:** Geometric ornamental borders, stepped corner brackets, architectural hairline rules, fan/sunburst chevron accents, and flat/layered metallic finishes (antique gold `#B89B5E`, muted brass `#B69A68`, bronze `#A98462`) are explicitly exempt from generic anti-ornament reflexes when purposeful, symmetrical, and structurally aligned.
 
 Audit whether each style expression is *intentional, truthful, and usable*, not whether it matches a generic minimal UI.
 

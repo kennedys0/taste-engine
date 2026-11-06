@@ -337,3 +337,55 @@
   --ring: 23 88% 58%;
   --radius: 0px;
 }
+
+/* =========================================================
+   10. ART DECO (Architectural geometric framing & brass/gold)
+   Warm cream / obsidian canvas, brass/gold primary, 2px radius
+   ========================================================= */
+[data-theme="art-deco"],
+.theme-art-deco {
+  --background: 40 43% 93%;         /* #f5f0e6 warm cream */
+  --foreground: 120 3% 16%;         /* #292b29 deep charcoal */
+  --card: 0 0% 100%;                /* #ffffff crisp card */
+  --card-foreground: 120 3% 16%;
+  --popover: 40 28% 88%;            /* #ece5d6 elevated linen */
+  --popover-foreground: 120 3% 16%;
+  --primary: 38 37% 56%;           /* #b69a68 muted brass */
+  --primary-foreground: 0 0% 100%;
+  --secondary: 167 31% 20%;         /* #24453d forest green */
+  --secondary-foreground: 0 0% 100%;
+  --muted: 40 25% 85%;
+  --muted-foreground: 120 2% 38%;
+  --accent: 38 37% 56%;
+  --accent-foreground: 120 3% 16%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 38 28% 76%;            /* #d4c7b0 hairline border */
+  --input: 38 28% 76%;
+  --ring: 38 37% 56%;
+  --radius: 0.125rem;              /* 2px architectural radius */
+}
+
+.dark[data-theme="art-deco"],
+.dark .theme-art-deco {
+  --background: 144 11% 10%;        /* #161b18 obsidian pine */
+  --foreground: 40 43% 93%;         /* #f5f0e6 warm cream */
+  --card: 146 10% 13%;              /* #1f2622 deep forest plate */
+  --card-foreground: 40 43% 93%;
+  --popover: 147 10% 18%;           /* #29332d elevated forest */
+  --popover-foreground: 40 43% 93%;
+  --primary: 39 52% 69%;           /* #d8bc88 warm polished brass */
+  --primary-foreground: 144 11% 10%;
+  --secondary: 166 28% 28%;         /* #345c52 spruce */
+  --secondary-foreground: 40 43% 93%;
+  --muted: 146 8% 20%;
+  --muted-foreground: 120 5% 65%;
+  --accent: 39 52% 69%;
+  --accent-foreground: 144 11% 10%;
+  --destructive: 0 72% 51%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 146 8% 24%;
+  --input: 146 8% 24%;
+  --ring: 39 52% 69%;
+  --radius: 0.125rem;
+}

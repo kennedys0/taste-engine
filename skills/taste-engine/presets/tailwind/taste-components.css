@@ -265,6 +265,44 @@
   }
 
   /* =========================================================
+     10. ART DECO (Architectural geometric framing & brass/gold)
+     ========================================================= */
+  .taste-deco-card {
+    @apply bg-taste-deco-surface border border-taste-deco-border rounded-deco p-6 relative;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  .taste-deco-card-stepped {
+    @apply bg-taste-deco-surface border border-taste-deco-border rounded-none p-6 relative;
+  }
+
+  .taste-deco-btn {
+    @apply inline-flex items-center justify-center font-bold tracking-widest uppercase text-xs rounded-deco h-9 min-h-[36px] px-5 transition-all duration-150 cursor-pointer select-none;
+  }
+
+  .taste-deco-btn-primary {
+    @apply bg-taste-deco-brass text-white hover:brightness-105 active:translate-y-px;
+  }
+
+  .taste-deco-btn-secondary {
+    @apply bg-transparent text-taste-deco-ink border border-taste-deco-brass hover:bg-taste-deco-surface-elevated active:translate-y-px;
+  }
+
+  .taste-deco-divider {
+    @apply flex items-center justify-center gap-3 my-6 w-full;
+  }
+
+  .taste-deco-divider::before,
+  .taste-deco-divider::after {
+    content: '';
+    @apply flex-1 h-px bg-taste-deco-brass opacity-40;
+  }
+
+  .taste-deco-badge {
+    @apply inline-flex items-center text-[11px] font-bold tracking-wider uppercase px-2.5 py-0.5 border border-taste-deco-brass text-taste-deco-brass;
+  }
+
+  /* =========================================================
      11. PROOF-OF-WORK (POW) SHOWCASE & STUDIO CONTRACT PRESETS
      ========================================================= */
   .taste-pow-header {

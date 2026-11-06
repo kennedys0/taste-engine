@@ -1,0 +1,318 @@
+/* Taste Engine Art Deco — Reference CSS. Adapt to the project.
+   Art Deco features architectural geometric precision, stepped chevron forms,
+   fluted surfaces, elegant symmetry, refined typography, and disciplined ornamentation.
+   Supports Modern Deco (default), Classic Deco, and Minimal Deco expressions. */
+
+:root,
+[data-theme="art-deco"],
+[data-theme="art-deco"][data-variant="modern"] {
+  --taste-deco-bg: #F5F0E6;
+  --taste-deco-surface: #FFFFFF;
+  --taste-deco-surface-elevated: #ECE5D6;
+  --taste-deco-ink: #292B29;
+  --taste-deco-ink-muted: #636662;
+  --taste-deco-accent: #B69A68;
+  --taste-deco-accent-secondary: #24453D;
+  --taste-deco-border: 1px solid #D4C7B0;
+  --taste-deco-border-accent: 1px solid #B69A68;
+  --taste-deco-radius: 2px;
+  --taste-deco-btn-bg: #B69A68;
+  --taste-deco-btn-ink: #FFFFFF;
+  --taste-deco-btn-border: 1px solid #B69A68;
+  --taste-deco-focus-ring: 2px solid #B69A68;
+  --taste-deco-font-display: 'Cinzel', 'Playfair Display', Georgia, serif;
+  --taste-deco-font-body: 'Plus Jakarta Sans', 'Inter', system-ui, sans-serif;
+  --taste-deco-transition-duration: 150ms;
+}
+
+/* Modern Deco Dark Mode */
+.dark[data-theme="art-deco"],
+[data-theme="dark"][data-theme="art-deco"],
+[data-theme="art-deco"][data-variant="modern"].dark,
+[data-theme="art-deco"][data-variant="modern"][data-theme="dark"] {
+  --taste-deco-bg: #161B18;
+  --taste-deco-surface: #1F2622;
+  --taste-deco-surface-elevated: #29332D;
+  --taste-deco-ink: #F5F0E6;
+  --taste-deco-ink-muted: #A3A8A2;
+  --taste-deco-accent: #D8BC88;
+  --taste-deco-accent-secondary: #345C52;
+  --taste-deco-border: 1px solid #38423C;
+  --taste-deco-border-accent: 1px solid #D8BC88;
+  --taste-deco-btn-bg: #D8BC88;
+  --taste-deco-btn-ink: #161B18;
+  --taste-deco-btn-border: 1px solid #D8BC88;
+  --taste-deco-focus-ring: 2px solid #D8BC88;
+}
+
+/* Classic Deco Expression (Obsidian, Gold, Ivory, Emerald) */
+[data-theme="art-deco"][data-variant="classic"] {
+  --taste-deco-bg: #F3ECDD;
+  --taste-deco-surface: #FCF9F2;
+  --taste-deco-surface-elevated: #E7DDC8;
+  --taste-deco-ink: #171715;
+  --taste-deco-ink-muted: #5C5A52;
+  --taste-deco-accent: #9E8043;
+  --taste-deco-accent-secondary: #183D36;
+  --taste-deco-border: 1px solid #D6C8A8;
+  --taste-deco-border-accent: 1px solid #9E8043;
+  --taste-deco-radius: 0px;
+  --taste-deco-btn-bg: #9E8043;
+  --taste-deco-btn-ink: #FFFFFF;
+  --taste-deco-btn-border: 1px solid #9E8043;
+  --taste-deco-focus-ring: 2px solid #9E8043;
+}
+
+[data-theme="art-deco"][data-variant="classic"].dark,
+[data-theme="art-deco"][data-variant="classic"][data-theme="dark"] {
+  --taste-deco-bg: #171715;
+  --taste-deco-surface: #20201D;
+  --taste-deco-surface-elevated: #2B2B27;
+  --taste-deco-ink: #F3ECDD;
+  --taste-deco-ink-muted: #AFA898;
+  --taste-deco-accent: #B89B5E;
+  --taste-deco-accent-secondary: #1E4E45;
+  --taste-deco-border: 1px solid #3D3B33;
+  --taste-deco-border-accent: 1px solid #B89B5E;
+  --taste-deco-btn-bg: #B89B5E;
+  --taste-deco-btn-ink: #171715;
+  --taste-deco-btn-border: 1px solid #B89B5E;
+  --taste-deco-focus-ring: 2px solid #B89B5E;
+}
+
+/* Minimal Deco Expression (Linen, Burgundy, Bronze, Slate) */
+[data-theme="art-deco"][data-variant="minimal"] {
+  --taste-deco-bg: #F7F4ED;
+  --taste-deco-surface: #FFFFFF;
+  --taste-deco-surface-elevated: #EBE6DB;
+  --taste-deco-ink: #272625;
+  --taste-deco-ink-muted: #68645E;
+  --taste-deco-accent: #A98462;
+  --taste-deco-accent-secondary: #693B43;
+  --taste-deco-border: 1px solid #D8CFC0;
+  --taste-deco-border-accent: 1px solid #A98462;
+  --taste-deco-radius: 2px;
+  --taste-deco-btn-bg: #693B43;
+  --taste-deco-btn-ink: #FFFFFF;
+  --taste-deco-btn-border: 1px solid #693B43;
+  --taste-deco-focus-ring: 2px solid #A98462;
+}
+
+[data-theme="art-deco"][data-variant="minimal"].dark,
+[data-theme="art-deco"][data-variant="minimal"][data-theme="dark"] {
+  --taste-deco-bg: #1B1A19;
+  --taste-deco-surface: #242321;
+  --taste-deco-surface-elevated: #2F2D2A;
+  --taste-deco-ink: #F7F4ED;
+  --taste-deco-ink-muted: #ABA59B;
+  --taste-deco-accent: #C5A281;
+  --taste-deco-accent-secondary: #8A4E58;
+  --taste-deco-border: 1px solid #3B3935;
+  --taste-deco-border-accent: 1px solid #C5A281;
+  --taste-deco-btn-bg: #8A4E58;
+  --taste-deco-btn-ink: #FFFFFF;
+  --taste-deco-btn-border: 1px solid #8A4E58;
+  --taste-deco-focus-ring: 2px solid #C5A281;
+}
+
+/* Base Scene Container */
+.taste-deco-scene {
+  background-color: var(--taste-deco-bg);
+  color: var(--taste-deco-ink);
+  font-family: var(--taste-deco-font-body);
+  min-height: 100vh;
+  padding: 2.5rem;
+  box-sizing: border-box;
+}
+
+/* Architectural Framing & Stepped Containers */
+.taste-deco-card {
+  background-color: var(--taste-deco-surface);
+  border: var(--taste-deco-border);
+  border-radius: var(--taste-deco-radius);
+  padding: 1.75rem;
+  position: relative;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.taste-deco-card-stepped {
+  position: relative;
+  border: var(--taste-deco-border);
+  padding: 2rem;
+  background-color: var(--taste-deco-surface);
+}
+
+.taste-deco-card-stepped::before {
+  content: '';
+  position: absolute;
+  top: 4px;
+  left: 4px;
+  right: 4px;
+  bottom: 4px;
+  border: 1px solid var(--taste-deco-accent);
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* Symmetrical Architectural Header Divider */
+.taste-deco-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.taste-deco-divider::before,
+.taste-deco-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--taste-deco-accent);
+  opacity: 0.5;
+}
+
+.taste-deco-divider-diamond {
+  width: 8px;
+  height: 8px;
+  background: var(--taste-deco-accent);
+  transform: rotate(45deg);
+  flex-shrink: 0;
+}
+
+/* Stepped Corner Details */
+.taste-deco-corner-bracket {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border: 1.5px solid var(--taste-deco-accent);
+  pointer-events: none;
+}
+
+.taste-deco-corner-tl { top: -1px; left: -1px; border-right: none; border-bottom: none; }
+.taste-deco-corner-tr { top: -1px; right: -1px; border-left: none; border-bottom: none; }
+.taste-deco-corner-bl { bottom: -1px; left: -1px; border-right: none; border-top: none; }
+.taste-deco-corner-br { bottom: -1px; right: -1px; border-left: none; border-top: none; }
+
+/* Typographic Hierarchy */
+.taste-deco-heading {
+  font-family: var(--taste-deco-font-display);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--taste-deco-ink);
+  line-height: 1.2;
+}
+
+.taste-deco-subhead {
+  font-size: 0.875rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--taste-deco-accent);
+}
+
+/* Interactive Buttons */
+.taste-deco-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  height: 36px;
+  padding: 0 1.25rem;
+  font-family: var(--taste-deco-font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  border-radius: var(--taste-deco-radius);
+  cursor: pointer;
+  text-decoration: none;
+  box-sizing: border-box;
+  transition: all var(--taste-deco-transition-duration) ease-out;
+}
+
+.taste-deco-btn-primary {
+  background-color: var(--taste-deco-btn-bg);
+  color: var(--taste-deco-btn-ink);
+  border: var(--taste-deco-btn-border);
+}
+
+.taste-deco-btn-primary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.taste-deco-btn-secondary {
+  background-color: transparent;
+  color: var(--taste-deco-ink);
+  border: var(--taste-deco-border-accent);
+}
+
+.taste-deco-btn-secondary:hover {
+  background-color: var(--taste-deco-surface-elevated);
+}
+
+.taste-deco-btn:active {
+  transform: translateY(1px);
+}
+
+/* Accessibility Focus States */
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[role="button"]:focus-visible {
+  outline: var(--taste-deco-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Form Controls */
+.taste-deco-input {
+  width: 100%;
+  height: 38px;
+  padding: 0 0.875rem;
+  background-color: var(--taste-deco-surface);
+  border: var(--taste-deco-border);
+  border-radius: var(--taste-deco-radius);
+  color: var(--taste-deco-ink);
+  font-family: var(--taste-deco-font-body);
+  font-size: 0.875rem;
+  box-sizing: border-box;
+  transition: border-color var(--taste-deco-transition-duration) ease;
+}
+
+.taste-deco-input:focus {
+  border-color: var(--taste-deco-accent);
+}
+
+/* Status Badges */
+.taste-deco-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border: 1px solid var(--taste-deco-accent);
+  border-radius: var(--taste-deco-radius);
+  color: var(--taste-deco-accent);
+  background: transparent;
+}
+
+/* Reduced Motion Compliance */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0ms !important;
+    transform: none !important;
+  }
+}
+
