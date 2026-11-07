@@ -250,10 +250,10 @@ class TestPoWShowcaseStructure(unittest.TestCase):
         self.assertIn('pow-footer-grid', content)
         # Invariant: 10 canonical styles linked in footer
         expected_styles = [
-            'minimalism.html', 'retro-pixel.html', 'claymorphism.html',
-            'glassmorphism.html', 'neo-brutalism.html',
-            'skeuomorphism.html', 'swiss-editorial.html', 'brutalism.html',
-            'retro-terminal.html', 'art-deco.html'
+            'claymorphism.html', 'frutiger-aero.html', 'brutalism.html',
+            'neo-brutalism.html', 'minimalism.html',
+            'swiss-editorial.html', 'retro-terminal.html', 'retro-pixel.html',
+            'art-deco.html', 'y2k-futurism.html'
         ]
         for s in expected_styles:
             self.assertIn(s, content, f"docs/brutalism.html must link to {s}")
@@ -261,10 +261,10 @@ class TestPoWShowcaseStructure(unittest.TestCase):
     def test_canonical_10_styles_in_footer(self):
         content = self.template_path.read_text(encoding='utf-8')
         expected_styles = [
-            'minimalism.html', 'retro-pixel.html', 'claymorphism.html',
-            'glassmorphism.html', 'neo-brutalism.html',
-            'skeuomorphism.html', 'swiss-editorial.html', 'brutalism.html',
-            'retro-terminal.html', 'art-deco.html'
+            'claymorphism.html', 'frutiger-aero.html', 'brutalism.html',
+            'neo-brutalism.html', 'minimalism.html',
+            'swiss-editorial.html', 'retro-terminal.html', 'retro-pixel.html',
+            'art-deco.html', 'y2k-futurism.html'
         ]
         for style_href in expected_styles:
             self.assertIn(style_href, content, f"Template footer must link to {style_href}")

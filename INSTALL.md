@@ -110,6 +110,6 @@ The agent, not the skill files, ultimately decides which skills to invoke. A fil
 
 ## GitHub Releases
 
-A tag such as `v0.10.0` triggers the release workflow after code is pushed to the repository. The workflow validates the skill, builds `taste-engine-v0.10.0.zip`, and attaches it to the release. The ZIP is compatible with the Bash updater.
+A tag such as `v0.13.0` triggers the release workflow after code is pushed to the repository. The workflow validates the skill, builds `taste-engine-v0.13.0.zip`, and attaches it to the release. The ZIP is compatible with the Bash updater.
 
 See [README.md](README.md) and [GITHUB_SETUP.md](GITHUB_SETUP.md) for maintainer instructions.
