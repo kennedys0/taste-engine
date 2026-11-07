@@ -1,9 +1,26 @@
 /**
- * Taste Engine — Frutiger Aero Glossy & Tactile Surfaces Recipe
- * Authentic mid-2000s optimistic nature-tech surfaces, horizon gloss sheens, and tactile affordances.
+ * Taste Engine — Frutiger Aero ("Optimistic Computing Under a Clear Blue Digital Sky")
+ * Glassmorphism + Skeuomorphism Fusion Recipe:
+ *   1. Shared Upper-Left Lighting Model (135deg / 165deg directional daylight)
+ *   2. Aero Glass Surfaces (translucent refraction over contrasting horizon layers, directional rims)
+ *   3. Molded Acrylic Controls (compact 34px/40px/44px buttons, 10px radius, curved 38% upper sheen, 6 states)
+ *   4. Tactile Skeuomorphic Depth (raised beveled plates, directionally recessed wells, +1.5px press travel)
+ *   5. Full 1-Screen Hero Viewport & Compact Scrollable Mobile Command Well
  */
 
 :root {
+  /* 1. Refined Conceptual Aero Palette */
+  --aero-sky: #DCEFF8;
+  --aero-cloud: #F7FBFD;
+  --aero-aqua: #6CD1E8;
+  --aero-ocean: #2C90B8;
+  --aero-seafoam: #A7E6D5;
+  --aero-leaf: #79C67A;
+  --aero-leaf-deep: #2D7A47;
+  --aero-deep-blue: #1F5D87;
+  --aero-cool-shadow: rgba(58, 105, 141, 0.18);
+
+  /* 2. Canonical Taste Engine Compatibility Tokens */
   --taste-aero-aqua: #48BFD3;
   --taste-aero-ocean: #247EA3;
   --taste-aero-leaf: #70B981;
@@ -11,223 +28,633 @@
   --taste-aero-cloud: #F4FAFC;
   --taste-aero-deep-blue: #173F61;
   --taste-aero-charcoal: #243642;
+  --taste-aero-seafoam: #A7E6D5;
+  --taste-aero-header-h: 58px;
 
-  /* Surface tokens (Light Mode) */
-  --taste-aero-bg: linear-gradient(180deg, #F4FAFC 0%, #DCEFF7 50%, #C9EDF8 100%);
-  --taste-aero-surface: rgba(255, 255, 255, 0.75);
-  --taste-aero-surface-solid: #FFFFFF;
-  --taste-aero-border: 1px solid rgba(255, 255, 255, 0.85);
-  --taste-aero-ink: #173F61;
-  --taste-aero-ink-muted: #4B6B88;
-  --taste-aero-shadow: 0 10px 28px rgba(36, 126, 163, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  /* 3. Atmospheric Sky & Lagoon Environment (Light Mode Default — Upper-Left Sunlit) */
+  --taste-aero-bg:
+    radial-gradient(ellipse 70% 45% at 20% 8%, rgba(255, 255, 255, 0.92) 0%, rgba(255, 255, 255, 0) 68%),
+    radial-gradient(ellipse 65% 50% at 82% 18%, rgba(108, 209, 232, 0.38) 0%, rgba(167, 230, 213, 0.18) 52%, rgba(255, 255, 255, 0) 75%),
+    radial-gradient(ellipse 60% 45% at 15% 65%, rgba(121, 198, 122, 0.14) 0%, rgba(167, 230, 213, 0.12) 48%, rgba(255, 255, 255, 0) 72%),
+    linear-gradient(180deg, #B8E0F4 0%, #D4EDF9 36%, #EBF6FC 72%, #D8EFFA 100%);
+  --taste-aero-surface: linear-gradient(
+    155deg,
+    rgba(255, 255, 255, 0.78) 0%,
+    rgba(244, 251, 254, 0.64) 52%,
+    rgba(218, 240, 250, 0.7) 100%
+  );
+  --taste-aero-surface-solid: #F2FAFD;
+  --taste-aero-border-top: rgba(255, 255, 255, 0.96);
+  --taste-aero-border-left: rgba(255, 255, 255, 0.9);
+  --taste-aero-border-right: rgba(44, 144, 184, 0.32);
+  --taste-aero-border-bottom: rgba(31, 93, 135, 0.38);
+  --taste-aero-ink: #11324D;
+  --taste-aero-ink-muted: #2B506E;
+  --taste-aero-shadow:
+    0 10px 26px rgba(38, 88, 124, 0.14),
+    0 2px 6px rgba(23, 63, 97, 0.07),
+    inset 1px 1.5px 0 rgba(255, 255, 255, 0.92),
+    inset -1px -1.5px 3px rgba(44, 144, 184, 0.12);
   --taste-aero-radius: 16px;
 }
 
 [data-theme="dark"],
 [data-aero-theme="dark"] {
-  --taste-aero-bg: linear-gradient(180deg, #0B1926 0%, #12263A 50%, #173F61 100%);
-  --taste-aero-surface: rgba(20, 42, 64, 0.72);
-  --taste-aero-surface-solid: #142A40;
-  --taste-aero-border: 1px solid rgba(255, 255, 255, 0.2);
-  --taste-aero-ink: #F4FAFC;
-  --taste-aero-ink-muted: #9BB8CD;
-  --taste-aero-shadow: 0 12px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  --taste-aero-bg:
+    radial-gradient(ellipse 68% 44% at 22% 10%, rgba(108, 209, 232, 0.2) 0%, transparent 68%),
+    radial-gradient(ellipse 60% 46% at 80% 22%, rgba(44, 144, 184, 0.24) 0%, transparent 70%),
+    radial-gradient(ellipse 55% 42% at 18% 72%, rgba(121, 198, 122, 0.1) 0%, transparent 68%),
+    linear-gradient(180deg, #07131E 0%, #0C2032 46%, #112B42 100%);
+  --taste-aero-surface: linear-gradient(
+    155deg,
+    rgba(22, 50, 78, 0.76) 0%,
+    rgba(13, 31, 50, 0.66) 54%,
+    rgba(17, 42, 66, 0.72) 100%
+  );
+  --taste-aero-surface-solid: #10253A;
+  --taste-aero-border-top: rgba(168, 230, 245, 0.52);
+  --taste-aero-border-left: rgba(108, 209, 232, 0.42);
+  --taste-aero-border-right: rgba(24, 68, 102, 0.65);
+  --taste-aero-border-bottom: rgba(10, 30, 48, 0.85);
+  --taste-aero-ink: #F7FBFD;
+  --taste-aero-ink-muted: #B6D8EE;
+  --taste-aero-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.48),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.26),
+    inset -1px -1.5px 4px rgba(0, 0, 0, 0.45);
 }
 
 /* =========================================================
-   1. SURFACES & CONTAINERS
+   0. FULL 1-SCREEN HERO VIEWPORT CONTRACT
+   ========================================================= */
+.taste-aero-hero {
+  box-sizing: border-box;
+  min-height: calc(100vh - var(--taste-aero-header-h, 58px));
+  min-height: calc(100svh - var(--taste-aero-header-h, 58px));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(2rem, 4.2vh, 3.25rem) 0;
+  position: relative;
+  overflow: hidden;
+}
+
+/* =========================================================
+   1. THREE CORE MATERIAL PRIMITIVES (GLASS + ACRYLIC + TACTILE)
    ========================================================= */
 
-/* Classic Aero Glossy Panel */
-.taste-aero-card {
+/* 1.1 Classic Aero Glossy Acrylic & Glass Panel (Shared 135deg Upper-Left Light) */
+.taste-aero-card,
+.taste-aero-acrylic-surface {
   background: var(--taste-aero-surface);
-  backdrop-filter: blur(16px) saturate(140%);
-  -webkit-backdrop-filter: blur(16px) saturate(140%);
-  border: var(--taste-aero-border);
+  backdrop-filter: blur(14px) saturate(155%);
+  -webkit-backdrop-filter: blur(14px) saturate(155%);
+  border-top: 1px solid var(--taste-aero-border-top);
+  border-left: 1px solid var(--taste-aero-border-left);
+  border-right: 1px solid var(--taste-aero-border-right);
+  border-bottom: 1px solid var(--taste-aero-border-bottom);
   box-shadow: var(--taste-aero-shadow);
   border-radius: var(--taste-aero-radius);
   color: var(--taste-aero-ink);
-  padding: 1.5rem;
+  padding: 1.35rem;
   position: relative;
   overflow: hidden;
-  transition: transform 160ms ease, box-shadow 160ms ease;
+  transition: transform 150ms ease, box-shadow 150ms ease, border-color 150ms ease;
 }
 
-/* Top Horizon Specular Reflection Sheen */
-.taste-aero-card::before {
+/* Soft Upper-Left Specular Reflection Sheen (Curved Lens Physics) */
+.taste-aero-card::before,
+.taste-aero-acrylic-surface::before,
+.taste-aero-glass-surface::before {
   content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 48%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 255, 255, 0.08) 95%, transparent 100%);
-  border-radius: var(--taste-aero-radius) var(--taste-aero-radius) 100px 100px / var(--taste-aero-radius) var(--taste-aero-radius) 8px 8px;
+  height: 36%;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.36) 0%,
+    rgba(255, 255, 255, 0.08) 65%,
+    rgba(255, 255, 255, 0) 100%
+  );
   pointer-events: none;
 }
 
-/* Aero Glass Surface (Variant: Glass) */
-.taste-aero-card-glass {
-  background: rgba(255, 255, 255, 0.42);
-  backdrop-filter: blur(24px) saturate(160%);
-  -webkit-backdrop-filter: blur(24px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow: 0 12px 36px rgba(23, 63, 97, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.85);
+[data-theme="dark"] .taste-aero-card::before,
+[data-aero-theme="dark"] .taste-aero-card::before,
+[data-theme="dark"] .taste-aero-acrylic-surface::before,
+[data-theme="dark"] .taste-aero-glass-surface::before {
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    rgba(108, 209, 232, 0.03) 65%,
+    transparent 100%
+  );
+}
+
+/* 1.2 Aero Glass Surface (Variant: Glass — Crystalline Multi-Plane Refraction) */
+.taste-aero-card-glass,
+.taste-aero-glass-surface {
+  background: linear-gradient(
+    150deg,
+    rgba(255, 255, 255, 0.56) 0%,
+    rgba(242, 251, 254, 0.36) 50%,
+    rgba(108, 209, 232, 0.22) 100%
+  );
+  backdrop-filter: blur(22px) saturate(180%);
+  -webkit-backdrop-filter: blur(22px) saturate(180%);
+  border-top: 1px solid #FFFFFF;
+  border-left: 1px solid rgba(255, 255, 255, 0.96);
+  border-right: 1px solid rgba(44, 144, 184, 0.34);
+  border-bottom: 1px solid rgba(31, 93, 135, 0.4);
+  border-radius: 20px;
+  box-shadow:
+    0 14px 34px rgba(31, 93, 135, 0.14),
+    inset 1.5px 2px 1px #FFFFFF,
+    inset 0 0 0 1px rgba(255, 255, 255, 0.65),
+    inset -1px -2px 8px rgba(108, 209, 232, 0.22);
+  color: var(--taste-aero-ink);
+  position: relative;
+  overflow: hidden;
 }
 
 [data-theme="dark"] .taste-aero-card-glass,
-[data-aero-theme="dark"] .taste-aero-card-glass {
-  background: rgba(16, 32, 48, 0.55);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+[data-aero-theme="dark"] .taste-aero-card-glass,
+[data-theme="dark"] .taste-aero-glass-surface,
+[data-aero-theme="dark"] .taste-aero-glass-surface {
+  background: linear-gradient(
+    150deg,
+    rgba(28, 66, 102, 0.54) 0%,
+    rgba(12, 30, 48, 0.38) 52%,
+    rgba(44, 144, 184, 0.22) 100%
+  );
+  border-top-color: rgba(200, 242, 252, 0.72);
+  border-left-color: rgba(108, 209, 232, 0.58);
+  box-shadow:
+    0 20px 44px rgba(0, 0, 0, 0.52),
+    inset 1.5px 1.5px 1px rgba(255, 255, 255, 0.35),
+    inset -1px -3px 8px rgba(108, 209, 232, 0.16);
 }
 
-/* Aero Tactile Surface (Variant: Tactile) */
-.taste-aero-card-tactile {
-  background: linear-gradient(180deg, #FFFFFF 0%, #E8F4F8 100%);
-  border: 1px solid #B8D8E6;
-  box-shadow: 0 6px 16px rgba(23, 63, 97, 0.14),
-              inset 0 1px 0 #FFFFFF,
-              inset 0 -2px 0 rgba(36, 126, 163, 0.2);
+/* 1.3 Aero Tactile Surface (Variant: Tactile — Molded Physical Dimensionality) */
+.taste-aero-card-tactile,
+.taste-aero-tactile-surface {
+  background: linear-gradient(
+    175deg,
+    #FFFFFF 0%,
+    #F3FAFD 48%,
+    #DAEBF5 92%,
+    #CBE2F0 100%
+  );
+  border-top: 1px solid #FFFFFF;
+  border-left: 1px solid #FFFFFF;
+  border-right: 1px solid #6DA8C6;
+  border-bottom: 1px solid #5390B0;
+  border-radius: 12px;
+  box-shadow:
+    0 10px 22px rgba(23, 63, 97, 0.18),
+    0 2px 4px rgba(23, 63, 97, 0.1),
+    inset 1px 2px 0 #FFFFFF,
+    inset -1px -2.5px 0 rgba(44, 144, 184, 0.26);
+  color: var(--taste-aero-ink);
+  position: relative;
 }
 
 [data-theme="dark"] .taste-aero-card-tactile,
-[data-aero-theme="dark"] .taste-aero-card-tactile {
-  background: linear-gradient(180deg, #1C334A 0%, #132435 100%);
-  border: 1px solid #2B4E6F;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5),
-              inset 0 1px 0 rgba(255, 255, 255, 0.2),
-              inset 0 -2px 0 rgba(0, 0, 0, 0.5);
+[data-aero-theme="dark"] .taste-aero-card-tactile,
+[data-theme="dark"] .taste-aero-tactile-surface,
+[data-aero-theme="dark"] .taste-aero-tactile-surface {
+  background: linear-gradient(
+    175deg,
+    #1B3752 0%,
+    #13283D 52%,
+    #0C1B2A 100%
+  );
+  border-top-color: #5498BA;
+  border-left-color: #4281A3;
+  border-right-color: #091521;
+  border-bottom-color: #060E17;
+  box-shadow:
+    0 12px 26px rgba(0, 0, 0, 0.55),
+    inset 1px 2px 0 rgba(255, 255, 255, 0.28),
+    inset -1px -3px 0 rgba(0, 0, 0, 0.6);
 }
 
-/* Floating Navigation Dock */
+/* 1.4 Recessed Tactile Inset Well (Upper-Left Inset Shadow, Bottom-Right Lip) */
+.taste-aero-inset-well {
+  background: linear-gradient(
+    165deg,
+    rgba(182, 219, 238, 0.52) 0%,
+    rgba(226, 244, 252, 0.78) 100%
+  );
+  border-top: 1px solid rgba(31, 93, 135, 0.36);
+  border-left: 1px solid rgba(31, 93, 135, 0.28);
+  border-right: 1px solid rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.95);
+  border-radius: 10px;
+  box-shadow:
+    inset 1px 2px 4px rgba(23, 63, 97, 0.14),
+    inset 0 1px 1px rgba(23, 63, 97, 0.08),
+    0 1px 0 rgba(255, 255, 255, 0.9);
+  padding: 0.75rem 1rem;
+  color: var(--taste-aero-ink);
+}
+
+[data-theme="dark"] .taste-aero-inset-well,
+[data-aero-theme="dark"] .taste-aero-inset-well {
+  background: linear-gradient(
+    165deg,
+    rgba(5, 14, 23, 0.82) 0%,
+    rgba(11, 26, 42, 0.76) 100%
+  );
+  border-top-color: rgba(0, 0, 0, 0.75);
+  border-left-color: rgba(0, 0, 0, 0.65);
+  border-right-color: rgba(108, 209, 232, 0.24);
+  border-bottom-color: rgba(108, 209, 232, 0.32);
+  box-shadow:
+    inset 1px 2px 5px rgba(0, 0, 0, 0.65),
+    0 1px 0 rgba(255, 255, 255, 0.1);
+  color: #F7FBFD;
+}
+
+/* 1.5 Balanced Split-Column Card Stack (Invariant G — Zero Dead Vertical Space) */
+.taste-aero-balanced-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  height: 100%;
+  justify-content: space-between;
+}
+
+.taste-aero-balanced-stack > * {
+  flex: 1 1 0%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* 1.6 Floating Navigation Dock */
 .taste-aero-dock {
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(20px) saturate(150%);
-  -webkit-backdrop-filter: blur(20px) saturate(150%);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  box-shadow: 0 12px 32px rgba(36, 126, 163, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.95);
-  border-radius: 9999px;
-  padding: 0.5rem 1.25rem;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(225, 243, 251, 0.74) 100%
+  );
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border-top: 1px solid rgba(255, 255, 255, 0.96);
+  border-left: 1px solid rgba(255, 255, 255, 0.9);
+  border-right: 1px solid rgba(44, 144, 184, 0.32);
+  border-bottom: 1px solid rgba(31, 93, 135, 0.38);
+  box-shadow:
+    0 10px 26px rgba(38, 88, 124, 0.15),
+    inset 1px 1.5px 0 #FFFFFF,
+    inset -1px -1.5px 3px rgba(44, 144, 184, 0.14);
+  border-radius: 14px;
+  padding: 0.5rem 0.75rem;
   display: inline-flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
 }
 
 [data-theme="dark"] .taste-aero-dock,
 [data-aero-theme="dark"] .taste-aero-dock {
-  background: rgba(18, 38, 58, 0.78);
-  border: 1px solid rgba(255, 255, 255, 0.22);
-  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  background: linear-gradient(
+    165deg,
+    rgba(24, 52, 80, 0.84) 0%,
+    rgba(13, 30, 48, 0.82) 100%
+  );
+  border-top-color: rgba(168, 230, 245, 0.52);
+  border-left-color: rgba(108, 209, 232, 0.42);
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, 0.54),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.26);
 }
 
 /* =========================================================
-   2. INTERACTIVE CONTROLS
+   2. COMPACT TACTILE BUTTON SYSTEM (3 SIZES, 6 STATES, 10PX RADIUS)
    ========================================================= */
 
-/* Glossy Primary Pill Button */
+/* 2.1 Primary Button: Molded Aqua Acrylic (Medium 40px default) */
 .taste-aero-btn {
+  height: 40px;
+  padding: 0 1.15rem;
+  box-sizing: border-box;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  padding: 0.65rem 1.5rem;
+  gap: 0.45rem;
   font-family: inherit;
-  font-size: 0.925rem;
+  font-size: 0.84rem;
   font-weight: 700;
+  letter-spacing: -0.01em;
   color: #FFFFFF;
-  background: linear-gradient(180deg, #48BFD3 0%, #247EA3 100%);
-  border: 1px solid rgba(255, 255, 255, 0.5);
-  border-radius: 9999px;
-  box-shadow: 0 4px 14px rgba(36, 126, 163, 0.35),
-              inset 0 1px 0 rgba(255, 255, 255, 0.7),
-              inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+  background: linear-gradient(
+    180deg,
+    #3AA8CE 0%,
+    #268BB2 46%,
+    #1D7498 84%,
+    #2383AA 100%
+  );
+  border-top: 1px solid #75D5EC;
+  border-left: 1px solid #4BB8DC;
+  border-right: 1px solid #165D7C;
+  border-bottom: 1px solid #114B65;
+  border-radius: 10px;
+  box-shadow:
+    0 3px 9px rgba(21, 72, 108, 0.26),
+    0 1px 2px rgba(15, 51, 77, 0.18),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.78),
+    inset -1px -1.5px 2px rgba(12, 45, 66, 0.38),
+    inset 0 -1px 4px rgba(108, 209, 232, 0.35);
   cursor: pointer;
   text-decoration: none;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+  text-shadow: 0 1px 1px rgba(9, 31, 48, 0.42);
   position: relative;
   overflow: hidden;
-  transition: transform 120ms ease, box-shadow 120ms ease, filter 120ms ease;
+  white-space: nowrap;
+  transition: transform 110ms ease, box-shadow 110ms ease, filter 110ms ease;
   user-select: none;
 }
 
-/* Button Specular Horizon Sheen */
+/* Controlled Upper-Left Curved Reflection (No harsh 50% white stripe) */
 .taste-aero-btn::before {
   content: "";
   position: absolute;
   top: 1px;
-  left: 10%;
-  right: 10%;
-  height: 45%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.15) 100%);
-  border-radius: 9999px 9999px 20px 20px;
+  left: 2px;
+  right: 2px;
+  height: 38%;
+  background: linear-gradient(
+    172deg,
+    rgba(255, 255, 255, 0.48) 0%,
+    rgba(255, 255, 255, 0.14) 72%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  border-radius: 8px 8px 18px 18px;
   pointer-events: none;
+  transition: opacity 110ms ease, height 110ms ease;
 }
 
-.taste-aero-btn:hover {
-  filter: brightness(1.06);
-  transform: translateY(-1.5px);
-  box-shadow: 0 6px 18px rgba(36, 126, 163, 0.42),
-              inset 0 1px 0 rgba(255, 255, 255, 0.85),
-              inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+.taste-aero-btn:hover:not(:disabled):not(.is-disabled) {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+  box-shadow:
+    0 5px 14px rgba(21, 72, 108, 0.32),
+    0 2px 4px rgba(15, 51, 77, 0.2),
+    inset 1px 1.5px 0 rgba(255, 255, 255, 0.88),
+    inset -1px -1.5px 2px rgba(12, 45, 66, 0.35),
+    inset 0 -1px 6px rgba(108, 209, 232, 0.5);
+  text-decoration: none;
 }
 
-.taste-aero-btn:active {
-  transform: translateY(1.5px) scale(0.99);
-  box-shadow: 0 2px 6px rgba(36, 126, 163, 0.3),
-              inset 0 2px 4px rgba(0, 0, 0, 0.3);
+/* 2.2 Primary Button Pressed State (:active / .is-pressed-demo) */
+.taste-aero-btn:active:not(:disabled):not(.is-disabled),
+.taste-aero-btn.is-pressed-demo {
+  transform: translateY(1.5px);
+  filter: brightness(0.96);
+  box-shadow:
+    0 1px 2px rgba(21, 72, 108, 0.2),
+    inset 1px 2px 5px rgba(9, 31, 48, 0.48),
+    inset 0 1px 2px rgba(0, 0, 0, 0.28),
+    inset 0 -1px 2px rgba(108, 209, 232, 0.25);
 }
 
-/* Secondary Leaf Accent Button */
+.taste-aero-btn:active:not(:disabled):not(.is-disabled)::before,
+.taste-aero-btn.is-pressed-demo::before {
+  opacity: 0.22;
+  height: 28%;
+}
+
+/* 2.3 Secondary Button: Translucent Frosted Acrylic (Medium 40px default) */
+.taste-aero-btn-secondary {
+  height: 40px;
+  padding: 0 1.15rem;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-family: inherit;
+  font-size: 0.84rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #133654;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.92) 0%,
+    rgba(238, 249, 254, 0.82) 54%,
+    rgba(215, 238, 249, 0.86) 100%
+  );
+  backdrop-filter: blur(12px) saturate(145%);
+  -webkit-backdrop-filter: blur(12px) saturate(145%);
+  border-top: 1px solid #FFFFFF;
+  border-left: 1px solid rgba(255, 255, 255, 0.94);
+  border-right: 1px solid rgba(44, 144, 184, 0.42);
+  border-bottom: 1px solid rgba(31, 93, 135, 0.48);
+  border-radius: 10px;
+  box-shadow:
+    0 3px 8px rgba(38, 88, 124, 0.14),
+    0 1px 2px rgba(23, 63, 97, 0.08),
+    inset 1px 1px 0 #FFFFFF,
+    inset -1px -1.5px 2px rgba(44, 144, 184, 0.18);
+  cursor: pointer;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  white-space: nowrap;
+  transition: transform 110ms ease, box-shadow 110ms ease, filter 110ms ease;
+  user-select: none;
+}
+
+.taste-aero-btn-secondary::before {
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 2px;
+  right: 2px;
+  height: 36%;
+  background: linear-gradient(
+    172deg,
+    rgba(255, 255, 255, 0.65) 0%,
+    rgba(255, 255, 255, 0.1) 100%
+  );
+  border-radius: 8px 8px 16px 16px;
+  pointer-events: none;
+  transition: opacity 110ms ease, height 110ms ease;
+}
+
+.taste-aero-btn-secondary:hover:not(:disabled):not(.is-disabled) {
+  transform: translateY(-1px);
+  filter: brightness(1.02);
+  box-shadow:
+    0 5px 12px rgba(38, 88, 124, 0.18),
+    inset 1px 1.5px 0 #FFFFFF,
+    inset -1px -1.5px 3px rgba(44, 144, 184, 0.24);
+  text-decoration: none;
+}
+
+.taste-aero-btn-secondary:active:not(:disabled):not(.is-disabled),
+.taste-aero-btn-secondary.is-pressed-demo {
+  transform: translateY(1.5px);
+  box-shadow:
+    0 1px 2px rgba(38, 88, 124, 0.1),
+    inset 1px 2px 4px rgba(23, 63, 97, 0.22),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.7);
+}
+
+.taste-aero-btn-secondary:active:not(:disabled):not(.is-disabled)::before,
+.taste-aero-btn-secondary.is-pressed-demo::before {
+  opacity: 0.25;
+  height: 28%;
+}
+
+[data-theme="dark"] .taste-aero-btn-secondary,
+[data-aero-theme="dark"] .taste-aero-btn-secondary {
+  color: #F7FBFD;
+  background: linear-gradient(
+    165deg,
+    rgba(32, 68, 102, 0.86) 0%,
+    rgba(19, 43, 66, 0.84) 55%,
+    rgba(15, 34, 54, 0.9) 100%
+  );
+  border-top-color: rgba(168, 230, 245, 0.55);
+  border-left-color: rgba(108, 209, 232, 0.45);
+  border-right-color: rgba(14, 36, 56, 0.8);
+  border-bottom-color: rgba(8, 22, 36, 0.9);
+  box-shadow:
+    0 4px 12px rgba(0, 0, 0, 0.42),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.28),
+    inset -1px -1.5px 3px rgba(0, 0, 0, 0.45);
+}
+
+/* 2.4 Button Size Hierarchy (Small 34px, Medium 40px, Large Hero CTA 44px) */
+.taste-aero-btn-sm {
+  height: 34px;
+  padding: 0 0.85rem;
+  font-size: 0.76rem;
+  border-radius: 8px;
+}
+
+.taste-aero-btn-lg {
+  height: 44px;
+  padding: 0 1.35rem;
+  font-size: 0.88rem;
+  border-radius: 11px;
+}
+
+/* 2.5 Disabled & Loading States (States 5 & 6) */
+.taste-aero-btn:disabled,
+.taste-aero-btn.is-disabled,
+.taste-aero-btn-secondary:disabled,
+.taste-aero-btn-secondary.is-disabled {
+  opacity: 0.52;
+  filter: saturate(0.35);
+  cursor: not-allowed;
+  transform: none !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.taste-aero-btn.is-loading,
+.taste-aero-btn-secondary.is-loading {
+  cursor: progress;
+  opacity: 0.9;
+}
+
+/* 2.6 Eco-Tech Leaf Accent Button */
 .taste-aero-btn-leaf {
-  background: linear-gradient(180deg, #70B981 0%, #4E9B60 100%);
-  box-shadow: 0 4px 14px rgba(78, 155, 96, 0.35),
-              inset 0 1px 0 rgba(255, 255, 255, 0.7),
-              inset 0 -1px 0 rgba(0, 0, 0, 0.2);
-}
-
-.taste-aero-btn-leaf:hover {
-  box-shadow: 0 6px 18px rgba(78, 155, 96, 0.42),
-              inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  background: linear-gradient(
+    180deg,
+    #4BA65A 0%,
+    #348744 48%,
+    #276E36 85%,
+    #2E7D3E 100%
+  );
+  border-top-color: #8BE097;
+  border-left-color: #66C474;
+  border-right-color: #1B5227;
+  border-bottom-color: #143F1D;
+  box-shadow:
+    0 3px 9px rgba(27, 82, 39, 0.26),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.75),
+    inset -1px -1.5px 2px rgba(14, 48, 24, 0.38);
 }
 
 /* Focus Visible Compliance */
 .taste-aero-btn:focus-visible,
+.taste-aero-btn-secondary:focus-visible,
 a.taste-aero-btn:focus-visible,
 button:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 3px rgba(72, 191, 211, 0.65), 0 0 12px rgba(72, 191, 211, 0.5);
+  outline: 2px solid #2C90B8;
+  outline-offset: 2px;
+  box-shadow: 0 0 0 4px rgba(108, 209, 232, 0.38);
 }
 
-/* Sunken Inset Input Field */
+/* 2.7 Sunken Inset Input Field & Compact Scrollable Command Bar */
 .taste-aero-input {
   width: 100%;
-  padding: 0.65rem 1rem;
+  height: 38px;
+  padding: 0 0.85rem;
   font-family: inherit;
-  font-size: 0.925rem;
+  font-size: 0.82rem;
   color: var(--taste-aero-ink);
-  background: rgba(255, 255, 255, 0.9);
-  border: 1px solid rgba(36, 126, 163, 0.35);
-  border-radius: 10px;
-  box-shadow: inset 0 2px 4px rgba(23, 63, 97, 0.12), 0 1px 0 rgba(255, 255, 255, 0.9);
+  background: linear-gradient(165deg, #E2F2FA 0%, #F8FCFE 42%, #FFFFFF 100%);
+  border-top: 1px solid rgba(31, 93, 135, 0.42);
+  border-left: 1px solid rgba(31, 93, 135, 0.34);
+  border-right: 1px solid rgba(255, 255, 255, 0.9);
+  border-bottom: 1px solid #FFFFFF;
+  border-radius: 9px;
+  box-shadow:
+    inset 1px 2px 4px rgba(23, 63, 97, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.9);
   outline: none;
-  transition: border-color 150ms ease, box-shadow 150ms ease;
+  transition: border-color 140ms ease, box-shadow 140ms ease;
+}
+
+.taste-aero-cmd {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 520px;
+  height: 44px;
+  padding: 0 0.35rem 0 0.8rem;
+  border-radius: 10px;
+}
+
+.taste-aero-cmd-scroll {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.taste-aero-cmd-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 [data-theme="dark"] .taste-aero-input,
 [data-aero-theme="dark"] .taste-aero-input {
-  background: rgba(14, 28, 42, 0.85);
-  border: 1px solid rgba(86, 210, 232, 0.35);
-  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 1px 0 rgba(255, 255, 255, 0.1);
-  color: #F4FAFC;
-}
-
-.taste-aero-input:focus-visible {
-  border-color: #48BFD3;
-  box-shadow: inset 0 1px 2px rgba(23, 63, 97, 0.1), 0 0 0 3px rgba(72, 191, 211, 0.4);
+  background: linear-gradient(165deg, #07131E 0%, #0E2235 100%);
+  border-top-color: rgba(0, 0, 0, 0.8);
+  border-left-color: rgba(0, 0, 0, 0.7);
+  border-right-color: rgba(108, 209, 232, 0.28);
+  border-bottom-color: rgba(108, 209, 232, 0.36);
+  box-shadow:
+    inset 1px 2px 5px rgba(0, 0, 0, 0.6),
+    0 1px 0 rgba(255, 255, 255, 0.1);
+  color: #F7FBFD;
 }
 
 /* =========================================================
@@ -237,7 +664,9 @@ textarea:focus-visible {
 /* Solid surface fallback when backdrop-filter is unsupported */
 @supports not (backdrop-filter: blur(1px)) {
   .taste-aero-card,
+  .taste-aero-acrylic-surface,
   .taste-aero-card-glass,
+  .taste-aero-glass-surface,
   .taste-aero-dock {
     background: var(--taste-aero-surface-solid);
   }
@@ -246,7 +675,9 @@ textarea:focus-visible {
 /* Reduced transparency support */
 @media (prefers-reduced-transparency: reduce) {
   .taste-aero-card,
+  .taste-aero-acrylic-surface,
   .taste-aero-card-glass,
+  .taste-aero-glass-surface,
   .taste-aero-dock {
     background: var(--taste-aero-surface-solid);
     backdrop-filter: none;
@@ -257,9 +688,14 @@ textarea:focus-visible {
 /* Reduced motion compliance */
 @media (prefers-reduced-motion: reduce) {
   .taste-aero-card,
+  .taste-aero-acrylic-surface,
+  .taste-aero-glass-surface,
+  .taste-aero-tactile-surface,
   .taste-aero-btn,
+  .taste-aero-btn-secondary,
   .taste-aero-input {
     transition: none !important;
     transform: none !important;
+    animation: none !important;
   }
 }

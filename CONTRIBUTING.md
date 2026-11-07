@@ -5,8 +5,8 @@ Thanks for improving Taste Engine. The project is framework-agnostic and does no
 ## Getting started
 
 1. Fork or clone [kennedys0/taste-engine](https://github.com/kennedys0/taste-engine).
-2. Make focused changes in the **canonical** `taste-engine/` directory; do not edit `skills/taste-engine/` by hand.
-3. Run `python3 scripts/sync-agent-skills.py` after changing the canonical router or its resources.
+2. Make focused changes in the **canonical** `skills/taste-engine/` directory.
+3. Run `python3 scripts/sync-agent-skills.py` if you modified `skills/taste-engine/scripts/update.sh` to keep root `update.sh` synchronized.
 4. Run the validation and test commands in [README.md](README.md#development-and-verification).
 5. Submit a pull request explaining the problem, behavior before/after, and how you tested it.
 
@@ -21,8 +21,8 @@ A useful new anti-slop rule includes a concrete failure example, why it harms re
 ```bash
 python3 scripts/sync-agent-skills.py
 python3 scripts/sync-agent-skills.py --check
-python3 taste-engine/scripts/validate-pack.py
-python3 -m unittest discover -s taste-engine/tests -p 'test_*.py'
+python3 skills/taste-engine/scripts/validate-pack.py
+python3 -m unittest discover -s skills/taste-engine/tests -p 'test_*.py'
 node --test tests/cli.test.mjs
 ```
 

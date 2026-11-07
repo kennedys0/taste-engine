@@ -25,17 +25,24 @@ const tastePreset = {
           'clay-primary': 'var(--taste-clay-primary, #6366f1)',
           'clay-well': 'var(--taste-clay-well, #dfe4ec)',
 
-          // Frutiger Aero: luminous aqua, deep ocean, spring leaf, and cloud white
+          // Frutiger Aero: luminous aqua, sky, seafoam, deep ocean, spring leaf, and cloud white
           'aero-aqua': 'var(--taste-aero-aqua, #48BFD3)',
+          'aero-aqua-bright': 'var(--aero-aqua, #6CD1E8)',
           'aero-ocean': 'var(--taste-aero-ocean, #247EA3)',
+          'aero-ocean-bright': 'var(--aero-ocean, #2C90B8)',
+          'aero-seafoam': 'var(--aero-seafoam, #A7E6D5)',
           'aero-leaf': 'var(--taste-aero-leaf, #70B981)',
+          'aero-leaf-bright': 'var(--aero-leaf, #79C67A)',
           'aero-sky': 'var(--taste-aero-sky, #C9EDF8)',
+          'aero-sky-soft': 'var(--aero-sky, #DCEFF8)',
           'aero-cloud': 'var(--taste-aero-cloud, #F4FAFC)',
+          'aero-cloud-pure': 'var(--aero-cloud, #F7FBFD)',
           'aero-deep-blue': 'var(--taste-aero-deep-blue, #173F61)',
+          'aero-deep-ocean': 'var(--aero-deep-blue, #1F5D87)',
           'aero-charcoal': 'var(--taste-aero-charcoal, #243642)',
-          'aero-surface': 'var(--taste-aero-surface, rgba(255, 255, 255, 0.75))',
-          'aero-surface-dark': 'var(--taste-aero-surface-dark, rgba(20, 42, 64, 0.72))',
-          'aero-border': 'var(--taste-aero-border, rgba(255, 255, 255, 0.85))',
+          'aero-surface': 'var(--taste-aero-surface, rgba(255, 255, 255, 0.78))',
+          'aero-surface-dark': 'var(--taste-aero-surface-dark, rgba(20, 42, 64, 0.76))',
+          'aero-border': 'var(--taste-aero-border, rgba(255, 255, 255, 0.92))',
 
           // Neo-brutalism: high-contrast pop palette
           'neo-bg': 'var(--taste-neo-bg, #fffdf8)',
@@ -176,13 +183,14 @@ const tastePreset = {
         'deco-card': '0 4px 20px rgba(0, 0, 0, 0.06)',
         'deco-elevated': '0 12px 36px rgba(0, 0, 0, 0.12)',
 
-        // Frutiger Aero: glossy horizon sheens, tactile convex buttons, and translucent dock elevation
-        'aero-card': '0 10px 28px rgba(36, 126, 163, 0.16), inset 0 1px 0 rgba(255, 255, 255, 0.9)',
-        'aero-card-dark': '0 12px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.25)',
-        'aero-btn': '0 4px 14px rgba(36, 126, 163, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.7), inset 0 -1px 0 rgba(0, 0, 0, 0.2)',
-        'aero-btn-active': '0 2px 6px rgba(36, 126, 163, 0.3), inset 0 2px 4px rgba(0, 0, 0, 0.3)',
-        'aero-dock': '0 12px 32px rgba(36, 126, 163, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.95)',
-        'aero-well': 'inset 0 2px 4px rgba(23, 63, 97, 0.12), 0 1px 0 rgba(255, 255, 255, 0.9)',
+        // Frutiger Aero: glossy horizon sheens, tactile molded buttons, and translucent dock elevation
+        'aero-card': '0 14px 32px rgba(58, 105, 141, 0.18), 0 2px 6px rgba(31, 93, 135, 0.08), inset 0 1.5px 0 #FFFFFF, inset 0 0 0 1px rgba(108, 209, 232, 0.24), inset 0 -2px 4px rgba(44, 144, 184, 0.12)',
+        'aero-card-dark': '0 16px 38px rgba(0, 0, 0, 0.48), inset 0 1.5px 0 rgba(255, 255, 255, 0.32), inset 0 0 0 1px rgba(108, 209, 232, 0.16), inset 0 -2px 5px rgba(0, 0, 0, 0.45)',
+        'aero-btn': '0 6px 16px rgba(31, 93, 135, 0.34), 0 2px 4px rgba(23, 63, 97, 0.2), inset 0 1.5px 0 rgba(255, 255, 255, 0.92), inset 0 -2px 3px rgba(11, 38, 59, 0.45), inset 0 -1px 6px rgba(108, 209, 232, 0.55)',
+        'aero-btn-active': '0 1px 3px rgba(31, 93, 135, 0.25), inset 0 3px 6px rgba(11, 35, 54, 0.5), inset 0 1px 2px rgba(0, 0, 0, 0.35), inset 0 -1px 2px rgba(108, 209, 232, 0.35)',
+        'aero-btn-secondary': '0 5px 14px rgba(58, 105, 141, 0.18), 0 1px 3px rgba(31, 93, 135, 0.12), inset 0 1.5px 0 #FFFFFF, inset 0 -2px 3px rgba(44, 144, 184, 0.22)',
+        'aero-dock': '0 14px 34px rgba(44, 144, 184, 0.22), inset 0 1.5px 0 #FFFFFF, inset 0 -2px 4px rgba(44, 144, 184, 0.16)',
+        'aero-well': 'inset 0 2px 5px rgba(31, 93, 135, 0.18), inset 0 1px 2px rgba(23, 63, 97, 0.12), 0 1px 0 rgba(255, 255, 255, 0.95)',
 
         // Y2K Futurism: metallic chrome, holographic glow, and specular framing
         'y2k-card': '0 8px 32px rgba(0, 0, 0, 0.45), inset 0 1px 0 rgba(241, 243, 246, 0.4)',

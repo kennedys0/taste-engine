@@ -23,7 +23,7 @@ jobs:
           node-version: '22'
       - name: Run shellcheck
         if: matrix.os == 'ubuntu-latest'
-        run: shellcheck taste-engine/scripts/update.sh
+        run: shellcheck skills/taste-engine/scripts/update.sh
       - name: Validate package distribution contents
         if: matrix.os == 'ubuntu-latest'
         run: |
@@ -37,9 +37,9 @@ jobs:
       - name: Validate discovery mirror
         run: python scripts/sync-agent-skills.py --check
       - name: Validate skill packs
-        run: python taste-engine/scripts/validate-pack.py
+        run: python skills/taste-engine/scripts/validate-pack.py
       - name: Run Python tests
-        run: python -m unittest discover -s taste-engine/tests -p "test_*.py"
+        run: python -m unittest discover -s skills/taste-engine/tests -p "test_*.py"
         env:
           PYTHONUTF8: '1'
       - name: Build release ZIP

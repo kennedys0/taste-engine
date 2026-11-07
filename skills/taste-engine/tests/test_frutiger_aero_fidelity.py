@@ -6,13 +6,45 @@ BASE = Path(__file__).resolve().parents[1]
 class FrutigerAeroFidelityTests(unittest.TestCase):
     def test_pack_requires_glossy_nature_tech_material(self):
         text = (BASE / 'styles/frutiger-aero.md').read_text(encoding='utf-8')
-        for token in ('Frutiger Aero material fidelity gate', 'specular', 'Classic Aero', 'Aero Glass', 'Aero Tactile', 'first viewport', 'FAIL'):
+        for token in (
+            'Frutiger Aero material fidelity gate',
+            'specular',
+            'Classic Aero',
+            'Aero Glass',
+            'Aero Tactile',
+            'first viewport',
+            'Glassmorphism',
+            'Skeuomorphism',
+            'FAIL',
+        ):
             with self.subTest(token=token):
                 self.assertIn(token.lower(), text.lower())
 
     def test_recipe_and_tokens(self):
         css = (BASE / 'examples/frutiger-aero/glossy-surfaces.css').read_text(encoding='utf-8')
-        for token in ('--taste-aero-aqua', '--taste-aero-ocean', '--taste-aero-leaf', 'prefers-reduced-motion', ':focus-visible', '.taste-aero-btn', '.taste-aero-card'):
+        for token in (
+            '--taste-aero-aqua',
+            '--taste-aero-ocean',
+            '--taste-aero-leaf',
+            '--aero-sky',
+            '--aero-cloud',
+            '--aero-aqua',
+            '--aero-ocean',
+            '--aero-seafoam',
+            '--aero-leaf',
+            '--aero-deep-blue',
+            '--aero-cool-shadow',
+            'prefers-reduced-motion',
+            ':focus-visible',
+            '.taste-aero-btn',
+            '.taste-aero-btn-secondary',
+            '.taste-aero-card',
+            '.taste-aero-glass-surface',
+            '.taste-aero-acrylic-surface',
+            '.taste-aero-tactile-surface',
+            '.taste-aero-inset-well',
+            '.taste-aero-balanced-stack',
+        ):
             with self.subTest(token=token):
                 self.assertIn(token, css)
 
@@ -26,7 +58,25 @@ class FrutigerAeroFidelityTests(unittest.TestCase):
 
     def test_three_expressions_and_palettes_included(self):
         text = (BASE / 'styles/frutiger-aero.md').read_text(encoding='utf-8').lower()
-        for token in ('classic aero', 'aero glass', 'aero tactile', '#48bfd3', '#247ea3', '#70b981', '#c9edf8', '#f4fafc', '#173f61', '#243642'):
+        for token in (
+            'classic aero',
+            'aero glass',
+            'aero tactile',
+            '#48bfd3',
+            '#247ea3',
+            '#70b981',
+            '#c9edf8',
+            '#f4fafc',
+            '#173f61',
+            '#243642',
+            '#dceff8',
+            '#f7fbfd',
+            '#6cd1e8',
+            '#2c90b8',
+            '#a7e6d5',
+            '#79c67a',
+            '#1f5d87',
+        ):
             with self.subTest(token=token):
                 self.assertIn(token, text)
 

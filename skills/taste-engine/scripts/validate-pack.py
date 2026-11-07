@@ -11,7 +11,7 @@ required = ['## Typography and typewriting', '## Color direction', '## Layout an
             '## Surfaces, depth, texture', '## Component anatomy and interaction',
             '## Motion', '## Hero composition (full first viewport)', '## UI writing and microcopy', '## Style-specific quality gate', '## Anti-slop: style-specific', '## Optional Anime.js v4 recipe']
 errors=[]
-project_root = root.parent
+project_root = root.parent if (root.parent / 'optional-standalone-skills').is_dir() else root.parents[1]
 # The distributed ZIP includes optional standalones; a normal installation only
 # contains taste-engine/. Validate cross-copy parity when siblings are present.
 standalone_bundle_present = (project_root / 'optional-standalone-skills').is_dir()

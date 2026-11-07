@@ -228,10 +228,11 @@
     }
 
     /* =========================================================
-       2. FULL-SCREEN HERO VIEWPORT
+       2. FULL 1-SCREEN HERO VIEWPORT
        ========================================================= */
     .pow-hero {
-      min-height: calc(100svh - var(--pow-header-h));
+      min-height: calc(100vh - var(--pow-header-h, 60px));
+      min-height: calc(100svh - var(--pow-header-h, 60px));
       display: flex;
       flex-direction: column;
       justify-content: center;

@@ -25,9 +25,9 @@ jobs:
       - name: Validate discovery mirror
         run: python3 scripts/sync-agent-skills.py --check
       - name: Validate skill packs
-        run: python3 taste-engine/scripts/validate-pack.py
+        run: python3 skills/taste-engine/scripts/validate-pack.py
       - name: Run Python tests
-        run: python3 -m unittest discover -s taste-engine/tests -p 'test_*.py'
+        run: python3 -m unittest discover -s skills/taste-engine/tests -p 'test_*.py'
       - name: Run CLI tests
         run: node --test tests/cli.test.mjs
       - name: Publish updater-compatible archive

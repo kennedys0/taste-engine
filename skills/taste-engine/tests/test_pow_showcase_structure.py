@@ -10,7 +10,7 @@ import json
 class TestPoWShowcaseStructure(unittest.TestCase):
     def setUp(self):
         self.root = Path(__file__).resolve().parents[1]
-        self.project_root = self.root.parent
+        self.project_root = self.root.parent if (self.root.parent / 'docs').is_dir() else self.root.parents[1]
         self.template_path = self.root / 'presets' / 'templates' / 'pow-showcase.template.html'
         self.reference_path = self.root / 'references' / 'pow-showcase-structure.md'
         self.min_doc_path = self.project_root / 'docs' / 'minimalism.html'
@@ -127,9 +127,19 @@ class TestPoWShowcaseStructure(unittest.TestCase):
         content = self.aero_doc_path.read_text(encoding='utf-8')
         # Section 1: Header
         self.assertIn('pow-header', content)
-        # Section 2: Hero
+        # Section 2: Hero + Frutiger Aero 2.0 Material-Led Centerpiece
         self.assertIn('id="hero"', content)
         self.assertIn('pow-hero', content)
+        self.assertIn('aero-sculpture-classic', content)
+        self.assertIn('aero-sculpture-glass', content)
+        self.assertIn('aero-sculpture-tactile', content)
+        # Material Laboratory & Variant Explorer
+        self.assertIn('id="materials"', content)
+        self.assertIn('id="variants"', content)
+        # Button System Overhaul (Primary, Secondary, Pressed demo)
+        self.assertIn('pow-btn-cta', content)
+        self.assertIn('pow-btn-secondary', content)
+        self.assertIn('is-pressed-demo', content)
         # Section 3: Interactive Studio
         self.assertIn('id="studio"', content)
         self.assertIn('pow-studio', content)
@@ -150,7 +160,14 @@ class TestPoWShowcaseStructure(unittest.TestCase):
         self.assertIn('pow-principles', content)
         # Section 7: Responsive Footer
         self.assertIn('pow-footer', content)
+        self.assertIn('pow-footer-grid', content)
         self.assertIn('frutiger-aero.html', content)
+        # Ensure boast badges are absent from Hero
+        for boast in ('WCAG AA CONTRAST 4.5:1', '100% WCAG AA Gated', '320px Zero Mobile Overflow'):
+            self.assertNotIn(boast, content)
+        # Ensure balanced card stack & grid symmetry classes are present
+        for balanced_cls in ('aero-balanced-stack', 'aero-balanced-grid-3', 'aero-balanced-grid-6'):
+            self.assertIn(balanced_cls, content)
 
     def test_y2k_futurism_pow_satisfies_contract(self):
         if not self.y2k_doc_path.is_file():

@@ -8,13 +8,13 @@ Before tagging or publishing a release, ensure all checks pass locally:
 
 ```bash
 python3 scripts/sync-agent-skills.py --check
-python3 taste-engine/scripts/validate-pack.py
-python3 -m unittest discover -s taste-engine/tests -p 'test_*.py'
+python3 skills/taste-engine/scripts/validate-pack.py
+python3 -m unittest discover -s skills/taste-engine/tests -p 'test_*.py'
 node --test tests/cli.test.mjs
 python3 scripts/build-release.py
 ```
 
-Note: Canonical edits must always be made in `taste-engine/`. Run `python3 scripts/sync-agent-skills.py` to keep `skills/taste-engine/` and root `update.sh` in sync.
+Note: Canonical edits are made directly in `skills/taste-engine/`. Run `python3 scripts/sync-agent-skills.py` to keep root `update.sh` in sync.
 
 ## Release workflow
 

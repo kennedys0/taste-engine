@@ -3,7 +3,7 @@ name: taste-style-frutiger-aero
 description: Apply Frutiger Aero design style to user-selected frontend and UI work. Use only when the user explicitly chooses this style. Provides typography, color, layout, components, interactions, motion, copy and quality gates. Do not impose on unrelated work.
 license: MIT
 metadata:
-  version: "0.12.0"
+  version: "0.13.0"
 ---
 
 Use this skill only after a user explicitly chooses frutiger-aero or a confirmed project configuration specifies it. For unexplained new UI requests, use a style selector such as taste-engine instead of deciding the user's taste here. Existing brand, accessibility and user overrides outrank all examples below. The following style guide is not permission to start UI coding before style selection.
@@ -11,173 +11,257 @@ Use this skill only after a user explicitly chooses frutiger-aero or a confirmed
 # Style pack: Frutiger Aero
 
 **ID:** `frutiger-aero`  
-**Signature:** Optimistic mid-2000s technological vision featuring glossy surfaces, luminous aqua/ocean hues, nature-tech harmony, soft dimensional depth, specular highlights, and physical-looking interactive controls.
+**Signature:** "Optimistic computing under a clear blue digital sky" — mid-2000s technological optimism fusing **Glassmorphism** (refractive translucency, layered floating panes, luminous edge lighting) and **Skeuomorphism** (molded glossy acrylic surfaces, convex tactile push-buttons, physical inset wells, and light-accurate surface depth) within a fresh sky, aqua, seafoam, and spring-leaf atmosphere.
 
-> This is a **style pack, not a mandatory default**. Load it only after explicit selection or confirmed applicable project style. Project instructions can override individual choices. Preserve accessibility, utility, and brand constraints. A generic frosted SaaS card with a blue button **does not qualify as Frutiger Aero**.
+> This is a **style pack, not a mandatory default**. Load it only after explicit selection or confirmed applicable project style. Project instructions can override individual choices. Preserve accessibility, utility, and brand constraints. A generic frosted SaaS card on a flat blue page or a plain Bootstrap/MUI gradient pill button **does not qualify as Frutiger Aero**.
 
 ## Good fit / trade-offs
 
-- **Works well for:** Optimistic technology platforms, creative tools, productivity apps, media suites, environmental and educational platforms, personal portfolios, and tactile web applications.
+- **Works well for:** Optimistic technology platforms, creative tools, productivity apps, media suites, environmental and eco-tech platforms, personal portfolios, and tactile interactive web applications.
 - **Use with care for:** Austere legal registries, ultra-dense monochrome developer tools, or minimalist black-and-white editorial publications.
-- **Reference directions:**
-  - *Classic Aero (Default):* Bright aqua-inspired palette, glossy dimensional controls, nature and technology symbolism, smooth rounded surfaces, gentle environmental reflections, and balanced translucent panels.
-  - *Aero Glass:* Frosted crystalline panels, layered transparency, controlled background blur, soft luminous borders, and clear visual depth rooted in optimistic Aero aesthetics rather than generic SaaS blur.
-  - *Aero Tactile:* Physical material cues, tactile button surfaces, convincing highlights and shadows, material-inspired controls, and simulated surface depth preserving the best affordances of tangible computing.
+- **Core Visual Concept — "Optimistic computing under a clear blue digital sky":**
+  - Merges **Glassmorphism** (translucency, backdrop blur where appropriate, soft luminous layering, floating refractive panels) and **Skeuomorphism** (physical affordance, believable surface thickness, molded glossy acrylic controls, raised and inset states, light-based realism) into one intentional, native material language.
+- **Reference directions (3 Native Expressions):**
+  - *Classic Aero (Default):* Best-balanced expression combining luminous sky/aqua/seafoam atmosphere, translucent aero glass panels with top-half horizon sheens, molded glossy aqua acrylic buttons, eco-tech leaf freshness, and a glossy translucent orb & layered horizon centerpiece.
+  - *Aero Glass:* Stronger translucent crystalline layering (`blur(24px) saturate(180%)`), multi-plane floating panel depth, dual-rim luminous glass borders, lighter floating feel, and a layered crystalline glass lens cluster centerpiece — while remaining unmistakably Frutiger Aero rather than generic SaaS blur.
+  - *Aero Tactile:* Stronger molded physical controls, contoured acrylic panel housings, deeper button bevels and recessed wells, tangible surface thickness, and a molded physical aqua rotary & switch deck centerpiece — while remaining bright, clean, and optimistic.
 
 ## Frutiger Aero material fidelity gate — mandatory
 
-**Before calling a Frutiger Aero page complete, the opening viewport must visibly read as an authentic, optimistic Aero composition.** If a user chose this style, a flat card with standard borders or generic dark glass is a **FAIL**, even if CSS classes contain `aero`.
+**Before calling a Frutiger Aero page complete, the opening viewport must visibly read as an authentic fusion of Aero Glass clarity and tactile glossy acrylic physicality.** If a user chose this style, a flat pastel SaaS page with plain white stat rectangles, weak transparency, or flat gradient pill buttons is a **FAIL**, even if CSS classes contain `aero`.
 
 A successful Frutiger Aero implementation demonstrates **all** of the following:
 
-1. **Glossy Specular Surfaces & Horizon Sheens:** Surface planes feature dual-gradient curvature—a bright top-half specular highlight (`linear-gradient(180deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0) 51%, rgba(255, 255, 255, 0.2) 100%)`) that mimics curved acrylic or glass lens physics without obscuring foreground typography.
-2. **Luminous Aqua & Nature-Tech Atmosphere:** An atmospheric backdrop featuring sky blue, fresh leaf green, and radiant ocean cyan gradients (`radial-gradient()` or smooth mesh light fields) that convey energy, openness, and forward-looking optimism.
-3. **Dimensional Edge System:** Crisp 1px perimeter highlight borders (`border: 1px solid rgba(255, 255, 255, 0.6)`) paired with soft ambient volumetric drop shadows (`box-shadow: 0 12px 28px rgba(36, 126, 163, 0.18), inset 0 1px 0 rgba(255, 255, 255, 0.8)`).
-4. **Physical Tactility & Spring Feedback:** Buttons and interactive controls feature convex dimensional depth, tactile press depression (`transform: translateY(1.5px)`), and gentle mechanical rebound.
-5. **Anti-Clash Text Contrast (WCAG AA 4.5:1):** Crisp deep charcoal or navy typography (`#173F61` or `#243642`) over bright aqua and cloud surfaces in light mode; crisp porcelain white (`#F4FAFC`) over deep ocean slate in dark mode.
-6. **Graceful Fallbacks:** Glass and translucent panels include solid background color fallbacks for platforms without `backdrop-filter` support.
+1. **Three-Part Aero Material Vocabulary (Glass + Glossy Acrylic + Tactile Depth):**
+   - **Aero Glass Surfaces (`.taste-aero-glass-surface`):** Translucent fills with controlled refraction (`backdrop-filter: blur(18px) saturate(160%)`), thin luminous outer and inner edge highlights, top horizon reflection sheen, and cool volumetric drop shadows (`rgba(58, 105, 141, 0.18)`).
+   - **Molded Glossy Acrylic Surfaces (`.taste-aero-acrylic-surface`):** Smooth aqua/sky/cloud color transitions, curved top-light specular dome (`linear-gradient(180deg, rgba(255, 255, 255, 0.78) 0%, rgba(255, 255, 255, 0.22) 48%, rgba(255, 255, 255, 0) 51%, rgba(108, 209, 232, 0.18) 100%)`), internal bottom bounce sheen, and contoured physical edges.
+   - **Tactile Skeuomorphic Depth (`.taste-aero-tactile-surface` & `.taste-aero-inset-well`):** Raised molded surfaces paired with recessed inset wells (`box-shadow: inset 0 2px 5px rgba(31, 93, 135, 0.18), 0 1px 0 rgba(255, 255, 255, 0.95)`) that give controls, segmented switchers, and telemetry modules real physical thickness.
+2. **Tactile Molded Button System (Primary, Secondary & Pressed States):**
+   - **Primary Button:** Molded aqua-ocean acrylic with a distinct top specular highlight dome, deep ocean lower contour for ≥ 4.5:1 white-text contrast, inner rim highlight, bottom aqua bounce light, and physical press travel.
+   - **Secondary Button:** Translucent cloud-glass & pearl-acrylic body with a physical contour border, subtle top gloss band, bottom bevel thickness, and high-contrast deep blue typography (`#173F61` / `#1F5D87`).
+   - **Pressed State (`:active`):** Visible downward travel (`transform: translateY(2px)`), external shadow compression, reduced top specular highlight, and inset top bevel shadow (`inset 0 3px 6px rgba(11, 35, 54, 0.42)`).
+3. **Atmospheric Hero with Material-Led Visual Centerpiece:** The hero must never rely on plain centered text over 4 white KPI boxes. It must feature a controlled sky/aqua/seafoam horizon atmosphere and a material-led focal centerpiece (glossy translucent aqua orb, layered glass lens cluster, or molded acrylic control plate) that demonstrates Frutiger Aero visually even if the user ignores the paragraph text.
+4. **Deep Variant Differentiation:** Switching between `Classic Aero`, `Aero Glass`, and `Aero Tactile` must transform panel translucency, specular highlight intensity, button molding, surface bevel thickness, and hero centerpiece geometry — not merely swap an accent color.
+5. **Anti-Clash Text Contrast (WCAG AA 4.5:1):** Crisp deep ocean navy or charcoal typography (`#173F61`, `#1F5D87`, or `#243642`) over bright sky, cloud, and aqua glass surfaces in light mode; crisp porcelain cloud (`#F7FBFD` or `#F4FAFC`) over deep ocean glass in dark mode.
+6. **Zero Generic QA Boast Badges & Graceful Fallbacks:** Do not clutter the hero with self-congratulatory engineering pills (*"WCAG AA Contrast"*, *"Zero AI-Slop"*, *"320px Zero Mobile Overflow"*). Provide solid background fallbacks when `backdrop-filter` is unsupported or `prefers-reduced-transparency: reduce` is active.
 
-**First-viewport test:** In a desktop screenshot, identify the glossy acrylic sheen, the vibrant aqua/leaf color balance, the dimensional button affordance, and the luminous nature-tech depth **without reading the page title**. If it appears flat, generic SaaS, or drab gray, strengthen the specular curvature and luminous palette.
+**First-viewport test:** In a desktop screenshot, identify the luminous digital sky atmosphere, the sculptural glossy orb/glass centerpiece, the molded tactile aqua and glass buttons, and the layered refractive panels **without reading the page title**. If it looks like "clean soft minimal SaaS UI" or flat blue with white cards, rebuild the material depth, specular highlights, and button physicality.
 
 ## Explicit Frutiger Aero material exception — gloss and nature gradients are allowed
 
-**Frutiger Aero-specific override:** The universal anti-slop caution against *decorative gradients, glossy highlights, or atmospheric backdrops* MUST NOT be interpreted as a ban on multi-stop sky/ocean gradients, acrylic horizon sheens, or translucent dock panels here. These are **material-enabling properties**, essential to communicating the optimistic mid-2000s technological vision.
+**Frutiger Aero-specific override:** The universal anti-slop caution against *decorative gradients, glossy highlights, skeuomorphic bevels, or atmospheric backdrops* MUST NOT be interpreted as a ban on multi-stop sky/ocean/seafoam gradients, acrylic horizon sheens, molded tactile buttons, or translucent dock panels here. These are **material-enabling properties**, essential to fusing Glassmorphism and Skeuomorphism into an authentic mid-2000s optimistic interface.
 
-- **Allowed material treatments:** Multi-stop aqua/sky/leaf linear and radial gradients, top-half horizon reflection sheens (`linear-gradient` with 50% split), convex tactile button pills, translucent frosted dock containers, and nature-inspired ambient illumination.
-- **Harmonious color rules:** Restrict palettes to optimistic nature-tech harmonies (sky cyan, deep ocean blue, fresh leaf green, cloud white, and sunlit accents). Avoid discordant neon purple/pink cyber clashing.
-- **Anti-slop boundary:** Every control must be interactive, accessible, and functional. Do not decorate screens with non-functional floating bubbles, fake animated fish, ornamental meters that display fabricated stats, or unreadable glossy text.
-- **Anti-slop interpretation:** Evaluate Aero details by **material authenticity, optimistic clarity, and functional legibility**, not by counting gradient color-stops. Removing glossy horizon sheens to satisfy a generic flat heuristic is a **design regression**.
+- **Allowed material treatments:** Multi-stop aqua/sky/seafoam/leaf linear and radial gradients, top-half horizon reflection sheens (`linear-gradient` with 48%–50% specular split), molded convex tactile button caps, recessed inset control wells, translucent floating dock containers, and sculptural SVG orb/lens centerpieces.
+- **Harmonious color rules:** Restrict palettes to optimistic eco-tech harmonies (sky `#DCEFF8` / `#C9EDF8`, cloud `#F7FBFD` / `#F4FAFC`, aqua `#6CD1E8` / `#48BFD3`, ocean `#2C90B8` / `#247EA3`, seafoam `#A7E6D5`, leaf `#79C67A` / `#70B981`, and deep blue `#1F5D87` / `#173F61`). Avoid discordant cyberpunk neon purple/pink clashes.
+- **Anti-slop boundary:** Every control must be interactive, accessible, and functional. Do not decorate screens with noisy wallpaper clutter, fake animated fish, fabricated telemetry boasts, self-congratulatory QA badges in the hero, or unreadable white text on pale glass.
+- **Anti-slop interpretation:** Evaluate Aero details by **material authenticity, Glass+Skeuo fusion, coherent top-lit lighting direction, and functional legibility**, not by counting gradient color-stops. Flattening molded buttons or removing horizon sheens to satisfy a generic flat heuristic is a **severe design regression**.
 
 ## Typography and typewriting
 
-Use approachable, highly legible humanist or modern sans-serif typography that communicates clarity, optimism, and warmth:
-- **Primary Typefaces:** Segoe UI, Frutiger, Trebuchet MS, Inter, or clean system sans-serif.
-- **Display Headings:** Medium to bold humanist sans (600–700 weight) with relaxed tracking (`letter-spacing: -0.01em` to `0em`). Avoid abrasive uppercase monospace fonts for primary narrative headlines.
-- **Body Text:** Clean, comfortable reading sizes (15–17px desktop, 14–15px mobile) with generous line-height (`1.5` to `1.6`) and strong contrast against backgrounds.
-- **Technical & Microcopy:** Clean sans or tabular numerals (11–13px) for status indicators, metrics, and labels with `font-variant-numeric: tabular-nums`.
+Use approachable, open humanist or modern sans-serif typography integrated into the luminous material world:
+- **Primary Typefaces:** Plus Jakarta Sans, Segoe UI, Frutiger, Trebuchet MS, Inter, or clean humanist system sans-serif.
+- **Display Headings:** Bold to extrabold humanist sans (`700–800` weight, `clamp(2.1rem, 4.8vw, 3.65rem)`) with clean tracking (`letter-spacing: -0.02em`), crisp deep ocean contrast (`#11324D` / `#173F61` in light mode, `#F7FBFD` in dark mode), and subtle top-light separation (`text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8)` on light acrylic plates) that anchors headlines inside the material surface without toyish or retro-comic effects.
+- **Body Text:** Comfortable, airy reading sizes (`16px–17px` desktop, `15px–16px` mobile) with generous line-height (`1.6`) and effortless contrast against translucent panels.
+- **Technical & Module Labels:** Clean geometric sans or tabular monospace (`JetBrains Mono`, `11px–13px`, `font-variant-numeric: tabular-nums`) housed inside recessed aero wells or translucent pill tags.
 
 ## Color direction
 
-Frutiger Aero features an authentic, bright nature-tech color foundation supporting both light and dark modes:
+Frutiger Aero uses a multi-layered sky, aqua, seafoam, and leaf color system that avoids collapsing into a single flat blue tone:
 
-### Light Mode (Sunny Sky & Aqua Lagoon — Default)
-- **Canvas / Background:** Cloud white to pale sky gradient (`#F4FAFC` to `#E3F4FA`).
-- **Surface Panels:** Translucent glossy acrylic (`rgba(255, 255, 255, 0.72)`) with 16px backdrop blur.
-- **Primary Aqua:** Vibrant cyan-blue (`#48BFD3` to `#247EA3`).
-- **Nature Accent (Leaf):** Fresh spring green (`#70B981` to `#4E9B60`).
-- **Sky Tone:** Luminous atmospheric blue (`#C9EDF8`).
-- **Deep Navy Ink:** High-contrast reading ink (`#173F61` or `#1A324B`).
-- **Secondary Charcoal:** Muted slate ink (`#243642` or `#4A6070`).
-- **Specular Border:** Crisp white highlight (`rgba(255, 255, 255, 0.85)`).
+### Core Palette Tokens
+```css
+:root {
+  /* Refined Conceptual Aero Palette */
+  --aero-sky: #DCEFF8;
+  --aero-cloud: #F7FBFD;
+  --aero-aqua: #6CD1E8;
+  --aero-ocean: #2C90B8;
+  --aero-seafoam: #A7E6D5;
+  --aero-leaf: #79C67A;
+  --aero-deep-blue: #1F5D87;
+  --aero-cool-shadow: rgba(58, 105, 141, 0.18);
 
-### Dark Mode (Deep Ocean & Bioluminescent Night)
-- **Canvas / Background:** Deep oceanic midnight slate (`#0B1926` to `#12263A`).
-- **Surface Panels:** Translucent deep ocean glass (`rgba(20, 42, 64, 0.68)`) with 18px backdrop blur.
-- **Primary Aqua Glow:** Radiant cyan (`#56D2E8`).
-- **Nature Accent (Bioluminescent Leaf):** Luminous mint green (`#82D898`).
-- **Foreground Ink:** Crisp porcelain cloud (`#F4FAFC`).
-- **Muted Ink:** Soft ocean mist (`#A4C3D8`).
-- **Specular Border:** Luminous edge highlight (`rgba(255, 255, 255, 0.22)`).
+  /* Canonical Compatibility Tokens */
+  --taste-aero-aqua: #48BFD3;
+  --taste-aero-ocean: #247EA3;
+  --taste-aero-leaf: #70B981;
+  --taste-aero-sky: #C9EDF8;
+  --taste-aero-cloud: #F4FAFC;
+  --taste-aero-deep-blue: #173F61;
+  --taste-aero-charcoal: #243642;
+}
+```
+
+### Light Mode (Clear Blue Digital Sky & Aqua Lagoon — Default)
+- **Atmospheric Canvas:** Layered digital sky (`#CBE8F6` → `#DCEFF8` → `#F7FBFD`) illuminated by soft aqua (`#6CD1E8`), seafoam (`#A7E6D5`), and sunlit horizon radial light fields so foreground glass panels visibly refract color and depth.
+- **Aero Glass Panels:** Translucent refractive acrylic (`linear-gradient(165deg, rgba(255, 255, 255, 0.84) 0%, rgba(247, 251, 253, 0.62) 52%, rgba(220, 239, 248, 0.74) 100%)`) with `18px` backdrop blur, outer sky contour (`rgba(44, 144, 184, 0.28)`), and crisp white inner rim (`inset 0 1.5px 0 #FFFFFF`).
+- **Primary Molded Aqua:** Multi-stop glossy aqua-to-ocean gradient (`#6CD1E8` → `#48BFD3` → `#2C90B8` → `#1F5D87`).
+- **Supporting Freshness Accents:** Seafoam (`#A7E6D5`) and fresh botanical leaf green (`#79C67A` / `#70B981` to `#2D7A47`) used carefully for eco-tech freshness indicators and secondary accents, never overpowering the sky/aqua foundation.
+- **Reading Ink:** Deep ocean navy (`#173F61` / `#1F5D87`) and secondary slate charcoal (`#243642` / `#2D5270`).
+
+### Dark Mode (Bioluminescent Deep Ocean & Midnight Aero Glass)
+- **Atmospheric Canvas:** Deep oceanic midnight (`#081521` → `#0E2235` → `#15324B`) with bioluminescent aqua (`rgba(108, 209, 232, 0.22)`) and seafoam (`rgba(167, 230, 213, 0.14)`) horizon light fields.
+- **Aero Glass Panels:** Translucent sapphire glass (`linear-gradient(165deg, rgba(22, 48, 74, 0.78) 0%, rgba(14, 34, 54, 0.68) 55%, rgba(20, 52, 80, 0.74) 100%)`) with `20px` backdrop blur and luminous cyan specular rims (`rgba(108, 209, 232, 0.38)`).
+- **Foreground Ink:** Crisp porcelain cloud (`#F7FBFD` / `#F4FAFC`) and soft sky mist (`#B4D7EC`).
 
 ### Theme Coupling & Anti-Collision Rule
-When switching between light and dark Aero modes, foreground text, borders, and ambient light sources MUST switch in tandem. Foreground text must maintain at least 4.5:1 contrast against both the glossy surface and the atmospheric background behind it. Never leave dark text on dark ocean glass or white text on cloud white panels.
+When switching between light and dark Aero modes (or across `Classic`, `Glass`, and `Tactile` expressions), foreground text, borders, recessed wells, and specular highlights MUST switch via CSS attribute selectors rather than hardcoded inline colors. Foreground text must maintain ≥ 4.5:1 WCAG AA contrast against both the panel surface and the atmospheric backdrop behind it.
 
 ## Layout and geometry
 
-- **Strict 1:1 circle geometry (anti-oval):** Any circular UI element (status indicator dots, avatars, circular buttons with `border-radius: 50%`) must enforce `aspect-ratio: 1 / 1; flex-shrink: 0;` to prevent deformation on narrow mobile viewports.
-- **Responsive baseline:** Adhere to the [responsive baseline](../references/responsive-baseline.md) for 320px minimum viewport safety, fluid mobile typography defaults, and small-viewport navigation patterns.
-- **Fluid Corner Radii:** Friendly, approachable curves—typically 12px–20px for content cards, 24px–32px for floating dock bars, and full pill (`9999px`) for primary buttons and status badges.
-- **Dock & Island Navigation:** Floating navigation bars inspired by macOS Aqua docks and Windows Aero taskbars, featuring glossy acrylic backdrops, rounded corners, and elevated depth.
-- **Modular Fluid Grids:** Clear content flow with generous whitespace that lets atmospheric light breathe through the interface without horizontal scroll blowout.
+- **Asymmetric Hero & Material Focal Framing:** Pair a layered foreground Aero showcase island on the left with a visual centerpiece (glossy translucent orb, layered glass panel cluster, or molded tactile control plate) on the right, grounded by an integrated Aero dock tray below.
+- **Balanced Split-Column Card Stacks & Equal-Height Grids (`.taste-aero-balanced-stack`):** Adhere to Invariant G in [PoW Showcase Structure](../references/pow-showcase-structure.md). Whenever a 2-column Studio bay or Component Gallery places a single tall card in Column A alongside 2–3 stacked cards in Column B, the parent grid MUST declare `align-items: stretch;`, the stacked column wrapper MUST declare `display: flex; flex-direction: column; height: 100%; justify-content: space-between;`, and each stacked child card MUST declare `flex: 1 1 0%; display: flex; flex-direction: column; justify-content: space-between;` so top and bottom edges align flush with zero empty void underneath. Never wrap 4 controls or buttons as `3 + 1` orphans (use a `2×2` grid).
+- **Strict 1:1 Circle Geometry (Anti-Oval):** Every circular orb, dewdrop indicator, rotary dial, and icon button (`border-radius: 50%`) must enforce `aspect-ratio: 1 / 1; flex-shrink: 0;`.
+- **Responsive Baseline:** Adhere to the [responsive baseline](../references/responsive-baseline.md) for `320px` minimum viewport safety, fluid typography, and unclipped glass/tactile panels across desktop, tablet, and mobile.
+- **Fluid Molded Radii:** Approachable, physical curvature — `18px–22px` for Classic Aero panels, `22px–26px` for floating Aero Glass plates, `12px–14px` for contoured Aero Tactile hardware modules, and full capsule (`9999px`) for molded pill buttons and floating docks.
 
 ## Surfaces, depth, texture
 
-Frutiger Aero uses physical, light-accurate surface formulas across three expressions:
+Frutiger Aero fuses Glassmorphism and Skeuomorphism through five light-coherent CSS surface formulas (always lit from top-center / top-left at `180deg` / `165deg`):
 
-- **1. Classic Aero Surface (Glossy Acrylic):**
+- **1. Classic Aero Surface (Glossy Acrylic + Refractive Glass Fusion — `.taste-aero-card`):**
   ```css
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(240, 248, 252, 0.65) 100%);
-  backdrop-filter: blur(14px) saturate(130%);
-  -webkit-backdrop-filter: blur(14px) saturate(130%);
-  border: 1px solid rgba(255, 255, 255, 0.75);
-  box-shadow: 0 8px 24px rgba(36, 126, 163, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.9);
-  border-radius: 16px;
+  background: linear-gradient(
+    165deg,
+    rgba(255, 255, 255, 0.88) 0%,
+    rgba(247, 251, 253, 0.72) 48%,
+    rgba(220, 239, 248, 0.78) 100%
+  );
+  backdrop-filter: blur(16px) saturate(150%);
+  -webkit-backdrop-filter: blur(16px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.92);
+  box-shadow:
+    0 14px 32px rgba(58, 105, 141, 0.18),
+    0 2px 6px rgba(31, 93, 135, 0.08),
+    inset 0 1.5px 0 #FFFFFF,
+    inset 0 0 0 1px rgba(108, 209, 232, 0.25),
+    inset 0 -2px 4px rgba(44, 144, 184, 0.12);
+  border-radius: 18px;
   ```
 
-- **2. Aero Glass Surface (Crystalline Translucency):**
+- **2. Aero Glass Surface (Variant: Glass — Layered Crystalline Refraction — `.taste-aero-card-glass`):**
   ```css
-  background: rgba(255, 255, 255, 0.45);
-  backdrop-filter: blur(20px) saturate(160%);
-  -webkit-backdrop-filter: blur(20px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.65);
-  box-shadow: 0 12px 32px rgba(23, 63, 97, 0.12), inset 0 1px 1px rgba(255, 255, 255, 0.8);
-  border-radius: 16px;
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.58) 0%,
+    rgba(247, 251, 253, 0.36) 50%,
+    rgba(108, 209, 232, 0.24) 100%
+  );
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.88);
+  box-shadow:
+    0 18px 42px rgba(31, 93, 135, 0.16),
+    inset 0 2px 1px rgba(255, 255, 255, 0.95),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.55),
+    inset 0 -3px 8px rgba(108, 209, 232, 0.2);
+  border-radius: 22px;
   ```
 
-- **3. Aero Tactile Surface (Physical Dimensionality):**
+- **3. Aero Tactile Surface (Variant: Tactile — Molded Physical Contour — `.taste-aero-card-tactile`):**
   ```css
-  background: linear-gradient(180deg, #FFFFFF 0%, #E8F4F8 100%);
-  border: 1px solid #B8D8E6;
-  box-shadow: 0 4px 12px rgba(23, 63, 97, 0.15),
-              inset 0 1px 0 #FFFFFF,
-              inset 0 -2px 0 rgba(36, 126, 163, 0.2);
+  background: linear-gradient(
+    180deg,
+    #FFFFFF 0%,
+    #F4FAFC 46%,
+    #DCEFF8 92%,
+    #CBE6F3 100%
+  );
+  border: 1px solid #8CC2DB;
+  box-shadow:
+    0 10px 24px rgba(31, 93, 135, 0.2),
+    0 2px 4px rgba(23, 63, 97, 0.12),
+    inset 0 2px 0 #FFFFFF,
+    inset 0 -3px 0 rgba(44, 144, 184, 0.28);
   border-radius: 12px;
   ```
 
-- **Glossy Push-Button:**
+- **4. Recessed Tactile Inset Well (`.taste-aero-inset-well`):**
   ```css
-  background: linear-gradient(180deg, #48BFD3 0%, #247EA3 100%);
+  background: linear-gradient(180deg, rgba(195, 228, 244, 0.65) 0%, rgba(236, 248, 253, 0.85) 100%);
+  border: 1px solid rgba(44, 144, 184, 0.35);
+  box-shadow:
+    inset 0 2px 5px rgba(31, 93, 135, 0.18),
+    inset 0 1px 2px rgba(23, 63, 97, 0.12),
+    0 1px 0 rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  ```
+
+- **5. Molded Primary Aqua Acrylic Button (`.taste-aero-btn` — Compact 40px Height & 10px Radius):**
+  ```css
+  height: 40px;
+  padding: 0 1.15rem;
+  background: linear-gradient(
+    180deg,
+    #3AA8CE 0%,
+    #268BB2 46%,
+    #1D7498 84%,
+    #2383AA 100%
+  );
   color: #FFFFFF;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  box-shadow: 0 4px 12px rgba(36, 126, 163, 0.35),
-              inset 0 1px 0 rgba(255, 255, 255, 0.6),
-              inset 0 -1px 0 rgba(0, 0, 0, 0.2);
-  border-radius: 9999px;
+  border-top: 1px solid #75D5EC;
+  border-left: 1px solid #4BB8DC;
+  border-right: 1px solid #165D7C;
+  border-bottom: 1px solid #114B65;
+  box-shadow:
+    0 3px 9px rgba(21, 72, 108, 0.26),
+    0 1px 2px rgba(15, 51, 77, 0.18),
+    inset 1px 1px 0 rgba(255, 255, 255, 0.78),
+    inset -1px -1.5px 2px rgba(12, 45, 66, 0.38),
+    inset 0 -1px 4px rgba(108, 209, 232, 0.35);
+  border-radius: 10px;
   ```
 
 ## Component anatomy and interaction
 
-- **Vector Iconography (Anti-Slop):** Emojis are strictly banned as interface icons, buttons, or status badges. Use crisp vector icons (Lucide, Radix, Feather) with consistent stroke weight (1.5px–2px) inheriting `currentColor`.
-- **Glossy Action Buttons:** Pill-shaped or rounded-rectangle controls with subtle top-half specular sheen, vibrant gradient fill, and crisp white typography with subtle drop-shadow for legibility.
-- **Sunken Input Fields:** Inset text boxes with soft inner shadow (`box-shadow: inset 0 2px 4px rgba(23, 63, 97, 0.12)`), clean focus rings (`:focus-visible` with 2px cyan glow), and high text contrast.
-- **Translucent Segmented Controls:** Pill tabs housed within an inset well, where the active pill slides with a glossy specular highlight.
-- **Dimensional Stat Cards:** Acrylic cards displaying bold tabular numbers, nature/tech trend indicators, and soft specular borders.
-- **Accessible Accordions & Dialogs:** Smoothly animated disclosures with clean borders, clear keyboard focus, and solid fallbacks.
+- **Shared Upper-Left (`135deg` / `165deg`) Lighting Model:** Every glass panel, molded button, recessed well, and focal object shares a single upper-left light source: `border-top` and `border-left` are brighter (`rgba(255, 255, 255, 0.96)`), `border-right` and `border-bottom` are cooler/darker (`rgba(31, 93, 135, 0.38)`), and recessed wells invert this relationship (`inset 1px 2px 4px` upper-left shadow + bottom-right highlight lip).
+- **Vector Iconography & Sculptural Aero Geometry:** Emojis are strictly banned as interface icons, buttons, or status badges. Use clean vector icons (`1.5px–2px` stroke) and bespoke SVG glossy orb/lens/horizon geometry.
+- **Primary Molded Aqua Button (`.taste-aero-btn` — Compact 34px/40px/44px Proportions & 6 Interactive States):** Avoid swollen `9999px` plastic capsules or harsh half-button white stripes. Use compact heights (`34px` small, `40px` medium default, `44px` hero CTA) with `10px–11px` corner radius, a soft curved upper-left specular reflection (`::before` covering the top 38% with `linear-gradient(172deg, rgba(255,255,255,0.48), rgba(255,255,255,0.14) 72%, transparent)`), smooth aqua-to-ocean contour, and all 6 states:
+  1. **Rest:** Balanced directional rim + subtle elevation shadow.
+  2. **Hover:** `-1px` lift + slightly brighter upper highlight.
+  3. **Active / Pressed (`:active`):** `+1.5px` downward travel, compressed outer shadow, reduced upper sheen (`28%`), and inset top shadow (`inset 1px 2px 5px rgba(9, 31, 48, 0.48)`).
+  4. **Focus Visible (`:focus-visible`):** Distinct `2px solid #2C90B8` outline with `2px` offset and luminous outer ring.
+  5. **Disabled (`:disabled` / `.is-disabled`):** Desaturated (`filter: saturate(0.35)`), reduced contrast (`opacity: 0.52`), and flattened shadow (`transform: none`).
+  6. **Loading (`.is-loading`):** Preserves button dimensions with an inline vector spinner.
+- **Secondary Translucent Glass-Acrylic Button (`.taste-aero-btn-secondary`):** Features translucent cloud-glass fill, upper-left white rim (`border-top: 1px solid #FFFFFF`), lower-right sky contour (`rgba(31, 93, 135, 0.48)`), high-contrast deep ocean label (`#133654` / `#173F61`), and matching 6 interactive states.
+- **Sunken Input Fields & Compact Scrollable Command Wells (`.taste-aero-input` & `.taste-aero-cmd`):** Recessed into the panel plane with upper-left inner shadow (`inset 1px 2px 4px rgba(23, 63, 97, 0.14)`), bottom-right white lip highlight (`0 1px 0 rgba(255, 255, 255, 0.9)`), and luminous aqua focus ring. Hero/CLI command boxes must stay compact on a single row (`height: 42px–44px`, `border-radius: 10px`, `flex-wrap: nowrap`) with a horizontally scrollable `<code>` container (`min-width: 0; overflow-x: auto; white-space: nowrap;`) and a pinned `[Copy]` button (`flex-shrink: 0`) — never wrapping into a giant multi-line stadium pill on mobile.
+- **Tactile Segmented Switchers & Toggle Pills:** Housed inside a recessed `.taste-aero-inset-well` track where the selected pill rises as a glossy molded acrylic cap with top specular highlight.
+- **Informative Aero Modules (Replacing Generic White Stat Cards):** Use translucent aero modules with inner horizon sheens, recessed progress/refraction tracks, and contextual eco-tech metadata rather than plain white dashboard boxes.
 
 ## Motion
 
-Frutiger Aero motion feels buoyant, physical, and restrained:
-- **Button Press Feedback:** Quick tactile compression (`transform: translateY(1.5px) scale(0.99)`) with 120ms ease-out timing and immediate specular shadow contraction.
-- **Dock & Island Hover:** Subtle upward float (`transform: translateY(-2px)`) with mild shadow expansion (`box-shadow` spread +2px) over 160ms.
-- **Panel Entrances:** Gentle fade and 4px vertical rise over 180ms without distracting bounce or screen shake.
-- **Reduced Motion:** When `@media (prefers-reduced-motion: reduce)` is active, set duration to 0ms and disable all physical transforms while preserving immediate state changes.
+Frutiger Aero motion is calm, physical, and restrained — static material quality always takes priority over animation:
+- **Tactile Button Press (`:active`):** `110ms–120ms` physical downward response (`transform: translateY(1.5px)`) paired with shadow compression and highlight reduction.
+- **Hover Response:** `120ms–150ms` subtle elevation (`transform: translateY(-1px)`) and mild top-sheen brightening without bouncy or elastic gimmicks.
+- **Variant & Tab Transitions:** Smooth `160ms–180ms` opacity and surface interpolation.
+- **Reduced Motion:** When `@media (prefers-reduced-motion: reduce)` is active, disable all transforms and animations (`transition: none !important; transform: none !important; animation: none !important;`) while preserving instant visual state changes.
 
 ## Hero composition (full first viewport)
 
-For a public-facing landing page or portfolio, apply [Full-screen Hero Contract](../references/hero-layout.md):
-- **First Viewport Equation:** `min-height: 100svh` (with `100vh` fallback). Subtract normal-flow header height or let hero span under an overlay acrylic header; let the hero expand for accessibility and short mobile screens. Do not apply this to private dashboards or other task screens; direct user overrides win.
-- **Nature-Tech Backdrop:** Atmospheric sky-blue to deep-aqua gradient with subtle soft luminous ambient light fields that make foreground acrylic panels visibly refract.
-- **Hero Island Card:** A prominent translucent glossy acrylic showcase panel housing the primary headline, product value thesis, and dual call-to-action buttons.
-- **Live Command Pill:** Single-line command box with `$ npm install @kennedys0/taste-engine` and copy button aligned horizontally with `display: inline-flex; align-items: center;`.
-- **Responsive Stacking:** On viewports below 768px, gracefully stack elements with comfortable touch targets (44px+) and zero text overflow.
+For a public-facing landing page or showcase, apply the [Full-screen Hero Contract](../references/hero-layout.md):
+- **Full 1-Screen First Viewport Equation (`100svh`):** The header + hero composition MUST fill **1 full opening screen** (`min-height: calc(100vh - var(--pow-header-h, 58px)); min-height: calc(100svh - var(--pow-header-h, 58px)); display: flex; flex-direction: column; justify-content: center;` with `--pow-header-h` defined in `:root`) so the next page section never bleeds into the bottom of the first desktop viewport (`1440×900` / `1440×950`). Let the hero expand naturally for accessibility and short mobile screens. Do not apply this to private dashboards or task screens; direct user overrides win.
+- **Controlled Sky & Lagoon Atmosphere (Zero Step Seams):** Smooth upper-left sunlit radial light fields over layered sky-blue (`#DCEFF8`), aqua (`#6CD1E8`), and seafoam (`#A7E6D5`) gradients (never use hard 1% linear-gradient stops that draw a visible seam across the hero).
+- **Balanced Two-Zone Hero Stage (`align-items: center`):**
+  - **Left Primary Content Region:** Directly framed on the sunlit canvas (no oversized competing white box) with a clear 5-step hierarchy: (1) identity pill, (2) display headline, (3) concise human-centered explanation, (4) compact single-row scrollable `$ npx @kennedys0/taste-engine init --style frutiger-aero` command well with pinned `[Copy]` button, and (5) compact `44px` Primary Molded Aqua + Secondary Frosted Acrylic CTA buttons.
+  - **Right Interactive "Aero Material Object":** A genuine multi-layered material specimen placing a contrasting environmental horizon layer (`Sunlit Sky`, `Aqua Reef`, `Spring Leaf`) directly *behind* a floating translucent Aero Glass card (`backdrop-filter: blur(...)`) so refraction and light transmission are unmistakably visible, paired with a molded acrylic orb/lens assembly, interactive environment switcher, tactile pulse test control, and live **Specular Sheen** slider.
+- **Integrated Aero Expression Dock:** Anchor the bottom of the 1-screen hero with a luminous translucent Aero dock allowing instant switching and material inspection across `Classic Aero`, `Aero Glass`, and `Aero Tactile`.
 
 ## UI writing and microcopy
 
-- **Tone:** Clear, optimistic, human, and encouraging. Focus on progress, creative capability, and genuine utility.
-- **Anti-Slop Voice:** Ground claims in concrete product features. Reject hollow buzzwords (*"synergistic next-gen paradigm"*), fake metric counters, and invented user testimonials.
-- **Button Labels:** Direct, action-oriented verbs (*"Launch Workspace"*, *"Explore Showcase"*, *"Download Preset"*).
-- **Empty & Loading States:** Honest, friendly explanations with clear recovery actions (*"No connected audio feeds. Click 'Connect Input' above to begin."*).
+- **Tone:** Bright, fresh, clear, optimistic, and human. Evoke clean air, sunlight through clear water, and friendly tactile hardware.
+- **Anti-Slop Voice:** Eliminate self-congratulatory engineering boast pills (*"100% WCAG AA Gated"*, *"Zero AI-Slop"*, *"320px Zero Mobile Overflow"*) from the hero. Ground labels in authentic material and product vocabulary (*"Glossy Aqua Acrylic"*, *"Crystalline Lens Refraction"*, *"Molded Tactile Bevel"*, *"Launch Aero Studio"*).
+- **Empty & Status States:** Friendly, transparent explanations with tactile recovery actions.
 
 ## Style-specific quality gate
 
 Before marking a Frutiger Aero page or component complete, verify every gate:
 
-1. **Gate 1 (Gloss & Specular Quality):** Do interactive buttons and cards feature convincing specular highlights and dimensional curvature rather than flat solid color?
-2. **Gate 2 (Aqua & Nature Balance):** Is the palette grounded in vibrant aqua, ocean blue, and fresh leaf green rather than generic gray SaaS or dark neon cyberpunk?
-3. **Gate 3 (Contrast & Readability):** Does every text element exceed WCAG AA 4.5:1 contrast against both the panel surface and the backdrop behind it?
-4. **Gate 4 (Tactile Spring):** Do buttons depress on click (`:active`) and rebound smoothly with tactile physical travel?
-5. **Gate 5 (320px Mobile Safety):** Does the entire layout adapt down to 320px width without horizontal scrollbars, clipped text, or deformed circular icons?
-6. **Gate 6 (Fallbacks):** Does the UI remain fully usable when `backdrop-filter` is unsupported or disabled via `prefers-reduced-transparency`?
+1. **Gate 1 (True Glass + Skeuo Material Fusion):** Do surfaces visibly combine Glassmorphic translucency/refraction with Skeuomorphic molded acrylic contours, top-half horizon sheens, and recessed physical wells?
+2. **Gate 2 (Tactile Molded Button Quality):** Do Primary and Secondary buttons feel like touchable, dimensional aqua/glass caps with a visible top highlight band, contoured bevels, and a genuine compressed/inset `:active` pressed state?
+3. **Gate 3 (Visual Hero Centerpiece & Atmosphere):** Does the hero visually demonstrate Frutiger Aero through a sky/aqua/seafoam atmosphere and a glossy orb/lens/acrylic centerpiece without relying on paragraph text or generic QA badges?
+4. **Gate 4 (Deep Variant Differentiation):** Does switching between `Classic Aero`, `Aero Glass`, and `Aero Tactile` transform panel materials, button bevels, surface blur/depth, and centerpiece geometry across both Light and Dark modes?
+5. **Gate 5 (Contrast & Readability):** Does every text element and button label meet or exceed WCAG AA 4.5:1 contrast against both its panel/button surface and the atmospheric background?
+6. **Gate 6 (Balanced Card Stacks, 320px Mobile Safety & Fallbacks):** Are all split-column card stacks (`.taste-aero-balanced-stack`) and multi-column grids flush and balanced (`flex: 1 1 0%`, zero `3+1` orphan wraps), does the layout adapt cleanly down to `320px` width without clipping or horizontal overflow, and do solid fallbacks work when `backdrop-filter` or motion is reduced?
 
 ## Universal anti-slop gate (self-contained)
 
@@ -197,13 +281,14 @@ Do not add decorative **card-inside-card** layers: a nested surface must represe
 
 ## Anti-slop: style-specific
 
-- **FAIL:** A flat dark card with `#000000` background and a single blue gradient button claiming to be Frutiger Aero.
-- **FAIL:** Generic SaaS dashboard with gray cards and arbitrary blurry circles in the background that filter nothing.
-- **FAIL:** Fabricated weather widgets, fake live audio visualizers, or non-functional decorative dials invented solely to fill empty layout space.
-- **FAIL:** Rainbow text gradients (`-webkit-background-clip: text`) applied to body text or headings.
-- **FAIL:** Emojis used as UI button icons, bullet points, or status badges.
-- **FAIL:** Unreadable white text placed over semi-transparent white frosted glass.
-- **PASS:** Luminous nature-tech aqua palette, glossy acrylic horizon highlights, honest functional controls, clear tactile feedback, and robust mobile responsiveness.
+- **FAIL:** A soft minimal blue SaaS page with plain white rectangular stat cards and flat ghost/pill buttons claiming to be Frutiger Aero.
+- **FAIL:** Hero dominated by self-congratulatory system badges (*"WCAG AA Contrast"*, *"Zero AI-Slop"*, *"140ms Restrained Motion"*) instead of demonstrating the style visually.
+- **FAIL:** Glass reduced to mere opacity or Skeuomorphism reduced to a basic drop shadow with no top specular horizon sheen, inner rim highlight, or recessed well depth.
+- **FAIL:** Variant switcher that only changes text strings or sets hardcoded inline light colors that break Dark Mode contrast.
+- **FAIL:** Unbalanced split-column card stacks leaving dead vertical gaps or `3+1` orphan-wrapped button/checkbox rows.
+- **FAIL:** Non-functional noisy wallpaper clutter, animated swimming fish, or emojis used as UI icons.
+- **FAIL:** Low-contrast white text over pale aqua or semi-transparent white glass.
+- **PASS:** Luminous sky/aqua/seafoam/leaf atmosphere, glossy translucent orb & acrylic lens centerpiece, molded tactile primary and secondary buttons with physical pressed states, dimensional aero panels with recessed wells, and deep differentiation across `Classic Aero`, `Aero Glass`, and `Aero Tactile`.
 
 ## Optional Anime.js v4 recipe
 
@@ -219,9 +304,9 @@ export function animateAeroPress(element) {
   if (prefersReduced) return;
   
   animate(element, {
-    scale: [1, 0.98, 1],
-    translateY: [0, 1.5, 0],
-    duration: 160,
+    scale: [1, 0.99, 1],
+    translateY: [0, 2, 0],
+    duration: 140,
     ease: 'outQuad',
   });
 }

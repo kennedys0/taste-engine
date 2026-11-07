@@ -8,7 +8,7 @@ import { spawnSync, spawn } from 'node:child_process';
 
 const VERSION = '0.13.0';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const source = path.join(repoRoot, 'taste-engine');
+const source = path.join(repoRoot, 'skills', 'taste-engine');
 const agents = {
   antigravity: { global: '.gemini/config/skills', project: '.agents/skills' },
   'antigravity-cli': { global: '.gemini/antigravity-cli/skills', project: '.agents/skills' },

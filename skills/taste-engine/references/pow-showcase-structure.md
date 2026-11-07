@@ -24,13 +24,13 @@ graph TD
    - Symmetrical desktop action buttons (`36px` uniform height).
    - Theme toggle (light/dark switch) with centered SVG icon.
    - Mobile hamburger drawer trigger (`< 768px`) with accessible sliding drawer containing style selector links.
-2. **Full-Screen Hero Viewport (`<section class="pow-hero">`):**
-   - Quality badge / pill strip (e.g. `WCAG AA AA`, `ZERO AI-SLOP`, `AGENT SKILLS READY`).
-   - Primary title with fluid typography clamp (`clamp(1.75rem, 5vw, 3.25rem)`).
-   - Anti-slop architectural subtitle explaining the aesthetic's core purpose.
-   - Hero command box with horizontal scroll containment and flex-protected copy button.
-   - Primary and secondary CTA action links.
-   - Live telemetry status strip (metrics, latency, tokens, or profile stats).
+2. **Full 1-Screen Hero Viewport (`<section class="pow-hero">`):**
+   - **Full 1-Screen Height Contract:** Must declare `min-height: calc(100vh - var(--pow-header-h, 58px)); min-height: calc(100svh - var(--pow-header-h, 58px)); display: flex; flex-direction: column; justify-content: center;` (with `--pow-header-h` defined in `:root`) so `header + hero` occupies 1 full opening screen (`100%` of the first viewport at `1440×900` / `1440×950`) with zero bleed from Section 3 below.
+   - Identity badge / pill strip grounded in the style's material domain (no self-congratulatory QA boast pills).
+   - Primary title with fluid typography clamp (`clamp(2rem, 3.8vw, 3.15rem)` desktop, `clamp(1.5rem, 6.2vw, 2rem)` mobile).
+   - Concise, human-centered architectural subtitle explaining the aesthetic's core purpose.
+   - Compact single-row hero command box (`height: 42px–44px`, `flex-wrap: nowrap`, `border-radius: 10px`) with horizontally scrollable `<code>` region (`min-width: 0; overflow-x: auto; white-space: nowrap;`) and a flex-protected `[Copy]` button (`flex-shrink: 0`) that never wraps into a tall multi-line capsule on mobile.
+   - Primary and secondary CTA action links (`40px–44px` height) paired with a balanced material centerpiece (`align-items: center`) and bottom dock/telemetry strip.
 3. **Interactive Studio / Live Cockpit (`<section class="pow-studio">`):**
    - The primary proof-of-work demonstration (e.g., Pixel Studio, Data Cockpit, Canvas Editor).
    - Window title bar with controls (macOS window dots or retro maximize/close buttons).
@@ -107,6 +107,10 @@ graph TD
 - **Equal-Height Peer Cards:** All multi-column card grids (`.pow-principles-grid`, `.y2k-balanced-grid-3`, `.y2k-balanced-grid-6`, `.y2k-diff-matrix`) MUST stretch cards to equal row height (`align-items: stretch; height: 100%;`) and pin bottom action/status bars via `margin-top: auto;`.
 - **Zero Orphan Control Wrapping (`2×2` or `3×2` Symmetry):** Never wrap 4 checkboxes, radio buttons, or action buttons as `3` on Row 1 + `1` orphan on Row 2, and never place 3 cards in a 2-column tablet grid leaving 1 empty slot. Use `2×2` grids for 4 items and `3×2` / `2×3` (`6` cards) for multi-breakpoint card matrices.
 
+### Invariant H: Full 1-Screen Hero Viewport & Single-Row Scrollable Command Well
+- **Full 1-Screen Opening Viewport (`100svh`):** Every PoW showcase `.pow-hero` MUST fill 1 full screen (`min-height: calc(100vh - var(--pow-header-h, 58px)); min-height: calc(100svh - var(--pow-header-h, 58px)); display: flex; flex-direction: column; justify-content: center;`) with `--pow-header-h` defined in `:root`. The opening screen (`header + hero`) must be a complete, self-contained 1-screen composition at `1440×900` / `1440×950` without the next section peeking into the bottom of the first viewport.
+- **Compact Single-Row Hero Command Box:** Never allow `.pow-hero-cmd` to use `flex-wrap: wrap` with `border-radius: 9999px` on mobile, which inflates long CLI commands into a giant multi-line stadium/egg capsule. Enforce `flex-wrap: nowrap; height: 42px–44px; border-radius: 10px;` with an inner scrollable code wrapper (`min-width: 0; overflow-x: auto; white-space: nowrap;`) and a pinned `[Copy]` button (`flex-shrink: 0; height: 32px;`).
+
 ---
 
 ## 3. CSS Preset Utility Mapping
@@ -119,8 +123,8 @@ Showcase pages should align with these standard CSS classes:
 | `.pow-nav-btn` | Header action button | Uniform `height: 36px; display: inline-flex; align-items: center;` |
 | `.pow-icon-btn` | Icon-only toggle | `width: 36px; height: 36px; aspect-ratio: 1/1;` |
 | `.pow-drawer` | Mobile slide drawer | Displayed on `< 768px` when triggered by hamburger button |
-| `.pow-hero` | First viewport hero | `min-height: calc(100svh - 60px); display: flex; align-items: center;` |
-| `.pow-hero-cmd` | Hero copy snippet | `flex: 1; min-width: 0;` for `code`, `flex-shrink: 0;` for copy button |
+| `.pow-hero` | Full 1-screen first viewport hero | `min-height: calc(100vh - var(--pow-header-h, 58px)); min-height: calc(100svh - var(--pow-header-h, 58px)); display: flex; flex-direction: column; justify-content: center;` |
+| `.pow-hero-cmd` | Compact single-row hero copy snippet | `flex-wrap: nowrap; height: 44px; border-radius: 10px;` with `overflow-x: auto; white-space: nowrap; min-width: 0;` for `code` and `flex-shrink: 0;` for copy button |
 | `.pow-studio` | Live demo workspace | Centered, `max-width: 100%; overflow-x: auto;` |
 | `.pow-card` | Equal-height card container | `height: 100%; display: flex; flex-direction: column; justify-content: space-between;` |
 | `.y2k-balanced-stack` | Split-column equal-height card stack | `display: flex; flex-direction: column; height: 100%;` with `flex: 1 1 0%` child cards |

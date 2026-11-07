@@ -15,7 +15,7 @@ import unittest
 class TestFrutigerAeroConsolidation(unittest.TestCase):
     def setUp(self):
         self.root = Path(__file__).resolve().parents[1]
-        self.project_root = self.root.parent
+        self.project_root = self.root.parent if (self.root.parent / 'optional-standalone-skills').is_dir() else self.root.parents[1]
         self.registry_path = self.root / 'styles' / 'registry.json'
         self.registry = json.loads(self.registry_path.read_text(encoding='utf-8'))
         self.styles_by_id = {s['id']: s for s in self.registry.get('styles', [])}

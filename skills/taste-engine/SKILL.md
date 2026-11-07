@@ -3,7 +3,7 @@ name: taste-engine
 description: Automatically routes visual UI work to a user-chosen aesthetic and applies SEO readiness to public-facing websites. Use whenever a user asks to build, create, design, or redesign a website, portfolio, landing page, dashboard, web app, mobile app, UI/UX screen, frontend, or component, or add/refine micro-interactions or full-screen hero sections (including Indonesian prompts such as "build a portfolio website"). Before writing UI code, ask ONE style question and stop if no visual style or approved project design system is specified. If the prompt already names an aesthetic such as claymorphism, frutiger-aero, brutalism, neo-brutalism, minimalism, bento, retro-pixel, art-deco, y2k-futurism, or editorial, load its bundled style pack immediately and proceed WITHOUT asking again. Preserve established styles for minor fixes; for SEO-only tasks, load the SEO module without a visual style question; skip unrelated non-visual work.
 license: MIT
 metadata:
-  version: "0.12.0"
+  version: "0.13.0"
 ---
 
 # Taste Engine — style router
@@ -40,7 +40,10 @@ These are **local original integrations**, not imported Vercel plugins. They sum
 
 ## Full-screen hero — mandatory when relevant
 
-After style selection, for any **new public portfolio, landing page, or homepage with a hero**, load [Full-screen Hero Contract](references/hero-layout.md). Default to a **one-visible-screen header + hero composition**: use mobile-safe `min-height: 100svh` (with `100vh` fallback) and subtract the actual normal-flow header height, or use a full-height hero when the header overlays it. Do not apply `100vh` blindly: fixed heights can clip text and toolbar-changed mobile viewports. Keep content and CTA usable at narrow/short screens; allow natural growth and scrolling at zoom/large text. Follow the selected style's `## Hero composition (full first viewport)` guidance and the shared anti-slop checks. Do not invent imagery, badge, fake statistics or looped motion just to fill the screen.
+After style selection, for any **new public portfolio, landing page, showcase, or homepage with a hero**, load [Full-screen Hero Contract](references/hero-layout.md). Default to a **full 1-screen (100% first viewport) header + hero composition**:
+- Use mobile-safe `min-height: calc(100vh - var(--pow-header-h, 58px)); min-height: calc(100svh - var(--pow-header-h, 58px)); display: flex; flex-direction: column; justify-content: center;` when the header is in normal/sticky flow before the hero, or `min-height: 100vh; min-height: 100svh;` when the header overlays it.
+- Always define the header height token in `:root` (and include a fallback in `var(..., 58px)`) so `calc(100svh - ...)` never becomes invalid and collapses the hero below 1 full screen, allowing the next section to bleed into the first desktop viewport (`1440×900`).
+- Do not apply fixed `height: 100vh` or `overflow: hidden` that clips text on short/mobile viewports: keep content and CTA usable at narrow/short screens and allow natural growth and scrolling at zoom/large text. Follow the selected style's `## Hero composition (full first viewport)` guidance and the shared anti-slop checks. Do not invent imagery, badge, fake statistics or looped motion just to fill the screen.
 
 This rule does **not** force a marketing hero into private dashboards, forms, app workspaces, or incremental edits that do not create/redesign the hero. An explicit user choice for a compact hero or no hero wins. **No extra style-selection question** is needed when style is already established.
 
@@ -72,7 +75,7 @@ When building, generating, or modifying style showcase pages, Proof-of-Work demo
 
 Every showcase must strictly preserve the **7 canonical sections**:
 1. **Sticky Header:** uniform `36px` action button heights, theme toggle, and `< 768px` mobile hamburger drawer.
-2. **Full-Screen Hero:** fluid typography `clamp()`, pill strip, and overflow-protected copy command box.
+2. **Full 1-Screen Hero (`100svh`):** `min-height: calc(100vh - var(--pow-header-h, 58px)); min-height: calc(100svh - var(--pow-header-h, 58px)); display: flex; flex-direction: column; justify-content: center;` so header + hero fills 1 full opening screen with zero next-section bleed on desktop, fluid typography `clamp()`, balanced natural-height hero columns (`align-items: center`), and a compact single-row horizontally scrollable command well (`flex-wrap: nowrap`).
 3. **Interactive Studio Cockpit:** responsive workspace with title bar, touch containment, balanced split-column stacks (`align-items: stretch` + `flex: 1` stacked cards), and zero horizontal clipping.
 4. **Component Anatomy & Quality Gates:** authentic specimen cards in equal-height balanced columns/matrices (zero dead vertical gaps under side stacks, zero 3+1 orphan control wrapping) and explicit style-specific failure tests.
 5. **Tabbed Terminal Installation:** 3-tab terminal (`Standalone`, `Full Engine`, `Presets`), window dots, dedicated top-right header copy button (zero overlapping text), and agent support matrix strip.
