@@ -158,9 +158,15 @@ class TestPoWShowcaseStructure(unittest.TestCase):
         content = self.y2k_doc_path.read_text(encoding='utf-8')
         # Section 1: Header
         self.assertIn('pow-header', content)
-        # Section 2: Hero
+        # Section 2: Hero + Y2K 2.0 Sculptural Centerpiece
         self.assertIn('id="hero"', content)
         self.assertIn('pow-hero', content)
+        self.assertIn('y2k-sculpture-chrome', content)
+        self.assertIn('y2k-sculpture-holographic', content)
+        self.assertIn('y2k-sculpture-retro-tech', content)
+        # Material Laboratory & Variant Explorer
+        self.assertIn('id="materials"', content)
+        self.assertIn('id="variants"', content)
         # Section 3: Interactive Studio
         self.assertIn('id="studio"', content)
         self.assertIn('pow-studio', content)
@@ -183,6 +189,14 @@ class TestPoWShowcaseStructure(unittest.TestCase):
         self.assertIn('pow-footer', content)
         self.assertIn('pow-footer-grid', content)
         self.assertIn('y2k-futurism.html', content)
+        # Ensure boast badges are absent from Hero
+        for boast in ('WCAG AA Contrast 4.5:1', 'New 10th Style', '320px Zero Mobile Overflow'):
+            self.assertNotIn(boast, content)
+        # Ensure balanced card stack & grid symmetry classes are present
+        for balanced_cls in ('y2k-balanced-stack', 'y2k-balanced-grid-3', 'y2k-balanced-grid-6'):
+            self.assertIn(balanced_cls, content)
+        ref_content = self.reference_path.read_text(encoding='utf-8')
+        self.assertIn('Invariant G: Balanced Card Stacks & Multi-Column Grid Symmetry', ref_content)
 
     def test_brutalism_pow_satisfies_contract(self):
         if not self.brutalism_doc_path.is_file():

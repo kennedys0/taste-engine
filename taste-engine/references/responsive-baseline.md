@@ -54,3 +54,34 @@
   - **Borders & Dividers:** `rgba(255, 255, 255, 0.12)`
 - **Override:** Style packs with signature dark palettes (e.g., Brutalism `#000000`, Swiss Editorial `#0D0D0D`, Retro-Terminal CRT dark, or OLED pure black) take precedence.
 
+## 8. Balanced Card Grids & Split-Column Stack Symmetry (Anti-Unbalanced Cards)
+
+- **FLOOR (Split-Column & Bento Stack Alignment):** Whenever a multi-column layout pairs a tall primary card in one column (such as a studio workstation, preview stage, or form bay) with a vertical stack of 2–3 cards in an adjacent column, the columns **must align at both top and bottom edges with zero dead vertical gap underneath the shorter column**:
+  ```css
+  .balanced-split-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .balanced-card-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.15rem;
+    height: 100%;
+    min-width: 0;
+  }
+  .balanced-card-stack > * {
+    flex: 1 1 0%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-width: 0;
+  }
+  ```
+- **FLOOR (Equal-Height Peer Cards in Rows):** Every card in a multi-column row (`2`, `3`, or `4` columns) must declare `height: 100%; display: flex; flex-direction: column; justify-content: space-between;` so peer cards share identical height, header alignment, and bottom footer baseline regardless of paragraph length.
+- **REFLEX (Zero Orphan Cards or Wrapped Controls):** Match card and control counts to grid column multiples (`2`, `4`, or `6` items for 2-column grids; `3` or `6` items for 3-column grids; `2×2` matrices for 4 buttons, inputs, or checkboxes/radios). Never leave a single orphan item wrapping alone onto a new row (such as 3 checkboxes on row 1 + 1 radio button on row 2, or 2 cards on row 1 + 1 half-width card on row 2). When a 3-card grid wraps to 2 columns on tablet viewports, span the 3rd card across the full row (`grid-column: 1 / -1`).
+- **FLOOR (Uniform Control Heights in Clusters):** Buttons, inputs, and action pills placed in the same horizontal cluster or 2×2 matrix must share identical height (e.g., `44px` or `36px`)—never mix disparate button heights in the same row.
+
+

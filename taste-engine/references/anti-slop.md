@@ -56,6 +56,7 @@ Before running structural tests, scan for these AI-default visual and copy patte
 | 8 | Font stack not loaded; fallback renders visibly as system serif/sans | Direct fix |
 | 9 | Rainbow text gradient (`-webkit-background-clip: text`) outside retro/cyberpunk themes | Flag for style-authentic check |
 | 10 | Fake widgets (fabricated weather, audio spectrum, simulated telemetry, animated fake counters) | Direct removal — FLOOR violation |
+| 11 | Unbalanced multi-column card stacks (dead empty space below shorter column) or 3+1 orphan wrapped cards/controls | Direct layout fix — enforce `align-items: stretch`, `flex: 1` on stacked cards, and matched `2×2` / `3×2` grid multiples |
 
 ---
 
@@ -123,7 +124,7 @@ Every structural check is mechanical and produces a named artifact you can inspe
 | Every metric has its own card | Creates fake dashboard density | Unified metric group, table, compact row, or genuine summary | Each metric is independently actionable or deserves separate emphasis |
 | Repeated 3-feature cards / 4-stat header / hero-CTA template | Layout chosen before content | Compose around actual user tasks and information | Real content and audience benefit from that pattern |
 | One small control floating in giant empty canvas | Viewport not intentionally composed | Rebalance width, groups, priority, density | Calm negative space is an intentional expressive choice |
-| Unequal peer card heights / inconsistent controls | Implies hierarchy accidentally | Equal relationship = equal visual weight and aligned structure | Deliberate hierarchy justifies asymmetry |
+| Unequal peer card heights / unbalanced split-column stacks / inconsistent controls | Leaves dead vertical holes under shorter side stacks, misaligns card footers, or wraps 4 controls into 3+1 orphans | Enforce `align-items: stretch` on grids, `height: 100%; display: flex; flex-direction: column; justify-content: space-between;` on peer cards, `flex: 1 1 0%` on cards inside vertical side stacks, uniform button heights per cluster, and `2×2` or `3×2` grid multiples | Deliberate editorial asymmetry that does not leave unintentional dead holes inside a bounded container |
 | Pills, badges and chips everywhere | Noise and false importance | Plain labels, sections, simple metadata | Status/category/filter has real data and useful interaction |
 | Icons for each heading or action | Visual repetition and ambiguous meaning | Semantic icons only where recognition improves | Brand-specific iconography has clear purpose |
 | Decorative charts, mini-sparklines, timelines | Makes meaningless data look authoritative | Real charts only, or explanatory text/empty state | Data exists and visual encoding aids a decision |

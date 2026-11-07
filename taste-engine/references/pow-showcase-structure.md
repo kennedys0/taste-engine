@@ -102,6 +102,11 @@ graph TD
   - **Drawer & Footer Brand Presence:** Mobile drawer header and site footer brand column utilize `assets/logo.webp` to anchor visual recognition.
   - **Workstation Fixtures:** When hardware illustrations or social preview cards are utilized, link `assets/computer.webp` or `assets/banner.webp` without broken relative paths.
 
+### Invariant G: Balanced Card Stacks & Multi-Column Grid Symmetry
+- **Split-Column Stack Stretch:** Whenever a 2-column Studio bay or Component Gallery places a single tall card in Column A alongside a vertical stack of 2 or 3 smaller cards in Column B, the parent grid MUST declare `align-items: stretch;`, the stacked column wrapper MUST declare `display: flex; flex-direction: column; height: 100%; justify-content: space-between;`, and each stacked child card MUST declare `flex: 1 1 0%; display: flex; flex-direction: column; justify-content: space-between;` so top and bottom edges of both columns align flush with zero empty void under the shorter column.
+- **Equal-Height Peer Cards:** All multi-column card grids (`.pow-principles-grid`, `.y2k-balanced-grid-3`, `.y2k-balanced-grid-6`, `.y2k-diff-matrix`) MUST stretch cards to equal row height (`align-items: stretch; height: 100%;`) and pin bottom action/status bars via `margin-top: auto;`.
+- **Zero Orphan Control Wrapping (`2×2` or `3×2` Symmetry):** Never wrap 4 checkboxes, radio buttons, or action buttons as `3` on Row 1 + `1` orphan on Row 2, and never place 3 cards in a 2-column tablet grid leaving 1 empty slot. Use `2×2` grids for 4 items and `3×2` / `2×3` (`6` cards) for multi-breakpoint card matrices.
+
 ---
 
 ## 3. CSS Preset Utility Mapping
@@ -117,6 +122,8 @@ Showcase pages should align with these standard CSS classes:
 | `.pow-hero` | First viewport hero | `min-height: calc(100svh - 60px); display: flex; align-items: center;` |
 | `.pow-hero-cmd` | Hero copy snippet | `flex: 1; min-width: 0;` for `code`, `flex-shrink: 0;` for copy button |
 | `.pow-studio` | Live demo workspace | Centered, `max-width: 100%; overflow-x: auto;` |
+| `.pow-card` | Equal-height card container | `height: 100%; display: flex; flex-direction: column; justify-content: space-between;` |
+| `.y2k-balanced-stack` | Split-column equal-height card stack | `display: flex; flex-direction: column; height: 100%;` with `flex: 1 1 0%` child cards |
 | `.tabbed-terminal-card` | Installation terminal | 3 tabs, header dots, header copy button, agent matrix footer |
 | `.pow-footer` | Showcase footer | Responsive auto-fit grid, 10 canonical style links |
 

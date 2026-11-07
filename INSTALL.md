@@ -88,7 +88,7 @@ npx skills update -g
 bash ~/.gemini/config/skills/taste-engine/scripts/update.sh
 
 # Or from an already downloaded release asset:
-bash ~/.gemini/config/skills/taste-engine/scripts/update.sh --zip ./taste-engine-v0.12.0.zip
+bash ~/.gemini/config/skills/taste-engine/scripts/update.sh --zip ./taste-engine-v0.13.0.zip
 ```
 
 The Bash updater requires Bash (3.2+), Python 3, curl (for GitHub downloads), and `sha256sum` (or `shasum` on macOS), along with standard POSIX command-line utilities (`awk`, `cat`, `chmod`, `cp`, `date`, `dirname`, `mkdir`, `mktemp`, `mv`, `rm`, `tr`). It checks archive contents, validates a staged installation, backs up the previous version, and restores it if activation fails. Never run arbitrary installer scripts from untrusted forks.

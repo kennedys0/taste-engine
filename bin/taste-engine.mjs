@@ -6,7 +6,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { spawnSync, spawn } from 'node:child_process';
 
-const VERSION = '0.12.0';
+const VERSION = '0.13.0';
 const repoRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const source = path.join(repoRoot, 'taste-engine');
 const agents = {

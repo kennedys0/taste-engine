@@ -73,13 +73,13 @@ When building, generating, or modifying style showcase pages, Proof-of-Work demo
 Every showcase must strictly preserve the **7 canonical sections**:
 1. **Sticky Header:** uniform `36px` action button heights, theme toggle, and `< 768px` mobile hamburger drawer.
 2. **Full-Screen Hero:** fluid typography `clamp()`, pill strip, and overflow-protected copy command box.
-3. **Interactive Studio Cockpit:** responsive workspace with title bar, touch containment, and zero horizontal clipping.
-4. **Component Anatomy & Quality Gates:** authentic specimen cards and explicit style-specific failure tests.
+3. **Interactive Studio Cockpit:** responsive workspace with title bar, touch containment, balanced split-column stacks (`align-items: stretch` + `flex: 1` stacked cards), and zero horizontal clipping.
+4. **Component Anatomy & Quality Gates:** authentic specimen cards in equal-height balanced columns/matrices (zero dead vertical gaps under side stacks, zero 3+1 orphan control wrapping) and explicit style-specific failure tests.
 5. **Tabbed Terminal Installation:** 3-tab terminal (`Standalone`, `Full Engine`, `Presets`), window dots, dedicated top-right header copy button (zero overlapping text), and agent support matrix strip.
-6. **Core Architectural Principles:** 3 key design pillars.
+6. **Core Architectural Principles:** 3 key design pillars in an equal-height balanced grid.
 7. **Canonical 10-Style Footer:** responsive auto-fit grid linking all 10 canonical styles.
 
-Arbitrary deviations—such as cramped 3-card installation layouts, copy buttons occluding text, mismatched header button heights, or stretched single-column footers—are strictly forbidden.
+Arbitrary deviations—such as cramped 3-card installation layouts, unbalanced multi-column card stacks leaving empty vertical holes, orphan wrapped controls, copy buttons occluding text, mismatched header/cluster button heights, or stretched single-column footers—are strictly forbidden.
 
 ## Hard requirement: preflight before new visual implementation
 
@@ -164,7 +164,7 @@ Detailed routing, blends, and conflict rules: [style router](references/style-ro
 
    - **Dark & light mode pair coupling:** when dark or light mode is requested, ensure paired design tokens for canvas, cards, text, borders, inputs, and semantic status pills flip in tandem so background and foreground colors never collide (zero black-on-black or white-on-white text). In dark mode, unless the chosen style pack specifically dictates otherwise (e.g., Brutalism's intentional `#000000` high-contrast canvas or Retro-Terminal's CRT phosphor dark), use the warm dark slate fallback defined in [Responsive Baseline](references/responsive-baseline.md).
 
-   - **Responsive baseline & layout safety:** follow [Responsive Baseline](references/responsive-baseline.md) for universal 320px viewport safety, fluid mobile typography defaults, small-viewport navigation patterns, circular geometry (`aspect-ratio: 1 / 1; flex-shrink: 0;`), inline command pills, and balanced mobile footers. Style packs may override typography and layout scales to honor their signature aesthetics.
+   - **Responsive baseline & card/grid balance safety:** follow [Responsive Baseline](references/responsive-baseline.md) for universal 320px viewport safety, fluid mobile typography defaults, small-viewport navigation patterns, circular geometry (`aspect-ratio: 1 / 1; flex-shrink: 0;`), inline command pills, balanced mobile footers, and **strict multi-column card balance** (`align-items: stretch` on grids, `flex: 1 1 0%` on stacked side cards so left and right columns align at top and bottom with zero dead vertical space, equal-height peer cards via `height: 100%; justify-content: space-between;`, and matched grid multiples with zero 3+1 orphan wrapping). Style packs may override typography and layout scales to honor their signature aesthetics.
 
 4. **Resolve precedence:** technical/safety/accessibility constraints → explicit current request → confirmed project brand → selected pack → contextual conventions. User overrides are allowed; record which dimensions differ from the pack.
 

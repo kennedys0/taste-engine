@@ -12,7 +12,31 @@ class Y2KFidelityTests(unittest.TestCase):
 
     def test_recipe_and_tokens(self):
         css = (BASE / 'examples/y2k-futurism/metallic-surfaces.css').read_text(encoding='utf-8')
-        for token in ('--taste-y2k-silver', '--taste-y2k-chrome', '--taste-y2k-violet', 'prefers-reduced-motion', ':focus-visible', '.taste-y2k-btn', '.taste-y2k-card'):
+        for token in (
+            '--taste-y2k-silver',
+            '--taste-y2k-chrome',
+            '--taste-y2k-violet',
+            '--y2k-chrome-highlight',
+            '--y2k-chrome-light',
+            '--y2k-chrome-mid',
+            '--y2k-chrome-shadow',
+            '--y2k-chrome-deep',
+            '--y2k-ice-blue',
+            '--y2k-electric-blue',
+            '--y2k-orchid',
+            '--y2k-pink',
+            '--y2k-pearl',
+            'prefers-reduced-motion',
+            ':focus-visible',
+            '.taste-y2k-btn',
+            '.taste-y2k-card',
+            '.taste-y2k-chrome-surface',
+            '.taste-y2k-iridescent',
+            '.taste-y2k-plastic',
+            '.taste-y2k-hardware-panel',
+            '.taste-y2k-inset-well',
+            '.taste-y2k-balanced-stack',
+        ):
             with self.subTest(token=token):
                 self.assertIn(token, css)
 
@@ -26,7 +50,24 @@ class Y2KFidelityTests(unittest.TestCase):
 
     def test_three_expressions_and_palettes_included(self):
         text = (BASE / 'styles/y2k-futurism.md').read_text(encoding='utf-8').lower()
-        for token in ('chrome', 'holographic', 'retro tech', '#c5cbd3', '#f1f3f6', '#252833', '#8865dd', '#8fcfe9', '#e6abd8', '#181821'):
+        for token in (
+            'chrome',
+            'holographic',
+            'retro tech',
+            '#c5cbd3',
+            '#f1f3f6',
+            '#252833',
+            '#8865dd',
+            '#8fcfe9',
+            '#e6abd8',
+            '#181821',
+            '--y2k-chrome-highlight',
+            '--y2k-ice-blue',
+            '--y2k-electric-blue',
+            '--y2k-orchid',
+            '--y2k-pink',
+            '--y2k-pearl',
+        ):
             with self.subTest(token=token):
                 self.assertIn(token, text)
 

@@ -116,13 +116,20 @@ const tastePreset = {
           'deco-burgundy': '#693b43',
           'deco-border': 'var(--taste-deco-border, #d4c7b0)',
 
-          // Y2K Futurism: cyber-optimism, polished chrome, and iridescent spectral tones
+          // Y2K Futurism: liquid chrome, iridescent spectral tones, and synthetic hardware
           'y2k-silver': 'var(--taste-y2k-silver, #C5CBD3)',
+          'y2k-chrome-highlight': 'var(--y2k-chrome-highlight, #FFFFFF)',
           'y2k-chrome-light': 'var(--taste-y2k-chrome-light, #F1F3F6)',
+          'y2k-chrome-mid': 'var(--y2k-chrome-mid, #A4ADBF)',
+          'y2k-chrome-shadow': 'var(--y2k-chrome-shadow, #424B60)',
+          'y2k-chrome-deep': 'var(--y2k-chrome-deep, #1D2331)',
           'y2k-graphite': 'var(--taste-y2k-graphite, #252833)',
           'y2k-violet': 'var(--taste-y2k-violet, #8865DD)',
-          'y2k-ice-blue': 'var(--taste-y2k-ice-blue, #8FCFE9)',
-          'y2k-pink': 'var(--taste-y2k-pink, #E6ABD8)',
+          'y2k-orchid': 'var(--y2k-orchid, #A78AFF)',
+          'y2k-electric-blue': 'var(--y2k-electric-blue, #5276FF)',
+          'y2k-ice-blue': 'var(--taste-y2k-ice-blue, #90DCFF)',
+          'y2k-pink': 'var(--taste-y2k-pink, #F2A9DC)',
+          'y2k-pearl': 'var(--y2k-pearl, #F3EAFD)',
           'y2k-deep-space': 'var(--taste-y2k-deep-space, #181821)',
           'y2k-surface': 'var(--taste-y2k-surface, #2A2E3D)',
           'y2k-border': 'var(--taste-y2k-border, rgba(197, 203, 211, 0.35))',
