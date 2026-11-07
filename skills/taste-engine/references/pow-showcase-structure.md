@@ -19,7 +19,7 @@ graph TD
 ```
 
 1. **Sticky Navigation Header (`<header class="pow-header">` / `<nav>`):**
-   - Brand logo and icon sourced from `assets/logo.webp` (with `width: 24px; height: 24px; aspect-ratio: 1 / 1; flex-shrink: 0; object-fit: contain;`) paired with version badge (e.g., `v0.12.0` / `v0.13.0`).
+   - Brand logo and icon sourced from `assets/logo.webp` (with `width: 24px; height: 24px; aspect-ratio: 1 / 1; flex-shrink: 0; object-fit: contain;`) paired with version badge (e.g., `v0.12.0` / `v0.13.1`).
    - Page favicon declared in `<head>` via `<link rel="icon" type="image/webp" href="assets/logo.webp">`.
    - Symmetrical desktop action buttons (`36px` uniform height).
    - Theme toggle (light/dark switch) with centered SVG icon.

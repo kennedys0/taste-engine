@@ -88,7 +88,7 @@ npx skills update -g
 bash ~/.gemini/config/skills/taste-engine/scripts/update.sh
 
 # Or from an already downloaded release asset:
-bash ~/.gemini/config/skills/taste-engine/scripts/update.sh --zip ./taste-engine-v0.13.0.zip
+bash ~/.gemini/config/skills/taste-engine/scripts/update.sh --zip ./taste-engine-v0.13.1.zip
 ```
 
 The Bash updater requires Bash (3.2+), Python 3, curl (for GitHub downloads), and `sha256sum` (or `shasum` on macOS), along with standard POSIX command-line utilities (`awk`, `cat`, `chmod`, `cp`, `date`, `dirname`, `mkdir`, `mktemp`, `mv`, `rm`, `tr`). It checks archive contents, validates a staged installation, backs up the previous version, and restores it if activation fails. Never run arbitrary installer scripts from untrusted forks.
@@ -110,6 +110,6 @@ The agent, not the skill files, ultimately decides which skills to invoke. A fil
 
 ## GitHub Releases
 
-A tag such as `v0.13.0` triggers the release workflow after code is pushed to the repository. The workflow validates the skill, builds `taste-engine-v0.13.0.zip`, and attaches it to the release. The ZIP is compatible with the Bash updater.
+A tag such as `v0.13.1` triggers the release workflow after code is pushed to the repository. The workflow validates the skill, builds `taste-engine-v0.13.1.zip`, and attaches it to the release. The ZIP is compatible with the Bash updater.
 
 See [README.md](README.md) and [GITHUB_SETUP.md](GITHUB_SETUP.md) for maintainer instructions.

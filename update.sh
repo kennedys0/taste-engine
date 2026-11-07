@@ -26,8 +26,8 @@ usage() {
 Taste Engine - safe updater
 
 Usage:
-  bash update.sh --zip ~/Downloads/taste-engine-v0.13.0.zip
-  bash update.sh --repo OWNER/REPO [--tag v0.13.0]
+  bash update.sh --zip ~/Downloads/taste-engine-v0.13.1.zip
+  bash update.sh --repo OWNER/REPO [--tag v0.13.1]
   bash update.sh --set-repo OWNER/REPO    # store GitHub Releases source for later
   taste-engine update                     # downloads from the official GitHub Release
   taste-engine version

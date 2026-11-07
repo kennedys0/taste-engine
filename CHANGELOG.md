@@ -2,6 +2,14 @@
 
 All notable changes to Taste Engine are documented here. Release tags use semantic versioning.
 
+## [0.13.1] - 2026-11-08
+
+### Changed & Fixed
+
+- **Canonical 10-Style Navigation & Version Synchronization:**
+  - Synchronized version badges (`v0.13.1`) and 10-style navigation links (`claymorphism.html`, `frutiger-aero.html`, `brutalism.html`, `neo-brutalism.html`, `minimalism.html`, `swiss-editorial.html`, `retro-terminal.html`, `retro-pixel.html`, `art-deco.html`, `y2k-futurism.html`) across all Proof-of-Work HTML showcases (`docs/*.html`), `skills/taste-engine/presets/templates/pow-showcase.template.html`, `skills/taste-engine/presets/tailwind/tailwind.preset.js`, and `skills/taste-engine/tests/test_pow_showcase_structure.py`.
+  - Updated remaining documentation snippets and CLI installation examples in `docs/frutiger-aero.html`, `docs/index.html`, `docs/brutalism.html`, `INSTALL.md`, and `update.sh` to reference the single-source `skills/taste-engine/` path and `v0.13.1` release archive.
+
 ## [0.13.0] - 2026-11-07
 
 ### Added
