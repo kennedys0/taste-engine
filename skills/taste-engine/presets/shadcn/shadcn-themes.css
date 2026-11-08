@@ -121,7 +121,7 @@
 }
 
 /* =========================================================
-   4. GLASSMORPHISM (Frosted translucent panes)
+   4. GLASSMORPHISM  [LEGACY ALIAS — canonical pack: frutiger-aero (variant glass)] (Frosted translucent panes)
    Semi-transparent backgrounds with diffused borders
    ========================================================= */
 [data-theme="glassmorphism"],
@@ -173,7 +173,7 @@
 }
 
 /* =========================================================
-   5. BENTO GRID (Modular dark slate)
+   5. BENTO  [LEGACY ALIAS — canonical: brutalism (Bento variant)] GRID (Modular dark slate)
    Deep asymmetric tiles, high-contrast elevated borders
    ========================================================= */
 [data-theme="bento"],
@@ -259,7 +259,7 @@
 }
 
 /* =========================================================
-   8. ENTERPRISE / DATA-FIRST (High-density cockpit)
+   8. ENTERPRISE / DATA-FIRST  [LEGACY ALIAS — canonical: minimalism (data cockpits)] (High-density cockpit)
    High density, slate surfaces, calibrated status indicators
    ========================================================= */
 [data-theme="enterprise"],

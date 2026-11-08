@@ -2083,74 +2083,6 @@
       background: currentColor;
       color: var(--taste-term-bg);
     }
-
-    /* =========================================================
-       STYLE 9: SKEUOMORPHISM (TACTILE HARDWARE UNIBODY)
-       ========================================================= */
-    .skeuo-wrapper {
-      --taste-skeuo-chassis: #1a1d23;
-      --taste-skeuo-border: 1px solid rgba(255, 255, 255, 0.08);
-      --taste-skeuo-highlight: inset 1px 1px 1px rgba(255, 255, 255, 0.12), inset -1px -1px 1px rgba(0, 0, 0, 0.7);
-      --taste-skeuo-text: #f1f4f9;
-      --taste-skeuo-well-bg: #14171c;
-      --taste-skeuo-well-inset: inset 4px 4px 10px rgba(0, 0, 0, 0.8), inset -3px -3px 8px rgba(255, 255, 255, 0.04);
-      --taste-skeuo-btn-bg: #1e222a;
-      --taste-skeuo-btn-border: 1px solid rgba(255, 255, 255, 0.06);
-      --taste-skeuo-btn-bevel: inset 1px 1px 1px rgba(255, 255, 255, 0.18), inset -1px -1px 1px rgba(0, 0, 0, 0.6);
-      --taste-skeuo-btn-shadow: 5px 5px 12px rgba(0, 0, 0, 0.75), -4px -4px 10px rgba(255, 255, 255, 0.04);
-      font-family: 'Space Grotesk', 'Inter', var(--shell-font);
-      background: var(--taste-skeuo-chassis);
-      border: var(--taste-skeuo-border);
-      box-shadow: var(--taste-skeuo-highlight);
-      color: var(--taste-skeuo-text);
-      padding: 1.75rem;
-      border-radius: 16px;
-    }
-    [data-theme="light"] .skeuo-wrapper {
-      --taste-skeuo-chassis: #e0e5ec;
-      --taste-skeuo-border: 1px solid rgba(255, 255, 255, 0.6);
-      --taste-skeuo-highlight: inset 1px 1px 1.5px rgba(255, 255, 255, 0.95), inset -1px -1px 1.5px rgba(163, 177, 198, 0.3);
-      --taste-skeuo-text: #1e2530;
-      --taste-skeuo-well-bg: #d8dde4;
-      --taste-skeuo-well-inset: inset 4px 4px 9px rgba(163, 177, 198, 0.7), inset -4px -4px 9px rgba(255, 255, 255, 0.95);
-      --taste-skeuo-btn-bg: #e0e5ec;
-      --taste-skeuo-btn-border: 1px solid rgba(255, 255, 255, 0.5);
-      --taste-skeuo-btn-bevel: inset 1px 1px 1.5px rgba(255, 255, 255, 0.95), inset -1px -1px 1.5px rgba(163, 177, 198, 0.25);
-      --taste-skeuo-btn-shadow: 5px 5px 12px rgba(163, 177, 198, 0.6), -5px -5px 12px rgba(255, 255, 255, 0.95);
-    }
-    .skeuo-well-box {
-      background: var(--taste-skeuo-well-bg);
-      box-shadow: var(--taste-skeuo-well-inset);
-      border-radius: 8px;
-    }
-    .skeuo-btn {
-      background: var(--taste-skeuo-btn-bg);
-      color: var(--taste-skeuo-text);
-      border: var(--taste-skeuo-btn-border);
-      border-radius: 999px;
-      box-shadow: var(--taste-skeuo-btn-bevel), var(--taste-skeuo-btn-shadow);
-      padding: 9px 20px;
-      font-weight: 700;
-      font-size: 0.85rem;
-      cursor: pointer;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      transition: transform 90ms ease, box-shadow 90ms ease;
-    }
-    .skeuo-btn:active {
-      transform: translateY(1.5px);
-      box-shadow: inset 4px 4px 9px rgba(0, 0, 0, 0.85);
-    }
-    [data-theme="light"] .skeuo-btn:active {
-      box-shadow: inset 4px 4px 9px rgba(163, 177, 198, 0.85);
-    }
-    .skeuo-led {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      aspect-ratio: 1 / 1;
-      flex-shrink: 0;
-      border-radius: 50%;
       background: #10b981;
       box-shadow: 0 0 10px #10b981;
       margin-right: 0.5rem;
@@ -2402,8 +2334,7 @@
     .live-dot-green,
     .live-pulse-dot,
     .legend-color-dot,
-    .status-dot,
-    .skeuo-led {
+    .status-dot {
       aspect-ratio: 1 / 1 !important;
       flex-shrink: 0 !important;
     }
@@ -3363,8 +3294,8 @@ npx skills add kennedys0/taste-engine --skill taste-style-claymorphism
 # Install only the Swiss / Editorial style:
 npx skills add kennedys0/taste-engine --skill taste-style-swiss-editorial
 
-# Install only the Skeuomorphism style:
-npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism</code></pre>
+# Install only the Frutiger Aero style (canonical pack for glass & skeuomorphism):
+npx skills add kennedys0/taste-engine --skill taste-style-frutiger-aero</code></pre>
           <div class="panel-footer-note">
             <svg class="icon-stroke" width="15" height="15" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
             <div><strong>Save Context Tokens:</strong> If your project strictly targets one design language, use standalone packages to minimize context consumption.</div>
@@ -3408,7 +3339,7 @@ npx skills add kennedys0/taste-engine --skill taste-style-skeuomorphism</code></
           <div class="faq-answer">
             <div class="faq-answer-inner">
               <p>By default, AI coding agents generate uniform, repetitive frontend designs (often termed <em>AI-slop</em>): ungrounded floating cards, low-contrast text, purposeless blur effects, and generic blue-purple gradients.</p>
-              <p><strong>Taste Engine</strong> is an intelligence skill pack that equips AI agents with 10 distinctive aesthetic archetypes (Art Deco with Modern, Classic & Minimal expressions, Brutalism with Raw & Bento variants, Claymorphism, Enterprise/Minimalism, Glassmorphism, Neo-Brutalism, Retro Terminal, Retro Pixel, Skeuomorphism, Swiss Editorial) backed by strict quality gates to produce production-grade frontend code.</p>
+              <p><strong>Taste Engine</strong> is an intelligence skill pack that equips AI agents with 10 distinctive aesthetic archetypes (Art Deco with Modern, Classic & Minimal expressions, Brutalism with Raw & Bento variants, Claymorphism, Frutiger Aero with Classic, Glass & Tactile expressions, Minimalism with Enterprise data cockpits, Neo-Brutalism, Retro Terminal, Retro Pixel, Swiss Editorial, and Y2K Futurism) backed by strict quality gates to produce production-grade frontend code. Legacy <em>glassmorphism</em> and <em>skeuomorphism</em> requests automatically resolve to Frutiger Aero variants.</p>
             </div>
           </div>
         </div>

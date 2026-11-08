@@ -78,6 +78,7 @@
   /* =========================================================
      3. GLASSMORPHISM (Frosted translucent panes)
      ========================================================= */
+  /* DEPRECATED legacy alias — new work: .taste-aero-glass-surface (frutiger-aero, variant glass) */
   .taste-glass-pane {
     @apply rounded-2xl p-6 transition-all duration-300;
     background: rgba(255, 255, 255, 0.45);
@@ -139,6 +140,7 @@
   /* =========================================================
      6. SKEUOMORPHISM (Metallic bevels & tactile depth)
      ========================================================= */
+  /* DEPRECATED legacy alias — new work: .taste-aero-btn / .taste-aero-tactile-surface (frutiger-aero, variant tactile) */
   .taste-skeuo-btn {
     @apply inline-flex items-center justify-center font-semibold rounded-lg px-6 py-2.5 transition-all duration-100 cursor-pointer select-none text-slate-800;
     background: linear-gradient(180deg, #fefefe 0%, #e2e8f0 100%);

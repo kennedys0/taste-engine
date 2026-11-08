@@ -14,7 +14,7 @@ The feature is **automatic discovery via SKILL.md metadata**, not a shell hook. 
 ## Style normalization and safety
 
 - Case and separators: `NeoBrutalism`, `neo-brutalism`, `neo brutalism`, `NEOBRUTALISM` → `neo-brutalism`.
-- Minor typo: `skeumorphsm`, `skeumorphism`, `skeuomorfisme`, `skeuomorphic` → `skeuomorphism`.
+- Minor typo: `skeumorphsm`, `skeumorphism`, `skeuomorfisme`, `skeuomorphic` → canonical `frutiger-aero` (variant `tactile`; legacy ID `skeuomorphism` resolves via registry alias).
 - Longer and more specific aliases win over shorter embedded ones: `neo-brutalism` must never accidentally load `brutalism`.
 - Aesthetic ≠ category. "Enterprise dashboard" may mean *product type* rather than a visual request. Do not silently label that an explicit enterprise design preference.
 - A **negative-only** instruction ("no glassmorphism") is a constraint, not a positive choice. Ask for a positive style if otherwise unresolved.
@@ -35,7 +35,7 @@ Agent **ends its turn**. On reply `Neo-brutalism`, reads that pack and starts im
 
 User: `Build me a skeumorphsm portfolio website.`
 
-Agent resolves `skeuomorphism`, opens `styles/skeuomorphism.md`, derives tactile and physical control design and checks readability + anti-slop. It does **not** ask which style.
+Agent resolves the typo to `frutiger-aero` (variant `tactile`), opens `styles/frutiger-aero.md`, derives tactile and physical control design and checks readability + anti-slop. It does **not** ask which style.
 
 **C: Existing app (preserve):**
 
