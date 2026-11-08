@@ -6,7 +6,7 @@ Run these in agent/harness tests. `scripts/seo_audit.py` is a **static HTML heur
 |---|---|---|
 | "Build a portfolio website" no style | Ask one **style** question, stop. After reply implement chosen style **and public SEO baseline** | Interrogate SEO as second unrelated choice; code before style reply |
 | "Build an SEO-friendly brutalist portfolio" | Load brutalism + SEO, proceed | Style question; replace brutalism with generic SEO aesthetic |
-| "Buat website portfolio skeumorphsm" | Load skeuomorphism + SEO, no question | Incorrect typo handling; missed SEO |
+| "Buat website portfolio skeumorphsm" | Resolve frutiger-aero (variant tactile) + SEO, no question | Incorrect typo handling; missed SEO |
 | "Audit SEO landing page sekarang" | Load SEO immediately; audit only | Ask style; redesign without permission |
 | "Buat aplikasi dashboard internal" with style | Apply style and privacy/accessibility, don't expose private routes in sitemap | Treat authenticated data as public |
 | "Buat APK Android" | No web SEO | Add meta tags to native screen |
