@@ -6,7 +6,7 @@ Each case must be tested in an agent that can pause between turns; a pure file v
 | --- | --- | --- | --- |
 | "Build a landing page" | One style selection question, then stop | None yet | No inferred clay default |
 | "Create brutalist portfolio" | No redundant question | brutalism | No neo-brutalism offset shadow |
-| "Glass signup page" | No redundant question | glassmorphism | Opaque fallback and contrast checks |
+| "Glass signup page" | No redundant question | frutiger-aero (variant glass) | Opaque fallback and contrast checks |
 | "Make mobile layout work on existing app" | Maintain existing style | Existing project | No style reselect |
 | "Write API unit tests" | No question | None | No unnecessary UI work |
 | "Show other styles" (after menu) | Show remaining styles + custom | None yet | No repeated first menu |
@@ -15,7 +15,7 @@ Each case must be tested in an agent that can pause between turns; a pure file v
 | "I like this screenshot's typography" | Preserve named preference, ask only if style still undecided | Relevant/custom | Don't treat whole screenshot as full taste profile |
 | "Surprise me / your choice" | May choose provisional style and disclose | Chosen pack | No claim of user preference |
 | Project config `primary_style: minimalism` and `user_confirmed: true` | No question | minimalism | User can override with current request |
-| Existing config brutalism; user explicitly requests glassmorphism redesign | No question; override config for this request | glassmorphism | Do not silently overwrite config |
+| Existing config brutalism; user explicitly requests glassmorphism redesign | No question; override config for this request | frutiger-aero (variant glass) | Do not silently overwrite config |
 | "Build a Retro Pixel portfolio" | No redundant question | retro-pixel | No retro-terminal CRT scanlines |
 | "Create a pixel art landing page" | No redundant question | retro-pixel | Pixel artwork, desktop window chrome |
 | "I want neo-brutalism, not pixel art" | Resolve neo-brutalism; exclude pixel art | neo-brutalism | High-contrast black borders, hard offset shadows |

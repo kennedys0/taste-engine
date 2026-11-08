@@ -6,11 +6,11 @@ These are **agent behavior** tests, not proofs of runtime automatic invocation. 
 | --- | --- | --- | --- |
 | UI implicit (Indonesian) | `Build me a portfolio website` | Ask exactly one style question, then stop | No UI code, default clay choice, unrelated questions |
 | UI implicit (English) | `Build a landing page for my product` | Ask one style question, stop | No arbitrary framework/style selection |
-| Explicit typo | `Build a portfolio website in skeumorphsm style` | Load `skeuomorphism.md` immediately | No menu and no invalid-style response |
-| Explicit canonical | `Create a skeuomorphism music player` | Load `skeuomorphism.md` | No redundant question |
+| Explicit typo | `Build a portfolio website in skeumorphsm style` | Resolve `frutiger-aero` (variant `tactile`), load `frutiger-aero.md` immediately | No menu and no invalid-style response |
+| Explicit canonical | `Create a skeuomorphism music player` | Resolve `frutiger-aero` (variant `tactile`), load `frutiger-aero.md` | No redundant question |
 | Explicit case/spacing | `Build portfolio in NeoBrutalism` | Load `neo-brutalism.md` | No brutalism-only file |
-| Explicit glass | `Build a landing page glassmorphism` | Load `glassmorphism.md` | No menu; no clay |
-| Negated only | `Create portfolio but not glassmorphism` | Ask for remaining styles | Do not load glassmorphism |
+| Explicit glass | `Build a landing page glassmorphism` | Resolve `frutiger-aero` (variant `glass`), load `frutiger-aero.md` | No menu; no clay |
+| Negated only | `Create portfolio but not glassmorphism` | Ask for remaining styles | Do not select glass/aero from the negation alone |
 | Mixed constraints | `Build a brutalist portfolio with editorial typography` | Load primary brutalism and typographic editorial reference | Do not mix all style defaults |
 | User delegation | `Build a portfolio; choose the style yourself` | Pick justified provisional style and proceed | Do not claim user chose it |
 | Approved project config | `Build an about page` with existing approved minimalism config | Preserve minimalism | No redundant style prompt |
