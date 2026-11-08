@@ -146,6 +146,19 @@ if len(fm_parts) >= 3:
     fm_body = fm_parts[1].strip()
     if any(line.strip() == '' for line in fm_body.splitlines()):
         errors.append('SKILL.md frontmatter contains blank lines')
+    # Strict-YAML guard: a ': ' inside an unquoted scalar value is a parse
+    # error on hosts that actually parse the frontmatter. Flag it here so
+    # CI catches it instead of the host.
+    for line in fm_body.splitlines():
+        stripped = line.strip()
+        if not stripped or stripped.endswith(':') or stripped.startswith(('"', "'", '- ')):
+            continue
+        m = re.match(r'^([A-Za-z_][\w.-]*):\s?(.+)$', stripped)
+        if m and ': ' in m.group(2):
+            errors.append(
+                f'frontmatter value for {m.group(1)!r} contains ": " — '
+                'strict YAML parsers will reject it; remove the colon or quote the value'
+            )
 for md_path in [root / 'SKILL.md', project_root / 'README.md']:
     if md_path.is_file():
         md_text = md_path.read_text(encoding='utf-8')
