@@ -53,6 +53,7 @@ const tastePreset = {
           'neo-green': 'var(--taste-neo-green, #00f076)',
 
           // Glassmorphism: frosted translucent surfaces
+          // DEPRECATED legacy glass tokens — canonical pack: frutiger-aero (--taste-aero-*)
           'glass-bg': 'var(--taste-glass-bg, #0b0f19)',
           'glass-surface': 'var(--taste-glass-surface, rgba(255, 255, 255, 0.45))',
           'glass-surface-dark': 'var(--taste-glass-surface-dark, rgba(20, 24, 38, 0.65))',
@@ -158,6 +159,7 @@ const tastePreset = {
         'neo-xl': '12px 12px 0px #121212',
 
         // Skeuomorphism: tactile multi-stop specular bevels
+        // DEPRECATED legacy skeuo shadows — canonical pack: frutiger-aero tactile (--taste-aero-*)
         'skeuo-btn': 'inset 0 1px 0 rgba(255, 255, 255, 0.75), inset 0 -2px 0 rgba(0, 0, 0, 0.35), 0 3px 6px rgba(0, 0, 0, 0.2)',
         'skeuo-pressed': 'inset 0 2px 5px rgba(0, 0, 0, 0.5), inset 0 -1px 0 rgba(255, 255, 255, 0.3), 0 1px 2px rgba(0, 0, 0, 0.1)',
         'skeuo-well': 'inset 0 2px 6px rgba(0, 0, 0, 0.55), inset 0 0 1px rgba(0, 0, 0, 0.8)',
