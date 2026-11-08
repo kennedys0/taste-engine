@@ -71,17 +71,20 @@ To switch the entire application or a specific section to an archetype, set the 
 </html>
 ```
 
-Supported `data-theme` values:
+Supported `data-theme` values (kept in sync with `presets/shadcn/shadcn-themes.css`):
 - `claymorphism` (Light & Dark)
 - `neo-brutalism`
-- `glassmorphism` (Light & Dark)
+- `frutiger-aero` (Light & Dark — canonical pack for glass/skeuomorphism requests)
 - `retro-terminal`
-- `bento`
+- `bento` (legacy alias of Brutalism's Bento variant)
 - `swiss-editorial`
-- `brutalism`
+- `brutalism` / `brutalist-bento`
 - `minimalism` (Light & Dark, incorporates Enterprise data cockpits)
-- `skeuomorphism`
 - `retro-pixel` (Light & Dark)
+- `art-deco` (Light & Dark)
+- `y2k-futurism` (Light & Dark)
+- `glassmorphism` (legacy alias → `frutiger-aero` glass)
+- `enterprise` (legacy alias → `minimalism`)
 
 ---
 
