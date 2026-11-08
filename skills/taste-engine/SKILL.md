@@ -82,9 +82,9 @@ All style packs and every custom style pass the **shared anti-slop quality bar**
 | User prompt | Required agent behavior |
 | --- | --- |
 | `Build me a portfolio website` | Auto-discovered; ask for style and **STOP** until user replies |
-| `Build me a skeumorphsm portfolio website` | Route typo to `skeuomorphism`; load pack directly; **do not ask** |
+| `Build me a skeumorphsm portfolio website` | Typo `skeuomorphism` → `frutiger-aero` (variant `tactile`); load pack directly; **do not ask** |
 | `Create a brutalist portfolio` | Read `styles/brutalism.md` directly; build (not neo-brutalism) |
-| `Build a glassmorphism landing page, not clay` | Use glassmorphism; honor negative clay instruction |
+| `Build a glassmorphism landing page, not clay` | `glassmorphism` → `frutiger-aero` (variant `glass`); honor negative clay instruction |
 | `Fix the broken checkout button` | Preserve existing UI style; no new menu |
 | `Optimize SEO on my existing live portfolio` | Load `references/seo.md` directly; **no style prompt or redesign** |
 | `Build an SEO-friendly Brutalism portfolio` | Load `styles/brutalism.md` + `references/seo.md`; **no style prompt** |

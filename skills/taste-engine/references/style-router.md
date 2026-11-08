@@ -13,7 +13,7 @@ Apply style preflight to requests that create or substantially redesign visible 
 3. If not specified, detect approved project config. If it describes the current project and the user has not overridden it, route directly.
 4. If maintaining existing UI, infer its documented or established style *for preservation only*; don't start a redesign.
 5. Otherwise ask exactly one choice question and **end that agent turn without UI implementation**.
-6. On reply: map selection or literal freeform answer to a concrete spec, avoiding coercion to the nearest trendy aesthetic. If user says "show more", present `skeuomorphism`, `retro-terminal`, `retro-pixel`, and custom. (Bento is selectable within Brutalism as a native layout variant: Raw or Bento). Do not restart the first menu.
+6. On reply: map selection or literal freeform answer to a concrete spec, avoiding coercion to the nearest trendy aesthetic. If user says "show more", present `y2k-futurism`, `retro-terminal`, `retro-pixel`, and custom. (Bento is selectable within Brutalism as a native layout variant: Raw or Bento). Do not restart the first menu.
 
 ## Multiple selections
 

@@ -35,6 +35,13 @@ for style in registry['styles']:
         if previous is not None and previous != style['id']:
             errors.append(f'alias collision {raw!r}: {previous} vs {style["id"]}')
         seen_aliases[norm]=style['id']
+# Every styles/*.md must be a registered pack or an explicit legacy redirect stub.
+for style_file in sorted((root/'styles').glob('*.md')):
+    name=style_file.stem
+    if name in {s['id'] for s in registry['styles']}: continue
+    text=style_file.read_text(encoding='utf-8')
+    if 'Redirect' not in text or 'frutiger-aero' not in text:
+        errors.append(f'styles/{name}.md is not in registry and is not a legacy redirect stub')
 
 aero_style = (root / 'styles/frutiger-aero.md').read_text(encoding='utf8')
 for phrase in ['Frutiger Aero material fidelity gate', 'specular', 'Classic Aero', 'Aero Glass', 'Aero Tactile', 'first viewport', 'Explicit Frutiger Aero material exception']:

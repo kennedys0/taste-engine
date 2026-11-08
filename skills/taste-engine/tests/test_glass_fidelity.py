@@ -4,9 +4,21 @@ import unittest
 BASE = Path(__file__).resolve().parents[1]
 
 class GlassFidelityTests(unittest.TestCase):
-    def test_pack_requires_visible_material(self):
+    """Legacy glassmorphism pack is a redirect to frutiger-aero (variant glass);
+    the canonical fidelity gate lives in frutiger-aero.md."""
+
+    def test_legacy_pack_is_redirect_stub(self):
         text = (BASE / 'styles/glassmorphism.md').read_text(encoding='utf-8')
-        for token in ('Glass material fidelity gate', 'backdrop-filter', 'frost', 'light', 'dark', 'viewport', 'FAIL'):
+        for token in ('Redirect', 'frutiger-aero.md', 'variant', 'glass'):
+            with self.subTest(token=token):
+                self.assertIn(token.lower(), text.lower())
+        # A stub must not pretend to be a full pack.
+        self.assertNotIn('## Style-specific quality gate', text)
+        self.assertLess(len(text), 2000)
+
+    def test_canonical_gate_requires_visible_material(self):
+        text = (BASE / 'styles/frutiger-aero.md').read_text(encoding='utf-8')
+        for token in ('Frutiger Aero material fidelity gate', 'backdrop-filter', 'aqua', 'viewport', 'FAIL'):
             with self.subTest(token=token):
                 self.assertIn(token.lower(), text.lower())
 
@@ -17,9 +29,10 @@ class GlassFidelityTests(unittest.TestCase):
                 self.assertIn(token, css)
 
     def test_gradient_is_explicit_exception_not_blanket_style(self):
-        text = (BASE / 'styles/glassmorphism.md').read_text(encoding='utf-8').lower()
-        for token in ('explicit background gradient exception', 'radial-gradient', 'anti-slop', 'material purpose', 'performance and accessibility'):
-            with self.subTest(token=token): self.assertIn(token, text)
+        text = (BASE / 'styles/frutiger-aero.md').read_text(encoding='utf-8').lower()
+        for token in ('explicit frutiger aero material exception', 'material-enabling properties'):
+            with self.subTest(token=token):
+                self.assertIn(token, text)
         universal = (BASE / 'references/anti-slop.md').read_text(encoding='utf-8').lower()
         self.assertIn('glassmorphism explicitly permits', universal)
 
