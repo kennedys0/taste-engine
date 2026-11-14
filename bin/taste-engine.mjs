@@ -234,8 +234,32 @@ function main() {
       console.log(`[dry-run] Would scaffold Taste Engine presets to ${dest}`);
       return;
     }
-    fs.mkdirSync(dest, { recursive: true });
-    fs.cpSync(path.join(source, 'presets'), dest, { recursive: true });
+    const presetsSource = path.join(source, 'presets');
+    if(force && fs.existsSync(dest) && !dryRun) {
+      // Bug condition: forced overwrite of an existing destination. Stage a fresh
+      // copy and atomically swap it in so stale files are removed (clean replace)
+      // rather than merged into the existing directory. Mirrors the `install`
+      // function's staging + rename approach (see lines ~75).
+      const parent = path.dirname(dest);
+      const staging = fs.mkdtempSync(path.join(parent, '.taste-presets-stage-'));
+      try {
+        fs.cpSync(presetsSource, staging, { recursive: true });
+        const oldDir = path.join(parent, `.taste-presets-old-${new Date().toISOString().replace(/[:.]/g, '-')}`);
+        fs.renameSync(dest, oldDir);
+        try {
+          fs.renameSync(staging, dest);
+        } catch(err) {
+          if(fs.existsSync(oldDir)) fs.renameSync(oldDir, dest);
+          throw err;
+        }
+        fs.rmSync(oldDir, { recursive: true, force: true });
+      } finally {
+        fs.rmSync(staging, { recursive: true, force: true });
+      }
+    } else {
+      fs.mkdirSync(dest, { recursive: true });
+      fs.cpSync(presetsSource, dest, { recursive: true });
+    }
     console.log(`Copied Taste Engine presets to ${dest}\nSee ${path.join(source, 'references', 'tailwind-shadcn.md')} for setup guide.`);
     return;
   }

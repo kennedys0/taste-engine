@@ -9,6 +9,25 @@ const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const cli=path.join(root,'bin','taste-engine.mjs');
 const pkg=JSON.parse(fs.readFileSync(path.join(root,'package.json'),'utf8'));
 function run(args, env={}) { return spawnSync(process.execPath,[cli,...args],{encoding:'utf8',env:{...process.env,...env}}); }
+const presetsSource = path.join(root, 'skills', 'taste-engine', 'presets');
+function listFilesRecursive(dir) {
+  return fs.readdirSync(dir, { recursive: true })
+    .filter(rel => fs.statSync(path.join(dir, rel)).isFile())
+    .map(rel => rel.split(path.sep).join('/'))
+    .sort();
+}
+function assertDirMatchesSource(dest) {
+  const sourceFiles = listFilesRecursive(presetsSource);
+  const destFiles = listFilesRecursive(dest);
+  assert.deepEqual(destFiles, sourceFiles, `destination file set should match source presets exactly`);
+  for (const rel of sourceFiles) {
+    assert.equal(
+      fs.readFileSync(path.join(dest, rel), 'utf8'),
+      fs.readFileSync(path.join(presetsSource, rel), 'utf8'),
+      `content mismatch for ${rel}`
+    );
+  }
+}
 test('prints version and rejects unknown agents',()=>{
  assert.equal(run(['version']).stdout.trim(),pkg.version);
  assert.equal(run(['-v']).stdout.trim(),pkg.version);
@@ -148,6 +167,168 @@ test('prints presets list and inits presets into target folder with init and --i
   assert.equal(initCwdRes.status,0,initCwdRes.stderr);
   assert.equal(fs.existsSync(path.join(cwdDir,'taste-presets','tailwind','tailwind.preset.js')),true);
  } finally {fs.rmSync(dir,{recursive:true,force:true});}
+});
+test('init --force removes stale files and exactly matches source presets', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'taste-stale-'));
+  try {
+    // Scaffold presets initially so the destination exists.
+    let initRes = run(['init', dir]);
+    assert.equal(initRes.status, 0, initRes.stderr);
+    assert.equal(fs.existsSync(path.join(dir, 'taste-presets', 'tailwind', 'tailwind.preset.js')), true);
+
+    // Plant stale files that have no counterpart in the source presets.
+    const staleTailwind = path.join(dir, 'taste-presets', 'tailwind', 'old-stale.css');
+    fs.writeFileSync(staleTailwind, '/* stale tailwind file */');
+    const staleShadcn = path.join(dir, 'taste-presets', 'shadcn', 'legacy-themes.css');
+    fs.writeFileSync(staleShadcn, '/* stale shadcn file */');
+    const staleDir = path.join(dir, 'taste-presets', 'legacy');
+    fs.mkdirSync(staleDir, { recursive: true });
+    fs.writeFileSync(path.join(staleDir, 'nested.css'), '/* stale nested file */');
+
+    // Run init --force to overwrite the existing destination.
+    let forceRes = run(['init', dir, '--force']);
+    assert.equal(forceRes.status, 0, forceRes.stderr);
+
+    // Assert stale files are removed (will FAIL on unfixed code — cpSync merges).
+    assert.equal(fs.existsSync(staleTailwind), false,
+      'stale tailwind/old-stale.css should be removed after init --force');
+    assert.equal(fs.existsSync(staleShadcn), false,
+      'stale shadcn/legacy-themes.css should be removed after init --force');
+    assert.equal(fs.existsSync(staleDir), false,
+      'stale legacy/ directory should be removed after init --force');
+
+    // Assert destination recursively equals the source presets tree.
+    assertDirMatchesSource(path.join(dir, 'taste-presets'));
+  } finally { fs.rmSync(dir, { recursive: true, force: true }); }
+});
+// **Validates: Requirements 3.1, 3.2, 3.3, 3.4, 3.5**
+test('init preservation: non-force, dry-run, fresh scaffolding, and custom targets unchanged', () => {
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'taste-preserve-'));
+  try {
+    // --- 1. Non-force refusal preservation (Requirement 3.1) ---
+    // Scaffold presets first, then try init again without --force → should error.
+    let initRes = run(['init', dir]);
+    assert.equal(initRes.status, 0, initRes.stderr);
+    let refuseRes = run(['init', dir]);
+    assert.notEqual(refuseRes.status, 0);
+    assert.equal(refuseRes.stderr.includes('already exists'), true);
+
+    // --- 2. Dry-run preservation (Requirement 3.3) ---
+    // Dry-run when dest does not exist → dry-run message, no files created.
+    const dryDest = path.join(dir, 'dry-dest');
+    let dryFresh = run(['init', dryDest, '--dry-run']);
+    assert.equal(dryFresh.status, 0, dryFresh.stderr);
+    assert.equal(dryFresh.stdout.includes('[dry-run]'), true);
+    assert.equal(fs.existsSync(path.join(dryDest, 'taste-presets')), false);
+
+    // Dry-run when dest exists with --force → dry-run message, files unmodified.
+    let dryForce = run(['init', dir, '--force', '--dry-run']);
+    assert.equal(dryForce.status, 0, dryForce.stderr);
+    assert.equal(dryForce.stdout.includes('[dry-run]'), true);
+    assert.equal(fs.existsSync(path.join(dir, 'taste-presets', 'tailwind', 'tailwind.preset.js')), true);
+
+    // Dry-run when dest exists WITHOUT --force → should error (destExists check precedes dryRun).
+    let dryNoForce = run(['init', dir, '--dry-run']);
+    assert.notEqual(dryNoForce.status, 0);
+    assert.equal(dryNoForce.stderr.includes('already exists'), true);
+
+    // --- 3. Fresh scaffolding preservation (Requirements 3.2, 3.4) ---
+    // Fresh init without --force.
+    const fresh1 = path.join(dir, 'fresh1');
+    let fresh1Res = run(['init', fresh1]);
+    assert.equal(fresh1Res.status, 0, fresh1Res.stderr);
+    assert.equal(fs.existsSync(path.join(fresh1, 'taste-presets', 'tailwind', 'tailwind.preset.js')), true);
+    assertDirMatchesSource(path.join(fresh1, 'taste-presets'));
+
+    // Fresh init with --force (dest does not exist yet).
+    const fresh2 = path.join(dir, 'fresh2');
+    let fresh2Res = run(['init', fresh2, '--force']);
+    assert.equal(fresh2Res.status, 0, fresh2Res.stderr);
+    assert.equal(fs.existsSync(path.join(fresh2, 'taste-presets', 'tailwind', 'tailwind.preset.js')), true);
+    assertDirMatchesSource(path.join(fresh2, 'taste-presets'));
+
+    // --- 4. Custom target / --cwd preservation (Requirement 3.5) ---
+    // Custom positional target.
+    const subDir = path.join(dir, 'sub');
+    let subRes = run(['init', subDir]);
+    assert.equal(subRes.status, 0, subRes.stderr);
+    assert.equal(fs.existsSync(path.join(subDir, 'taste-presets', 'tailwind', 'tailwind.preset.js')), true);
+    assertDirMatchesSource(path.join(subDir, 'taste-presets'));
+
+    // Custom --cwd target.
+    const cwdDir = path.join(dir, 'cwd-test');
+    let cwdRes = run(['init', '--cwd', cwdDir]);
+    assert.equal(cwdRes.status, 0, cwdRes.stderr);
+    assert.equal(fs.existsSync(path.join(cwdDir, 'taste-presets', 'tailwind', 'tailwind.preset.js')), true);
+    assertDirMatchesSource(path.join(cwdDir, 'taste-presets'));
+  } finally { fs.rmSync(dir, { recursive: true, force: true }); }
+});
+// **Validates: Requirements 3.1, 3.2, 3.3, 3.4, 3.5**
+test('init preservation: generative test across non-buggy flag combinations', () => {
+  const base = fs.mkdtempSync(path.join(os.tmpdir(), 'taste-gen-'));
+  try {
+    const forceOpts = [false, true];
+    const dryRunOpts = [false, true];
+    const destExistsOpts = [false, true];
+    const targetModes = ['positional', '--cwd'];
+    let comboIdx = 0;
+
+    for (const force of forceOpts) {
+      for (const dryRun of dryRunOpts) {
+        for (const destExists of destExistsOpts) {
+          for (const targetMode of targetModes) {
+            // Skip bug condition: force=true, dryRun=false, destExists=true.
+            if (force && !dryRun && destExists) continue;
+
+            const targetDir = path.join(base, `combo-${comboIdx++}`);
+            const dest = path.join(targetDir, 'taste-presets');
+
+            // If destExists, scaffold presets first so the destination is present.
+            if (destExists) {
+              const scaffold = run(['init', targetDir]);
+              assert.equal(scaffold.status, 0, `scaffold failed for combo ${comboIdx - 1}: ${scaffold.stderr}`);
+            }
+
+            // Build CLI args based on targetMode.
+            const args = ['init'];
+            if (targetMode === 'positional') {
+              args.push(targetDir);
+            } else {
+              args.push('--cwd', targetDir);
+            }
+            if (force) args.push('--force');
+            if (dryRun) args.push('--dry-run');
+
+            const res = run(args);
+            const label = `force=${force}, dryRun=${dryRun}, destExists=${destExists}, mode=${targetMode}`;
+
+            if (destExists && !force) {
+              // Non-force refusal: error with "already exists" regardless of dryRun.
+              assert.notEqual(res.status, 0, `expected error for ${label}`);
+              assert.equal(res.stderr.includes('already exists'), true, `stderr for ${label}: ${res.stderr}`);
+            } else if (dryRun) {
+              // Dry-run: success, dry-run message printed, no files created/modified.
+              assert.equal(res.status, 0, `expected success for ${label}: ${res.stderr}`);
+              assert.equal(res.stdout.includes('[dry-run]'), true, `stdout for ${label}: ${res.stdout}`);
+              if (destExists) {
+                assert.equal(fs.existsSync(path.join(dest, 'tailwind', 'tailwind.preset.js')), true,
+                  `files should remain after dry-run for ${label}`);
+              } else {
+                assert.equal(fs.existsSync(dest), false,
+                  `no files should be created after dry-run for ${label}`);
+              }
+            } else {
+              // Fresh scaffolding: success, presets created, exact match to source.
+              assert.equal(res.status, 0, `expected success for ${label}: ${res.stderr}`);
+              assert.equal(fs.existsSync(path.join(dest, 'tailwind', 'tailwind.preset.js')), true,
+                `presets should exist for ${label}`);
+              assertDirMatchesSource(dest);
+            }
+          }
+        }
+      }
+    }
+  } finally { fs.rmSync(base, { recursive: true, force: true }); }
 });
 test('forwards -update, update and --update to the updater script',{skip:process.platform==='win32'},()=>{
  const r1=run(['-update','--help']);

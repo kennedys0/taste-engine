@@ -1,0 +1,120 @@
+{
+  "pbtResults": {
+    "1. Write bug condition exploration test": {
+      "status": "passed",
+      "failingExample": "After running `init --force` on a destination containing the stale file `taste-presets/tailwind/old-stale.css` (planted after initial scaffolding, with no counterpart in source presets), the file still exists. The assertion `fs.existsSync(staleTailwind)` returned `true` when `false` was expected, because `fs.cpSync(source, dest, { recursive: true })` merges the source tree into the existing destination instead of replacing it. The test stopped at the first stale-file check (tailwind/old-stale.css), confirming the merge-copy defect. The remaining stale cases (shadcn/legacy-themes.css, legacy/nested.css) and the exact-match assertion were not reached but would fail for the same root cause.",
+      "lastRunTimestamp": 1794502103296
+    }
+  },
+  "executionHistory": {
+    "1. Write bug condition exploration test": [
+      {
+        "executionId": "b22f4cb4-2541-4cfa-ba1c-cbf468c34c5d",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794502001644
+      },
+      {
+        "executionId": "b22f4cb4-2541-4cfa-ba1c-cbf468c34c5d",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794502013861
+      },
+      {
+        "executionId": "b22f4cb4-2541-4cfa-ba1c-cbf468c34c5d",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794502120340
+      }
+    ],
+    "2. Write preservation property tests (BEFORE implementing fix)": [
+      {
+        "executionId": "b22f4cb4-2541-4cfa-ba1c-cbf468c34c5d",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794502001695
+      },
+      {
+        "executionId": "b22f4cb4-2541-4cfa-ba1c-cbf468c34c5d",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794502125404
+      },
+      {
+        "executionId": "b22f4cb4-2541-4cfa-ba1c-cbf468c34c5d",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794502570535
+      }
+    ],
+    "3.1 Implement the fix": [
+      {
+        "executionId": "b22f4cb4-2541-4cfa-ba1c-cbf468c34c5d",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794502001733
+      },
+      {
+        "executionId": "b22f4cb4-2541-4cfa-ba1c-cbf468c34c5d",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794502575423
+      },
+      {
+        "executionId": "b22f4cb4-2541-4cfa-ba1c-cbf468c34c5d",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794502665131
+      }
+    ],
+    "3.2 Verify bug condition exploration test now passes": [
+      {
+        "executionId": "b22f4cb4-2541-4cfa-ba1c-cbf468c34c5d",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794502001774
+      },
+      {
+        "executionId": "b22f4cb4-2541-4cfa-ba1c-cbf468c34c5d",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794502670775
+      },
+      {
+        "executionId": "b22f4cb4-2541-4cfa-ba1c-cbf468c34c5d",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794502703444
+      }
+    ],
+    "3.3 Verify preservation tests still pass": [
+      {
+        "executionId": "b22f4cb4-2541-4cfa-ba1c-cbf468c34c5d",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794502001798
+      },
+      {
+        "executionId": "b22f4cb4-2541-4cfa-ba1c-cbf468c34c5d",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794502709016
+      },
+      {
+        "executionId": "b22f4cb4-2541-4cfa-ba1c-cbf468c34c5d",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794503054820
+      }
+    ],
+    "4. Checkpoint - Ensure all tests pass": [
+      {
+        "executionId": "b22f4cb4-2541-4cfa-ba1c-cbf468c34c5d",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794502001848
+      },
+      {
+        "executionId": "b22f4cb4-2541-4cfa-ba1c-cbf468c34c5d",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794503060632
+      },
+      {
+        "executionId": "6c0b1097-33aa-4cfb-8d7e-b95f665faadb",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794618121540
+      }
+    ],
+    "3. Fix for init --force merge-copy leaving stale files": [
+      {
+        "executionId": "b22f4cb4-2541-4cfa-ba1c-cbf468c34c5d",
+        "chatSessionId": "sess_cc82964b-4934-436c-8938-c22670e889ef",
+        "timestamp": 1794503054862
+      }
+    ]
+  }
+}
